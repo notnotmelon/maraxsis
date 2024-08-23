@@ -1,12 +1,13 @@
 {
-  "name": "[internal-mod-name]",
+  "name": "dihydrogen-monoxide",
   "version": "0.0.0",
-  "title": "[MOD DISPLAY NAME]",
-  "author": "[YOUR MODS.FACTORIO.COM USERNAME]",
-  "homepage": "[HOMEPAGE/REPO URL]",
-  "description": "[SHORT DESCRIPTION]",
+  "title": "Dihydrogen Monoxide",
+  "author": "notnotmelon",
+  "homepage": "https://github.com/notnotmelon/dihydrogen-monoxide",
+  "description": "Dive into the uncharted waters of Maraxsis, a world where the sea covers everything. Utilize submarines to explore, deploy fiber optics for long-distance signals, and master the challenges of deep-sea logistics. BEWARE: You aren't alone in the depths... ",
   "factorio_version": "1.1",
   "dependencies": [
-    "base"
+    "base",
+    "! pystellarexpedition"
   ]
 }
