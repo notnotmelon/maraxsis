@@ -10,9 +10,9 @@ for size = 0, 5 do
             end
             local water = table.deepcopy(data.raw['simple-entity']['gas-giant-animation'])
             water.render_layer = 'light-effect'
-            water.icon = '__pystellarexpeditiongraphics__/graphics/tile/water/water-combined.png'
+            water.icon = '__dihydrogen-monoxide__/graphics/tile/water/water-combined.png'
             water.icon_size = 32
-            water.name = 'py-water-shader-' .. (32 / size) .. '-' .. j .. '-' .. i
+            water.name = 'h2o-water-shader-' .. (32 / size) .. '-' .. j .. '-' .. i
             water.localised_name = water.name
             water.animations = {
                 layers = {
@@ -21,7 +21,7 @@ for size = 0, 5 do
                         width = 256 / size,
                         line_length = 32 * size,
                         variation_count = 1,
-                        filename = '__pystellarexpeditiongraphics__/graphics/tile/water/water-combined.png',
+                        filename = '__dihydrogen-monoxide__/graphics/tile/water/water-combined.png',
                         frame_count = 32 * size * size,
                         animation_speed = 0.5,
                         scale = 4,
@@ -114,7 +114,7 @@ local function trenchifiy(tile)
             local layer = table.deepcopy(picture.layers[1])
             for _, version in pairs{layer, layer.hr_version} do
                 version.filename = version.filename:gsub('.png', '-'..tile..'.png')
-                version.filename = version.filename:gsub('__base__/graphics/terrain/cliffs', '__pystellarexpeditiongraphics__/graphics/entity/cliffs')
+                version.filename = version.filename:gsub('__base__/graphics/terrain/cliffs', '__dihydrogen-monoxide__/graphics/entity/cliffs')
             end
             pictures[#pictures+1] = layer
         end
@@ -241,8 +241,8 @@ local corner_order = {
     {N, X, N}},
 }
 
-local base_shader = data.raw['simple-entity']['py-water-shader-1-1-1']
-local filename = '__pystellarexpeditiongraphics__/graphics/tile/water/water-coastline.png'
+local base_shader = data.raw['simple-entity']['h2o-water-shader-1-1-1']
+local filename = '__dihydrogen-monoxide__/graphics/tile/water/water-coastline.png'
 
 local function recursively_generate_coastline_shaders(variants, i)
     local result = {}
@@ -283,7 +283,7 @@ for _, grid in pairs(corner_order) do
     end
 
     for _, name_array in pairs(recursively_generate_coastline_shaders(variants, 1)) do
-        local name = 'py-coastline-shader'
+        local name = 'h2o-coastline-shader'
         for _, n in pairs(name_array) do
             name = name .. '-' .. n
         end

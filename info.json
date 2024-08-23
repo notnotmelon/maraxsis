@@ -5,7 +5,7 @@
   "author": "notnotmelon, ArchEzekiel",
   "homepage": "https://github.com/notnotmelon/dihydrogen-monoxide",
   "description": "Dive into the uncharted waters of Maraxsis, a world where the sea covers everything. Utilize submarines to explore, deploy fiber optics for long-distance signals, build pressure domes, and master the challenges of deep-sea logistics. But BEWARE: You aren't alone in these depths...",
-  "factorio_version": "2.0",
+  "factorio_version": "1.1",
   "dependencies": [
     "base",
     "! pystellarexpedition"

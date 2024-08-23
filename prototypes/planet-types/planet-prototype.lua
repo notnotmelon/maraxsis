@@ -14,7 +14,7 @@ local function extend_autoplace(planet_prototype, extended_data)
     for noise_layer, settings in pairs(init_noise_layers(planet_prototype)) do
         if not settings.cellular then
             noise_layers[noise_layer] = true
-            local zoom = noise.get_control_setting('py-autoplace-control-' .. i).size_multiplier
+            local zoom = noise.get_control_setting('h2o-autoplace-control-' .. i).size_multiplier
 
             local x = noise.var('x')
             local y = noise.var('y')
@@ -26,9 +26,9 @@ local function extend_autoplace(planet_prototype, extended_data)
             end
             local expression = h2o.basis_noise(x, y, seed, zoom)
             if settings.from_parent then
-                expression.arguments.seed1 = extended_data['py-' .. noise_layer .. '-' .. planet_prototype.parent_type].expression.arguments.seed1
+                expression.arguments.seed1 = extended_data['h2o-' .. noise_layer .. '-' .. planet_prototype.parent_type].expression.arguments.seed1
             end
-            local name = 'py-' .. noise_layer .. '-' .. planet_prototype.type
+            local name = 'h2o-' .. noise_layer .. '-' .. planet_prototype.type
             extended_data[name] = {
                 type = 'noise-expression',
                 name = name,
@@ -41,7 +41,7 @@ local function extend_autoplace(planet_prototype, extended_data)
 
     if table_size(noise_layers) ~= 0 then
         for j = 1, i do
-            local name = 'py-autoplace-control-' .. j
+            local name = 'h2o-autoplace-control-' .. j
             extended_data[name] = {
                 name = name,
                 localised_name = name,
@@ -53,62 +53,6 @@ local function extend_autoplace(planet_prototype, extended_data)
             }
         end
     end
-end
-
-local function create_gas_prototype(gas)
-    return {
-        type = 'resource',
-        name = 'cryogenic-distillation-of-' .. gas,
-        localised_name = gas.localised_name or {'fluid-name.' .. gas},
-        category = 'cryogenic-distillation',
-        order = 'z',
-        icon = '__pystellarexpeditiongraphics__/graphics/icons/cryogenic-distillate.png',
-        icon_size = 64,
-        map_grid = false,
-        infinite = true,
-        stage_counts = {0},
-        stages = {
-            filename = '__core__/graphics/empty.png',
-            width = 1,
-            height = 1
-        },
-        highlight = true,
-        randomize_visual_position = false,
-        minimum = 1,
-        normal = 100000,
-        resource_patch_search_radius = 3,
-        infinite_depletion_amount = 0,
-        minable = {
-            mining_time = 10,
-            results = {
-                {type = 'fluid', name = gas, amount = 100},
-            },
-        },
-        collision_box = {{-0.3, -0.3}, {0.3, 0.3}},
-        autoplace = nil,
-        flags = {'placeable-neutral', 'placeable-off-grid', 'not-on-map'},
-        selectable_in_game = false,
-        script_autoplace = true,
-        mining_visualisation_tint = data.raw.fluid[gas].base_color,
-    }
-end
-
-local function create_sprites(planet_type, sprites_data, extended_data)
-    local sprites_amount = sprites_data[1]
-    local width = sprites_data[2]
-    local height = sprites_data[3] or width
-    for i = 1, sprites_amount do
-        local index = string.format("%02d", i)
-        table.insert(extended_data, {
-            type = 'sprite',
-            name = "pyse-planet-sprite-" .. planet_type .. "-" .. i,
-            filename = '__pystellarexpeditiongraphics__/graphics/zones/' .. planet_type .. '/' .. planet_type .. '-' .. index .. '.png',
-            width = width,
-            height = height,
-            flags = {'gui-icon'}
-        })
-    end
-    return extended_data
 end
 
 -- required and optional fields to create a planet prototype

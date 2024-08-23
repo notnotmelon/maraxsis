@@ -17,36 +17,36 @@ data:extend{
             main =
             {
               {
-                picture = '__pystellarexpeditiongraphics__/graphics/tile/lava/lava-1.png',
+                picture = '__dihydrogen-monoxide__/graphics/tile/lava/lava-1.png',
                 count = 8,
                 size = 1,
                 hr_version =
                 {
-                  picture = '__pystellarexpeditiongraphics__/graphics/tile/lava/hr-lava-1.png',
+                  picture = '__dihydrogen-monoxide__/graphics/tile/lava/hr-lava-1.png',
                   count = 8,
                   scale = 0.5,
                   size = 1
                 }
               },
               {
-                picture = '__pystellarexpeditiongraphics__/graphics/tile/lava/lava-2.png',
+                picture = '__dihydrogen-monoxide__/graphics/tile/lava/lava-2.png',
                 count = 8,
                 size = 2,
                 hr_version =
                 {
-                  picture = '__pystellarexpeditiongraphics__/graphics/tile/lava/hr-lava-2.png',
+                  picture = '__dihydrogen-monoxide__/graphics/tile/lava/hr-lava-2.png',
                   count = 8,
                   scale = 0.5,
                   size = 2
                 }
               },
               {
-                picture = '__pystellarexpeditiongraphics__/graphics/tile/lava/lava-4.png',
+                picture = '__dihydrogen-monoxide__/graphics/tile/lava/lava-4.png',
                 count = 8,
                 size = 4,
                 hr_version =
                 {
-                  picture = '__pystellarexpeditiongraphics__/graphics/tile/lava/hr-lava-4.png',
+                  picture = '__dihydrogen-monoxide__/graphics/tile/lava/hr-lava-4.png',
                   count = 8,
                   scale = 0.5,
                   size = 4

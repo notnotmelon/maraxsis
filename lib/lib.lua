@@ -1,4 +1,4 @@
-_G.py = {}
+_G.h2o = {}
 
 require 'table'
 require 'string'

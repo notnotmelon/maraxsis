@@ -1,12 +1,10 @@
 -- Adds helper functions for data stage. Shared across all pymods and adapted for use in dihydrogen monoxide
 
-require 'autorecipes'
-
 ---Returns a 1x1 empty image.
 ---@return table
 h2o.empty_image = function()
     return {
-        filename = '__pypostprocessing__/empty.png',
+        filename = '__core__/graphics/empty.png',
         size = 1,
         priority = 'high',
         direction_count = 1,

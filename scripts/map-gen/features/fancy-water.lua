@@ -47,7 +47,7 @@ local calculate_1x1_shader_name = function(grid, x, y)
 	local all_water = grid[x - 1][y - 1] and grid[x][y - 1] and grid[x + 1][y - 1] and grid[x - 1][y] and grid[x + 1][y] and grid[x - 1][y + 1] and grid[x][y + 1] and grid[x + 1][y + 1]
 	if all_water then return nil end
 
-	local result = 'py-coastline-shader'
+	local result = 'h2o-coastline-shader'
 	if grid[x - 1][y - 1] then result = result .. O else result = result .. X end
 	if grid[x][y - 1] then result = result .. O else result = result .. X end
 	if grid[x + 1][y - 1] then result = result .. O else result = result .. X end
@@ -75,7 +75,7 @@ Mapgen.generate_fancy_water = function(planet, noise, chunkpos)
 
 	if planet.is_fancy_water == 'always' then
 		surface.create_entity{
-			name = 'py-water-shader-32-1-1',
+			name = 'h2o-water-shader-32-1-1',
 			position = {x1 + 16, y1 + 16},
 			create_build_effect_smoke = false
 		}
@@ -103,7 +103,7 @@ Mapgen.generate_fancy_water = function(planet, noise, chunkpos)
 	if all_land then return end
 	if all_water then
 		surface.create_entity{
-			name = 'py-water-shader-32-1-1',
+			name = 'h2o-water-shader-32-1-1',
 			position = {x1 + 16, y1 + 16},
 			create_build_effect_smoke = false
 		}
@@ -152,7 +152,7 @@ Mapgen.generate_fancy_water = function(planet, noise, chunkpos)
 			local x, y = subsquare[1], subsquare[2]
 			x = x + math.ceil(size / 2)
 			y = y + math.ceil(size / 2)
-			local name = 'py-water-shader-' .. size .. '-' .. math.floor((x % 32)/size) + 1 .. '-' .. math.floor((y % 32)/size) + 1
+			local name = 'h2o-water-shader-' .. size .. '-' .. math.floor((x % 32)/size) + 1 .. '-' .. math.floor((y % 32)/size) + 1
 			surface.create_entity{
 				name = name,
 				position = {x, y},

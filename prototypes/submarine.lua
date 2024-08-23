@@ -14,40 +14,17 @@ local movement_energy_consumption = {
     12000,
 }
 
-local burner_energy_sources = {
-    {
-        type = 'burner',
-        fuel_category = 'jerry',
-        effectivity = 1,
-        fuel_inventory_size = 4,
-        burnt_inventory_size = 4,
-    },
-    {
-        type = 'burner',
-        fuel_categories = {'quantum', 'nexelit'},
-        effectivity = 1,
-        fuel_inventory_size = 3,
-        burnt_inventory_size = 3,
-    },
-    {
-        type = 'burner',
-        fuel_category = 'nuclear',
-        effectivity = 1,
-        fuel_inventory_size = 2,
-        burnt_inventory_size = 2,
-    },
-    {
-        type = 'burner',
-        fuel_category = 'antimatter',
-        effectivity = 1,
-        fuel_inventory_size = 1,
-        burnt_inventory_size = 0,
-    },
-}
+data:extend{{
+    type = 'item-subgroup',
+    name = 'h2o-maraxsis',
+    group = 'production',
+    order = 'ee',
+}}
 
-for i = 1, 4 do
-    local name = 'submarine-mk0' .. i
-    local icon = '__pystellarexpeditiongraphics__/graphics/icons/submarine-mk0' .. i .. '.png'
+do
+    local i = 1
+    local name = 'h2o-submarine'
+    local icon = '__dihydrogen-monoxide__/graphics/icons/submarine.png'
 
     local item = {
         type = 'item',
@@ -55,7 +32,7 @@ for i = 1, 4 do
         icon = icon,
         icon_size = 64,
         icon_mipmaps = nil,
-        subgroup = 'pystellarexpedition-buildings-mk0' .. i,
+        subgroup = 'h2o-maraxsis',
         order = 'vga',
         place_result = name,
         stack_size = 1,
@@ -73,7 +50,7 @@ for i = 1, 4 do
         icon = icon,
         icon_size = 64,
         icon_mipmaps = nil,
-        subgroup = 'pystellarexpedition-buildings-mk0' .. i,
+        subgroup = 'h2o-maraxsis',
         order = 'vgb',
         place_result = name,
         stack_size = 1,
@@ -143,30 +120,30 @@ for i = 1, 4 do
         direction = (direction - 17) % 64 + 1
         if direction >= 34 and direction <= 64 then
             table.insert(lamp_layer.stripes, {
-                filename = '__pypostprocessing__/empty.png',
+                filename = '__dihydrogen-monoxide__/graphics/empty.png',
                 width_in_frames = 1,
                 height_in_frames = 1,
             })
         else
             table.insert(lamp_layer.stripes, {
-                filename = '__pystellarexpeditiongraphics__/graphics/entity/submarine/light/Sub-Mk1-LampMask-' .. direction .. '.png',
+                filename = '__dihydrogen-monoxide__/graphics/entity/submarine/light/Sub-Mk1-LampMask-' .. direction .. '.png',
                 width_in_frames = 1,
                 height_in_frames = 1,
             })
         end
         table.insert(mask_layer.stripes, {
-            filename = '__pystellarexpeditiongraphics__/graphics/entity/submarine/mask/Sub-Mk1-ColorMask-' .. direction .. '.png',
+            filename = '__dihydrogen-monoxide__/graphics/entity/submarine/mask/Sub-Mk1-ColorMask-' .. direction .. '.png',
             width_in_frames = 1,
             height_in_frames = 1,
         })
         table.insert(shadow_layer.stripes, {
-            filename = '__pystellarexpeditiongraphics__/graphics/entity/submarine/shadow/Sub-Mk1-Shadow-' .. direction .. '.png',
+            filename = '__dihydrogen-monoxide__/graphics/entity/submarine/shadow/Sub-Mk1-Shadow-' .. direction .. '.png',
             width_in_frames = 1,
             height_in_frames = 1,
         })
         for j = 1, 2 do
             table.insert(full_body_layer.stripes, {
-                filename = '__pystellarexpeditiongraphics__/graphics/entity/submarine/body/Sub-Mk1-' .. direction .. '-' .. j .. '.png',
+                filename = '__dihydrogen-monoxide__/graphics/entity/submarine/body/Sub-Mk1-' .. direction .. '-' .. j .. '.png',
                 width_in_frames = 1,
                 height_in_frames = 1,
             })
@@ -188,7 +165,7 @@ for i = 1, 4 do
         layer.max_advance = 1
     end
 
-    local entity = table.deepcopy(data.raw['spider-vehicle']['phadaisus'])
+    local entity = table.deepcopy(data.raw['spider-vehicle']['spidertron'])
     entity.name = name
     entity.icon = icon
     entity.icon_size = 64
@@ -204,7 +181,7 @@ for i = 1, 4 do
     entity.tank_driving = true
     entity.collision_mask = collision_mask
     entity.minimap_representation = {
-		filename = '__pystellarexpeditiongraphics__/graphics/entity/submarine/map/submarine-map-tag.png',
+		filename = '__dihydrogen-monoxide__/graphics/entity/submarine/map/submarine-map-tag.png',
 		flags = {'icon'},
         tint = h2o.tints[i],
 		size = {64, 64}
@@ -213,7 +190,13 @@ for i = 1, 4 do
     entity.open_sound = nil
     entity.movement_energy_consumption = movement_energy_consumption[i] .. 'kW'
     entity.weight = entity.weight / (i + 1) * 4 * movement_energy_consumption[i] / 800
-    entity.burner = burner_energy_sources[i]
+    entity.burner = {
+        type = 'burner',
+        fuel_category = 'nuclear',
+        effectivity = 1,
+        fuel_inventory_size = 2,
+        burnt_inventory_size = 2,
+    }
     entity.guns = table.deepcopy(data.raw['spider-vehicle']['spidertron'].guns)
     entity.close_sound = nil
     entity.resistances = {
@@ -227,9 +210,9 @@ for i = 1, 4 do
     entity.inventory_size = i * 30
     entity.trash_inventory_size = 10
     entity.turret_animation = nil
-    entity.friction = entity.friction * 5
-    entity.rotation_speed = entity.rotation_speed * 0.2 * (i / 2 + 0.5)
-    entity.spider_engine.legs[1].leg = 'submarine-leg'
+    entity.friction = 0.005
+    entity.rotation_speed = 0.015 * 0.2 * (i / 2 + 0.5)
+    entity.spider_engine.legs = {leg = 'h2o-submarine-leg', mount_position = {0, 0.5}, ground_position = {0, -1}, blocking_legs = {}}
     entity.graphics_set.light = {
         {
             color = {
@@ -279,7 +262,7 @@ for i = 1, 4 do
     local tech = {
         type = 'technology',
         name = name,
-        icon = '__pystellarexpeditiongraphics__/graphics/technology/deep-sea-exploration-mk0' .. i .. '.png',
+        icon = '__dihydrogen-monoxide__/graphics/planets/maraxsis.png',
         icon_size = 128,
         icon_mipmaps = nil,
         effects = {
@@ -304,9 +287,6 @@ for i = 1, 4 do
     data:extend{item, item_tagged, recipe, entity, tech}
 end
 
-data.raw.item['antimatter'].fuel_category = 'antimatter'
-data.raw.item['antimatter'].stack_size = 5
-
 data:extend{{
     type = 'custom-input',
     key_sequence = '',
@@ -314,8 +294,17 @@ data:extend{{
     name = 'toggle-driving',
 }}
 
-local vehicle_leg = table.deepcopy(data.raw['spider-leg']['py-fake-spidertron-leg'])
+local vehicle_leg = table.deepcopy(data.raw['spider-leg']['spidertron-leg-1'])
+vehicle_leg.name = 'h2o-submarine-leg'
+vehicle_leg.graphics_set = {}
 vehicle_leg.collision_mask = collision_mask
-vehicle_leg.name = 'submarine-leg'
+vehicle_leg.target_position_randomisation_distance = 0
+vehicle_leg.working_sound = nil
+vehicle_leg.minimal_step_size = 0
+vehicle_leg.part_length = 2
+vehicle_leg.movement_based_position_selection_distance = 1.5 -- I have no idea what this does.
+vehicle_leg.initial_movement_speed = 1
+vehicle_leg.movement_acceleration = 0
+vehicle_leg.walking_sound_volume_modifier = 0
 vehicle_leg.part_length = 0.1
-data:extend{vehicle_leg}
+data:extend {vehicle_leg}
