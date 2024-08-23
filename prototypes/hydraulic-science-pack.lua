@@ -37,7 +37,7 @@ data:extend{{
         time = 60,
     },
     prerequisites = {
-        'utility-science-pack',
+        'h2o-maraxsis',
     },
     order = 'a',
 }}

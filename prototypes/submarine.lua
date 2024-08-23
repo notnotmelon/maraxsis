@@ -39,24 +39,6 @@ do
         flags = {'not-stackable'},
     }
 
-    local item_tagged = {
-        type = 'item-with-tags',
-        name = name .. '-tagged',
-        localised_description = {
-            '?',
-            {'', '[font=default-bold]', {'item-description.tagged-submarine-warning'}, '[/font]', {'entity-description.' .. name}},
-            {'', '[font=default-bold]', {'item-description.tagged-submarine-warning'}, '[/font]'},
-        },
-        icon = icon,
-        icon_size = 64,
-        icon_mipmaps = nil,
-        subgroup = 'h2o-maraxsis',
-        order = 'vgb',
-        place_result = name,
-        stack_size = 1,
-        flags = {'not-stackable'},
-    }
-
     local recipe = {
         type = 'recipe',
         name = name,
@@ -171,8 +153,7 @@ do
     entity.icon_size = 64
     entity.icon_mipmaps = nil
     entity.torso_bob_speed = 0.4
-    entity.minable.result = name .. '-tagged'
-    entity.placeable_by = {item = name, count = 1}
+    entity.minable.result = name
     entity.max_health = 3000 * 2 ^ (i - 1)
     entity.collision_box = {{-1.4, -1.4}, {1.4, 1.4}}
     entity.selection_box = {{-1.4, -1.4}, {1.4, 1.4}}
@@ -266,7 +247,7 @@ do
 
     local tech = {
         type = 'technology',
-        name = name,
+        name = 'h2o-maraxsis',
         icon = '__dihydrogen-monoxide__/graphics/technology/maraxsis.png',
         icon_size = 256,
         icon_mipmaps = nil,
@@ -289,7 +270,7 @@ do
         order = 'a',
     }
 
-    data:extend {item, item_tagged, recipe, entity, tech}
+    data:extend {item, recipe, entity, tech}
 end
 
 data:extend {{
