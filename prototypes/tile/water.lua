@@ -49,7 +49,7 @@ local waterifiy = {
         tile.collision_mask = {'water-tile'}
         tile.layer = layer
         ---@diagnostic disable-next-line: param-type-mismatch
-        tile.map_color = h2o2.color_combine(tile.map_color or data.raw.tile['water'].map_color, data.raw.tile['deepwater'].map_color, 0.25)
+        tile.map_color = h2o.color_combine(tile.map_color or data.raw.tile['water'].map_color, data.raw.tile['deepwater'].map_color, 0.25)
         tile.pollution_absorption_per_second = data.raw.tile['water'].pollution_absorption_per_second
         tile.draw_in_water_layer = true
         --tile.walking_sound = nil -- TODO: add a swimming sound
@@ -76,7 +76,7 @@ local waterifiy = {
         collision_mask_util.remove_layer(collision_mask_util.get_mask(underwater), 'water-tile')
         collision_mask_util.add_layer(collision_mask_util.get_mask(underwater), 'ground-tile')
         ---@diagnostic disable-next-line: param-type-mismatch
-        underwater.map_color = h2o2.color_combine(underwater.map_color or data.raw.tile['water'].map_color, data.raw.tile['deepwater'].map_color, 0.25)
+        underwater.map_color = h2o.color_combine(underwater.map_color or data.raw.tile['water'].map_color, data.raw.tile['deepwater'].map_color, 0.25)
         
         return {underwater}
     end,

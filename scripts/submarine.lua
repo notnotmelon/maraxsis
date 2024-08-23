@@ -1,4 +1,4 @@
-local trench_movement_factor = 2 -- each tile moved in the trench layer = 4 tiles in the surface layer
+local trench_movement_factor = 2 -- each tile moved in the trench layer = 2 tiles in the surface layer
 
 local submarines = {
     ['submarine-mk01'] = true,
@@ -7,7 +7,7 @@ local submarines = {
     ['submarine-mk04'] = true,
 }
 
-h2o2.delayed_functions.exit_submarine = function(event)
+local function exit_submarine(event)
     local player = game.get_player(event.player_index)
     if not player or not player.valid then return end
     local selected = player.selected
@@ -49,7 +49,7 @@ end
 
 ---@param player LuaPlayer
 ---@param submarine LuaEntity
-h2o2.delayed_functions.enter_submarine = function(player, submarine)
+local function enter_submarine(player, submarine)
     if not player.valid or not submarine.valid then return end
 
     if submarine.get_driver() == player or (player.is_player() and submarine.get_driver() == player.character) then return end
@@ -131,18 +131,18 @@ local function decend_or_ascend(submarine)
 
     if passenger then
         passenger.teleport(target_position, target_planet:get_surface(), true)
-        h2o2.execute_later('enter_submarine', 2, passenger, submarine)
+        enter_submarine(passenger, submarine)
     end
 
     if driver then
         driver.teleport(target_position, target_planet:get_surface(), true)
-        h2o2.execute_later('enter_submarine', 1, driver, submarine)
+        enter_submarine(driver, submarine)
     end
 
     return true
 end
 
-h2o2.on_event('toggle-driving', function(event)
+h2o.on_event('toggle-driving', function(event)
     local player = game.get_player(event.player_index)
     if not player then return end
     local selected = player.selected
@@ -154,7 +154,7 @@ h2o2.on_event('toggle-driving', function(event)
     if submarine and submarines[submarine.name] and selected and selected.valid and selected == submarine then
         if not decend_or_ascend(submarine) then
             if planet and planet.parent and planet.parent.underwater_surface == planet then
-                h2o2.execute_later('enter_submarine', 1, player, submarine)
+                enter_submarine(player, submarine)
             end
         end
     -- case 2: player is not hovering the sub but trying to exit.
@@ -162,13 +162,13 @@ h2o2.on_event('toggle-driving', function(event)
     elseif submarine and submarines[submarine.name] and not selected_submarine then
         if not decend_or_ascend(submarine) then
             if planet and planet.parent and planet.parent.underwater_surface == planet then
-                h2o2.execute_later('enter_submarine', 1, player, submarine)
+                enter_submarine(player, submarine)
             else
-                h2o2.execute_later('exit_submarine', 1, event)
+                exit_submarine(event)
             end
         end
     -- case 3: player is hovering the sub and trying to enter. the vanilla vechicle enter range is too low for water vehicles so we artificially increase it
     elseif can_enter_submarine(player, selected) then
-        h2o2.execute_later('enter_submarine', 1, player, selected)
+        enter_submarine(player, selected)
     end
 end)

@@ -24,7 +24,7 @@ local function extend_autoplace(planet_prototype, extended_data)
             if settings.fy then
                 y = tne(settings.fy(x, y))
             end
-            local expression = h2o2.basis_noise(x, y, seed, zoom)
+            local expression = h2o.basis_noise(x, y, seed, zoom)
             if settings.from_parent then
                 expression.arguments.seed1 = extended_data['py-' .. noise_layer .. '-' .. planet_prototype.parent_type].expression.arguments.seed1
             end

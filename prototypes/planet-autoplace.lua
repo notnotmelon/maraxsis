@@ -19,7 +19,7 @@ for _, planet in pairs(planet_prototypes) do
             if settings.fy then
                 y = tne(settings.fy(x, y))
             end
-            local expression = h2o2.basis_noise(x, y, seed, zoom)
+            local expression = h2o.basis_noise(x, y, seed, zoom)
             if settings.from_parent then
                 expression.arguments.seed1 = data.raw['noise-expression']['py-' .. noise_layer .. '-' .. planet.parent_type].expression.arguments.seed1
             end

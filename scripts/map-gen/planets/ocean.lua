@@ -57,7 +57,7 @@ local function generate_terrain(self, noise, x, y)
 			if random() > 0.9 and sap_noise > 0.5 then
 				surface.create_entity{
 					name = 'sap-tree',
-					position = h2o2.randomize_position(position),
+					position = h2o.randomize_position(position),
 					force = 'neutral'
 				}
 				if random() > 0.9 then decorative = {name = 'enemy-decal-transparent', amount = 1, position = position} end
@@ -67,13 +67,13 @@ local function generate_terrain(self, noise, x, y)
 					if rock_noise > 0.8 then
 						surface.create_entity{
 							name = 'rock-huge',
-							position = h2o2.randomize_position(position),
+							position = h2o.randomize_position(position),
 							force = 'neutral'
 						}
 					elseif rock_noise > 0.6 then
 						surface.create_entity{
 							name = 'sand-rock-big',
-							position = h2o2.randomize_position(position),
+							position = h2o.randomize_position(position),
 							force = 'neutral'
 						}
 					end
@@ -109,7 +109,7 @@ local function generate_terrain(self, noise, x, y)
 					if rock_noise > 0.9 then
 						surface.create_entity{
 							name = 'sand-rock-big-underwater',
-							position = h2o2.randomize_position(position),
+							position = h2o.randomize_position(position),
 							force = 'neutral'
 						}
 					end

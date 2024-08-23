@@ -1,5 +1,5 @@
 data:extend{
-    h2o2.merge(data.raw.tile['deepwater'], {
+    h2o.merge(data.raw.tile['deepwater'], {
         name = 'lava',
         autoplace = 'nil',
         effect = 'nil',
@@ -68,8 +68,8 @@ data:extend{{
   localised_name = {'', {'tile-name.lava'}, ' (lamp)'},
   energy_usage_per_tick = '1W',
   energy_source = {type = 'void'},
-  picture_on = h2o2.empty_image(),
-  picture_off = h2o2.empty_image(),
+  picture_on = h2o.empty_image(),
+  picture_off = h2o.empty_image(),
   light = {
       type = 'basic',
       intensity = 0.5,
