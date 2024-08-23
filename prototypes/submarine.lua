@@ -267,8 +267,8 @@ do
     local tech = {
         type = 'technology',
         name = name,
-        icon = '__dihydrogen-monoxide__/graphics/planets/maraxsis.png',
-        icon_size = 512,
+        icon = '__dihydrogen-monoxide__/graphics/technology/maraxsis.png',
+        icon_size = 256,
         icon_mipmaps = nil,
         effects = {
             {
