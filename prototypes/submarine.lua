@@ -206,7 +206,7 @@ for i = 1, 4 do
     entity.minimap_representation = {
 		filename = '__pystellarexpeditiongraphics__/graphics/entity/submarine/map/submarine-map-tag.png',
 		flags = {'icon'},
-        tint = py.tints[i],
+        tint = h2o2.tints[i],
 		size = {64, 64}
 	}
     entity.working_sound = table.deepcopy(data.raw.car.car.working_sound)

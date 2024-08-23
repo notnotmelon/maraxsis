@@ -4,7 +4,7 @@ require 'features.fancy-water'
 require 'features.enemy'
 require 'features.resource'
 
-py.on_event(defines.events.on_chunk_generated, function(event)
+h2o2.on_event(defines.events.on_chunk_generated, function(event)
 	local surface = event.surface
 	local chunkpos = event.position
 
@@ -39,7 +39,7 @@ py.on_event(defines.events.on_chunk_generated, function(event)
 			noise:set_location(x, y)
 
 			local tile, decorative, hidden
-			if not planet.tags.unbounded and planet.radius and py.distance(x, y) > planet.radius then
+			if not planet.tags.unbounded and planet.radius and h2o2.distance(x, y) > planet.radius then
 				tile, decorative, hidden = Mapgen.generate_space_tile(noise, x, y)
 			else
 				tile, decorative, hidden = planet:generate_terrain(noise, x, y)

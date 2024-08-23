@@ -2,7 +2,7 @@ local composite_entity_creation = {
 
 }
 
-py.on_event('on_init', function()
+h2o2.on_event('on_init', function()
     global.composite_entities = global.composite_entities or {}
 end)
 
@@ -24,7 +24,7 @@ local function on_built(event)
     global.composite_entities[entity.unit_number] = sub_entities
 end
 
-py.on_event('on_built', on_built)
+h2o2.on_event('on_built', on_built)
 
 local function on_destroyed(event)
     local entity = event.entity
@@ -41,9 +41,9 @@ local function on_destroyed(event)
     global.composite_entities[entity.unit_number] = nil
 end
 
-py.on_event('on_destroyed', on_destroyed)
+h2o2.on_event('on_destroyed', on_destroyed)
 
-py.on_event(defines.events.on_entity_cloned, function(event)
+h2o2.on_event(defines.events.on_entity_cloned, function(event)
     local source = event.source
     if not composite_entity_creation[source.name] then return end
     on_destroyed{entity = source}

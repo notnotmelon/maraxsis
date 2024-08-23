@@ -7,7 +7,7 @@ local submarines = {
     ['submarine-mk04'] = true,
 }
 
-py.delayed_functions.exit_submarine = function(event)
+h2o2.delayed_functions.exit_submarine = function(event)
     local player = game.get_player(event.player_index)
     if not player or not player.valid then return end
     local selected = player.selected
@@ -49,7 +49,7 @@ end
 
 ---@param player LuaPlayer
 ---@param submarine LuaEntity
-py.delayed_functions.enter_submarine = function(player, submarine)
+h2o2.delayed_functions.enter_submarine = function(player, submarine)
     if not player.valid or not submarine.valid then return end
 
     if submarine.get_driver() == player or (player.is_player() and submarine.get_driver() == player.character) then return end
@@ -131,18 +131,18 @@ local function decend_or_ascend(submarine)
 
     if passenger then
         passenger.teleport(target_position, target_planet:get_surface(), true)
-        py.execute_later('enter_submarine', 2, passenger, submarine)
+        h2o2.execute_later('enter_submarine', 2, passenger, submarine)
     end
 
     if driver then
         driver.teleport(target_position, target_planet:get_surface(), true)
-        py.execute_later('enter_submarine', 1, driver, submarine)
+        h2o2.execute_later('enter_submarine', 1, driver, submarine)
     end
 
     return true
 end
 
-py.on_event('toggle-driving', function(event)
+h2o2.on_event('toggle-driving', function(event)
     local player = game.get_player(event.player_index)
     if not player then return end
     local selected = player.selected
@@ -154,7 +154,7 @@ py.on_event('toggle-driving', function(event)
     if submarine and submarines[submarine.name] and selected and selected.valid and selected == submarine then
         if not decend_or_ascend(submarine) then
             if planet and planet.parent and planet.parent.underwater_surface == planet then
-                py.execute_later('enter_submarine', 1, player, submarine)
+                h2o2.execute_later('enter_submarine', 1, player, submarine)
             end
         end
     -- case 2: player is not hovering the sub but trying to exit.
@@ -162,13 +162,13 @@ py.on_event('toggle-driving', function(event)
     elseif submarine and submarines[submarine.name] and not selected_submarine then
         if not decend_or_ascend(submarine) then
             if planet and planet.parent and planet.parent.underwater_surface == planet then
-                py.execute_later('enter_submarine', 1, player, submarine)
+                h2o2.execute_later('enter_submarine', 1, player, submarine)
             else
-                py.execute_later('exit_submarine', 1, event)
+                h2o2.execute_later('exit_submarine', 1, event)
             end
         end
     -- case 3: player is hovering the sub and trying to enter. the vanilla vechicle enter range is too low for water vehicles so we artificially increase it
     elseif can_enter_submarine(player, selected) then
-        py.execute_later('enter_submarine', 1, player, selected)
+        h2o2.execute_later('enter_submarine', 1, player, selected)
     end
 end)

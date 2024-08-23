@@ -12,12 +12,12 @@ local planet_names = {
 ---@type table<string, PlanetPrototype>
 local planet_prototypes = {}
 local unsorted_data = {}
-if py.stage == 'control' then
+if h2o2.stage == 'control' then
     for _, name in pairs(planet_names) do
         planet_prototypes[name] = PlanetPrototype.new(require('prototypes/planet-types/' .. name))
     end
     return planet_prototypes
-elseif py.stage == 'data' then
+elseif h2o2.stage == 'data' then
     for _, name in pairs(planet_names) do
         PlanetPrototype.data_stage_init(require('prototypes/planet-types/' .. name), unsorted_data)
     end

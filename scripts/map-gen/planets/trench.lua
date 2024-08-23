@@ -31,7 +31,7 @@ local function generate_terrain(self, noise, x, y)
 		if x % 3 == 0 and y % 3 == 0 then
 			local wall = surface.create_entity{
 				name = 'rock-huge-trench-wall',
-				position = py.randomize_position(position),
+				position = h2o2.randomize_position(position),
 				force = 'neutral'
 			}
 			wall.destructible = false
@@ -59,7 +59,7 @@ local function generate_terrain(self, noise, x, y)
 					if -0.3 < noise.rock_1 and noise.rock_1 < 0.3 and random() > 0.9 then
 						surface.create_entity{
 							name = 'rock-huge',
-							position = py.randomize_position(position),
+							position = h2o2.randomize_position(position),
 							force = 'neutral'
 						}
 					end
