@@ -24,17 +24,42 @@ data:extend{{
     order = 'a',
 }}
 
+local limestone_variants = {}
+for i = 1, 3 do
+    limestone_variants[i] = {
+        filename = '__dihydrogen-monoxide__/graphics/icons/limestone-' .. i .. '.png',
+        width = 64,
+        height = 64,
+        scale = 1 / 3,
+        flags = {'icon'}
+    }
+end
+
+data:extend {{
+    type = 'item',
+    name = 'limestone',
+    icon = '__dihydrogen-monoxide__/graphics/icons/limestone-1.png',
+    icon_size = 64,
+    icon_mipmaps = nil,
+    pictures = limestone_variants,
+    subgroup = 'h2o-maraxsis',
+    order = 'vga',
+    stack_size = 200,
+}}
+
 data:extend {{
     type = 'recipe',
     name = 'h2o-glass-panes',
     enabled = false,
-    energy_required = 10,
+    energy_required = 5,
     ingredients = {
-        {'sand', 1},
+        {type = 'item', name = 'sand', amount = 3},
+        {type = 'item', name = 'limestone', amount = 1},
     },
     results = {
         {type = 'item', name = 'h2o-glass-panes', amount = 1},
     },
+    category = 'advanced-crafting' -- todo: change to foundry
 }}
 
 local glass_variants = {}

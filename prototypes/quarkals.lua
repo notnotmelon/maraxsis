@@ -103,6 +103,26 @@ for _, type in ipairs(types) do
         subgroup = 'h2o-quarkals',
         order = 'a[' .. type .. ']',
         stack_size = 100,
+        --spoil_result = 'limestone',
+        --spoil_duration = 60 * 60 * 5,
+    }}
+
+    -- temp recipe to mimic spoilage
+    data:extend {{
+        type = 'recipe',
+        name = 'h2o-' .. type .. '-coral-spoil',
+        category = 'crafting',
+        energy_required = 1,
+        ingredients = {
+            {type = 'item', name = 'h2o-' .. type .. '-coral', amount = 1},
+        },
+        results = {
+            {type = 'item', name = 'limestone', amount = 1},
+        },
+        main_product = 'limestone',
+        enabled = true,
+        order = 'a',
+        localised_description = 'This is a temporary recipe to mimic spoilage. TODO: remove'
     }}
 end
 

@@ -69,7 +69,7 @@ data:extend{{
     enabled = false,
     energy_required = 10,
     ingredients = {
-        {type = 'item', name = 'h2o-glass-panes', amount = 1},
+        {type = 'item', name = 'h2o-glass-panes', amount = 3},
         {type = 'item', name = 'advanced-circuit', amount = 1},
     },
     results = {
