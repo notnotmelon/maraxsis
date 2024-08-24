@@ -32,8 +32,9 @@ data:extend {{
     ingredients = {
         {'sand', 1},
     },
-    result = 'h2o-glass-panes',
-    result_count = 2,
+    results = {
+        {type = 'item', name = 'h2o-glass-panes', amount = 1},
+    },
 }}
 
 local glass_variants = {}
@@ -77,7 +78,7 @@ data:extend{{
     pictures = sand_variants,
     icon_size = 64,
     icon_mipmaps = nil,
-    subgroup = 'raw-resource',
+    subgroup = 'h2o-maraxsis',
     order = 'vga',
-    stack_size = 200,
+    stack_size = 100,
 }}

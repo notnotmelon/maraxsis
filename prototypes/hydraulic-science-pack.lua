@@ -38,7 +38,8 @@ data:extend{{
         time = 60,
     },
     prerequisites = {
-        'h2o-maraxsis',
+        'h2o-color-confinement',
+        'h2o-wyrm-confinement',
     },
     order = 'a',
 }}
@@ -49,8 +50,10 @@ data:extend{{
     enabled = false,
     energy_required = 10,
     ingredients = {
-        {'iron-plate', 1},
+        {type = 'item', name = 'h2o-wyrm-confinement-cell', amount = 1},
+        {type = 'item', name = 'h2o-heart-of-the-sea', amount = 1},
     },
-    result = 'h2o-hydraulic-science-pack',
-    result_count = 2,
+    results = {
+        {type = 'item', name = 'h2o-hydraulic-science-pack', amount = 1},
+    },
 }}
