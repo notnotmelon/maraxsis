@@ -95,14 +95,15 @@ local waterifiy = {
         end
         if not underwater then error('entity not found ' .. entity) end
         underwater = table.deepcopy(underwater)
+        underwater.localised_name = underwater.localised_name or {'entity-name.' .. underwater.name}
         underwater.name = underwater.name .. '-underwater'
         
         underwater.localised_name = underwater.localised_name or {'entity-name.' .. underwater.name}
         collision_mask_util.remove_layer(collision_mask_util.get_mask(underwater), 'water-tile')
         collision_mask_util.add_layer(collision_mask_util.get_mask(underwater), 'ground-tile')
         ---@diagnostic disable-next-line: param-type-mismatch
-        underwater.map_color = h2o.color_combine(underwater.map_color or data.raw.tile['water'].map_color, data.raw.tile['deepwater'].map_color, 0.25)
-        
+        underwater.map_color = h2o.color_combine(underwater.map_color or data.raw.tile['water'].map_color, data.raw.tile['deepwater'].map_color, 0.3)
+
         return {underwater}
     end,
     ---@param decorative string

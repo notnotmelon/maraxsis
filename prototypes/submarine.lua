@@ -117,12 +117,11 @@ for i = 1, 2 do
         ['lines_per_file'] = 32,
         repeat_count = 2,
         draw_as_shadow = true,
-        shift = {6, 6},
         scale = 1,
         filename = '__dihydrogen-monoxide__/graphics/entity/submarine/shadow.png',
         height = 256,
         width = 256,
-        shift = {x = 0 / 32, y = 45.5 / 32},
+        shift = {x = 6, y = 45.5 / 32 + 6},
     }
 
     local lamp_x = 0

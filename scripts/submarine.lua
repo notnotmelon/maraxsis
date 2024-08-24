@@ -95,7 +95,7 @@ local function determine_submerge_direction(submarine)
             surface.create_entity {
                 name = 'flying-text',
                 position = position,
-                text = {'gui-car.cannot-surface-now'},
+                text = {'gui-car.rocks-in-the-way'},
             }
             return nil
         end
