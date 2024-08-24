@@ -26,6 +26,23 @@ local fuel_sources = {
     ['h2o-nuclear-submarine'] = 'nuclear',
 }
 
+local recipes = {
+    ['h2o-diesel-submarine'] = {
+        {type = 'item', name = 'steel-plate', amount = 200},
+        {type = 'item', name = 'electric-engine-unit', amount = 50},
+        {type = 'item', name = 'processing-unit', amount = 50},
+        {type = 'item', name = 'battery-equipment', amount = 2},
+    },
+    ['h2o-nuclear-submarine'] = {
+        {type = 'item', name = 'h2o-diesel-submarine', amount = 1},
+        {type = 'item', name = 'h2o-glass-panes', amount = 100},
+        {type = 'item', name = 'h2o-heart-of-the-sea', amount = 10},
+        {type = 'item', name = 'nuclear-reactor', amount = 1},
+        {type = 'item', name = 'processing-unit',       amount = 50},
+        {type = 'item', name = 'battery-mk2-equipment', amount = 2},
+    },
+}
+
 for i = 1, 2 do
     local name = i == 1 and 'h2o-diesel-submarine' or 'h2o-nuclear-submarine'
     local icon = '__dihydrogen-monoxide__/graphics/icons/' .. (i == 1 and 'diesel' or 'nuclear') .. '-submarine.png'
@@ -46,9 +63,7 @@ for i = 1, 2 do
     local recipe = {
         type = 'recipe',
         name = name,
-        ingredients = {
-            {'iron-plate', 100},
-        },
+        ingredients = recipes[name],
         result = name,
         enabled = false,
         energy_required = 10,

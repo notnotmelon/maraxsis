@@ -118,12 +118,12 @@ data:extend {{
     enabled = false,
     energy_required = 10,
     ingredients = {
-        {type = 'fluid', name = 'brackish-water', amount = 200},
+        {type = 'fluid', name = 'brackish-water', amount = 400},
     },
     results = {
-        {type = 'fluid', name = 'chlorine', amount = 50},
-        {type = 'fluid', name = 'hydrogen', amount = 100},
-        {type = 'fluid', name = 'oxygen',   amount = 50},
+        {type = 'fluid', name = 'chlorine', amount = 100},
+        {type = 'fluid', name = 'hydrogen', amount = 200},
+        {type = 'fluid', name = 'oxygen',   amount = 100},
     },
     category = 'oil-processing',
     icon = '__dihydrogen-monoxide__/graphics/icons/saline-electrolysis.png',
@@ -140,11 +140,11 @@ data:extend {{
     enabled = false,
     energy_required = 2,
     ingredients = {
-        {type = 'fluid', name = 'oxygen',   amount = 50},
-        {type = 'fluid', name = 'hydrogen', amount = 100},
+        {type = 'fluid', name = 'oxygen',   amount = 100},
+        {type = 'fluid', name = 'hydrogen', amount = 200},
     },
     results = {
-        {type = 'fluid', name = 'water', amount = 150},
+        {type = 'fluid', name = 'water', amount = 300},
     },
     category = 'chemistry',
     main_product = 'water',
@@ -193,7 +193,7 @@ data:extend {{
     type = 'recipe',
     name = 'h2o-brackish-water-filtration',
     enabled = false,
-    energy_required = 5,
+    energy_required = 2.5,
     ingredients = {
         {type = 'item',  name = 'h2o-salt-filter', amount = 1},
         {type = 'fluid', name = 'saline-water',    amount = 100},
@@ -211,7 +211,7 @@ data:extend {{
     type = 'recipe',
     name = 'h2o-salt-filter-recycling',
     enabled = false,
-    energy_required = 1.25,
+    energy_required = 1.25/2,
     ingredients = {
         {type = 'item',  name = 'h2o-saturated-salt-filter', amount = 1},
         {type = 'fluid', name = 'water',                     amount = 20},

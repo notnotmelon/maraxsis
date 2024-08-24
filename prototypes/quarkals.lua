@@ -107,7 +107,9 @@ for _, type in ipairs(types) do
 end
 
 for i = 1, 6 do
-    local ingredients = {}
+    local ingredients = {
+        {type = 'fluid', name = 'chlorine', amount = 100},
+    }
     for j = 1, 6 do
         if j ~= i then
             table.insert(ingredients, {type = 'item', name = 'h2o-' .. types[j] .. '-coral', amount = 1})
@@ -117,7 +119,7 @@ for i = 1, 6 do
     data:extend {{
         type = 'recipe',
         name = 'h2o-heart-of-the-sea-' .. i,
-        category = 'crafting',
+        category = 'chemistry',
         energy_required = 10,
         ingredients = ingredients,
         results = {

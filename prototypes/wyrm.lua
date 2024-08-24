@@ -70,6 +70,7 @@ data:extend{{
     energy_required = 10,
     ingredients = {
         {type = 'item', name = 'h2o-glass-panes', amount = 1},
+        {type = 'item', name = 'advanced-circuit', amount = 1},
     },
     results = {
         {type = 'item', name = 'h2o-wyrm-confinement-cell', amount = 1},
