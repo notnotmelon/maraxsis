@@ -66,40 +66,37 @@ end
 
 ---determines if the submarine should rise to the surface or sink to the bottom. returns nil if surface transfer is impossible
 ---@param submarine LuaEntity
----@param planet Planet
----@return Planet?, MapPosition?
-local function determine_submerge_direction(submarine, planet)
-    local underwater = planet.underwater_surface
+---@return LuaSurface?, MapPosition?
+local function determine_submerge_direction(submarine)
     local position = submarine.position
+    local surface = submarine.surface
+    local surface_name = surface.name
 
-    if underwater then
-        local tile_at_surface = planet:get_surface().get_tile(position.x, position.y)
+    if surface_name == h2o.MARAXIS_SURFACE_NAME then
+        local tile_at_surface = surface.get_tile(position.x, position.y)
         if not tile_at_surface.valid or tile_at_surface.name ~= 'trench-entrance' then return nil end
         local target_position = {x = position.x * trench_movement_factor, y = position.y * trench_movement_factor}
-        local target_surface = underwater:get_surface()
+        local target_surface = h2o.get_trench_surface()
         target_surface.request_to_generate_chunks(target_position, 1)
         target_surface.force_generate_chunk_requests()
         target_position = target_surface.find_non_colliding_position(submarine.name, target_position, 40, 0.5, false)
         if not target_position then return nil end
-        return underwater, target_position
-    elseif planet.parent then
-        underwater = planet
-        planet = underwater.parent
-        if planet.underwater_surface ~= underwater then return nil end
+        return target_surface, target_position
+    elseif surface_name == h2o.TRENCH_SURFACE_NAME then
         local target_position = {x = position.x / trench_movement_factor, y = position.y / trench_movement_factor}
-        local target_surface = planet:get_surface()
+        local target_surface = h2o.get_maraxis_surface()
         target_surface.request_to_generate_chunks(target_position, 1)
         target_surface.force_generate_chunk_requests()
         local tile_at_surface = target_surface.get_tile(target_position.x, target_position.y)
         if tile_at_surface.valid and tile_at_surface.name ~= 'trench-entrance' then
-            underwater:get_surface().create_entity{
+            surface.create_entity {
                 name = 'flying-text',
                 position = position,
                 text = {'gui-car.cannot-surface-now'},
             }
             return nil
         end
-        return planet, target_position
+        return target_surface, target_position
     end
 
     return nil
@@ -109,10 +106,8 @@ end
 ---@param submarine LuaEntity
 ---@return boolean true if the submarine was successfully transferred
 local function decend_or_ascend(submarine)
-    local planet = global.planets[submarine.surface.name]
-    if not planet then return false end
-    local target_planet, target_position = determine_submerge_direction(submarine, planet)
-    if not target_planet then return false end
+    local target_surface, target_position = determine_submerge_direction(submarine)
+    if not target_surface then return false end
     if not target_position then return false end
 
     local passenger, driver = submarine.get_passenger(), submarine.get_driver()
@@ -125,15 +120,15 @@ local function decend_or_ascend(submarine)
         driver = driver.player
     end
 
-    submarine.teleport(target_position, target_planet:get_surface(), true)
+    submarine.teleport(target_position, target_surface, true)
 
     if passenger then
-        passenger.teleport(target_position, target_planet:get_surface(), true)
+        passenger.teleport(target_position, target_surface, true)
         enter_submarine(passenger, submarine)
     end
 
     if driver then
-        driver.teleport(target_position, target_planet:get_surface(), true)
+        driver.teleport(target_position, target_surface, true)
         enter_submarine(driver, submarine)
     end
 
@@ -146,12 +141,12 @@ h2o.on_event('toggle-driving', function(event)
     local selected = player.selected
     local selected_submarine = selected and selected.valid and submarines[selected.name]
     local submarine = player.vehicle
-    local planet = global.planets[player.surface.name]
+    local surface = player.surface
 
     -- case 1: player is hovering the sub and trying to exit. if they are in a trench we need to block them from leaving the sub
     if submarine and submarines[submarine.name] and selected and selected.valid and selected == submarine then
         if not decend_or_ascend(submarine) then
-            if planet and planet.parent and planet.parent.underwater_surface == planet then
+            if surface.name == h2o.TRENCH_SURFACE_NAME then
                 enter_submarine(player, submarine)
             end
         end
@@ -159,7 +154,7 @@ h2o.on_event('toggle-driving', function(event)
     -- if they are in a trench we need to block them from leaving the sub otherwise search nearby tiles for a safe exit point
     elseif submarine and submarines[submarine.name] and not selected_submarine then
         if not decend_or_ascend(submarine) then
-            if planet and planet.parent and planet.parent.underwater_surface == planet then
+            if surface.name == h2o.TRENCH_SURFACE_NAME then
                 enter_submarine(player, submarine)
             else
                 exit_submarine(event)

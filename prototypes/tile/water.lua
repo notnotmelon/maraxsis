@@ -1,5 +1,19 @@
 local collision_mask_util = require '__core__/lualib/collision-mask-util'
 
+local template = {
+    type = 'simple-entity',
+    count_as_rock_for_filtered_deconstruction = false,
+    icon_size = 64,
+    protected_from_tile_building = false,
+    remove_decoratives = false,
+    selectable_in_game = false,
+    subgroup = data.raw.tile['water'].subgroup,
+    flags = {'not-on-map', 'hidden'},
+    collision_box = {{-16, -16}, {16, 16}},
+    secondary_draw_order = -1,
+    collision_mask = {}
+}
+
 for size = 0, 5 do
     size = 2 ^ size
     for i = 1, size do
@@ -8,7 +22,7 @@ for size = 0, 5 do
             for k = 1, 32 do
                 table.insert(frame_sequence, j + size * (k - 1 + (i - 1) * 32))
             end
-            local water = table.deepcopy(data.raw['simple-entity']['gas-giant-animation'])
+            local water = table.deepcopy(template)
             water.render_layer = 'light-effect'
             water.icon = '__dihydrogen-monoxide__/graphics/tile/water/water-combined.png'
             water.icon_size = 32
@@ -70,7 +84,18 @@ local waterifiy = {
     ---@param entity string
     ---@return table
     entity = function(entity)
-        local underwater = ENTITY(entity):copy(function(e) return e.name .. '-underwater' end)
+        local underwater
+        for entity_prototype in pairs(defines.prototypes.entity) do
+            for _, prototype in pairs(data.raw[entity_prototype]) do
+                if prototype.name == entity then
+                    underwater = prototype
+                    break
+                end
+            end
+        end
+        if not underwater then error('entity not found ' .. entity) end
+        underwater = table.deepcopy(underwater)
+        underwater.name = underwater.name .. '-underwater'
         
         underwater.localised_name = underwater.localised_name or {'entity-name.' .. underwater.name}
         collision_mask_util.remove_layer(collision_mask_util.get_mask(underwater), 'water-tile')

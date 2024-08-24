@@ -67,15 +67,14 @@ local function find_best_dot_product(vector, options)
 end
 
 ---after performing all calculations, this function spawns cliffs at the calculated positions
----@param planet Planet
+---@param surface LuaSurface
+---@param prototype ?
 ---@param grid table<integer, table<integer, number>>
 ---@param x1 integer
 ---@param y1 integer
 ---@param x2 integer
 ---@param y2 integer
-local function spawn_cliffs_at_positions(planet, grid, x1, y1, x2, y2)
-	local surface = planet:get_surface()
-
+local function spawn_cliffs_at_positions(surface, prototype, grid, x1, y1, x2, y2)
 	for x, row in pairs(grid) do
 		for y, angle in pairs(row) do
 			local is_outside_scope = x < x1 or x > x2 or y < y1 or y > y2
@@ -95,7 +94,7 @@ local function spawn_cliffs_at_positions(planet, grid, x1, y1, x2, y2)
 			local vector = {x = math.cos(angle), y = math.sin(angle)}
 			local orientation = find_best_dot_product(vector, {first .. '-to-' .. second, second .. '-to-' .. first})
 
-			local cliff_name, f = planet:which_cliff_to_use(x * 4, y * 4)
+			local cliff_name, f = prototype.which_cliff_to_use(surface, x * 4, y * 4)
 			local cliff = surface.create_entity{
 				name = cliff_name,
 				position = {x * 4, y * 4},
@@ -112,13 +111,13 @@ end
 
 local positions = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}, {-1, -1}, {1, -1}, {-1, 1}, {1, 1}}
 ---generates cliffs in a square area
----@param planet Planet
+---@param surface LuaSurface
 ---@param x1 integer
 ---@param y1 integer
 ---@param x2 integer
 ---@param y2 integer
-function Mapgen.generate_cliffs(planet, x1, y1, x2, y2)
-	if not planet.prototype.cliff_thresholds or table_size(planet.prototype.cliff_thresholds) == 0 then return end
+function h2o.generate_cliffs(surface, prototype, x1, y1, x2, y2)
+	if not prototype.cliff_thresholds or table_size(prototype.cliff_thresholds) == 0 then return end
 
 	x1 = math.floor(x1 / 4)
 	y1 = math.floor(y1 / 4)
@@ -129,7 +128,7 @@ function Mapgen.generate_cliffs(planet, x1, y1, x2, y2)
 	for x = x1 - 1, x2 + 1 do
 		grid[x] = {}
 		for y = y1 - 1, y2 + 1 do
-			grid[x][y] = planet:elevation(x * 4, y * 4)
+			grid[x][y] = prototype.elevation(surface, x * 4, y * 4)
 		end
 	end
 
@@ -145,7 +144,7 @@ function Mapgen.generate_cliffs(planet, x1, y1, x2, y2)
 
 			local threshold = 999999
 			local threshold_index
-			for i, _threshold in pairs(planet.prototype.cliff_thresholds) do
+			for i, _threshold in pairs(prototype.cliff_thresholds) do
 				if elevation < _threshold then
 					threshold = _threshold
 					threshold_index = i
@@ -165,8 +164,8 @@ function Mapgen.generate_cliffs(planet, x1, y1, x2, y2)
 						angle = true
 					else
 						local h = 0.01
-						local dx = (planet:elevation(xx + h, yy) - planet:elevation(xx - h, yy)) / (2 * h)
-						local dy = (planet:elevation(xx, yy + h) - planet:elevation(xx, yy - h)) / (2 * h)
+						local dx = (prototype.elevation(surface, xx + h, yy) - prototype.elevation(surface, xx - h, yy)) / (2 * h)
+						local dy = (prototype.elevation(surface, xx, yy + h) - prototype.elevation(surface, xx, yy - h)) / (2 * h)
 						angle = math.atan2(dy, dx)
 					end
 
@@ -182,6 +181,6 @@ function Mapgen.generate_cliffs(planet, x1, y1, x2, y2)
 
 	for _, grid in pairs(cliff_locations) do
 		remove_0_neighbour_cells_and_3_neighbour_cells(grid, x1, y1, x2, y2)
-		spawn_cliffs_at_positions(planet, grid, x1, y1, x2, y2)
+		spawn_cliffs_at_positions(surface, prototype, grid, x1, y1, x2, y2)
 	end
 end

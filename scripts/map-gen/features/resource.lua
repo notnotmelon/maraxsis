@@ -1,7 +1,7 @@
 local ore_info = require 'prototypes.ore-info'
 
 local min_resource_strength = 1000000000
-Mapgen.create_resource = function(planet, x, y, resources, strength)
+h2o.create_resource = function(planet, x, y, resources, strength)
 	local num_resources = table_size(resources)
 	if num_resources == 0 then return end
 

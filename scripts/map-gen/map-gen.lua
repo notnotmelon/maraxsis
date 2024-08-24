@@ -1,24 +1,33 @@
 Mapgen = {}
 require 'features.cliffs'
-require 'features.fancy-water'
-require 'features.enemy'
-require 'features.resource'
+--require 'features.resource'
+
+local prototypes = {
+	[h2o.MARAXIS_SURFACE_NAME] = require 'scripts.map-gen.surfaces.maraxsis',
+	[h2o.TRENCH_SURFACE_NAME] = require 'scripts.map-gen.surfaces.maraxsis-trench',
+}
+
+for _, prototype in pairs(prototypes) do
+	local as_array = {}
+	local i = 1
+	for noise_layer, setting in pairs(prototype.noise_layers) do
+		if not setting.cellular then
+			as_array[i] = noise_layer
+			i = i + 1
+		end
+	end
+	prototype.noise_layers_as_array = as_array
+end
 
 h2o.on_event(defines.events.on_chunk_generated, function(event)
 	local surface = event.surface
+	local surface_name = surface.name
+	local prototype = prototypes[surface_name]
+	if not prototype then return end
+
 	local chunkpos = event.position
-
-	local planet = global.planets[surface.name]
-	local i = 0
-	for _, _ in pairs(global.planets) do
-		i = i + 1
-	end
-	-- if not planet then error(#global.planets) end
-	if not planet then return end
-
 	local x, y = chunkpos.x * 32, chunkpos.y * 32
-
-	local noise = Mapgen.calculate_noise(planet, chunkpos)
+	local noise = h2o.calculate_noise(prototype, surface, chunkpos)
 
 	local basic = {}
     for i = 0, 31 do
@@ -38,12 +47,7 @@ h2o.on_event(defines.events.on_chunk_generated, function(event)
 			local y = y + permutation[j]
 			noise:set_location(x, y)
 
-			local tile, decorative, hidden
-			if not planet.tags.unbounded and planet.radius and h2o.distance(x, y) > planet.radius then
-				tile, decorative, hidden = Mapgen.generate_space_tile(noise, x, y)
-			else
-				tile, decorative, hidden = planet:generate_terrain(noise, x, y)
-			end
+			local tile, decorative, hidden = prototype.generate_terrain(surface, noise, x, y)
 			local position = {x, y}
 			tiles[#tiles + 1] = {name = tile, position = position}
 			if decorative then
@@ -70,31 +74,21 @@ h2o.on_event(defines.events.on_chunk_generated, function(event)
 		}
 	end
 
-	Mapgen.generate_fancy_water(planet, noise, chunkpos)
+	prototype.generate_fancy_water(surface, noise, chunkpos)
 
 	local mod4 = chunkpos.x % 4
 	if mod4 == chunkpos.y % 4 then -- batch the generation of 'expensive' chunkgen in sizes of 16 chunks
 		if mod4 == 0 then
-			Mapgen.generate_cliffs(planet, x - 60, y - 60, x + 64, y + 64)
+			h2o.generate_cliffs(surface, prototype, x - 60, y - 60, x + 64, y + 64)
 		end
 	end
 end)
 
-local random = math.random
-Mapgen.generate_space_tile = function(noise, x, y)
-	local shift = math.floor(noise.star_pattern + 1) * 8
-	if (x + shift) % 7 == 0 and (y + shift) % 7 == 0 then
-		return 'space', {name = random() > 0.7 and 'stars-2' or 'stars-3', amount = 1, position = {x, y}}
-	end
-	return 'space'
-end
-
 ---Calculates the perlin noisefield for a chunk. Runs on the GPU
----@param planet Planet
+---@param surface LuaSurface
 ---@param chunkpos ChunkPosition
 ---@return table<integer, table<integer, table<string, number>>>
-Mapgen.calculate_noise = function(planet, chunkpos)
-	local surface = planet:get_surface()
+h2o.calculate_noise = function(prototype, surface, chunkpos)
 	local x, y = chunkpos.x * 32, chunkpos.y * 32
 
 	local positions = {{x,y},{x,y+1},{x,y+2},{x,y+3},{x,y+4},{x,y+5},{x,y+6},{x,y+7},{x,y+8},{x,y+9},{x,y+10},{x,y+11},{x,y+12},{x,y+13},{x,y+14},{x,y+15},{x,y+16},{x,y+17},{x,y+18},{x,y+19},{x,y+20},{x,y+21},{x,y+22},{x,y+23},{x,y+24},{x,y+25},{x,y+26},{x,y+27},{x,y+28},{x,y+29},{x,y+30},{x,y+31},
@@ -130,7 +124,8 @@ Mapgen.calculate_noise = function(planet, chunkpos)
 	{x+30,y},{x+30,y+1},{x+30,y+2},{x+30,y+3},{x+30,y+4},{x+30,y+5},{x+30,y+6},{x+30,y+7},{x+30,y+8},{x+30,y+9},{x+30,y+10},{x+30,y+11},{x+30,y+12},{x+30,y+13},{x+30,y+14},{x+30,y+15},{x+30,y+16},{x+30,y+17},{x+30,y+18},{x+30,y+19},{x+30,y+20},{x+30,y+21},{x+30,y+22},{x+30,y+23},{x+30,y+24},{x+30,y+25},{x+30,y+26},{x+30,y+27},{x+30,y+28},{x+30,y+29},{x+30,y+30},{x+30,y+31},
 	{x+31,y},{x+31,y+1},{x+31,y+2},{x+31,y+3},{x+31,y+4},{x+31,y+5},{x+31,y+6},{x+31,y+7},{x+31,y+8},{x+31,y+9},{x+31,y+10},{x+31,y+11},{x+31,y+12},{x+31,y+13},{x+31,y+14},{x+31,y+15},{x+31,y+16},{x+31,y+17},{x+31,y+18},{x+31,y+19},{x+31,y+20},{x+31,y+21},{x+31,y+22},{x+31,y+23},{x+31,y+24},{x+31,y+25},{x+31,y+26},{x+31,y+27},{x+31,y+28},{x+31,y+29},{x+31,y+30},{x+31,y+31}}
 
-	local result = surface.calculate_tile_properties(planet.prototype.noise_layers_as_array, positions)
+	local result = surface.calculate_tile_properties(prototype.noise_layers_as_array, positions)
+	
 	local noise = {
 		i = 0,
 		set_location = function(self, xx, yy)
@@ -150,7 +145,7 @@ Mapgen.calculate_noise = function(planet, chunkpos)
 	return noise
 end
 
-Mapgen.lava_tile = function(surface, position)
+h2o.lava_tile = function(surface, position)
 	if surface.count_entities_filtered{name = 'lava-lamp', position = position, radius = 1.5, limit = 1} == 0 then
 		surface.create_entity{
 			name = 'lava-lamp',
