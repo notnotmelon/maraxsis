@@ -30,15 +30,16 @@ local recipes = {
     ['h2o-diesel-submarine'] = {
         {type = 'item', name = 'steel-plate', amount = 200},
         {type = 'item', name = 'electric-engine-unit', amount = 50},
-        {type = 'item', name = 'processing-unit', amount = 50},
+        {type = 'item', name = 'processing-unit', amount = 100},
         {type = 'item', name = 'battery-equipment', amount = 2},
+        {type = 'item', name = 'raw-fish', amount = 1},
     },
     ['h2o-nuclear-submarine'] = {
         {type = 'item', name = 'h2o-diesel-submarine', amount = 1},
         {type = 'item', name = 'h2o-glass-panes', amount = 100},
-        {type = 'item', name = 'h2o-heart-of-the-sea', amount = 10},
+        {type = 'item', name = 'h2o-heart-of-the-sea', amount = 50},
         {type = 'item', name = 'nuclear-reactor', amount = 1},
-        {type = 'item', name = 'processing-unit',       amount = 50},
+        {type = 'item', name = 'processing-unit',       amount = 200},
         {type = 'item', name = 'battery-mk2-equipment', amount = 2},
     },
 }

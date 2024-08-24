@@ -211,7 +211,7 @@ data:extend {{
     type = 'recipe',
     name = 'h2o-salt-filter-recycling',
     enabled = false,
-    energy_required = 1.25/2,
+    energy_required = 1.25,
     ingredients = {
         {type = 'item',  name = 'h2o-saturated-salt-filter', amount = 1},
         {type = 'fluid', name = 'water',                     amount = 20},
