@@ -38,7 +38,7 @@ data:extend {{
 }}
 
 local glass_variants = {}
-for i = 1, 10 do
+for i = 1, 9 do
     glass_variants[i] = {
         filename = '__dihydrogen-monoxide__/graphics/icons/glass-panes-' .. i .. '.png',
         width = 64,

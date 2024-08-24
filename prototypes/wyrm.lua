@@ -41,7 +41,7 @@ data:extend {{
 }}
 
 local wyrm_variants = {}
-for i = 1, 3 do
+for i = 1, 4 do
     wyrm_variants[i] = {
         filename = '__dihydrogen-monoxide__/graphics/icons/wyrm-specimen-' .. i .. '.png',
         width = 64,

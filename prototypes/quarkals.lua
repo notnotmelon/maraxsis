@@ -5,7 +5,7 @@ data:extend{{
     icon_size = 256,
     icon_mipmaps = nil,
     effects = {},
-    prerequisites = {'h2o-maraxsis'},
+    prerequisites = {'h2o-water-treatment'},
     unit = {
         count = 500,
         ingredients = {
