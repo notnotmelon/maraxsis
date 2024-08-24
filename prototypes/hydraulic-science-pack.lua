@@ -50,7 +50,7 @@ data:extend{{
     enabled = false,
     energy_required = 10,
     ingredients = {
-        {type = 'item', name = 'h2o-wyrm-confinement-cell', amount = 1},
+        {type = 'item', name = 'h2o-wyrm-specimen',    amount = 1},
         {type = 'item', name = 'h2o-heart-of-the-sea', amount = 1},
     },
     results = {
