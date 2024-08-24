@@ -21,10 +21,14 @@ data:extend {{
     order = 'ee',
 }}
 
-do
-    local i = 1
-    local name = 'h2o-submarine'
-    local icon = '__dihydrogen-monoxide__/graphics/icons/submarine.png'
+local fuel_sources = {
+    ['h2o-diesel-submarine'] = 'nuclear',
+    ['h2o-nuclear-submarine'] = 'nuclear',
+}
+
+for i = 1, 2 do
+    local name = i == 1 and 'h2o-diesel-submarine' or 'h2o-nuclear-submarine'
+    local icon = '__dihydrogen-monoxide__/graphics/icons/' .. (i == 1 and 'diesel' or 'nuclear') .. '-submarine.png'
 
     local item = {
         type = 'item',
@@ -173,11 +177,12 @@ do
     entity.weight = entity.weight / (i + 1) * 4 * movement_energy_consumption[i] / 800
     entity.burner = {
         type = 'burner',
-        fuel_category = 'nuclear',
+        fuel_category = fuel_sources[name],
         effectivity = 1,
         fuel_inventory_size = 2,
         burnt_inventory_size = 2,
     }
+    entity.energy_source = nil
     entity.guns = table.deepcopy(data.raw['spider-vehicle']['spidertron'].guns)
     entity.close_sound = nil
     entity.resistances = {
@@ -245,32 +250,7 @@ do
     entity.graphics_set.eye_light = nil
     entity.graphics_set.light_positions = nil
 
-    local tech = {
-        type = 'technology',
-        name = 'h2o-maraxsis',
-        icon = '__dihydrogen-monoxide__/graphics/technology/maraxsis.png',
-        icon_size = 256,
-        icon_mipmaps = nil,
-        effects = {
-            {
-                type = 'unlock-recipe',
-                recipe = name,
-            },
-        },
-        prerequisites = {},
-        unit = {
-            count = 100,
-            ingredients = {
-                {'automation-science-pack', 1},
-                {'logistic-science-pack',   1},
-                {'chemical-science-pack',   1},
-            },
-            time = 30,
-        },
-        order = 'a',
-    }
-
-    data:extend {item, recipe, entity, tech}
+    data:extend {item, recipe, entity}
 end
 
 data:extend {{

@@ -1,10 +1,8 @@
 local trench_movement_factor = 2 -- each tile moved in the trench layer = 2 tiles in the surface layer
 
 local submarines = {
-    ['submarine-mk01'] = true,
-    ['submarine-mk02'] = true,
-    ['submarine-mk03'] = true,
-    ['submarine-mk04'] = true,
+    ['h2o-diesel-submarine'] = true,
+    ['h2o-nuclear-submarine'] = true,
 }
 
 local function exit_submarine(event)
