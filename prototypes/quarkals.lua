@@ -56,3 +56,50 @@ data:extend {{
     order = 'vga',
     stack_size = 10,
 }}
+
+data:extend {{
+    type = 'item-subgroup',
+    name = 'h2o-quarkals',
+    group = 'intermediate-products',
+    order = 'z',
+}}
+
+local types = {'up', 'down', 'strange', 'charm', 'top', 'bottom'}
+
+for _, type in ipairs(types) do
+    local quarkal_variants = {}
+    for i = 1, 3 do
+        quarkal_variants[i] = {
+            layers = {
+                {
+                    filename = '__dihydrogen-monoxide__/graphics/icons/quarkal/' .. type .. '-coral-' .. i .. '.png',
+                    width = 64,
+                    height = 64,
+                    scale = 0.33,
+                    mipmap_count = nil,
+                    flags = {'icon'}
+                },
+                {
+                    filename = '__dihydrogen-monoxide__/graphics/icons/quarkal/' .. type .. '-coral-' .. i .. '.png',
+                    width = 64,
+                    height = 64,
+                    scale = 0.33,
+                    mipmap_count = nil,
+                    flags = {'icon'},
+                    draw_as_glow = true
+                }
+            }
+        }
+    end
+    data:extend {{
+        type = 'item',
+        name = 'h2o-' .. type .. '-coral',
+        icon = '__dihydrogen-monoxide__/graphics/icons/quarkal/' .. type .. '-coral-1.png',
+        icon_size = 64,
+        icon_mipmaps = nil,
+        pictures = quarkal_variants,
+        subgroup = 'h2o-quarkals',
+        order = 'a[' .. type .. ']',
+        stack_size = 100,
+    }}
+end
