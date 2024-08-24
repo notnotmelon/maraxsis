@@ -5,9 +5,12 @@ local random = math.random
 ---@param noise ?
 ---@param chunkpos ChunkPosition
 local function generate_fancy_water(surface, noise, chunkpos)
+	local x = chunkpos.x * 32
+	local y = chunkpos.y * 32
+
 	surface.create_entity {
 		name = 'h2o-water-shader-32-1-1',
-		position = {x1 + 16, y1 + 16},
+		position = {x + 16, y + 16},
 		create_build_effect_smoke = false
 	}
 	return
@@ -64,12 +67,12 @@ local function generate_terrain(surface, noise, x, y)
 			end
 		end
 	else
-		local primary = noise.primary_resource_octave_1 + noise.primary_resource_octave_2 / 2 + noise.primary_resource_octave_3 / 2
+		--[[local primary = noise.primary_resource_octave_1 + noise.primary_resource_octave_2 / 2 + noise.primary_resource_octave_3 / 2
 		if primary > 0.95 then
-			--h2o.create_resource(self, x, y, self.prototype.resources.primary, (primary - 0.9) / 0.1)
+			h2o.create_resource(self, x, y, self.prototype.resources.primary, (primary - 0.9) / 0.1)
 		elseif primary < 0.8 and noise.bitumen > 0.8 and random() > 0.993 and surface.count_entities_filtered {name = 'bitumen-seep', area = {{x - 12, y - 12}, {x + 12, y + 12}}, limit = 1} == 0 then
-			--h2o.create_resource(self, x, y, self.prototype.resources.bitumen, 1)
-		end
+			h2o.create_resource(self, x, y, self.prototype.resources.bitumen, 1)
+		end--]]
 	end
 
 	if not decorative then
@@ -98,7 +101,6 @@ local noise_layers = {
 	lava_river_1 = {zoom = 40},
 	lava_river_2 = {zoom = 40},
 	lava_river_3 = {zoom = 40},
-	geothermal = {zoom = 256},
 	rock_1 = {zoom = 30},
 	rock_2 = {zoom = 40},
 	decorative_1 = {zoom = 40},
@@ -106,7 +108,6 @@ local noise_layers = {
 	primary_resource_octave_1 = {zoom = 200},
 	primary_resource_octave_2 = {zoom = 100},
 	primary_resource_octave_3 = {zoom = 30},
-	bitumen = {zoom = 256},
 }
 
 local function get_surface()
@@ -136,8 +137,9 @@ local function get_surface()
 		end
 		surface.map_gen_settings = mgs
 
-		surface.show_clouds = false
-		surface.brightness_visual_weights = {r = 1, g = 1, b = 1}
+		surface.daytime = 0.5
+		surface.freeze_daytime = true
+		surface.min_brightness = 0
 	end
 
 	return surface

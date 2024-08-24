@@ -71,12 +71,16 @@ local function determine_submerge_direction(submarine)
     local position = submarine.position
     local surface = submarine.surface
     local surface_name = surface.name
+    local prototype = h2o.prototypes[surface_name]
+    if not prototype then error('no prototype for surface ' .. surface_name) end
+
+    local opposite_surface_name = surface_name == h2o.MARAXIS_SURFACE_NAME and h2o.TRENCH_SURFACE_NAME or h2o.MARAXIS_SURFACE_NAME
+    local target_surface = h2o.prototypes[opposite_surface_name].get_surface()
 
     if surface_name == h2o.MARAXIS_SURFACE_NAME then
         local tile_at_surface = surface.get_tile(position.x, position.y)
         if not tile_at_surface.valid or tile_at_surface.name ~= 'trench-entrance' then return nil end
         local target_position = {x = position.x * trench_movement_factor, y = position.y * trench_movement_factor}
-        local target_surface = h2o.get_trench_surface()
         target_surface.request_to_generate_chunks(target_position, 1)
         target_surface.force_generate_chunk_requests()
         target_position = target_surface.find_non_colliding_position(submarine.name, target_position, 40, 0.5, false)
@@ -84,7 +88,6 @@ local function determine_submerge_direction(submarine)
         return target_surface, target_position
     elseif surface_name == h2o.TRENCH_SURFACE_NAME then
         local target_position = {x = position.x / trench_movement_factor, y = position.y / trench_movement_factor}
-        local target_surface = h2o.get_maraxis_surface()
         target_surface.request_to_generate_chunks(target_position, 1)
         target_surface.force_generate_chunk_requests()
         local tile_at_surface = target_surface.get_tile(target_position.x, target_position.y)

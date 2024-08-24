@@ -317,7 +317,7 @@ local function get_surface()
 
 	if not surface then
 		surface = game.create_surface(h2o.MARAXIS_SURFACE_NAME, {
-			seed = game.surfaces['nauvis'].map_gen_settings.seed + 2,
+			seed = game.surfaces['nauvis'].map_gen_settings.seed + 1,
 			autoplace_settings = { ---@diagnostic disable-next-line: missing-fields
 				entity = {treat_missing_as_default = false}, ---@diagnostic disable-next-line: missing-fields
 				tile = {treat_missing_as_default = false}, ---@diagnostic disable-next-line: missing-fields
@@ -339,9 +339,8 @@ local function get_surface()
 		end
 		surface.map_gen_settings = mgs
 
-		surface.daytime = 0.5
-		surface.freeze_daytime = true
-		surface.min_brightness = 0
+		surface.show_clouds = false
+		surface.brightness_visual_weights = {r = 1, g = 1, b = 1}
 	end
 
 	return surface

@@ -2,27 +2,10 @@ Mapgen = {}
 require 'features.cliffs'
 --require 'features.resource'
 
-local prototypes = {
-	[h2o.MARAXIS_SURFACE_NAME] = require 'scripts.map-gen.surfaces.maraxsis',
-	[h2o.TRENCH_SURFACE_NAME] = require 'scripts.map-gen.surfaces.maraxsis-trench',
-}
-
-for _, prototype in pairs(prototypes) do
-	local as_array = {}
-	local i = 1
-	for noise_layer, setting in pairs(prototype.noise_layers) do
-		if not setting.cellular then
-			as_array[i] = noise_layer
-			i = i + 1
-		end
-	end
-	prototype.noise_layers_as_array = as_array
-end
-
 h2o.on_event(defines.events.on_chunk_generated, function(event)
 	local surface = event.surface
 	local surface_name = surface.name
-	local prototype = prototypes[surface_name]
+	local prototype = h2o.prototypes[surface_name]
 	if not prototype then return end
 
 	local chunkpos = event.position
@@ -138,6 +121,7 @@ h2o.calculate_noise = function(prototype, surface, chunkpos)
 	}
 	setmetatable(noise, {
 		__index = function(self, key)
+			if not result[key] then error(key) end
 			return result[key][self.i]
 		end
 	})
