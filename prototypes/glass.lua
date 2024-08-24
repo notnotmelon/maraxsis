@@ -42,7 +42,8 @@ for i = 1, 10 do
         filename = '__dihydrogen-monoxide__/graphics/icons/glass-panes-' .. i .. '.png',
         width = 64,
         height = 64,
-        scale = 2/3,
+        scale = 1 / 3,
+        flags = {'icon'}
     }
 end
 
@@ -64,7 +65,8 @@ for i = 1, 3 do
         filename = '__dihydrogen-monoxide__/graphics/icons/sand-' .. i .. '.png',
         width = 64,
         height = 64,
-        scale = 2/3,
+        scale = 1 / 3,
+        flags = {'icon'}
     }
 end
 

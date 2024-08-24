@@ -1,7 +1,7 @@
 import os
 from PIL import Image
 
-# creates factoro mipmap images by merging 3 images at different sizes into one image
+# creates factoro mipmap images by merging 6 images at different sizes into one image
 def generate_mipmaps(input_path, output_dir, colors):
     for i in range(3):
         big_color = colors[(0+i)%3][i]
@@ -13,21 +13,32 @@ def generate_mipmaps(input_path, output_dir, colors):
         medium_color = Image.open(input_path + medium_color)
         small_color = Image.open(input_path + small_color)
 
-        image = big_color
+        width = 256//2
+        height = 256//2
 
         # create the output image
-        output_height = image.height
-        output_width = image.width + image.width // 2 + image.width // 4
+        output_height = height
+        output_width = width + width // 2 + width // 4 + width // 8 + width // 16 + width // 32
         output_image = Image.new("RGBA", (output_width, output_height), (0, 0, 0, 0))
         
         # paste the original image into the output image
+        big_color = big_color.resize((width, height))
         output_image.paste(big_color, (0, 0))
         # paste the 1/2 size image into the output image
-        medium_color = medium_color.resize((image.width // 2, image.height // 2))
-        output_image.paste(medium_color, (image.width, 0))
+        medium_color = medium_color.resize((width // 2, height // 2))
+        output_image.paste(medium_color, (width, 0))
         # paste the 1/4 size image into the output image
-        small_color = small_color.resize((image.width // 4, image.height // 4))
-        output_image.paste(small_color, (image.width + image.width // 2, 0))
+        small_color = small_color.resize((width // 4, height // 4))
+        output_image.paste(small_color, (width + width // 2, 0))
+        # paste the 1/8 size image into the output image
+        big_color = big_color.resize((width // 8, height // 8))
+        output_image.paste(big_color, (width + width // 2 + width // 4, 0))
+        # paste the 1/16 size image into the output image
+        medium_color = medium_color.resize((width // 16, height // 16))
+        output_image.paste(medium_color, (width + width // 2 + width // 4 + width // 8, 0))
+        # paste the 1/32 size image into the output image
+        small_color = small_color.resize((width // 32, height // 32))
+        output_image.paste(small_color, (width + width // 2 + width // 4 + width // 8 + width // 16, 0))
 
         # save the output image
         output_image.save(output_dir + "heart-of-the-sea-" + str(i + 1) + ".png")
@@ -36,23 +47,23 @@ def generate_mipmaps(input_path, output_dir, colors):
 
 # Example usage
 blue = [
-    "heart-of-the-sea-1-blue.png",
-    "heart-of-the-sea-2-blue.png",
-    "heart-of-the-sea-3-blue.png",
+    "blue1.png",
+    "blue2.png",
+    "blue3.png",
 ]
 green = [
-    "heart-of-the-sea-1-green.png",
-    "heart-of-the-sea-2-green.png",
-    "heart-of-the-sea-3-green.png",
+    "green1.png",
+    "green2.png",
+    "green3.png",
 ]
 red = [
-    "heart-of-the-sea-1-red.png",
-    "heart-of-the-sea-2-red.png",
-    "heart-of-the-sea-3-red.png",
+    "red1.png",
+    "red2.png",
+    "red3.png",
 ]
 
 colors = [blue, green, red]
 
-input_path = "C:/Users/zacha/Documents/factorio/mods/dihydrogen-monoxide/graphics/icons/"
+input_path = "C:/Users/zacha/Documents/factorio/mods/dihydrogen-monoxide/graphics/icons/ez-resize/"
 output_dir = "C:/Users/zacha/Documents/factorio/mods/dihydrogen-monoxide/graphics/icons/"
 generate_mipmaps(input_path, output_dir, colors)
