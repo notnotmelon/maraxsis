@@ -1,5 +1,32 @@
 local fish = require 'graphics.entity.fish.fish'
 
+local map_colors = table.deepcopy{
+    defines.color.goldenrod,
+    defines.color.azure,
+    defines.color.yellowgreen,
+    defines.color.pink,
+    defines.color.orangered,
+    defines.color.darkblue,
+    defines.color.cyan,
+    defines.color.blanchedalmond,
+    defines.color.yellow,
+    defines.color.aqua,
+    defines.color.beige,
+    defines.color.orange,
+    defines.color.rosybrown,
+    defines.color.whitesmoke,
+    defines.color.darkcyan
+}
+
+local color_budget = 200
+for _, color in pairs(map_colors) do
+    local sum = color.r + color.g + color.b
+    color.r = color.r / sum * color_budget
+    color.g = color.g / sum * color_budget
+    color.b = color.b / sum * color_budget
+    color.a = 255
+end
+
 for i, v in pairs(fish) do
     v.filename = '__dihydrogen-monoxide__/graphics/entity/fish/' .. i .. '.png'
     v.direction_count = 32
@@ -24,8 +51,9 @@ for i, v in pairs(fish) do
         icon = '__dihydrogen-monoxide__/graphics/entity/fish/icons/' .. i .. '.png',
         icon_size = 64,
         icon_mipmaps = nil,
-        flags = {'placeable-neutral', 'placeable-off-grid', 'not-repairable', 'not-on-map', 'breaths-air'},
+        flags = {'placeable-neutral', 'placeable-off-grid', 'not-repairable', 'breaths-air'},
         max_health = data.raw.fish['fish'].max_health,
+        map_color = h2o.color_combine(map_colors[tonumber(i)], data.raw.tile['deepwater'].map_color, 0.25),
         order = 'b-b-a',
         subgroup = 'creatures',
         healing_per_tick = data.raw.fish['fish'].healing_per_tick,
@@ -50,7 +78,7 @@ for i, v in pairs(fish) do
                         target_effects = {
                             {
                                 type = 'damage',
-                                damage = {amount = 1, type = 'physical'}
+                                damage = {amount = 0, type = 'physical'}
                             }
                         }
                     }
