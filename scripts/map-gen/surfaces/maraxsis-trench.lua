@@ -139,6 +139,8 @@ local function get_surface()
 
 		surface.daytime = 0.5
 		surface.freeze_daytime = true
+		surface.show_clouds = false
+		surface.brightness_visual_weights = {r = 1, g = 1, b = 1}
 		surface.min_brightness = 0
 	end
 

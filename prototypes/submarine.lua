@@ -212,7 +212,7 @@ for i = 1, 2 do
     entity.trash_inventory_size = 10
     entity.turret_animation = nil
     entity.friction = 0.005
-    entity.rotation_speed = 0.015 * 0.2 * (i / 2 + 0.5)
+    entity.rotation_speed = 0.025 * 0.2 * (i / 2 + 0.5)
     entity.spider_engine.legs = {leg = 'h2o-submarine-leg', mount_position = {0, 0.5}, ground_position = {0, -1}, blocking_legs = {}}
     entity.graphics_set.light = {
         {

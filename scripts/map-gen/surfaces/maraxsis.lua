@@ -339,7 +339,7 @@ local function get_surface()
 		end
 		surface.map_gen_settings = mgs
 
-		surface.show_clouds = false
+		surface.show_clouds = true
 		surface.brightness_visual_weights = {r = 1, g = 1, b = 1}
 		surface.min_brightness = 0
 		surface.ticks_per_day = 15000

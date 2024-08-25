@@ -2,9 +2,11 @@ local fish = require 'graphics.entity.fish.fish'
 
 for i, v in pairs(fish) do
     v.filename = '__dihydrogen-monoxide__/graphics/entity/fish/' .. i .. '.png'
-    v.direction_count = 20
+    v.direction_count = 32
+    v.frame_count = 10
+    v.animation_speed = 0.6
     v.scale = 1.25
-    v.counterclockwise = true
+    v.apply_projection = true
     v = {
         layers = {
             v,
@@ -31,7 +33,7 @@ for i, v in pairs(fish) do
         selection_box = data.raw.fish['fish'].selection_box,
         collision_mask = {},
         vision_distance = 0,
-        movement_speed = data.raw.unit['small-biter'].movement_speed,
+        movement_speed = data.raw.unit['small-biter'].movement_speed * 2,
         distance_per_frame = data.raw.unit['small-biter'].distance_per_frame,
         run_animation = v,
         attack_parameters = {
