@@ -9,7 +9,7 @@ return {
   ['7'] = require('7'),
   ['8'] = require('8'),
   ['9'] = require('9'),
-  ['10'] = require('10'),
+  --['10'] = require('10'),
   ['11'] = require('11'),
   ['12'] = require('12'),
   ['13'] = require('13'),
