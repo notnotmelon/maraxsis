@@ -1,10 +1,10 @@
 QCD (quantum-coraldynamics) is used to create [item=h2o-heart-of-the-sea] via color confinement.
 
 There are 6 quarkals:
-    - [item=h2o-top-coral]
-    - [item=h2o-bottom-coral]
     - [item=h2o-up-coral]
     - [item=h2o-down-coral]
+    - [item=h2o-top-coral]
+    - [item=h2o-bottom-coral]
     - [item=h2o-strange-coral]
     - [item=h2o-charm-coral]
 
@@ -16,13 +16,15 @@ To preform an experiment, add your quarkals to the [entity=h2o-quantum-computer]
 During a correct experiment a [item=h2o-heart-of-the-sea] is created and the secret combination will re-randomize.
 
 The correct combination can be represented as a binary number where each quarkal is a bit.
-For example if the secret was 101100 then the correct combination would be [item=h2o-top-coral] [item=h2o-up-coral] [item=h2o-down-coral].
+For example if the secret was 101100 then the correct combination would be
+[item=h2o-up-coral] [item=h2o-top-coral] [item=h2o-bottom-coral].
+
 A failed experiment will generate some data about this hidden bit representation.
 
-[item=h2o-top-coral]:
+[item=h2o-up-coral]:
     You have matched more bits than the previous experiment.
 
-[item=h2o-bottom-coral]:
+[item=h2o-down-coral]:
     You have matched less bits than the previous experiment.
 
 [item=limestone]:
@@ -30,4 +32,4 @@ A failed experiment will generate some data about this hidden bit representation
     Limestone is always returned during the first experiment.
 
 Note that a combination of 000000 is impossible.
-Multiple [entity=h2o-quantum-computer] will have seperate and unrelated correct combinations.
+Multiple [entity=h2o-quantum-computer] will have separate and unrelated correct combinations.

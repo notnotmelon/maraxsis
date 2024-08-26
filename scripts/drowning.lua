@@ -33,7 +33,7 @@ h2o.on_nth_tick(UPDATE_RATE, function()
         global.breath[player.index] = breath
 
         if breath <= WARNING_MESSAGE then
-            player.print({'maraxsis.drowning_warning'}, {
+            player.print({'maraxsis.drowning'}, {
                 skip = defines.print_skip.if_visible
             })
         end
