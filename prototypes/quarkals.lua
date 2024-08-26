@@ -132,7 +132,7 @@ end
 
 for i = 1, 6 do
     local ingredients = {
-        {type = 'fluid', name = 'chlorine', amount = 100},
+        {type = 'fluid', name = 'brackish-water', amount = 100},
     }
     for j = 1, 6 do
         if j ~= i then
