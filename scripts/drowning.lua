@@ -1,4 +1,4 @@
-local FULL_BREATH_NUM_TICKS = 2 * 60 * 60 -- two minutes before you starting drowning
+local FULL_BREATH_NUM_TICKS = 2 * 60 * 60 -- two minutes before you start drowning
 local WARNING_MESSAGE = FULL_BREATH_NUM_TICKS / 4
 local UPDATE_RATE = 71
 
@@ -24,6 +24,7 @@ h2o.on_nth_tick(UPDATE_RATE, function()
 
         local vehicle = player.vehicle
         if vehicle and SUBMARINES[vehicle.name] then
+            global.breath[player.index] = nil
             goto continue
         end
 
