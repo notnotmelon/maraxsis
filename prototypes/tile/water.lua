@@ -107,16 +107,6 @@ local waterifiy = {
 
         return {underwater}
     end,
-    ---@param decorative string
-    ---@return table
-    decorative = function(decorative)
-        decorative = table.deepcopy(data.raw['optimized-decorative'][decorative])
-        decorative.localised_name = decorative.localised_name or {'decorative-name.' .. decorative.name}
-        decorative.name = decorative.name .. '-abovewater'
-        decorative.render_layer = 'selection-box'
-
-        return {decorative}
-    end,
 }
 
 data:extend(waterifiy.tile('sand-1', true))
@@ -125,8 +115,6 @@ data:extend(waterifiy.tile('dirt-5', true))
 data:extend(waterifiy.tile('grass-2', false))
 data:extend(waterifiy.entity('cliff'))
 data:extend(waterifiy.entity('sand-rock-big'))
-data:extend(waterifiy.decorative('muddy-stump'))
-data:extend(waterifiy.decorative('green-asterisk-mini'))
 
 ---creates a new cliff entity with the upper area masked with the provided tile
 ---@param tile string

@@ -48,67 +48,61 @@ local function generate_terrain(surface, noise, x, y)
 
 	local moisture = noise.moisture + noise.moisture_octave_1 / 4
 	local moisture_land = moisture + noise.moisture_octave_2 / 32
-	if moisture_land > 0.94 then
+	
+	local x4, y4 = math.floor(x / 4) * 4, math.floor(y / 4) * 4
+	local trench_moisture = noise:get_at('moisture', x4, y4) + noise:get_at('moisture_octave_1', x4, y4) / 4
+
+	if trench_moisture > -0.07 and trench_moisture < 0.07 then
+		tile = 'trench-entrance'
+		return tile
+	end
+
+	if moisture_land > 0.87 then
 		tile = 'sand-1-underwater-submarine-exclusion-zone'
-		if random() > 0.9 then
-			decorative = {name = 'muddy-stump-abovewater', amount = 2, position = position}
-		end
+	elseif moisture_land > -0.25 and moisture_land < 0.25 then
+		tile = 'dirt-5-underwater'
 	else
-		local x4, y4 = math.floor(x / 4) * 4, math.floor(y / 4) * 4
-		local trench_moisture = noise:get_at('moisture', x4, y4) + noise:get_at('moisture_octave_1', x4, y4) / 4
+		tile = 'sand-1-underwater'
+	end
 
-		if trench_moisture > -0.07 and trench_moisture < 0.07 then
-			tile = 'trench-entrance'
-			return tile
-		end
-
-		if moisture_land > 0.87 then
-			tile = 'sand-1-underwater-submarine-exclusion-zone'
-		elseif moisture_land > -0.25 and moisture_land < 0.25 then
-			tile = 'dirt-5-underwater'
-		else
-			tile = 'sand-1-underwater'
-		end
-
-		local rock_noise = noise.rocks + noise.rocks_2 / 4
-		if rock_noise > 0.85 then
-			if random() > 0.6 then
-				if surface.count_entities_filtered {name = 'sand-rock-big-underwater', position = position, radius = 2, limit = 1} == 0 then
-					if rock_noise > 0.9 then
-						surface.create_entity {
-							name = 'sand-rock-big-underwater',
-							position = h2o.randomize_position(position),
-							force = 'neutral'
-						}
-					end
+	local rock_noise = noise.rocks + noise.rocks_2 / 4
+	if rock_noise > 0.85 then
+		if random() > 0.6 then
+			if surface.count_entities_filtered {name = 'sand-rock-big-underwater', position = position, radius = 2, limit = 1} == 0 then
+				if rock_noise > 0.9 then
+					surface.create_entity {
+						name = 'sand-rock-big-underwater',
+						position = h2o.randomize_position(position),
+						force = 'neutral'
+					}
 				end
-			elseif random() > 0.5 then
-				decorative = {name = random() > 0.5 and 'sand-rock-small' or 'sand-rock-medium', amount = 1, position = position}
 			end
+		elseif random() > 0.5 then
+			decorative = {name = random() > 0.5 and 'sand-rock-small' or 'sand-rock-medium', amount = 1, position = position}
 		end
+	end
 
-		if not decorative and random() > 0.7 then
-			local brown_asterisk = noise.brown_asterisk + noise.brown_asterisk / 4
-			if -0.2 < brown_asterisk and brown_asterisk < 0.2 and noise.brown_asterisk_2 > 0.5 then
-				decorative = {name = 'brown-asterisk', amount = random(2, 6), position = position}
-			end
+	if not decorative and random() > 0.7 then
+		local brown_asterisk = noise.brown_asterisk + noise.brown_asterisk / 4
+		if -0.2 < brown_asterisk and brown_asterisk < 0.2 and noise.brown_asterisk_2 > 0.5 then
+			decorative = {name = 'brown-asterisk', amount = random(2, 6), position = position}
 		end
+	end
 
-		if not decorative then
-			if random() > 0.94 then
-				decorative = {name = 'light-mud-decal', amount = 1, position = position}
-			elseif random() > 0.995 then
-				decorative = {name = 'sand-decal', amount = 1, position = position}
-			end
+	if not decorative then
+		if random() > 0.94 then
+			decorative = {name = 'light-mud-decal', amount = 1, position = position}
+		elseif random() > 0.995 then
+			decorative = {name = 'sand-decal', amount = 1, position = position}
 		end
+	end
 
-		if random() > 0.9997 then
-			surface.create_entity {
-				name = 'h2o-tropical-fish-' .. random(1, 15),
-				position = position,
-				force = 'neutral'
-			}
-		end
+	if random() > 0.9999 then
+		surface.create_entity {
+			name = 'h2o-tropical-fish-' .. random(1, 15),
+			position = position,
+			force = 'neutral'
+		}
 	end
 
 	if not decorative then
