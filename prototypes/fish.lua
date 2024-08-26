@@ -203,7 +203,7 @@ for i, v in pairs(fish) do
     }
 end
 data:extend{{
-    type = 'item',
+    type = 'capsule',
     name = 'h2o-tropical-fish',
     icon = '__dihydrogen-monoxide__/graphics/icons/tropical-fish.png',
     icon_size = 64,
@@ -212,4 +212,7 @@ data:extend{{
     subgroup = 'creatures',
     order = 'a',
     stack_size = data.raw.capsule['raw-fish'].stack_size,
+    capsule_action = table.deepcopy(data.raw.capsule['raw-fish'].capsule_action),
 }}
+local dmg = data.raw.capsule['h2o-tropical-fish'].capsule_action.attack_parameters.ammo_type.action.action_delivery.target_effects[1].damage
+dmg.amount = dmg.amount * 1.5
