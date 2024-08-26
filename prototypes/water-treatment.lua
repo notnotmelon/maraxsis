@@ -16,12 +16,12 @@ data:extend {{
     unit = {
         count = 3000,
         ingredients = {
-            {'automation-science-pack',    1},
-            {'logistic-science-pack',      1},
-            {'chemical-science-pack',      1},
-            {'space-science-pack',         1},
-            {'production-science-pack',    1},
-            {'utility-science-pack',       1},
+            {'automation-science-pack', 1},
+            {'logistic-science-pack',   1},
+            {'chemical-science-pack',   1},
+            {'space-science-pack',      1},
+            {'production-science-pack', 1},
+            {'utility-science-pack',    1},
             --{'metallurgic-science-pack', 1},
             --{'electromagnetic-science-pack', 1},
             --{'agricultural-science-pack', 1},
@@ -157,33 +157,6 @@ add_to_tech('h2o-water')
 
 data:extend {{
     type = 'item',
-    name = 'h2o-salt-filter',
-    icon = '__dihydrogen-monoxide__/graphics/icons/salt-filter.png',
-    icon_size = 64,
-    icon_mipmaps = nil,
-    subgroup = 'h2o-maraxsis',
-    order = 'vga',
-    stack_size = 10,
-}}
-
-data:extend {{
-    type = 'recipe',
-    name = 'h2o-salt-filter',
-    enabled = false,
-    energy_required = 1,
-    ingredients = {
-        {type = 'item', name = 'steel-plate',     amount = 1},
-        {type = 'item', name = 'iron-gear-wheel', amount = 2},
-    },
-    results = {
-        {type = 'item', name = 'h2o-salt-filter', amount = 1},
-    },
-    category = 'crafting',
-}}
-add_to_tech('h2o-salt-filter')
-
-data:extend {{
-    type = 'item',
     name = 'h2o-saturated-salt-filter',
     icon = '__dihydrogen-monoxide__/graphics/icons/saturated-salt-filter.png',
     icon_size = 64,
@@ -212,6 +185,33 @@ data:extend {{
 add_to_tech('h2o-brackish-water-filtration')
 
 data:extend {{
+    type = 'item',
+    name = 'h2o-salt-filter',
+    icon = '__dihydrogen-monoxide__/graphics/icons/salt-filter.png',
+    icon_size = 64,
+    icon_mipmaps = nil,
+    subgroup = 'h2o-maraxsis',
+    order = 'vga',
+    stack_size = 10,
+}}
+
+data:extend {{
+    type = 'recipe',
+    name = 'h2o-salt-filter',
+    enabled = false,
+    energy_required = 1,
+    ingredients = {
+        {type = 'item', name = 'steel-plate',     amount = 1},
+        {type = 'item', name = 'iron-gear-wheel', amount = 2},
+    },
+    results = {
+        {type = 'item', name = 'h2o-salt-filter', amount = 1},
+    },
+    category = 'crafting',
+}}
+add_to_tech('h2o-salt-filter')
+
+data:extend {{
     type = 'recipe',
     name = 'h2o-salt-filter-recycling',
     enabled = false,
@@ -221,7 +221,8 @@ data:extend {{
         {type = 'fluid', name = 'water',                     amount = 20},
     },
     results = {
-        {type = 'item',  name = 'h2o-salt-filter', amount = 1},
+        {type = 'item',  name = 'h2o-salt-filter', amount = 1, catalyst_amount = 1, probability = 0.99},
+        {type = 'item',  name = 'steel-plate', amount = 1, probability = 0.01},
         {type = 'fluid', name = 'saline-water',    amount = 20},
     },
     category = 'crafting-with-fluid',
