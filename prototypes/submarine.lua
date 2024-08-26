@@ -1,3 +1,36 @@
+data:extend {{
+    type = 'technology',
+    name = 'h2o-nuclear-submarine',
+    icon = '__dihydrogen-monoxide__/graphics/technology/nuclear-submarine.png',
+    icon_size = 256,
+    icon_mipmaps = nil,
+    effects = {
+        {
+            type = 'unlock-recipe',
+            recipe = 'h2o-nuclear-submarine',
+        },
+    },
+    prerequisites = {'h2o-hydraulic-science-pack', 'nuclear-power'},
+    unit = {
+        count = 3000,
+        ingredients = {
+            {'automation-science-pack',    1},
+            {'logistic-science-pack',      1},
+            {'military-science-pack',      1},
+            {'chemical-science-pack',      1},
+            {'space-science-pack',         1},
+            {'production-science-pack',    1},
+            {'utility-science-pack',       1},
+            --{'metallurgic-science-pack', 1},
+            --{'electromagnetic-science-pack', 1},
+            --{'agricultural-science-pack', 1},
+            {'h2o-hydraulic-science-pack', 1},
+        },
+        time = 60,
+    },
+    order = 'eh[nuclear-submarine]',
+}}
+
 local collision_mask = {'ground-tile', 'rail-layer', 'colliding-with-tiles-only'}
 
 local colors = { -- default sub colors before they are tinted at runtime
@@ -290,3 +323,33 @@ vehicle_leg.movement_acceleration = 0
 vehicle_leg.walking_sound_volume_modifier = 0
 vehicle_leg.part_length = 0.1
 data:extend {vehicle_leg}
+
+local torpedo_launchers = {}
+for i = 1, 6 do
+    local launcher = table.deepcopy(data.raw.gun['spidertron-rocket-launcher-1'])
+    launcher.localised_name = {'item-name.h2o-torpedo-launch-silo'}
+    launcher.localised_description = nil
+    launcher.name = 'h2o-torpedo-launch-silo-' .. i
+    launcher.icon = '__base__/graphics/icons/tank-cannon.png'
+    launcher.icon_size = 64
+    launcher.icon_mipmaps = 4
+    launcher.attack_parameters.ammo_category = 'h2o-torpedoes'
+    table.insert(torpedo_launchers, launcher)
+end
+data:extend(torpedo_launchers)
+
+data.raw['spider-vehicle']['h2o-diesel-submarine'].guns = {
+    'h2o-torpedo-launch-silo-1',
+    'h2o-torpedo-launch-silo-2',
+    'h2o-torpedo-launch-silo-3',
+    'h2o-torpedo-launch-silo-4',
+}
+
+data.raw['spider-vehicle']['h2o-nuclear-submarine'].guns = {
+    'h2o-torpedo-launch-silo-1',
+    'h2o-torpedo-launch-silo-2',
+    'h2o-torpedo-launch-silo-3',
+    'h2o-torpedo-launch-silo-4',
+    'h2o-torpedo-launch-silo-5',
+    'h2o-torpedo-launch-silo-6',
+}

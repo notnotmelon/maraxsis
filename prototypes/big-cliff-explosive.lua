@@ -1,14 +1,18 @@
 data:extend {{
     type = 'technology',
-    name = 'h2o-big-cliff-explosives',
-    icon = '__dihydrogen-monoxide__/graphics/technology/big-cliff-explosives.png',
+    name = 'h2o-depth-charges',
+    icon = '__dihydrogen-monoxide__/graphics/technology/depth-charges.png',
     icon_size = 256,
     icon_mipmaps = nil,
     effects = {
         {
             type = 'unlock-recipe',
             recipe = 'h2o-big-cliff-explosives'
-        }
+        },
+        {
+            type = 'unlock-recipe',
+            recipe = 'h2o-atomic-torpedo',
+        },
     },
     prerequisites = {'cliff-explosives', 'h2o-hydraulic-science-pack', 'atomic-bomb'},
     unit = {
@@ -28,7 +32,7 @@ data:extend {{
         },
         time = 60,
     },
-    order = 'eh[big-cliff-explosives]',
+    order = 'eh[depth-charges]',
 }}
 
 data:extend {{
@@ -44,7 +48,7 @@ data:extend {{
     results = {
         {type = 'item', name = 'h2o-big-cliff-explosives', amount = 1},
     },
-    category = 'chemistry',
+    category = 'h2o-hydro-plant',
 }}
 
 data:extend {{
