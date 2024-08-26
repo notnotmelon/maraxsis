@@ -4,17 +4,26 @@ data:extend {{
     icon = '__dihydrogen-monoxide__/graphics/technology/color-confinement.png',
     icon_size = 256,
     icon_mipmaps = nil,
-    effects = {},
+    effects = {
+        {
+            type = 'unlock-recipe',
+            recipe = 'h2o-quantum-computer'
+        },
+        {
+            type = 'unlock-recipe',
+            recipe = 'h2o-heart-of-the-sea'
+        }
+    },
     prerequisites = {'h2o-piscary'},
     unit = {
         count = 3000,
         ingredients = {
-            {'automation-science-pack',    1},
-            {'logistic-science-pack',      1},
-            {'chemical-science-pack',      1},
-            {'space-science-pack',         1},
-            {'production-science-pack',    1},
-            {'utility-science-pack',       1},
+            {'automation-science-pack', 1},
+            {'logistic-science-pack',   1},
+            {'chemical-science-pack',   1},
+            {'space-science-pack',      1},
+            {'production-science-pack', 1},
+            {'utility-science-pack',    1},
             --{'metallurgic-science-pack', 1},
             --{'electromagnetic-science-pack', 1},
             --{'agricultural-science-pack', 1},
@@ -59,6 +68,30 @@ data:extend {{
     subgroup = 'h2o-maraxsis',
     order = 'vga',
     stack_size = 10,
+}}
+
+data:extend {{
+    type = 'recipe',
+    name = 'h2o-heart-of-the-sea',
+    category = 'h2o-quantum-computer',
+    energy_required = 10,
+    ingredients = {
+        {type = 'item', name = 'h2o-up-coral',      amount = 1},
+        {type = 'item', name = 'h2o-down-coral',    amount = 1},
+        {type = 'item', name = 'h2o-top-coral',     amount = 1},
+        {type = 'item', name = 'h2o-bottom-coral',  amount = 1},
+        {type = 'item', name = 'h2o-strange-coral', amount = 1},
+        {type = 'item', name = 'h2o-charm-coral',   amount = 1},
+    },
+    results = {
+        {type = 'item', name = 'h2o-heart-of-the-sea', amount = 1},
+        {type = 'item', name = 'h2o-up-coral',         amount = 1},
+        {type = 'item', name = 'h2o-down-coral',       amount = 1},
+        {type = 'item', name = 'limestone',            amount = 1},
+    },
+    enabled = false,
+    order = 'a',
+    main_product = 'h2o-heart-of-the-sea',
 }}
 
 data:extend {{

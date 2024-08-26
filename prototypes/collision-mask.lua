@@ -44,6 +44,7 @@ local water_placeable_blacklist = {
 local special_exceptions = {
     'h2o-hydro-plant',
     'h2o-hydro-plant-extra-module-slots',
+    'h2o-quantum-computer',
     'chemical-plant',
     'h2o-submarine-leg',
     'h2o-diesel-submarine',

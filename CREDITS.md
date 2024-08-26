@@ -12,9 +12,9 @@
 - **License**: [TurboSquid 3D Model License](https://blog.turbosquid.com/turbosquid-3d-model-license/)
 - **Changes**: Yes. Converted to png via Blender.
 
-## Advanced Furnace
+## Advanced Furnace & Singularity Lab
 
 - **Creator**: Krastor and Linver
 - **Source**: [Krastorio 2](https://mods.factorio.com/mod/Krastorio2)
 - **License**: [GNU LGPLv3](https://opensource.org/license/lgpl-3.0)
-- **Changes**: Yes. Krastorio logo removed.
+- **Changes**: No.
