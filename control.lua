@@ -22,7 +22,8 @@ end
 
 h2o.prototypes = prototypes
 
-require 'scripts.submarine'
 require 'scripts.map-gen.map-gen'
+require 'scripts.submarine'
+require 'scripts.drowning'
 
 h2o.finalize_events()
