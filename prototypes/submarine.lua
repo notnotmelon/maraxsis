@@ -54,26 +54,36 @@ data:extend {{
     order = 'ee',
 }}
 
+data:extend {{
+    type = 'fuel-category',
+    name = 'h2o-diesel',
+}}
+
 local fuel_sources = {
-    ['h2o-diesel-submarine'] = 'nuclear',
+    ['h2o-diesel-submarine'] = 'h2o-diesel',
     ['h2o-nuclear-submarine'] = 'nuclear',
 }
 
 local recipes = {
     ['h2o-diesel-submarine'] = {
-        {type = 'item', name = 'steel-plate', amount = 200},
+        {type = 'item', name = 'steel-plate',          amount = 200},
         {type = 'item', name = 'electric-engine-unit', amount = 50},
-        {type = 'item', name = 'processing-unit', amount = 100},
-        {type = 'item', name = 'battery-equipment', amount = 2},
-        {type = 'item', name = 'raw-fish', amount = 1},
+        {type = 'item', name = 'processing-unit',      amount = 100},
+        {type = 'item', name = 'pump',                 amount = 4},
+        {type = 'item', name = 'battery-equipment',    amount = 2},
+        {type = 'item', name = 'raw-fish',             amount = 1},
     },
     ['h2o-nuclear-submarine'] = {
-        {type = 'item', name = 'h2o-diesel-submarine', amount = 1},
-        {type = 'item', name = 'h2o-glass-panes', amount = 100},
-        {type = 'item', name = 'h2o-heart-of-the-sea', amount = 50},
-        {type = 'item', name = 'nuclear-reactor', amount = 1},
+        {type = 'item', name = 'h2o-diesel-submarine',  amount = 1},
+        {type = 'item', name = 'h2o-glass-panes',       amount = 100},
+        {type = 'item', name = 'h2o-heart-of-the-sea',  amount = 50},
+        {type = 'item', name = 'nuclear-reactor',       amount = 1},
+        {type = 'item', name = 'heat-exchanger',        amount = 4},
+        {type = 'item', name = 'pump',                  amount = 8},
         {type = 'item', name = 'processing-unit',       amount = 200},
         {type = 'item', name = 'battery-mk2-equipment', amount = 2},
+        {type = 'item', name = 'speed-module-3',        amount = 2},
+        {type = 'item', name = 'h2o-tropical-fish',     amount = 1},
     },
 }
 
@@ -228,8 +238,8 @@ for i = 1, 2 do
         type = 'burner',
         fuel_category = fuel_sources[name],
         effectivity = 1,
-        fuel_inventory_size = 2,
-        burnt_inventory_size = 2,
+        fuel_inventory_size = 4,
+        burnt_inventory_size = 4,
     }
     entity.energy_source = nil
     entity.guns = table.deepcopy(data.raw['spider-vehicle']['spidertron'].guns)
