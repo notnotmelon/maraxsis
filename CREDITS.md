@@ -11,3 +11,10 @@
 - **Source**: [Turbosquid](https://www.turbosquid.com/3d-models/free-tropical-fish-pack-3d-model/652729)
 - **License**: [TurboSquid 3D Model License](https://blog.turbosquid.com/turbosquid-3d-model-license/)
 - **Changes**: Yes. Converted to png via Blender.
+
+## Advanced Furnace
+
+- **Creator**: Krastor and Linver
+- **Source**: [Krastorio 2](https://mods.factorio.com/mod/Krastorio2)
+- **License**: [GNU LGPLv3](https://opensource.org/license/lgpl-3.0)
+- **Changes**: Yes. Krastorio logo removed.

@@ -187,7 +187,7 @@ data:extend{{
     results = {
         {type = 'item', name = 'plastic-bar', amount = 1},
     },
-    category = 'smelting',
+    category = 'h2o-hydro-plant',
     main_product = 'plastic-bar',
 }}
 add_to_tech('h2o-smelt-microplastics')

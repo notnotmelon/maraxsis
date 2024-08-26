@@ -125,7 +125,7 @@ data:extend {{
         {type = 'fluid', name = 'hydrogen', amount = 200},
         {type = 'fluid', name = 'oxygen',   amount = 100},
     },
-    category = 'oil-processing',
+    category = 'h2o-hydro-plant',
     icon = '__dihydrogen-monoxide__/graphics/icons/saline-electrolysis.png',
     icon_size = 128,
     icon_mipmaps = nil,

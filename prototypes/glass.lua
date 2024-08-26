@@ -59,7 +59,7 @@ data:extend {{
     results = {
         {type = 'item', name = 'h2o-glass-panes', amount = 1},
     },
-    category = 'advanced-crafting' -- todo: change to foundry
+    category = 'h2o-hydro-plant'
 }}
 
 local glass_variants = {}

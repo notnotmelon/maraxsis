@@ -111,7 +111,7 @@ for _, type in ipairs(types) do
     data:extend {{
         type = 'recipe',
         name = 'h2o-' .. type .. '-coral-spoil',
-        category = 'crafting',
+        category = 'h2o-hydro-plant',
         energy_required = 1,
         ingredients = {
             {type = 'item', name = 'h2o-' .. type .. '-coral', amount = 1},
@@ -139,7 +139,7 @@ for i = 1, 6 do
     data:extend {{
         type = 'recipe',
         name = 'h2o-heart-of-the-sea-' .. i,
-        category = 'chemistry',
+        category = 'h2o-hydro-plant',
         energy_required = 10,
         ingredients = ingredients,
         results = {

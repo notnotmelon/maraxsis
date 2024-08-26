@@ -7,6 +7,10 @@ data:extend {{
     effects = {
         {
             type = 'unlock-recipe',
+            recipe = 'h2o-hydro-plant',
+        },
+        {
+            type = 'unlock-recipe',
             recipe = 'h2o-diesel-submarine',
         },
     },
