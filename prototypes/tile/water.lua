@@ -1,4 +1,5 @@
 local collision_mask_util = require '__core__/lualib/collision-mask-util'
+_G.maraxsis_collision_mask = collision_mask_util.get_first_unused_layer()
 
 local template = {
     type = 'simple-entity',
@@ -60,7 +61,7 @@ local waterifiy = {
         tile = table.deepcopy(data.raw.tile[tile])
         tile.localised_name = {'tile-name.underwater'}
         tile.name = tile.name .. '-underwater'
-        tile.collision_mask = {'water-tile'}
+        tile.collision_mask = {maraxsis_collision_mask}
         tile.layer = layer
         ---@diagnostic disable-next-line: param-type-mismatch
         tile.map_color = h2o.color_combine(tile.map_color or data.raw.tile['water'].map_color, data.raw.tile['deepwater'].map_color, 0.25)
@@ -75,7 +76,7 @@ local waterifiy = {
         local submarine_exclusion_zone = table.deepcopy(tile)
         submarine_exclusion_zone.layer = layer
         submarine_exclusion_zone.name = tile.name .. '-submarine-exclusion-zone'
-        submarine_exclusion_zone.collision_mask = {'water-tile', 'rail-layer'}
+        submarine_exclusion_zone.collision_mask = {maraxsis_collision_mask, 'rail-layer'}
         water_tile_type_names[#water_tile_type_names+1] = submarine_exclusion_zone.name
         
         layer = layer + 1
@@ -99,7 +100,7 @@ local waterifiy = {
         underwater.name = underwater.name .. '-underwater'
         
         underwater.localised_name = underwater.localised_name or {'entity-name.' .. underwater.name}
-        collision_mask_util.remove_layer(collision_mask_util.get_mask(underwater), 'water-tile')
+        collision_mask_util.remove_layer(collision_mask_util.get_mask(underwater), maraxsis_collision_mask)
         collision_mask_util.add_layer(collision_mask_util.get_mask(underwater), 'ground-tile')
         ---@diagnostic disable-next-line: param-type-mismatch
         underwater.map_color = h2o.color_combine(underwater.map_color or data.raw.tile['water'].map_color, data.raw.tile['deepwater'].map_color, 0.3)

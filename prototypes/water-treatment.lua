@@ -122,8 +122,8 @@ data:extend {{
     },
     results = {
         {type = 'fluid', name = 'chlorine', amount = 100},
-        {type = 'fluid', name = 'hydrogen', amount = 200},
         {type = 'fluid', name = 'oxygen',   amount = 100},
+        {type = 'fluid', name = 'hydrogen', amount = 200},
     },
     category = 'h2o-hydro-plant',
     icon = '__dihydrogen-monoxide__/graphics/icons/saline-electrolysis.png',
