@@ -31,7 +31,7 @@ for i, v in pairs(fish) do
     v.filename = '__dihydrogen-monoxide__/graphics/entity/fish/' .. i .. '.png'
     v.direction_count = 32
     v.frame_count = 10
-    v.animation_speed = 0.6
+    v.animation_speed = 0.4
     v.scale = 1.25
     v.apply_projection = true
     v = {

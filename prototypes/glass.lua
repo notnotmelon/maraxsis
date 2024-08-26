@@ -1,4 +1,4 @@
-data:extend{{
+data:extend {{
     type = 'technology',
     name = 'h2o-glassworking',
     icon = '__dihydrogen-monoxide__/graphics/technology/glassworking.png',
@@ -14,13 +14,12 @@ data:extend{{
     unit = {
         count = 3000,
         ingredients = {
-            {'automation-science-pack',    1},
-            {'logistic-science-pack',      1},
-            {'military-science-pack',      1},
-            {'chemical-science-pack',      1},
+            {'automation-science-pack', 1},
+            {'logistic-science-pack',   1},
+            {'chemical-science-pack',   1},
             {'space-science-pack',      1},
-            {'production-science-pack',    1},
-            {'utility-science-pack',       1},
+            {'production-science-pack', 1},
+            {'utility-science-pack',    1},
             --{'metallurgic-science-pack', 1},
             --{'electromagnetic-science-pack', 1},
             --{'agricultural-science-pack', 1},
@@ -59,7 +58,7 @@ data:extend {{
     enabled = false,
     energy_required = 5,
     ingredients = {
-        {type = 'item', name = 'sand', amount = 3},
+        {type = 'item', name = 'sand',      amount = 3},
         {type = 'item', name = 'limestone', amount = 1},
     },
     results = {
@@ -79,7 +78,7 @@ for i = 1, 9 do
     }
 end
 
-data:extend{{
+data:extend {{
     type = 'item',
     name = 'h2o-glass-panes',
     icon = '__dihydrogen-monoxide__/graphics/icons/glass-panes-1.png',
@@ -102,7 +101,7 @@ for i = 1, 3 do
     }
 end
 
-data:extend{{
+data:extend {{
     type = 'item',
     name = 'sand',
     icon = '__dihydrogen-monoxide__/graphics/icons/sand-3.png',
