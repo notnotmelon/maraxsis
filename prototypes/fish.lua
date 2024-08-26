@@ -172,7 +172,7 @@ data:extend{{
     ingredients = {
         {type = 'item', name = 'h2o-tropical-fish', amount = 1},
         {type = 'item', name = 'uranium-rounds-magazine', amount = 1},
-        {type = 'fluid', name = 'chlorine', amount = 50},
+        {type = 'fluid', name = 'brackish-water', amount = 50},
     },
     results = {
         {type = 'item', name = 'h2o-microplastics', amount = 1},

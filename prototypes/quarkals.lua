@@ -1,12 +1,10 @@
-local effects = {}
-
 data:extend {{
     type = 'technology',
     name = 'h2o-color-confinement',
     icon = '__dihydrogen-monoxide__/graphics/technology/color-confinement.png',
     icon_size = 256,
     icon_mipmaps = nil,
-    effects = effects,
+    effects = {},
     prerequisites = {'h2o-piscary'},
     unit = {
         count = 3000,
@@ -71,8 +69,9 @@ data:extend {{
 }}
 
 local types = {'up', 'down', 'strange', 'charm', 'top', 'bottom'}
+local inventory_icon_indexes = {1, 3, 1, 3, 2, 3}
 
-for _, type in ipairs(types) do
+for j, type in ipairs(types) do
     local quarkal_variants = {}
     for i = 1, 3 do
         quarkal_variants[i] = {
@@ -100,7 +99,7 @@ for _, type in ipairs(types) do
     data:extend {{
         type = 'item',
         name = 'h2o-' .. type .. '-coral',
-        icon = '__dihydrogen-monoxide__/graphics/icons/quarkal/' .. type .. '-coral-1.png',
+        icon = '__dihydrogen-monoxide__/graphics/icons/quarkal/' .. type .. '-coral-' .. inventory_icon_indexes[j] .. '.png',
         icon_size = 64,
         icon_mipmaps = nil,
         pictures = quarkal_variants,
@@ -128,35 +127,4 @@ for _, type in ipairs(types) do
         order = 'a',
         localised_description = 'This is a temporary recipe to mimic spoilage. TODO: remove'
     }}
-end
-
-for i = 1, 6 do
-    local ingredients = {
-        {type = 'fluid', name = 'brackish-water', amount = 100},
-    }
-    for j = 1, 6 do
-        if j ~= i then
-            table.insert(ingredients, {type = 'item', name = 'h2o-' .. types[j] .. '-coral', amount = 1})
-        end
-    end
-
-    data:extend {{
-        type = 'recipe',
-        name = 'h2o-heart-of-the-sea-' .. i,
-        category = 'h2o-hydro-plant',
-        energy_required = 10,
-        ingredients = ingredients,
-        results = {
-            {type = 'item', name = 'h2o-heart-of-the-sea',         amount = 1},
-            {type = 'item', name = 'h2o-' .. types[i] .. '-coral', amount = 1, catalyst_amount = 1},
-        },
-        main_product = 'h2o-heart-of-the-sea',
-        icon = data.raw.item['h2o-' .. types[i] .. '-coral'].icon,
-        icon_size = data.raw.item['h2o-' .. types[i] .. '-coral'].icon_size,
-        icon_mipmaps = data.raw.item['h2o-' .. types[i] .. '-coral'].icon_mipmaps,
-        enabled = false,
-        order = 'a',
-    }}
-
-    effects[#effects + 1] = {type = 'unlock-recipe', recipe = 'h2o-heart-of-the-sea-' .. i}
 end

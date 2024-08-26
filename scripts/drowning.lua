@@ -41,7 +41,7 @@ h2o.on_nth_tick(UPDATE_RATE, function()
         if breath > 0 then
             goto continue
         end
-        
+
         local true_damage = character.health - character.prototype.max_health * 0.1
         if true_damage <= 0 then
             character.die('neutral')
