@@ -46,7 +46,7 @@ for i, v in pairs(fish) do
     data:extend{{
         localised_name = {'entity-name.fish'},
         type = 'unit',
-        name = 'h2o-fish-' .. i,
+        name = 'h2o-tropical-fish-' .. i,
         render_layer = 'higher-object-under',
         icon = '__dihydrogen-monoxide__/graphics/entity/fish/icons/' .. i .. '.png',
         icon_size = 64,
@@ -99,6 +99,117 @@ for i, v in pairs(fish) do
             do_separation = false,
         },
         affected_by_tiles = false,
-        minable = table.deepcopy(data.raw.fish['fish'].minable),
+        minable = {
+            mining_time = data.raw.fish['fish'].minable.mining_time,
+            results = {
+                {type = 'item', name = 'h2o-tropical-fish', amount = 1},
+            }
+        }
     }}
 end
+
+data:extend{{
+    type = 'technology',
+    name = 'h2o-piscary',
+    icon = '__dihydrogen-monoxide__/graphics/technology/piscary.png',
+    icon_size = 256,
+    icon_mipmaps = nil,
+    effects = {},
+    prerequisites = {'h2o-maraxsis'},
+    unit = {
+        count = 100,
+        ingredients = {
+            {'automation-science-pack', 1},
+            {'logistic-science-pack', 1},
+            {'chemical-science-pack', 1},
+        },
+        time = 30,
+    },
+    order = 'e-a-a',
+}}
+
+local function add_to_tech(recipe)
+    table.insert(data.raw.technology['h2o-piscary'].effects, {type = 'unlock-recipe', recipe = recipe})
+end
+
+local microplastics_variants = {}
+for i = 1, 3 do
+    microplastics_variants[i] = {
+        filename = '__dihydrogen-monoxide__/graphics/icons/microplastics-' .. i .. '.png',
+        width = 64,
+        height = 64,
+        scale = 1 / 3,
+        flags = {'icon'},
+        mipmap_count = 4,
+        icon_mipmaps = 4,
+        mipmaps = 4, -- i forgor the name
+    }
+end
+
+data:extend{{
+    type = 'item',
+    name = 'h2o-microplastics',
+    icon = '__dihydrogen-monoxide__/graphics/icons/microplastics-1.png',
+    icon_size = 64,
+    icon_mipmaps = 4,
+    pictures = microplastics_variants,
+    subgroup = 'h2o-maraxsis',
+    order = 'vga',
+    stack_size = data.raw.item['plastic-bar'].stack_size / 2,
+}}
+
+data:extend{{
+    type = 'recipe',
+    name = 'h2o-kill-fish',
+    enabled = false,
+    energy_required = data.raw.recipe['iron-plate'].energy_required * 2,
+    ingredients = {
+        {type = 'item', name = 'h2o-tropical-fish', amount = 1},
+        {type = 'item', name = 'firearm-magazine', amount = 1},
+    },
+    results = {
+        {type = 'item', name = 'h2o-microplastics', amount = 1},
+        {type = 'item', name = 'h2o-strange-coral', amount = 1},
+    },
+    category = 'chemistry',
+    main_product = 'h2o-strange-coral',
+}}
+add_to_tech('h2o-kill-fish')
+
+data:extend{{
+    type = 'recipe',
+    name = 'h2o-smelt-microplastics',
+    enabled = false,
+    energy_required = data.raw.recipe['iron-plate'].energy_required,
+    ingredients = {
+        {type = 'item', name = 'h2o-microplastics', amount = 1},
+    },
+    results = {
+        {type = 'item', name = 'plastic-bar', amount = 1},
+    },
+    category = 'smelting',
+    main_product = 'plastic-bar',
+}}
+add_to_tech('h2o-smelt-microplastics')
+
+local tropical_fish_variants = {}
+for i, v in pairs(fish) do
+    tropical_fish_variants[tonumber(i)] = {
+        filename = '__dihydrogen-monoxide__/graphics/entity/fish/icons/' .. i .. '.png',
+        width = 64,
+        height = 64,
+        scale = 1 / 3,
+        flags = {'icon'},
+    }
+end
+data:extend{{
+    type = 'item',
+    name = 'h2o-tropical-fish',
+    icon = '__dihydrogen-monoxide__/graphics/icons/tropical-fish.png',
+    icon_size = 64,
+    icon_mipmaps = nil,
+    pictures = tropical_fish_variants,
+    subgroup = 'creatures',
+    order = 'a',
+    stack_size = data.raw.capsule['raw-fish'].stack_size,
+}}
