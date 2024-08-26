@@ -16,17 +16,22 @@ data:extend {{
     },
     prerequisites = {'h2o-glassworking'},
     unit = {
-        count = 500,
+        count = 3000,
         ingredients = {
             {'automation-science-pack', 1},
             {'logistic-science-pack',   1},
-            {'chemical-science-pack',   1},
             {'military-science-pack',   1},
+            {'chemical-science-pack',   1},
+            {'space-science-pack',      1},
             {'production-science-pack', 1},
+            {'utility-science-pack',    1},
+            --{'metallurgic-science-pack', 1},
+            --{'electromagnetic-science-pack', 1},
+            --{'agricultural-science-pack', 1},
         },
         time = 60,
     },
-    order = 'a',
+    order = 'ee[wyrm-confinement]',
 }}
 
 data:extend {{
@@ -51,7 +56,7 @@ for i = 1, 4 do
     }
 end
 
-data:extend{{
+data:extend {{
     type = 'item',
     name = 'h2o-wyrm-specimen',
     icon = '__dihydrogen-monoxide__/graphics/icons/wyrm-specimen-2.png',
@@ -63,22 +68,22 @@ data:extend{{
     stack_size = 10,
 }}
 
-data:extend{{
+data:extend {{
     type = 'recipe',
     name = 'h2o-wyrm-confinement-cell',
     enabled = false,
     energy_required = 10,
     ingredients = {
-        {type = 'item', name = 'h2o-glass-panes', amount = 3},
+        {type = 'item', name = 'h2o-glass-panes',  amount = 3},
         {type = 'item', name = 'advanced-circuit', amount = 1},
-        {type = 'item', name = 'steel-plate', amount = 1},
+        {type = 'item', name = 'steel-plate',      amount = 1},
     },
     results = {
         {type = 'item', name = 'h2o-wyrm-confinement-cell', amount = 1},
     },
 }}
 
-data:extend{{
+data:extend {{
     type = 'recipe',
     name = 'h2o-wyrm-specimen',
     enabled = false,

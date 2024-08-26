@@ -7,19 +7,23 @@ data:extend {{
     icon_size = 256,
     icon_mipmaps = nil,
     effects = effects,
-    prerequisites = {'h2o-water-treatment'},
+    prerequisites = {'h2o-piscary'},
     unit = {
-        count = 500,
+        count = 3000,
         ingredients = {
-            {'automation-science-pack', 1},
-            {'logistic-science-pack',   1},
-            {'chemical-science-pack',   1},
-            {'military-science-pack',   1},
-            {'production-science-pack', 1},
+            {'automation-science-pack',    1},
+            {'logistic-science-pack',      1},
+            {'chemical-science-pack',      1},
+            {'space-science-pack',         1},
+            {'production-science-pack',    1},
+            {'utility-science-pack',       1},
+            --{'metallurgic-science-pack', 1},
+            --{'electromagnetic-science-pack', 1},
+            --{'agricultural-science-pack', 1},
         },
         time = 60,
     },
-    order = 'a',
+    order = 'ef[color-confinement]',
 }}
 
 local heart_of_the_sea_variants = {}

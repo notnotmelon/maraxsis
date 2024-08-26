@@ -16,8 +16,9 @@ data:extend {{
         ingredients = {
             {'automation-science-pack',    1},
             {'logistic-science-pack',      1},
-            {'chemical-science-pack',      1},
             {'military-science-pack',      1},
+            {'chemical-science-pack',      1},
+            {'space-science-pack',      1},
             {'production-science-pack',    1},
             {'utility-science-pack',       1},
             --{'metallurgic-science-pack', 1},
@@ -27,7 +28,7 @@ data:extend {{
         },
         time = 60,
     },
-    order = 'a',
+    order = 'eh[big-cliff-explosives]',
 }}
 
 data:extend {{

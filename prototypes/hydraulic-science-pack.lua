@@ -23,12 +23,12 @@ data:extend{{
         },
     },
     unit = {
-        count = 2500,
+        count = 3000,
         ingredients = {
             {'automation-science-pack', 1},
             {'logistic-science-pack', 1},
             {'chemical-science-pack', 1},
-            {'military-science-pack', 1},
+            {'space-science-pack', 1},
             {'production-science-pack', 1},
             {'utility-science-pack', 1},
             --{'metallurgic-science-pack', 1},
@@ -41,7 +41,7 @@ data:extend{{
         'h2o-color-confinement',
         'h2o-wyrm-confinement',
     },
-    order = 'a',
+    order = 'eg[hydraulic-science-pack]',
 }}
 
 data:extend{{

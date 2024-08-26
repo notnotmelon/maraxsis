@@ -469,6 +469,7 @@ data:extend {{
         {type = 'item', name = 'stone-brick',      amount = 20},
         {type = 'item', name = 'advanced-circuit', amount = 10},
         {type = 'item', name = 'pipe',             amount = 10},
+        {type = 'item', name = 'gun-turret',             amount = 1},
     },
     results = {
         {type = 'item', name = 'h2o-hydro-plant', amount = 1},

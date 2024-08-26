@@ -1,6 +1,5 @@
 local techs_to_add_hydraulic_pack = {
-    'rocket-silo',
-    'space-science-pack',
+    
 }
 for _, tech_name in pairs(techs_to_add_hydraulic_pack) do
     local tech = data.raw.technology[tech_name]
@@ -10,7 +9,7 @@ for _, tech_name in pairs(techs_to_add_hydraulic_pack) do
 end
 
 local techs_to_add_hydraulic_pack_as_prerequisite = {
-    'rocket-silo',
+    
 }
 for _, tech_name in pairs(techs_to_add_hydraulic_pack_as_prerequisite) do
     local tech = data.raw.technology[tech_name]

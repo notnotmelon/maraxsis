@@ -14,18 +14,25 @@ data:extend {{
             recipe = 'h2o-diesel-submarine',
         },
     },
-    prerequisites = {},
-    unit = {
-        count = 500,
-        ingredients = {
-            {'automation-science-pack', 1},
-            {'logistic-science-pack',   1},
-            {'chemical-science-pack',   1},
-            {'production-science-pack', 1},
-        },
-        time = 30,
+    prerequisites = {
+        'rocket-silo'
     },
-    order = 'a',
+    unit = {
+        count = 3000,
+        ingredients = {
+            {'automation-science-pack',    1},
+            {'logistic-science-pack',      1},
+            {'chemical-science-pack',      1},
+            {'space-science-pack',         1},
+            {'production-science-pack',    1},
+            {'utility-science-pack',       1},
+            --{'metallurgic-science-pack', 1},
+            --{'electromagnetic-science-pack', 1},
+            --{'agricultural-science-pack', 1},
+        },
+        time = 60,
+    },
+    order = 'ea[maraxsis]',
 }}
 
 data:extend {{
@@ -44,12 +51,13 @@ data:extend {{
     unit = {
         count = 3000,
         ingredients = {
-            {'automation-science-pack', 1},
-            {'logistic-science-pack',   1},
-            {'chemical-science-pack',   1},
-            {'military-science-pack',   1},
-            {'production-science-pack', 1},
-            {'utility-science-pack',    1},
+            {'automation-science-pack',    1},
+            {'logistic-science-pack',      1},
+            {'military-science-pack',      1},
+            {'chemical-science-pack',      1},
+            {'space-science-pack',         1},
+            {'production-science-pack',    1},
+            {'utility-science-pack',       1},
             --{'metallurgic-science-pack', 1},
             --{'electromagnetic-science-pack', 1},
             --{'agricultural-science-pack', 1},
@@ -57,5 +65,5 @@ data:extend {{
         },
         time = 60,
     },
-    order = 'a',
+    order = 'eh[nuclear-submarine]',
 }}

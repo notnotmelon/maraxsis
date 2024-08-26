@@ -115,17 +115,23 @@ data:extend{{
     icon_size = 256,
     icon_mipmaps = nil,
     effects = {},
-    prerequisites = {'h2o-maraxsis'},
+    prerequisites = {'h2o-water-treatment', 'uranium-ammo'},
     unit = {
-        count = 100,
+        count = 3000,
         ingredients = {
-            {'automation-science-pack', 1},
-            {'logistic-science-pack', 1},
-            {'chemical-science-pack', 1},
+            {'automation-science-pack',    1},
+            {'logistic-science-pack',      1},
+            {'chemical-science-pack',      1},
+            {'space-science-pack',      1},
+            {'production-science-pack',    1},
+            {'utility-science-pack',       1},
+            --{'metallurgic-science-pack', 1},
+            --{'electromagnetic-science-pack', 1},
+            --{'agricultural-science-pack', 1},
         },
-        time = 30,
+        time = 60,
     },
-    order = 'e-a-a',
+    order = 'ed[piscary]',
 }}
 
 local function add_to_tech(recipe)
@@ -162,16 +168,17 @@ data:extend{{
     type = 'recipe',
     name = 'h2o-kill-fish',
     enabled = false,
-    energy_required = data.raw.recipe['iron-plate'].energy_required * 2,
+    energy_required = 10,
     ingredients = {
         {type = 'item', name = 'h2o-tropical-fish', amount = 1},
-        {type = 'item', name = 'firearm-magazine', amount = 1},
+        {type = 'item', name = 'uranium-rounds-magazine', amount = 1},
+        {type = 'fluid', name = 'brackish-water', amount = 50},
     },
     results = {
         {type = 'item', name = 'h2o-microplastics', amount = 1},
         {type = 'item', name = 'h2o-strange-coral', amount = 1},
     },
-    category = 'chemistry',
+    category = 'h2o-hydro-plant',
     main_product = 'h2o-strange-coral',
 }}
 add_to_tech('h2o-kill-fish')
@@ -187,7 +194,7 @@ data:extend{{
     results = {
         {type = 'item', name = 'plastic-bar', amount = 1},
     },
-    category = 'h2o-hydro-plant',
+    category = 'smelting',
     main_product = 'plastic-bar',
 }}
 add_to_tech('h2o-smelt-microplastics')
