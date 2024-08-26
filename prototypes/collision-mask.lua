@@ -46,6 +46,8 @@ local special_exceptions = {
     'h2o-hydro-plant-extra-module-slots',
     'chemical-plant',
     'h2o-submarine-leg',
+    'h2o-diesel-submarine',
+    'h2o-nuclear-submarine',
 }
 do
     local temp = {}
@@ -55,12 +57,17 @@ do
     special_exceptions = temp
 end
 
+local function block_placement(prototype)
+    prototype.collision_mask = collision_mask_util.get_mask(prototype)
+    if not next(prototype.collision_mask) then goto continue end
+    if special_exceptions[prototype.name] then goto continue end
+    collision_mask_util.add_layer(prototype.collision_mask, maraxsis_collision_mask)
+    ::continue::
+end
+
 for _, blacklisted in pairs(water_placeable_blacklist) do
     for _, prototype in pairs(data.raw[blacklisted]) do
-        prototype.collision_mask = collision_mask_util.get_mask(prototype)
-        if not next(prototype.collision_mask) then goto continue end
-        if special_exceptions[prototype.name] then goto continue end
-        collision_mask_util.add_layer(prototype.collision_mask, maraxsis_collision_mask)
-        ::continue::
+        block_placement(prototype)
     end
 end
+block_placement(data.raw['mining-drill']['burner-mining-drill'])
