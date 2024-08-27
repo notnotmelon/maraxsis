@@ -1,10 +1,10 @@
 require 'lib.lib'
 
 h2o.TRENCH_SURFACE_NAME = 'h2o-trench'
-h2o.MARAXIS_SURFACE_NAME = 'h2o-maraxsis'
+h2o.MARAXSIS_SURFACE_NAME = 'h2o-maraxsis'
 
 local prototypes = {
-    [h2o.MARAXIS_SURFACE_NAME] = require 'scripts.map-gen.surfaces.maraxsis',
+    [h2o.MARAXSIS_SURFACE_NAME] = require 'scripts.map-gen.surfaces.maraxsis',
     [h2o.TRENCH_SURFACE_NAME] = require 'scripts.map-gen.surfaces.maraxsis-trench',
 }
 

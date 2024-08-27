@@ -150,7 +150,7 @@ local function get_surface()
 end
 
 -- uses game.player, call this from the ingame terminal
-function teleport_to_maraxis_trench()
+function teleport_to_maraxsis_trench()
 	local player = game.player
 	local surface = get_surface()
 	player.teleport({0, 0}, surface)

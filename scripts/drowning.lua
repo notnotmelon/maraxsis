@@ -18,7 +18,7 @@ h2o.on_nth_tick(UPDATE_RATE, function()
         local surface = player.surface
         local surface_name = surface.name
 
-        if surface_name ~= h2o.MARAXIS_SURFACE_NAME and surface_name ~= h2o.TRENCH_SURFACE_NAME then
+        if surface_name ~= h2o.MARAXSIS_SURFACE_NAME and surface_name ~= h2o.TRENCH_SURFACE_NAME then
             goto continue
         end
 

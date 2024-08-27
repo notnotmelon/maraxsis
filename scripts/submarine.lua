@@ -74,10 +74,10 @@ local function determine_submerge_direction(submarine)
     local prototype = h2o.prototypes[surface_name]
     if not prototype then error('no prototype for surface ' .. surface_name) end
 
-    local opposite_surface_name = surface_name == h2o.MARAXIS_SURFACE_NAME and h2o.TRENCH_SURFACE_NAME or h2o.MARAXIS_SURFACE_NAME
+    local opposite_surface_name = surface_name == h2o.MARAXSIS_SURFACE_NAME and h2o.TRENCH_SURFACE_NAME or h2o.MARAXSIS_SURFACE_NAME
     local target_surface = h2o.prototypes[opposite_surface_name].get_surface()
 
-    if surface_name == h2o.MARAXIS_SURFACE_NAME then
+    if surface_name == h2o.MARAXSIS_SURFACE_NAME then
         local tile_at_surface = surface.get_tile(position.x, position.y)
         if not tile_at_surface.valid or tile_at_surface.name ~= 'trench-entrance' then return nil end
         local target_position = {x = position.x * trench_movement_factor, y = position.y * trench_movement_factor}

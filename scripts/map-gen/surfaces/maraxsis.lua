@@ -140,10 +140,10 @@ local noise_layers = {
 }
 
 local function get_surface()
-	local surface = game.surfaces[h2o.MARAXIS_SURFACE_NAME]
+	local surface = game.surfaces[h2o.MARAXSIS_SURFACE_NAME]
 
 	if not surface then
-		surface = game.create_surface(h2o.MARAXIS_SURFACE_NAME, {
+		surface = game.create_surface(h2o.MARAXSIS_SURFACE_NAME, {
 			seed = game.surfaces['nauvis'].map_gen_settings.seed + 1,
 			autoplace_settings = { ---@diagnostic disable-next-line: missing-fields
 				entity = {treat_missing_as_default = false}, ---@diagnostic disable-next-line: missing-fields
@@ -179,7 +179,7 @@ local cliff_thresholds = {0.07, 0.11, 0.15, 0.2, 0.24, 0.3, 0.4, 0.5, 0.6, 0.7, 
 table.sort(cliff_thresholds)
 
 -- uses game.player, call this from the ingame terminal
-function teleport_to_maraxis()
+function teleport_to_maraxsis()
 	local player = game.player
 	local surface = get_surface()
 	player.teleport({0, 0}, surface)
