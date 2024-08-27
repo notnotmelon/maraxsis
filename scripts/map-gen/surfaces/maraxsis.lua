@@ -14,12 +14,16 @@ local function which_cliff_to_use(surface, x, y)
 	local trench_noise = elevation(surface, x, y)
 	if trench_noise < 0.07 then
 		return 'cliff-underwater', function(cliff)
-			surface.create_entity {
+			local cliff_transition = surface.create_entity {
 				name = 'dirt-5-trench-' .. cliff.cliff_orientation,
 				position = {x + 2, y + 2},
 				create_build_effect_smoke = false,
 				force = 'neutral',
-			}.graphics_variation = cliff.graphics_variation
+			}
+			cliff_transition.graphics_variation = cliff.graphics_variation
+			cliff_transition.destructible = false
+			cliff_transition.minable = false
+			cliff_transition.active = false
 		end
 	end
 
@@ -34,12 +38,14 @@ local function generate_fancy_water(surface, noise, chunkpos)
 	local x = chunkpos.x * 32
 	local y = chunkpos.y * 32
 
-	surface.create_entity {
+	local fancy_water = surface.create_entity {
 		name = 'h2o-water-shader-32-1-1',
 		position = {x + 16, y + 16},
 		create_build_effect_smoke = false
 	}
-	return
+	fancy_water.active = false
+	fancy_water.destructible = false
+	fancy_water.minable = false
 end
 
 local function generate_terrain(surface, noise, x, y)

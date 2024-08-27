@@ -8,12 +8,14 @@ local function generate_fancy_water(surface, noise, chunkpos)
 	local x = chunkpos.x * 32
 	local y = chunkpos.y * 32
 
-	surface.create_entity {
+	local fancy_water = surface.create_entity {
 		name = 'h2o-water-shader-32-1-1',
 		position = {x + 16, y + 16},
 		create_build_effect_smoke = false
 	}
-	return
+	fancy_water.active = false
+	fancy_water.destructible = false
+	fancy_water.minable = false
 end
 
 local function generate_terrain(surface, noise, x, y)

@@ -116,6 +116,7 @@ data:extend(waterifiy.tile('dirt-5', true))
 data:extend(waterifiy.tile('grass-2', false))
 data:extend(waterifiy.entity('cliff'))
 data:extend(waterifiy.entity('sand-rock-big'))
+data.raw.cliff['cliff-underwater'].collision_mask = {'item-layer', 'object-layer', 'water-tile', 'ground-tile'} -- player should 'swim over' cliffs
 
 ---creates a new cliff entity with the upper area masked with the provided tile
 ---@param tile string
@@ -157,8 +158,6 @@ local function trenchifiy(tile)
     return results
 end
 
-data:extend(trenchifiy('sand-1'))
-data:extend(trenchifiy('sand-3'))
 data:extend(trenchifiy('dirt-5'))
 
 local trench_entrance = table.deepcopy(data.raw.tile['out-of-map'])
