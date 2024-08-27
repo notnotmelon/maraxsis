@@ -12,7 +12,7 @@ Each of these are combined in the [entity=h2o-quantum-computer].
 There are 2^6-1 = 63 diffrent possible combinations.
 
 The correct combination is randomized and unknown. It must be determined by an experiment.
-To preform an experiment, add your quarkals to the [entity=h2o-quantum-computer] and provide 50 [fluid=chlorine] to catalyze it.
+To preform an experiment, add your quarkals to the [entity=h2o-quantum-computer] and provide 50 [fluid=brackish-water] to catalyze it.
 During a correct experiment a [item=h2o-heart-of-the-sea] is created and the secret combination will re-randomize.
 
 The correct combination can be represented as a binary number where each quarkal is a bit.

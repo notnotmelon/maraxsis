@@ -74,7 +74,7 @@ data:extend {{
     type = 'recipe',
     name = 'h2o-heart-of-the-sea',
     category = 'h2o-quantum-computer',
-    energy_required = 10,
+    energy_required = 1,
     ingredients = {
         {type = 'item', name = 'h2o-up-coral',      amount = 1},
         {type = 'item', name = 'h2o-down-coral',    amount = 1},
@@ -82,6 +82,7 @@ data:extend {{
         {type = 'item', name = 'h2o-bottom-coral',  amount = 1},
         {type = 'item', name = 'h2o-strange-coral', amount = 1},
         {type = 'item', name = 'h2o-charm-coral',   amount = 1},
+        {type = 'fluid', name = 'brackish-water',   amount = 50},
     },
     results = {
         {type = 'item', name = 'h2o-heart-of-the-sea', amount = 1},

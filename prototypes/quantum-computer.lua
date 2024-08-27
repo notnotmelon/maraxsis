@@ -129,7 +129,7 @@ data:extend {{
     icon = path .. 'singularity-lab.png',
     icon_size = 64,
     icon_mipmaps = 4,
-    flags = {'placeable-player', 'player-creation', 'hide-alt-info'},
+    flags = {'placeable-player', 'player-creation', 'hide-alt-info', 'not-rotatable'},
     minable = {mining_time = 2, result = 'h2o-quantum-computer'},
     max_health = 2000,
     damaged_trigger_effect = hit_effects.entity(),
@@ -142,6 +142,7 @@ data:extend {{
     },
     collision_box = {{-3.75, -3.75}, {3.75, 3.75}},
     selection_box = {{-3.9, -3.9}, {3.9, 3.9}},
+    collision_mask = {'item-layer', 'object-layer', 'player-layer', 'ground-tile'},
     fast_replaceable_group = 'assembling-machine',
     scale_entity_info_icon = true,
     working_visualisations = {{
@@ -155,6 +156,26 @@ data:extend {{
             size = 5,
             shift = {0.0, -0.6},
             color = {r = 0, g = 0.917, b = 1},
+        },
+    },
+    fluid_boxes = {
+        {
+            production_type = 'input',
+            pipe_picture = furnacekpipepictures_a(),
+            pipe_covers = pipecoverspictures(),
+            base_area = 0.5,
+            base_level = -1,
+            pipe_connections = {{type = 'input', position = {-4.5, 0}}},
+            secondary_draw_orders = {north = -1},
+        },
+        {
+            production_type = 'input',
+            pipe_picture = furnacekpipepictures_b(),
+            pipe_covers = pipecoverspictures(),
+            base_area = 0.5,
+            base_level = -1,
+            pipe_connections = {{type = 'input', position = {4.5, 0}}},
+            secondary_draw_orders = {north = -1},
         },
     },
     vehicle_impact_sound = sounds.generic_impact,
@@ -177,9 +198,7 @@ data:extend {{
     crafting_categories = {'h2o-quantum-computer'},
     audible_distance_modifier = 25,
     energy_source = {
-        type = 'electric',
-        usage_priority = 'secondary-input',
-        --emissions_per_minute = 10
+        type = 'void'
     },
     energy_usage = '10MW',
     module_specification = {module_slots = 4, module_info_icon_shift = {0, 2.1}, module_info_icon_scale = 0.6},

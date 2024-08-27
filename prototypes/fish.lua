@@ -102,7 +102,7 @@ for i, v in pairs(fish) do
         minable = {
             mining_time = data.raw.fish['fish'].minable.mining_time,
             results = {
-                {type = 'item', name = 'h2o-tropical-fish', amount = 1},
+                {type = 'item', name = 'h2o-tropical-fish', amount = 5},
             }
         }
     }}
@@ -172,7 +172,7 @@ data:extend{{
     ingredients = {
         {type = 'item', name = 'h2o-tropical-fish', amount = 1},
         {type = 'item', name = 'uranium-rounds-magazine', amount = 1},
-        {type = 'fluid', name = 'brackish-water', amount = 50},
+        {type = 'fluid', name = 'chlorine', amount = 50},
     },
     results = {
         {type = 'item', name = 'h2o-microplastics', amount = 1},
