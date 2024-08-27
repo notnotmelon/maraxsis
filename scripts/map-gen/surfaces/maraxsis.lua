@@ -168,7 +168,7 @@ local function get_surface()
 
 		surface.show_clouds = true
 		surface.brightness_visual_weights = {r = 1, g = 1, b = 1}
-		surface.min_brightness = 0
+		surface.min_brightness = 0.05
 		surface.ticks_per_day = 15000
 	end
 

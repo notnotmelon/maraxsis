@@ -53,7 +53,11 @@ h2o.on_nth_tick(UPDATE_RATE, function()
     end
 end)
 
-h2o.on_event(defines.events.on_player_changed_surface, function(event)
+h2o.on_event({
+    defines.events.on_player_changed_surface,
+    defines.events.on_player_respawned,
+    defines.events.on_player_died
+}, function(event)
     local player = game.get_player(event.player_index)
     if not player or not player.valid then return end
     global.breath[player.index] = nil
