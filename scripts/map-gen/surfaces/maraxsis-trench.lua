@@ -149,6 +149,13 @@ local function get_surface()
 	return surface
 end
 
+-- uses game.player, call this from the ingame terminal
+function teleport_to_maraxis_trench()
+	local player = game.player
+	local surface = get_surface()
+	player.teleport({0, 0}, surface)
+end
+
 return {
 	noise_layers = noise_layers,
 	get_surface = get_surface,

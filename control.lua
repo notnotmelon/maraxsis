@@ -25,5 +25,6 @@ h2o.prototypes = prototypes
 require 'scripts.map-gen.map-gen'
 require 'scripts.submarine'
 require 'scripts.drowning'
+require 'scripts.nightvision'
 
 h2o.finalize_events()
