@@ -164,5 +164,6 @@ local trench_entrance = table.deepcopy(data.raw.tile['out-of-map'])
 trench_entrance.name = 'trench-entrance'
 trench_entrance.layer = 255
 trench_entrance.map_color = {0, 0, 0.1, 1}
-trench_entrance.collision_mask = {'water-tile', 'player-layer', 'object-layer', 'item-layer', maraxsis_collision_mask}
+trench_entrance.walking_speed_modifier = 0.2
+trench_entrance.collision_mask = {'water-tile', 'object-layer', 'item-layer', maraxsis_collision_mask}
 data:extend {trench_entrance}

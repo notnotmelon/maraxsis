@@ -10,6 +10,11 @@ local function elevation(surface, x, y)
 	return math.abs(moisture)
 end
 
+---returns cliff generation information
+---@param surface LuaSurface
+---@param x integer
+---@param y integer
+---@return string, boolean, function?
 local function which_cliff_to_use(surface, x, y)
 	local trench_noise = elevation(surface, x, y)
 	if trench_noise < 0.07 then
@@ -21,6 +26,10 @@ local function which_cliff_to_use(surface, x, y)
 				force = 'neutral',
 			}
 			cliff_transition.graphics_variation = cliff.graphics_variation
+
+			cliff.destructible = false
+			cliff.minable = false
+			cliff.active = false
 			cliff_transition.destructible = false
 			cliff_transition.minable = false
 			cliff_transition.active = false
