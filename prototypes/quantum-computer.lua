@@ -117,7 +117,7 @@ local animation = {
     },
 }
 
-data:extend{{
+data:extend {{
     type = 'recipe-category',
     name = 'h2o-quantum-computer',
 }}
