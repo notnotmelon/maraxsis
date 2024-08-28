@@ -1,5 +1,14 @@
-local UPDATE_RATE = 3 -- ticks
+local UPDATE_RATE = 3     -- ticks
 local UPDATE_BUCKETS = 20 -- 20 buckets * 3 ticks per bucket update = 1 second crafting time
+
+local BIT_ORDER = {
+    ['h2o-up-coral'] = 1,
+    ['h2o-down-coral'] = 2,
+    ['h2o-top-coral'] = 4,
+    ['h2o-bottom-coral'] = 8,
+    ['h2o-strange-coral'] = 16,
+    ['h2o-charm-coral'] = 32,
+}
 
 h2o.on_event('on_init', function()
     global.quantum_computers = global.quantum_computers or {}
@@ -26,7 +35,7 @@ local function get_smallest_bucket_index()
         end
     end
     return smallest_bucket_index
-end    
+end
 
 h2o.on_event('on_built', function(event)
     local entity = event.entity or event.created_entity
@@ -35,7 +44,7 @@ h2o.on_event('on_built', function(event)
 
     entity.active = false
     entity.operable = false
-    
+
     local quantum_computer_data = {
         entity = entity,
         unit_number = entity.unit_number,
@@ -50,13 +59,22 @@ end)
 
 --- invariant: quantum_computer_data.entity.valid
 local function update_quantum_computer(quantum_computer_data)
-    game.print('Updating quantum computer with secret ' .. quantum_computer_data.secret)
+    local entity = quantum_computer_data.entity
+    local previous_experiment = quantum_computerata.previous_experiment
+    local secret = quantum_computer_data.secret
+
+    local fluidbox = entity.fluidbox[1]
+    if not fluidbox then return end
+    if fluidbox.amount < 49.999 then return end
+    
+    local input = entity.get_inventory(defines.inventory.assembling_machine_input)
+    local output = entity.get_inventory(defines.inventory.assembling_machine_output)
 end
 
 h2o.on_nth_tick(UPDATE_RATE, function()
     local bucket_index = math.floor(game.tick / UPDATE_RATE) % UPDATE_BUCKETS + 1
     local bucket = global.quantum_computers_by_tick[bucket_index]
-    
+
     for i, quantum_computer_data in pairs(bucket) do
         local entity = quantum_computer_data.entity
         if not entity.valid then
