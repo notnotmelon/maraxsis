@@ -1,7 +1,7 @@
 data:extend {{
     type = 'technology',
     name = 'h2o-color-confinement',
-    icon = '__dihydrogen-monoxide__/graphics/technology/color-confinement.png',
+    icon = '__maraxsis__/graphics/technology/color-confinement.png',
     icon_size = 256,
     icon_mipmaps = nil,
     effects = {
@@ -38,7 +38,7 @@ for i = 1, 3 do
     heart_of_the_sea_variants[i] = {
         layers = {
             {
-                filename = '__dihydrogen-monoxide__/graphics/icons/heart-of-the-sea-' .. i .. '.png',
+                filename = '__maraxsis__/graphics/icons/heart-of-the-sea-' .. i .. '.png',
                 width = 128,
                 height = 128,
                 scale = 0.15,
@@ -46,7 +46,7 @@ for i = 1, 3 do
                 flags = {'icon'}
             },
             {
-                filename = '__dihydrogen-monoxide__/graphics/icons/heart-of-the-sea-' .. i .. '.png',
+                filename = '__maraxsis__/graphics/icons/heart-of-the-sea-' .. i .. '.png',
                 width = 128,
                 height = 128,
                 scale = 0.15,
@@ -61,7 +61,7 @@ end
 data:extend {{
     type = 'item',
     name = 'h2o-heart-of-the-sea',
-    icon = '__dihydrogen-monoxide__/graphics/icons/heart-of-the-sea.png',
+    icon = '__maraxsis__/graphics/icons/heart-of-the-sea.png',
     pictures = heart_of_the_sea_variants,
     icon_size = 64,
     icon_mipmaps = nil,
@@ -111,7 +111,7 @@ for j, type in ipairs(types) do
         quarkal_variants[i] = {
             layers = {
                 {
-                    filename = '__dihydrogen-monoxide__/graphics/icons/quarkal/' .. type .. '-coral-' .. i .. '.png',
+                    filename = '__maraxsis__/graphics/icons/quarkal/' .. type .. '-coral-' .. i .. '.png',
                     width = 64,
                     height = 64,
                     scale = 0.33,
@@ -119,7 +119,7 @@ for j, type in ipairs(types) do
                     flags = {'icon'}
                 },
                 {
-                    filename = '__dihydrogen-monoxide__/graphics/icons/quarkal/' .. type .. '-coral-' .. i .. '.png',
+                    filename = '__maraxsis__/graphics/icons/quarkal/' .. type .. '-coral-' .. i .. '.png',
                     width = 64,
                     height = 64,
                     scale = 0.33,
@@ -133,7 +133,7 @@ for j, type in ipairs(types) do
     data:extend {{
         type = 'item',
         name = 'h2o-' .. type .. '-coral',
-        icon = '__dihydrogen-monoxide__/graphics/icons/quarkal/' .. type .. '-coral-' .. inventory_icon_indexes[j] .. '.png',
+        icon = '__maraxsis__/graphics/icons/quarkal/' .. type .. '-coral-' .. inventory_icon_indexes[j] .. '.png',
         icon_size = 64,
         icon_mipmaps = nil,
         pictures = quarkal_variants,

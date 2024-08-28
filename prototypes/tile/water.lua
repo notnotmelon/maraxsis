@@ -24,7 +24,7 @@ for size = 0, 0 do
             end
             local water = table.deepcopy(template)
             water.render_layer = 'light-effect'
-            water.icon = '__dihydrogen-monoxide__/graphics/tile/water/water-combined.png'
+            water.icon = '__maraxsis__/graphics/tile/water/water-combined.png'
             water.icon_size = 32
             water.name = 'h2o-water-shader-' .. (32 / size) .. '-' .. j .. '-' .. i
             water.localised_name = water.name
@@ -37,7 +37,7 @@ for size = 0, 0 do
                         width = 256 / size,
                         line_length = 32 * size,
                         variation_count = 1,
-                        filename = '__dihydrogen-monoxide__/graphics/tile/water/water-combined.png',
+                        filename = '__maraxsis__/graphics/tile/water/water-combined.png',
                         frame_count = 32 * size * size,
                         animation_speed = 0.5,
                         scale = 4,
@@ -131,7 +131,7 @@ local function trenchifiy(tile)
             local layer = table.deepcopy(picture.layers[1])
             for _, version in pairs {layer, layer.hr_version} do
                 version.filename = version.filename:gsub('.png', '-' .. tile .. '.png')
-                version.filename = version.filename:gsub('__base__/graphics/terrain/cliffs', '__dihydrogen-monoxide__/graphics/entity/cliffs')
+                version.filename = version.filename:gsub('__base__/graphics/terrain/cliffs', '__maraxsis__/graphics/entity/cliffs')
             end
             pictures[#pictures + 1] = layer
         end

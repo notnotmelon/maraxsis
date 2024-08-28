@@ -1,7 +1,7 @@
 data:extend{{
     type = 'technology',
     name = 'h2o-torpedoes',
-    icon = '__dihydrogen-monoxide__/graphics/technology/torpedoes.png',
+    icon = '__maraxsis__/graphics/technology/torpedoes.png',
     icon_size = 256,
     icon_mipmaps = nil,
     effects = {
@@ -41,7 +41,7 @@ data:extend{{
 
 local torpedo = table.deepcopy(data.raw['ammo']['rocket'])
 torpedo.name = 'h2o-torpedo'
-torpedo.icon = '__dihydrogen-monoxide__/graphics/icons/torpedo.png'
+torpedo.icon = '__maraxsis__/graphics/icons/torpedo.png'
 torpedo.icon_size = 64
 torpedo.icon_mipmaps = nil
 torpedo.ammo_type.category = 'h2o-torpedoes'
@@ -49,7 +49,7 @@ data:extend{torpedo}
 
 local explosive_torpedo = table.deepcopy(data.raw['ammo']['explosive-rocket'])
 explosive_torpedo.name = 'h2o-explosive-torpedo'
-explosive_torpedo.icon = '__dihydrogen-monoxide__/graphics/icons/explosive-torpedo.png'
+explosive_torpedo.icon = '__maraxsis__/graphics/icons/explosive-torpedo.png'
 explosive_torpedo.icon_size = 64
 explosive_torpedo.icon_mipmaps = nil
 explosive_torpedo.ammo_type.category = 'h2o-torpedoes'
@@ -57,7 +57,7 @@ data:extend{explosive_torpedo}
 
 local atomic_torpedo = table.deepcopy(data.raw['ammo']['atomic-bomb'])
 atomic_torpedo.name = 'h2o-atomic-torpedo'
-atomic_torpedo.icon = '__dihydrogen-monoxide__/graphics/icons/atomic-torpedo.png'
+atomic_torpedo.icon = '__maraxsis__/graphics/icons/atomic-torpedo.png'
 atomic_torpedo.icon_size = 64
 atomic_torpedo.icon_mipmaps = nil
 atomic_torpedo.ammo_type.category = 'h2o-torpedoes'

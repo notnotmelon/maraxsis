@@ -1,4 +1,4 @@
--- Adds helper functions for data stage. Shared across all pymods and adapted for use in dihydrogen monoxide
+-- Adds helper functions for data stage. Shared across all pymods and adapted for use in maraxsis
 
 ---Returns a 1x1 empty image.
 ---@return table

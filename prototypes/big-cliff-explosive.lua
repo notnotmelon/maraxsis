@@ -1,7 +1,7 @@
 data:extend {{
     type = 'technology',
     name = 'h2o-depth-charges',
-    icon = '__dihydrogen-monoxide__/graphics/technology/depth-charges.png',
+    icon = '__maraxsis__/graphics/technology/depth-charges.png',
     icon_size = 256,
     icon_mipmaps = nil,
     effects = {
@@ -54,7 +54,7 @@ data:extend {{
 data:extend {{
     type = 'capsule',
     name = 'h2o-big-cliff-explosives',
-    icon = '__dihydrogen-monoxide__/graphics/icons/big-cliff-explosives.png',
+    icon = '__maraxsis__/graphics/icons/big-cliff-explosives.png',
     icon_size = 64,
     icon_mipmaps = nil,
     subgroup = data.raw.capsule['cliff-explosives'].subgroup,

@@ -1,7 +1,7 @@
 data:extend{{
     type = 'tool',
     name = 'h2o-hydraulic-science-pack',
-    icon = '__dihydrogen-monoxide__/graphics/icons/hydraulic-science-pack.png',
+    icon = '__maraxsis__/graphics/icons/hydraulic-science-pack.png',
     icon_size = 64,
     icon_mipmaps = nil,
     subgroup = 'science-pack',
@@ -13,7 +13,7 @@ data:extend{{
 data:extend{{
     type = 'technology',
     name = 'h2o-hydraulic-science-pack',
-    icon = '__dihydrogen-monoxide__/graphics/technology/hydraulic-science-pack.png',
+    icon = '__maraxsis__/graphics/technology/hydraulic-science-pack.png',
     icon_size = 256,
     icon_mipmaps = nil,
     effects = {

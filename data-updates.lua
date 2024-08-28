@@ -35,7 +35,7 @@ for _, fluid in pairs(data.raw.fluid) do -- todo: check fluid fuel category
     if not fuel_value or type(fuel_value) ~= 'string' then goto continue end
     local barrel = data.raw.item[fluid.name .. '-barrel']
     if not barrel then goto continue end
-    if barrel.fuel_category then error('Dihydrogen Monoxide encountered a mod incompatibility! Barrel ' .. barrel.name .. ' already has a fuel category. Please report this') end
+    if barrel.fuel_category then error('Maraxsis encountered a mod incompatibility! Barrel ' .. barrel.name .. ' already has a fuel category. Please report this') end
 
     local number_part, unit = fuel_value:match('^(%d+)(.*)')
     number_part = tonumber(number_part)

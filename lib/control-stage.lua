@@ -1,4 +1,4 @@
--- Adds helper functions for control stage. Shared across all pymods & adapted for use in dihydrogen monoxide
+-- Adds helper functions for control stage. Shared across all pymods & adapted for use in maraxsis
 
 local random = math.random
 

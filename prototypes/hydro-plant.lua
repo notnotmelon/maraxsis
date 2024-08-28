@@ -1,4 +1,4 @@
-local path = '__dihydrogen-monoxide__/graphics/entity/hydro-plant/'
+local path = '__maraxsis__/graphics/entity/hydro-plant/'
 
 if not mods['Krastorio2'] then
     function furnacekpipepictures_a()

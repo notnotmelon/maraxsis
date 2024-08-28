@@ -1,12 +1,12 @@
 <div align="center">
-    <a href="https://github.com/notnotmelon/dihydrogen-monoxide">
+    <a href="https://github.com/notnotmelon/maraxsis">
     <picture>
         <source media="(prefers-color-scheme: dark)" srcset="https://github.com/user-attachments/assets/52a312e5-d7ec-4834-a7f1-2fb714c6e957">
         <img alt="Rivets 🔩 - the Factorio mod loader" width="60%" style="max-width: 600px" src=".github/assets/logo-horizontal.png">
     </picture>
     </a>
 
-[![Release](https://github.com/notnotmelon/dihydrogen-monoxide/actions/workflows/release.yml/badge.svg?branch=main)](https://github.com/notnotmelon/dihydrogen-monoxide/actions/workflows/release.yml) [![Discord](https://img.shields.io/discord/1260754935952314418?color=lightblue&label=Community%20Chat&logo=Discord&logoColor=aqua)](https://discord.gg/xRYEZYz5WR) [![Bug reports](https://img.shields.io/github/issues/notnotmelon/dihydrogen-monoxide?label=Bug%20Reports)](https://github.com/notnotmelon/dihydrogen-monoxide/issues) [![factorio.com](https://img.shields.io/badge/dynamic/json?color=orange&label=Factorio&query=downloads_count&suffix=%20downloads&url=https%3A%2F%2Fmods.factorio.com%2Fapi%2Fmods%2Fdihydrogen-monoxide)](https://mods.factorio.com/mod/dihydrogen-monoxide)
+[![Release](https://github.com/notnotmelon/maraxsis/actions/workflows/release.yml/badge.svg?branch=main)](https://github.com/notnotmelon/maraxsis/actions/workflows/release.yml) [![Discord](https://img.shields.io/discord/1260754935952314418?color=lightblue&label=Community%20Chat&logo=Discord&logoColor=aqua)](https://discord.gg/xRYEZYz5WR) [![Bug reports](https://img.shields.io/github/issues/notnotmelon/maraxsis?label=Bug%20Reports)](https://github.com/notnotmelon/maraxsis/issues) [![factorio.com](https://img.shields.io/badge/dynamic/json?color=orange&label=Factorio&query=downloads_count&suffix=%20downloads&url=https%3A%2F%2Fmods.factorio.com%2Fapi%2Fmods%2Fmaraxsis)](https://mods.factorio.com/mod/maraxsis)
 
 </div>
 

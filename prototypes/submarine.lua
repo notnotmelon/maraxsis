@@ -1,7 +1,7 @@
 data:extend {{
     type = 'technology',
     name = 'h2o-nuclear-submarine',
-    icon = '__dihydrogen-monoxide__/graphics/technology/nuclear-submarine.png',
+    icon = '__maraxsis__/graphics/technology/nuclear-submarine.png',
     icon_size = 256,
     icon_mipmaps = nil,
     effects = {
@@ -89,7 +89,7 @@ local recipes = {
 
 for i = 1, 2 do
     local name = i == 1 and 'h2o-diesel-submarine' or 'h2o-nuclear-submarine'
-    local icon = '__dihydrogen-monoxide__/graphics/icons/' .. (i == 1 and 'diesel' or 'nuclear') .. '-submarine.png'
+    local icon = '__maraxsis__/graphics/icons/' .. (i == 1 and 'diesel' or 'nuclear') .. '-submarine.png'
 
     local item = {
         type = 'item',
@@ -134,7 +134,7 @@ for i = 1, 2 do
         ['lines_per_file'] = 36,
         shift = {x = 8 / 32, y = 15.5 / 32},
         scale = 1,
-        filename = '__dihydrogen-monoxide__/graphics/entity/submarine/mask.png',
+        filename = '__maraxsis__/graphics/entity/submarine/mask.png',
         height = 225,
         width = 240,
         apply_runtime_tint = true,
@@ -148,7 +148,7 @@ for i = 1, 2 do
         frame_count = 2,
         shift = {x = 0 / 32, y = 0 / 32},
         scale = 1,
-        filename = '__dihydrogen-monoxide__/graphics/entity/submarine/full-body.png',
+        filename = '__maraxsis__/graphics/entity/submarine/full-body.png',
         height = 212,
         width = 250,
     }
@@ -161,7 +161,7 @@ for i = 1, 2 do
         repeat_count = 2,
         draw_as_shadow = true,
         scale = 1,
-        filename = '__dihydrogen-monoxide__/graphics/entity/submarine/shadow.png',
+        filename = '__maraxsis__/graphics/entity/submarine/shadow.png',
         height = 256,
         width = 256,
         shift = {x = 6, y = 45.5 / 32 + 6},
@@ -174,13 +174,13 @@ for i = 1, 2 do
         direction = (direction - 17) % 64 + 1
         if direction >= 34 and direction <= 64 then
             table.insert(lamp_layer.stripes, {
-                filename = '__dihydrogen-monoxide__/graphics/empty.png',
+                filename = '__maraxsis__/graphics/empty.png',
                 width_in_frames = 1,
                 height_in_frames = 1,
             })
         else
             table.insert(lamp_layer.stripes, {
-                filename = '__dihydrogen-monoxide__/graphics/entity/submarine/light.png',
+                filename = '__maraxsis__/graphics/entity/submarine/light.png',
                 width_in_frames = 1,
                 height_in_frames = 1,
                 x = lamp_x * 248,
@@ -225,7 +225,7 @@ for i = 1, 2 do
     entity.tank_driving = true
     entity.collision_mask = collision_mask
     entity.minimap_representation = {
-        filename = '__dihydrogen-monoxide__/graphics/entity/submarine/submarine-map-tag.png',
+        filename = '__maraxsis__/graphics/entity/submarine/submarine-map-tag.png',
         flags = {'icon'},
         tint = h2o.tints[i],
         size = {64, 64}

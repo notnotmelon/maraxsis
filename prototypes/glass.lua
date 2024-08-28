@@ -1,7 +1,7 @@
 data:extend {{
     type = 'technology',
     name = 'h2o-glassworking',
-    icon = '__dihydrogen-monoxide__/graphics/technology/glassworking.png',
+    icon = '__maraxsis__/graphics/technology/glassworking.png',
     icon_size = 256,
     icon_mipmaps = nil,
     effects = {
@@ -32,7 +32,7 @@ data:extend {{
 local limestone_variants = {}
 for i = 1, 3 do
     limestone_variants[i] = {
-        filename = '__dihydrogen-monoxide__/graphics/icons/limestone-' .. i .. '.png',
+        filename = '__maraxsis__/graphics/icons/limestone-' .. i .. '.png',
         width = 64,
         height = 64,
         scale = 1 / 3,
@@ -43,7 +43,7 @@ end
 data:extend {{
     type = 'item',
     name = 'limestone',
-    icon = '__dihydrogen-monoxide__/graphics/icons/limestone-1.png',
+    icon = '__maraxsis__/graphics/icons/limestone-1.png',
     icon_size = 64,
     icon_mipmaps = nil,
     pictures = limestone_variants,
@@ -70,7 +70,7 @@ data:extend {{
 local glass_variants = {}
 for i = 1, 9 do
     glass_variants[i] = {
-        filename = '__dihydrogen-monoxide__/graphics/icons/glass-panes-' .. i .. '.png',
+        filename = '__maraxsis__/graphics/icons/glass-panes-' .. i .. '.png',
         width = 64,
         height = 64,
         scale = 1 / 3,
@@ -81,7 +81,7 @@ end
 data:extend {{
     type = 'item',
     name = 'h2o-glass-panes',
-    icon = '__dihydrogen-monoxide__/graphics/icons/glass-panes-1.png',
+    icon = '__maraxsis__/graphics/icons/glass-panes-1.png',
     pictures = glass_variants,
     icon_size = 64,
     icon_mipmaps = nil,
@@ -93,7 +93,7 @@ data:extend {{
 local sand_variants = {}
 for i = 1, 3 do
     sand_variants[i] = {
-        filename = '__dihydrogen-monoxide__/graphics/icons/sand-' .. i .. '.png',
+        filename = '__maraxsis__/graphics/icons/sand-' .. i .. '.png',
         width = 64,
         height = 64,
         scale = 1 / 3,
@@ -104,7 +104,7 @@ end
 data:extend {{
     type = 'item',
     name = 'sand',
-    icon = '__dihydrogen-monoxide__/graphics/icons/sand-3.png',
+    icon = '__maraxsis__/graphics/icons/sand-3.png',
     pictures = sand_variants,
     icon_size = 64,
     icon_mipmaps = nil,

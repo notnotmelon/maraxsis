@@ -8,7 +8,7 @@ end
 data:extend {{
     type = 'technology',
     name = 'h2o-water-treatment',
-    icon = '__dihydrogen-monoxide__/graphics/technology/water-treatment.png',
+    icon = '__maraxsis__/graphics/technology/water-treatment.png',
     icon_size = 256,
     icon_mipmaps = nil,
     effects = {},
@@ -34,7 +34,7 @@ data:extend {{
 data:extend {{
     type = 'fluid',
     name = 'saline-water',
-    icon = '__dihydrogen-monoxide__/graphics/icons/saline-water.png',
+    icon = '__maraxsis__/graphics/icons/saline-water.png',
     icon_size = 64,
     icon_mipmaps = 4,
     default_temperature = data.raw.fluid['water'].default_temperature,
@@ -51,7 +51,7 @@ data:extend {{
 data:extend {{
     type = 'fluid',
     name = 'brackish-water',
-    icon = '__dihydrogen-monoxide__/graphics/icons/brackish-water.png',
+    icon = '__maraxsis__/graphics/icons/brackish-water.png',
     icon_size = 64,
     icon_mipmaps = 4,
     default_temperature = data.raw.fluid['water'].default_temperature,
@@ -68,7 +68,7 @@ data:extend {{
 data:extend {{
     type = 'fluid',
     name = 'oxygen',
-    icon = '__dihydrogen-monoxide__/graphics/icons/oxygen.png',
+    icon = '__maraxsis__/graphics/icons/oxygen.png',
     icon_size = 64,
     icon_mipmaps = 4,
     default_temperature = data.raw.fluid['water'].default_temperature,
@@ -85,7 +85,7 @@ data:extend {{
 data:extend {{
     type = 'fluid',
     name = 'chlorine',
-    icon = '__dihydrogen-monoxide__/graphics/icons/chlorine.png',
+    icon = '__maraxsis__/graphics/icons/chlorine.png',
     icon_size = 64,
     icon_mipmaps = 4,
     default_temperature = data.raw.fluid['water'].default_temperature,
@@ -102,7 +102,7 @@ data:extend {{
 data:extend {{
     type = 'fluid',
     name = 'hydrogen',
-    icon = '__dihydrogen-monoxide__/graphics/icons/hydrogen.png',
+    icon = '__maraxsis__/graphics/icons/hydrogen.png',
     icon_size = 64,
     icon_mipmaps = 4,
     default_temperature = data.raw.fluid['water'].default_temperature,
@@ -130,7 +130,7 @@ data:extend {{
         {type = 'fluid', name = 'hydrogen', amount = 200},
     },
     category = 'h2o-hydro-plant',
-    icon = '__dihydrogen-monoxide__/graphics/icons/saline-electrolysis.png',
+    icon = '__maraxsis__/graphics/icons/saline-electrolysis.png',
     icon_size = 128,
     icon_mipmaps = nil,
     subgroup = 'fluid-recipes',
@@ -158,7 +158,7 @@ add_to_tech('h2o-water')
 data:extend {{
     type = 'item',
     name = 'h2o-saturated-salt-filter',
-    icon = '__dihydrogen-monoxide__/graphics/icons/saturated-salt-filter.png',
+    icon = '__maraxsis__/graphics/icons/saturated-salt-filter.png',
     icon_size = 64,
     icon_mipmaps = nil,
     subgroup = 'h2o-maraxsis',
@@ -187,7 +187,7 @@ add_to_tech('h2o-brackish-water-filtration')
 data:extend {{
     type = 'item',
     name = 'h2o-salt-filter',
-    icon = '__dihydrogen-monoxide__/graphics/icons/salt-filter.png',
+    icon = '__maraxsis__/graphics/icons/salt-filter.png',
     icon_size = 64,
     icon_mipmaps = nil,
     subgroup = 'h2o-maraxsis',

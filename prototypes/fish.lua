@@ -28,7 +28,7 @@ for _, color in pairs(map_colors) do
 end
 
 for i, v in pairs(fish) do
-    v.filename = '__dihydrogen-monoxide__/graphics/entity/fish/' .. i .. '.png'
+    v.filename = '__maraxsis__/graphics/entity/fish/' .. i .. '.png'
     v.direction_count = 32
     v.frame_count = 10
     v.animation_speed = 0.4
@@ -48,7 +48,7 @@ for i, v in pairs(fish) do
         type = 'unit',
         name = 'h2o-tropical-fish-' .. i,
         render_layer = 'higher-object-under',
-        icon = '__dihydrogen-monoxide__/graphics/entity/fish/icons/' .. i .. '.png',
+        icon = '__maraxsis__/graphics/entity/fish/icons/' .. i .. '.png',
         icon_size = 64,
         icon_mipmaps = nil,
         flags = {'placeable-neutral', 'placeable-off-grid', 'not-repairable', 'breaths-air'},
@@ -111,7 +111,7 @@ end
 data:extend{{
     type = 'technology',
     name = 'h2o-piscary',
-    icon = '__dihydrogen-monoxide__/graphics/technology/piscary.png',
+    icon = '__maraxsis__/graphics/technology/piscary.png',
     icon_size = 256,
     icon_mipmaps = nil,
     effects = {},
@@ -141,7 +141,7 @@ end
 local microplastics_variants = {}
 for i = 1, 3 do
     microplastics_variants[i] = {
-        filename = '__dihydrogen-monoxide__/graphics/icons/microplastics-' .. i .. '.png',
+        filename = '__maraxsis__/graphics/icons/microplastics-' .. i .. '.png',
         width = 64,
         height = 64,
         scale = 1 / 3,
@@ -155,7 +155,7 @@ end
 data:extend{{
     type = 'item',
     name = 'h2o-microplastics',
-    icon = '__dihydrogen-monoxide__/graphics/icons/microplastics-1.png',
+    icon = '__maraxsis__/graphics/icons/microplastics-1.png',
     icon_size = 64,
     icon_mipmaps = 4,
     pictures = microplastics_variants,
@@ -202,7 +202,7 @@ add_to_tech('h2o-smelt-microplastics')
 local tropical_fish_variants = {}
 for i, v in pairs(fish) do
     tropical_fish_variants[tonumber(i)] = {
-        filename = '__dihydrogen-monoxide__/graphics/entity/fish/icons/' .. i .. '.png',
+        filename = '__maraxsis__/graphics/entity/fish/icons/' .. i .. '.png',
         width = 64,
         height = 64,
         scale = 1 / 3,
@@ -212,7 +212,7 @@ end
 data:extend{{
     type = 'capsule',
     name = 'h2o-tropical-fish',
-    icon = '__dihydrogen-monoxide__/graphics/icons/tropical-fish.png',
+    icon = '__maraxsis__/graphics/icons/tropical-fish.png',
     icon_size = 64,
     icon_mipmaps = nil,
     pictures = tropical_fish_variants,

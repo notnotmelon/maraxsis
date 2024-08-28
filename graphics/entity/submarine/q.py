@@ -1,7 +1,7 @@
 import os
 
 suffixes = ['shadow', 'body', 'full-body', 'mask', 'light']
-directory = '''C:/Users/zacha/Documents/factorio/mods/dihydrogen-monoxide/graphics/entity/submarine/''' + suffixes[1] + '/'
+directory = '''C:/Users/zacha/Documents/factorio/mods/maraxsis/graphics/entity/submarine/''' + suffixes[1] + '/'
 
 for filename in os.listdir(directory):
     if filename.endswith('.png'):

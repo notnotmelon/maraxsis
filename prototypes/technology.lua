@@ -1,7 +1,7 @@
 data:extend {{
     type = 'technology',
     name = 'h2o-maraxsis',
-    icon = '__dihydrogen-monoxide__/graphics/technology/maraxsis.png',
+    icon = '__maraxsis__/graphics/technology/maraxsis.png',
     icon_size = 256,
     icon_mipmaps = nil,
     effects = {

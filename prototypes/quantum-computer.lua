@@ -1,4 +1,4 @@
-local path = '__dihydrogen-monoxide__/graphics/entity/quantum-computer/'
+local path = '__maraxsis__/graphics/entity/quantum-computer/'
 
 local hit_effects = require('__base__/prototypes/entity/hit-effects')
 local sounds = require('__base__/prototypes/entity/sounds')

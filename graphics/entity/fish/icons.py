@@ -1,7 +1,7 @@
 import os
 from PIL import Image
 
-directory = 'C://Users/zacha/Documents/factorio/mods/dihydrogen-monoxide/graphics/entity/fish/'
+directory = 'C://Users/zacha/Documents/factorio/mods/maraxsis/graphics/entity/fish/'
 line_length = 16
 
 

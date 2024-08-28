@@ -1,7 +1,7 @@
 data:extend {{
     type = 'technology',
     name = 'h2o-wyrm-confinement',
-    icon = '__dihydrogen-monoxide__/graphics/technology/wyrm-confinement.png',
+    icon = '__maraxsis__/graphics/technology/wyrm-confinement.png',
     icon_size = 256,
     icon_mipmaps = nil,
     effects = {
@@ -37,7 +37,7 @@ data:extend {{
 data:extend {{
     type = 'item',
     name = 'h2o-wyrm-confinement-cell',
-    icon = '__dihydrogen-monoxide__/graphics/icons/wyrm-confinement-cell.png',
+    icon = '__maraxsis__/graphics/icons/wyrm-confinement-cell.png',
     icon_size = 64,
     icon_mipmaps = nil,
     subgroup = 'h2o-maraxsis',
@@ -48,7 +48,7 @@ data:extend {{
 local wyrm_variants = {}
 for i = 1, 4 do
     wyrm_variants[i] = {
-        filename = '__dihydrogen-monoxide__/graphics/icons/wyrm-specimen-' .. i .. '.png',
+        filename = '__maraxsis__/graphics/icons/wyrm-specimen-' .. i .. '.png',
         width = 64,
         height = 64,
         scale = 1 / 3,
@@ -59,7 +59,7 @@ end
 data:extend {{
     type = 'item',
     name = 'h2o-wyrm-specimen',
-    icon = '__dihydrogen-monoxide__/graphics/icons/wyrm-specimen-2.png',
+    icon = '__maraxsis__/graphics/icons/wyrm-specimen-2.png',
     pictures = wyrm_variants,
     icon_size = 64,
     icon_mipmaps = nil,

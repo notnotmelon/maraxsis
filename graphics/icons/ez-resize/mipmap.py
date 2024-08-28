@@ -64,6 +64,6 @@ red = [
 
 colors = [blue, green, red]
 
-input_path = "C:/Users/zacha/Documents/factorio/mods/dihydrogen-monoxide/graphics/icons/ez-resize/"
-output_dir = "C:/Users/zacha/Documents/factorio/mods/dihydrogen-monoxide/graphics/icons/"
+input_path = "C:/Users/zacha/Documents/factorio/mods/maraxsis/graphics/icons/ez-resize/"
+output_dir = "C:/Users/zacha/Documents/factorio/mods/maraxsis/graphics/icons/"
 generate_mipmaps(input_path, output_dir, colors)
