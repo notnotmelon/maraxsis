@@ -9,6 +9,17 @@ local BIT_ORDER = {
     ['h2o-strange-coral'] = 16,
     ['h2o-charm-coral'] = 32,
 }
+local TOTAL_BITS = table_size(BIT_ORDER)
+
+local function calculate_matching_bits(secret, experiment)
+    local matching_bits = 0
+    for _, bit_value in pairs(BIT_ORDER) do
+        if bit32.band(bit_value, secret) == bit32.band(bit_value, experiment) then
+            matching_bits = matching_bits + 1
+        end
+    end
+    return matching_bits
+end
 
 h2o.on_event('on_init', function()
     global.quantum_computers = global.quantum_computers or {}
@@ -22,7 +33,7 @@ h2o.on_event('on_init', function()
 end)
 
 local function generate_new_secret()
-    return math.random(1, 64)
+    return math.random(1, 63)
 end
 
 local function get_smallest_bucket_index()
@@ -48,7 +59,7 @@ h2o.on_event('on_built', function(event)
     local quantum_computer_data = {
         entity = entity,
         unit_number = entity.unit_number,
-        previous_experiment = 0,
+        previous_experiment = nil,
         secret = generate_new_secret()
     }
 
@@ -57,18 +68,75 @@ h2o.on_event('on_built', function(event)
     table.insert(global.quantum_computers_by_tick[bucket_index], quantum_computer_data)
 end)
 
+local HEART_OF_THE_SEA = 'h2o-heart-of-the-sea'
+local LIMESTONE = 'limestone'
+local DOWN_CORAL = 'h2o-down-coral'
+local UP_CORAL = 'h2o-up-coral'
+
+local function do_experiement(quantum_computer_data, current_experiment)
+    local secret = quantum_computer_data.secret
+    local current_matching_bits = calculate_matching_bits(secret, current_experiment)
+
+    if current_matching_bits == TOTAL_BITS then
+        quantum_computer_data.previous_experiment = nil
+        quantum_computer_data.previous_matching_bits = nil
+        quantum_computer_data.secret = generate_new_secret()
+        return HEART_OF_THE_SEA
+    end
+
+    local previous_experiment = quantum_computer_data.previous_experiment
+    local previous_matching_bits = quantum_computer_data.previous_matching_bits
+    quantum_computer_data.previous_experiment = current_experiment
+    quantum_computer_data.previous_matching_bits = current_matching_bits
+
+    if not previous_experiment then
+        return LIMESTONE
+    end
+
+    if not previous_matching_bits then
+        previous_matching_bits = calculate_matching_bits(secret, previous_experiment)
+    end
+
+    if current_matching_bits > previous_matching_bits then
+        return UP_CORAL
+    elseif current_matching_bits < previous_matching_bits then
+        return DOWN_CORAL
+    else
+        return LIMESTONE
+    end
+end
+
 --- invariant: quantum_computer_data.entity.valid
 local function update_quantum_computer(quantum_computer_data)
     local entity = quantum_computer_data.entity
-    local previous_experiment = quantum_computerata.previous_experiment
-    local secret = quantum_computer_data.secret
 
     local fluidbox = entity.fluidbox[1]
     if not fluidbox then return end
-    if fluidbox.amount < 49.999 then return end
-    
-    local input = entity.get_inventory(defines.inventory.assembling_machine_input)
+    if fluidbox.amount < 99.999 then return end
+
     local output = entity.get_inventory(defines.inventory.assembling_machine_output)
+    if not output.is_empty() then return end
+    local input = entity.get_inventory(defines.inventory.assembling_machine_input)
+    if input.is_empty() then return end
+
+    game.print('has input')
+
+    local contents = input.get_contents()
+    local experiment = 0
+    for coral, bit_value in pairs(BIT_ORDER) do
+        if contents[coral] then
+            experiment = experiment + bit_value
+        end
+    end
+
+    game.print('bits: ' .. experiment)
+
+    local result = do_experiement(quantum_computer_data, experiment)
+    output.insert {name = result, count = 1}
+
+    for item in pairs(contents) do
+        input.remove {name = item, count = 1}
+    end
 end
 
 h2o.on_nth_tick(UPDATE_RATE, function()

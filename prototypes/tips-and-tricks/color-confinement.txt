@@ -9,10 +9,10 @@ There are 6 quarkals:
     - [item=h2o-charm-coral]
 
 Each of these are combined in the [entity=h2o-quantum-computer].
-There are 2^6-1 = 63 diffrent possible combinations.
+There are 2^6-1 = 62 diffrent possible combinations.
 
 The correct combination is randomized and unknown. It must be determined by an experiment.
-To preform an experiment, add your quarkals to the [entity=h2o-quantum-computer] and provide 50 [fluid=brackish-water] to catalyze it.
+To preform an experiment, add your quarkals to the [entity=h2o-quantum-computer] and provide 100 [fluid=brackish-water] to catalyze it.
 During a correct experiment a [item=h2o-heart-of-the-sea] is created and the secret combination will re-randomize.
 
 The correct combination can be represented as a binary number where each quarkal is a bit.
@@ -31,5 +31,5 @@ A failed experiment will generate some data about this hidden bit representation
     You have matched the same amount of bits as the previous experiment.
     Limestone is always returned during the first experiment.
 
-Note that a combination of 000000 is impossible.
+Note that a secret combination of 000000 or 111111 is impossible.
 Multiple [entity=h2o-quantum-computer] will have separate and unrelated correct combinations.

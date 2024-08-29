@@ -15,7 +15,7 @@ local water_placeable_blacklist = {
     'container', -- haha
     'curved-rail',
     'electric-energy-interface',
-    'electric-pole',
+    --'electric-pole', todo: uncomment this when fiber optic is finished
     'electric-turret',
     'fire',
     'fluid-turret',
@@ -49,6 +49,13 @@ local special_exceptions = {
     'h2o-submarine-leg',
     'h2o-diesel-submarine',
     'h2o-nuclear-submarine',
+    'ee-infinity-accumulator-primary-output',
+    'ee-infinity-accumulator-secondary-output',
+    'ee-infinity-accumulator-tertiary-output',
+    'ee-infinity-accumulator-primary-input',
+    'ee-infinity-accumulator-secondary-input',
+    'ee-infinity-accumulator-tertiary-input',
+    'ee-infinity-accumulator-tertiary-buffer',
 }
 do
     local temp = {}

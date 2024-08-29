@@ -1,9 +1,10 @@
 local tech_tree_screenshot_mode = false
 if tech_tree_screenshot_mode then
     for _, t in pairs(data.raw.technology) do
-    t.enabled = false
-    if t.normal then t.normal.enabled = false end
-    if t.expensive then t.expensive.enabled = false end
+        t.enabled = false
+        if t.normal then t.normal.enabled = false end
+        if t.expensive then t.expensive.enabled = false end
+    end
 end
 
 require 'lib.lib'
