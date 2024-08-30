@@ -119,8 +119,6 @@ local function update_quantum_computer(quantum_computer_data)
     local input = entity.get_inventory(defines.inventory.assembling_machine_input)
     if input.is_empty() then return end
 
-    game.print('has input')
-
     local contents = input.get_contents()
     local experiment = 0
     for coral, bit_value in pairs(BIT_ORDER) do
@@ -129,13 +127,14 @@ local function update_quantum_computer(quantum_computer_data)
         end
     end
 
-    game.print('bits: ' .. experiment)
-
     local result = do_experiement(quantum_computer_data, experiment)
+    local flow = entity.force.item_production_statistics
     output.insert {name = result, count = 1}
+    flow.on_flow(result, 1)
 
     for item in pairs(contents) do
         input.remove {name = item, count = 1}
+        flow.on_flow(item, -1)
     end
 end
 

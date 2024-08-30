@@ -82,17 +82,18 @@ data:extend {{
         {type = 'item', name = 'h2o-bottom-coral',  amount = 1},
         {type = 'item', name = 'h2o-strange-coral', amount = 1},
         {type = 'item', name = 'h2o-charm-coral',   amount = 1},
-        {type = 'fluid', name = 'brackish-water',   amount = 50},
+        {type = 'fluid', name = 'brackish-water',   amount = 100},
     },
     results = {
-        {type = 'item', name = 'h2o-heart-of-the-sea', amount = 1},
-        {type = 'item', name = 'h2o-up-coral',         amount = 1},
-        {type = 'item', name = 'h2o-down-coral',       amount = 1},
-        {type = 'item', name = 'limestone',            amount = 1},
+        {type = 'item', name = 'h2o-heart-of-the-sea', amount_min = 0, amount_max = 1},
+        {type = 'item', name = 'h2o-up-coral',         amount_min = 0, amount_max = 1},
+        {type = 'item', name = 'h2o-down-coral',       amount_min = 0, amount_max = 1},
+        {type = 'item', name = 'limestone',            amount_min = 0, amount_max = 1},
     },
     enabled = false,
     order = 'a',
     main_product = 'h2o-heart-of-the-sea',
+    requester_paste_multiplier = 1
 }}
 
 data:extend {{

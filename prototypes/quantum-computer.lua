@@ -150,14 +150,6 @@ data:extend {{
         always_draw = true,
         animation = animation,
     }},
-    light = {
-        {
-            intensity = 0.95,
-            size = 5,
-            shift = {0.0, -0.6},
-            color = {r = 0, g = 0.917, b = 1},
-        },
-    },
     fluid_boxes = {
         {
             production_type = 'input',
