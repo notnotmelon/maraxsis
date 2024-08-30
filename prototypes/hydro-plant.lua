@@ -434,7 +434,7 @@ if not mods['Krastorio2'] then
             frame_count = 1,
             direction_count = 1,
             hr_version = {
-                filename = path .. 'big-random-pipes-remnant.png',
+                filename = path .. 'hr-big-random-pipes-remnant.png',
                 line_length = 1,
                 width = 500,
                 height = 500,

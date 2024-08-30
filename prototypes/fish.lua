@@ -18,7 +18,7 @@ local map_colors = table.deepcopy{
     defines.color.darkcyan
 }
 
-local color_budget = 200
+local color_budget = 255
 for _, color in pairs(map_colors) do
     local sum = color.r + color.g + color.b
     color.r = color.r / sum * color_budget
@@ -53,7 +53,7 @@ for i, v in pairs(fish) do
         icon_mipmaps = nil,
         flags = {'placeable-neutral', 'placeable-off-grid', 'not-repairable', 'breaths-air'},
         max_health = data.raw.fish['fish'].max_health,
-        map_color = h2o.color_combine(map_colors[tonumber(i)], data.raw.tile['deepwater'].map_color, 0.5),
+        map_color = map_colors[tonumber(i)],
         order = 'b-b-a',
         subgroup = 'creatures',
         healing_per_tick = data.raw.fish['fish'].healing_per_tick,

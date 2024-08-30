@@ -14,7 +14,7 @@ local SPAWN_AREA = SPAWN_AREA
 local SPAWN_AREA_4 = SPAWN_AREA + 4
 
 function h2o.elevation_bonus(distance_from_0_0)
-	return (1 - distance_from_0_0 / SPAWN_AREA) ^ 0.75
+	return (1 - distance_from_0_0 / SPAWN_AREA)
 end
 
 local function elevation(surface, x, y)
