@@ -22,7 +22,6 @@ local water_placeable_blacklist = {
     'fluid-wagon',
     'furnace',
     'generator',
-    'lab',
     'linked-container',
     'locomotive',
     'logistic-container',
@@ -31,14 +30,14 @@ local water_placeable_blacklist = {
     'reactor',
     'roboport',
     'rocket-silo',
-    'solar-panel',
     'spider-leg',
     'spider-vehicle',
     'straight-rail',
     'tree',
     'turret',
     'unit',
-    'unit-spawner'
+    'unit-spawner',
+    'power-switch',
 }
 
 local special_exceptions = {
