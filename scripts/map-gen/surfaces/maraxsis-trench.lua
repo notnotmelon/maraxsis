@@ -1,4 +1,8 @@
 local random = math.random
+local min = math.min
+local max = math.max
+local abs = math.abs
+local sqrt = math.sqrt
 
 ---draws fancy water shaders in an area
 ---@param surface LuaSurface
@@ -18,11 +22,21 @@ local function generate_fancy_water(surface, noise, chunkpos)
 	fancy_water.minable = false
 end
 
+local SPAWN_AREA = SPAWN_AREA
+local TRENCH_MOVEMENT_FACTOR = 2
+
 local function generate_terrain(surface, noise, x, y)
 	local position = {x, y}
 	local tile, decorative
 
-	local moisture = math.abs(noise.moisture + noise.moisture_octave_1 / 4 + noise.moisture_octave_2 / 32)
+	local moisture = abs(noise.moisture + noise.moisture_octave_1 / 4 + noise.moisture_octave_2 / 32)
+
+	local distance_from_0_0 = sqrt(x * x + y * y) / TRENCH_MOVEMENT_FACTOR
+	if distance_from_0_0 < SPAWN_AREA then
+		moisture = moisture + h2o.elevation_bonus(distance_from_0_0)
+	else
+		moisture = min(1, moisture)
+	end
 
 	if 0.065 < moisture and moisture < 0.077 then
 		if x % 3 == 0 and y % 3 == 0 then
@@ -46,7 +60,7 @@ local function generate_terrain(surface, noise, x, y)
 	end
 
 	if noise.lava_master_master > -0.3 then
-		local lava_thickness = math.abs(noise.lava_master) * (moisture / 2) ^ 0.3 * 1.3
+		local lava_thickness = abs(noise.lava_master) * (moisture / 2) ^ 0.3 * 1.3
 		if noise.lava_master_master < 0 then lava_thickness = lava_thickness * (0.3 + noise.lava_master_master) / 0.3 end
 
 		if lava_thickness > 0.15 then
@@ -62,19 +76,7 @@ local function generate_terrain(surface, noise, x, y)
 					end
 				end
 			end
-
-			local sum = math.max(0, noise.lava_river_1) + math.max(0, noise.lava_river_2) + math.max(0, noise.lava_river_3)
-			if -lava_thickness - 0.05 > sum or sum > lava_thickness + 0.05 and surface.count_entities_filtered {name = {'geothermal-crack-infinite', 'volcanic-pipe-infinite', 'phosphate-rock-02-infinite', 'sulfur-patch-infinite'}, area = {{x - 12, y - 12}, {x + 12, y + 12}}, limit = 1} == 0 then
-				--h2o.create_resource(self, x, y, random() > 0.1 and self.prototype.resources.geothermal or self.prototype.resources.skeleton, 1)
-			end
 		end
-	else
-		--[[local primary = noise.primary_resource_octave_1 + noise.primary_resource_octave_2 / 2 + noise.primary_resource_octave_3 / 2
-		if primary > 0.95 then
-			h2o.create_resource(self, x, y, self.prototype.resources.primary, (primary - 0.9) / 0.1)
-		elseif primary < 0.8 and noise.bitumen > 0.8 and random() > 0.993 and surface.count_entities_filtered {name = 'bitumen-seep', area = {{x - 12, y - 12}, {x + 12, y + 12}}, limit = 1} == 0 then
-			h2o.create_resource(self, x, y, self.prototype.resources.bitumen, 1)
-		end--]]
 	end
 
 	if not decorative then
@@ -92,12 +94,10 @@ local function generate_terrain(surface, noise, x, y)
 	return tile, decorative
 end
 
-local trench_movement_factor = 2
-
 local noise_layers = {
-	moisture = {zoom = 1300 * trench_movement_factor, from_parent = true},
-	moisture_octave_1 = {zoom = 256 * trench_movement_factor, from_parent = true},
-	moisture_octave_2 = {zoom = 32 * trench_movement_factor, from_parent = true},
+	moisture = {zoom = 1300 * TRENCH_MOVEMENT_FACTOR, from_parent = true},
+	moisture_octave_1 = {zoom = 256 * TRENCH_MOVEMENT_FACTOR, from_parent = true},
+	moisture_octave_2 = {zoom = 32 * TRENCH_MOVEMENT_FACTOR, from_parent = true},
 	lava_master_master = {zoom = 500},
 	lava_master = {zoom = 256},
 	lava_river_1 = {zoom = 40},

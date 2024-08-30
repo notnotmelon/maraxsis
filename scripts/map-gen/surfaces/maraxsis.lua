@@ -1,13 +1,30 @@
 local random = math.random
+local min = math.min
+local abs = math.abs
+local sqrt = math.sqrt
+local floor = math.floor
 
 local function perlin(surface, x, y, layer_name)
 	local properties = surface.calculate_tile_properties({layer_name}, {{x, y}})
 	return properties[layer_name][1] or error('Noise layer ' .. layer_name .. ' is not defined for planet: ' .. tostring(self))
 end
 
+SPAWN_AREA = 1000
+local SPAWN_AREA = SPAWN_AREA
+local SPAWN_AREA_4 = SPAWN_AREA + 4
+
+function h2o.elevation_bonus(distance_from_0_0)
+	return (1 - distance_from_0_0 / SPAWN_AREA) ^ 0.5
+end
+
 local function elevation(surface, x, y)
-	local moisture = perlin(surface, x, y, 'moisture') + perlin(surface, x, y, 'moisture_octave_1') / 4
-	return math.abs(moisture)
+	local moisture = abs(perlin(surface, x, y, 'moisture') + perlin(surface, x, y, 'moisture_octave_1') / 4)
+
+	local distance_from_0_0 = sqrt(x * x + y * y)
+	if distance_from_0_0 < SPAWN_AREA then
+		return moisture + h2o.elevation_bonus(distance_from_0_0)
+	end
+	return min(1, moisture)
 end
 
 ---returns cliff generation information
@@ -61,23 +78,35 @@ local function generate_terrain(surface, noise, x, y)
 	local position = {x, y}
 	local tile, decorative
 
-	local moisture = noise.moisture + noise.moisture_octave_1 / 4
-	local moisture_land = moisture + noise.moisture_octave_2 / 32
-	
-	local x4, y4 = math.floor(x / 4) * 4, math.floor(y / 4) * 4
-	local trench_moisture = noise:get_at('moisture', x4, y4) + noise:get_at('moisture_octave_1', x4, y4) / 4
+	local moisture = abs(noise.moisture + noise.moisture_octave_1 / 4 + noise.moisture_octave_2 / 32)
 
-	if trench_moisture > -0.07 and trench_moisture < 0.07 then
+	local distance_from_0_0 = sqrt(x * x + y * y)
+	if distance_from_0_0 < SPAWN_AREA then
+		local elevation_bonus = (SPAWN_AREA - min(distance_from_0_0, SPAWN_AREA)) / SPAWN_AREA
+		moisture = moisture + elevation_bonus
+	else
+		moisture = min(1, moisture)
+	end
+	
+	local x4, y4 = floor(x / 4) * 4, floor(y / 4) * 4
+	local trench_moisture = abs(noise:get_at('moisture', x4, y4) + noise:get_at('moisture_octave_1', x4, y4) / 4)
+
+	if distance_from_0_0 < SPAWN_AREA_4 then
+		local distance_from_0_0 = sqrt(x4 * x4 + y4 * y4)
+		trench_moisture = trench_moisture + h2o.elevation_bonus(distance_from_0_0)
+	else
+		trench_moisture = min(1, trench_moisture)
+	end
+
+	if trench_moisture < 0.07 then
 		tile = 'trench-entrance'
 		return tile
 	end
 
-	if moisture_land > 0.87 then
-		tile = 'sand-1-underwater-submarine-exclusion-zone'
-	elseif moisture_land > -0.25 and moisture_land < 0.25 then
-		tile = 'dirt-5-underwater'
-	else
+	if moisture > 0.5 then
 		tile = 'sand-1-underwater'
+	else
+		tile = 'dirt-5-underwater'
 	end
 
 	local rock_noise = noise.rocks + noise.rocks_2 / 4
@@ -184,7 +213,7 @@ local function get_surface()
 	return surface
 end
 
-local cliff_thresholds = {0.07, 0.11, 0.15, 0.2, 0.24, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9}
+local cliff_thresholds = {0.07, 0.11, 0.15, 0.2, 0.24, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.1}
 table.sort(cliff_thresholds)
 
 -- uses game.player, call this from the ingame terminal

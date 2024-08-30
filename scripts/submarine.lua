@@ -1,4 +1,4 @@
-local trench_movement_factor = 2 -- each tile moved in the trench layer = 2 tiles in the surface layer
+local TRENCH_MOVEMENT_FACTOR = 2 -- each tile moved in the trench layer = 2 tiles in the surface layer
 
 local submarines = {
     ['h2o-diesel-submarine'] = true,
@@ -83,14 +83,14 @@ local function determine_submerge_direction(submarine)
     if surface_name == h2o.MARAXSIS_SURFACE_NAME then
         local tile_at_surface = surface.get_tile(position.x, position.y)
         if not tile_at_surface.valid or tile_at_surface.name ~= 'trench-entrance' then return nil end
-        local target_position = {x = position.x * trench_movement_factor, y = position.y * trench_movement_factor}
+        local target_position = {x = position.x * TRENCH_MOVEMENT_FACTOR, y = position.y * TRENCH_MOVEMENT_FACTOR}
         target_surface.request_to_generate_chunks(target_position, 1)
         target_surface.force_generate_chunk_requests()
         target_position = target_surface.find_non_colliding_position(submarine.name, target_position, 40, 0.5, false)
         if not target_position then return nil end
         return target_surface, target_position
     elseif surface_name == h2o.TRENCH_SURFACE_NAME then
-        local target_position = {x = position.x / trench_movement_factor, y = position.y / trench_movement_factor}
+        local target_position = {x = position.x / TRENCH_MOVEMENT_FACTOR, y = position.y / TRENCH_MOVEMENT_FACTOR}
         target_surface.request_to_generate_chunks(target_position, 1)
         target_surface.force_generate_chunk_requests()
         local tile_at_surface = target_surface.get_tile(target_position.x, target_position.y)
