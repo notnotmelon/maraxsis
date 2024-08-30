@@ -21,6 +21,7 @@ local function exit_submarine(event)
     if not safe_position then return end
     player.teleport(safe_position)
 end
+h2o.register_delayed_function('exit_submarine', exit_submarine)
 
 ---when the player presses 'enter' on a submarine, should it succeed?
 ---@param player LuaPlayer
@@ -62,7 +63,9 @@ local function enter_submarine(player, submarine)
     else
         submarine.set_driver(player)
     end
+    global.breath[player.index] = nil
 end
+h2o.register_delayed_function('enter_submarine', enter_submarine)
 
 ---determines if the submarine should rise to the surface or sink to the bottom. returns nil if surface transfer is impossible
 ---@param submarine LuaEntity
@@ -127,12 +130,12 @@ local function decend_or_ascend(submarine)
 
     if passenger then
         passenger.teleport(target_position, target_surface, true)
-        enter_submarine(passenger, submarine)
+        h2o.execute_later('enter_submarine', 1, passenger, submarine)
     end
 
     if driver then
         driver.teleport(target_position, target_surface, true)
-        enter_submarine(driver, submarine)
+        h2o.execute_later('enter_submarine', 1, driver, submarine)
     end
 
     return true
@@ -150,7 +153,7 @@ h2o.on_event('toggle-driving', function(event)
     if submarine and submarines[submarine.name] and selected and selected.valid and selected == submarine then
         if not decend_or_ascend(submarine) then
             if surface.name == h2o.TRENCH_SURFACE_NAME then
-                enter_submarine(player, submarine)
+                h2o.execute_later('enter_submarine', 1, player, submarine)
             end
         end
     -- case 2: player is not hovering the sub but trying to exit.
@@ -158,9 +161,9 @@ h2o.on_event('toggle-driving', function(event)
     elseif submarine and submarines[submarine.name] and not selected_submarine then
         if not decend_or_ascend(submarine) then
             if surface.name == h2o.TRENCH_SURFACE_NAME then
-                enter_submarine(player, submarine)
+                h2o.execute_later('enter_submarine', 1, player, submarine)
             else
-                exit_submarine(event)
+                h2o.execute_later('exit_submarine', 1, event)
             end
         end
     -- case 3: player is hovering the sub and trying to enter. the vanilla vechicle enter range is too low for water vehicles so we artificially increase it

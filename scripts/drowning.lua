@@ -18,7 +18,9 @@ h2o.on_nth_tick(UPDATE_RATE, function()
         local surface = player.surface
         local surface_name = surface.name
 
-        if surface_name ~= h2o.MARAXSIS_SURFACE_NAME and surface_name ~= h2o.TRENCH_SURFACE_NAME then
+        local is_maraxsis = surface_name == h2o.MARAXSIS_SURFACE_NAME
+        local is_trench = surface_name == h2o.TRENCH_SURFACE_NAME
+        if not is_maraxsis and not is_trench then
             goto continue
         end
 
@@ -29,6 +31,8 @@ h2o.on_nth_tick(UPDATE_RATE, function()
         end
 
         local breath = global.breath[player.index] or FULL_BREATH_NUM_TICKS
+        local breath_loss = UPDATE_RATE
+        if is_trench then breath_loss = breath_loss * 4 end
         breath = math.max(0, breath - UPDATE_RATE)
         global.breath[player.index] = breath
 

@@ -520,5 +520,15 @@ h2o.disallow_effectivity = function(recipe_categories)
     end
 end
 
----@diagnostic disable-next-line: duplicate-set-field
-h2o.on_event = function() end
+local delays = {}
+for i = 0, 20 do
+    local n = 2 ^ i
+    delays[#delays + 1] = {
+        name = 'notnotmelon-ticked-script-delay-' .. n,
+        type = 'flying-text',
+        time_to_live = n,
+        speed = 0,
+        localised_name = 'Delayed script execution: ' .. n .. ' ticks'
+    }
+end
+data:extend(delays)

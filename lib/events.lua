@@ -93,3 +93,55 @@ end
 for event, _ in pairs(gui_events) do
 	h2o.on_event(event, process_gui_event)
 end
+
+local delayed_functions = {}
+---use this to execute a script after a delay
+---example:
+---h2o.register_delayed_function('my_delayed_func', function(param1, param2, param3) ... end)
+---h2o.execute_later('my_delayed_func', 60, param1, param2, param3)
+---The above code will execute my_delayed_func after waiting for 60 ticks
+---@param function_key string
+---@param ticks integer
+---@param ... any
+function h2o.execute_later(function_key, ticks, ...)
+	if ticks < 1 or ticks % 1 ~= 0 then error('Invalid delay: ' .. ticks) end
+	local highest = 1
+	for _, n in pairs(powers_of_two) do
+		if n <= ticks then
+			highest = n
+		else
+			break
+		end
+	end
+	local flying_text = game.surfaces.nauvis.create_entity {
+		name = 'notnotmelon-ticked-script-delay-' .. highest,
+		position = {0, 0},
+		create_build_effect_smoke = false,
+		text = ''
+	}
+	if not flying_text then error() end
+	global._delayed_functions = global._delayed_functions or {}
+	global._delayed_functions[script.register_on_entity_destroyed(flying_text)] = {function_key, ticks - highest, {...}}
+end
+
+h2o.on_event(defines.events.on_entity_destroyed, function(event)
+	if not global._delayed_functions then return end
+	local data = global._delayed_functions[event.registration_number]
+	if not data then return end
+	global._delayed_functions[event.registration_number] = nil
+
+	local function_key = data[1]
+	local ticks = data[2]
+
+	if ticks == 0 then
+		local f = delayed_functions[function_key]
+		if not f then error('No function found for key: ' .. function_key) end
+		f(table.unpack(data[3]))
+	else
+		h2o.execute_later(function_key, ticks, table.unpack(data[3]))
+	end
+end)
+
+function h2o.register_delayed_function(key, func)
+	delayed_functions[key] = func
+end
