@@ -31,7 +31,7 @@ data:extend {{
     order = 'eh[nuclear-submarine]',
 }}
 
-local collision_mask = {'ground-tile', 'rail-layer', 'colliding-with-tiles-only'}
+local collision_mask = {'ground-tile', 'water-tile', 'rail-layer', 'colliding-with-tiles-only'}
 
 local colors = { -- default sub colors before they are tinted at runtime
     {195, 136, 24},
@@ -240,6 +240,19 @@ for i = 1, 2 do
         effectivity = 1,
         fuel_inventory_size = 4,
         burnt_inventory_size = 4,
+        smoke = {
+            {
+                name = 'h2o-submarine-bubbles',
+                deviation = {0.35, 0.35},
+                frequency = 150,
+                position = {0, 0},
+                slow_down_factor = 1,
+                starting_frame = 3,
+                starting_frame_deviation = 50,
+                starting_frame_speed = 0,
+                starting_frame_speed_deviation = 5,
+            }
+        }
     }
     entity.energy_source = nil
     entity.guns = table.deepcopy(data.raw['spider-vehicle']['spidertron'].guns)
@@ -249,8 +262,8 @@ for i = 1, 2 do
         {type = 'impact', percent = 100},
     }
     entity.has_belt_immunity = true
-    if i > 1 then entity.immune_to_tree_impacts = true end
-    if i > 2 then entity.immune_to_rock_impacts = true end
+    entity.immune_to_tree_impacts = true
+    if i > 1 then entity.immune_to_rock_impacts = true end
     entity.immune_to_cliff_impacts = true
     entity.inventory_size = i * 30
     entity.trash_inventory_size = 10
@@ -266,7 +279,6 @@ for i = 1, 2 do
                 r = 1
             },
             intensity = 0.4,
-            minimum_darkness = 0.3,
             size = 25
         },
         {
@@ -275,7 +287,6 @@ for i = 1, 2 do
                 g = 1,
                 r = 1
             },
-            minimum_darkness = 0.3,
             picture = {
                 filename = '__core__/graphics/light-cone.png',
                 flags = {
@@ -336,14 +347,17 @@ data:extend {vehicle_leg}
 
 local torpedo_launchers = {}
 for i = 1, 6 do
-    local launcher = table.deepcopy(data.raw.gun['spidertron-rocket-launcher-1'])
-    launcher.localised_name = {'item-name.h2o-torpedo-launch-silo'}
-    launcher.localised_description = nil
-    launcher.name = 'h2o-torpedo-launch-silo-' .. i
-    launcher.icon = '__base__/graphics/icons/tank-cannon.png'
-    launcher.icon_size = 64
-    launcher.icon_mipmaps = 4
-    launcher.attack_parameters.ammo_category = 'h2o-torpedoes'
+    local launcher                                           = table.deepcopy(data.raw.gun['spidertron-rocket-launcher-1'])
+    launcher.localised_name                                  = {'item-name.h2o-torpedo-launch-silo'}
+    launcher.localised_description                           = nil
+    launcher.name                                            = 'h2o-torpedo-launch-silo-' .. i
+    launcher.icon                                            = '__base__/graphics/icons/tank-cannon.png'
+    launcher.icon_size                                       = 64
+    launcher.icon_mipmaps                                    = 4
+    launcher.attack_parameters.ammo_category                 = 'h2o-torpedoes'
+    launcher.attack_parameters.projectile_orientation_offset = 0
+    launcher.attack_parameters.projectile_creation_distance  = 3
+    launcher.attack_parameters.range                         = 96
     table.insert(torpedo_launchers, launcher)
 end
 data:extend(torpedo_launchers)

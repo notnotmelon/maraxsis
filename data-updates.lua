@@ -66,3 +66,13 @@ for _, nightvision in pairs(data.raw['night-vision-equipment']) do
     ::continue::
 end
 data:extend(nightvision_to_extend)
+
+-- add torpedoes to stronger explosives tech
+for _, tech in pairs(data.raw.technology) do
+    if tech.name:find('stronger%-explosives%-%d') then
+        local level = tonumber(tech.name:match('%d$'))
+        if level >= 4 then
+            table.insert(tech.effects, {type = 'ammo-damage', infer_icon = true, use_icon_overlay_constant = true, ammo_category = 'h2o-torpedoes', modifier = 0.2 + (level / 10)})
+        end
+    end
+end

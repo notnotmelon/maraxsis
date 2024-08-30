@@ -53,7 +53,7 @@ for i, v in pairs(fish) do
         icon_mipmaps = nil,
         flags = {'placeable-neutral', 'placeable-off-grid', 'not-repairable', 'breaths-air'},
         max_health = data.raw.fish['fish'].max_health,
-        map_color = h2o.color_combine(map_colors[tonumber(i)], data.raw.tile['deepwater'].map_color, 0.25),
+        map_color = h2o.color_combine(map_colors[tonumber(i)], data.raw.tile['deepwater'].map_color, 0.5),
         order = 'b-b-a',
         subgroup = 'creatures',
         healing_per_tick = data.raw.fish['fish'].healing_per_tick,

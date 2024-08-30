@@ -131,11 +131,13 @@ end
 
 h2o.lava_tile = function(surface, position)
 	if surface.count_entities_filtered{name = 'lava-lamp', position = position, radius = 1.5, limit = 1} == 0 then
-		surface.create_entity{
+		local light = surface.create_entity{
 			name = 'lava-lamp',
 			position = position,
 			force = 'neutral'
 		}
+		light.destructible = false
+		light.active = false
 	end
 	return 'lava'
 end
