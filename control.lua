@@ -26,6 +26,7 @@ require 'scripts.map-gen.map-gen'
 require 'scripts.submarine'
 require 'scripts.drowning'
 require 'scripts.nightvision'
+require 'scripts.pressure-dome'
 require 'scripts.quantum-computer'
 
 h2o.finalize_events()

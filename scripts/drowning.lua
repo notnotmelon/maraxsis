@@ -15,6 +15,7 @@ h2o.on_nth_tick(UPDATE_RATE, function()
     for _, player in pairs(game.connected_players) do
         local character = player.character
         if not character then goto continue end
+        local position = player.position
         local surface = player.surface
         local surface_name = surface.name
 
@@ -28,6 +29,20 @@ h2o.on_nth_tick(UPDATE_RATE, function()
         if vehicle and SUBMARINES[vehicle.name] then
             global.breath[player.index] = nil
             goto continue
+        end
+
+        for _, pressure_dome_data in pairs(global.pressure_domes) do
+            local dome = pressure_dome_data.entity
+            if domesurface then goto continue_2 end
+            
+            local dome_position = dome.position
+            local x, y = position.x - dome_position.x, position.y - dome_position.y
+            if is_point_in_polygon(x, y) then
+                global.breath[player.index] = nil
+                goto continue
+            end
+            
+            ::continue_2::
         end
 
         local breath = global.breath[player.index] or FULL_BREATH_NUM_TICKS

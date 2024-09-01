@@ -9,6 +9,10 @@ data:extend {{
             type = 'unlock-recipe',
             recipe = 'h2o-glass-panes',
         },
+        {
+            type = 'unlock-recipe',
+            recipe = 'h2o-pressure-dome',
+        },
     },
     prerequisites = {'h2o-maraxsis'},
     unit = {

@@ -46,7 +46,8 @@ h2o.randomize_position = function(position, factor)
 	return {x = x + factor * (random() - 0.5), y = y + factor * (random() - 0.5)}
 end
 
----Intended to be called inside a build event. Cancels creation of the entity and returns its item_to_place
+---Intended to be called inside a build event. Cancels creation of the entity.
+---Returns its item_to_place back to the player or spills it on the ground.
 ---@param entity LuaEntity
 ---@param player_index integer?
 ---@param message LocalisedString?
