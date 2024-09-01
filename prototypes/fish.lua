@@ -67,7 +67,7 @@ for i, v in pairs(fish) do
         attack_parameters = {
             type = 'projectile',
             ammo_category = 'melee',
-            cooldown = 35,
+            cooldown = 60,
             range = 0,
             ammo_type = {
                 category = 'melee',

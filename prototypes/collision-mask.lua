@@ -55,6 +55,7 @@ local special_exceptions = {
     'ee-infinity-accumulator-secondary-input',
     'ee-infinity-accumulator-tertiary-input',
     'ee-infinity-accumulator-tertiary-buffer',
+    'h2o-pressure-dome-collision'
 }
 do
     local temp = {}
