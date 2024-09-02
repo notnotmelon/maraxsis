@@ -1,3 +1,5 @@
+local collision_mask_util = require '__core__/lualib/collision-mask-util'
+
 local tech_tree_screenshot_mode = false
 if tech_tree_screenshot_mode then
     for _, t in pairs(data.raw.technology) do
@@ -8,6 +10,9 @@ if tech_tree_screenshot_mode then
 end
 
 require 'lib.lib'
+require 'prototypes.tile.water'
+_G.dome_collision_mask = collision_mask_util.get_first_unused_layer()
+assert(dome_collision_mask ~= maraxsis_collision_mask, 'dome_collision_mask is the same as maraxsis_collision_mask')
 require 'prototypes.submarine'
 require 'prototypes.technology'
 require 'prototypes.glass'
@@ -24,5 +29,4 @@ require 'prototypes.big-cliff-explosive'
 require 'prototypes.hydraulic-science-pack'
 require 'prototypes.autoplace'
 require 'prototypes.tile.lava'
-require 'prototypes.tile.water'
 require 'prototypes.tips-and-tricks.tips-and-tricks'

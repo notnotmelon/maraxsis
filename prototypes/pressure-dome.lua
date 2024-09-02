@@ -32,7 +32,7 @@ local shadow = {
     shift = {0, 0.3}
 }
 
-data:extend{{
+data:extend {{
     type = 'item',
     name = 'h2o-pressure-dome',
     icon = '__maraxsis__/graphics/icons/pressure-dome.png',
@@ -43,15 +43,17 @@ data:extend{{
     stack_size = 10,
 }}
 
-data:extend{{
+data:extend {{
     type = 'recipe',
     name = 'h2o-pressure-dome',
     enabled = false,
     ingredients = {
-        {type = 'item', name = 'pump', amount = 10},
-        {type = 'item', name = 'pipe', amount = 50},
-        {type = 'item', name = 'steel-plate', amount = 500},
-        {type = 'item', name = 'h2o-glass-panes', amount = 5000},
+        {type = 'item', name = 'pump',             amount = 10},
+        {type = 'item', name = 'pipe',             amount = 50},
+        {type = 'item', name = 'steel-plate',      amount = 500},
+        {type = 'item', name = 'h2o-glass-panes',  amount = 5000},
+        {type = 'item', name = 'refined-concrete', amount = 880},
+        {type = 'item', name = 'small-lamp',       amount = 30},
     },
     results = {
         {type = 'item', name = 'h2o-pressure-dome', amount = 1},
@@ -62,27 +64,53 @@ data:extend{{
 
 local size = 16
 
-data:extend{{
+data:extend {{
     type = 'simple-entity-with-owner',
     name = 'h2o-pressure-dome',
+    remove_decoratives = 'false',
     icon = '__maraxsis__/graphics/icons/pressure-dome.png',
     icon_size = 64,
-    flags = {'placeable-neutral', 'player-creation', 'not-on-map'},
-    max_health = 1000,
+    flags = {'placeable-player', 'player-creation', 'not-on-map', 'not-blueprintable'},
+    max_health = 3000,
     collision_box = {{-size, -size}, {size, size}},
     minable = {mining_time = 1, result = 'h2o-pressure-dome'},
     selection_box = {{-size, -size}, {size, size}},
     drawing_box = {{-size, -size}, {size, size}},
-    collision_mask = {h2o.maraxsis_collision_mask},
+    collision_mask = {},
     render_layer = 'higher-object-under',
     selectable_in_game = false,
     selection_priority = 40,
     picture = {
         layers = {shadow, dome, light, light_2},
     },
+    build_sound = {
+        filename = '__core__/sound/build-ghost-tile.ogg',
+        volume = 0
+    },
+    created_smoke = {
+        type = 'create-trival-smoke',
+        smoke_name = 'h2o-invisible-smoke',
+    }
 }}
 
-data:extend{{
+data:extend {{
+    type = 'trivial-smoke',
+    name = 'h2o-invisible-smoke',
+    duration = 1,
+    fade_away_duration = 1,
+    spread_duration = 1,
+    animation = {
+        filename = '__core__/graphics/empty.png',
+        priority = 'high',
+        width = 1,
+        height = 1,
+        flags = {'smoke'},
+        frame_count = 1,
+    },
+    cyclic = true
+}}
+
+data:extend {{
     type = 'fluid',
     name = 'h2o-atmosphere',
     default_temperature = 25,
@@ -95,9 +123,15 @@ data:extend{{
     gas_temperature = 25,
 }}
 
-data:extend{h2o.merge(data.raw.tile['refined-concrete'], {
+data:extend {h2o.merge(data.raw.tile['refined-concrete'], {
     name = 'h2o-pressure-dome-tile',
-    minable = 'nil'
+    minable = {
+        mining_time = 2^63-1, -- weird hack needed to make this a "top" tile. top tiles require minable properties however these dome tiles actually should not be minable
+        results = {},
+    },
+    collision_mask = {dome_collision_mask},
+    map_color = {r = 0.5, g = 0.5, b = 0.75},
+    can_be_part_of_blueprint = false,
 })}
 
 local blank_animation = {
@@ -109,18 +143,18 @@ local blank_animation = {
     direction_count = 1,
 }
 
-data:extend{{
+data:extend {{
     type = 'car',
     name = 'h2o-pressure-dome-collision',
     localised_name = {'entity-name.h2o-pressure-dome'},
-    localised_description = {'entity-description.h2o-pressure-dome'},
     icon = '__maraxsis__/graphics/icons/pressure-dome.png',
     icon_size = 64,
     flags = {'placeable-player', 'player-creation', 'placeable-off-grid', 'not-on-map'},
-    max_health = 1000,
+    max_health = 3000,
     collision_box = {{-7, -0.4}, {7, 0.4}},
     selection_box = {{-7, -0.5}, {7, 0.5}},
-    collision_mask = {'object-layer'},
+    drawing_box = {{0, 0}, {0, 0}},
+    collision_mask = {'ground-tile', 'water-tile', 'object-layer', 'item-layer', maraxsis_collision_mask, dome_collision_mask},
     weight = 1,
     braking_force = 1,
     friction_force = 1,
@@ -142,4 +176,14 @@ data:extend{{
     vision_distance = 0,
     has_belt_immunity = true,
     placeable_by = {{item = 'h2o-pressure-dome', count = 1}},
+    resistances = {
+        {
+            type = 'acid',
+            percent = 90
+        },
+        {
+            type = 'fire',
+            percent = 100
+        },
+    }
 }}

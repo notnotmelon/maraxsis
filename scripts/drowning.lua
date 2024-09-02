@@ -48,7 +48,7 @@ h2o.on_nth_tick(UPDATE_RATE, function()
         local breath = global.breath[player.index] or FULL_BREATH_NUM_TICKS
         local breath_loss = UPDATE_RATE
         if is_trench then breath_loss = breath_loss * 4 end
-        breath = math.max(0, breath - UPDATE_RATE)
+        breath = math.max(0, breath - breath_loss)
         global.breath[player.index] = breath
 
         if breath <= WARNING_MESSAGE then

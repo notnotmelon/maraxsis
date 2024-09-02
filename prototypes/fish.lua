@@ -47,7 +47,7 @@ for i, v in pairs(fish) do
         localised_name = {'entity-name.fish'},
         type = 'unit',
         name = 'h2o-tropical-fish-' .. i,
-        render_layer = 'higher-object-under',
+        render_layer = 'higher-object-above',
         icon = '__maraxsis__/graphics/entity/fish/icons/' .. i .. '.png',
         icon_size = 64,
         icon_mipmaps = nil,
