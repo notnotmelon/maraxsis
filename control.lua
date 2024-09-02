@@ -28,5 +28,6 @@ require 'scripts.drowning'
 require 'scripts.nightvision'
 require 'scripts.pressure-dome'
 require 'scripts.quantum-computer'
+require 'scripts.composite-entity'
 
 h2o.finalize_events()

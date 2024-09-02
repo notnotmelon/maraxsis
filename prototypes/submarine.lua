@@ -10,7 +10,7 @@ data:extend {{
             recipe = 'h2o-nuclear-submarine',
         },
     },
-    prerequisites = {'h2o-hydraulic-science-pack', 'nuclear-power'},
+    prerequisites = {'h2o-hydraulic-science-pack', 'h2o-sonar', 'nuclear-power'},
     unit = {
         count = 3000,
         ingredients = {
@@ -75,7 +75,8 @@ local recipes = {
     },
     ['h2o-nuclear-submarine'] = {
         {type = 'item', name = 'h2o-diesel-submarine',  amount = 1},
-        {type = 'item', name = 'h2o-glass-panes',       amount = 100},
+        {type = 'item', name = 'h2o-sonar',             amount = 1},
+        {type = 'item', name = 'h2o-glass-panes',       amount = 1000},
         {type = 'item', name = 'h2o-heart-of-the-sea',  amount = 50},
         {type = 'item', name = 'nuclear-reactor',       amount = 1},
         {type = 'item', name = 'heat-exchanger',        amount = 4},

@@ -109,6 +109,7 @@ This connection is mirrored in their names. The shared suffixes “-kis” or �
 ### Credits
 
 Maraxsis would not be possible without the help of these amazing, fantastic, incredible open source projects.
+If you are the author of one of these projects, and feel that your license has been violated, please contact me on Discord.
 
 #### Unused Renders
 
@@ -137,3 +138,10 @@ Maraxsis would not be possible without the help of these amazing, fantastic, inc
 - **Source**: Commissioned
 - **License**: N/A
 - **Changes**: Yes. Compressed for Factorio with [Spritter](https://github.com/fgardt/factorio-spritter)
+
+#### Sonar
+
+- **Creator**: fishbus
+- **Source**: [Factorio+](https://mods.factorio.com/mod/factorioplus)
+- **License**: [MIT](https://opensource.org/license/MIT)
+- **Changes**: Yes. Resized to create a low-resolution version. Added lamps.

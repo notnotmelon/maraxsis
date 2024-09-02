@@ -16,7 +16,6 @@ local prototypes_that_cant_be_placed_on_water = {
     'boiler',
     'burner-generator',
     'electric-energy-interface',
-    'electric-pole',
     'fire',
     'furnace',
     'generator',
@@ -38,6 +37,7 @@ local prototypes_that_cant_be_placed_in_a_dome = {
     'land-mine',
     data.raw['assembling-machine']['h2o-hydro-plant'],
     data.raw['assembling-machine']['h2o-hydro-plant-extra-module-slots'],
+    data.raw['radar']['h2o-sonar'],
 }
 
 local prototypes_that_cant_be_placed_in_a_dome_or_on_water = {
@@ -99,6 +99,7 @@ local prototypes_that_can_be_placed_whereever = {
     'gate',
     'wall',
 
+    'electric-pole', -- todo: consider replacing with fiber optic cable
     'arrow',
     'artillery-flare',
     'artillery-projectile',
@@ -210,12 +211,12 @@ local function remove_collision_layer_to_prototypes(prototypes, layer)
     end
 end
 
+add_collision_layer_to_prototypes(prototypes_that_cant_be_placed_in_a_dome_or_on_water, maraxsis_collision_mask)
+add_collision_layer_to_prototypes(prototypes_that_cant_be_placed_in_a_dome_or_on_water, dome_collision_mask)
 add_collision_layer_to_prototypes(prototypes_that_cant_be_placed_on_water, maraxsis_collision_mask)
 remove_collision_layer_to_prototypes(prototypes_that_cant_be_placed_on_water, dome_collision_mask)
 add_collision_layer_to_prototypes(prototypes_that_cant_be_placed_in_a_dome, dome_collision_mask)
 remove_collision_layer_to_prototypes(prototypes_that_cant_be_placed_in_a_dome, maraxsis_collision_mask)
-add_collision_layer_to_prototypes(prototypes_that_cant_be_placed_in_a_dome_or_on_water, maraxsis_collision_mask)
-add_collision_layer_to_prototypes(prototypes_that_cant_be_placed_in_a_dome_or_on_water, dome_collision_mask)
 
 for prototype, processed in pairs(processed_prototypes) do
     assert(processed, 'Error in Maraxsis collision mask algorithms! Unrecognized prototype ' .. prototype)
