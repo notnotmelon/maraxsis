@@ -1,4 +1,9 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.4.1
+Date: 2024-09-02
+  Bugfixes:
+    - Fixed that beacons could be placed intersecting the edges of the pressure dome in some cases
+---------------------------------------------------------------------------------------------------
 Version: 1.4.0
 Date: 2024-09-02
   Features:
