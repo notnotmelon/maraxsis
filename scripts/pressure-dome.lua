@@ -86,6 +86,11 @@ local function get_four_corners(entity)
             left_top = {x = -2, y = -2},
             right_bottom = {x = 2, y = 2},
         }
+    else -- expand the collision box to the actual tile size
+        collision_box = {
+            left_top = {x = math.floor(collision_box.left_top.x * 2) / 2, y = math.floor(collision_box.left_top.y * 2) / 2},
+            right_bottom = {x = math.ceil(collision_box.right_bottom.x * 2) / 2, y = math.ceil(collision_box.right_bottom.y * 2) / 2},
+        }
     end
 
     local left_top = collision_box.left_top
