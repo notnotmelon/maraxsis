@@ -1,25 +1,15 @@
-<div align="center">
-    <a href="https://github.com/notnotmelon/maraxsis">
-    <picture>
-        <source media="(prefers-color-scheme: dark)" srcset="https://github.com/user-attachments/assets/52a312e5-d7ec-4834-a7f1-2fb714c6e957">
-        <img alt="Rivets 🔩 - the Factorio mod loader" width="60%" style="max-width: 600px" src=".github/assets/logo-horizontal.png">
-    </picture>
-    </a>
-
 [![Release](https://github.com/notnotmelon/maraxsis/actions/workflows/release.yml/badge.svg?branch=main)](https://github.com/notnotmelon/maraxsis/actions/workflows/release.yml) [![Discord](https://img.shields.io/discord/1260754935952314418?color=lightblue&label=Community%20Chat&logo=Discord&logoColor=aqua)](https://discord.gg/xRYEZYz5WR) [![Bug reports](https://img.shields.io/github/issues/notnotmelon/maraxsis?label=Bug%20Reports)](https://github.com/notnotmelon/maraxsis/issues) [![factorio.com](https://img.shields.io/badge/dynamic/json?color=orange&label=Factorio&query=downloads_count&suffix=%20downloads&url=https%3A%2F%2Fmods.factorio.com%2Fapi%2Fmods%2Fmaraxsis)](https://mods.factorio.com/mod/maraxsis)
-
-</div>
 
 ---
 
 ### Introduction
 
-In 2016, we were first introduced to Nauvis—Factorio's first planet. It revolutionized the automation genre, pushing the limits of production to new heights not seen in other games. Eight years later, Factorio 2.0 expands the universe further, adding Vulcanus, Fulgora, Gleba, and Aquilo—each bringing unique mechanics that redefine factory design.
+In 2016, we were first introduced to Nauvis—Factorio's first planet. It revolutionized the automation genre, pushing the limits of production to new heights not seen in other games. Eight years later, Factorio Space Age expands the universe further, adding Vulcanus, Fulgora, Gleba, and Aquilo—each bringing unique mechanics that redefine factory design.
 
 - Vulcanus: A world where coal is the only resource. Craft rocket parts from freely available sulfuric acid and extract precious materials from molten lava.
 - Fulgora: Experience the challenge of limited space on scattered islands. Reverse the recipe tree and deconstruct advanced products into their basic components.
 - Gleba: Experiment with the time dimension in a world where every item is rapidly transforming into something else.
-- Aquilo: Develop futurist technologies on a frozen, desolate world.
+- Aquilo: ???
 
 These new worlds are compelling, but one question still lingers: where do we go from here?
 
@@ -29,7 +19,7 @@ These new worlds are compelling, but one question still lingers: where do we go 
 
 Let me introduce this pristine, submerged world. Far away from the sun, this planet paradoxically maintains a comfortable temperature through a runaway greenhouse effect. Preliminary surface scans show an average temperature of 101°F. It's not too hot and not too cold, the perfect Goldilocks zone for liquid water. Maybe even too perfect...
 
-![](https://files.catbox.moe/honzmi.png)
+![](https://files.catbox.moe/wwq54g.png)
 
 Maraxsis is 100% covered by deep ocean. There is no land on the entire planet meaning you'll have to invest in aquatic technologies such as submarines, torpedos, fiber optic cables, and submerged pressure domes. In terms of progression, Maraxsis is unlocked at the same point as Aquilo. This means the mod can be seamlessly added to a finished Space Age save.
 
@@ -88,7 +78,9 @@ Fiber optic cables function similarly to pipes, as they are 1x1 entities that co
 
 As you explore Maraxsis, you’ll quickly discover that many of your standard machines are ineffective underwater. You are able to research new designs that function underwater however many recipes are still impossible. In these situations, constructing high-pressure domes becomes essential.
 
-These specialized structures are designed to withstand the immense pressures of Maraxsis’ depths. However, maintaining equilibrium inside the domes requires continuous pumping of atmospheric gases into ballast tanks.
+![](https://files.catbox.moe/zi790b.mp4)
+
+These specialized structures are designed to withstand the immense pressures of Maraxsis’ depths. However, maintaining equilibrium inside the domes requires continuous supply of atmospheric gases into ballast pumps.
 
 ---
 
@@ -132,7 +124,7 @@ Maraxsis would not be possible without the help of these amazing, fantastic, inc
 - **License**: [TurboSquid 3D Model License](https://blog.turbosquid.com/turbosquid-3d-model-license/)
 - **Changes**: Yes. Added animations via Blender and converted to PNG.
 
-#### Advanced Furnace & Singularity Lab
+#### Advanced Furnace, Singularity Lab, & Others
 
 - **Creator**: Krastor and Linver
 - **Source**: [Krastorio 2](https://mods.factorio.com/mod/Krastorio2)
