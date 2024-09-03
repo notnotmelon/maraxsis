@@ -31,3 +31,10 @@ require 'prototypes.hydraulic-science-pack'
 require 'prototypes.autoplace'
 require 'prototypes.tile.lava'
 require 'prototypes.tips-and-tricks.tips-and-tricks'
+
+data:extend{{
+    type = 'custom-input',
+    name = 'open-gui',
+    key_sequence = '',
+    linked_game_control = 'open-gui'
+}}

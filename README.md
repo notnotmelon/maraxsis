@@ -15,6 +15,12 @@ These new worlds are compelling, but one question still lingers: where do we go 
 
 ---
 
+### DISCLAIMER
+
+This mod is currently non-functional. I am just claiming the name! Please wait until the release of Space Age to play this mod.
+
+---
+
 ### Welcome to Maraxsis
 
 Let me introduce this pristine, submerged world. Far away from the sun, this planet paradoxically maintains a comfortable temperature through a runaway greenhouse effect. Preliminary surface scans show an average temperature of 101°F. It's not too hot and not too cold, the perfect Goldilocks zone for liquid water. Maybe even too perfect...
@@ -81,6 +87,18 @@ As you explore Maraxsis, you’ll quickly discover that many of your standard ma
 ![](https://files.catbox.moe/zi790b.mp4)
 
 These specialized structures are designed to withstand the immense pressures of Maraxsis’ depths. However, maintaining equilibrium inside the domes requires continuous supply of atmospheric gases into ballast pumps.
+
+---
+
+### Pressure domes circuit connectivity
+
+Have you ever wanted to build a giant underwater disco dome in Factorio? No? Well I coded it anyway
+
+![](https://files.catbox.moe/ivqc9z.mp4)
+
+You can also connect the dome to a wire to read the entities inside.
+
+![](https://files.catbox.moe/gv0fmf.png)
 
 ---
 

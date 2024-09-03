@@ -62,7 +62,7 @@ data:extend {{
     category = 'crafting',
 }}
 
-local size = 16
+local function collision_box() return {{-16, -16}, {16, 16}} end
 
 data:extend {{
     type = 'simple-entity-with-owner',
@@ -72,16 +72,15 @@ data:extend {{
     icon_size = 64,
     flags = {'placeable-player', 'player-creation', 'not-on-map', 'not-blueprintable'},
     max_health = 3000,
-    collision_box = {{-size, -size}, {size, size}},
+    collision_box = collision_box(),
     minable = {mining_time = 1, result = 'h2o-pressure-dome'},
-    selection_box = {{-size, -size}, {size, size}},
-    drawing_box = {{-size, -size}, {size, size}},
+    selection_box = collision_box(),
+    drawing_box = collision_box(),
     collision_mask = {},
     render_layer = 'higher-object-under',
     selectable_in_game = false,
-    selection_priority = 40,
     picture = {
-        layers = {shadow, dome, light, light_2},
+        layers = {shadow, dome},
     },
     build_sound = {
         filename = '__core__/sound/build-ghost-tile.ogg',
@@ -92,6 +91,131 @@ data:extend {{
         smoke_name = 'h2o-invisible-smoke',
     }
 }}
+
+data:extend {h2o.merge(data.raw['lamp']['small-lamp'], {
+    type = 'lamp',
+    name = 'h2o-pressure-dome-lamp',
+    localised_name = {'entity-name.h2o-pressure-dome'},
+    localised_description = {'entity-description.h2o-pressure-dome'},
+    remove_decoratives = 'false',
+    icon = '__maraxsis__/graphics/icons/pressure-dome.png',
+    icon_size = 64,
+    flags = {'placeable-player', 'player-creation', 'not-on-map', 'not-blueprintable'},
+    max_health = 3000,
+    collision_box = collision_box(),
+    selection_box = {{-0.01, -0.01}, {0.01, 0.01}},
+    selection_priority = 0,
+    drawing_box = collision_box(),
+    collision_mask = {},
+    selectable_in_game = true,
+    picture_on = light,
+    picture_off = h2o.empty_image(),
+    circuit_wire_max_distance = 16,
+    energy_usage_per_tick = '2MW',
+    glow_size = 65,
+    light = {
+        size = 65,
+        color = {
+            b = 0.75,
+            g = 1,
+            r = 1
+        },
+        intensity = 0.9,
+    },
+    light_when_colored = {
+        color = {
+            b = 0.75,
+            g = 1,
+            r = 1
+        },
+        intensity = 0,
+        size = 65,
+    },
+})}
+
+data:extend{h2o.merge(data.raw['constant-combinator']['constant-combinator'], {
+    type = 'constant-combinator',
+    name = 'h2o-pressure-dome-combinator',
+    localised_name = {'entity-name.h2o-pressure-dome'},
+    localised_description = {'entity-description.h2o-pressure-dome'},
+    remove_decoratives = 'false',
+    icon = '__maraxsis__/graphics/icons/pressure-dome.png',
+    icon_size = 64,
+    flags = {'placeable-player', 'player-creation', 'not-on-map', 'not-blueprintable', 'hidden'},
+    max_health = 3000,
+    selectable_in_game = false,
+    item_slot_count = 500,
+    activity_led_light_offsets = {
+        {0, 0},
+        {0, 0},
+        {0, 0},
+        {0, 0}
+    },
+    circuit_wire_connection_points = {
+        {
+            shadow = {red = {0, 0}, green = {0, 0}},
+            wire = {red = {0, 0}, green = {0, 0}}
+        },
+        {
+            shadow = {red = {0, 0}, green = {0, 0}},
+            wire = {red = {0, 0}, green = {0, 0}}
+        },
+        {
+            shadow = {red = {0, 0}, green = {0, 0}},
+            wire = {red = {0, 0}, green = {0, 0}}
+        },
+        {
+            shadow = {red = {0, 0}, green = {0, 0}},
+            wire = {red = {0, 0}, green = {0, 0}}
+        }
+    },
+    draw_copper_wires = false,
+    draw_circuit_wires = false,
+    sprites = 'nil',
+    activity_led_sprites = 'nil',
+    activity_led_light = 'nil',
+    collision_mask = {},
+})}
+
+local function shift_the_circuit_connection_point(entity, x, y)
+    local connection = entity.circuit_wire_connection_point or {
+        wire = {copper = {x = 0, y = 0}, green = {x = 0, y = 0}, red = {x = 0, y = 0}},
+        shadow = {copper = {x = 0, y = 0}, green = {x = 0, y = 0}, red = {x = 0, y = 0}},
+    }
+
+    local function adjust_shift(vector)
+        if not vector then return end
+        vector.x = (vector[1] or vector.x or 0) + x
+        vector.y = (vector[2] or vector.y or 0) + y
+    end
+
+    for _, connection in pairs(connection) do
+        for _, color in pairs(connection) do
+            adjust_shift(color)
+        end
+    end
+
+    for _, sprite in pairs(entity.circuit_connector_sprites) do
+        adjust_shift(sprite.shift or {})
+        if sprite.hr_version then
+            adjust_shift(sprite.hr_version.shift or {})
+        end
+        for _, layer in pairs(sprite.layers or {}) do
+            adjust_shift(layer.shift or {})
+            if layer.hr_version then
+                adjust_shift(layer.hr_version.shift or {})
+            end
+        end
+        if sprite.picture then
+            adjust_shift(sprite.picture.shift or {})
+            if sprite.picture.hr_version then
+                adjust_shift(sprite.picture.hr_version.shift or {})
+            end
+        end
+    end
+end
+
+shift_the_circuit_connection_point(data.raw['lamp']['h2o-pressure-dome-lamp'], 4, 17)
 
 data:extend {{
     type = 'trivial-smoke',

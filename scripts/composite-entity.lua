@@ -46,7 +46,7 @@ h2o.on_event('on_built', on_built)
 
 local function on_destroyed(event)
     local entity = event.entity
-    if not composite_entity_creation[entity.name] then return end
+    if not entity.valid or not composite_entity_creation[entity.name] then return end
     local sub_entities = global.composite_entities[entity.unit_number]
     if not sub_entities then return end
     for _, sub_entity in pairs(sub_entities) do

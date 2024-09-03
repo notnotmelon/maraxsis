@@ -137,6 +137,93 @@ local function count_points_in_dome(pressure_dome_data, entity)
     return count
 end
 
+local function create_dome_light(dome)
+    if not dome.valid then error('Attempted to circuit connect an invalid dome! Please report this.') end
+
+    local light = dome.surface.create_entity {
+        name = 'h2o-pressure-dome-lamp',
+        position = dome.position,
+        force = dome.force,
+        create_build_effect_smoke = false,
+    }
+
+    light.minable = false
+    light.destructible = false
+
+    local control_behavior = light.get_or_create_control_behavior()
+    control_behavior.circuit_condition = {
+        condition = {
+            first_signal = {type = 'virtual', name = 'signal-dot'},
+            comparator = '=',
+            constant = 0,
+        }
+    }
+
+    return light
+end
+
+local function create_dome_combinator(pressure_dome_data)
+    local light = pressure_dome_data.light
+    if not light or not light.valid then
+        light = create_dome_light(pressure_dome_data.entity)
+        pressure_dome_data.light = light
+    end
+
+    local combinator = light.surface.create_entity {
+        name = 'h2o-pressure-dome-combinator',
+        position = light.position,
+        force = light.force,
+        create_build_effect_smoke = false,
+    }
+
+    combinator.minable = false
+    combinator.destructible = false
+    combinator.operable = false
+
+    local red_success = combinator.connect_neighbour {
+        wire = defines.wire_type.red,
+        target_entity = light,
+    }
+    local green_success = combinator.connect_neighbour {
+        wire = defines.wire_type.green,
+        target_entity = light,
+    }
+
+    assert(red_success, 'Failed to connect red wire to the dome light. Please report this!')
+    assert(green_success, 'Failed to connect green wire to the dome light. Please report this!')
+
+    pressure_dome_data.combinator = combinator
+    return combinator
+end
+
+local function update_combinator(pressure_dome_data)
+    local combinator = pressure_dome_data.combinator
+    if not combinator or not combinator.valid then
+        combinator = create_dome_combinator(pressure_dome_data)
+    end
+
+    local all_machines_inside = {}
+    for _, e in pairs(pressure_dome_data.contained_entities) do
+        if e.valid then
+            for _, item_to_place in pairs(e.prototype.items_to_place_this or {}) do
+                all_machines_inside[item_to_place.name] = (all_machines_inside[item_to_place.name] or 0) + 1
+            end
+        end
+    end
+
+    local control_behavior = combinator.get_or_create_control_behavior()
+    control_behavior.parameters = nil
+    local parameters = {}
+    for name, count in pairs(all_machines_inside) do
+        parameters[#parameters + 1] = {
+            signal = {type = 'item', name = name},
+            count = count,
+            index = #parameters + 1,
+        }
+    end
+    control_behavior.parameters = parameters
+end
+
 h2o.on_event('on_built', function(event)
     local entity = event.entity or event.created_entity
     if not entity.valid or entity.name == 'h2o-pressure-dome' then return end
@@ -156,6 +243,7 @@ h2o.on_event('on_built', function(event)
                 end
             end
             table.insert(pressure_dome_data.contained_entities, entity)
+            update_combinator(pressure_dome_data)
         else
             h2o.cancel_creation(entity, event.player_index, {'cant-build-reason.entity-in-the-way', dome.localised_name})
         end
@@ -175,7 +263,7 @@ local function place_tiles(pressure_dome_data)
 
     for xx = -math.floor(size), math.floor(size) do
         for yy = -math.floor(size), math.floor(size) do
-            if is_point_in_polygon(xx + 0.5, yy + 0.5) then
+            if is_point_in_polygon(xx + 0.5, yy) then
                 local x, y = x + xx, y + yy
                 tiles[#tiles + 1] = {name = 'h2o-pressure-dome-tile', position = {x, y}}
             end
@@ -205,7 +293,7 @@ local function unplace_tiles(pressure_dome_data)
     for _, tile in pairs(tiles_in_square) do
         local tile_position = tile.position
         local xx, yy = tile_position.x, tile_position.y
-        if is_point_in_polygon(xx - x + 0.5, yy - y + 0.5) then
+        if is_point_in_polygon(xx - x + 0.5, yy - y) then
             tiles[#tiles + 1] = {name = tile.hidden_tile or DEFAULT_MARAXSIS_TILE, position = {xx, yy}}
         end
     end
@@ -299,6 +387,8 @@ h2o.on_event('on_built', function(event)
         return
     end
 
+    local light = create_dome_light(entity)
+
     entity.minable = false
     entity.destructible = false
 
@@ -308,9 +398,11 @@ h2o.on_event('on_built', function(event)
         position = entity.position,
         surface = entity.surface,
         contained_entities = contained_entities,
+        light = light,
         collision_boxes = {},
     }
 
+    update_combinator(pressure_dome_data)
     place_collision_boxes(pressure_dome_data)
     place_tiles(pressure_dome_data)
     entity.health = entity.prototype.max_health
@@ -338,6 +430,7 @@ local function delete_invalid_entities_from_contained_entities_list(pressure_dom
                 end
             end
             pressure_dome_data.contained_entities = new_contained
+            update_combinator(pressure_dome_data)
             break
         end
     end
@@ -449,6 +542,8 @@ h2o.on_event('on_destroyed', function(event)
         global.pressure_domes[unit_number] = nil
         unplace_tiles(pressure_dome_data)
         destroy_collision_boxes(pressure_dome_data)
+        local light = pressure_dome_data.light
+        if light and light.valid then light.destroy() end
         if event.name == defines.events.on_entity_died then
             on_dome_died(event, pressure_dome_data)
         end
@@ -510,4 +605,49 @@ h2o.on_event(defines.events.on_entity_damaged, function(event)
             collision_box.health = entity.health
         end
     end
+end)
+
+local function figure_out_wire_type(player)
+    local cursor_stack = player.cursor_stack
+    if cursor_stack and cursor_stack.valid_for_read then
+        local stack_name = cursor_stack.name
+        if stack_name == 'red-wire' then
+            return defines.wire_type.red
+        elseif stack_name == 'green-wire' then
+            return defines.wire_type.green
+        elseif stack_name == 'copper-cable' then
+            return defines.wire_type.copper
+        end
+    end
+
+    return nil
+end
+
+h2o.on_event('open-gui', function(event)
+    local player = game.get_player(event.player_index)
+    if not player or not player.valid then return end
+    local entity = player.selected
+    if not entity or not entity.valid then return end
+
+    if entity.name ~= 'h2o-pressure-dome-collision' then return end
+
+    local pressure_dome_data = find_pressure_dome_data_by_collision_entity(entity)
+    if not pressure_dome_data then return end
+    local light = pressure_dome_data.light
+    if not light or not light.valid then
+        local dome = pressure_dome_data.entity
+        if not dome.valid then return end
+        pressure_dome_data.light = create_dome_light(dome)
+    end
+
+    local wire_type = figure_out_wire_type(player)
+    if wire_type then
+        player.selected = light
+        player.drag_wire{position = light.position}
+        player.selected = entity
+        return
+    end
+    
+    player.opened = nil
+    player.opened = light
 end)
