@@ -452,8 +452,6 @@ data:extend {{
     icon = path .. 'icon.png',
     icon_size = 128,
     icon_mipmaps = 4,
-    subgroup = 'smelting-machine',
-    order = 'a[advanced-furnace]',
     place_result = 'h2o-hydro-plant',
     stack_size = 50,
     scale = 0.5,

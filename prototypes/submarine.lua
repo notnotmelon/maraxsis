@@ -48,13 +48,6 @@ local movement_energy_consumption = {
 }
 
 data:extend {{
-    type = 'item-subgroup',
-    name = 'h2o-maraxsis',
-    group = 'production',
-    order = 'ee',
-}}
-
-data:extend {{
     type = 'fuel-category',
     name = 'h2o-diesel',
 }}
@@ -98,8 +91,6 @@ for i = 1, 2 do
         icon = icon,
         icon_size = 64,
         icon_mipmaps = nil,
-        subgroup = 'h2o-maraxsis',
-        order = 'vga',
         place_result = name,
         stack_size = 1,
         flags = {'not-stackable'},

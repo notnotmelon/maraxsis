@@ -76,3 +76,5 @@ for _, tech in pairs(data.raw.technology) do
         end
     end
 end
+
+require 'prototypes.item-subgroups'

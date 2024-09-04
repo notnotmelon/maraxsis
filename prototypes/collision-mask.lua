@@ -61,6 +61,8 @@ local prototypes_that_cant_be_placed_in_a_dome_or_on_water = {
 }
 
 local prototypes_that_can_be_placed_whereever = {
+    data.raw['straight-rail']['straight-rail'],
+    data.raw['curved-rail']['curved-rail'],
     data.raw['assembling-machine']['chemical-plant'],
     data.raw['electric-energy-interface']['electric-energy-interface'],
     data.raw['electric-energy-interface']['ee-infinity-accumulator-primary-output'],

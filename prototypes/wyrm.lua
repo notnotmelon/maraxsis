@@ -40,8 +40,6 @@ data:extend {{
     icon = '__maraxsis__/graphics/icons/wyrm-confinement-cell.png',
     icon_size = 64,
     icon_mipmaps = nil,
-    subgroup = 'h2o-maraxsis',
-    order = 'vga',
     stack_size = 10,
 }}
 
@@ -63,8 +61,6 @@ data:extend {{
     pictures = wyrm_variants,
     icon_size = 64,
     icon_mipmaps = nil,
-    subgroup = 'h2o-maraxsis',
-    order = 'vga',
     stack_size = 10,
 }}
 
@@ -95,3 +91,41 @@ data:extend {{
         {type = 'item', name = 'h2o-wyrm-specimen', amount = 1},
     },
 }}
+
+--[[
+local legs = {}
+
+data:extend{h2o.merge(data.raw['spider-vehicle']['spidertron'], {
+    name = 'h2o-wyrm',
+    icon = '__maraxsis__/graphics/icons/wyrm-specimen-2.png', -- todo: change to an actual icon
+    icon_size = 64,
+    icon_mipmaps = nil,
+    flags = {'placeable-enemy', 'placeable-off-grid', 'not-repairable', 'breaths-air'},
+    max_health = 1000,
+    healing_per_tick = 0.01,
+    collision_box = {{-1.5, -1.5}, {1.5, 1.5}},
+    selection_box = {{-1.5, -1.5}, {1.5, 1.5}},
+    energy_source = {
+        type = 'void',
+    },
+    collision_mask = {},
+    burner = 'nil',
+    inventory_size = 0,
+    -- graphics_set
+    spider_engine = {legs = legs},
+    -- height
+    chunk_exploration_radius = 0,
+    movement_energy_consumption = '1W',
+    automatic_weapon_cycling = false,
+    trash_inventory_size = 0,
+})}
+
+local leg = h2o.merge(data.raw['spider-leg']['spidertron-leg-' .. ((i % 8) + 1)], {
+    name = 'h2o-wyrm-leg-' .. i,
+    part_length = i / 4,
+    flags = {'not-on-map', 'placeable-off-grid', 'hidden'},
+    movement_acceleration = data.raw['spider-leg']['spidertron-leg-1'].movement_acceleration * (num_legs - i + 1),
+    allow_maraxsis_water_placement = true,
+    minimal_step_size = 0,
+})
+--]]

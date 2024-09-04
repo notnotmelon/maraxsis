@@ -1,18 +1,14 @@
-local TRENCH_MOVEMENT_FACTOR = 2 -- each tile moved in the trench layer = 2 tiles in the surface layer
-
-local submarines = {
-    ['h2o-diesel-submarine'] = true,
-    ['h2o-nuclear-submarine'] = true,
-}
+local TRENCH_MOVEMENT_FACTOR = h2o.TRENCH_MOVEMENT_FACTOR
+local SUBMARINES = h2o.SUBMARINES
 
 local function exit_submarine(event)
     local player = game.get_player(event.player_index)
     if not player or not player.valid then return end
     local selected = player.selected
-    local selected_submarine = selected and selected.valid and submarines[selected.name]
+    local selected_submarine = selected and selected.valid and SUBMARINES[selected.name]
     local vehicle = player.vehicle
 
-    if not vehicle or not submarines[vehicle.name] or selected_submarine then return end
+    if not vehicle or not SUBMARINES[vehicle.name] or selected_submarine then return end
 
     if not player.character then return end
     local safe_position = player.surface.find_non_colliding_position(player.character.name, player.position, 15, 0.5, false)
@@ -28,7 +24,7 @@ h2o.register_delayed_function('exit_submarine', exit_submarine)
 ---@param submarine LuaEntity?
 ---@return boolean
 local function can_enter_submarine(player, submarine)
-    if not (submarine and submarine.valid and submarines[submarine.name]) then return false end
+    if not (submarine and submarine.valid and SUBMARINES[submarine.name]) then return false end
     if player.vehicle == submarine then return false end
     if player.surface ~= submarine.surface or not player.force.is_friend(submarine.force_index) then return false end
 
@@ -77,7 +73,7 @@ local function determine_submerge_direction(submarine)
     local prototype = h2o.prototypes[surface_name]
     if not prototype then error('no prototype for surface ' .. surface_name) end
 
-    local opposite_surface_name = surface_name == h2o.MARAXSIS_SURFACE_NAME and h2o.TRENCH_SURFACE_NAME or h2o.MARAXSIS_SURFACE_NAME
+    local opposite_surface_name = h2o.MARAXSIS_GET_OPPOSITE_SURFACE[surface_name]
     local target_surface = h2o.prototypes[opposite_surface_name].get_surface()
 
     if surface_name == h2o.MARAXSIS_SURFACE_NAME then
@@ -145,12 +141,12 @@ h2o.on_event('toggle-driving', function(event)
     local player = game.get_player(event.player_index)
     if not player then return end
     local selected = player.selected
-    local selected_submarine = selected and selected.valid and submarines[selected.name]
+    local selected_submarine = selected and selected.valid and SUBMARINES[selected.name]
     local submarine = player.vehicle
     local surface = player.surface
 
     -- case 1: player is hovering the sub and trying to exit. if they are in a trench we need to block them from leaving the sub
-    if submarine and submarines[submarine.name] and selected and selected.valid and selected == submarine then
+    if submarine and SUBMARINES[submarine.name] and selected and selected.valid and selected == submarine then
         if not decend_or_ascend(submarine) then
             if surface.name == h2o.TRENCH_SURFACE_NAME then
                 h2o.execute_later('enter_submarine', 1, player, submarine)
@@ -158,7 +154,7 @@ h2o.on_event('toggle-driving', function(event)
         end
     -- case 2: player is not hovering the sub but trying to exit.
     -- if they are in a trench we need to block them from leaving the sub otherwise search nearby tiles for a safe exit point
-    elseif submarine and submarines[submarine.name] and not selected_submarine then
+    elseif submarine and SUBMARINES[submarine.name] and not selected_submarine then
         if not decend_or_ascend(submarine) then
             if surface.name == h2o.TRENCH_SURFACE_NAME then
                 h2o.execute_later('enter_submarine', 1, player, submarine)

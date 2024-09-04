@@ -51,11 +51,11 @@ for i, v in pairs(fish) do
         icon = '__maraxsis__/graphics/entity/fish/icons/' .. i .. '.png',
         icon_size = 64,
         icon_mipmaps = nil,
+        subgroup = 'creatures',
+        order = 'c-' .. i,
         flags = {'placeable-neutral', 'placeable-off-grid', 'not-repairable', 'breaths-air'},
         max_health = data.raw.fish['fish'].max_health,
         map_color = map_colors[tonumber(i)],
-        order = 'b-b-a',
-        subgroup = 'creatures',
         healing_per_tick = data.raw.fish['fish'].healing_per_tick,
         collision_box = {{0, 0}, {0, 0}},
         selection_box = {{-0.5, -1}, {0.5, 1}},
@@ -159,8 +159,6 @@ data:extend{{
     icon_size = 64,
     icon_mipmaps = 4,
     pictures = microplastics_variants,
-    subgroup = 'h2o-maraxsis',
-    order = 'vga',
     stack_size = data.raw.item['plastic-bar'].stack_size / 2,
 }}
 
@@ -216,8 +214,6 @@ data:extend{{
     icon_size = 64,
     icon_mipmaps = nil,
     pictures = tropical_fish_variants,
-    subgroup = 'creatures',
-    order = 'a',
     stack_size = data.raw.capsule['raw-fish'].stack_size,
     capsule_action = table.deepcopy(data.raw.capsule['raw-fish'].capsule_action),
 }}

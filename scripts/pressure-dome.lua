@@ -553,7 +553,7 @@ h2o.on_event('on_destroyed', function(event)
 
     local surface = entity.surface
     local surface_name = surface.name
-    if surface_name ~= h2o.MARAXSIS_SURFACE_NAME and surface_name ~= h2o.TRENCH_SURFACE_NAME then
+    if not h2o.MARAXSIS_SURFACES[surface_name] then
         return
     end
 

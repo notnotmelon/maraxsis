@@ -139,6 +139,9 @@ local function trenchifiy(tile)
         results[#results + 1] = {
             name = tile .. '-trench-' .. k:gsub('_', '-'),
             type = 'simple-entity',
+            localised_name = {'entity-name.cliff'},
+            subgroup = 'cliffs',
+            order = 'x[' .. k .. ']',
             collision_box = {{-2, -2}, {2, 2}},
             count_as_rock_for_filtered_deconstruction = false,
             collision_mask = {},

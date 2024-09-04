@@ -44,8 +44,6 @@ data:extend {{
     max_temperature = data.raw.fluid['water'].max_temperature,
     pressure_to_speed_ratio = data.raw.fluid['water'].pressure_to_speed_ratio,
     flow_to_energy_ratio = data.raw.fluid['water'].flow_to_energy_ratio,
-    order = 'a',
-    subgroup = data.raw.fluid['water'].subgroup,
 }}
 
 data:extend {{
@@ -61,8 +59,6 @@ data:extend {{
     max_temperature = data.raw.fluid['water'].max_temperature,
     pressure_to_speed_ratio = data.raw.fluid['water'].pressure_to_speed_ratio,
     flow_to_energy_ratio = data.raw.fluid['water'].flow_to_energy_ratio,
-    order = 'a',
-    subgroup = data.raw.fluid['water'].subgroup,
 }}
 
 data:extend {{
@@ -78,8 +74,6 @@ data:extend {{
     max_temperature = data.raw.fluid['water'].max_temperature,
     pressure_to_speed_ratio = data.raw.fluid['water'].pressure_to_speed_ratio,
     flow_to_energy_ratio = data.raw.fluid['water'].flow_to_energy_ratio,
-    order = 'a',
-    subgroup = data.raw.fluid['water'].subgroup,
 }}
 
 data:extend {{
@@ -95,8 +89,6 @@ data:extend {{
     max_temperature = data.raw.fluid['water'].max_temperature,
     pressure_to_speed_ratio = data.raw.fluid['water'].pressure_to_speed_ratio,
     flow_to_energy_ratio = data.raw.fluid['water'].flow_to_energy_ratio,
-    order = 'a',
-    subgroup = data.raw.fluid['water'].subgroup,
 }}
 
 data:extend {{
@@ -112,8 +104,6 @@ data:extend {{
     max_temperature = data.raw.fluid['water'].max_temperature,
     pressure_to_speed_ratio = data.raw.fluid['water'].pressure_to_speed_ratio,
     flow_to_energy_ratio = data.raw.fluid['water'].flow_to_energy_ratio,
-    order = 'a',
-    subgroup = data.raw.fluid['water'].subgroup,
 }}
 
 data:extend {{
@@ -133,8 +123,6 @@ data:extend {{
     icon = '__maraxsis__/graphics/icons/saline-electrolysis.png',
     icon_size = 128,
     icon_mipmaps = nil,
-    subgroup = 'fluid-recipes',
-    order = 'a[oil-processing]-d[water-treatment]',
 }}
 add_to_tech('h2o-saline-electrolysis')
 
@@ -161,8 +149,6 @@ data:extend {{
     icon = '__maraxsis__/graphics/icons/saturated-salt-filter.png',
     icon_size = 64,
     icon_mipmaps = nil,
-    subgroup = 'h2o-maraxsis',
-    order = 'vga',
     stack_size = 10,
 }}
 
@@ -190,8 +176,6 @@ data:extend {{
     icon = '__maraxsis__/graphics/icons/salt-filter.png',
     icon_size = 64,
     icon_mipmaps = nil,
-    subgroup = 'h2o-maraxsis',
-    order = 'vga',
     stack_size = 10,
 }}
 

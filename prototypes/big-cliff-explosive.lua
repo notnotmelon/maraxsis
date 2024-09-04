@@ -57,8 +57,6 @@ data:extend {{
     icon = '__maraxsis__/graphics/icons/big-cliff-explosives.png',
     icon_size = 64,
     icon_mipmaps = nil,
-    subgroup = data.raw.capsule['cliff-explosives'].subgroup,
-    order = data.raw.capsule['cliff-explosives'].order .. 'z',
     stack_size = 10,
     capsule_action = {
         type = 'destroy-cliffs',

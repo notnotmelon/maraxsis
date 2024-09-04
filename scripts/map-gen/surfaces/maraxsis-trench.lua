@@ -23,7 +23,7 @@ local function generate_fancy_water(surface, noise, chunkpos)
 end
 
 local SPAWN_AREA = SPAWN_AREA
-local TRENCH_MOVEMENT_FACTOR = 2
+local TRENCH_MOVEMENT_FACTOR = h2o.TRENCH_MOVEMENT_FACTOR
 
 local function generate_terrain(surface, noise, x, y)
 	local position = {x, y}

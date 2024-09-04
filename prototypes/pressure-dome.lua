@@ -37,8 +37,6 @@ data:extend {{
     name = 'h2o-pressure-dome',
     icon = '__maraxsis__/graphics/icons/pressure-dome.png',
     icon_size = 64,
-    subgroup = 'production-machine',
-    order = 'a[water-treatment]-a[pressure-dome]',
     place_result = 'h2o-pressure-dome',
     stack_size = 10,
 }}

@@ -65,8 +65,6 @@ data:extend {{
     pictures = heart_of_the_sea_variants,
     icon_size = 64,
     icon_mipmaps = nil,
-    subgroup = 'h2o-maraxsis',
-    order = 'vga',
     stack_size = 10,
 }}
 
@@ -94,13 +92,6 @@ data:extend {{
     order = 'a',
     main_product = 'h2o-heart-of-the-sea',
     requester_paste_multiplier = 1
-}}
-
-data:extend {{
-    type = 'item-subgroup',
-    name = 'h2o-quarkals',
-    group = 'intermediate-products',
-    order = 'z',
 }}
 
 local types = {'up', 'down', 'strange', 'charm', 'top', 'bottom'}
@@ -138,8 +129,6 @@ for j, type in ipairs(types) do
         icon_size = 64,
         icon_mipmaps = nil,
         pictures = quarkal_variants,
-        subgroup = 'h2o-quarkals',
-        order = 'a[' .. type .. ']',
         stack_size = 100,
         --spoil_result = 'limestone',
         --spoil_duration = 60 * 60 * 5,

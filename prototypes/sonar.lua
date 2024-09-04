@@ -34,8 +34,6 @@ data:extend {{
     icon = '__maraxsis__/graphics/icons/sonar.png',
     icon_size = 64,
     icon_mipmaps = 4,
-    subgroup = 'h2o-maraxsis',
-    order = 'a[sonar]',
     stack_size = 10,
     place_result = 'h2o-sonar',
 }}

@@ -196,8 +196,6 @@ data:extend {{
     icon = path .. 'singularity-lab.png',
     icon_size = 64,
     icon_mipmaps = 4,
-    subgroup = 'h2o-maraxsis',
-    order = 'a',
     place_result = 'h2o-quantum-computer',
     stack_size = 10,
 }}

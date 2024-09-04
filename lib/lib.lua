@@ -1,5 +1,3 @@
-_G.h2o = {}
-
 require 'table'
 require 'string'
 require 'defines'

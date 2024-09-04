@@ -51,8 +51,6 @@ data:extend {{
     icon_size = 64,
     icon_mipmaps = nil,
     pictures = limestone_variants,
-    subgroup = 'h2o-maraxsis',
-    order = 'vga',
     stack_size = 200,
 }}
 
@@ -89,8 +87,6 @@ data:extend {{
     pictures = glass_variants,
     icon_size = 64,
     icon_mipmaps = nil,
-    subgroup = 'h2o-maraxsis',
-    order = 'vga',
     stack_size = 200,
 }}
 
@@ -112,7 +108,5 @@ data:extend {{
     pictures = sand_variants,
     icon_size = 64,
     icon_mipmaps = nil,
-    subgroup = 'h2o-maraxsis',
-    order = 'vga',
     stack_size = 100,
 }}

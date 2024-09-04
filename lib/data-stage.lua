@@ -94,6 +94,10 @@ end
 ---@param new table
 ---@return data.AnyPrototype
 h2o.merge = function(old, new)
+    if not old then
+        error('Failed to h2o.merge: Old prototype is nil', 2)
+    end
+
     old = table.deepcopy(old)
     for k, v in pairs(new) do
         if v == 'nil' then

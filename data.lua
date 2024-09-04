@@ -9,6 +9,7 @@ if tech_tree_screenshot_mode then
     end
 end
 
+_G.h2o = require 'scripts.constants'
 require 'lib.lib'
 require 'prototypes.tile.water'
 _G.dome_collision_mask = collision_mask_util.get_first_unused_layer()
@@ -21,6 +22,7 @@ require 'prototypes.wyrm'
 require 'prototypes.rocks'
 require 'prototypes.fish'
 require 'prototypes.hydro-plant'
+require 'prototypes.waterway'
 require 'prototypes.pressure-dome'
 require 'prototypes.sonar'
 require 'prototypes.quantum-computer'
