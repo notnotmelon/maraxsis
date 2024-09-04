@@ -1,28 +1,35 @@
 local collision_mask_util = require '__core__/lualib/collision-mask-util'
 
 data:extend{h2o.merge(data.raw['straight-rail']['straight-rail'], {
-    type = 'straight-rail',
-    name = 'h2o-waterway',
+    name = 'h2o-straight-waterway',
     icon = data.raw.fluid.water.icon,
+    localised_name = {'entity-name.h2o-waterway'},
+    localised_description = {'entity-description.h2o-waterway'},
     icon_size = 64,
     icon_mipmaps = 'nil',
     collision_mask = {'water-tile', 'ground-tile', 'object-layer'},
 })}
 
 data:extend {h2o.merge(data.raw['curved-rail']['curved-rail'], {
-    type = 'straight-rail',
-    name = 'h2o-waterway',
+    name = 'h2o-curved-waterway',
     icon = data.raw.fluid.water.icon,
+    localised_name = {'entity-name.h2o-waterway'},
+    localised_description = {'entity-description.h2o-waterway'},
     icon_size = 64,
     icon_mipmaps = 'nil',
     collision_mask = {'water-tile', 'ground-tile', 'object-layer'},
+    placeable_by = {item = 'h2o-waterway', count = data.raw['curved-rail']['curved-rail'].placeable_by.count},
 })}
 
 data:extend{{
-    type = 'item',
+    type = 'rail-planner',
     name = 'h2o-waterway',
-    place_result = 'h2o-waterway',
-    stack_size = 50,
+    straight_rail = 'h2o-straight-waterway',
+    place_result = 'h2o-straight-waterway',
+    curved_rail = 'h2o-curved-waterway',
+    stack_size = 100,
+    localised_name = {'entity-name.h2o-waterway'},
+    localised_description = {'entity-description.h2o-waterway'},
     icon = '__maraxsis__/graphics/icons/waterway.png', -- todo: make this icon
     icon = data.raw.fluid.water.icon,
     icon_size = 64,

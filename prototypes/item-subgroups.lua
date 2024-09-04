@@ -56,7 +56,7 @@ make_subgroup('h2o-machines', 'ee', 'production', {
 make_subgroup('h2o-submarine', 'fe', 'logistics', {
     data.raw.item['h2o-diesel-submarine'],
     data.raw.item['h2o-nuclear-submarine'],
-    data.raw.item['h2o-waterway'],
+    data.raw['rail-planner']['h2o-waterway'],
 })
 
 data.raw.fluid['saline-water'].order = 'f[maraxsis-fluids]-a[saline-water]'
