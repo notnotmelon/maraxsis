@@ -112,10 +112,10 @@ local function generate_terrain(surface, noise, x, y)
 	local rock_noise = noise.rocks + noise.rocks_2 / 4
 	if rock_noise > 0.85 then
 		if random() > 0.6 then
-			if surface.count_entities_filtered {name = 'sand-rock-big-underwater', position = position, radius = 2, limit = 1} == 0 then
+			if surface.count_entities_filtered {name = 'big-sand-rock-underwater', position = position, radius = 2, limit = 1} == 0 then
 				if rock_noise > 0.9 then
 					surface.create_entity {
-						name = 'sand-rock-big-underwater',
+						name = 'big-sand-rock-underwater',
 						position = h2o.randomize_position(position),
 						force = 'neutral'
 					}

@@ -108,7 +108,7 @@ data:extend{h2o.merge(data.raw['spider-vehicle']['spidertron'], {
     energy_source = {
         type = 'void',
     },
-    collision_mask = {},
+    collision_mask = {layers = {}},
     burner = 'nil',
     inventory_size = 0,
     -- graphics_set
@@ -123,7 +123,7 @@ data:extend{h2o.merge(data.raw['spider-vehicle']['spidertron'], {
 local leg = h2o.merge(data.raw['spider-leg']['spidertron-leg-' .. ((i % 8) + 1)], {
     name = 'h2o-wyrm-leg-' .. i,
     part_length = i / 4,
-    flags = {'not-on-map', 'placeable-off-grid', 'hidden'},
+    flags = {'not-on-map', 'placeable-off-grid'},
     movement_acceleration = data.raw['spider-leg']['spidertron-leg-1'].movement_acceleration * (num_legs - i + 1),
     allow_maraxsis_water_placement = true,
     minimal_step_size = 0,

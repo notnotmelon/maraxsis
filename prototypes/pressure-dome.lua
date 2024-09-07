@@ -74,7 +74,7 @@ data:extend {{
     minable = {mining_time = 1, result = 'h2o-pressure-dome'},
     selection_box = collision_box(),
     drawing_box = collision_box(),
-    collision_mask = {},
+    collision_mask = {layers = {}},
     render_layer = 'higher-object-under',
     selectable_in_game = false,
     picture = {
@@ -104,7 +104,7 @@ data:extend {h2o.merge(data.raw['lamp']['small-lamp'], {
     selection_box = {{-0.01, -0.01}, {0.01, 0.01}},
     selection_priority = 0,
     drawing_box = collision_box(),
-    collision_mask = {},
+    collision_mask = {layers = {}},
     selectable_in_game = true,
     picture_on = light,
     picture_off = h2o.empty_image(),
@@ -139,7 +139,7 @@ data:extend{h2o.merge(data.raw['constant-combinator']['constant-combinator'], {
     remove_decoratives = 'false',
     icon = '__maraxsis__/graphics/icons/pressure-dome.png',
     icon_size = 64,
-    flags = {'placeable-player', 'player-creation', 'not-on-map', 'not-blueprintable', 'hidden'},
+    flags = {'placeable-player', 'player-creation', 'not-on-map', 'not-blueprintable'},
     max_health = 3000,
     selectable_in_game = false,
     item_slot_count = 500,
@@ -172,7 +172,7 @@ data:extend{h2o.merge(data.raw['constant-combinator']['constant-combinator'], {
     sprites = 'nil',
     activity_led_sprites = 'nil',
     activity_led_light = 'nil',
-    collision_mask = {},
+    collision_mask = {layers = {}},
 })}
 
 local function shift_the_circuit_connection_point(entity, x, y)
@@ -193,22 +193,13 @@ local function shift_the_circuit_connection_point(entity, x, y)
         end
     end
 
-    for _, sprite in pairs(entity.circuit_connector_sprites) do
+    for _, sprite in pairs(entity.circuit_connector.sprites) do
         adjust_shift(sprite.shift or {})
-        if sprite.hr_version then
-            adjust_shift(sprite.hr_version.shift or {})
-        end
         for _, layer in pairs(sprite.layers or {}) do
             adjust_shift(layer.shift or {})
-            if layer.hr_version then
-                adjust_shift(layer.hr_version.shift or {})
-            end
         end
         if sprite.picture then
             adjust_shift(sprite.picture.shift or {})
-            if sprite.picture.hr_version then
-                adjust_shift(sprite.picture.hr_version.shift or {})
-            end
         end
     end
 end
@@ -237,9 +228,10 @@ data:extend {{
     name = 'h2o-atmosphere',
     default_temperature = 25,
     max_temperature = 100,
-    heat_capacity = '1KJ',
-    base_color = {r = 1, g = 1, b = 1},
-    flow_color = {r = 0.5, g = 0.5, b = 1},
+    heat_capacity = '1kJ',
+    base_flow_rate = data.raw.fluid.steam.base_flow_rate,
+    base_color = {1, 1, 1},
+    flow_color = {0.5, 0.5, 1},
     icon = '__maraxsis__/graphics/icons/atmosphere.png',
     icon_size = 64,
     gas_temperature = 25,
@@ -251,7 +243,7 @@ data:extend {h2o.merge(data.raw.tile['refined-concrete'], {
         mining_time = 2^63-1, -- weird hack needed to make this a "top" tile. top tiles require minable properties however these dome tiles actually should not be minable
         results = {},
     },
-    collision_mask = {dome_collision_mask},
+    collision_mask = {layers = {[dome_collision_mask] = true}},
     map_color = {r = 0.5, g = 0.5, b = 0.75},
     can_be_part_of_blueprint = false,
 })}
@@ -276,7 +268,13 @@ data:extend {{
     collision_box = {{-7, -0.4}, {7, 0.4}},
     selection_box = {{-7, -0.5}, {7, 0.5}},
     drawing_box = {{0, 0}, {0, 0}},
-    collision_mask = {'ground-tile', 'water-tile', 'object-layer', 'item-layer', maraxsis_collision_mask, dome_collision_mask},
+    collision_mask = {layers = {
+        ['water_tile'] = true,
+        ['object'] = true,
+        ['item'] = true,
+        [maraxsis_collision_mask] = true, 
+        [dome_collision_mask] = true
+    }},
     weight = 1,
     braking_force = 1,
     friction_force = 1,

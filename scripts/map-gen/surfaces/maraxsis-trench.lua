@@ -41,7 +41,7 @@ local function generate_terrain(surface, noise, x, y)
 	if 0.065 < moisture and moisture < 0.077 then
 		if x % 3 == 0 and y % 3 == 0 then
 			local wall = surface.create_entity {
-				name = 'rock-huge-trench-wall',
+				name = 'huge-rock-trench-wall',
 				position = h2o.randomize_position(position),
 				force = 'neutral'
 			}
@@ -69,7 +69,7 @@ local function generate_terrain(surface, noise, x, y)
 					tile = h2o.lava_tile(surface, position)
 					if -0.3 < noise.rock_1 and noise.rock_1 < 0.3 and random() > 0.9 then
 						surface.create_entity {
-							name = 'rock-huge',
+							name = 'huge-rock',
 							position = h2o.randomize_position(position),
 							force = 'neutral'
 						}

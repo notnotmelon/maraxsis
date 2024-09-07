@@ -1,18 +1,17 @@
 local collision_mask_util = require '__core__/lualib/collision-mask-util'
-_G.maraxsis_collision_mask = collision_mask_util.get_first_unused_layer()
 
 local template = {
     type = 'simple-entity',
     count_as_rock_for_filtered_deconstruction = false,
     icon_size = 64,
     protected_from_tile_building = false,
-    remove_decoratives = false,
+    remove_decoratives = "false",
     selectable_in_game = false,
     subgroup = data.raw.tile['water'].subgroup,
-    flags = {'not-on-map', 'hidden'},
+    flags = {'not-on-map'},
     collision_box = {{-16, -16}, {16, 16}},
     secondary_draw_order = -1,
-    collision_mask = {},
+    collision_mask = {layers = {}},
 }
 for size = 0, 0 do
     size = 2 ^ size
@@ -62,11 +61,11 @@ local waterifiy = {
         tile = table.deepcopy(data.raw.tile[tile])
         tile.localised_name = {'tile-name.underwater'}
         tile.name = tile.name .. '-underwater'
-        tile.collision_mask = {maraxsis_collision_mask}
+        tile.collision_mask = {layers = {[maraxsis_collision_mask] = true}}
         tile.layer = layer
         ---@diagnostic disable-next-line: param-type-mismatch
         tile.map_color = h2o.color_combine(tile.map_color or data.raw.tile['water'].map_color, data.raw.tile['deepwater'].map_color, 0.25)
-        tile.pollution_absorption_per_second = data.raw.tile['water'].pollution_absorption_per_second
+        tile.absorptions_per_second = table.deepcopy(data.raw.tile['water'].absorptions_per_second)
         tile.draw_in_water_layer = true
         --tile.walking_sound = nil -- TODO: add a swimming sound
         tile.walking_speed_modifier = 0.2
@@ -77,7 +76,9 @@ local waterifiy = {
         local submarine_exclusion_zone = table.deepcopy(tile)
         submarine_exclusion_zone.layer = layer
         submarine_exclusion_zone.name = tile.name .. '-submarine-exclusion-zone'
-        submarine_exclusion_zone.collision_mask = {maraxsis_collision_mask, 'rail-layer'}
+        submarine_exclusion_zone.collision_mask = {
+            layers = {[maraxsis_collision_mask] = true, ['rail'] = true}
+        }
         water_tile_type_names[#water_tile_type_names + 1] = submarine_exclusion_zone.name
 
         layer = layer + 1
@@ -88,10 +89,12 @@ local waterifiy = {
     entity = function(entity)
         local underwater
         for entity_prototype in pairs(defines.prototypes.entity) do
-            for _, prototype in pairs(data.raw[entity_prototype]) do
-                if prototype.name == entity then
-                    underwater = prototype
-                    break
+            if entity_prototype ~= 'player-port' then -- todo: remove this check when vanilla updates spage age
+                for _, prototype in pairs(data.raw[entity_prototype]) do
+                    if prototype.name == entity then
+                        underwater = prototype
+                        break
+                    end
                 end
             end
         end
@@ -101,8 +104,8 @@ local waterifiy = {
         underwater.name = underwater.name .. '-underwater'
 
         underwater.localised_name = underwater.localised_name or {'entity-name.' .. underwater.name}
-        collision_mask_util.remove_layer(collision_mask_util.get_mask(underwater), maraxsis_collision_mask)
-        collision_mask_util.add_layer(collision_mask_util.get_mask(underwater), 'ground-tile')
+        collision_mask_util.get_mask(underwater)[maraxsis_collision_mask] = nil
+        --collision_mask_util.get_mask(underwater)
         ---@diagnostic disable-next-line: param-type-mismatch
         underwater.map_color = h2o.color_combine(underwater.map_color or data.raw.tile['water'].map_color, data.raw.tile['deepwater'].map_color, 0.3)
 
@@ -115,8 +118,8 @@ data:extend(waterifiy.tile('sand-3', true))
 data:extend(waterifiy.tile('dirt-5', true))
 data:extend(waterifiy.tile('grass-2', false))
 data:extend(waterifiy.entity('cliff'))
-data:extend(waterifiy.entity('sand-rock-big'))
-data.raw.cliff['cliff-underwater'].collision_mask = {'item-layer', 'object-layer', 'water-tile', 'ground-tile'} -- player should 'swim over' cliffs
+data:extend(waterifiy.entity('big-sand-rock'))
+data.raw.cliff['cliff-underwater'].collision_mask = {layers = {['item'] = true, ['object'] = true, ['water_tile'] = true}} -- player should 'swim over' cliffs
 
 ---creates a new cliff entity with the upper area masked with the provided tile
 ---@param tile string
@@ -129,10 +132,8 @@ local function trenchifiy(tile)
 
         for _, picture in pairs(orientation.pictures) do
             local layer = table.deepcopy(picture.layers[1])
-            for _, version in pairs {layer, layer.hr_version} do
-                version.filename = version.filename:gsub('.png', '-' .. tile .. '.png')
-                version.filename = version.filename:gsub('__base__/graphics/terrain/cliffs', '__maraxsis__/graphics/entity/cliffs')
-            end
+            layer.filename = layer.filename:gsub('.png', '-' .. tile .. '.png')
+            layer.filename = layer.filename:gsub('__base__/graphics/terrain/cliffs', '__maraxsis__/graphics/entity/cliffs')
             pictures[#pictures + 1] = layer
         end
 
@@ -144,13 +145,13 @@ local function trenchifiy(tile)
             order = 'x[' .. k .. ']',
             collision_box = {{-2, -2}, {2, 2}},
             count_as_rock_for_filtered_deconstruction = false,
-            collision_mask = {},
+            collision_mask = {layers = {}},
             map_color = data.raw.tile[tile .. '-underwater'].map_color,
-            flags = {'hidden'},
+            flags = {},
             secondary_draw_order = -1,
-            render_layer = 'ground-tile',
+            render_layer = 'ground-layer-4',
             protected_from_tile_building = false,
-            remove_decoratives = false,
+            remove_decoratives = "false",
             selectable_in_game = false,
             icon = data.raw.cliff.cliff.icon,
             icon_size = data.raw.cliff.cliff.icon_size,
@@ -168,5 +169,5 @@ trench_entrance.name = 'trench-entrance'
 trench_entrance.layer = 255
 trench_entrance.map_color = {0, 0, 0.1, 1}
 trench_entrance.walking_speed_modifier = 0.2
-trench_entrance.collision_mask = {'object-layer', 'item-layer', maraxsis_collision_mask}
+trench_entrance.collision_mask = {layers = {['item'] = true, ['object'] = true, [maraxsis_collision_mask] = true}}
 data:extend {trench_entrance}

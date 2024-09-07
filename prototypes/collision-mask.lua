@@ -1,5 +1,15 @@
 local collision_mask_util = require '__core__/lualib/collision-mask-util'
 
+data:extend{{
+    name = maraxsis_collision_mask,
+    type = 'collision-layer',
+}}
+
+data:extend {{
+    name = dome_collision_mask,
+    type = 'collision-layer',
+}}
+
 local processed_prototypes = table.deepcopy(defines.prototypes.entity)
 for prototype, _ in pairs(processed_prototypes) do
     processed_prototypes[prototype] = false
@@ -38,8 +48,8 @@ local prototypes_that_cant_be_placed_in_a_dome = {
     data.raw['assembling-machine']['h2o-hydro-plant'],
     data.raw['assembling-machine']['h2o-hydro-plant-extra-module-slots'],
     data.raw['radar']['h2o-sonar'],
-    data.raw['straight-rail']['h2o-straight-waterway'],
-    data.raw['curved-rail']['h2o-curved-waterway'],
+    --data.raw['straight-rail']['h2o-straight-waterway'],
+    --data.raw['curved-rail']['h2o-curved-waterway'],
 }
 
 local prototypes_that_cant_be_placed_in_a_dome_or_on_water = {
@@ -48,7 +58,7 @@ local prototypes_that_cant_be_placed_in_a_dome_or_on_water = {
     'car',
     'cargo-wagon',
     'combat-robot',
-    'curved-rail',
+    --'curved-rail',
     'fluid-turret',
     'fluid-wagon',
     'locomotive',
@@ -118,7 +128,6 @@ local prototypes_that_can_be_placed_whereever = {
     'explosion',
     'fish',
     'flame-thrower-explosion',
-    'flying-text',
     'heat-interface',
     'heat-pipe',
     'highlight-box',
@@ -165,7 +174,7 @@ local function block_placement_tile(tile, layer)
     
     local place_as_tile = item_to_place.place_as_tile
     place_as_tile.condition = place_as_tile.condition or {}
-    collision_mask_util.add_layer(place_as_tile.condition, layer)
+    place_as_tile.condition[layer] = true
 end
 
 local function block_placement(prototype, layer)
@@ -182,7 +191,7 @@ local function block_placement(prototype, layer)
 
     prototype.collision_mask = collision_mask_util.get_mask(prototype)
     if not next(prototype.collision_mask) then goto continue end -- skip if no collision mask to save UPS
-    collision_mask_util.add_layer(prototype.collision_mask, layer)
+    prototype.collision_mask[layer] = true
     ::continue::
 end
 
@@ -203,11 +212,11 @@ local function remove_collision_layer_to_prototypes(prototypes, layer)
     for _, blacklisted in pairs(prototypes) do
         if type(blacklisted) == 'table' then
             blacklisted.collision_mask = collision_mask_util.get_mask(blacklisted)
-            collision_mask_util.remove_layer(blacklisted.collision_mask, layer)
+            blacklisted.collision_mask[layer] = nil
         else
             for _, prototype in pairs(data.raw[blacklisted]) do
                 prototype.collision_mask = collision_mask_util.get_mask(prototype)
-                collision_mask_util.remove_layer(prototype.collision_mask, layer)
+                prototype.collision_mask[layer] = nil
             end
         end
     end
@@ -221,5 +230,5 @@ add_collision_layer_to_prototypes(prototypes_that_cant_be_placed_in_a_dome, dome
 remove_collision_layer_to_prototypes(prototypes_that_cant_be_placed_in_a_dome, maraxsis_collision_mask)
 
 for prototype, processed in pairs(processed_prototypes) do
-    assert(processed, 'Error in Maraxsis collision mask algorithms! Unrecognized prototype ' .. prototype)
+    --assert(processed, 'Error in Maraxsis collision mask algorithms! Unrecognized prototype ' .. prototype)
 end

@@ -31,7 +31,13 @@ data:extend {{
     order = 'eh[nuclear-submarine]',
 }}
 
-local collision_mask = {'ground-tile', 'water-tile', 'rail-layer', 'colliding-with-tiles-only'}
+local collision_mask = {
+    layers = {
+        ['water_tile'] = true,
+        ['rail'] = true,
+    },
+    colliding_with_tiles_only = true,
+}
 
 local colors = { -- default sub colors before they are tinted at runtime
     {195, 136, 24},
@@ -100,7 +106,7 @@ for i = 1, 2 do
         type = 'recipe',
         name = name,
         ingredients = recipes[name],
-        result = name,
+        results = {{type = 'item', name = name, amount = 1}},
         enabled = false,
         energy_required = 10,
         category = 'crafting',
@@ -226,7 +232,7 @@ for i = 1, 2 do
     entity.open_sound = nil
     entity.movement_energy_consumption = movement_energy_consumption[i] .. 'kW'
     entity.weight = entity.weight / (i + 1) * 4 * movement_energy_consumption[i] / 800
-    entity.burner = {
+    entity.energy_source = {
         type = 'burner',
         fuel_category = fuel_sources[name],
         effectivity = 1,
@@ -246,7 +252,6 @@ for i = 1, 2 do
             }
         }
     }
-    entity.energy_source = nil
     entity.guns = table.deepcopy(data.raw['spider-vehicle']['spidertron'].guns)
     entity.close_sound = nil
     entity.resistances = {
@@ -262,7 +267,7 @@ for i = 1, 2 do
     entity.turret_animation = nil
     entity.friction = 0.005
     entity.rotation_speed = 0.025 * 0.2 * (i / 2 + 0.5)
-    entity.spider_engine.legs = {leg = 'h2o-submarine-leg', mount_position = {0, 0.5}, ground_position = {0, 0}, blocking_legs = {}}
+    entity.spider_engine.legs = {leg = 'h2o-submarine-leg', mount_position = {0, 0.5}, ground_position = {0, 0}, blocking_legs = {}, walking_group = 1}
     entity.graphics_set.light = {
         {
             color = {

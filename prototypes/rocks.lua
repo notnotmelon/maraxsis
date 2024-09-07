@@ -1,7 +1,7 @@
 --trench indestructible wall
 local tint = {r = 0.2, g = 0.2, b = 0.3}
 for rock, type in pairs {
-    ['rock-huge'] = 'simple-entity',
+    ['huge-rock'] = 'simple-entity',
 } do
     local entity = table.deepcopy(data.raw[type][rock])
     entity.name = entity.name .. '-trench-wall'
@@ -10,8 +10,6 @@ for rock, type in pairs {
     for _, picture in pairs(entity.pictures) do
         picture.tint = tint
         picture.scale = 1.5
-        picture.hr_version.tint = tint
-        picture.hr_version.scale = 1.5
     end
     entity.selectable_in_game = false
     entity.map_color = {0, 0, 0}

@@ -1,26 +1,26 @@
 local function extend_autoplace(prototype)
     local noise_layers = {}
     local seed = 4 -- chosen by fair dice roll, guaranteed to be random
-    local noise = require 'noise'
-    local tne = noise.to_noise_expression
     local i = 1
     for noise_layer, settings in pairs(prototype.noise_layers) do
         if not settings.cellular then
             noise_layers[noise_layer] = true
-            local zoom = noise.get_control_setting('h2o-autoplace-control-' .. i).size_multiplier
+            local zoom = "var('control-setting:h2o-autoplace-control-" .. i .. ":size:multiplier')"
 
-            local x = noise.var('x')
-            local y = noise.var('y')
-            if settings.fx then
-                x = tne(settings.fx(x, y))
-            end
-            if settings.fy then
-                y = tne(settings.fy(x, y))
-            end
-            local expression = h2o.basis_noise(x, y, seed, zoom)
-            if settings.from_parent then
-                expression.arguments.seed1 = data.raw['noise-expression']['h2o-' .. noise_layer .. '-' .. prototype.parent_type].expression.arguments.seed1
-            end
+            local seed = seed
+            --if settings.from_parent then
+            --    seed = data.raw['noise-expression']['h2o-' .. noise_layer .. '-' .. prototype.parent_type].expression.arguments.seed1
+            --end
+
+            local expression = [[basis_noise{
+                x = x,
+                y = y,
+                seed0 = map_seed,
+                seed1 = ]] .. seed .. [[,
+                input_scale = 0.9999728452 / ]] .. zoom .. [[,
+                output_scale = 1.2 / 1.7717819213867
+            }]]
+            
             local name = 'h2o-' .. noise_layer .. '-' .. prototype.type
             data:extend {{
                 type = 'noise-expression',

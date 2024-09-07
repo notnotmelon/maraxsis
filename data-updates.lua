@@ -42,7 +42,7 @@ for _, fluid in pairs(data.raw.fluid) do -- todo: check fluid fuel category
     if not number_part then goto continue end
     barrel.fuel_value = tostring(number_part * 50) .. unit -- 50 fluid per barrel
     barrel.fuel_category = 'h2o-diesel'
-    barrel.burnt_result = 'empty-barrel'
+    barrel.burnt_result = 'barrel'
     ::continue::
 end
 

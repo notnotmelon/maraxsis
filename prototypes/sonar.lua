@@ -49,7 +49,9 @@ data:extend {{
         {type = 'item', name = 'processing-unit',       amount = 5},
         {type = 'item', name = 'small-lamp',            amount = 2},
     },
-    result = 'h2o-sonar',
+    results = {
+        {type = 'item', name = 'h2o-sonar', amount = 1},
+    },
     energy_required = 10,
 }}
 
@@ -85,46 +87,22 @@ data:extend {h2o.merge(data.raw.radar.radar, {
     },
     energy_usage = '900kW',
     pictures = {
-        hr_version = {
-            layers = {
-                {
-                    filename = '__maraxsis__/graphics/entity/sonar/sonar.png',
-                    width = 320,
-                    height = 384,
-                    apply_projection = false,
-                    direction_count = 64,
-                    line_length = 8,
-                    scale = .65,
-                    shift = util.by_pixel(0, -30 - 16),
-                },
-                {
-                    filename = '__maraxsis__/graphics/entity/sonar/sonar-shadow.png',
-                    width = 384,
-                    height = 192,
-                    scale = 0.65,
-                    draw_as_shadow = true,
-                    direction_count = 64,
-                    line_length = 8,
-                    shift = util.by_pixel(30, 20 - 16),
-                },
-            }
-        },
         layers = {
             {
                 filename = '__maraxsis__/graphics/entity/sonar/sonar.png',
-                width = 320 / 2,
-                height = 384 / 2,
+                width = 320,
+                height = 384,
                 apply_projection = false,
                 direction_count = 64,
                 line_length = 8,
-                scale = .65 * 2,
+                scale = .65,
                 shift = util.by_pixel(0, -30 - 16),
             },
             {
                 filename = '__maraxsis__/graphics/entity/sonar/sonar-shadow.png',
-                width = 384 / 2,
-                height = 192 / 2,
-                scale = 0.65 * 2,
+                width = 384,
+                height = 192,
+                scale = 0.65,
                 draw_as_shadow = true,
                 direction_count = 64,
                 line_length = 8,
@@ -185,7 +163,7 @@ data:extend {h2o.merge(data.raw.lamp['small-lamp'], {
     icon = '__maraxsis__/graphics/icons/sonar.png',
     icon_size = 64,
     icon_mipmaps = 4,
-    flags = {'placeable-neutral', 'player-creation', 'hidden'},
+    flags = {'placeable-neutral', 'player-creation'},
     minable = 'nil',
     max_health = 100,
     corpse = 'small-remnants',
@@ -196,7 +174,7 @@ data:extend {h2o.merge(data.raw.lamp['small-lamp'], {
     circuit_wire_max_distance = 'nil',
     draw_copper_wires = false,
     draw_circuit_wires = false,
-    circuit_connector_sprites = 'nil',
+    circuit_connector = 'nil',
     light_when_colored = 'nil',
     picture_on = {
         layers = {

@@ -240,32 +240,19 @@ h2o.pipe_covers = function(n, s, w, e)
         {
             layers = {
                 {
-                    filename = '__base__/graphics/entity/pipe-covers/pipe-cover-north.png',
+                    filename = '__base__/graphics/entity/pipe-covers/hr-pipe-cover-north.png',
                     priority = 'extra-high',
-                    width = 64,
-                    height = 64,
-                    hr_version = {
-                        filename = '__base__/graphics/entity/pipe-covers/hr-pipe-cover-north.png',
-                        priority = 'extra-high',
-                        width = 128,
-                        height = 128,
-                        scale = 0.5
-                    }
+                    width = 128,
+                    height = 128,
+                    scale = 0.5
                 },
                 {
-                    filename = '__base__/graphics/entity/pipe-covers/pipe-cover-north-shadow.png',
+                    filename = '__base__/graphics/entity/pipe-covers/hr-pipe-cover-north-shadow.png',
                     priority = 'extra-high',
-                    width = 64,
-                    height = 64,
-                    draw_as_shadow = true,
-                    hr_version = {
-                        filename = '__base__/graphics/entity/pipe-covers/hr-pipe-cover-north-shadow.png',
-                        priority = 'extra-high',
-                        width = 128,
-                        height = 128,
-                        scale = 0.5,
-                        draw_as_shadow = true
-                    }
+                    width = 128,
+                    height = 128,
+                    scale = 0.5,
+                    draw_as_shadow = true
                 }
             }
         } or
@@ -275,32 +262,19 @@ h2o.pipe_covers = function(n, s, w, e)
         {
             layers = {
                 {
-                    filename = '__base__/graphics/entity/pipe-covers/pipe-cover-east.png',
+                    filename = '__base__/graphics/entity/pipe-covers/hr-pipe-cover-east.png',
                     priority = 'extra-high',
-                    width = 64,
-                    height = 64,
-                    hr_version = {
-                        filename = '__base__/graphics/entity/pipe-covers/hr-pipe-cover-east.png',
-                        priority = 'extra-high',
-                        width = 128,
-                        height = 128,
-                        scale = 0.5
-                    }
+                    width = 128,
+                    height = 128,
+                    scale = 0.5
                 },
                 {
-                    filename = '__base__/graphics/entity/pipe-covers/pipe-cover-east-shadow.png',
+                    filename = '__base__/graphics/entity/pipe-covers/hr-pipe-cover-east-shadow.png',
                     priority = 'extra-high',
-                    width = 64,
-                    height = 64,
-                    draw_as_shadow = true,
-                    hr_version = {
-                        filename = '__base__/graphics/entity/pipe-covers/hr-pipe-cover-east-shadow.png',
-                        priority = 'extra-high',
-                        width = 128,
-                        height = 128,
-                        scale = 0.5,
-                        draw_as_shadow = true
-                    }
+                    width = 128,
+                    height = 128,
+                    scale = 0.5,
+                    draw_as_shadow = true
                 }
             }
         } or
@@ -310,32 +284,19 @@ h2o.pipe_covers = function(n, s, w, e)
         {
             layers = {
                 {
-                    filename = '__base__/graphics/entity/pipe-covers/pipe-cover-south.png',
+                    filename = '__base__/graphics/entity/pipe-covers/hr-pipe-cover-south.png',
                     priority = 'extra-high',
-                    width = 64,
-                    height = 64,
-                    hr_version = {
-                        filename = '__base__/graphics/entity/pipe-covers/hr-pipe-cover-south.png',
-                        priority = 'extra-high',
-                        width = 128,
-                        height = 128,
-                        scale = 0.5
-                    }
+                    width = 128,
+                    height = 128,
+                    scale = 0.5
                 },
                 {
-                    filename = '__base__/graphics/entity/pipe-covers/pipe-cover-south-shadow.png',
+                    filename = '__base__/graphics/entity/pipe-covers/hr-pipe-cover-south-shadow.png',
                     priority = 'extra-high',
-                    width = 64,
-                    height = 64,
-                    draw_as_shadow = true,
-                    hr_version = {
-                        filename = '__base__/graphics/entity/pipe-covers/hr-pipe-cover-south-shadow.png',
-                        priority = 'extra-high',
-                        width = 128,
-                        height = 128,
-                        scale = 0.5,
-                        draw_as_shadow = true
-                    }
+                    width = 128,
+                    height = 128,
+                    scale = 0.5,
+                    draw_as_shadow = true
                 }
             }
         } or
@@ -345,32 +306,19 @@ h2o.pipe_covers = function(n, s, w, e)
         {
             layers = {
                 {
-                    filename = '__base__/graphics/entity/pipe-covers/pipe-cover-west.png',
+                    filename = '__base__/graphics/entity/pipe-covers/hr-pipe-cover-west.png',
                     priority = 'extra-high',
-                    width = 64,
-                    height = 64,
-                    hr_version = {
-                        filename = '__base__/graphics/entity/pipe-covers/hr-pipe-cover-west.png',
-                        priority = 'extra-high',
-                        width = 128,
-                        height = 128,
-                        scale = 0.5
-                    }
+                    width = 128,
+                    height = 128,
+                    scale = 0.5
                 },
                 {
-                    filename = '__base__/graphics/entity/pipe-covers/pipe-cover-west-shadow.png',
+                    filename = '__base__/graphics/entity/pipe-covers/hr-pipe-cover-west-shadow.png',
                     priority = 'extra-high',
-                    width = 64,
-                    height = 64,
-                    draw_as_shadow = true,
-                    hr_version = {
-                        filename = '__base__/graphics/entity/pipe-covers/hr-pipe-cover-west-shadow.png',
-                        priority = 'extra-high',
-                        width = 128,
-                        height = 128,
-                        scale = 0.5,
-                        draw_as_shadow = true
-                    }
+                    width = 128,
+                    height = 128,
+                    scale = 0.5,
+                    draw_as_shadow = true
                 }
             }
         } or
@@ -524,6 +472,7 @@ h2o.disallow_effectivity = function(recipe_categories)
     end
 end
 
+do return end     -- todo: fix for 2.0
 local delays = {}
 for i = 0, 20 do
     local n = 2 ^ i

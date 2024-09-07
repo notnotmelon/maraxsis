@@ -9,11 +9,12 @@ if tech_tree_screenshot_mode then
     end
 end
 
+_G.dome_collision_mask = 'h2o_dome_collision_mask'
+_G.maraxsis_collision_mask = 'h2o_maraxsis_collision_mask'
+
 _G.h2o = require 'scripts.constants'
 require 'lib.lib'
 require 'prototypes.tile.water'
-_G.dome_collision_mask = collision_mask_util.get_first_unused_layer()
-assert(dome_collision_mask ~= maraxsis_collision_mask, 'dome_collision_mask is the same as maraxsis_collision_mask')
 require 'prototypes.submarine'
 require 'prototypes.technology'
 require 'prototypes.glass'
@@ -31,7 +32,7 @@ require 'prototypes.water-treatment'
 require 'prototypes.big-cliff-explosive'
 require 'prototypes.hydraulic-science-pack'
 require 'prototypes.autoplace'
-require 'prototypes.tile.lava'
+--require 'prototypes.tile.lava'
 require 'prototypes.tips-and-tricks.tips-and-tricks'
 
 data:extend{{
