@@ -6,7 +6,7 @@ local SUBMARINES = {
 }
 
 local TRENCH_SURFACE_NAME = 'h2o-trench'
-local MARAXSIS_SURFACE_NAME = 'h2o-maraxsis'
+local MARAXSIS_SURFACE_NAME = 'maraxsis'
 
 local MARAXSIS_SURFACES = { -- all surfaces with water mechanics
     [TRENCH_SURFACE_NAME] = true,

@@ -104,6 +104,9 @@ local delayed_functions = {}
 ---@param ticks integer
 ---@param ... any
 function h2o.execute_later(function_key, ticks, ...)
+	delayed_functions[function_key](...)
+	do return end
+
 	if ticks < 1 or ticks % 1 ~= 0 then error('Invalid delay: ' .. ticks) end
 	local highest = 1
 	for _, n in pairs(powers_of_two) do

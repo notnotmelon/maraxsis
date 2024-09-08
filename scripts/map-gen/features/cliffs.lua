@@ -74,7 +74,7 @@ end
 ---@param y1 integer
 ---@param x2 integer
 ---@param y2 integer
-local function spawn_cliffs_at_positions(surface, prototype, grid, x1, y1, x2, y2)
+local function spawn_cliffs_at_positions(surface, noise, prototype, grid, x1, y1, x2, y2, xs, ys)
 	for x, row in pairs(grid) do
 		for y, angle in pairs(row) do
 			local is_outside_scope = x < x1 or x > x2 or y < y1 or y > y2
@@ -94,7 +94,7 @@ local function spawn_cliffs_at_positions(surface, prototype, grid, x1, y1, x2, y
 			local vector = {x = math.cos(angle), y = math.sin(angle)}
 			local orientation = find_best_dot_product(vector, {first .. '-to-' .. second, second .. '-to-' .. first})
 
-			local cliff_name, f = prototype.which_cliff_to_use(surface, x * 4, y * 4)
+			local cliff_name, f = prototype.which_cliff_to_use(surface, noise, x * 4, y * 4, xs, ys)
 			local cliff = surface.create_entity{
 				name = cliff_name,
 				position = {x * 4, y * 4},
@@ -123,12 +123,22 @@ function h2o.generate_cliffs(surface, prototype, x1, y1, x2, y2)
 	y1 = math.floor(y1 / 4)
 	x2 = math.floor(x2 / 4)
 	y2 = math.floor(y2 / 4)
+	local xs = x1 * 4 - 4
+	local ys = y1 * 4 - 4
+
+	local to_calculate = {}
+	for x = x1, x2 + 2 do
+		for y = y1, y2 + 2 do
+			to_calculate[#to_calculate + 1] = {x, y}
+		end
+	end
+	local noise = surface.calculate_tile_properties({'moisture', 'moisture_octave_1'}, to_calculate)
 
 	local grid = {}
 	for x = x1 - 1, x2 + 1 do
 		grid[x] = {}
 		for y = y1 - 1, y2 + 1 do
-			grid[x][y] = prototype.elevation(surface, x * 4, y * 4)
+			grid[x][y] = prototype.elevation(surface, noise, x * 4, y * 4, xs, ys)
 		end
 	end
 
@@ -164,8 +174,8 @@ function h2o.generate_cliffs(surface, prototype, x1, y1, x2, y2)
 						angle = true
 					else
 						local h = 0.01
-						local dx = (prototype.elevation(surface, xx + h, yy) - prototype.elevation(surface, xx - h, yy)) / (2 * h)
-						local dy = (prototype.elevation(surface, xx, yy + h) - prototype.elevation(surface, xx, yy - h)) / (2 * h)
+						local dx = (prototype.elevation(surface, noise, xx + h, yy, xs, ys) - prototype.elevation(surface, noise, xx - h, yy, xs, ys)) / (2 * h)
+						local dy = (prototype.elevation(surface, noise, xx, yy + h, xs, ys) - prototype.elevation(surface, noise, xx, yy - h, xs, ys)) / (2 * h)
 						angle = math.atan2(dy, dx)
 					end
 
@@ -181,6 +191,6 @@ function h2o.generate_cliffs(surface, prototype, x1, y1, x2, y2)
 
 	for _, grid in pairs(cliff_locations) do
 		remove_0_neighbour_cells_and_3_neighbour_cells(grid, x1, y1, x2, y2)
-		spawn_cliffs_at_positions(surface, prototype, grid, x1, y1, x2, y2)
+		spawn_cliffs_at_positions(surface, noise, prototype, grid, x1, y1, x2, y2, xs, ys)
 	end
 end

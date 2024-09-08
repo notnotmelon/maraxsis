@@ -33,7 +33,7 @@ require 'prototypes.maraxsis'
 require 'prototypes.big-cliff-explosive'
 require 'prototypes.hydraulic-science-pack'
 require 'prototypes.autoplace'
---require 'prototypes.tile.lava'
+require 'prototypes.tile.lava'
 require 'prototypes.tips-and-tricks.tips-and-tricks'
 
 data:extend{{

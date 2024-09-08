@@ -1,9 +1,11 @@
 data:extend {{
     type = 'technology',
     name = 'h2o-maraxsis',
-    icon = util.technology_icon_constant_planet('__maraxsis__/graphics/technology/maraxsis.png'),
+    icons = util.technology_icon_constant_planet('__maraxsis__/graphics/technology/maraxsis.png'),
     icon_size = 256,
     essential = true,
+    localised_name = {'space-location-name.maraxsis'},
+    localised_description = {'space-location-description.maraxsis'},
     effects = {
         {
             type = 'unlock-space-location',

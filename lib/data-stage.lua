@@ -1,5 +1,7 @@
 -- Adds helper functions for data stage. Shared across all pymods and adapted for use in maraxsis
 
+h2o.on_event = function() end
+
 ---Returns a 1x1 empty image.
 ---@return table
 h2o.empty_image = function()

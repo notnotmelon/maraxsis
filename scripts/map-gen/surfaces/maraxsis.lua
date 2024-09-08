@@ -4,9 +4,10 @@ local abs = math.abs
 local sqrt = math.sqrt
 local floor = math.floor
 
-local function perlin(surface, x, y, layer_name)
-	local properties = surface.calculate_tile_properties({layer_name}, {{x, y}})
-	return properties[layer_name][1] or error('Noise layer ' .. layer_name .. ' is not defined for planet: ' .. tostring(self))
+local function perlin(surface, noise, x, y, layer_name, xs, ys)
+	x = x - xs
+	y = y - ys
+	return noise[layer_name][math.floor((x + y * 32) / 4) + 1] or error()
 end
 
 SPAWN_AREA = 1000
@@ -17,8 +18,8 @@ function h2o.elevation_bonus(distance_from_0_0)
 	return (1 - distance_from_0_0 / SPAWN_AREA)
 end
 
-local function elevation(surface, x, y)
-	local moisture = abs(perlin(surface, x, y, 'moisture') + perlin(surface, x, y, 'moisture_octave_1') / 4)
+local function elevation(surface, noise, x, y, xs, ys)
+	local moisture = abs(perlin(surface, noise, x, y, 'moisture', xs, ys) + perlin(surface, noise, x, y, 'moisture_octave_1', xs, ys) / 4)
 
 	local distance_from_0_0 = sqrt(x * x + y * y)
 	if distance_from_0_0 < SPAWN_AREA then
@@ -32,8 +33,8 @@ end
 ---@param x integer
 ---@param y integer
 ---@return string, boolean, function?
-local function which_cliff_to_use(surface, x, y)
-	local trench_noise = elevation(surface, x, y)
+local function which_cliff_to_use(surface, noise, x, y, xs, ys)
+	local trench_noise = elevation(surface, noise, x, y, xs, ys)
 	if trench_noise < 0.07 then
 		return 'cliff-underwater', function(cliff)
 			local cliff_transition = surface.create_entity {
@@ -177,6 +178,38 @@ local noise_layers = {
 	brown_asterisk_2 = {zoom = 16},
 }
 
+h2o.on_event(defines.events.on_surface_created, function(event)
+	local surface = game.get_surface(event.surface_index)
+	if surface.name ~= h2o.MARAXSIS_SURFACE_NAME then return end
+
+	local mgs = surface.map_gen_settings
+
+	mgs.seed = game.surfaces['nauvis'].map_gen_settings.seed + 1
+	mgs.autoplace_settings = { ---@diagnostic disable-next-line: missing-fields
+		entity = {treat_missing_as_default = false}, ---@diagnostic disable-next-line: missing-fields
+		tile = {treat_missing_as_default = false}, ---@diagnostic disable-next-line: missing-fields
+		decorative = {treat_missing_as_default = false},
+	} ---@diagnostic disable-next-line: missing-fields
+	mgs.cliff_settings = {
+		cliff_elevation_0 = 1024
+	}
+
+	mgs.autoplace_controls = mgs.autoplace_controls or {}
+	local i = 1
+	for noise_layer, settings in pairs(noise_layers) do
+		mgs.property_expression_names[noise_layer] = 'h2o-' .. noise_layer .. '-maraxsis'
+		mgs.autoplace_controls['h2o-autoplace-control-' .. i] = mgs.autoplace_controls['h2o-autoplace-control-' .. i] or {}
+		mgs.autoplace_controls['h2o-autoplace-control-' .. i].size = settings.zoom
+		i = i + 1
+	end
+	surface.map_gen_settings = mgs
+
+	surface.show_clouds = true
+	surface.brightness_visual_weights = {r = 1, g = 1, b = 1}
+	surface.min_brightness = 0.05
+	surface.ticks_per_day = 15000
+end)
+
 local function get_surface()
 	local surface = game.surfaces[h2o.MARAXSIS_SURFACE_NAME]
 
@@ -192,22 +225,6 @@ local function get_surface()
 				cliff_elevation_0 = 1024
 			}
 		})
-
-		local mgs = surface.map_gen_settings
-		mgs.autoplace_controls = mgs.autoplace_controls or {}
-		local i = 1
-		for noise_layer, settings in pairs(noise_layers) do
-			mgs.property_expression_names[noise_layer] = 'h2o-' .. noise_layer .. '-maraxsis'
-			mgs.autoplace_controls['h2o-autoplace-control-' .. i] = mgs.autoplace_controls['h2o-autoplace-control-' .. i] or {}
-			mgs.autoplace_controls['h2o-autoplace-control-' .. i].size = settings.zoom
-			i = i + 1
-		end
-		surface.map_gen_settings = mgs
-
-		surface.show_clouds = true
-		surface.brightness_visual_weights = {r = 1, g = 1, b = 1}
-		surface.min_brightness = 0.05
-		surface.ticks_per_day = 15000
 	end
 
 	return surface
