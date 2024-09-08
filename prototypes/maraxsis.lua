@@ -1,4 +1,6 @@
-data:extend{h2o.merge(data.raw.planet.gleba, {
+local asteroid_util = require('__space-age__.prototypes.planet.asteroid-spawn-definitions')
+
+data:extend {h2o.merge(data.raw.planet.gleba, {
     name = 'maraxsis',
     starting_area = 1,
     surface_properties = {
@@ -26,5 +28,17 @@ data:extend{h2o.merge(data.raw.planet.gleba, {
         }
     },--]]
     distance = 15,
-    orientation = 0.2,
+    orientation = 0.95,
 })}
+
+
+data:extend {{
+    type = 'space-connection',
+    name = 'vulcanus-maraxsis',
+    subgroup = 'planet-connections',
+    from = 'vulcanus',
+    to = 'maraxsis',
+    order = 'f',
+    length = 20000,
+    asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.gleba_aquilo)
+}}
