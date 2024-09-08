@@ -122,7 +122,7 @@ local function generate_terrain(surface, noise, x, y)
 				end
 			end
 		elseif random() > 0.5 then
-			decorative = {name = random() > 0.5 and 'sand-rock-small' or 'sand-rock-medium', amount = 1, position = position}
+			decorative = {name = random() > 0.5 and 'small-sand-rock' or 'medium-sand-rock', amount = 1, position = position}
 		end
 	end
 

@@ -20,9 +20,9 @@ data:extend {{
             {'space-science-pack',      1},
             {'production-science-pack', 1},
             {'utility-science-pack',    1},
-            --{'metallurgic-science-pack', 1},
-            --{'electromagnetic-science-pack', 1},
-            --{'agricultural-science-pack', 1},
+            {'metallurgic-science-pack', 1},
+            {'electromagnetic-science-pack', 1},
+            {'agricultural-science-pack', 1},
         },
         time = 60,
     },
@@ -89,7 +89,7 @@ data:extend {h2o.merge(data.raw.radar.radar, {
     pictures = {
         layers = {
             {
-                filename = '__maraxsis__/graphics/entity/sonar/sonar.png',
+                filename = '__maraxsis__/graphics/entity/sonar/hr-sonar.png',
                 width = 320,
                 height = 384,
                 apply_projection = false,
@@ -99,7 +99,7 @@ data:extend {h2o.merge(data.raw.radar.radar, {
                 shift = util.by_pixel(0, -30 - 16),
             },
             {
-                filename = '__maraxsis__/graphics/entity/sonar/sonar-shadow.png',
+                filename = '__maraxsis__/graphics/entity/sonar/hr-sonar-shadow.png',
                 width = 384,
                 height = 192,
                 scale = 0.65,

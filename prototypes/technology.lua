@@ -1,10 +1,15 @@
 data:extend {{
     type = 'technology',
     name = 'h2o-maraxsis',
-    icon = '__maraxsis__/graphics/technology/maraxsis.png',
+    icon = util.technology_icon_constant_planet('__maraxsis__/graphics/technology/maraxsis.png'),
     icon_size = 256,
-    icon_mipmaps = nil,
+    essential = true,
     effects = {
+        {
+            type = 'unlock-space-location',
+            space_location = 'maraxsis',
+            use_icon_overlay_constant = true
+        },
         {
             type = 'unlock-recipe',
             recipe = 'h2o-hydro-plant',
@@ -15,7 +20,7 @@ data:extend {{
         },
     },
     prerequisites = {
-        'rocket-silo'
+        'advanced-asteroid-processing'
     },
     unit = {
         count = 3000,
@@ -26,9 +31,9 @@ data:extend {{
             {'space-science-pack',         1},
             {'production-science-pack',    1},
             {'utility-science-pack',       1},
-            --{'metallurgic-science-pack', 1},
-            --{'electromagnetic-science-pack', 1},
-            --{'agricultural-science-pack', 1},
+            {'metallurgic-science-pack', 1},
+            {'electromagnetic-science-pack', 1},
+            {'agricultural-science-pack', 1},
         },
         time = 60,
     },

@@ -25,9 +25,9 @@ data:extend {{
             {'space-science-pack',      1},
             {'production-science-pack',    1},
             {'utility-science-pack',       1},
-            --{'metallurgic-science-pack', 1},
-            --{'electromagnetic-science-pack', 1},
-            --{'agricultural-science-pack', 1},
+            {'metallurgic-science-pack', 1},
+            {'electromagnetic-science-pack', 1},
+            {'agricultural-science-pack', 1},
             {'h2o-hydraulic-science-pack', 1},
         },
         time = 60,
@@ -295,33 +295,27 @@ data:extend{h2o.merge(data.raw.projectile['cliff-explosives'], {
         }
     },
     animation = {
-        animation_speed = 0.25,
+        filename = '__base__/graphics/entity/cliff-explosives/cliff-explosives.png',
         draw_as_glow = true,
-        filename = '__base__/graphics/entity/cliff-explosives/hr-cliff-explosives.png',
         frame_count = 16,
-        height = 58,
         line_length = 8,
+        animation_speed = 0.250,
+        width = 52,
+        height = 58,
+        shift = util.by_pixel(0.5, -4.5),
         priority = 'high',
-        scale = 0.5,
-        shift = {
-            0.015625,
-            -0.140625
-        },
-        width = 52
+        scale = 0.5
     },
     shadow = {
-        animation_speed = 0.25,
-        draw_as_shadow = true,
-        filename = '__base__/graphics/entity/cliff-explosives/hr-cliff-explosives-shadow.png',
+        filename = '__base__/graphics/entity/cliff-explosives/cliff-explosives-shadow.png',
         frame_count = 16,
-        height = 42,
         line_length = 8,
+        animation_speed = 0.250,
+        width = 74,
+        height = 42,
+        shift = util.by_pixel(-3.5, 4),
         priority = 'high',
-        scale = 0.5,
-        shift = {
-            -0.109375,
-            0.125
-        },
-        width = 74
+        draw_as_shadow = true,
+        scale = 0.5
     },
 })}

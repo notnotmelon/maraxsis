@@ -133,7 +133,7 @@ local function trenchifiy(tile)
         for _, picture in pairs(orientation.pictures) do
             local layer = table.deepcopy(picture.layers[1])
             layer.filename = layer.filename:gsub('.png', '-' .. tile .. '.png')
-            layer.filename = layer.filename:gsub('__base__/graphics/terrain/cliffs', '__maraxsis__/graphics/entity/cliffs')
+            layer.filename = layer.filename:gsub('__base__/graphics/terrain/cliffs/', '__maraxsis__/graphics/entity/cliffs/hr-')
             pictures[#pictures + 1] = layer
         end
 

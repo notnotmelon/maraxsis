@@ -180,14 +180,13 @@ local function create_dome_combinator(pressure_dome_data)
     combinator.destructible = false
     combinator.operable = false
 
-    local red_success = combinator.connect_neighbour {
-        wire = defines.wire_type.red,
-        target_entity = light,
-    }
-    local green_success = combinator.connect_neighbour {
-        wire = defines.wire_type.green,
-        target_entity = light,
-    }
+    local red = combinator.get_wire_connector(defines.wire_connector_id.circuit_red, true)
+    local green = combinator.get_wire_connector(defines.wire_connector_id.circuit_green, true)
+    local light_red = light.get_wire_connector(defines.wire_connector_id.circuit_red, false)
+    local light_green = light.get_wire_connector(defines.wire_connector_id.circuit_green, false)
+
+    local red_success = red.connect_to(light_red, false)
+    local green_success = green.connect_to(light_green, false)
 
     assert(red_success, 'Failed to connect red wire to the dome light. Please report this!')
     assert(green_success, 'Failed to connect green wire to the dome light. Please report this!')
@@ -346,7 +345,7 @@ local function check_can_build_dome(entity)
             {x - size, y - size},
             {x + size, y + size},
         },
-        collision_mask = {layers = {['object'] = true},},
+        collision_mask = {['object'] = true},
     }
     
     local contained_entities = {}

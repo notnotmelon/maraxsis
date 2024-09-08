@@ -86,7 +86,7 @@ local function generate_terrain(surface, noise, x, y)
 			local rng = random()
 			local decorative_1 = noise.rock_2 + noise.rock_1 / 2
 			if rng > 0.995 or (rng > 0.5 and -0.1 < decorative_1 and decorative_1 < 0.1) then
-				decorative = {name = 'sand-rock-medium', amount = 1, position = position}
+				decorative = {name = 'medium-sand-rock', amount = 1, position = position}
 			end
 		end
 	end

@@ -10,6 +10,8 @@ data:extend{{
     durability = data.raw.tool['automation-science-pack'].durability,
 }}
 
+table.insert(data.raw.lab.lab.inputs, 'h2o-hydraulic-science-pack')
+
 data:extend{{
     type = 'technology',
     name = 'h2o-hydraulic-science-pack',
@@ -31,9 +33,9 @@ data:extend{{
             {'space-science-pack', 1},
             {'production-science-pack', 1},
             {'utility-science-pack', 1},
-            --{'metallurgic-science-pack', 1},
-            --{'electromagnetic-science-pack', 1},
-            --{'agricultural-science-pack', 1},
+            {'metallurgic-science-pack', 1},
+            {'electromagnetic-science-pack', 1},
+            {'agricultural-science-pack', 1},
         },
         time = 60,
     },
