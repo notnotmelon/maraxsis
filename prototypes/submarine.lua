@@ -267,6 +267,7 @@ for i = 1, 2 do
     entity.turret_animation = nil
     entity.friction = 0.005
     entity.rotation_speed = 0.025 * 0.2 * (i / 2 + 0.5)
+    entity.spider_engine.walking_group_overlap = 1
     entity.spider_engine.legs = {leg = 'h2o-submarine-leg', mount_position = {0, 0.5}, ground_position = {0, 0}, blocking_legs = {}, walking_group = 1}
     entity.graphics_set.light = {
         {

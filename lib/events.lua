@@ -104,45 +104,30 @@ local delayed_functions = {}
 ---@param ticks integer
 ---@param ... any
 function h2o.execute_later(function_key, ticks, ...)
-	delayed_functions[function_key](...)
-	do return end
-
-	if ticks < 1 or ticks % 1 ~= 0 then error('Invalid delay: ' .. ticks) end
-	local highest = 1
-	for _, n in pairs(powers_of_two) do
-		if n <= ticks then
-			highest = n
-		else
-			break
-		end
-	end
-	local flying_text = game.surfaces.nauvis.create_entity {
-		name = 'notnotmelon-ticked-script-delay-' .. highest,
-		position = {0, 0},
+	local marked_for_death_render_object = rendering.draw_line {
+		color = {0, 0, 0, 0},
+		width = 0,
+		filled = false,
+		from = {0, 0},
+		to = {0, 0},
 		create_build_effect_smoke = false,
-		text = ''
+		surface = 'nauvis',
+		time_to_live = ticks
 	}
-	if not flying_text then error() end
 	global._delayed_functions = global._delayed_functions or {}
-	global._delayed_functions[script.register_on_entity_destroyed(flying_text)] = {function_key, ticks - highest, {...}}
+	global._delayed_functions[script.register_on_object_destroyed(marked_for_death_render_object)] = {function_key, {...}}
 end
 
-h2o.on_event(defines.events.on_entity_destroyed, function(event)
+h2o.on_event(defines.events.on_object_destroyed, function(event)
 	if not global._delayed_functions then return end
-	local data = global._delayed_functions[event.registration_number]
+	local registration_number = event.registration_number
+	local data = global._delayed_functions[registration_number]
 	if not data then return end
-	global._delayed_functions[event.registration_number] = nil
+	global._delayed_functions[registration_number] = nil
 
-	local function_key = data[1]
-	local ticks = data[2]
-
-	if ticks == 0 then
-		local f = delayed_functions[function_key]
-		if not f then error('No function found for key: ' .. function_key) end
-		f(table.unpack(data[3]))
-	else
-		h2o.execute_later(function_key, ticks, table.unpack(data[3]))
-	end
+	local f = delayed_functions[data[1]]
+	if not f then error('No function found for key: ' .. function_key) end
+	f(table.unpack(data[2]))
 end)
 
 function h2o.register_delayed_function(key, func)
