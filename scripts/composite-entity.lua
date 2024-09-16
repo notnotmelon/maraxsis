@@ -22,7 +22,7 @@ local composite_entity_creation = {
 }
 
 h2o.on_event('on_init', function()
-    global.composite_entities = global.composite_entities or {}
+    storage.composite_entities = storage.composite_entities or {}
 end)
 
 local function on_built(event)
@@ -40,14 +40,14 @@ local function on_built(event)
             sub_entity.rotatable = false
         end
     end
-    global.composite_entities[entity.unit_number] = sub_entities
+    storage.composite_entities[entity.unit_number] = sub_entities
 end
 h2o.on_event('on_built', on_built)
 
 local function on_destroyed(event)
     local entity = event.entity
     if not entity.valid or not composite_entity_creation[entity.name] then return end
-    local sub_entities = global.composite_entities[entity.unit_number]
+    local sub_entities = storage.composite_entities[entity.unit_number]
     if not sub_entities then return end
     for _, sub_entity in pairs(sub_entities) do
         if type(sub_entity) == 'number' then
@@ -56,7 +56,7 @@ local function on_destroyed(event)
             sub_entity.destroy()
         end
     end
-    global.composite_entities[entity.unit_number] = nil
+    storage.composite_entities[entity.unit_number] = nil
 end
 
 h2o.on_event('on_destroyed', on_destroyed)

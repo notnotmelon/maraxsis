@@ -59,7 +59,7 @@ local function enter_submarine(player, submarine)
     else
         submarine.set_driver(player)
     end
-    global.breath[player.index] = nil
+    storage.breath[player.index] = nil
 end
 h2o.register_delayed_function('enter_submarine', enter_submarine)
 

@@ -17,10 +17,10 @@ h2o.on_event('on_init', function()
         remote.call('PickerDollies', 'add_blacklist_name', 'h2o-pressure-dome')
     end
     for mask in pairs(game.tile_prototypes['h2o-pressure-dome-tile'].collision_mask) do
-        global.dome_collision_mask = mask
+        storage.dome_collision_mask = mask
     end
 
-    global.pressure_domes = global.pressure_domes or {}
+    storage.pressure_domes = storage.pressure_domes or {}
 end)
 
 -- By Pedro Gimeno, donated to the public domain
@@ -228,7 +228,7 @@ h2o.on_event('on_built', function(event)
     if not entity.valid or entity.name == 'h2o-pressure-dome' then return end
     local surface = entity.surface
 
-    for _, pressure_dome_data in pairs(global.pressure_domes) do
+    for _, pressure_dome_data in pairs(storage.pressure_domes) do
         local dome = pressure_dome_data.entity
         if not dome.valid or dome.surface ~= surface then goto continue end
 
@@ -355,7 +355,7 @@ local function check_can_build_dome(entity)
         if count == 0 then
             -- pass
         elseif count == 4 then
-            if e.prototype.collision_mask[global.dome_collision_mask] then
+            if e.prototype.collision_mask[storage.dome_collision_mask] then
                 return false, {}, {'cant-build-reason.entity-in-the-way', e.localised_name}
             end
             contained_entities[#contained_entities + 1] = e
@@ -412,7 +412,7 @@ h2o.on_event('on_built', function(event)
         end
     end
 
-    global.pressure_domes[entity.unit_number] = pressure_dome_data
+    storage.pressure_domes[entity.unit_number] = pressure_dome_data
 end)
 
 local function delete_invalid_entities_from_contained_entities_list(pressure_dome_data, additional_entity_to_delete)
@@ -521,7 +521,7 @@ h2o.on_event('on_destroyed', function(event)
     local unit_number = entity.unit_number
 
     if entity.name == 'h2o-pressure-dome-collision' then
-        for _, pressure_dome_data in pairs(global.pressure_domes) do
+        for _, pressure_dome_data in pairs(storage.pressure_domes) do
             local dome = pressure_dome_data.entity
             if dome.valid then
                 for _, collision_box in pairs(pressure_dome_data.collision_boxes) do
@@ -536,9 +536,9 @@ h2o.on_event('on_destroyed', function(event)
     end
     ::parent_dome_found::
 
-    local pressure_dome_data = global.pressure_domes[unit_number]
+    local pressure_dome_data = storage.pressure_domes[unit_number]
     if pressure_dome_data then
-        global.pressure_domes[unit_number] = nil
+        storage.pressure_domes[unit_number] = nil
         unplace_tiles(pressure_dome_data)
         destroy_collision_boxes(pressure_dome_data)
         local light = pressure_dome_data.light
@@ -558,14 +558,14 @@ h2o.on_event('on_destroyed', function(event)
 
     local new_pressdomes = nil
 
-    for _, pressure_dome_data in pairs(global.pressure_domes) do
+    for _, pressure_dome_data in pairs(storage.pressure_domes) do
         local dome = pressure_dome_data.entity
         
         if dome.valid then
             delete_invalid_entities_from_contained_entities_list(pressure_dome_data, entity)
         elseif not new_pressure_domes then
             new_pressure_domes = {}
-            for _, pressure_dome_data in pairs(global.pressure_domes) do
+            for _, pressure_dome_data in pairs(storage.pressure_domes) do
                 local dome = pressure_dome_data.entity
                 if dome.valid then
                     pressure_dome_data.unit_number = dome.unit_number
@@ -576,12 +576,12 @@ h2o.on_event('on_destroyed', function(event)
     end
 
     if new_pressure_domes then
-        global.pressure_domes = new_pressure_domes
+        storage.pressure_domes = new_pressure_domes
     end
 end)
 
 local function find_pressure_dome_data_by_collision_entity(collision_box)
-    for _, pressure_dome_data in pairs(global.pressure_domes) do
+    for _, pressure_dome_data in pairs(storage.pressure_domes) do
         for _, cb in pairs(pressure_dome_data.collision_boxes) do
             if cb.valid and cb == collision_box then
                 return pressure_dome_data

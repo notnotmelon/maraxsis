@@ -22,12 +22,12 @@ local function calculate_matching_bits(secret, experiment)
 end
 
 h2o.on_event('on_init', function()
-    global.quantum_computers = global.quantum_computers or {}
+    storage.quantum_computers = storage.quantum_computers or {}
 
-    if not global.quantum_computers_by_tick then
-        global.quantum_computers_by_tick = {}
+    if not storage.quantum_computers_by_tick then
+        storage.quantum_computers_by_tick = {}
         for i = 1, UPDATE_BUCKETS do
-            global.quantum_computers_by_tick[i] = {}
+            storage.quantum_computers_by_tick[i] = {}
         end
     end
 end)
@@ -39,7 +39,7 @@ end
 local function get_smallest_bucket_index()
     local smallest_bucket_index = 1
     local smallest_bucket_size = math.huge
-    for i, bucket in pairs(global.quantum_computers_by_tick) do
+    for i, bucket in pairs(storage.quantum_computers_by_tick) do
         if #bucket < smallest_bucket_size then
             smallest_bucket_size = #bucket
             smallest_bucket_index = i
@@ -63,9 +63,9 @@ h2o.on_event('on_built', function(event)
         secret = generate_new_secret()
     }
 
-    global.quantum_computers[entity.unit_number] = quantum_computer_data
+    storage.quantum_computers[entity.unit_number] = quantum_computer_data
     local bucket_index = get_smallest_bucket_index()
-    table.insert(global.quantum_computers_by_tick[bucket_index], quantum_computer_data)
+    table.insert(storage.quantum_computers_by_tick[bucket_index], quantum_computer_data)
 end)
 
 local HEART_OF_THE_SEA = 'h2o-heart-of-the-sea'
@@ -140,12 +140,12 @@ end
 
 h2o.on_nth_tick(UPDATE_RATE, function()
     local bucket_index = math.floor(game.tick / UPDATE_RATE) % UPDATE_BUCKETS + 1
-    local bucket = global.quantum_computers_by_tick[bucket_index]
+    local bucket = storage.quantum_computers_by_tick[bucket_index]
 
     for i, quantum_computer_data in pairs(bucket) do
         local entity = quantum_computer_data.entity
         if not entity.valid then
-            global.quantum_computers[quantum_computer_data.unit_number] = nil
+            storage.quantum_computers[quantum_computer_data.unit_number] = nil
             table.remove(bucket, i)
             break
         end

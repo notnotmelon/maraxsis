@@ -82,7 +82,7 @@ h2o.cancel_creation = function(entity, player_index, message, color)
 	if not message then return end
 
 	local tick = game.tick
-	local last_message = global._last_cancel_creation_message or 0
+	local last_message = storage._last_cancel_creation_message or 0
 	if last_message + 60 < tick then
 		--[[surface.create_entity{
 			name = 'flying-text',
@@ -91,7 +91,7 @@ h2o.cancel_creation = function(entity, player_index, message, color)
 			render_player_index = player_index,
             color = color
 		}--]] -- todo: readd
-		global._last_cancel_creation_message = game.tick
+		storage._last_cancel_creation_message = game.tick
 	end
 end
 

@@ -8,7 +8,7 @@ local SUBMARINES = {
 }
 
 h2o.on_event('on_init', function()
-    global.breath = global.breath or {}
+    storage.breath = storage.breath or {}
 end)
 
 h2o.on_nth_tick(UPDATE_RATE, function()
@@ -25,30 +25,30 @@ h2o.on_nth_tick(UPDATE_RATE, function()
 
         local vehicle = player.vehicle
         if vehicle and SUBMARINES[vehicle.name] then
-            global.breath[player.index] = nil
+            storage.breath[player.index] = nil
             goto continue
         end
 
-        for _, pressure_dome_data in pairs(global.pressure_domes) do
+        for _, pressure_dome_data in pairs(storage.pressure_domes) do
             local dome = pressure_dome_data.entity
             if domesurface then goto continue_2 end
             
             local dome_position = dome.position
             local x, y = position.x - dome_position.x, position.y - dome_position.y
             if is_point_in_polygon(x, y) then
-                global.breath[player.index] = nil
+                storage.breath[player.index] = nil
                 goto continue
             end
             
             ::continue_2::
         end
 
-        local breath = global.breath[player.index] or FULL_BREATH_NUM_TICKS
+        local breath = storage.breath[player.index] or FULL_BREATH_NUM_TICKS
         local breath_loss = UPDATE_RATE
         local is_trench = surface_name == h2o.TRENCH_SURFACE_NAME
         if is_trench then breath_loss = breath_loss * 4 end
         breath = math.max(0, breath - breath_loss)
-        global.breath[player.index] = breath
+        storage.breath[player.index] = breath
 
         if breath <= WARNING_MESSAGE then
             player.print({'maraxsis.drowning'}, {
@@ -78,5 +78,5 @@ h2o.on_event({
 }, function(event)
     local player = game.get_player(event.player_index)
     if not player or not player.valid then return end
-    global.breath[player.index] = nil
+    storage.breath[player.index] = nil
 end)

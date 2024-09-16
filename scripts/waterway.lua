@@ -2,7 +2,7 @@
 local DIVE_STATION = 'h2o-dive-station'
 
 h2o.on_event('on_init', function()
-    global.dive_stations = global.dive_stations or {}
+    storage.dive_stations = storage.dive_stations or {}
 end)
 
 h2o.on_event('on_built', function(event)

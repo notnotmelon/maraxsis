@@ -114,16 +114,16 @@ function h2o.execute_later(function_key, ticks, ...)
 		surface = 'nauvis',
 		time_to_live = ticks
 	}
-	global._delayed_functions = global._delayed_functions or {}
-	global._delayed_functions[script.register_on_object_destroyed(marked_for_death_render_object)] = {function_key, {...}}
+	storage._delayed_functions = storage._delayed_functions or {}
+	storage._delayed_functions[script.register_on_object_destroyed(marked_for_death_render_object)] = {function_key, {...}}
 end
 
 h2o.on_event(defines.events.on_object_destroyed, function(event)
-	if not global._delayed_functions then return end
+	if not storage._delayed_functions then return end
 	local registration_number = event.registration_number
-	local data = global._delayed_functions[registration_number]
+	local data = storage._delayed_functions[registration_number]
 	if not data then return end
-	global._delayed_functions[registration_number] = nil
+	storage._delayed_functions[registration_number] = nil
 
 	local f = delayed_functions[data[1]]
 	if not f then error('No function found for key: ' .. function_key) end

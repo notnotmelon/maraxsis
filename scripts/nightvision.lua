@@ -39,7 +39,7 @@ h2o.on_event({
     defines.events.on_player_armor_inventory_changed,
     defines.events.on_player_created,
 }, function(event)
-    if global.stop_infinite_nightvision_recursion_loop then return end
+    if storage.stop_infinite_nightvision_recursion_loop then return end
 
     local player = game.get_player(event.player_index)
     if not player then return end
