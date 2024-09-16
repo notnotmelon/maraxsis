@@ -110,7 +110,7 @@ data:extend {{
             pipe_picture = furnacekpipepictures_a(),
             pipe_covers = pipecoverspictures(),
             volume = 50,
-            pipe_connections = {{direction = defines.direction.east, flow_direction = 'input', position = {-3.75, -0.5}}, {direction = defines.direction.west, flow_direction = 'input', position = {3.75, -0.5}}},
+            pipe_connections = {{direction = defines.direction.west, flow_direction = 'input', position = {-3.75, -0.5}}, {direction = defines.direction.east, flow_direction = 'input', position = {3.75, -0.5}}},
             secondary_draw_orders = {north = -1},
         },
     },

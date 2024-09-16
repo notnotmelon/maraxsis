@@ -33,7 +33,7 @@ h2o.on_event('on_init', function()
 end)
 
 local function generate_new_secret()
-    return math.random(1, 63)
+    return math.random(1, 64)
 end
 
 local function get_smallest_bucket_index()
@@ -59,7 +59,7 @@ h2o.on_event('on_built', function(event)
     local quantum_computer_data = {
         entity = entity,
         unit_number = entity.unit_number,
-        previous_experiment = nil,
+        previous_experiment = 0,
         secret = generate_new_secret()
     }
 
@@ -78,7 +78,7 @@ local function do_experiement(quantum_computer_data, current_experiment)
     local current_matching_bits = calculate_matching_bits(secret, current_experiment)
 
     if current_matching_bits == TOTAL_BITS then
-        quantum_computer_data.previous_experiment = nil
+        quantum_computer_data.previous_experiment = 0
         quantum_computer_data.previous_matching_bits = nil
         quantum_computer_data.secret = generate_new_secret()
         return HEART_OF_THE_SEA
@@ -88,10 +88,6 @@ local function do_experiement(quantum_computer_data, current_experiment)
     local previous_matching_bits = quantum_computer_data.previous_matching_bits
     quantum_computer_data.previous_experiment = current_experiment
     quantum_computer_data.previous_matching_bits = current_matching_bits
-
-    if not previous_experiment then
-        return LIMESTONE
-    end
 
     if not previous_matching_bits then
         previous_matching_bits = calculate_matching_bits(secret, previous_experiment)
