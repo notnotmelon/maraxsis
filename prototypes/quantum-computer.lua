@@ -99,11 +99,13 @@ data:extend {{
     }},
     fast_replaceable_group = 'assembling-machine',
     scale_entity_info_icon = true,
-    working_visualisations = {{
-        constant_speed = true,
-        always_draw = true,
-        animation = animation,
-    }},
+    graphics_set = {
+        working_visualisations = {{
+            constant_speed = true,
+            always_draw = true,
+            animation = animation,
+        }}
+    },
     fluid_boxes = {
         {
             production_type = 'input',

@@ -88,7 +88,7 @@ local function do_experiement(quantum_computer_data, current_experiment)
     local previous_matching_bits = quantum_computer_data.previous_matching_bits
     quantum_computer_data.previous_experiment = current_experiment
     quantum_computer_data.previous_matching_bits = current_matching_bits
-
+    
     if not previous_matching_bits then
         previous_matching_bits = calculate_matching_bits(secret, previous_experiment)
     end
@@ -106,9 +106,11 @@ end
 local function update_quantum_computer(quantum_computer_data)
     local entity = quantum_computer_data.entity
 
-    local fluidbox = entity.fluidbox[1]
-    if not fluidbox then return end
-    if fluidbox.amount < 99.999 then return end
+    local fluidbox = entity.fluidbox
+    local fluid = fluidbox[1]
+    if not fluid then return end
+    local fluid_amount = fluid.amount
+    if fluid_amount < 99.999 then return end
 
     local output = entity.get_inventory(defines.inventory.assembling_machine_output)
     if not output.is_empty() then return end
@@ -117,21 +119,25 @@ local function update_quantum_computer(quantum_computer_data)
 
     local contents = input.get_contents()
     local experiment = 0
-    for coral, bit_value in pairs(BIT_ORDER) do
-        if contents[coral] then
+    for _, item in pairs(contents) do
+        local bit_value = BIT_ORDER[item.name]
+        if bit_value then
             experiment = experiment + bit_value
         end
     end
+    if experiment == 0 then return end
 
     local result = do_experiement(quantum_computer_data, experiment)
-    local flow = entity.force.item_production_statistics
+    local flow = entity.force.get_item_production_statistics(entity.surface_index)
+
     output.insert {name = result, count = 1}
     flow.on_flow(result, 1)
-
-    for item in pairs(contents) do
-        input.remove {name = item, count = 1}
+    for _, item in pairs(contents) do
+        input.remove {name = item.name, count = 1}
         flow.on_flow(item, -1)
     end
+
+    fluidbox.flush(1, 'brackish-water')
 end
 
 h2o.on_nth_tick(UPDATE_RATE, function()

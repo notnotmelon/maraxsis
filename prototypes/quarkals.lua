@@ -80,7 +80,7 @@ data:extend {{
         {type = 'item', name = 'h2o-bottom-coral',  amount = 1},
         {type = 'item', name = 'h2o-strange-coral', amount = 1},
         {type = 'item', name = 'h2o-charm-coral',   amount = 1},
-        {type = 'fluid', name = 'brackish-water',   amount = 100},
+        {type = 'fluid', name = 'brackish-water',   amount = 50},
     },
     results = {
         {type = 'item', name = 'h2o-heart-of-the-sea', amount_min = 0, amount_max = 1},
