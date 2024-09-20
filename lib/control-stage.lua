@@ -24,7 +24,7 @@ end
 ---@param allowed_modules table<string, any>
 ---@return LocalisedString
 h2o.generate_allowed_module_tooltip = function(allowed_modules)
-    local item_prototypes = game.item_prototypes
+    local item_prototypes = prototypes.item
     ---@type LocalisedString
 	local result = {'', {'gui.module-description'}, '\n'}
 	for module, _ in pairs(allowed_modules) do

@@ -54,7 +54,6 @@ h2o.on_event('on_built', function(event)
     if entity.name ~= 'h2o-quantum-computer' then return end
 
     entity.active = false
-    entity.operable = false
 
     local quantum_computer_data = {
         entity = entity,
@@ -92,7 +91,7 @@ local function do_experiement(quantum_computer_data, current_experiment)
     if not previous_matching_bits then
         previous_matching_bits = calculate_matching_bits(secret, previous_experiment)
     end
-
+    
     if current_matching_bits > previous_matching_bits then
         return UP_CORAL
     elseif current_matching_bits < previous_matching_bits then

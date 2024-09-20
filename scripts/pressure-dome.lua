@@ -16,7 +16,7 @@ h2o.on_event('on_init', function()
     if remote.interfaces['PickerDollies'] and remote.interfaces['PickerDollies']['add_blacklist_name'] then
         remote.call('PickerDollies', 'add_blacklist_name', 'h2o-pressure-dome')
     end
-    for mask in pairs(game.tile_prototypes['h2o-pressure-dome-tile'].collision_mask) do
+    for mask in pairs(prototypes.tile['h2o-pressure-dome-tile'].collision_mask) do
         storage.dome_collision_mask = mask
     end
 
