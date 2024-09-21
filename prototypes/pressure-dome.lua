@@ -53,7 +53,7 @@ data:extend {{
         {type = 'item', name = 'pipe',             amount = 50},
         {type = 'item', name = 'steel-plate',      amount = 500},
         {type = 'item', name = 'h2o-glass-panes',  amount = 5000},
-        {type = 'item', name = 'refined-concrete', amount = 880},
+        {type = 'item', name = 'space-platform-foundation', amount = 880},
         {type = 'item', name = 'small-lamp',       amount = 30},
     },
     results = {
@@ -72,10 +72,10 @@ data:extend {{
     icon = '__maraxsis__/graphics/icons/pressure-dome.png',
     icon_size = 64,
     flags = {'placeable-player', 'player-creation', 'not-on-map'},
-    max_health = 3000,
+    max_health = 10000,
     collision_box = collision_box(),
     minable = {mining_time = 1, result = 'h2o-pressure-dome'},
-    selection_box = collision_box(),
+    selection_box = {{-16.5, -16.5}, {16.5, 16.5}},
     drawing_box = collision_box(),
     collision_mask = {colliding_with_tiles_only = true, layers = {['empty_space'] = true}},
     render_layer = 'higher-object-above',
@@ -117,7 +117,7 @@ data:extend {h2o.merge(data.raw['lamp']['small-lamp'], {
     icon = '__maraxsis__/graphics/icons/pressure-dome.png',
     icon_size = 64,
     flags = {'placeable-player', 'player-creation', 'not-on-map', 'not-blueprintable'},
-    max_health = 3000,
+    max_health = 10000,
     collision_box = collision_box(),
     selection_box = {{-0.01, -0.01}, {0.01, 0.01}},
     selection_priority = 0,
@@ -158,7 +158,7 @@ data:extend{h2o.merge(data.raw['constant-combinator']['constant-combinator'], {
     icon = '__maraxsis__/graphics/icons/pressure-dome.png',
     icon_size = 64,
     flags = {'placeable-player', 'player-creation', 'not-on-map', 'not-blueprintable'},
-    max_health = 3000,
+    max_health = 10000,
     selectable_in_game = false,
     item_slot_count = 500,
     activity_led_light_offsets = {
@@ -252,8 +252,9 @@ data:extend {{
     gas_temperature = 25,
 }}
 
-data:extend {h2o.merge(data.raw.tile['refined-concrete'], {
+local tile = h2o.merge(data.raw.tile['space-platform-foundation'], {
     name = 'h2o-pressure-dome-tile',
+    is_foundation = true,
     minable = {
         mining_time = 2^63-1, -- weird hack needed to make this a "top" tile. top tiles require minable properties however these dome tiles actually should not be minable
         results = {},
@@ -261,7 +262,9 @@ data:extend {h2o.merge(data.raw.tile['refined-concrete'], {
     collision_mask = {layers = {[dome_collision_mask] = true}},
     map_color = {r = 0.5, g = 0.5, b = 0.75},
     can_be_part_of_blueprint = false,
-})}
+    layer_group = 'ground-artificial'
+})
+data:extend {tile}
 
 local blank_animation = {
     filename = '__core__/graphics/empty.png',
@@ -279,8 +282,8 @@ data:extend {{
     icon = '__maraxsis__/graphics/icons/pressure-dome.png',
     icon_size = 64,
     flags = {'placeable-player', 'player-creation', 'placeable-off-grid', 'not-on-map', 'building-direction-8-way', 'not-blueprintable'},
-    max_health = 3000,
-    collision_box = {{-7, -0.4}, {7, 0.4}},
+    max_health = 10000,
+    collision_box = {{-7, -0.3}, {7, 0.3}},
     selection_box = {{-7, -0.5}, {7, 0.5}},
     drawing_box = {{0, 0}, {0, 0}},
     collision_mask = {layers = {

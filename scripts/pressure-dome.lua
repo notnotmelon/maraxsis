@@ -241,7 +241,7 @@ h2o.on_event('on_built', function(event)
             table.insert(pressure_dome_data.contained_entities, entity)
             update_combinator(pressure_dome_data)
         else
-            h2o.cancel_creation(entity, event.player_index, {'cant-build-reason.entity-in-the-way', dome.localised_name})
+            h2o.cancel_creation(entity, event.player_index, {'cant-build-reason.entity-in-the-way', prototypes.entity['h2o-pressure-dome'].localised_name})
         end
 
         do return end
@@ -276,11 +276,18 @@ local function unplace_tiles(pressure_dome_data)
     local position = pressure_dome_data.position
     local x, y = position.x, position.y
 
+    local tile_to_unplace
+    if surface.platform then
+        tile_to_unplace = 'space-platform-foundation'
+    end
+
+    local area = {
+        {x - size, y - size},
+        {x + size, y + size},
+    }
+
     local tiles_in_square = surface.find_tiles_filtered {
-        area = {
-            {x - size, y - size},
-            {x + size, y + size},
-        },
+        area = area,
         name = PRESSURE_DOME_TILE,
     }
 
@@ -290,11 +297,17 @@ local function unplace_tiles(pressure_dome_data)
         local tile_position = tile.position
         local xx, yy = tile_position.x, tile_position.y
         if is_point_in_polygon(xx - x + 0.5, yy - y) then
-            tiles[#tiles + 1] = {name = tile.hidden_tile or DEFAULT_MARAXSIS_TILE, position = {xx, yy}}
+            tiles[#tiles + 1] = {name = tile_to_unplace or tile.hidden_tile or DEFAULT_MARAXSIS_TILE, position = {xx, yy}}
         end
     end
 
     surface.set_tiles(tiles, true, false, true, false)
+    if not surface.platform then
+        surface.destroy_decoratives{
+            area = area,
+            name = prototypes.tile[PRESSURE_DOME_TILE].bound_decoratives,
+        }
+    end
 end
 
 local function place_collision_boxes(pressure_dome_data, health)
@@ -644,6 +657,20 @@ local function find_pressure_dome_data_by_collision_entity(collision_box)
         end
     end
 end
+
+h2o.on_event(defines.events.on_selected_entity_changed, function(event)
+    local player = game.get_player(event.player_index)
+    if not player or not player.valid then return end
+    local entity = player.selected
+    if not entity or not entity.valid then return end
+
+    if entity.name ~= 'h2o-pressure-dome-collision' then return end
+
+    local pressure_dome_data = find_pressure_dome_data_by_collision_entity(entity)
+    if not pressure_dome_data then return end
+
+    delete_invalid_entities_from_contained_entities_list(pressure_dome_data, nil)
+end)
 
 h2o.on_event(defines.events.on_entity_damaged, function(event)
     local entity = event.entity
