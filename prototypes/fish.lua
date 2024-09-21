@@ -34,6 +34,7 @@ for i, v in pairs(fish) do
     v.animation_speed = 0.4
     v.scale = 1.25
     v.apply_projection = true
+    v.flags = {'no-scale'}
     v = {
         layers = {
             v,
