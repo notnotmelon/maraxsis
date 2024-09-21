@@ -71,15 +71,14 @@ data:extend {{
     remove_decoratives = 'false',
     icon = '__maraxsis__/graphics/icons/pressure-dome.png',
     icon_size = 64,
-    flags = {'placeable-player', 'player-creation', 'not-on-map', 'not-blueprintable'},
+    flags = {'placeable-player', 'player-creation', 'not-on-map'},
     max_health = 3000,
     collision_box = collision_box(),
     minable = {mining_time = 1, result = 'h2o-pressure-dome'},
     selection_box = collision_box(),
     drawing_box = collision_box(),
-    collision_mask = {layers = {}},
-    render_layer = 'higher-object-under',
-    selectable_in_game = false,
+    collision_mask = {colliding_with_tiles_only = true, layers = {['empty_space'] = true}},
+    render_layer = 'higher-object-above',
     picture = {
         layers = {cage_shadow, base_shadow, dome},
     },
@@ -90,7 +89,23 @@ data:extend {{
     created_smoke = {
         type = 'create-trival-smoke',
         smoke_name = 'h2o-invisible-smoke',
+    },
+    created_effect = {
+        type = 'direct',
+        action_delivery = {
+            type = 'instant',
+            source_effects = {
+                type = 'script',
+                effect_id = 'on_built_maraxsis_pressure_dome'
+            }
+        }
     }
+}}
+
+data:extend{{
+    type = 'sprite',
+    name = 'h2o-pressure-dome-sprite',
+    layers = {cage_shadow, base_shadow, dome},
 }}
 
 data:extend {h2o.merge(data.raw['lamp']['small-lamp'], {
@@ -258,14 +273,13 @@ local blank_animation = {
 }
 
 data:extend {{
-    type = 'car',
+    type = 'simple-entity-with-owner',
     name = 'h2o-pressure-dome-collision',
     localised_name = {'entity-name.h2o-pressure-dome'},
     icon = '__maraxsis__/graphics/icons/pressure-dome.png',
     icon_size = 64,
-    flags = {'placeable-player', 'player-creation', 'placeable-off-grid', 'not-on-map'},
+    flags = {'placeable-player', 'player-creation', 'placeable-off-grid', 'not-on-map', 'building-direction-8-way', 'not-blueprintable'},
     max_health = 3000,
-    allow_remote_driving = false,
     collision_box = {{-7, -0.4}, {7, 0.4}},
     selection_box = {{-7, -0.5}, {7, 0.5}},
     drawing_box = {{0, 0}, {0, 0}},
@@ -276,26 +290,8 @@ data:extend {{
         [maraxsis_collision_mask] = true, 
         [dome_collision_mask] = true
     }},
-    weight = 1,
-    braking_force = 1,
-    friction_force = 1,
-    energy_per_hit_point = 1,
-    effectivity = 1,
-    rotation_speed = 0,
-    energy_source = {
-        type = 'void'
-    },
     squeak_behaviour = false,
-    inventory_size = 0,
-    consumption = '0W',
     minable = {mining_time = 1, result = 'h2o-pressure-dome'},
-    animation = blank_animation,
-    movement_speed = 0,
-    distance_per_frame = 1,
-    pollution_to_join_attack = 0,
-    distraction_cooldown = 0,
-    vision_distance = 0,
-    has_belt_immunity = true,
     placeable_by = {{item = 'h2o-pressure-dome', count = 1}},
     resistances = {
         {

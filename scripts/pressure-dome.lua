@@ -12,12 +12,15 @@ local DOME_POLYGON = {
     check_size, 7,
 }
 
+local PRESSURE_DOME_TILE = 'h2o-pressure-dome-tile'
+
 h2o.on_event('on_init', function()
     if remote.interfaces['PickerDollies'] and remote.interfaces['PickerDollies']['add_blacklist_name'] then
         remote.call('PickerDollies', 'add_blacklist_name', 'h2o-pressure-dome')
     end
-    for mask in pairs(prototypes.tile['h2o-pressure-dome-tile'].collision_mask) do
+    for mask in pairs(prototypes.tile[PRESSURE_DOME_TILE].collision_mask.layers) do
         storage.dome_collision_mask = mask
+        break
     end
 
     storage.pressure_domes = storage.pressure_domes or {}
@@ -137,13 +140,14 @@ local function count_points_in_dome(pressure_dome_data, entity)
     return count
 end
 
-local function create_dome_light(dome)
-    if not dome.valid then error('Attempted to circuit connect an invalid dome! Please report this.') end
+local function create_dome_light(pressure_dome_data)
+    local surface = pressure_dome_data.surface
+    if not surface.valid then return end
 
-    local light = dome.surface.create_entity {
+    local light = surface.create_entity {
         name = 'h2o-pressure-dome-lamp',
-        position = dome.position,
-        force = dome.force,
+        position = pressure_dome_data.position,
+        force = pressure_dome_data.force_index,
         create_build_effect_smoke = false,
     }
 
@@ -153,14 +157,13 @@ local function create_dome_light(dome)
     local control_behavior = light.get_or_create_control_behavior()
     control_behavior.use_colors = true
 
-    return light
+    pressure_dome_data.light = light
 end
 
 local function create_dome_combinator(pressure_dome_data)
     local light = pressure_dome_data.light
     if not light or not light.valid then
-        light = create_dome_light(pressure_dome_data.entity)
-        pressure_dome_data.light = light
+        create_dome_light(pressure_dome_data)
     end
 
     local combinator = light.surface.create_entity {
@@ -258,7 +261,7 @@ local function place_tiles(pressure_dome_data)
         for yy = -math.floor(size), math.floor(size) do
             if is_point_in_polygon(xx + 0.5, yy) then
                 local x, y = x + xx, y + yy
-                tiles[#tiles + 1] = {name = 'h2o-pressure-dome-tile', position = {x, y}}
+                tiles[#tiles + 1] = {name = PRESSURE_DOME_TILE, position = {x, y}}
             end
         end
     end
@@ -278,7 +281,7 @@ local function unplace_tiles(pressure_dome_data)
             {x - size, y - size},
             {x + size, y + size},
         },
-        name = 'h2o-pressure-dome-tile',
+        name = PRESSURE_DOME_TILE,
     }
 
     local tiles = {}
@@ -294,23 +297,23 @@ local function unplace_tiles(pressure_dome_data)
     surface.set_tiles(tiles, true, false, true, false)
 end
 
-local function place_collision_boxes(pressure_dome_data)
+local function place_collision_boxes(pressure_dome_data, health)
     local surface = pressure_dome_data.surface
     if not surface.valid then return end
     local position = pressure_dome_data.position
     local x, y = position.x, position.y
-    local force = pressure_dome_data.entity.force_index
+    local force = pressure_dome_data.force_index
 
     local diagonal_offset = 4.75
     local positions_and_orientations = {
-        {x, y - size, 0},
-        {x, y + size, 0},
-        {x - size, y, 0.25},
-        {x + size, y, 0.25},
-        {x + (size - diagonal_offset), y - (size - diagonal_offset), 0.125},
-        {x - (size - diagonal_offset), y - (size - diagonal_offset), 0.375},
-        {x + (size - diagonal_offset), y + (size - diagonal_offset), 0.375},
-        {x - (size - diagonal_offset), y + (size - diagonal_offset), 0.125},
+        {x,                            y - size,                     defines.direction.north},
+        {x,                            y + size,                     defines.direction.south},
+        {x - size,                     y,                            defines.direction.east},
+        {x + size,                     y,                            defines.direction.west},
+        {x + (size - diagonal_offset), y - (size - diagonal_offset), defines.direction.northeast},
+        {x - (size - diagonal_offset), y - (size - diagonal_offset), defines.direction.southeast},
+        {x + (size - diagonal_offset), y + (size - diagonal_offset), defines.direction.southeast},
+        {x - (size - diagonal_offset), y + (size - diagonal_offset), defines.direction.northeast},
     }
 
     for _, pos_and_orient in pairs(positions_and_orientations) do
@@ -320,9 +323,9 @@ local function place_collision_boxes(pressure_dome_data)
             position = {pos_x, pos_y},
             force = force,
             create_build_effect_smoke = false,
+            direction = orientation
         }
-        collision_box.health = pressure_dome_data.entity.health
-        collision_box.orientation = orientation
+        collision_box.health = health
         collision_box.active = false
         collision_box.operable = false -- vanilla bug: operable does nothing on cars
         table.insert(pressure_dome_data.collision_boxes, collision_box)
@@ -330,6 +333,9 @@ local function place_collision_boxes(pressure_dome_data)
 end
 
 local function check_can_build_dome(entity)
+    local error_message = nil
+    local contained_entities = {}
+    local colliding_entities = {}
     local surface = entity.surface
     local position = entity.position
     local x, y = position.x, position.y
@@ -341,20 +347,21 @@ local function check_can_build_dome(entity)
         },
         collision_mask = {['object'] = true},
     }
-    
-    local contained_entities = {}
 
     for _, e in pairs(entities_inside_square) do
         local count = count_points_in_dome({position = position}, e)
         if count == 0 then
             -- pass
         elseif count == 4 then
-            if e.prototype.collision_mask[storage.dome_collision_mask] then
-                return false, {}, {'cant-build-reason.entity-in-the-way', e.localised_name}
+            if e.force.name == 'neutral' or e.prototype.collision_mask.layers[storage.dome_collision_mask] then
+                error_message = error_message or {'cant-build-reason.entity-in-the-way', e.localised_name}
+                colliding_entities[#colliding_entities + 1] = e
+            else
+                contained_entities[#contained_entities + 1] = e
             end
-            contained_entities[#contained_entities + 1] = e
         else
-            return false, {}, {'cant-build-reason.entity-in-the-way', e.localised_name}
+            error_message = error_message or {'cant-build-reason.entity-in-the-way', e.localised_name}
+            colliding_entities[#colliding_entities + 1] = e
         end
     end
 
@@ -362,43 +369,102 @@ local function check_can_build_dome(entity)
         for yy = -math.floor(size) + y, math.floor(size) + y do
             local tile = surface.get_tile(xx, yy)
             if tile.collides_with('water_tile') then
-                return false, {}, {'cant-build-reason.entity-in-the-way', tile.prototype.localised_name}
+                return false, colliding_entities, {'cant-build-reason.entity-in-the-way', tile.prototype.localised_name}
             end
         end
     end
 
-    return true, contained_entities
+    if error_message then
+        return false, colliding_entities, error_message
+    else
+        return true, contained_entities, nil
+    end
 end
 
-h2o.on_event('on_built', function(event)
-    local entity = event.entity or event.created_entity
+local ALLOWED_CONTROLLERS = {
+    [defines.controllers.character] = true,
+    [defines.controllers.god] = true,
+    [defines.controllers.cutscene] = true,
+}
+local function get_player_from_trigger_effect(event)
+    local entity = event.source_entity
+    local player = entity.last_user
+    if not player then return nil end
+
+    if not ALLOWED_CONTROLLERS[player.controller_type] then return nil end
+    if player.surface_index ~= entity.surface.index then return nil end
+
+    return player
+end
+
+h2o.on_event(defines.events.on_script_trigger_effect, function(event)
+    if event.effect_id ~= 'on_built_maraxsis_pressure_dome' then return end
+    local entity = event.source_entity
     if not entity.valid or entity.name ~= 'h2o-pressure-dome' then return end
+    local player = get_player_from_trigger_effect(event)
 
     local can_build, contained_entities, error_msg = check_can_build_dome(entity)
     if not can_build then
-        h2o.cancel_creation(entity, event.player_index, error_msg)
+        local successfully_cleared_area = true
+        local to_unmark = {}
+        for _, colliding_entity in pairs(contained_entities) do
+            if not colliding_entity.to_be_deconstructed() then
+                local deconstructed = colliding_entity.order_deconstruction(entity.force)
+                successfully_cleared_area = successfully_cleared_area and deconstructed
+                if deconstructed then to_unmark[#to_unmark + 1] = colliding_entity end
+            end
+        end
+        if not successfully_cleared_area then
+            for _, colliding_entity in pairs(to_unmark) do
+                colliding_entity.cancel_deconstruction(entity.force)
+            end
+        end
+
+        local tags = entity.tags
+        local surface = entity.surface
+        local force_index = entity.force_index
+        local position = entity.position
+        h2o.cancel_creation(entity, player and player.index, error_msg)
+        
+        if successfully_cleared_area then
+            surface.create_entity{
+                name = 'entity-ghost',
+                inner_name = 'h2o-pressure-dome',
+                tags = tags,
+                force = force_index,
+                position = position,
+                player = player,
+            }
+        end
         return
     end
 
-    local light = create_dome_light(entity)
-
-    entity.minable = false
-    entity.destructible = false
+    local position = entity.position
+    local surface = entity.surface
+    local force_index = entity.force_index
+    local health = entity.health
+    entity.destroy()
+    entity = rendering.draw_sprite {
+        sprite = 'h2o-pressure-dome-sprite',
+        render_layer = 'higher-object-above',
+        target = position,
+        surface = surface,
+    }
 
     local pressure_dome_data = {
         entity = entity,
-        unit_number = entity.unit_number,
-        position = entity.position,
-        surface = entity.surface,
+        unit_number = entity.id,
+        position = position,
+        surface = surface,
         contained_entities = contained_entities,
-        light = light,
+        force_index = force_index,
         collision_boxes = {},
     }
 
+    create_dome_light(pressure_dome_data)
     update_combinator(pressure_dome_data)
-    place_collision_boxes(pressure_dome_data)
+    place_collision_boxes(pressure_dome_data, health)
     place_tiles(pressure_dome_data)
-    entity.health = entity.prototype.max_health
 
     if table_size(contained_entities) ~= 0 then
         for _, e in pairs(pressure_dome_data.collision_boxes) do
@@ -406,13 +472,10 @@ h2o.on_event('on_built', function(event)
         end
     end
 
-    storage.pressure_domes[entity.unit_number] = pressure_dome_data
+    storage.pressure_domes[entity.id] = pressure_dome_data
 end)
 
 local function delete_invalid_entities_from_contained_entities_list(pressure_dome_data, additional_entity_to_delete)
-    local dome = pressure_dome_data.entity
-    if not dome.valid then return end
-
     local contained_entities = pressure_dome_data.contained_entities
     for _, e in pairs(contained_entities) do
         if not e.valid or e == additional_entity_to_delete then
@@ -439,9 +502,7 @@ end
 
 local function destroy_collision_boxes(pressure_dome_data)
     for _, collision_box in pairs(pressure_dome_data.collision_boxes) do
-        if collision_box.valid then
-            collision_box.destroy()
-        end
+        collision_box.destroy()
     end
     pressure_dome_data.collision_boxes = {}
 end
@@ -478,9 +539,9 @@ local function random_point_in_circle(radius)
 end
 
 local function on_dome_died(event, pressure_dome_data)
-    local dome = pressure_dome_data.entity
-    local surface = dome.surface
-    local position = dome.position
+    local surface = pressure_dome_data.surface
+    if not surface.valid then return end
+    local position = pressure_dome_data.position
 
     local contained_entities = pressure_dome_data.contained_entities
     for _, e in pairs(contained_entities) do
@@ -521,7 +582,7 @@ h2o.on_event('on_destroyed', function(event)
                 for _, collision_box in pairs(pressure_dome_data.collision_boxes) do
                     if collision_box.valid and collision_box == entity then
                         entity = dome
-                        unit_number = dome.unit_number
+                        unit_number = dome.id
                         goto parent_dome_found
                     end
                 end
@@ -536,7 +597,7 @@ h2o.on_event('on_destroyed', function(event)
         unplace_tiles(pressure_dome_data)
         destroy_collision_boxes(pressure_dome_data)
         local light = pressure_dome_data.light
-        if light and light.valid then light.destroy() end
+        if light then light.destroy() end
         if event.name == defines.events.on_entity_died then
             on_dome_died(event, pressure_dome_data)
         end
@@ -550,7 +611,7 @@ h2o.on_event('on_destroyed', function(event)
         return
     end
 
-    local new_pressdomes = nil
+    local new_pressure_domes = nil
 
     for _, pressure_dome_data in pairs(storage.pressure_domes) do
         local dome = pressure_dome_data.entity
@@ -562,8 +623,8 @@ h2o.on_event('on_destroyed', function(event)
             for _, pressure_dome_data in pairs(storage.pressure_domes) do
                 local dome = pressure_dome_data.entity
                 if dome.valid then
-                    pressure_dome_data.unit_number = dome.unit_number
-                    new_pressure_domes[dome.unit_number] = pressure_dome_data
+                    pressure_dome_data.unit_number = dome.id
+                    new_pressure_domes[dome.id] = pressure_dome_data
                 end
             end
         end
@@ -635,7 +696,7 @@ h2o.on_event('open-gui', function(event)
     if not light or not light.valid then
         local dome = pressure_dome_data.entity
         if not dome.valid then return end
-        pressure_dome_data.light = create_dome_light(dome)
+        pressure_dome_data.light = create_dome_light(pressure_dome_data)
     end
 
     local wire_type = figure_out_wire_type(player)

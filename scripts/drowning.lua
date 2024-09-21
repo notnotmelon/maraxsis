@@ -18,6 +18,7 @@ h2o.on_nth_tick(UPDATE_RATE, function()
         local position = player.position
         local surface = player.surface
         local surface_name = surface.name
+        local player_surface_index = surface.index
 
         if not h2o.MARAXSIS_SURFACES[surface_name] then
             goto continue
@@ -30,10 +31,12 @@ h2o.on_nth_tick(UPDATE_RATE, function()
         end
 
         for _, pressure_dome_data in pairs(storage.pressure_domes) do
-            local dome = pressure_dome_data.entity
-            if domesurface then goto continue_2 end
+            local surface = pressure_dome_data.surface
+            if not surface.valid then goto continue_2 end
+            local surface_index = surface.index
+            if surface_index ~= player_surface_index then goto continue_2 end
             
-            local dome_position = dome.position
+            local dome_position = pressure_dome_data.position
             local x, y = position.x - dome_position.x, position.y - dome_position.y
             if is_point_in_polygon(x, y) then
                 storage.breath[player.index] = nil

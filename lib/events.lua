@@ -5,7 +5,8 @@ local events = {}
 ---@param f function
 h2o.on_event = function(event, f)
 	if event == 'on_built' then
-		h2o.on_event({defines.events.on_built_entity,
+		h2o.on_event({
+			defines.events.on_built_entity,
 			defines.events.on_robot_built_entity,
 			defines.events.script_raised_built,
 			defines.events.script_raised_revive
