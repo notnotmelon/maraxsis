@@ -68,13 +68,13 @@ h2o.cancel_creation = function(entity, player_index, message, color)
 	end
 
 	if inserted == 0 and item_to_place then
-		surface.spill_item_stack(
-			position,
-			item_to_place,
-			true,
-			entity.force_index,
-			false
-		)
+		surface.spill_item_stack{
+			position = position,
+			stack = item_to_place,
+			enable_looted = true,
+			force = entity.force_index,
+			allow_belts = false
+		}
 	end
 
 	entity.destroy{raise_destroy = true}
