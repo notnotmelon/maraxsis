@@ -2,17 +2,9 @@ local dome = {
     filename = '__maraxsis__/graphics/entity/pressure-dome/pressure-dome.png',
     width = 1344,
     height = 1344,
-    scale = 1.05,
-    shift = {0, 0.3}
-}
-
-local light = {
-    filename = '__maraxsis__/graphics/entity/pressure-dome/pressure-dome.png',
-    width = 1344,
-    height = 1344,
-    scale = 1.05,
-    shift = {0, 0.3},
-    draw_as_light = true,
+    scale = 0.935,
+    shift = {0, -1.25},
+    flags = {'no-scale'},
 }
 
 local light_2 = {
@@ -28,8 +20,10 @@ local shadow = {
     filename = '__maraxsis__/graphics/entity/pressure-dome/shadow.png',
     width = 1344,
     height = 1344,
-    scale = 1.05,
-    shift = {0, 0.3}
+    scale = 0.935,
+    shift = {0, -1.25},
+    flags = {'no-scale'},
+    draw_as_shadow = true,
 }
 
 data:extend {{
@@ -79,6 +73,7 @@ data:extend {{
     selectable_in_game = false,
     picture = {
         layers = {shadow, dome},
+        --layers = {dome},
     },
     build_sound = {
         filename = '__core__/sound/build-ghost-tile.ogg',
@@ -106,13 +101,13 @@ data:extend {h2o.merge(data.raw['lamp']['small-lamp'], {
     drawing_box = collision_box(),
     collision_mask = {layers = {}},
     selectable_in_game = true,
-    picture_on = light,
+    picture_on = h2o.empty_image(),
     picture_off = h2o.empty_image(),
     circuit_wire_max_distance = 16,
     energy_usage_per_tick = '2MW',
     glow_size = 65,
     light = {
-        size = 65,
+        size = 45,
         color = {
             b = 0.75,
             g = 1,
