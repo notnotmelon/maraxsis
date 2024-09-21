@@ -170,6 +170,7 @@ data:extend {h2o.merge(data.raw.lamp['small-lamp'], {
     dying_explosion = 'nil',
     collision_box = table.deepcopy(data.raw.radar['h2o-sonar'].collision_box),
     selection_box = table.deepcopy(data.raw.radar['h2o-sonar'].selection_box),
+    selectable_in_game = false,
     circuit_wire_connection_point = 'nil',
     circuit_wire_max_distance = 'nil',
     draw_copper_wires = false,

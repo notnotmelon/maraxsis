@@ -16,14 +16,23 @@ local light_2 = {
     draw_as_light = true,
 }
 
-local shadow = {
-    filename = '__maraxsis__/graphics/entity/pressure-dome/shadow.png',
+local base_shadow = {
+    filename = '__maraxsis__/graphics/entity/pressure-dome/base-shadow.png',
     width = 1344,
     height = 1344,
     scale = 0.935,
     shift = {0, -1.25},
     flags = {'no-scale'},
     draw_as_shadow = true,
+}
+
+local cage_shadow = {
+    filename = '__maraxsis__/graphics/entity/pressure-dome/cage-shadow.png',
+    width = 1344,
+    height = 1344,
+    scale = 0.935,
+    shift = {0, -1.25},
+    flags = {'no-scale'},
 }
 
 data:extend {{
@@ -72,8 +81,7 @@ data:extend {{
     render_layer = 'higher-object-under',
     selectable_in_game = false,
     picture = {
-        layers = {shadow, dome},
-        --layers = {dome},
+        layers = {cage_shadow, base_shadow, dome},
     },
     build_sound = {
         filename = '__core__/sound/build-ghost-tile.ogg',
