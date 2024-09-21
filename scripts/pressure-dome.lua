@@ -151,13 +151,7 @@ local function create_dome_light(dome)
     light.destructible = false
 
     local control_behavior = light.get_or_create_control_behavior()
-    control_behavior.circuit_condition = {
-        condition = {
-            first_signal = {type = 'virtual', name = 'signal-dot'},
-            comparator = '=',
-            constant = 0,
-        }
-    }
+    control_behavior.use_colors = true
 
     return light
 end
@@ -611,15 +605,20 @@ local function figure_out_wire_type(player)
     if cursor_stack and cursor_stack.valid_for_read then
         local stack_name = cursor_stack.name
         if stack_name == 'red-wire' then
-            return defines.wire_type.red
+            return defines.wire_connector_id.circuit_red
         elseif stack_name == 'green-wire' then
-            return defines.wire_type.green
-        elseif stack_name == 'copper-cable' then
-            return defines.wire_type.copper
+            return defines.wire_connector_id.circuit_green
         end
     end
 
     return nil
+end
+
+local sqrt = math.sqrt
+local function distance(entity1, entity2)
+    local x1, y1 = entity1.position.x, entity1.position.y
+    local x2, y2 = entity2.position.x, entity2.position.y
+    return sqrt((x1 - x2)^2 + (y1 - y2)^2)
 end
 
 h2o.on_event('open-gui', function(event)
@@ -640,13 +639,27 @@ h2o.on_event('open-gui', function(event)
     end
 
     local wire_type = figure_out_wire_type(player)
-    if wire_type then
-        player.selected = light
-        player.drag_wire{position = light.position}
-        player.selected = entity
+    if not wire_type then
+        player.opened = nil
+        player.opened = light
         return
     end
-    
-    player.opened = nil
-    player.opened = light
+
+    local drag_target = player.drag_target
+    if drag_target then
+        local entity = player.drag_target.target_entity
+        if distance(entity, light) < 24 then
+            local wire = entity.get_wire_connector(wire_type, true)
+            local light_wire = light.get_wire_connector(wire_type, false)
+            local success = wire.connect_to(light_wire, false)
+            if not success then
+                wire.disconnect_from(light_wire)
+            end
+        end
+        return
+    end
+
+    player.selected = light
+    player.drag_wire{position = light.position}
+    player.selected = entity
 end)

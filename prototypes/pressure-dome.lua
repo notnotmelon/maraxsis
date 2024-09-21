@@ -113,7 +113,7 @@ data:extend {h2o.merge(data.raw['lamp']['small-lamp'], {
     picture_off = h2o.empty_image(),
     circuit_wire_max_distance = 16,
     energy_usage_per_tick = '2MW',
-    glow_size = 65,
+    glow_size = 30,
     light = {
         size = 45,
         color = {
@@ -130,7 +130,7 @@ data:extend {h2o.merge(data.raw['lamp']['small-lamp'], {
             r = 1
         },
         intensity = 0,
-        size = 65,
+        size = 30,
     },
 })}
 
@@ -179,10 +179,7 @@ data:extend{h2o.merge(data.raw['constant-combinator']['constant-combinator'], {
 })}
 
 local function shift_the_circuit_connection_point(entity, x, y)
-    local connection = entity.circuit_wire_connection_point or {
-        wire = {copper = {x = 0, y = 0}, green = {x = 0, y = 0}, red = {x = 0, y = 0}},
-        shadow = {copper = {x = 0, y = 0}, green = {x = 0, y = 0}, red = {x = 0, y = 0}},
-    }
+    local connection = entity.circuit_connector.points
 
     local function adjust_shift(vector)
         if not vector then return end
@@ -268,6 +265,7 @@ data:extend {{
     icon_size = 64,
     flags = {'placeable-player', 'player-creation', 'placeable-off-grid', 'not-on-map'},
     max_health = 3000,
+    allow_remote_driving = false,
     collision_box = {{-7, -0.4}, {7, 0.4}},
     selection_box = {{-7, -0.5}, {7, 0.5}},
     drawing_box = {{0, 0}, {0, 0}},
