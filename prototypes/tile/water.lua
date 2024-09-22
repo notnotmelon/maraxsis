@@ -17,9 +17,6 @@ local water = {
     render_layer = 'light-effect',
     icon = '__maraxsis__/graphics/tile/water/water-combined.png',
     icon_size = 32,
-    autoplace = {
-        probability_expression = 'maraxsis_water_32x32'
-    },
 }
 
 local frame_sequence = {}
@@ -153,71 +150,44 @@ recursively_replace_cliff_shadows_to_vulcanus(cliff.orientations)
 cliff.map_color = h2o.color_combine(cliff.map_color, data.raw.tile['deepwater'].map_color, 0.3)
 cliff.collision_mask = {
     layers = {
-        ['item'] = true,
+        ['cliff'] = true,
+        --[[['item'] = true,
         ['is_lower_object'] = true,
         ['is_object'] = true,
         ['object'] = true,
-        ['cliff'] = true,
         ['meltable'] = true,
-        ['water_tile'] = true
+        ['water_tile'] = true--]]
     },
     not_colliding_with_itself = true
 } -- player should 'swim over' cliffs
 data:extend {cliff}
 collision_mask_util.get_mask(cliff)[maraxsis_collision_mask] = nil
 
----creates a new cliff entity with the upper area masked with the provided tile
----@param tile string
-local function trenchifiy(tile)
-    local results = {}
+data:extend {{
+    type = 'tile-effect',
+    name = 'maraxsis-trench',
+    shader = 'space',
+    space = {
+        star_density = 0,
+        nebula_scale = 10,
+        nebula_brightness = 0.5
+    }
+}}
 
-    local cliff = data.raw['cliff']['cliff']
-    for k, orientation in pairs(cliff.orientations) do
-        local pictures = {}
-
-        for _, picture in pairs(orientation.pictures) do
-            local layer = table.deepcopy(picture.layers[1])
-            layer.filename = layer.filename:gsub('.png', '-' .. tile .. '.png')
-            layer.filename = layer.filename:gsub('__base__/graphics/terrain/cliffs/', '__maraxsis__/graphics/entity/cliffs/hr-')
-            pictures[#pictures + 1] = layer
-        end
-
-        results[#results + 1] = {
-            name = tile .. '-trench-' .. k:gsub('_', '-'),
-            type = 'simple-entity',
-            localised_name = {'entity-name.cliff'},
-            subgroup = 'cliffs',
-            order = 'x[' .. k .. ']',
-            collision_box = {{-2, -2}, {2, 2}},
-            count_as_rock_for_filtered_deconstruction = false,
-            collision_mask = {layers = {}},
-            map_color = data.raw.tile[tile .. '-underwater'].map_color,
-            flags = {},
-            secondary_draw_order = -1,
-            render_layer = 'ground-layer-4',
-            protected_from_tile_building = false,
-            remove_decoratives = "false",
-            selectable_in_game = false,
-            icon = data.raw.cliff.cliff.icon,
-            icon_size = data.raw.cliff.cliff.icon_size,
-            pictures = pictures
-        }
-    end
-
-    return results
-end
-
---data:extend(trenchifiy('dirt-5'))
-
-local trench_entrance = table.deepcopy(data.raw.tile['out-of-map'])
-trench_entrance.name = 'maraxsis-trench-entrance'
-trench_entrance.layer = 255
-trench_entrance.map_color = {0, 0, 0.1, 1}
-trench_entrance.destroys_dropped_items = true
-trench_entrance.allows_being_covered = false
-trench_entrance.walking_speed_modifier = 0.2
-trench_entrance.collision_mask = {layers = {['item'] = true, ['object'] = true, [maraxsis_collision_mask] = true}}
-trench_entrance.autoplace = {
-    probability_expression = 'maraxsis_trench_entrance'
-}
-data:extend {trench_entrance}
+data:extend{h2o.merge(data.raw.tile['out-of-map'], {
+    name = 'maraxsis-trench-entrance',
+    layer = 0,
+    layer_group = 'zero',
+    effect = 'maraxsis-trench',
+    effect_color = {1, 0, 0},
+    effect_color_secondary = {0, 68, 25},
+    map_color = {0, 0, 0.1, 1},
+    destroys_dropped_items = true,
+    allows_being_covered = false,
+    walking_speed_modifier = 0.2,
+    collision_mask = {layers = {['item'] = true, ['object'] = true, ['doodad'] = true, ['water_tile'] = true, [maraxsis_collision_mask] = true}},
+    autoplace = {
+        probability_expression = 'maraxsis_trench_entrance'
+    },
+})}
+table.insert(out_of_map_tile_type_names, 'maraxsis-trench-entrance')

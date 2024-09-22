@@ -2,7 +2,7 @@ require 'prototypes/planet/planet-maraxsis-map-gen'
 local planet_map_gen = require('__space-age__/prototypes/planet/planet-map-gen')
 -- get vanilla planets from space age
 
-local entity_spawn_settings = {['h2o-water-shader'] = {}}
+local entity_spawn_settings = {}
 for _, tropical_fish in pairs(h2o.tropical_fish_names) do
     entity_spawn_settings[tropical_fish] = {}
 end
@@ -16,7 +16,7 @@ planet_map_gen.maraxsis = function()
         {
             elevation = 'maraxsis_elevation',
             temperature = 'temperature_basic',
-            moisture = 'moisture_basic',
+            moisture = 'maraxsis_moisture',
             aux = 'aux_basic',
             cliffiness = '1',
             cliff_elevation = 'cliff_elevation_from_elevation',
@@ -24,14 +24,9 @@ planet_map_gen.maraxsis = function()
         cliff_settings =
         {
             name = 'cliff-maraxsis',
-            cliff_elevation_0 = 0.07,
-            -- Ideally the first cliff would be at elevation 0 on the coastline, but that doesn't work,
-            -- so instead the coastline is moved to elevation 80.
-            -- Also there needs to be a large cliff drop at the coast to avoid the janky cliff smoothing
-            -- but it also fails if a corner goes below zero, so we need an extra buffer of 40.
-            -- So the first cliff is at 80, and terrain near the cliff shouln't go close to 0 (usually above 40).
+            cliff_elevation_0 = 0.03,
             cliff_elevation_interval = 0.1,
-            cliff_smoothing = 0, -- This is critical for correct cliff placement on the coast.
+            cliff_smoothing = 0, -- This is critical for correct cliff placement on the trench entrance.
             richness = 0.98
         },
         autoplace_controls =
@@ -60,7 +55,6 @@ planet_map_gen.maraxsis = function()
                     ['v-brown-hairy-grass'] = {},
                     ['v-red-pita'] = {},
                     -- end of nauvis
-                    ['vulcanus-rock-decal-large'] = {},
                     ['vulcanus-dune-decal'] = {},
                     ['vulcanus-sand-decal'] = {},
                     ['crater-small'] = {},
@@ -96,7 +90,6 @@ planet_map_gen.maraxsis = function()
                     ['black-sceptre'] = {},
                     ['pink-phalanges'] = {},
                     ['pink-lichen-decal'] = {},
-                    ['green-cup'] = {},
                     ['brown-cup'] = {},
                     ['blood-grape'] = {},
                     ['brambles'] = {},
