@@ -114,9 +114,57 @@ data:extend(waterifiy.tile('sand-1', true))
 data:extend(waterifiy.tile('sand-3', true))
 data:extend(waterifiy.tile('dirt-5', true))
 data:extend(waterifiy.tile('grass-2', false))
-data:extend(waterifiy.entity('cliff'))
 data:extend(waterifiy.entity('big-sand-rock'))
-data.raw.cliff['cliff-underwater'].collision_mask = {layers = {['item'] = true, ['object'] = true, ['water_tile'] = true}} -- player should 'swim over' cliffs
+
+local simulations = require('__space-age__.prototypes.factoriopedia-simulations')
+local cliff = scaled_cliff {
+    mod_name = '__maraxsis__',
+    name = 'cliff-maraxsis',
+    map_color = {144, 119, 87},
+    suffix = 'maraxsis',
+    subfolder = 'maraxsis',
+    scale = 1.0,
+    has_lower_layer = true,
+    sprite_size_multiplier = 2,
+    factoriopedia_simulation = {
+        hide_factoriopedia_gradient = true,
+        init = '    game.simulation.camera_position = {0, 2.5}\n    for x = -8, 8, 1 do\n      for y = -3, 4 do\n        game.surfaces[1].set_tiles{{position = {x, y}, name = \"sand-3-underwater\"}}\n      end\n    end\n    for x = -8, 8, 4 do\n      game.surfaces[1].create_entity{name = \"cliff-maraxsis\", position = {x, 0}, cliff_orientation = \"west-to-east\"}\n    end\n  ',
+        planet = 'maraxsis'
+    },
+}
+local function recursively_replace_cliff_shadows_to_vulcanus(cliff_orientations)
+    if type(cliff_orientations) ~= 'table' then return end
+
+    if cliff_orientations.draw_as_shadow then
+        local filename = cliff_orientations.filename
+        if filename:match('%-shadow.png') then
+            cliff_orientations.filename = filename:gsub('__maraxsis__/graphics/terrain/cliffs/maraxsis/cliff%-maraxsis', '__space-age__/graphics/terrain/cliffs/vulcanus/cliff-vulcanus')
+        end
+        return
+    end
+
+    for k, v in pairs(cliff_orientations) do
+        if type(v) == 'table' then
+            recursively_replace_cliff_shadows_to_vulcanus(v)
+        end
+    end
+end
+recursively_replace_cliff_shadows_to_vulcanus(cliff.orientations)
+cliff.map_color = h2o.color_combine(cliff.map_color, data.raw.tile['deepwater'].map_color, 0.3)
+cliff.collision_mask = {
+    layers = {
+        ['item'] = true,
+        ['is_lower_object'] = true,
+        ['is_object'] = true,
+        ['object'] = true,
+        ['cliff'] = true,
+        ['meltable'] = true,
+        ['water_tile'] = true
+    },
+    not_colliding_with_itself = true
+} -- player should 'swim over' cliffs
+data:extend {cliff}
+collision_mask_util.get_mask(cliff)[maraxsis_collision_mask] = nil
 
 ---creates a new cliff entity with the upper area masked with the provided tile
 ---@param tile string
@@ -159,7 +207,7 @@ local function trenchifiy(tile)
     return results
 end
 
-data:extend(trenchifiy('dirt-5'))
+--data:extend(trenchifiy('dirt-5'))
 
 local trench_entrance = table.deepcopy(data.raw.tile['out-of-map'])
 trench_entrance.name = 'maraxsis-trench-entrance'

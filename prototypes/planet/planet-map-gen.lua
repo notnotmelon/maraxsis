@@ -18,7 +18,7 @@ planet_map_gen.maraxsis = function()
         },
         cliff_settings =
         {
-            name = 'cliff-vulcanus',
+            name = 'cliff-maraxsis',
             cliff_elevation_0 = 0.07,
             -- Ideally the first cliff would be at elevation 0 on the coastline, but that doesn't work,
             -- so instead the coastline is moved to elevation 80.
