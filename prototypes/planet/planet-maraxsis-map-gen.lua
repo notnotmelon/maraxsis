@@ -65,9 +65,43 @@ data:extend {{
 }}
 
 for i = 1, table_size(h2o.tropical_fish_names) do
-    data:extend{{
+    data:extend {{
         type = 'noise-expression',
         name = 'maraxsis_tropical_fish_' .. i,
-        expression = 'random(1, map_seed + ' .. i .. ') > 0.999'
+        expression = 'rand > 0.99999',
+        local_expressions = {
+            wx = 'maraxsis_wx + ' .. i * 97,
+            wy = 'maraxsis_wy + ' .. i * 61,
+            seed = 'map_seed + ' .. i * 100,
+            rand = '1 - random_penalty{x = wx, y = wy, seed = seed, source = 1, amplitude = 1}'
+        }
     }}
 end
+
+data.raw.tile['sand-1-underwater'].autoplace = {
+    probability_expression = [[
+        maraxsis_elevation > 0.7
+    ]],
+    order = 'a[sand]-a[maraxsis]'
+}
+
+data.raw.tile['sand-2-underwater'].autoplace = {
+    probability_expression = [[
+        maraxsis_elevation > 0.4
+    ]],
+    order = 'a[sand]-b[maraxsis]'
+}
+
+data.raw.tile['sand-3-underwater'].autoplace = {
+    probability_expression = [[
+        maraxsis_elevation > 0.2
+    ]],
+    order = 'a[sand]-c[maraxsis]'
+}
+
+data.raw.tile['dirt-5-underwater'].autoplace = {
+    probability_expression = [[
+        1
+    ]],
+    order = 'a[sand]-d[maraxsis]'
+}

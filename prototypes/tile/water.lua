@@ -59,10 +59,6 @@ local waterifiy = {
         tile.draw_in_water_layer = true
         --tile.walking_sound = nil -- TODO: add a swimming sound
         tile.walking_speed_modifier = 0.2
-        tile.autoplace = {
-            order = 'z',
-            probability_expression = '1',
-        }
         water_tile_type_names[#water_tile_type_names + 1] = tile.name
 
         if not include_submarine_exclusion_zone then return {tile} end
@@ -108,6 +104,7 @@ local waterifiy = {
 }
 
 data:extend(waterifiy.tile('sand-1', true))
+data:extend(waterifiy.tile('sand-2', true))
 data:extend(waterifiy.tile('sand-3', true))
 data:extend(waterifiy.tile('dirt-5', true))
 data:extend(waterifiy.tile('grass-2', false))

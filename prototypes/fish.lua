@@ -18,7 +18,7 @@ local map_colors = table.deepcopy{
     defines.color.darkcyan
 }
 
-local color_budget = 255
+local color_budget = 150
 for _, color in pairs(map_colors) do
     local sum = color.r + color.g + color.b
     color.r = color.r / sum * color_budget

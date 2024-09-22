@@ -19,7 +19,7 @@ planet_map_gen.maraxsis = function()
             moisture = 'maraxsis_moisture',
             aux = 'aux_basic',
             cliffiness = '1',
-            cliff_elevation = 'cliff_elevation_from_elevation',
+            cliff_elevation = 'maraxsis_elevation',
         },
         cliff_settings =
         {
@@ -40,7 +40,10 @@ planet_map_gen.maraxsis = function()
                 settings =
                 {
                     ['maraxsis-trench-entrance'] = {},
+                    ['sand-1-underwater'] = {},
+                    ['sand-2-underwater'] = {},
                     ['sand-3-underwater'] = {},
+                    ['dirt-5-underwater'] = {},
                 }
             },
             ['decorative'] =
