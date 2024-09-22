@@ -28,7 +28,7 @@ data:extend {{
             seed0 = map_seed,
             seed1 = 1,
             octaves = 3,
-            input_scale = 1300,
+            input_scale = 1/1300,
             output_scale = 1})
   ]]
 }}
@@ -37,12 +37,12 @@ data:extend {{
     type = 'noise-expression',
     name = 'maraxsis_elevation',
     expression = [[
-        100 * if(
+        if(
             maraxsis_distance_from_0_0 < maraxsis_starting_area,
             maraxsis_moisture + maraxsis_elevation_bonus,
             min(1, maraxsis_moisture)
         )
-    ]]
+    ]],
 }}
 
 data:extend {{
