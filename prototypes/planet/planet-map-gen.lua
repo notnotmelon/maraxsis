@@ -39,7 +39,7 @@ planet_map_gen.maraxsis = function()
             {
                 settings =
                 {
-                    ['highland-dark-rock'] = {},
+                    --[[['highland-dark-rock'] = {},
                     ['highland-dark-rock-2'] = {},
                     ['lowland-cream-cauliflower'] = {},
                     ['lowland-cream-cauliflower-2'] = {},
@@ -48,7 +48,9 @@ planet_map_gen.maraxsis = function()
                     ['midland-turquoise-bark-2'] = {},
                     ['midland-cracked-lichen'] = {},
                     ['midland-cracked-lichen-dull'] = {},
-                    ['midland-cracked-lichen-dark'] = {},
+                    ['midland-cracked-lichen-dark'] = {},--]]
+                    ['maraxsis-trench-entrance'] = {},
+                    ['sand-3-underwater'] = {},
 
 
                     --[[['lowland-brown-blubber'] = {},

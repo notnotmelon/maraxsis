@@ -62,6 +62,10 @@ local waterifiy = {
         tile.draw_in_water_layer = true
         --tile.walking_sound = nil -- TODO: add a swimming sound
         tile.walking_speed_modifier = 0.2
+        tile.autoplace = {
+            order = 'z',
+            probability_expression = '1',
+        }
         water_tile_type_names[#water_tile_type_names + 1] = tile.name
 
         if not include_submarine_exclusion_zone then return {tile} end
@@ -158,11 +162,14 @@ end
 data:extend(trenchifiy('dirt-5'))
 
 local trench_entrance = table.deepcopy(data.raw.tile['out-of-map'])
-trench_entrance.name = 'trench-entrance'
+trench_entrance.name = 'maraxsis-trench-entrance'
 trench_entrance.layer = 255
 trench_entrance.map_color = {0, 0, 0.1, 1}
 trench_entrance.destroys_dropped_items = true
 trench_entrance.allows_being_covered = false
 trench_entrance.walking_speed_modifier = 0.2
 trench_entrance.collision_mask = {layers = {['item'] = true, ['object'] = true, [maraxsis_collision_mask] = true}}
+trench_entrance.autoplace = {
+    probability_expression = 'maraxsis_trench_entrance'
+}
 data:extend {trench_entrance}
