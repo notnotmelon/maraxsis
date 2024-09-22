@@ -15,8 +15,8 @@ h2o.on_nth_tick(UPDATE_RATE, function()
     for _, player in pairs(game.connected_players) do
         local character = player.character
         if not character then goto continue end
-        local position = player.position
-        local surface = player.surface
+        local position = character.position
+        local surface = character.surface
         local surface_name = surface.name
         local player_surface_index = surface.index
 
