@@ -1,7 +1,9 @@
 local collision_mask_util = require '__core__/lualib/collision-mask-util'
 
-local template = {
+local water = {
     type = 'simple-entity',
+    name = 'h2o-water-shader',
+    localised_name = 'Maraxsis water shader', -- dont @ me
     count_as_rock_for_filtered_deconstruction = false,
     icon_size = 64,
     protected_from_tile_building = false,
@@ -12,44 +14,35 @@ local template = {
     collision_box = {{-16, -16}, {16, 16}},
     secondary_draw_order = -1,
     collision_mask = {layers = {}},
+    render_layer = 'light-effect',
+    icon = '__maraxsis__/graphics/tile/water/water-combined.png',
+    icon_size = 32,
+    autoplace = {
+        probability_expression = 'maraxsis_water_32x32'
+    },
 }
-for size = 0, 0 do
-    size = 2 ^ size
-    for i = 1, size do
-        for j = 1, size do
-            local frame_sequence = {}
-            for k = 1, 32 do
-                table.insert(frame_sequence, j + size * (k - 1 + (i - 1) * 32))
-            end
-            local water = table.deepcopy(template)
-            water.render_layer = 'light-effect'
-            water.icon = '__maraxsis__/graphics/tile/water/water-combined.png'
-            water.icon_size = 32
-            water.name = 'h2o-water-shader-' .. (32 / size) .. '-' .. j .. '-' .. i
-            water.localised_name = water.name
-            local visiblity = tonumber(settings.startup['h2o-water-opacity'].value) / 255
-            water.animations = {
-                layers = {
-                    {
-                        tint = {r = visiblity, g = visiblity, b = visiblity, a = 1 / 255},
-                        height = 256 / size,
-                        width = 256 / size,
-                        line_length = 32 * size,
-                        variation_count = 1,
-                        filename = '__maraxsis__/graphics/tile/water/water-combined.png',
-                        frame_count = 32 * size * size,
-                        animation_speed = 0.5,
-                        scale = 4,
-                        frame_sequence = frame_sequence,
-                        draw_as_glow = false,
-                        shift = size == 32 and {-0.5, -0.5} or nil
-                    },
-                }
-            }
-            data:extend {water}
-        end
-    end
+
+local frame_sequence = {}
+for k = 1, 32 do
+    table.insert(frame_sequence, k)
 end
+local visiblity = tonumber(settings.startup['h2o-water-opacity'].value) / 255
+water.animations = {
+    tint = {r = visiblity, g = visiblity, b = visiblity, a = 1 / 255},
+    height = 256,
+    width = 256,
+    line_length = 32,
+    variation_count = 1,
+    filename = '__maraxsis__/graphics/tile/water/water-combined.png',
+    frame_count = 32,
+    animation_speed = 0.5,
+    scale = 4,
+    frame_sequence = frame_sequence,
+    draw_as_glow = false,
+    shift = nil,
+    flags = {'no-scale'}
+}
+data:extend {water}
 
 local layer = 4
 local waterifiy = {

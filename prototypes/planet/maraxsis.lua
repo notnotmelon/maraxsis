@@ -1,3 +1,4 @@
+local planet_map_gen = require('prototypes/planet/planet-map-gen')
 local asteroid_util = require('__space-age__.prototypes.planet.asteroid-spawn-definitions')
 
 data:extend {h2o.merge(data.raw.planet.gleba, {
@@ -17,16 +18,7 @@ data:extend {h2o.merge(data.raw.planet.gleba, {
     order = 'ce[maraxsis]',
     pollutant_type = 'nil',
     solar_power_in_space = 150,
-    --[[autoplace = {
-        autoplace_settings = { ---@diagnostic disable-next-line: missing-fields
-            entity = {treat_missing_as_default = false}, ---@diagnostic disable-next-line: missing-fields
-            tile = {treat_missing_as_default = false}, ---@diagnostic disable-next-line: missing-fields
-            decorative = {treat_missing_as_default = false},
-        }, ---@diagnostic disable-next-line: missing-fields
-        cliff_settings = {
-            cliff_elevation_0 = 1024
-        }
-    },--]]
+    map_gen_settings = planet_map_gen.maraxsis(),
     distance = 15,
     orientation = 0.95,
 })}

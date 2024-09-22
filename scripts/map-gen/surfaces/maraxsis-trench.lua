@@ -4,113 +4,34 @@ local max = math.max
 local abs = math.abs
 local sqrt = math.sqrt
 
----draws fancy water shaders in an area
----@param surface LuaSurface
----@param noise ?
----@param chunkpos ChunkPosition
-local function generate_fancy_water(surface, noise, chunkpos)
-	local x = chunkpos.x * 32
-	local y = chunkpos.y * 32
+h2o.lava_tile = function(surface, position)
+	if surface.count_entities_filtered {name = 'lava-lamp', position = position, radius = 1.5, limit = 1} == 0 then
+		local light = surface.create_entity {
+			name = 'lava-lamp',
+			position = position,
+			force = 'neutral'
+		}
+		light.destructible = false
+		light.active = false
+	end
+	return 'lava'
+end
 
-	local fancy_water = surface.create_entity {
-		name = 'h2o-water-shader-32-1-1',
-		position = {x + 16, y + 16},
-		create_build_effect_smoke = false
+h2o.on_event(defines.events.on_surface_created, function(event)
+	local surface = game.get_surface(event.surface_index)
+	if surface.name ~= h2o.TRENCH_SURFACE_NAME then return end
+
+	local mgs = surface.map_gen_settings
+	mgs.cliff_settings = {
+		cliff_elevation_0 = 1024
 	}
-	fancy_water.active = false
-	fancy_water.destructible = false
-	fancy_water.minable = false
-end
+	surface.map_gen_settings = mgs
 
-local SPAWN_AREA = SPAWN_AREA
-local TRENCH_MOVEMENT_FACTOR = h2o.TRENCH_MOVEMENT_FACTOR
-
-local function generate_terrain(surface, noise, x, y)
-	local position = {x, y}
-	local tile, decorative
-
-	local moisture = abs(noise.moisture + noise.moisture_octave_1 / 4 + noise.moisture_octave_2 / 32)
-
-	local distance_from_0_0 = sqrt(x * x + y * y) / TRENCH_MOVEMENT_FACTOR
-	if distance_from_0_0 < SPAWN_AREA then
-		moisture = moisture + h2o.elevation_bonus(distance_from_0_0)
-	else
-		moisture = min(1, moisture)
-	end
-
-	if 0.065 < moisture and moisture < 0.077 then
-		if x % 3 == 0 and y % 3 == 0 then
-			local wall = surface.create_entity {
-				name = 'huge-rock-trench-wall',
-				position = h2o.randomize_position(position),
-				force = 'neutral'
-			}
-			wall.destructible = false
-		end
-	end
-
-	if moisture > 0.07 then
-		return 'out-of-map'
-	end
-
-	if moisture > 0.065 then
-		tile = 'dirt-5-underwater-submarine-exclusion-zone'
-	else
-		tile = 'dirt-5-underwater'
-	end
-
-	if noise.lava_master_master > -0.3 then
-		local lava_thickness = abs(noise.lava_master) * (moisture / 2) ^ 0.3 * 1.3
-		if noise.lava_master_master < 0 then lava_thickness = lava_thickness * (0.3 + noise.lava_master_master) / 0.3 end
-
-		if lava_thickness > 0.15 then
-			for _, lava_noise in pairs {noise.lava_river_1, noise.lava_river_2, noise.lava_river_3} do
-				if -lava_thickness < lava_noise and lava_noise < lava_thickness then
-					tile = h2o.lava_tile(surface, position)
-					if -0.3 < noise.rock_1 and noise.rock_1 < 0.3 and random() > 0.9 then
-						surface.create_entity {
-							name = 'huge-rock',
-							position = h2o.randomize_position(position),
-							force = 'neutral'
-						}
-					end
-				end
-			end
-		end
-	end
-
-	if not decorative then
-		if random() > 0.995 then
-			decorative = {name = 'enemy-decal-transparent', amount = 1, position = position}
-		else
-			local rng = random()
-			local decorative_1 = noise.rock_2 + noise.rock_1 / 2
-			if rng > 0.995 or (rng > 0.5 and -0.1 < decorative_1 and decorative_1 < 0.1) then
-				decorative = {name = 'medium-sand-rock', amount = 1, position = position}
-			end
-		end
-	end
-
-	return tile, decorative
-end
-
-local noise_layers = {
-	moisture = {zoom = 1300 * TRENCH_MOVEMENT_FACTOR, from_parent = true},
-	moisture_octave_1 = {zoom = 256 * TRENCH_MOVEMENT_FACTOR, from_parent = true},
-	moisture_octave_2 = {zoom = 32 * TRENCH_MOVEMENT_FACTOR, from_parent = true},
-	lava_master_master = {zoom = 500},
-	lava_master = {zoom = 256},
-	lava_river_1 = {zoom = 40},
-	lava_river_2 = {zoom = 40},
-	lava_river_3 = {zoom = 40},
-	rock_1 = {zoom = 30},
-	rock_2 = {zoom = 40},
-	decorative_1 = {zoom = 40},
-	decorative_2 = {zoom = 40},
-	primary_resource_octave_1 = {zoom = 200},
-	primary_resource_octave_2 = {zoom = 100},
-	primary_resource_octave_3 = {zoom = 30},
-}
+	surface.show_clouds = true
+	surface.brightness_visual_weights = {r = 1, g = 1, b = 1}
+	surface.min_brightness = 0.05
+	surface.ticks_per_day = 15000
+end)
 
 local function get_surface()
 	local surface = game.surfaces[h2o.TRENCH_SURFACE_NAME]
@@ -147,13 +68,6 @@ local function get_surface()
 	end
 
 	return surface
-end
-
--- uses game.player, call this from the ingame terminal
-function teleport_to_maraxsis_trench()
-	local player = game.player
-	local surface = get_surface()
-	player.teleport({0, 0}, surface)
 end
 
 return {
