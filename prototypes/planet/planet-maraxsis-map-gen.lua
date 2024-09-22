@@ -88,3 +88,9 @@ data:extend {{
     name = 'maraxsis_water_32x32',
     expression = '(x % 32 + y % 32) == 0'
 }}
+
+data:extend{{
+    type = 'noise-expression',
+    name = 'maraxsis_tropical_fish',
+    expression = 'random_penalty_between(0, 1, map_seed) > 0.9999'
+}}

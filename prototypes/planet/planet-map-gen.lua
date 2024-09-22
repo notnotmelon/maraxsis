@@ -2,6 +2,11 @@ require 'prototypes/planet/planet-maraxsis-map-gen'
 local planet_map_gen = require('__space-age__/prototypes/planet/planet-map-gen')
 -- get vanilla planets from space age
 
+local entity_spawn_settings = {['h2o-water-shader'] = {}}
+for _, tropical_fish in pairs(h2o.tropical_fish_names) do
+    entity_spawn_settings[tropical_fish] = {}
+end
+
 planet_map_gen.maraxsis = function()
     return
     {
@@ -39,37 +44,8 @@ planet_map_gen.maraxsis = function()
             {
                 settings =
                 {
-                    --[[['highland-dark-rock'] = {},
-                    ['highland-dark-rock-2'] = {},
-                    ['lowland-cream-cauliflower'] = {},
-                    ['lowland-cream-cauliflower-2'] = {},
-                    ['lowland-cream-red'] = {},
-                    ['midland-turquoise-bark'] = {},
-                    ['midland-turquoise-bark-2'] = {},
-                    ['midland-cracked-lichen'] = {},
-                    ['midland-cracked-lichen-dull'] = {},
-                    ['midland-cracked-lichen-dark'] = {},--]]
                     ['maraxsis-trench-entrance'] = {},
                     ['sand-3-underwater'] = {},
-
-
-                    --[[['lowland-brown-blubber'] = {},
-                    ['lowland-olive-blubber'] = {},
-                    ['lowland-olive-blubber-2'] = {},
-                    ['lowland-olive-blubber-3'] = {},
-                    ['lowland-pale-green'] = {},
-                    ['lowland-red-vein'] = {},
-                    ['lowland-red-vein-2'] = {},
-                    ['lowland-red-vein-3'] = {},
-                    ['lowland-red-vein-4'] = {},
-                    ['lowland-red-vein-dead'] = {},
-                    ['lowland-red-infection'] = {},
-                    ['midland-yellow-crust'] = {},
-                    ['midland-yellow-crust-2'] = {},
-                    ['midland-yellow-crust-3'] = {},
-                    ['midland-yellow-crust-4'] = {},
-                    ['highland-yellow-rock'] = {},
-                    ['pit-rock'] = {},--]]
                 }
             },
             ['decorative'] =
@@ -87,13 +63,6 @@ planet_map_gen.maraxsis = function()
                     ['vulcanus-rock-decal-large'] = {},
                     ['vulcanus-dune-decal'] = {},
                     ['vulcanus-sand-decal'] = {},
-                    ['vulcanus-lava-fire'] = {},
-                    ['calcite-stain'] = {},
-                    ['calcite-stain-small'] = {},
-                    ['sulfur-stain'] = {},
-                    ['sulfur-stain-small'] = {},
-                    ['sulfuric-acid-puddle'] = {},
-                    ['sulfuric-acid-puddle-small'] = {},
                     ['crater-small'] = {},
                     ['crater-large'] = {},
                     ['pumice-relief-decal'] = {},
@@ -112,12 +81,6 @@ planet_map_gen.maraxsis = function()
                     ['yellow-lettuce-lichen-cups-1x1'] = {},
                     ['yellow-lettuce-lichen-cups-3x3'] = {},
                     ['yellow-lettuce-lichen-cups-6x6'] = {},
-                    ['green-lettuce-lichen-1x1'] = {},
-                    ['green-lettuce-lichen-3x3'] = {},
-                    ['green-lettuce-lichen-6x6'] = {},
-                    ['green-lettuce-lichen-water-1x1'] = {},
-                    ['green-lettuce-lichen-water-3x3'] = {},
-                    ['green-lettuce-lichen-water-6x6'] = {},
                     ['honeycomb-fungus'] = {},
                     ['honeycomb-fungus-1x1'] = {},
                     ['honeycomb-fungus-decayed'] = {},
@@ -145,8 +108,6 @@ planet_map_gen.maraxsis = function()
                     ['barnacles-decal'] = {},
                     ['nerv-roots-dense'] = {},
                     ['nerv-roots-light'] = {},
-                    ['nerv-roots-veins-dense'] = {},
-                    ['nerv-roots-veins-light'] = {},
                     --["tentacles"] = {},
                     --shared
                     ['light-mud-decal'] = {},
@@ -163,13 +124,9 @@ planet_map_gen.maraxsis = function()
                     ['shroom-decal'] = {},
                 }
             },
-            ['entity'] =
-            {
-                settings =
-                {
-                    ['h2o-water-shader'] = {},
-                }
-            }
+            ['entity'] = {
+                settings = entity_spawn_settings,
+            },
         }
     }
 end

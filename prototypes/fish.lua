@@ -27,7 +27,11 @@ for _, color in pairs(map_colors) do
     color.a = 255
 end
 
+h2o.tropical_fish_names = {}
+
 for i, v in pairs(fish) do
+    local name = 'h2o-tropical-fish-' .. i
+    
     v.filename = '__maraxsis__/graphics/entity/fish/' .. i .. '.png'
     v.direction_count = 32
     v.frame_count = 10
@@ -47,7 +51,7 @@ for i, v in pairs(fish) do
     data:extend{{
         localised_name = {'entity-name.fish'},
         type = 'unit',
-        name = 'h2o-tropical-fish-' .. i,
+        name = name,
         render_layer = 'higher-object-above',
         icon = '__maraxsis__/graphics/entity/fish/icons/' .. i .. '.png',
         icon_size = 64,
@@ -61,6 +65,9 @@ for i, v in pairs(fish) do
         collision_box = {{0, 0}, {0, 0}},
         selection_box = {{-0.5, -1}, {0.5, 1}},
         collision_mask = {layers = {}},
+        autoplace = {
+            probability_expression = 'maraxsis_tropical_fish',
+        },
         vision_distance = 0,
         movement_speed = data.raw.unit['small-biter'].movement_speed * 2,
         distance_per_frame = data.raw.unit['small-biter'].distance_per_frame,
@@ -107,6 +114,8 @@ for i, v in pairs(fish) do
             }
         }
     }}
+
+    h2o.tropical_fish_names[i] = name
 end
 
 data:extend{{

@@ -122,6 +122,7 @@ for i = 1, 2 do
         stripes = {},
         height = 101,
         width = 248,
+        flags = {'no-scale'},
     }
 
     local mask_layer = {
@@ -137,6 +138,7 @@ for i = 1, 2 do
         width = 240,
         apply_runtime_tint = true,
         tint = {0.6, 0.6, 0.6},
+        flags = {'no-scale'},
     }
 
     local full_body_layer = {
@@ -149,6 +151,7 @@ for i = 1, 2 do
         filename = '__maraxsis__/graphics/entity/submarine/full-body.png',
         height = 212,
         width = 250,
+        flags = {'no-scale'},
     }
 
     local shadow_layer = {
@@ -163,6 +166,7 @@ for i = 1, 2 do
         height = 256,
         width = 256,
         shift = {x = 6, y = 45.5 / 32 + 6},
+        flags = {'no-scale'},
     }
 
     local lamp_x = 0
