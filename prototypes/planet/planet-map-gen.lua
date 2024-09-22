@@ -19,7 +19,7 @@ planet_map_gen.maraxsis = function()
             moisture = 'maraxsis_moisture',
             aux = 'aux_basic',
             cliffiness = '1',
-            cliff_elevation = 'maraxsis_elevation',
+            cliff_elevation = 'cliff_elevation_from_elevation',
         },
         cliff_settings =
         {

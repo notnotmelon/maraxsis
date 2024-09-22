@@ -50,12 +50,17 @@ data:extend {{
     type = 'noise-expression',
     name = 'maraxsis_elevation',
     expression = [[
-        if(
-            distance_from_0_0 < maraxsis_starting_area,
-            maraxsis_moisture + maraxsis_elevation_bonus,
-            min(1, maraxsis_moisture)
-        )
+        1 - (1 - min(1, elevation) + 0.03) ^ 3 + elevation/3
     ]],
+    local_expressions = {
+        elevation = [[
+            if(
+                distance_from_0_0 < maraxsis_starting_area,
+                maraxsis_moisture + maraxsis_elevation_bonus,
+                maraxsis_moisture
+            )
+        ]]
+    }
 }}
 
 data:extend {{
@@ -80,21 +85,21 @@ end
 
 data.raw.tile['sand-1-underwater'].autoplace = {
     probability_expression = [[
-        maraxsis_elevation > 0.7
+        maraxsis_elevation > 0.703
     ]],
     order = 'a[sand]-a[maraxsis]'
 }
 
 data.raw.tile['sand-2-underwater'].autoplace = {
     probability_expression = [[
-        maraxsis_elevation > 0.4
+        maraxsis_elevation > 0.503
     ]],
     order = 'a[sand]-b[maraxsis]'
 }
 
 data.raw.tile['sand-3-underwater'].autoplace = {
     probability_expression = [[
-        maraxsis_elevation > 0.2
+        maraxsis_elevation > 0.303
     ]],
     order = 'a[sand]-c[maraxsis]'
 }
