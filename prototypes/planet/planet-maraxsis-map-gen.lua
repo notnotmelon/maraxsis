@@ -128,7 +128,7 @@ for i = 1, table_size(h2o.tropical_fish_names) do
     }}
 end
 
-data.raw.tile['sand-1-underwater'].autoplace = {
+data.raw.tile['sand-3-underwater'].autoplace = {
     probability_expression = [[
         maraxsis_elevation > 0.703
     ]],
@@ -142,7 +142,7 @@ data.raw.tile['sand-2-underwater'].autoplace = {
     order = 'a[sand]-b[maraxsis]'
 }
 
-data.raw.tile['sand-3-underwater'].autoplace = {
+data.raw.tile['sand-1-underwater'].autoplace = {
     probability_expression = [[
         maraxsis_elevation > 0.303
     ]],

@@ -171,6 +171,33 @@ data:extend {{
     }
 }}
 
+data:extend{{
+    type = 'collision-layer',
+    name = 'decal',
+}}
+
+-- add decal layer to decals
+for _, decorative in pairs {
+    'crater-large',
+    'light-mud-decal',
+    'vulcanus-dune-decal',
+    'pink-lichen-decal',
+} do
+    decorative = data.raw['optimized-decorative'][decorative]
+    if not decorative then error('decorative not found ' .. decorative) end
+    decorative.collision_mask.layers['decal'] = true
+end
+
+-- add doodad layer to doodads
+for _, decorative in pairs {
+    'crater-small',
+    'urchin-cactus',
+} do
+    decorative = data.raw['optimized-decorative'][decorative]
+    if not decorative then error('decorative not found ' .. decorative) end
+    decorative.collision_mask.layers['decal'] = true
+end
+
 data:extend{h2o.merge(data.raw.tile['out-of-map'], {
     name = 'maraxsis-trench-entrance',
     layer = 0,
@@ -182,7 +209,7 @@ data:extend{h2o.merge(data.raw.tile['out-of-map'], {
     destroys_dropped_items = true,
     allows_being_covered = false,
     walking_speed_modifier = 0.2,
-    collision_mask = {layers = {['item'] = true, ['object'] = true, ['doodad'] = true, ['water_tile'] = true, [maraxsis_collision_mask] = true}},
+    collision_mask = {layers = {['item'] = true, ['object'] = true, ['doodad'] = true, ['decal'] = true, [maraxsis_collision_mask] = true}},
     autoplace = {
         probability_expression = 'maraxsis_trench_entrance'
     },
