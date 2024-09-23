@@ -91,11 +91,13 @@ local function determine_submerge_direction(submarine)
         target_surface.force_generate_chunk_requests()
         local tile_at_surface = target_surface.get_tile(target_position.x, target_position.y)
         if tile_at_surface.valid and tile_at_surface.name ~= 'trench-entrance' then
-            --[[surface.create_entity {
-                name = 'flying-text',
-                position = position,
-                text = {'maraxsis.rocks-in-the-way'},
-            }--]] -- todo: readd
+            for _, player in pairs(game.connected_players) do
+                player.create_local_flying_text {
+                    text = {'maraxsis.rocks-in-the-way'},
+                    position = position,
+                    create_at_cursor = false
+                }
+            end
             return nil
         end
         return target_surface, target_position
