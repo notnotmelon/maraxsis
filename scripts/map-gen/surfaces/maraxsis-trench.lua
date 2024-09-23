@@ -4,22 +4,6 @@ local max = math.max
 local abs = math.abs
 local sqrt = math.sqrt
 
-h2o.on_event(defines.events.on_surface_created, function(event)
-	local surface = game.get_surface(event.surface_index)
-	if surface.name ~= h2o.TRENCH_SURFACE_NAME then return end
-
-	local mgs = surface.map_gen_settings
-	mgs.cliff_settings = {
-		cliff_elevation_0 = 1024
-	}
-	surface.map_gen_settings = mgs
-
-	surface.show_clouds = true
-	surface.brightness_visual_weights = {r = 1, g = 1, b = 1}
-	surface.min_brightness = 0.05
-	surface.ticks_per_day = 15000
-end)
-
 local function get_surface()
 	local surface = game.surfaces[h2o.TRENCH_SURFACE_NAME]
 

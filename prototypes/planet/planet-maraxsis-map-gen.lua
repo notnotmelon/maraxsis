@@ -23,8 +23,8 @@ data:extend {{
     name = 'maraxsis_moisture',
     expression = [[
         abs(multioctave_noise{
-            x = maraxsis_wx,
-            y = maraxsis_wy,
+            x = maraxsis_wx(x, y),
+            y = maraxsis_wy(x, y),
             persistence = 0.25,
             seed0 = map_seed,
             seed1 = 1,
@@ -32,18 +32,63 @@ data:extend {{
             input_scale = 1/1300,
             output_scale = 1
         })
-  ]]
+    ]]
 }}
 
 data:extend {{ -- distorted x. Also offset grid so that the starting area is in the middle of a cell
-    type = 'noise-expression',
+    type = 'noise-function',
     name = 'maraxsis_wx',
-    expression = 'fulgora_wx'
+    expression = [[
+        xx + multioctave_noise{
+            x = xx,
+            y = yy,
+            persistence = 0.7,
+            seed0 = map_seed,
+            seed1 = 'maraxsis_wobble_x',
+            octaves = 4,
+            input_scale = 5 / fulgora_grid,
+            output_scale = fulgora_grid * 0.07
+        } * maraxsis_wobble_mask(xx, yy) + fulgora_grid / 2
+    ]],
+    parameters = {'xx', 'yy'}
 }}
 data:extend {{ -- distorted y. Also offset grid so that the starting area is in the middle of a cell
-    type = 'noise-expression',
+    type = 'noise-function',
     name = 'maraxsis_wy',
-    expression = 'fulgora_wy'
+    expression = [[
+        yy + multioctave_noise{
+            x = xx,
+            y = yy,
+            persistence = 0.7,
+            seed0 = map_seed,
+            seed1 = 'maraxsis_wobble_y',
+            octaves = 4,
+            input_scale = 5 / fulgora_grid,
+            output_scale = fulgora_grid * 0.07
+        } * maraxsis_wobble_mask(xx, yy) + fulgora_grid / 2
+    ]],
+    parameters = {'xx', 'yy'}
+}}
+
+data:extend {{ -- We usually want a lot of wobble or none at all, so wobble_influence has a high output scale and then we clamp it.
+    type = 'noise-function',
+    name = 'maraxsis_wobble_mask',
+    expression = 'clamp(wobble_influence + 0.6, 0, 1)',
+    parameters = {'xx', 'yy'},
+    local_expressions = {
+        wobble_influence = [[
+            multioctave_noise{
+                x = xx,
+                y = yy,
+                persistence = 0.5,
+                seed0 = map_seed,
+                seed1 = 1,
+                octaves = 3,
+                input_scale = 128 / fulgora_grid / 20 ,
+                output_scale = 3
+            }
+        ]]
+    }
 }}
 
 data:extend {{
@@ -75,8 +120,8 @@ for i = 1, table_size(h2o.tropical_fish_names) do
         name = 'maraxsis_tropical_fish_' .. i,
         expression = 'rand > 0.99999',
         local_expressions = {
-            wx = 'maraxsis_wx + ' .. i * 97,
-            wy = 'maraxsis_wy + ' .. i * 61,
+            wx = 'maraxsis_wx(x, y) + ' .. i * 97,
+            wy = 'maraxsis_wy(x, y) + ' .. i * 61,
             seed = 'map_seed + ' .. i * 100,
             rand = '1 - random_penalty{x = wx, y = wy, seed = seed, source = 1, amplitude = 1}'
         }

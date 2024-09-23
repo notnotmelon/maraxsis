@@ -1,4 +1,5 @@
 require 'prototypes/planet/planet-maraxsis-map-gen'
+require 'prototypes/planet/planet-maraxsis-trench-map-gen'
 local planet_map_gen = require('__space-age__/prototypes/planet/planet-map-gen')
 -- get vanilla planets from space age
 
