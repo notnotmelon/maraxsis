@@ -345,6 +345,7 @@ vehicle_leg.initial_movement_speed = 1
 vehicle_leg.movement_acceleration = 0
 vehicle_leg.walking_sound_volume_modifier = 0
 vehicle_leg.part_length = 0.1
+vehicle_leg.selectable_in_game = false
 data:extend {vehicle_leg}
 
 local torpedo_launchers = {}
