@@ -4,19 +4,6 @@ local max = math.max
 local abs = math.abs
 local sqrt = math.sqrt
 
-h2o.lava_tile = function(surface, position)
-	if surface.count_entities_filtered {name = 'lava-lamp', position = position, radius = 1.5, limit = 1} == 0 then
-		local light = surface.create_entity {
-			name = 'lava-lamp',
-			position = position,
-			force = 'neutral'
-		}
-		light.destructible = false
-		light.active = false
-	end
-	return 'lava'
-end
-
 h2o.on_event(defines.events.on_surface_created, function(event)
 	local surface = game.get_surface(event.surface_index)
 	if surface.name ~= h2o.TRENCH_SURFACE_NAME then return end
@@ -71,10 +58,6 @@ local function get_surface()
 end
 
 return {
-	noise_layers = noise_layers,
 	get_surface = get_surface,
-	parent_type = 'maraxsis',
 	type = 'maraxsis-trench',
-	generate_terrain = generate_terrain,
-	generate_fancy_water = generate_fancy_water
 }

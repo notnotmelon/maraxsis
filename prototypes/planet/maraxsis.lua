@@ -5,7 +5,7 @@ data:extend {h2o.merge(data.raw.planet.gleba, {
     name = 'maraxsis',
     starting_area = 1,
     surface_properties = {
-        ['day-night-cycle'] = 10 * minute,
+        ['day-night-cycle'] = 5 * minute,
         ['magnetic-field'] = 25,
         ['solar-power'] = 30,
         pressure = 200000,
@@ -21,6 +21,7 @@ data:extend {h2o.merge(data.raw.planet.gleba, {
     map_gen_settings = planet_map_gen.maraxsis(),
     distance = 15,
     orientation = 0.95,
+    flying_robot_energy_usage_multiplier = 1.5, -- todo: this doesnt work
 })}
 
 
