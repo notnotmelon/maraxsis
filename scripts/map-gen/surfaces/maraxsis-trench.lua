@@ -7,6 +7,7 @@ local function get_surface()
 			autoplace_settings = {
 				entity = {
 					treat_missing_as_default = false,
+					maraxsis_trench_wall = {},
 				},
 				tile = {
 					treat_missing_as_default = false,

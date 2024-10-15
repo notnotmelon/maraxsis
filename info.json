@@ -8,7 +8,7 @@
   "factorio_version": "2.0",
   "dependencies": [
     "base",
-    "space-age >= 2.0",
+    "space-age >= 2.0.0",
     "! pystellarexpedition"
   ],
   "quality_required": true,
