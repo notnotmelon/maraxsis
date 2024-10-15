@@ -1,4 +1,37 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.8.0
+Date: 2024-10-15
+  Features:
+    - Add fish and tile moisture
+    - add machinery for trench map gen
+    - add trench autoplace
+    - Added vanilla planet prototypes
+    - Finish porting maraxsis map gen
+    - First attempt and migrating maraxsis to use 2.0 noise expressions
+    - Improve pressure dome interaction with blueprints
+    - Make the quantum computer puzzle way easier
+    - Way better trench generation
+  Bugfixes:
+    - allow spawning for fish
+    - Fix being able to select hidden spider legs on subs
+    - Fix chunk gridding in cliff generation
+    - Fix cliff walls not spawning properly in trench surface
+    - Fix crash related to new spill_item_stack format
+    - Fix drowning when you are not in water
+    - Fix fish animations getting double downscaled in low res mode
+    - Fix infinite recursion when generating chunks in the trench layer
+    - Fix quantum computers for 2.0
+    - Fix submarine code crashing at data stage
+    - Fixed circuit network connectivity for domes
+    - Readd fllying text for submarine ascend
+    - Remove crashes in runtime
+    - rename global to storage
+    - Some progress on upgrading to 2.0
+    - Update control stage game prototype fetching API to match new 2.0 changes
+  Graphics:
+    - New graphics for cliffs
+    - Replace the dome tile with space platform gfx
+---------------------------------------------------------------------------------------------------
 Version: 1.7.0
 Date: 2024-09-04
   Features:
