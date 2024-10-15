@@ -123,18 +123,6 @@ function h2o.farm_speed(num_slots, desired_speed)
     return desired_speed / (num_slots + 1)
 end
 
----Returns the correct farm speed for a mk2+ farm based on the number of modules and the mk1 speed
----@param num_slots integer
----@param base_entity_name string
----@return number
-function h2o.farm_speed_derived(num_slots, base_entity_name)
-    local e = data.raw['assembling-machine'][base_entity_name]
-    local mk1_slots = e.module_specification.module_slots
-    local desired_mk1_speed = e.crafting_speed * (mk1_slots + 1)
-    local speed_improvement_ratio = num_slots / mk1_slots
-    return (desired_mk1_speed * speed_improvement_ratio) / (num_slots + 1 / speed_improvement_ratio)
-end
-
 ---Takes two prototype names (both must use the style of IconSpecification with icon = string_path), returns an IconSpecification with the icons as composites
 ---@param base_prototype string
 ---@param child_prototype string
