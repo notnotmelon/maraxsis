@@ -10,7 +10,6 @@ data:extend {{
     name = "h2o-water-treatment",
     icon = "__maraxsis__/graphics/technology/water-treatment.png",
     icon_size = 256,
-    icon_mipmaps = nil,
     effects = {},
     prerequisites = {"h2o-maraxsis"},
     unit = {
@@ -36,7 +35,6 @@ data:extend {{
     name = "saline-water",
     icon = "__maraxsis__/graphics/icons/saline-water.png",
     icon_size = 64,
-    icon_mipmaps = 4,
     base_flow_rate = data.raw.fluid.water.base_flow_rate,
     default_temperature = data.raw.fluid["water"].default_temperature,
     heat_capacity = data.raw.fluid["water"].heat_capacity,
@@ -52,7 +50,6 @@ data:extend {{
     name = "brackish-water",
     icon = "__maraxsis__/graphics/icons/brackish-water.png",
     icon_size = 64,
-    icon_mipmaps = 4,
     base_flow_rate = data.raw.fluid.water.base_flow_rate,
     default_temperature = data.raw.fluid["water"].default_temperature,
     heat_capacity = data.raw.fluid["water"].heat_capacity,
@@ -69,7 +66,6 @@ data:extend {{
     icon = "__maraxsis__/graphics/icons/oxygen.png",
     icon_size = 64,
     base_flow_rate = data.raw.fluid.steam.base_flow_rate,
-    icon_mipmaps = 4,
     default_temperature = data.raw.fluid["water"].default_temperature,
     heat_capacity = data.raw.fluid["water"].heat_capacity,
     base_color = {0.75, 0.40, 0.40},
@@ -84,7 +80,6 @@ data:extend {{
     name = "hydrogen",
     icon = "__maraxsis__/graphics/icons/hydrogen.png",
     icon_size = 64,
-    icon_mipmaps = 4,
     base_flow_rate = data.raw.fluid.steam.base_flow_rate,
     default_temperature = data.raw.fluid["water"].default_temperature,
     heat_capacity = data.raw.fluid["water"].heat_capacity,
@@ -111,7 +106,6 @@ data:extend {{
     category = "h2o-hydro-plant",
     icon = "__maraxsis__/graphics/icons/saline-electrolysis.png",
     icon_size = 128,
-    icon_mipmaps = nil,
     allow_productivity = true,
 }}
 add_to_tech("h2o-saline-electrolysis")
@@ -139,7 +133,6 @@ data:extend {{
     name = "h2o-saturated-salt-filter",
     icon = "__maraxsis__/graphics/icons/saturated-salt-filter.png",
     icon_size = 64,
-    icon_mipmaps = nil,
     stack_size = 10,
 }}
 
@@ -179,7 +172,6 @@ data:extend {{
     icon = "__maraxsis__/graphics/icons/salt-2.png",
     pictures = salt_variants,
     icon_size = 64,
-    icon_mipmaps = nil,
     stack_size = 10,
 }}
 
@@ -188,7 +180,6 @@ data:extend {{
     name = "h2o-salt-filter",
     icon = "__maraxsis__/graphics/icons/salt-filter.png",
     icon_size = 64,
-    icon_mipmaps = nil,
     stack_size = 10,
 }}
 

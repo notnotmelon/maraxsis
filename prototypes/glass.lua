@@ -3,7 +3,6 @@ data:extend {{
     name = "h2o-glassworking",
     icon = "__maraxsis__/graphics/technology/glassworking.png",
     icon_size = 256,
-    icon_mipmaps = nil,
     effects = {
         {
             type = "unlock-recipe",
@@ -49,7 +48,6 @@ data:extend {{
     name = "limestone",
     icon = "__maraxsis__/graphics/icons/limestone-1.png",
     icon_size = 64,
-    icon_mipmaps = nil,
     pictures = limestone_variants,
     stack_size = 200,
 }}
@@ -88,7 +86,6 @@ data:extend {{
     icon = "__maraxsis__/graphics/icons/glass-panes-1.png",
     pictures = glass_variants,
     icon_size = 64,
-    icon_mipmaps = nil,
     stack_size = 200,
 }}
 
@@ -109,6 +106,5 @@ data:extend {{
     icon = "__maraxsis__/graphics/icons/sand-3.png",
     pictures = sand_variants,
     icon_size = 64,
-    icon_mipmaps = nil,
     stack_size = 100,
 }}

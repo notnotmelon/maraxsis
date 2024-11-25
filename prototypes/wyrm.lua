@@ -3,7 +3,6 @@ data:extend {{
     name = "h2o-wyrm-confinement",
     icon = "__maraxsis__/graphics/technology/wyrm-confinement.png",
     icon_size = 256,
-    icon_mipmaps = nil,
     effects = {
         {
             type = "unlock-recipe",
@@ -39,7 +38,6 @@ data:extend {{
     name = "h2o-wyrm-confinement-cell",
     icon = "__maraxsis__/graphics/icons/wyrm-confinement-cell.png",
     icon_size = 64,
-    icon_mipmaps = nil,
     stack_size = 10,
 }}
 
@@ -60,7 +58,6 @@ data:extend {{
     icon = "__maraxsis__/graphics/icons/wyrm-specimen-2.png",
     pictures = wyrm_variants,
     icon_size = 64,
-    icon_mipmaps = nil,
     stack_size = 10,
 }}
 
@@ -99,7 +96,6 @@ data:extend{h2o.merge(data.raw['spider-vehicle']['spidertron'], {
     name = 'h2o-wyrm',
     icon = '__maraxsis__/graphics/icons/wyrm-specimen-2.png', -- todo: change to an actual icon
     icon_size = 64,
-    icon_mipmaps = nil,
     flags = {'placeable-enemy', 'placeable-off-grid', 'not-repairable', 'breaths-air'},
     max_health = 1000,
     healing_per_tick = 0.01,

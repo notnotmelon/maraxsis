@@ -3,7 +3,6 @@ data:extend {{
     name = "h2o-depth-charges",
     icon = "__maraxsis__/graphics/technology/depth-charges.png",
     icon_size = 256,
-    icon_mipmaps = nil,
     effects = {
         {
             type = "unlock-recipe",
@@ -55,7 +54,6 @@ data:extend {{
     name = "h2o-big-cliff-explosives",
     icon = "__maraxsis__/graphics/icons/big-cliff-explosives.png",
     icon_size = 64,
-    icon_mipmaps = nil,
     stack_size = 10,
     capsule_action = {
         type = "destroy-cliffs",

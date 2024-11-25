@@ -3,7 +3,6 @@ data:extend {{
     name = "h2o-hydraulic-science-pack",
     icon = "__maraxsis__/graphics/icons/hydraulic-science-pack.png",
     icon_size = 64,
-    icon_mipmaps = nil,
     subgroup = "science-pack",
     order = "j[hydraulic-science-pack]",
     stack_size = 200,
@@ -17,7 +16,6 @@ data:extend {{
     name = "h2o-hydraulic-science-pack",
     icon = "__maraxsis__/graphics/technology/hydraulic-science-pack.png",
     icon_size = 256,
-    icon_mipmaps = nil,
     effects = {
         {
             type = "unlock-recipe",

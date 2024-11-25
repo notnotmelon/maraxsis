@@ -8,7 +8,6 @@ data:extend {h2o.merge(data.raw["straight-rail"]["straight-rail"], {
     localised_name = {"entity-name.h2o-waterway"},
     localised_description = {"entity-description.h2o-waterway"},
     icon_size = 64,
-    icon_mipmaps = "nil",
     collision_mask = {layers = {["water_tile"] = true, ["object"] = true}},
 })}
 
@@ -18,7 +17,6 @@ data:extend {h2o.merge(data.raw["curved-rail"]["curved-rail"], {
     localised_name = {"entity-name.h2o-waterway"},
     localised_description = {"entity-description.h2o-waterway"},
     icon_size = 64,
-    icon_mipmaps = "nil",
     collision_mask = {layers = {["water_tile"] = true, ["object"] = true}},
     placeable_by = {item = "h2o-waterway", count = data.raw["curved-rail"]["curved-rail"].placeable_by.count},
 })}
@@ -35,7 +33,6 @@ data:extend {{
     icon = "__maraxsis__/graphics/icons/waterway.png", -- todo: make this icon
     icon = data.raw.fluid.water.icon,
     icon_size = 64,
-    icon_mipmaps = nil,
 }}
 
 data:extend {{

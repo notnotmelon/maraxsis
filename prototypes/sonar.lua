@@ -3,7 +3,6 @@ data:extend {{
     name = "h2o-sonar",
     icon = "__maraxsis__/graphics/technology/sonar.png",
     icon_size = 256,
-    icon_mipmaps = nil,
     effects = {
         {
             type = "unlock-recipe",
@@ -33,7 +32,6 @@ data:extend {{
     name = "h2o-sonar",
     icon = "__maraxsis__/graphics/icons/sonar.png",
     icon_size = 64,
-    icon_mipmaps = 4,
     stack_size = 10,
     place_result = "h2o-sonar",
 }}
@@ -60,7 +58,6 @@ data:extend {h2o.merge(data.raw.radar.radar, {
     name = "h2o-sonar",
     icon = "__maraxsis__/graphics/icons/sonar.png",
     icon_size = 64,
-    icon_mipmaps = 4,
     flags = {"placeable-player", "player-creation"},
     minable = {mining_time = 0.5, result = "h2o-sonar"},
     max_health = 550,
@@ -162,7 +159,6 @@ data:extend {h2o.merge(data.raw.lamp["small-lamp"], {
     localised_description = {"entity-description.h2o-sonar"},
     icon = "__maraxsis__/graphics/icons/sonar.png",
     icon_size = 64,
-    icon_mipmaps = 4,
     flags = {"placeable-neutral", "player-creation"},
     minable = "nil",
     max_health = 100,

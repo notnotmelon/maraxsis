@@ -68,7 +68,7 @@ h2o.make_item_glowing = function(prototype)
         return
     end
     if prototype.icon and not prototype.icons then
-        prototype.icons = {{icon = prototype.icon, icon_size = prototype.icon_size, icon_mipmaps = prototype.icon_mipmaps}}
+        prototype.icons = {{icon = prototype.icon, icon_size = prototype.icon_size}}
         prototype.icon = nil
     end
     if not prototype.icons then
@@ -85,7 +85,6 @@ h2o.make_item_glowing = function(prototype)
         picture.scale = 16 / icon_size
         picture.icon = nil
         picture.icon_size = nil
-        picture.icon_mipmaps = nil
         pictures[#pictures + 1] = picture
     end
     prototype.pictures = pictures
@@ -135,12 +134,10 @@ function h2o.composite_molten_icon(base_prototype, child_prototype, shadow_alpha
         {
             icon = base_prototype.icon,
             icon_size = base_prototype.icon_size,
-            icon_mipmaps = base_prototype.icon_mipmaps
         },
         {
             icon = child_prototype.icon,
             icon_size = child_prototype.icon_size,
-            icon_mipmaps = base_prototype.icon_mipmaps,
             shift = {10, 10},
             scale = 0.65,
             tint = {r = 0, g = 0, b = 0, a = shadow_alpha}
@@ -148,7 +145,6 @@ function h2o.composite_molten_icon(base_prototype, child_prototype, shadow_alpha
         {
             icon = child_prototype.icon,
             icon_size = child_prototype.icon_size,
-            icon_mipmaps = base_prototype.icon_mipmaps,
             shift = {10, 10},
             scale = 0.5,
             tint = {r = 1, g = 1, b = 1, a = 1}

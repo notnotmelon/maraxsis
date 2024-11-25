@@ -55,7 +55,6 @@ for i, v in pairs(fish) do
         render_layer = "higher-object-above",
         icon = "__maraxsis__/graphics/entity/fish/icons/" .. i .. ".png",
         icon_size = 64,
-        icon_mipmaps = nil,
         subgroup = "creatures",
         order = "c-" .. i,
         flags = {"placeable-neutral", "placeable-off-grid", "not-repairable", "breaths-air"},
@@ -123,7 +122,6 @@ data:extend {{
     name = "h2o-piscary",
     icon = "__maraxsis__/graphics/technology/piscary.png",
     icon_size = 256,
-    icon_mipmaps = nil,
     effects = {},
     prerequisites = {"h2o-water-treatment", "uranium-ammo"},
     unit = {
@@ -157,8 +155,6 @@ for i = 1, 3 do
         scale = 1 / 3,
         flags = {"icon"},
         mipmap_count = 4,
-        icon_mipmaps = 4,
-        mipmaps = 4, -- i forgor the name
     }
 end
 
@@ -167,7 +163,6 @@ data:extend {{
     name = "h2o-microplastics",
     icon = "__maraxsis__/graphics/icons/microplastics-1.png",
     icon_size = 64,
-    icon_mipmaps = 4,
     pictures = microplastics_variants,
     stack_size = data.raw.item["plastic-bar"].stack_size / 2,
 }}
@@ -223,7 +218,6 @@ data:extend {{
     name = "h2o-tropical-fish",
     icon = "__maraxsis__/graphics/icons/tropical-fish.png",
     icon_size = 64,
-    icon_mipmaps = nil,
     pictures = tropical_fish_variants,
     stack_size = data.raw.capsule["raw-fish"].stack_size,
     capsule_action = table.deepcopy(data.raw.capsule["raw-fish"].capsule_action),

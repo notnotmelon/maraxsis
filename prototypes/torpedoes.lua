@@ -3,7 +3,6 @@ data:extend {{
     name = "h2o-torpedoes",
     icon = "__maraxsis__/graphics/technology/torpedoes.png",
     icon_size = 256,
-    icon_mipmaps = nil,
     effects = {
         {
             type = "unlock-recipe",
@@ -44,7 +43,6 @@ torpedo.order = "de[torpedoes]-a[torpedo]"
 torpedo.name = "h2o-torpedo"
 torpedo.icon = "__maraxsis__/graphics/icons/torpedo.png"
 torpedo.icon_size = 64
-torpedo.icon_mipmaps = nil
 torpedo.ammo_type.category = "h2o-torpedoes"
 torpedo.ammo_type.action.action_delivery.projectile = "h2o-torpedo-projectile"
 data:extend {torpedo}
@@ -54,7 +52,6 @@ explosive_torpedo.order = "de[torpedoes]-b[explosive-torpedo]"
 explosive_torpedo.name = "h2o-explosive-torpedo"
 explosive_torpedo.icon = "__maraxsis__/graphics/icons/explosive-torpedo.png"
 explosive_torpedo.icon_size = 64
-explosive_torpedo.icon_mipmaps = nil
 explosive_torpedo.ammo_type.category = "h2o-torpedoes"
 explosive_torpedo.ammo_type.action.action_delivery.projectile = "h2o-explosive-torpedo-projectile"
 data:extend {explosive_torpedo}
@@ -64,7 +61,6 @@ atomic_torpedo.order = "de[torpedoes]-c[atomic-torpedo]"
 atomic_torpedo.name = "h2o-atomic-torpedo"
 atomic_torpedo.icon = "__maraxsis__/graphics/icons/atomic-torpedo.png"
 atomic_torpedo.icon_size = 64
-atomic_torpedo.icon_mipmaps = nil
 atomic_torpedo.ammo_type.category = "h2o-torpedoes"
 atomic_torpedo.ammo_type.action.action_delivery.projectile = "h2o-atomic-torpedo-projectile"
 data:extend {atomic_torpedo}
