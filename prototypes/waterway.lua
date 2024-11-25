@@ -49,7 +49,7 @@ data:extend {{
     enabled = false,
 }}
 
-table.insert(data.raw.technology["maraxsis-maraxsis"].effects, {
+table.insert(data.raw.technology["maraxsis"].effects, {
     type = "unlock-recipe",
     recipe = "maraxsis-waterway"
 })

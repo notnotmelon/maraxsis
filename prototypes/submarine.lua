@@ -9,7 +9,7 @@ data:extend {{
             recipe = "maraxsis-nuclear-submarine",
         },
     },
-    prerequisites = {"maraxsis-hydraulic-science-pack", "maraxsis-sonar", "nuclear-power"},
+    prerequisites = {"maraxsis-torpedoes", "maraxsis-sonar", "nuclear-power"},
     unit = {
         count = 3000,
         ingredients = {
@@ -23,7 +23,8 @@ data:extend {{
             {"metallurgic-science-pack",     1},
             {"electromagnetic-science-pack", 1},
             {"agricultural-science-pack",    1},
-            {"maraxsis-hydraulic-science-pack",   1},
+            {"hydraulic-science-pack",   1},
+            {"cryogenic-science-pack",   1},
         },
         time = 60,
     },

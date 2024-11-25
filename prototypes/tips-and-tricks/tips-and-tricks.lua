@@ -6,13 +6,13 @@ data:extend {{
 
 data:extend {{
     type = "tips-and-tricks-item",
-    name = "maraxsis-maraxsis",
+    name = "maraxsis",
     category = "maraxsis",
-    tag = "[technology=maraxsis-maraxsis]",
+    tag = "[technology=maraxsis]",
     indent = 0,
     trigger = {
         type = "research",
-        technology = "maraxsis-maraxsis"
+        technology = "maraxsis"
     },
     simulation = {
         save = "__maraxsis__/prototypes/tips-and-tricks/maraxsis.zip",
@@ -52,7 +52,7 @@ data:extend {{
     indent = 1,
     trigger = {
         type = "research",
-        technology = "maraxsis-maraxsis"
+        technology = "maraxsis"
     },
-    dependencies = {"maraxsis-maraxsis"}
+    dependencies = {"maraxsis"}
 }}

@@ -9,7 +9,7 @@ data:extend {{
             recipe = "maraxsis-sonar"
         }
     },
-    prerequisites = {"maraxsis-maraxsis"},
+    prerequisites = {"hydraulic-science-pack", "radar"},
     unit = {
         count = 3000,
         ingredients = {
@@ -22,6 +22,7 @@ data:extend {{
             {"metallurgic-science-pack",     1},
             {"electromagnetic-science-pack", 1},
             {"agricultural-science-pack",    1},
+            {"hydraulic-science-pack",    1},
         },
         time = 60,
     },

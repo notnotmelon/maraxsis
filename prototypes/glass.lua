@@ -13,7 +13,7 @@ data:extend {{
             recipe = "maraxsis-pressure-dome",
         },
     },
-    prerequisites = {"maraxsis-maraxsis"},
+    prerequisites = {"maraxsis"},
     unit = {
         count = 3000,
         ingredients = {

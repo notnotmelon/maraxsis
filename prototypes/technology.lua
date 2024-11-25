@@ -1,6 +1,6 @@
 data:extend {{
     type = "technology",
-    name = "maraxsis-maraxsis",
+    name = "maraxsis",
     icons = util.technology_icon_constant_planet("__maraxsis__/graphics/technology/maraxsis.png"),
     icon_size = 256,
     essential = true,
@@ -19,15 +19,13 @@ data:extend {{
         },
         {
             type = "unlock-recipe",
-            recipe = "maraxsis-hydro-plant",
-        },
-        {
-            type = "unlock-recipe",
             recipe = "maraxsis-diesel-submarine",
         },
     },
     prerequisites = {
-        "advanced-asteroid-processing"
+        "advanced-asteroid-processing",
+        "rocket-turret",
+        "asteroid-reprocessing"
     },
     unit = {
         count = 3000,

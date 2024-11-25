@@ -1,25 +1,25 @@
 data:extend {{
     type = "tool",
-    name = "maraxsis-hydraulic-science-pack",
+    name = "hydraulic-science-pack",
     icon = "__maraxsis__/graphics/icons/hydraulic-science-pack.png",
     icon_size = 64,
     subgroup = "science-pack",
     order = "j[hydraulic-science-pack]",
     stack_size = 200,
     durability = data.raw.tool["automation-science-pack"].durability,
+    weight = data.raw.tool["automation-science-pack"].weight,
 }}
-
-table.insert(data.raw.lab.lab.inputs, "maraxsis-hydraulic-science-pack")
 
 data:extend {{
     type = "technology",
-    name = "maraxsis-hydraulic-science-pack",
+    name = "hydraulic-science-pack",
     icon = "__maraxsis__/graphics/technology/hydraulic-science-pack.png",
     icon_size = 256,
+    essential = true,
     effects = {
         {
             type = "unlock-recipe",
-            recipe = "maraxsis-hydraulic-science-pack",
+            recipe = "hydraulic-science-pack",
         },
     },
     unit = {
@@ -39,20 +39,21 @@ data:extend {{
     },
     prerequisites = {
         "maraxsis-wyrm-confinement",
+        "maraxsis-piscary",
     },
     order = "eg[hydraulic-science-pack]",
 }}
 
 data:extend {{
     type = "recipe",
-    name = "maraxsis-hydraulic-science-pack",
+    name = "hydraulic-science-pack",
     enabled = false,
     energy_required = 10,
     ingredients = {
         {type = "item", name = "maraxsis-wyrm-specimen", amount = 1},
     },
     results = {
-        {type = "item", name = "maraxsis-hydraulic-science-pack", amount = 1},
+        {type = "item", name = "hydraulic-science-pack", amount = 1},
     },
     allow_productivity = true,
     category = "maraxsis-hydro-plant"

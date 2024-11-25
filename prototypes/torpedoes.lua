@@ -13,7 +13,7 @@ data:extend {{
             recipe = "maraxsis-explosive-torpedo"
         }
     },
-    prerequisites = {"maraxsis-maraxsis", "explosive-rocketry"},
+    prerequisites = {"hydraulic-science-pack", "explosive-rocketry"},
     unit = {
         count = 3000,
         ingredients = {
@@ -27,6 +27,7 @@ data:extend {{
             {"metallurgic-science-pack",     1},
             {"electromagnetic-science-pack", 1},
             {"agricultural-science-pack",    1},
+            {"hydraulic-science-pack",    1},
         },
         time = 60,
     },

@@ -9,12 +9,13 @@
   "dependencies": [
     "base",
     "space-age >= 2.0.0",
+    "biolabs-in-space >= 1.1.0",
     "! pystellarexpedition"
   ],
   "quality_required": true,
   "space_travel_required": true,
   "spoiling_required": true,
-  "freezing_required": false,
+  "freezing_required": true,
   "segmented_units_required": true,
   "expansion_shaders_required": true
 }

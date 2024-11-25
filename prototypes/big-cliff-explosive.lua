@@ -13,7 +13,7 @@ data:extend {{
             recipe = "maraxsis-atomic-torpedo",
         },
     },
-    prerequisites = {"cliff-explosives", "maraxsis-hydraulic-science-pack", "atomic-bomb"},
+    prerequisites = {"cliff-explosives", "maraxsis-torpedoes", "atomic-bomb"},
     unit = {
         count = 3000,
         ingredients = {
@@ -27,7 +27,8 @@ data:extend {{
             {"metallurgic-science-pack",     1},
             {"electromagnetic-science-pack", 1},
             {"agricultural-science-pack",    1},
-            {"maraxsis-hydraulic-science-pack",   1},
+            {"hydraulic-science-pack",   1},
+            {"cryogenic-science-pack",   1},
         },
         time = 60,
     },

@@ -18,7 +18,7 @@ local function make_subgroup(subgroup_name, subgroup_order, group, members)
     end
 end
 
-make_subgroup("maraxsis-maraxsis-intermediants", "ge", "intermediate-products", {
+make_subgroup("maraxsis-intermediants", "ge", "intermediate-products", {
     data.raw.recipe["maraxsis-saline-electrolysis"],
     data.raw.item["limestone"],
     data.raw.item["sand"],

@@ -1,5 +1,5 @@
 local function add_to_tech(recipe)
-    table.insert(data.raw.technology["maraxsis-water-treatment"].effects, {
+    table.insert(data.raw.technology["maraxsis-hydro-plant"].effects, {
         type = "unlock-recipe",
         recipe = recipe,
     })
@@ -7,25 +7,20 @@ end
 
 data:extend {{
     type = "technology",
-    name = "maraxsis-water-treatment",
-    icon = "__maraxsis__/graphics/technology/water-treatment.png",
+    name = "maraxsis-hydro-plant",
+    icon = "__maraxsis__/graphics/technology/hydro-plant.png",
     icon_size = 256,
-    effects = {},
-    prerequisites = {"maraxsis-maraxsis"},
-    unit = {
-        count = 3000,
-        ingredients = {
-            {"automation-science-pack",      1},
-            {"logistic-science-pack",        1},
-            {"chemical-science-pack",        1},
-            {"space-science-pack",           1},
-            {"production-science-pack",      1},
-            {"utility-science-pack",         1},
-            {"metallurgic-science-pack",     1},
-            {"electromagnetic-science-pack", 1},
-            {"agricultural-science-pack",    1},
+    effects = {
+        {
+            type = "unlock-recipe",
+            recipe = "maraxsis-hydro-plant",
         },
-        time = 60,
+    },
+    prerequisites = {"maraxsis-glassworking"},
+    research_trigger = {
+        type = "craft-item",
+        item = "maraxsis-glass-panes",
+        amount = 1,
     },
     order = "ec[water-treatment]",
 }}
