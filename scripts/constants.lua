@@ -1,8 +1,8 @@
 local TRENCH_MOVEMENT_FACTOR = 2 -- each tile moved in the trench layer = 2 tiles in the surface layer
 
 local SUBMARINES = {
-    ["maraxsis-diesel-submarine"] = true,
-    ["maraxsis-nuclear-submarine"] = true,
+    ["maraxsis-diesel-submarine"] = {r = 255, g = 195, b = 0, a = 0.5},
+    ["maraxsis-nuclear-submarine"] = {r = 0.3, g = 0.8, b = 0.3, a = 0.5},
 }
 
 local TRENCH_SURFACE_NAME = "Trench"

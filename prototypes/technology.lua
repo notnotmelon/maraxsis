@@ -13,6 +13,11 @@ data:extend {{
             use_icon_overlay_constant = true
         },
         {
+            type = "unlock-space-location",
+            space_location = "maraxsis-trench",
+            use_icon_overlay_constant = true
+        },
+        {
             type = "unlock-recipe",
             recipe = "maraxsis-hydro-plant",
         },

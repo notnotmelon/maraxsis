@@ -13,8 +13,7 @@ planet_map_gen.maraxsis = function()
     {
         terrain_segmentation = 1,
         water = 0,
-        property_expression_names =
-        {
+        property_expression_names = {
             elevation = "maraxsis_elevation",
             temperature = "temperature_basic",
             moisture = "maraxsis_moisture",
@@ -22,23 +21,19 @@ planet_map_gen.maraxsis = function()
             cliffiness = "1",
             cliff_elevation = "cliff_elevation_from_elevation",
         },
-        cliff_settings =
-        {
+        cliff_settings = {
             name = "cliff-maraxsis",
             cliff_elevation_0 = 0.03,
             cliff_elevation_interval = 0.1,
             cliff_smoothing = 0, -- This is critical for correct cliff placement on the trench entrance.
             richness = 0.98
         },
-        autoplace_controls =
-        {
+        autoplace_controls = {
             ["iron-ore"] = {},
         },
         autoplace_settings = {
-            ["tile"] =
-            {
-                settings =
-                {
+            ["tile"] = {
+                settings = {
                     ["maraxsis-trench-entrance"] = {},
                     ["sand-1-underwater"] = {},
                     ["sand-2-underwater"] = {},
@@ -46,10 +41,8 @@ planet_map_gen.maraxsis = function()
                     ["dirt-5-underwater"] = {},
                 }
             },
-            ["decorative"] =
-            {
-                settings =
-                {
+            ["decorative"] = {
+                settings = {
                     ["urchin-cactus"] = {},
 
                     -- nauvis decoratives
@@ -122,6 +115,44 @@ planet_map_gen.maraxsis = function()
             },
             ["entity"] = {
                 settings = entity_spawn_settings,
+            },
+        }
+    }
+end
+
+planet_map_gen.maraxsis_trench = function()
+    return {
+        terrain_segmentation = 1,
+        water = 0,
+        property_expression_names = {
+            elevation = "maraxsis_elevation",
+            temperature = "temperature_basic",
+            moisture = "maraxsis_moisture",
+            aux = "aux_basic",
+            cliffiness = "1",
+            cliff_elevation = "cliff_elevation_from_elevation",
+        },
+        autoplace_controls = {
+            ["iron-ore"] = {},
+        },
+        autoplace_settings = {
+            ["tile"] = {
+                settings = {
+                    ["maraxsis-trench-entrance"] = {},
+                    ["sand-1-underwater"] = {},
+                    ["sand-2-underwater"] = {},
+                    ["sand-3-underwater"] = {},
+                    ["dirt-5-underwater"] = {},
+                }
+            },
+            ["decorative"] = {
+                settings = {
+                }
+            },
+            ["entity"] = {
+                settings = {
+                    
+                },
             },
         }
     }
