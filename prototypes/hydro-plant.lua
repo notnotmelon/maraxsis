@@ -24,7 +24,7 @@ local working_visualisations = {
             priority = "high",
             width = 600,
             height = 400,
-            shift = util.by_pixel(10, -16),
+            shift = util.by_pixel(10, -12),
             frame_count = 1,
             line_length = 1,
             animation_speed = 1,
@@ -191,5 +191,5 @@ data:extend {{
     results = {
         {type = 'item', name = 'h2o-hydro-plant', amount = 1},
     },
-    category = 'crafting',
+    category = 'h2o-hydro-plant-or-assembling',
 }}

@@ -56,5 +56,6 @@ data:extend{{
     results = {
         {type = 'item', name = 'h2o-hydraulic-science-pack', amount = 1},
     },
+    allow_productivity = true,
     category = 'h2o-hydro-plant'
 }}

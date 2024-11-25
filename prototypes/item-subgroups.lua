@@ -24,14 +24,19 @@ make_subgroup('h2o-maraxsis-intermediants', 'ge', 'intermediate-products', {
     data.raw.item['sand'],
     data.raw.item['h2o-glass-panes'],
     data.raw.item['h2o-saturated-salt-filter'],
+    data.raw.recipe['h2o-saturated-salt-filter'],
     data.raw.item['h2o-salt-filter'],
+    data.raw.recipe['h2o-salt-filter'],
     data.raw.capsule['h2o-tropical-fish'],
     data.raw.item['h2o-microplastics'],
     data.raw.item['h2o-wyrm-specimen'],
     data.raw.item['h2o-wyrm-confinement-cell'],
 })
 
-make_subgroup('h2o-machines', 'ee', 'production', {
+make_subgroup("h2o-machines", "ee", "production", {
+    data.raw.item["h2o-diesel-submarine"],
+    data.raw.item["h2o-nuclear-submarine"],
+    data.raw["rail-planner"]["h2o-waterway"],
     data.raw['simple-entity']['h2o-water-shader-32-1-1'],
     data.raw.item['h2o-hydro-plant'],
     data.raw.item['h2o-sonar'],
@@ -42,17 +47,10 @@ make_subgroup('h2o-machines', 'ee', 'production', {
     data.raw['constant-combinator']['h2o-pressure-dome-combinator'],
 })
 
-make_subgroup('h2o-submarine', 'fe', 'logistics', {
-    data.raw.item['h2o-diesel-submarine'],
-    data.raw.item['h2o-nuclear-submarine'],
-    data.raw['rail-planner']['h2o-waterway'],
-})
-
 data.raw.fluid['saline-water'].order = 'f[maraxsis-fluids]-a[saline-water]'
 data.raw.fluid['brackish-water'].order = 'f[maraxsis-fluids]-b[brackish-water]'
 data.raw.fluid['oxygen'].order = 'f[maraxsis-fluids]-c[oxygen]'
 data.raw.fluid['hydrogen'].order = 'f[maraxsis-fluids]-d[hydrogen]'
-data.raw.fluid['chlorine'].order = 'f[maraxsis-fluids]-e[chlorine]'
 data.raw.fluid['h2o-atmosphere'].order = 'f[maraxsis-fluids]-f[atmosphere]'
 
 data.raw.capsule['h2o-big-cliff-explosives'].subgroup = data.raw.capsule['cliff-explosives'].subgroup

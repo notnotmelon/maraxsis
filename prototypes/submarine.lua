@@ -108,7 +108,7 @@ for i = 1, 2 do
         results = {{type = 'item', name = name, amount = 1}},
         enabled = false,
         energy_required = 10,
-        category = 'crafting',
+        category = i == 1 and "h2o-hydro-plant-or-assembling" or "h2o-hydro-plant",
     }
 
     local lamp_layer = {

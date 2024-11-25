@@ -81,22 +81,6 @@ data:extend {{
 
 data:extend {{
     type = 'fluid',
-    name = 'chlorine',
-    icon = '__maraxsis__/graphics/icons/chlorine.png',
-    icon_size = 64,
-    icon_mipmaps = 4,
-    base_flow_rate = data.raw.fluid.steam.base_flow_rate,
-    default_temperature = data.raw.fluid['water'].default_temperature,
-    heat_capacity = data.raw.fluid['water'].heat_capacity,
-    base_color = {0.30, 0.60, 0.1},
-    flow_color = {0.50, 0.80, 0.3},
-    max_temperature = data.raw.fluid['water'].max_temperature,
-    pressure_to_speed_ratio = data.raw.fluid['water'].pressure_to_speed_ratio,
-    flow_to_energy_ratio = data.raw.fluid['water'].flow_to_energy_ratio,
-}}
-
-data:extend {{
-    type = 'fluid',
     name = 'hydrogen',
     icon = '__maraxsis__/graphics/icons/hydrogen.png',
     icon_size = 64,
@@ -117,10 +101,10 @@ data:extend {{
     enabled = false,
     energy_required = 10,
     ingredients = {
-        {type = 'fluid', name = 'brackish-water', amount = 400},
+        {type = 'fluid', name = 'brackish-water', amount = 300},
     },
     results = {
-        {type = 'fluid', name = 'chlorine', amount = 100},
+        {type = "item",  name = "salt",     amount = 1},
         {type = 'fluid', name = 'oxygen',   amount = 100},
         {type = 'fluid', name = 'hydrogen', amount = 200},
     },
@@ -128,6 +112,7 @@ data:extend {{
     icon = '__maraxsis__/graphics/icons/saline-electrolysis.png',
     icon_size = 128,
     icon_mipmaps = nil,
+    allow_productivity = true,
 }}
 add_to_tech('h2o-saline-electrolysis')
 
@@ -143,7 +128,8 @@ data:extend {{
     results = {
         {type = 'fluid', name = 'water', amount = 300},
     },
-    category = 'chemistry',
+    allow_productivity = true,
+    category = "h2o-hydro-plant",
     main_product = 'water',
 }}
 add_to_tech('h2o-water')
@@ -159,7 +145,7 @@ data:extend {{
 
 data:extend {{
     type = 'recipe',
-    name = 'h2o-brackish-water-filtration',
+    name = "h2o-saturated-salt-filter",
     enabled = false,
     energy_required = 2.5,
     ingredients = {
@@ -167,13 +153,35 @@ data:extend {{
         {type = 'fluid', name = 'saline-water',    amount = 100},
     },
     results = {
-        {type = 'item',  name = 'h2o-saturated-salt-filter', amount = 1,  catalyst_amount = 1},
+        {type = "item",  name = "h2o-saturated-salt-filter", amount = 1,  ignored_by_stats = 1, ignored_by_stats = 1},
         {type = 'fluid', name = 'brackish-water',            amount = 100},
     },
     category = 'chemistry',
     main_product = 'brackish-water',
+    allow_productivity = true,
 }}
-add_to_tech('h2o-brackish-water-filtration')
+add_to_tech("h2o-saturated-salt-filter")
+
+local salt_variants = {}
+for i = 1, 3 do
+    salt_variants[i] = {
+        filename = "__maraxsis__/graphics/icons/salt-" .. i .. ".png",
+        width = 64,
+        height = 64,
+        scale = 1 / 2,
+        flags = {"icon"}
+    }
+end
+
+data:extend {{
+    type = "item",
+    name = "salt",
+    icon = "__maraxsis__/graphics/icons/salt-2.png",
+    pictures = salt_variants,
+    icon_size = 64,
+    icon_mipmaps = nil,
+    stack_size = 10,
+}}
 
 data:extend {{
     type = 'item',
@@ -192,6 +200,7 @@ data:extend {{
     ingredients = {
         {type = 'item', name = 'steel-plate',     amount = 1},
         {type = 'item', name = 'iron-gear-wheel', amount = 2},
+        {type = 'item', name = 'carbon-fiber', amount = 1},
     },
     results = {
         {type = 'item', name = 'h2o-salt-filter', amount = 1},

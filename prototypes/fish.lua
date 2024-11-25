@@ -174,21 +174,21 @@ data:extend{{
 
 data:extend{{
     type = 'recipe',
-    name = 'h2o-kill-fish',
+    name = "h2o-microplastics",
     enabled = false,
     energy_required = 10,
     ingredients = {
         {type = 'item', name = 'h2o-tropical-fish', amount = 1},
         {type = 'item', name = 'uranium-rounds-magazine', amount = 1},
-        {type = 'fluid', name = 'chlorine', amount = 50},
     },
     results = {
         {type = 'item', name = 'h2o-microplastics', amount = 1},
     },
     category = 'h2o-hydro-plant',
-    main_product = 'h2o-microplastics',
+    main_product = "h2o-microplastics",
+    allow_productivity = true,
 }}
-add_to_tech('h2o-kill-fish')
+add_to_tech("h2o-microplastics")
 
 data:extend{{
     type = 'recipe',
@@ -201,8 +201,10 @@ data:extend{{
     results = {
         {type = 'item', name = 'plastic-bar', amount = 1},
     },
-    category = 'smelting',
+    category = "smelting",
+    allow_productivity = true,
     main_product = 'plastic-bar',
+    emissions_multiplier = 3
 }}
 add_to_tech('h2o-smelt-microplastics')
 

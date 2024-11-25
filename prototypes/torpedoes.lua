@@ -81,7 +81,7 @@ data:extend {{
     results = {
         {type = 'item', name = 'h2o-torpedo', amount = 1},
     },
-    category = 'crafting'
+    category = "h2o-hydro-plant"
 }}
 
 data:extend {{
@@ -96,7 +96,7 @@ data:extend {{
     results = {
         {type = 'item', name = 'h2o-explosive-torpedo', amount = 1},
     },
-    category = 'crafting'
+    category = "h2o-hydro-plant"
 }}
 
 data:extend {{

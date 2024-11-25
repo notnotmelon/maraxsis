@@ -60,7 +60,7 @@ data:extend {{
         {type = 'item', name = 'h2o-pressure-dome', amount = 1},
     },
     energy_required = 10,
-    category = 'crafting',
+    category = 'h2o-hydro-plant',
 }}
 
 local function collision_box() return {{-16, -16}, {16, 16}} end

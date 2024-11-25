@@ -39,7 +39,7 @@ for i = 1, 3 do
         filename = '__maraxsis__/graphics/icons/limestone-' .. i .. '.png',
         width = 64,
         height = 64,
-        scale = 1 / 3,
+        scale = 1 / 2,
         flags = {'icon'}
     }
 end
@@ -62,11 +62,13 @@ data:extend {{
     ingredients = {
         {type = 'item', name = 'sand',      amount = 3},
         {type = 'item', name = 'limestone', amount = 1},
+        {type = 'item', name = 'salt', amount = 1},
     },
     results = {
         {type = 'item', name = 'h2o-glass-panes', amount = 1},
     },
-    category = 'h2o-hydro-plant'
+    allow_productivity = true,
+    category = 'metallurgy'
 }}
 
 local glass_variants = {}
