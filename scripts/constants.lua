@@ -5,7 +5,7 @@ local SUBMARINES = {
     ["maraxsis-nuclear-submarine"] = {r = 0.3, g = 0.8, b = 0.3, a = 0.5},
 }
 
-local TRENCH_SURFACE_NAME = "Trench"
+local TRENCH_SURFACE_NAME = "maraxsis-trench"
 local MARAXSIS_SURFACE_NAME = "maraxsis"
 
 local MARAXSIS_SURFACES = { -- all surfaces with water mechanics
