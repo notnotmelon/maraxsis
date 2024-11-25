@@ -14,7 +14,7 @@ local function swap_nightvision(grid, surface, equipment)
         if target == equipment_name then return end
     end
 
-    local all_nightvision = prototypes.get_filtered_equipment {{filter = "type", type = "night-vision-equipment"}}
+    local all_nightvision = prototypes.get_equipment_filtered {{filter = "type", type = "night-vision-equipment"}}
     if not all_nightvision[target] then return end
 
     local energy = equipment.energy
