@@ -90,7 +90,7 @@ for i = 1, 2 do
     local icon = "__maraxsis__/graphics/icons/" .. (i == 1 and "diesel" or "nuclear") .. "-submarine.png"
 
     local item = {
-        type = "item",
+        type = "item-with-entity-data",
         name = name,
         icon = icon,
         icon_size = 64,
@@ -222,10 +222,16 @@ for i = 1, 2 do
     entity.light_animation = nil
     entity.tank_driving = true
     entity.collision_mask = collision_mask
+
+    local factoriopedia_colors = {
+        {r = 255, g = 195, b = 0},
+        {r = 0.3, g = 0.8, b = 0.3},
+    }
+
     entity.minimap_representation = {
         filename = "__maraxsis__/graphics/entity/submarine/submarine-map-tag.png",
         flags = {"icon"},
-        tint = maraxsis.tints[i],
+        tint = factoriopedia_colors[i],
         size = {64, 64}
     }
     entity.working_sound = table.deepcopy(data.raw.car.car.working_sound)
@@ -263,6 +269,26 @@ for i = 1, 2 do
     if i > 1 then entity.immune_to_rock_impacts = true end
     entity.immune_to_cliff_impacts = true
     entity.inventory_size = i * 30
+
+    entity.factoriopedia_simulation = {
+        init = [[
+            for x = -10, 10, 1 do
+                for y = -6, 6 do
+                    game.surfaces[1].set_tiles{{position = {x, y}, name = "sand-1-underwater"}}
+                end
+            end
+            game.simulation.camera_zoom = 1.3
+            game.simulation.camera_position = {0, 0}
+            game.surfaces[1].create_entity{name = "]] .. name .. [[", position = {0, 0}}.color = ]] .. serpent.line(factoriopedia_colors[i]) .. [[
+            game.surfaces[1].create_entity {
+                name = "maraxsis-water-shader",
+                position = {0, 0},
+                create_build_effect_smoke = false
+            }
+        ]]
+    }
+    entity.alert_icon_shift = { 0, 0 }
+    entity.drawing_box_vertical_extension = 1
     entity.trash_inventory_size = 10
     entity.turret_animation = nil
     entity.friction = 0.005
