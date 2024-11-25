@@ -106,7 +106,6 @@ data:extend {{
     energy_required = 10,
     ingredients = {
         {type = 'item', name = 'atomic-bomb',          amount = 1},
-        {type = 'item', name = 'h2o-heart-of-the-sea', amount = 1},
         {type = 'item', name = 'rocket-fuel',          amount = 1},
     },
     results = {

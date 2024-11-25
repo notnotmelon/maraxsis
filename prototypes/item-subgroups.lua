@@ -31,23 +31,12 @@ make_subgroup('h2o-maraxsis-intermediants', 'ge', 'intermediate-products', {
     data.raw.item['h2o-wyrm-confinement-cell'],
 })
 
-make_subgroup('h2o-quarkals', 'gf', 'intermediate-products', {
-    data.raw.item['h2o-up-coral'],
-    data.raw.item['h2o-down-coral'],
-    data.raw.item['h2o-top-coral'],
-    data.raw.item['h2o-bottom-coral'],
-    data.raw.item['h2o-strange-coral'],
-    data.raw.item['h2o-charm-coral'],
-    data.raw.item['h2o-heart-of-the-sea'],
-})
-
 make_subgroup('h2o-machines', 'ee', 'production', {
     data.raw['simple-entity']['h2o-water-shader-32-1-1'],
     data.raw.item['h2o-hydro-plant'],
     data.raw.item['h2o-sonar'],
     data.raw.lamp['h2o-sonar-light-1'],
     data.raw.lamp['h2o-sonar-light-2'],
-    data.raw.item['h2o-quantum-computer'],
     data.raw.item['h2o-pressure-dome'],
     data.raw.lamp['h2o-pressure-dome-lamp'],
     data.raw['constant-combinator']['h2o-pressure-dome-combinator'],

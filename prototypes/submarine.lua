@@ -76,7 +76,6 @@ local recipes = {
         {type = 'item', name = 'h2o-diesel-submarine',  amount = 1},
         {type = 'item', name = 'h2o-sonar',             amount = 1},
         {type = 'item', name = 'h2o-glass-panes',       amount = 1000},
-        {type = 'item', name = 'h2o-heart-of-the-sea',  amount = 50},
         {type = 'item', name = 'nuclear-reactor',       amount = 1},
         {type = 'item', name = 'heat-exchanger',        amount = 4},
         {type = 'item', name = 'pump',                  amount = 8},

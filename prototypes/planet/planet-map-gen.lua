@@ -32,10 +32,9 @@ planet_map_gen.maraxsis = function()
         },
         autoplace_controls =
         {
-            ['sulfuric-acid-geyser'] = {},
+            ['iron-ore'] = {},
         },
-        autoplace_settings =
-        {
+        autoplace_settings = {
             ['tile'] =
             {
                 settings =
@@ -103,8 +102,8 @@ planet_map_gen.maraxsis = function()
                     ['wispy-lichen'] = {},
                     ['grey-cracked-mud-decal'] = {},
                     ['barnacles-decal'] = {},
-                    ['nerv-roots-dense'] = {},
-                    ['nerv-roots-light'] = {},
+                    --['nerv-roots-dense'] = {},
+                    --['nerv-roots-light'] = {},
                     --["tentacles"] = {},
                     --shared
                     ['light-mud-decal'] = {},

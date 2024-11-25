@@ -46,20 +46,6 @@ data:extend {{
 
 data:extend {{
     type = 'tips-and-tricks-item',
-    name = 'h2o-quantum-coraldynamics',
-    category = 'maraxsis',
-    tag = '[item=h2o-heart-of-the-sea]',
-    indent = 1,
-    trigger = {
-        type = 'craft-item',
-        count = 1,
-        item = 'h2o-quantum-computer',
-        event_type = 'crafting-finished'
-    },
-}}
-
-data:extend {{
-    type = 'tips-and-tricks-item',
     name = 'h2o-underwater-machines',
     category = 'maraxsis',
     tag = '[item=h2o-hydro-plant]',

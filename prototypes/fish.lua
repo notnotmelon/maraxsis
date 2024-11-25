@@ -184,10 +184,9 @@ data:extend{{
     },
     results = {
         {type = 'item', name = 'h2o-microplastics', amount = 1},
-        {type = 'item', name = 'h2o-strange-coral', amount = 1},
     },
     category = 'h2o-hydro-plant',
-    main_product = 'h2o-strange-coral',
+    main_product = 'h2o-microplastics',
 }}
 add_to_tech('h2o-kill-fish')
 

@@ -11,7 +11,7 @@ require 'scripts.drowning'
 require 'scripts.waterway'
 require 'scripts.nightvision'
 require 'scripts.pressure-dome'
-require 'scripts.quantum-computer'
 require 'scripts.composite-entity'
+require 'scripts.hydro-plant'
 
 h2o.finalize_events()
