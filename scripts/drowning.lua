@@ -63,7 +63,7 @@ maraxsis.on_nth_tick(UPDATE_RATE, function()
             goto continue
         end
 
-        local true_damage = character.health - character.prototype.max_health * 0.1
+        local true_damage = character.health - math.min(50, character.max_health * 0.1)
         if true_damage <= 0 then
             character.die("neutral")
         else
