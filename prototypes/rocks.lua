@@ -1,5 +1,5 @@
 --trench indestructible wall
-local trench_wall = h2o.merge(data.raw["simple-entity"]["huge-rock"], {
+local trench_wall = maraxsis.merge(data.raw["simple-entity"]["huge-rock"], {
     name = "maraxsis-trench-wall",
     minable = "nil",
     selectable_in_game = false,

@@ -2,7 +2,7 @@ local collision_mask_util = require "__core__/lualib/collision-mask-util"
 
 local water = {
     type = "simple-entity",
-    name = "h2o-water-shader",
+    name = "maraxsis-water-shader",
     localised_name = "Maraxsis water shader", -- dont @ me
     count_as_rock_for_filtered_deconstruction = false,
     icon_size = 64,
@@ -23,7 +23,7 @@ local frame_sequence = {}
 for k = 1, 32 do
     table.insert(frame_sequence, k)
 end
-local visiblity = tonumber(settings.startup["h2o-water-opacity"].value) / 255
+local visiblity = tonumber(settings.startup["maraxsis-water-opacity"].value) / 255
 water.animations = {
     tint = {r = visiblity, g = visiblity, b = visiblity, a = 1 / 255},
     height = 256,
@@ -54,7 +54,7 @@ local waterifiy = {
         tile.collision_mask = {layers = {[maraxsis_collision_mask] = true}}
         tile.layer = layer
         ---@diagnostic disable-next-line: param-type-mismatch
-        tile.map_color = h2o.color_combine(tile.map_color or data.raw.tile["water"].map_color, data.raw.tile["deepwater"].map_color, 0.25)
+        tile.map_color = maraxsis.color_combine(tile.map_color or data.raw.tile["water"].map_color, data.raw.tile["deepwater"].map_color, 0.25)
         tile.absorptions_per_second = table.deepcopy(data.raw.tile["water"].absorptions_per_second)
         tile.draw_in_water_layer = true
         --tile.walking_sound = nil -- TODO: add a swimming sound
@@ -97,7 +97,7 @@ local waterifiy = {
         collision_mask_util.get_mask(underwater)[maraxsis_collision_mask] = nil
         --collision_mask_util.get_mask(underwater)
         ---@diagnostic disable-next-line: param-type-mismatch
-        underwater.map_color = h2o.color_combine(underwater.map_color or data.raw.tile["water"].map_color, data.raw.tile["deepwater"].map_color, 0.3)
+        underwater.map_color = maraxsis.color_combine(underwater.map_color or data.raw.tile["water"].map_color, data.raw.tile["deepwater"].map_color, 0.3)
 
         return {underwater}
     end,
@@ -144,7 +144,7 @@ local function recursively_replace_cliff_shadows_to_vulcanus(cliff_orientations)
     end
 end
 recursively_replace_cliff_shadows_to_vulcanus(cliff.orientations)
-cliff.map_color = h2o.color_combine(cliff.map_color, data.raw.tile["deepwater"].map_color, 0.3)
+cliff.map_color = maraxsis.color_combine(cliff.map_color, data.raw.tile["deepwater"].map_color, 0.3)
 cliff.collision_mask = {
     layers = {
         ["cliff"] = true,
@@ -198,7 +198,7 @@ for _, decorative in pairs {
     decorative.collision_mask.layers["decal"] = true
 end
 
-data:extend {h2o.merge(data.raw.tile["out-of-map"], {
+data:extend {maraxsis.merge(data.raw.tile["out-of-map"], {
     name = "maraxsis-trench-entrance",
     layer = 0,
     layer_group = "zero",

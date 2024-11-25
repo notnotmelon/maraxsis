@@ -1,6 +1,6 @@
 data:extend {{
     type = "technology",
-    name = "h2o-maraxsis",
+    name = "maraxsis-maraxsis",
     icons = util.technology_icon_constant_planet("__maraxsis__/graphics/technology/maraxsis.png"),
     icon_size = 256,
     essential = true,
@@ -14,11 +14,11 @@ data:extend {{
         },
         {
             type = "unlock-recipe",
-            recipe = "h2o-hydro-plant",
+            recipe = "maraxsis-hydro-plant",
         },
         {
             type = "unlock-recipe",
-            recipe = "h2o-diesel-submarine",
+            recipe = "maraxsis-diesel-submarine",
         },
     },
     prerequisites = {

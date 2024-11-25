@@ -1,18 +1,18 @@
 local composite_entity_creation = {
-    ["h2o-sonar"] = function(entity)
+    ["maraxsis-sonar"] = function(entity)
         local surface = entity.surface
         local position = entity.position
         local x, y = position.x, position.y
         local force = entity.force_index
 
         local light_1 = surface.create_entity {
-            name = "h2o-sonar-light-1",
+            name = "maraxsis-sonar-light-1",
             position = {x, y + 1},
             force = force,
         }
 
         local light_2 = surface.create_entity {
-            name = "h2o-sonar-light-2",
+            name = "maraxsis-sonar-light-2",
             position = {x, y - 1},
             force = force,
         }
@@ -21,7 +21,7 @@ local composite_entity_creation = {
     end,
 }
 
-h2o.on_event("on_init", function()
+maraxsis.on_event("on_init", function()
     storage.composite_entities = storage.composite_entities or {}
 end)
 
@@ -42,7 +42,7 @@ local function on_built(event)
     end
     storage.composite_entities[entity.unit_number] = sub_entities
 end
-h2o.on_event("on_built", on_built)
+maraxsis.on_event("on_built", on_built)
 
 local function on_destroyed(event)
     local entity = event.entity
@@ -59,9 +59,9 @@ local function on_destroyed(event)
     storage.composite_entities[entity.unit_number] = nil
 end
 
-h2o.on_event("on_destroyed", on_destroyed)
+maraxsis.on_event("on_destroyed", on_destroyed)
 
-h2o.on_event(defines.events.on_entity_cloned, function(event)
+maraxsis.on_event(defines.events.on_entity_cloned, function(event)
     local source = event.source
     if not composite_entity_creation[source.name] then return end
     on_destroyed {entity = source}

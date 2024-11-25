@@ -12,11 +12,11 @@ local DOME_POLYGON = {
     check_size, 7,
 }
 
-local PRESSURE_DOME_TILE = "h2o-pressure-dome-tile"
+local PRESSURE_DOME_TILE = "maraxsis-pressure-dome-tile"
 
-h2o.on_event("on_init", function()
+maraxsis.on_event("on_init", function()
     if remote.interfaces["PickerDollies"] and remote.interfaces["PickerDollies"]["add_blacklist_name"] then
-        remote.call("PickerDollies", "add_blacklist_name", "h2o-pressure-dome")
+        remote.call("PickerDollies", "add_blacklist_name", "maraxsis-pressure-dome")
     end
     for mask in pairs(prototypes.tile[PRESSURE_DOME_TILE].collision_mask.layers) do
         storage.dome_collision_mask = mask
@@ -145,7 +145,7 @@ local function create_dome_light(pressure_dome_data)
     if not surface.valid then return end
 
     local light = surface.create_entity {
-        name = "h2o-pressure-dome-lamp",
+        name = "maraxsis-pressure-dome-lamp",
         position = pressure_dome_data.position,
         force = pressure_dome_data.force_index,
         create_build_effect_smoke = false,
@@ -167,7 +167,7 @@ local function create_dome_combinator(pressure_dome_data)
     end
 
     local combinator = light.surface.create_entity {
-        name = "h2o-pressure-dome-combinator",
+        name = "maraxsis-pressure-dome-combinator",
         position = light.position,
         force = light.force,
         create_build_effect_smoke = false,
@@ -220,9 +220,9 @@ local function update_combinator(pressure_dome_data)
     control_behavior.parameters = parameters
 end
 
-h2o.on_event("on_built", function(event)
+maraxsis.on_event("on_built", function(event)
     local entity = event.entity or event.created_entity
-    if not entity.valid or entity.name == "h2o-pressure-dome" then return end
+    if not entity.valid or entity.name == "maraxsis-pressure-dome" then return end
     local surface = entity.surface
 
     for _, pressure_dome_data in pairs(storage.pressure_domes) do
@@ -241,7 +241,7 @@ h2o.on_event("on_built", function(event)
             table.insert(pressure_dome_data.contained_entities, entity)
             update_combinator(pressure_dome_data)
         else
-            h2o.cancel_creation(entity, event.player_index, {"cant-build-reason.entity-in-the-way", prototypes.entity["h2o-pressure-dome"].localised_name})
+            maraxsis.cancel_creation(entity, event.player_index, {"cant-build-reason.entity-in-the-way", prototypes.entity["maraxsis-pressure-dome"].localised_name})
         end
 
         do return end
@@ -332,7 +332,7 @@ local function place_collision_boxes(pressure_dome_data, health)
     for _, pos_and_orient in pairs(positions_and_orientations) do
         local pos_x, pos_y, orientation = pos_and_orient[1], pos_and_orient[2], pos_and_orient[3]
         local collision_box = surface.create_entity {
-            name = "h2o-pressure-dome-collision",
+            name = "maraxsis-pressure-dome-collision",
             position = {pos_x, pos_y},
             force = force,
             create_build_effect_smoke = false,
@@ -410,10 +410,10 @@ local function get_player_from_trigger_effect(event)
     return player
 end
 
-h2o.on_event(defines.events.on_script_trigger_effect, function(event)
+maraxsis.on_event(defines.events.on_script_trigger_effect, function(event)
     if event.effect_id ~= "on_built_maraxsis_pressure_dome" then return end
     local entity = event.source_entity
-    if not entity.valid or entity.name ~= "h2o-pressure-dome" then return end
+    if not entity.valid or entity.name ~= "maraxsis-pressure-dome" then return end
     local player = get_player_from_trigger_effect(event)
 
     local can_build, contained_entities, error_msg = check_can_build_dome(entity)
@@ -437,12 +437,12 @@ h2o.on_event(defines.events.on_script_trigger_effect, function(event)
         local surface = entity.surface
         local force_index = entity.force_index
         local position = entity.position
-        h2o.cancel_creation(entity, player and player.index, error_msg)
+        maraxsis.cancel_creation(entity, player and player.index, error_msg)
 
         if successfully_cleared_area then
             surface.create_entity {
                 name = "entity-ghost",
-                inner_name = "h2o-pressure-dome",
+                inner_name = "maraxsis-pressure-dome",
                 tags = tags,
                 force = force_index,
                 position = position,
@@ -458,7 +458,7 @@ h2o.on_event(defines.events.on_script_trigger_effect, function(event)
     local health = entity.health
     entity.destroy()
     entity = rendering.draw_sprite {
-        sprite = "h2o-pressure-dome-sprite",
+        sprite = "maraxsis-pressure-dome-sprite",
         render_layer = "higher-object-above",
         target = position,
         surface = surface,
@@ -543,7 +543,7 @@ local function bigass_explosion(surface, x, y) -- this looks really stupid. too 
         }
     end
 end
-h2o.register_delayed_function("bigass_explosion", bigass_explosion)
+maraxsis.register_delayed_function("bigass_explosion", bigass_explosion)
 
 local function random_point_in_circle(radius)
     local angle = math.random() * 2 * math.pi
@@ -571,24 +571,24 @@ local function on_dome_died(event, pressure_dome_data)
 
     for i = 1, #DOME_POLYGON, 2 do
         local x, y = position.x + DOME_POLYGON[i], position.y + DOME_POLYGON[i + 1]
-        h2o.execute_later("bigass_explosion", math.random(1, 90), surface, x, y)
+        maraxsis.execute_later("bigass_explosion", math.random(1, 90), surface, x, y)
     end
     for i = 1, #DOME_POLYGON, 2 do
         local x, y = position.x + DOME_POLYGON[i], position.y + DOME_POLYGON[i + 1]
-        h2o.execute_later("bigass_explosion", math.random(1, 90), surface, x, y)
+        maraxsis.execute_later("bigass_explosion", math.random(1, 90), surface, x, y)
     end
     for i = 1, 16 do
         local rx, ry = random_point_in_circle(size)
-        h2o.execute_later("bigass_explosion", math.random(1, 90), surface, position.x + rx, position.y + ry)
+        maraxsis.execute_later("bigass_explosion", math.random(1, 90), surface, position.x + rx, position.y + ry)
     end
 end
 
-h2o.on_event("on_destroyed", function(event)
+maraxsis.on_event("on_destroyed", function(event)
     local entity = event.entity
     if not entity.valid then return end
     local unit_number = entity.unit_number
 
-    if entity.name == "h2o-pressure-dome-collision" then
+    if entity.name == "maraxsis-pressure-dome-collision" then
         for _, pressure_dome_data in pairs(storage.pressure_domes) do
             local dome = pressure_dome_data.entity
             if dome.valid then
@@ -620,7 +620,7 @@ h2o.on_event("on_destroyed", function(event)
 
     local surface = entity.surface
     local surface_name = surface.name
-    if not h2o.MARAXSIS_SURFACES[surface_name] then
+    if not maraxsis.MARAXSIS_SURFACES[surface_name] then
         return
     end
 
@@ -658,13 +658,13 @@ local function find_pressure_dome_data_by_collision_entity(collision_box)
     end
 end
 
-h2o.on_event(defines.events.on_selected_entity_changed, function(event)
+maraxsis.on_event(defines.events.on_selected_entity_changed, function(event)
     local player = game.get_player(event.player_index)
     if not player or not player.valid then return end
     local entity = player.selected
     if not entity or not entity.valid then return end
 
-    if entity.name ~= "h2o-pressure-dome-collision" then return end
+    if entity.name ~= "maraxsis-pressure-dome-collision" then return end
 
     local pressure_dome_data = find_pressure_dome_data_by_collision_entity(entity)
     if not pressure_dome_data then return end
@@ -672,11 +672,11 @@ h2o.on_event(defines.events.on_selected_entity_changed, function(event)
     delete_invalid_entities_from_contained_entities_list(pressure_dome_data, nil)
 end)
 
-h2o.on_event(defines.events.on_entity_damaged, function(event)
+maraxsis.on_event(defines.events.on_entity_damaged, function(event)
     local entity = event.entity
     if not entity.valid then return end
 
-    if entity.name ~= "h2o-pressure-dome-collision" then return end
+    if entity.name ~= "maraxsis-pressure-dome-collision" then return end
 
     local pressure_dome_data = find_pressure_dome_data_by_collision_entity(entity)
     if not pressure_dome_data then return end
@@ -709,13 +709,13 @@ local function distance(entity1, entity2)
     return sqrt((x1 - x2) ^ 2 + (y1 - y2) ^ 2)
 end
 
-h2o.on_event("open-gui", function(event)
+maraxsis.on_event("open-gui", function(event)
     local player = game.get_player(event.player_index)
     if not player or not player.valid then return end
     local entity = player.selected
     if not entity or not entity.valid then return end
 
-    if entity.name ~= "h2o-pressure-dome-collision" then return end
+    if entity.name ~= "maraxsis-pressure-dome-collision" then return end
 
     local pressure_dome_data = find_pressure_dome_data_by_collision_entity(entity)
     if not pressure_dome_data then return end

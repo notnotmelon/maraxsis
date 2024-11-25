@@ -45,26 +45,26 @@ local working_visualisations = {
 
 data:extend {{
     type = "recipe-category",
-    name = "h2o-hydro-plant",
+    name = "maraxsis-hydro-plant",
 }}
 
 data:extend {{
     type = "recipe-category",
-    name = "h2o-science-packs",
+    name = "maraxsis-science-packs",
 }}
 
 data:extend {{
     type = "recipe-category",
-    name = "h2o-hydro-plant-or-assembling",
+    name = "maraxsis-hydro-plant-or-assembling",
 }}
 
 data:extend {{
     type = "assembling-machine",
-    name = "h2o-hydro-plant",
+    name = "maraxsis-hydro-plant",
     icon = "__maraxsis__/graphics/icons/hydro-plant.png",
     icon_size = 64,
     flags = {"placeable-neutral", "placeable-player", "player-creation"},
-    minable = {mining_time = 1, results = {{type = "item", name = "h2o-hydro-plant", amount = 1}}},
+    minable = {mining_time = 1, results = {{type = "item", name = "maraxsis-hydro-plant", amount = 1}}},
     max_health = 400,
     corpse = data.raw["assembling-machine"]["electromagnetic-plant"].corpse,
     dying_explosion = "big-explosion",
@@ -128,7 +128,7 @@ data:extend {{
     graphics_set = {
         working_visualisations = working_visualisations
     },
-    crafting_categories = {"h2o-hydro-plant", "h2o-science-packs", "h2o-hydro-plant-or-assembling"},
+    crafting_categories = {"maraxsis-hydro-plant", "maraxsis-science-packs", "maraxsis-hydro-plant-or-assembling"},
     scale_entity_info_icon = true,
     impact_category = data.raw["assembling-machine"]["electromagnetic-plant"].impact_category,
     --[[working_sound = {
@@ -157,29 +157,29 @@ data:extend {{
     collision_mask = {layers = {["item"] = true, ["object"] = true, ["player"] = true}},
 }}
 
-local extra_module_slots = table.deepcopy(data.raw["assembling-machine"]["h2o-hydro-plant"])
-extra_module_slots.name = "h2o-hydro-plant-extra-module-slots"
+local extra_module_slots = table.deepcopy(data.raw["assembling-machine"]["maraxsis-hydro-plant"])
+extra_module_slots.name = "maraxsis-hydro-plant-extra-module-slots"
 extra_module_slots.module_specification.module_slots = extra_module_slots.module_specification.module_slots + 2
 extra_module_slots.module_specification.module_info_icon_scale = 0.8
-extra_module_slots.placeable_by = {{item = "h2o-hydro-plant", count = 1}}
-extra_module_slots.localised_name = {"entity-name.h2o-hydro-plant"}
-extra_module_slots.localised_description = {"entity-description.h2o-hydro-plant"}
+extra_module_slots.placeable_by = {{item = "maraxsis-hydro-plant", count = 1}}
+extra_module_slots.localised_name = {"entity-name.maraxsis-hydro-plant"}
+extra_module_slots.localised_description = {"entity-description.maraxsis-hydro-plant"}
 extra_module_slots.flags = {"placeable-player", "player-creation", "not-in-made-in"}
 data:extend {extra_module_slots}
 
 data:extend {{
     type = "item",
-    name = "h2o-hydro-plant",
+    name = "maraxsis-hydro-plant",
     icon = "__maraxsis__/graphics/icons/hydro-plant.png",
     icon_size = 64,
-    place_result = "h2o-hydro-plant",
+    place_result = "maraxsis-hydro-plant",
     stack_size = 50,
     scale = 0.5,
 }}
 
 data:extend {{
     type = "recipe",
-    name = "h2o-hydro-plant",
+    name = "maraxsis-hydro-plant",
     enabled = false,
     energy_required = 5,
     ingredients = {
@@ -189,7 +189,7 @@ data:extend {{
         {type = "item", name = "pipe",             amount = 10},
     },
     results = {
-        {type = "item", name = "h2o-hydro-plant", amount = 1},
+        {type = "item", name = "maraxsis-hydro-plant", amount = 1},
     },
-    category = "h2o-hydro-plant-or-assembling",
+    category = "maraxsis-hydro-plant-or-assembling",
 }}

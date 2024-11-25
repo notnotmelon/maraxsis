@@ -1,15 +1,15 @@
 data:extend {{
     type = "technology",
-    name = "h2o-nuclear-submarine",
+    name = "maraxsis-nuclear-submarine",
     icon = "__maraxsis__/graphics/technology/nuclear-submarine.png",
     icon_size = 256,
     effects = {
         {
             type = "unlock-recipe",
-            recipe = "h2o-nuclear-submarine",
+            recipe = "maraxsis-nuclear-submarine",
         },
     },
-    prerequisites = {"h2o-hydraulic-science-pack", "h2o-sonar", "nuclear-power"},
+    prerequisites = {"maraxsis-hydraulic-science-pack", "maraxsis-sonar", "nuclear-power"},
     unit = {
         count = 3000,
         ingredients = {
@@ -23,7 +23,7 @@ data:extend {{
             {"metallurgic-science-pack",     1},
             {"electromagnetic-science-pack", 1},
             {"agricultural-science-pack",    1},
-            {"h2o-hydraulic-science-pack",   1},
+            {"maraxsis-hydraulic-science-pack",   1},
         },
         time = 60,
     },
@@ -54,16 +54,16 @@ local movement_energy_consumption = {
 
 data:extend {{
     type = "fuel-category",
-    name = "h2o-diesel",
+    name = "maraxsis-diesel",
 }}
 
 local fuel_sources = {
-    ["h2o-diesel-submarine"] = "h2o-diesel",
-    ["h2o-nuclear-submarine"] = "nuclear",
+    ["maraxsis-diesel-submarine"] = "maraxsis-diesel",
+    ["maraxsis-nuclear-submarine"] = "nuclear",
 }
 
 local recipes = {
-    ["h2o-diesel-submarine"] = {
+    ["maraxsis-diesel-submarine"] = {
         {type = "item", name = "steel-plate",          amount = 200},
         {type = "item", name = "electric-engine-unit", amount = 50},
         {type = "item", name = "processing-unit",      amount = 100},
@@ -71,22 +71,22 @@ local recipes = {
         {type = "item", name = "battery-equipment",    amount = 2},
         {type = "item", name = "raw-fish",             amount = 1},
     },
-    ["h2o-nuclear-submarine"] = {
-        {type = "item", name = "h2o-diesel-submarine",  amount = 1},
-        {type = "item", name = "h2o-sonar",             amount = 1},
-        {type = "item", name = "h2o-glass-panes",       amount = 1000},
+    ["maraxsis-nuclear-submarine"] = {
+        {type = "item", name = "maraxsis-diesel-submarine",  amount = 1},
+        {type = "item", name = "maraxsis-sonar",             amount = 1},
+        {type = "item", name = "maraxsis-glass-panes",       amount = 1000},
         {type = "item", name = "nuclear-reactor",       amount = 1},
         {type = "item", name = "heat-exchanger",        amount = 4},
         {type = "item", name = "pump",                  amount = 8},
         {type = "item", name = "processing-unit",       amount = 200},
         {type = "item", name = "battery-mk2-equipment", amount = 2},
         {type = "item", name = "speed-module-3",        amount = 2},
-        {type = "item", name = "h2o-tropical-fish",     amount = 1},
+        {type = "item", name = "maraxsis-tropical-fish",     amount = 1},
     },
 }
 
 for i = 1, 2 do
-    local name = i == 1 and "h2o-diesel-submarine" or "h2o-nuclear-submarine"
+    local name = i == 1 and "maraxsis-diesel-submarine" or "maraxsis-nuclear-submarine"
     local icon = "__maraxsis__/graphics/icons/" .. (i == 1 and "diesel" or "nuclear") .. "-submarine.png"
 
     local item = {
@@ -106,7 +106,7 @@ for i = 1, 2 do
         results = {{type = "item", name = name, amount = 1}},
         enabled = false,
         energy_required = 10,
-        category = i == 1 and "h2o-hydro-plant-or-assembling" or "h2o-hydro-plant",
+        category = i == 1 and "maraxsis-hydro-plant-or-assembling" or "maraxsis-hydro-plant",
     }
 
     local lamp_layer = {
@@ -225,7 +225,7 @@ for i = 1, 2 do
     entity.minimap_representation = {
         filename = "__maraxsis__/graphics/entity/submarine/submarine-map-tag.png",
         flags = {"icon"},
-        tint = h2o.tints[i],
+        tint = maraxsis.tints[i],
         size = {64, 64}
     }
     entity.working_sound = table.deepcopy(data.raw.car.car.working_sound)
@@ -240,7 +240,7 @@ for i = 1, 2 do
         burnt_inventory_size = 4,
         smoke = {
             {
-                name = "h2o-submarine-bubbles",
+                name = "maraxsis-submarine-bubbles",
                 deviation = {0.35, 0.35},
                 frequency = 150,
                 position = {0, 0},
@@ -268,7 +268,7 @@ for i = 1, 2 do
     entity.friction = 0.005
     entity.rotation_speed = 0.025 * 0.2 * (i / 2 + 0.5)
     entity.spider_engine.walking_group_overlap = 1
-    entity.spider_engine.legs = {leg = "h2o-submarine-leg", mount_position = {0, 0.5}, ground_position = {0, 0}, blocking_legs = {}, walking_group = 1}
+    entity.spider_engine.legs = {leg = "maraxsis-submarine-leg", mount_position = {0, 0.5}, ground_position = {0, 0}, blocking_legs = {}, walking_group = 1}
     entity.graphics_set.light = {
         {
             color = {
@@ -329,7 +329,7 @@ data:extend {{
 }}
 
 local vehicle_leg = table.deepcopy(data.raw["spider-leg"]["spidertron-leg-1"])
-vehicle_leg.name = "h2o-submarine-leg"
+vehicle_leg.name = "maraxsis-submarine-leg"
 vehicle_leg.graphics_set = {}
 vehicle_leg.collision_mask = collision_mask
 vehicle_leg.target_position_randomisation_distance = 0
@@ -347,12 +347,12 @@ data:extend {vehicle_leg}
 local torpedo_launchers = {}
 for i = 1, 6 do
     local launcher                                           = table.deepcopy(data.raw.gun["spidertron-rocket-launcher-1"])
-    launcher.localised_name                                  = {"item-name.h2o-torpedo-launch-silo"}
+    launcher.localised_name                                  = {"item-name.maraxsis-torpedo-launch-silo"}
     launcher.localised_description                           = nil
-    launcher.name                                            = "h2o-torpedo-launch-silo-" .. i
+    launcher.name                                            = "maraxsis-torpedo-launch-silo-" .. i
     launcher.icon                                            = "__base__/graphics/icons/tank-cannon.png"
     launcher.icon_size                                       = 64
-    launcher.attack_parameters.ammo_category                 = "h2o-torpedoes"
+    launcher.attack_parameters.ammo_category                 = "maraxsis-torpedoes"
     launcher.attack_parameters.projectile_orientation_offset = 0
     launcher.attack_parameters.projectile_creation_distance  = 3
     launcher.attack_parameters.range                         = 96
@@ -360,18 +360,18 @@ for i = 1, 6 do
 end
 data:extend(torpedo_launchers)
 
-data.raw["spider-vehicle"]["h2o-diesel-submarine"].guns = {
-    "h2o-torpedo-launch-silo-1",
-    "h2o-torpedo-launch-silo-2",
-    "h2o-torpedo-launch-silo-3",
-    "h2o-torpedo-launch-silo-4",
+data.raw["spider-vehicle"]["maraxsis-diesel-submarine"].guns = {
+    "maraxsis-torpedo-launch-silo-1",
+    "maraxsis-torpedo-launch-silo-2",
+    "maraxsis-torpedo-launch-silo-3",
+    "maraxsis-torpedo-launch-silo-4",
 }
 
-data.raw["spider-vehicle"]["h2o-nuclear-submarine"].guns = {
-    "h2o-torpedo-launch-silo-1",
-    "h2o-torpedo-launch-silo-2",
-    "h2o-torpedo-launch-silo-3",
-    "h2o-torpedo-launch-silo-4",
-    "h2o-torpedo-launch-silo-5",
-    "h2o-torpedo-launch-silo-6",
+data.raw["spider-vehicle"]["maraxsis-nuclear-submarine"].guns = {
+    "maraxsis-torpedo-launch-silo-1",
+    "maraxsis-torpedo-launch-silo-2",
+    "maraxsis-torpedo-launch-silo-3",
+    "maraxsis-torpedo-launch-silo-4",
+    "maraxsis-torpedo-launch-silo-5",
+    "maraxsis-torpedo-launch-silo-6",
 }

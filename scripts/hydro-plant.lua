@@ -6,8 +6,8 @@ local allowed_directions = {
 }
 
 local function is_hydro_plant(entity)
-    if entity.name == "h2o-hydro-plant" then return true end
-    if entity.name == "entity-ghost" and entity.ghost_name == "h2o-hydro-plant" then return true end
+    if entity.name == "maraxsis-hydro-plant" then return true end
+    if entity.name == "entity-ghost" and entity.ghost_name == "maraxsis-hydro-plant" then return true end
     return false
 end
 
@@ -20,14 +20,14 @@ local function rotate_hydro_plant(entity)
     entity.direction = direction
 end
 
-h2o.on_event("on_built", function(event)
+maraxsis.on_event("on_built", function(event)
     local entity = event.entity
     if not entity.valid then return end
     if not is_hydro_plant(entity) then return end
     rotate_hydro_plant(entity)
 end)
 
-h2o.on_event(defines.events.on_player_rotated_entity, function(event)
+maraxsis.on_event(defines.events.on_player_rotated_entity, function(event)
     local entity = event.entity
     if not entity.valid then return end
     if not is_hydro_plant(entity) then return end

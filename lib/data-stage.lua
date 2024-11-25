@@ -1,10 +1,10 @@
 -- Adds helper functions for data stage. Shared across all pymods and adapted for use in maraxsis
 
-h2o.on_event = function() end
+maraxsis.on_event = function() end
 
 ---Returns a 1x1 empty image.
 ---@return table
-h2o.empty_image = function()
+maraxsis.empty_image = function()
     return {
         filename = "__core__/graphics/empty.png",
         size = 1,
@@ -19,7 +19,7 @@ end
 ---@param type string
 ---@param prototype data.AnyPrototype
 ---@param localised_string LocalisedString
-h2o.add_to_description = function(type, prototype, localised_string)
+maraxsis.add_to_description = function(type, prototype, localised_string)
     if prototype.localised_description and prototype.localised_description ~= "" then
         prototype.localised_description = {"", prototype.localised_description, "\n", localised_string}
         return
@@ -57,7 +57,7 @@ end
 
 ---adds a glow layer to any item prototype.
 ---@param prototype data.ItemPrototype
-h2o.make_item_glowing = function(prototype)
+maraxsis.make_item_glowing = function(prototype)
     if not prototype then
         error("No prototype provided")
     end
@@ -94,9 +94,9 @@ end
 ---@param old data.AnyPrototype
 ---@param new table
 ---@return data.AnyPrototype
-h2o.merge = function(old, new)
+maraxsis.merge = function(old, new)
     if not old then
-        error("Failed to h2o.merge: Old prototype is nil", 2)
+        error("Failed to maraxsis.merge: Old prototype is nil", 2)
     end
 
     old = table.deepcopy(old)
@@ -117,7 +117,7 @@ end
 ---@param num_slots integer
 ---@param desired_speed number
 ---@return number
-function h2o.farm_speed(num_slots, desired_speed)
+function maraxsis.farm_speed(num_slots, desired_speed)
     -- mk1 modules are 100% bonus speed. The farm itself then counts as much as one module
     return desired_speed / (num_slots + 1)
 end
@@ -126,7 +126,7 @@ end
 ---@param base_prototype string
 ---@param child_prototype string
 ---@param shadow_alpha number?
-function h2o.composite_molten_icon(base_prototype, child_prototype, shadow_alpha)
+function maraxsis.composite_molten_icon(base_prototype, child_prototype, shadow_alpha)
     shadow_alpha = shadow_alpha or 0.6
     base_prototype = data.raw.fluid[base_prototype] or data.raw.item[base_prototype]
     child_prototype = data.raw.fluid[child_prototype] or data.raw.item[child_prototype]
@@ -160,7 +160,7 @@ end
 ---@param shift_east table?
 ---@param replacements table?
 ---@return table
-h2o.pipe_pictures = function(pictures, shift_north, shift_south, shift_west, shift_east, replacements)
+maraxsis.pipe_pictures = function(pictures, shift_north, shift_south, shift_west, shift_east, replacements)
     local new_pictures = {
         north = shift_north and
             {
@@ -170,7 +170,7 @@ h2o.pipe_pictures = function(pictures, shift_north, shift_south, shift_west, shi
                 height = 18,
                 shift = shift_north
             } or
-            h2o.empty_image(),
+            maraxsis.empty_image(),
         south = shift_south and
             {
                 filename = "__base__/graphics/entity/" .. pictures .. "/" .. pictures .. "-pipe-S.png",
@@ -179,7 +179,7 @@ h2o.pipe_pictures = function(pictures, shift_north, shift_south, shift_west, shi
                 height = 31,
                 shift = shift_south
             } or
-            h2o.empty_image(),
+            maraxsis.empty_image(),
         west = shift_west and
             {
                 filename = "__base__/graphics/entity/" .. pictures .. "/" .. pictures .. "-pipe-W.png",
@@ -188,7 +188,7 @@ h2o.pipe_pictures = function(pictures, shift_north, shift_south, shift_west, shi
                 height = 37,
                 shift = shift_west
             } or
-            h2o.empty_image(),
+            maraxsis.empty_image(),
         east = shift_east and
             {
                 filename = "__base__/graphics/entity/" .. pictures .. "/" .. pictures .. "-pipe-E.png",
@@ -197,7 +197,7 @@ h2o.pipe_pictures = function(pictures, shift_north, shift_south, shift_west, shi
                 height = 38,
                 shift = shift_east
             } or
-            h2o.empty_image()
+            maraxsis.empty_image()
     }
     for direction, image in pairs(replacements or {}) do
         if not (new_pictures[direction].filename == "__core__/graphics/empty.png") then
@@ -216,7 +216,7 @@ end
 ---@param w boolean?
 ---@param e boolean?
 ---@return table
-h2o.pipe_covers = function(n, s, w, e)
+maraxsis.pipe_covers = function(n, s, w, e)
     if (n == nil and s == nil and w == nil and e == nil) then
         n, s, e, w = true, true, true, true
     end
@@ -242,7 +242,7 @@ h2o.pipe_covers = function(n, s, w, e)
                 }
             }
         } or
-        h2o.empty_image()
+        maraxsis.empty_image()
     e =
         e and
         {
@@ -264,7 +264,7 @@ h2o.pipe_covers = function(n, s, w, e)
                 }
             }
         } or
-        h2o.empty_image()
+        maraxsis.empty_image()
     s =
         s and
         {
@@ -286,7 +286,7 @@ h2o.pipe_covers = function(n, s, w, e)
                 }
             }
         } or
-        h2o.empty_image()
+        maraxsis.empty_image()
     w =
         w and
         {
@@ -308,7 +308,7 @@ h2o.pipe_covers = function(n, s, w, e)
                 }
             }
         } or
-        h2o.empty_image()
+        maraxsis.empty_image()
 
     return {north = n, south = s, east = e, west = w}
 end
@@ -316,7 +316,7 @@ end
 ---Standardizes a product or ingredient prototype to a common format.
 ---@param p data.IngredientPrototype | data.ProductPrototype | string
 ---@return data.IngredientPrototype | data.ProductPrototype
-h2o.standardize_product = function(p)
+maraxsis.standardize_product = function(p)
     if type(p) == "string" then p = {p, 1} end
     local name = p.name or p[1]
     if not p.type and name then
@@ -338,7 +338,7 @@ end
 ---Returns an iterator through all prototypes of a given supertype.
 ---@param parent_type string
 ---@return function
-function h2o.iter_prototypes(parent_type)
+function maraxsis.iter_prototypes(parent_type)
     local types = defines.prototypes[parent_type]
     local t, n, d
 

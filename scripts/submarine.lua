@@ -1,5 +1,5 @@
-local TRENCH_MOVEMENT_FACTOR = h2o.TRENCH_MOVEMENT_FACTOR
-local SUBMARINES = h2o.SUBMARINES
+local TRENCH_MOVEMENT_FACTOR = maraxsis.TRENCH_MOVEMENT_FACTOR
+local SUBMARINES = maraxsis.SUBMARINES
 
 local function exit_submarine(event)
     local player = game.get_player(event.player_index)
@@ -17,7 +17,7 @@ local function exit_submarine(event)
     if not safe_position then return end
     player.teleport(safe_position)
 end
-h2o.register_delayed_function("exit_submarine", exit_submarine)
+maraxsis.register_delayed_function("exit_submarine", exit_submarine)
 
 ---when the player presses 'enter' on a submarine, should it succeed?
 ---@param player LuaPlayer
@@ -61,7 +61,7 @@ local function enter_submarine(player, submarine)
     end
     storage.breath[player.index] = nil
 end
-h2o.register_delayed_function("enter_submarine", enter_submarine)
+maraxsis.register_delayed_function("enter_submarine", enter_submarine)
 
 ---determines if the submarine should rise to the surface or sink to the bottom. returns nil if surface transfer is impossible
 ---@param submarine LuaEntity
@@ -70,13 +70,13 @@ local function determine_submerge_direction(submarine)
     local position = submarine.position
     local surface = submarine.surface
     local surface_name = surface.name
-    local prototype = h2o.prototypes[surface_name]
+    local prototype = maraxsis.prototypes[surface_name]
     if not prototype then error("no prototype for surface " .. surface_name) end
 
-    local opposite_surface_name = h2o.MARAXSIS_GET_OPPOSITE_SURFACE[surface_name]
-    local target_surface = h2o.prototypes[opposite_surface_name].get_surface()
+    local opposite_surface_name = maraxsis.MARAXSIS_GET_OPPOSITE_SURFACE[surface_name]
+    local target_surface = maraxsis.prototypes[opposite_surface_name].get_surface()
 
-    if surface_name == h2o.MARAXSIS_SURFACE_NAME then
+    if surface_name == maraxsis.MARAXSIS_SURFACE_NAME then
         local tile_at_surface = surface.get_tile(position.x, position.y)
         if not tile_at_surface.valid or tile_at_surface.name ~= "trench-entrance" then return nil end
         local target_position = {x = position.x * TRENCH_MOVEMENT_FACTOR, y = position.y * TRENCH_MOVEMENT_FACTOR}
@@ -85,7 +85,7 @@ local function determine_submerge_direction(submarine)
         target_position = target_surface.find_non_colliding_position(submarine.name, target_position, 40, 0.5, false)
         if not target_position then return nil end
         return target_surface, target_position
-    elseif surface_name == h2o.TRENCH_SURFACE_NAME then
+    elseif surface_name == maraxsis.TRENCH_SURFACE_NAME then
         local target_position = {x = position.x / TRENCH_MOVEMENT_FACTOR, y = position.y / TRENCH_MOVEMENT_FACTOR}
         target_surface.request_to_generate_chunks(target_position, 1)
         target_surface.force_generate_chunk_requests()
@@ -128,18 +128,18 @@ local function decend_or_ascend(submarine)
 
     if passenger then
         passenger.teleport(target_position, target_surface, true)
-        h2o.execute_later("enter_submarine", 1, passenger, submarine)
+        maraxsis.execute_later("enter_submarine", 1, passenger, submarine)
     end
 
     if driver then
         driver.teleport(target_position, target_surface, true)
-        h2o.execute_later("enter_submarine", 1, driver, submarine)
+        maraxsis.execute_later("enter_submarine", 1, driver, submarine)
     end
 
     return true
 end
 
-h2o.on_event("toggle-driving", function(event)
+maraxsis.on_event("toggle-driving", function(event)
     local player = game.get_player(event.player_index)
     if not player then return end
     local selected = player.selected
@@ -150,18 +150,18 @@ h2o.on_event("toggle-driving", function(event)
     -- case 1: player is hovering the sub and trying to exit. if they are in a trench we need to block them from leaving the sub
     if submarine and SUBMARINES[submarine.name] and selected and selected.valid and selected == submarine then
         if not decend_or_ascend(submarine) then
-            if surface.name == h2o.TRENCH_SURFACE_NAME then
-                h2o.execute_later("enter_submarine", 1, player, submarine)
+            if surface.name == maraxsis.TRENCH_SURFACE_NAME then
+                maraxsis.execute_later("enter_submarine", 1, player, submarine)
             end
         end
         -- case 2: player is not hovering the sub but trying to exit.
         -- if they are in a trench we need to block them from leaving the sub otherwise search nearby tiles for a safe exit point
     elseif submarine and SUBMARINES[submarine.name] and not selected_submarine then
         if not decend_or_ascend(submarine) then
-            if surface.name == h2o.TRENCH_SURFACE_NAME then
-                h2o.execute_later("enter_submarine", 1, player, submarine)
+            if surface.name == maraxsis.TRENCH_SURFACE_NAME then
+                maraxsis.execute_later("enter_submarine", 1, player, submarine)
             else
-                h2o.execute_later("exit_submarine", 1, event)
+                maraxsis.execute_later("exit_submarine", 1, event)
             end
         end
         -- case 3: player is hovering the sub and trying to enter. the vanilla vechicle enter range is too low for water vehicles so we artificially increase it

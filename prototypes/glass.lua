@@ -1,19 +1,19 @@
 data:extend {{
     type = "technology",
-    name = "h2o-glassworking",
+    name = "maraxsis-glassworking",
     icon = "__maraxsis__/graphics/technology/glassworking.png",
     icon_size = 256,
     effects = {
         {
             type = "unlock-recipe",
-            recipe = "h2o-glass-panes",
+            recipe = "maraxsis-glass-panes",
         },
         {
             type = "unlock-recipe",
-            recipe = "h2o-pressure-dome",
+            recipe = "maraxsis-pressure-dome",
         },
     },
-    prerequisites = {"h2o-maraxsis"},
+    prerequisites = {"maraxsis-maraxsis"},
     unit = {
         count = 3000,
         ingredients = {
@@ -54,7 +54,7 @@ data:extend {{
 
 data:extend {{
     type = "recipe",
-    name = "h2o-glass-panes",
+    name = "maraxsis-glass-panes",
     enabled = false,
     energy_required = 5,
     ingredients = {
@@ -63,7 +63,7 @@ data:extend {{
         {type = "item", name = "salt",      amount = 1},
     },
     results = {
-        {type = "item", name = "h2o-glass-panes", amount = 1},
+        {type = "item", name = "maraxsis-glass-panes", amount = 1},
     },
     allow_productivity = true,
     category = "metallurgy"
@@ -82,7 +82,7 @@ end
 
 data:extend {{
     type = "item",
-    name = "h2o-glass-panes",
+    name = "maraxsis-glass-panes",
     icon = "__maraxsis__/graphics/icons/glass-panes-1.png",
     pictures = glass_variants,
     icon_size = 64,

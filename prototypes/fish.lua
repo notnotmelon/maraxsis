@@ -27,10 +27,10 @@ for _, color in pairs(map_colors) do
     color.a = 255
 end
 
-h2o.tropical_fish_names = {}
+maraxsis.tropical_fish_names = {}
 
 for i, v in pairs(fish) do
-    local name = "h2o-tropical-fish-" .. i
+    local name = "maraxsis-tropical-fish-" .. i
 
     v.filename = "__maraxsis__/graphics/entity/fish/" .. i .. ".png"
     v.direction_count = 32
@@ -109,21 +109,21 @@ for i, v in pairs(fish) do
         minable = {
             mining_time = data.raw.fish["fish"].minable.mining_time,
             results = {
-                {type = "item", name = "h2o-tropical-fish", amount = 5},
+                {type = "item", name = "maraxsis-tropical-fish", amount = 5},
             }
         }
     }}
 
-    h2o.tropical_fish_names[i] = name
+    maraxsis.tropical_fish_names[i] = name
 end
 
 data:extend {{
     type = "technology",
-    name = "h2o-piscary",
+    name = "maraxsis-piscary",
     icon = "__maraxsis__/graphics/technology/piscary.png",
     icon_size = 256,
     effects = {},
-    prerequisites = {"h2o-water-treatment", "uranium-ammo"},
+    prerequisites = {"maraxsis-water-treatment", "uranium-ammo"},
     unit = {
         count = 3000,
         ingredients = {
@@ -143,7 +143,7 @@ data:extend {{
 }}
 
 local function add_to_tech(recipe)
-    table.insert(data.raw.technology["h2o-piscary"].effects, {type = "unlock-recipe", recipe = recipe})
+    table.insert(data.raw.technology["maraxsis-piscary"].effects, {type = "unlock-recipe", recipe = recipe})
 end
 
 local microplastics_variants = {}
@@ -160,7 +160,7 @@ end
 
 data:extend {{
     type = "item",
-    name = "h2o-microplastics",
+    name = "maraxsis-microplastics",
     icon = "__maraxsis__/graphics/icons/microplastics-1.png",
     icon_size = 64,
     pictures = microplastics_variants,
@@ -169,29 +169,29 @@ data:extend {{
 
 data:extend {{
     type = "recipe",
-    name = "h2o-microplastics",
+    name = "maraxsis-microplastics",
     enabled = false,
     energy_required = 10,
     ingredients = {
-        {type = "item", name = "h2o-tropical-fish",       amount = 1},
+        {type = "item", name = "maraxsis-tropical-fish",       amount = 1},
         {type = "item", name = "uranium-rounds-magazine", amount = 1},
     },
     results = {
-        {type = "item", name = "h2o-microplastics", amount = 1},
+        {type = "item", name = "maraxsis-microplastics", amount = 1},
     },
-    category = "h2o-hydro-plant",
-    main_product = "h2o-microplastics",
+    category = "maraxsis-hydro-plant",
+    main_product = "maraxsis-microplastics",
     allow_productivity = true,
 }}
-add_to_tech("h2o-microplastics")
+add_to_tech("maraxsis-microplastics")
 
 data:extend {{
     type = "recipe",
-    name = "h2o-smelt-microplastics",
+    name = "maraxsis-smelt-microplastics",
     enabled = false,
     energy_required = data.raw.recipe["iron-plate"].energy_required,
     ingredients = {
-        {type = "item", name = "h2o-microplastics", amount = 1},
+        {type = "item", name = "maraxsis-microplastics", amount = 1},
     },
     results = {
         {type = "item", name = "plastic-bar", amount = 1},
@@ -201,7 +201,7 @@ data:extend {{
     main_product = "plastic-bar",
     emissions_multiplier = 3
 }}
-add_to_tech("h2o-smelt-microplastics")
+add_to_tech("maraxsis-smelt-microplastics")
 
 local tropical_fish_variants = {}
 for i, v in pairs(fish) do
@@ -215,12 +215,12 @@ for i, v in pairs(fish) do
 end
 data:extend {{
     type = "capsule",
-    name = "h2o-tropical-fish",
+    name = "maraxsis-tropical-fish",
     icon = "__maraxsis__/graphics/icons/tropical-fish.png",
     icon_size = 64,
     pictures = tropical_fish_variants,
     stack_size = data.raw.capsule["raw-fish"].stack_size,
     capsule_action = table.deepcopy(data.raw.capsule["raw-fish"].capsule_action),
 }}
-local dmg = data.raw.capsule["h2o-tropical-fish"].capsule_action.attack_parameters.ammo_type.action.action_delivery.target_effects[1].damage
+local dmg = data.raw.capsule["maraxsis-tropical-fish"].capsule_action.attack_parameters.ammo_type.action.action_delivery.target_effects[1].damage
 dmg.amount = dmg.amount * 1.5

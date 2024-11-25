@@ -3,15 +3,15 @@ local WARNING_MESSAGE = FULL_BREATH_NUM_TICKS / 4
 local UPDATE_RATE = 71
 
 local SUBMARINES = {
-    ["h2o-diesel-submarine"] = true,
-    ["h2o-nuclear-submarine"] = true,
+    ["maraxsis-diesel-submarine"] = true,
+    ["maraxsis-nuclear-submarine"] = true,
 }
 
-h2o.on_event("on_init", function()
+maraxsis.on_event("on_init", function()
     storage.breath = storage.breath or {}
 end)
 
-h2o.on_nth_tick(UPDATE_RATE, function()
+maraxsis.on_nth_tick(UPDATE_RATE, function()
     for _, player in pairs(game.connected_players) do
         local character = player.character
         if not character then goto continue end
@@ -20,7 +20,7 @@ h2o.on_nth_tick(UPDATE_RATE, function()
         local surface_name = surface.name
         local player_surface_index = surface.index
 
-        if not h2o.MARAXSIS_SURFACES[surface_name] then
+        if not maraxsis.MARAXSIS_SURFACES[surface_name] then
             goto continue
         end
 
@@ -48,7 +48,7 @@ h2o.on_nth_tick(UPDATE_RATE, function()
 
         local breath = storage.breath[player.index] or FULL_BREATH_NUM_TICKS
         local breath_loss = UPDATE_RATE
-        local is_trench = surface_name == h2o.TRENCH_SURFACE_NAME
+        local is_trench = surface_name == maraxsis.TRENCH_SURFACE_NAME
         if is_trench then breath_loss = breath_loss * 4 end
         breath = math.max(0, breath - breath_loss)
         storage.breath[player.index] = breath
@@ -74,7 +74,7 @@ h2o.on_nth_tick(UPDATE_RATE, function()
     end
 end)
 
-h2o.on_event({
+maraxsis.on_event({
     defines.events.on_player_changed_surface,
     defines.events.on_player_respawned,
     defines.events.on_player_died

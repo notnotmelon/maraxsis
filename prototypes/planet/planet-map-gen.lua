@@ -4,7 +4,7 @@ local planet_map_gen = require("__space-age__/prototypes/planet/planet-map-gen")
 -- get vanilla planets from space age
 
 local entity_spawn_settings = {}
-for _, tropical_fish in pairs(h2o.tropical_fish_names) do
+for _, tropical_fish in pairs(maraxsis.tropical_fish_names) do
     entity_spawn_settings[tropical_fish] = {}
 end
 

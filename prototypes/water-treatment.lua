@@ -1,5 +1,5 @@
 local function add_to_tech(recipe)
-    table.insert(data.raw.technology["h2o-water-treatment"].effects, {
+    table.insert(data.raw.technology["maraxsis-water-treatment"].effects, {
         type = "unlock-recipe",
         recipe = recipe,
     })
@@ -7,11 +7,11 @@ end
 
 data:extend {{
     type = "technology",
-    name = "h2o-water-treatment",
+    name = "maraxsis-water-treatment",
     icon = "__maraxsis__/graphics/technology/water-treatment.png",
     icon_size = 256,
     effects = {},
-    prerequisites = {"h2o-maraxsis"},
+    prerequisites = {"maraxsis-maraxsis"},
     unit = {
         count = 3000,
         ingredients = {
@@ -92,7 +92,7 @@ data:extend {{
 
 data:extend {{
     type = "recipe",
-    name = "h2o-saline-electrolysis",
+    name = "maraxsis-saline-electrolysis",
     enabled = false,
     energy_required = 10,
     ingredients = {
@@ -103,16 +103,16 @@ data:extend {{
         {type = "fluid", name = "oxygen",   amount = 100},
         {type = "fluid", name = "hydrogen", amount = 200},
     },
-    category = "h2o-hydro-plant",
+    category = "maraxsis-hydro-plant",
     icon = "__maraxsis__/graphics/icons/saline-electrolysis.png",
     icon_size = 128,
     allow_productivity = true,
 }}
-add_to_tech("h2o-saline-electrolysis")
+add_to_tech("maraxsis-saline-electrolysis")
 
 data:extend {{
     type = "recipe",
-    name = "h2o-water",
+    name = "maraxsis-water",
     enabled = false,
     energy_required = 2,
     ingredients = {
@@ -123,14 +123,14 @@ data:extend {{
         {type = "fluid", name = "water", amount = 300},
     },
     allow_productivity = true,
-    category = "h2o-hydro-plant",
+    category = "maraxsis-hydro-plant",
     main_product = "water",
 }}
-add_to_tech("h2o-water")
+add_to_tech("maraxsis-water")
 
 data:extend {{
     type = "item",
-    name = "h2o-saturated-salt-filter",
+    name = "maraxsis-saturated-salt-filter",
     icon = "__maraxsis__/graphics/icons/saturated-salt-filter.png",
     icon_size = 64,
     stack_size = 10,
@@ -138,22 +138,22 @@ data:extend {{
 
 data:extend {{
     type = "recipe",
-    name = "h2o-saturated-salt-filter",
+    name = "maraxsis-saturated-salt-filter",
     enabled = false,
     energy_required = 2.5,
     ingredients = {
-        {type = "item",  name = "h2o-salt-filter", amount = 1},
+        {type = "item",  name = "maraxsis-salt-filter", amount = 1},
         {type = "fluid", name = "saline-water",    amount = 100},
     },
     results = {
-        {type = "item",  name = "h2o-saturated-salt-filter", amount = 1,  ignored_by_stats = 1, ignored_by_stats = 1},
+        {type = "item",  name = "maraxsis-saturated-salt-filter", amount = 1,  ignored_by_stats = 1, ignored_by_stats = 1},
         {type = "fluid", name = "brackish-water",            amount = 100},
     },
     category = "chemistry",
     main_product = "brackish-water",
     allow_productivity = true,
 }}
-add_to_tech("h2o-saturated-salt-filter")
+add_to_tech("maraxsis-saturated-salt-filter")
 
 local salt_variants = {}
 for i = 1, 3 do
@@ -177,7 +177,7 @@ data:extend {{
 
 data:extend {{
     type = "item",
-    name = "h2o-salt-filter",
+    name = "maraxsis-salt-filter",
     icon = "__maraxsis__/graphics/icons/salt-filter.png",
     icon_size = 64,
     stack_size = 10,
@@ -185,7 +185,7 @@ data:extend {{
 
 data:extend {{
     type = "recipe",
-    name = "h2o-salt-filter",
+    name = "maraxsis-salt-filter",
     enabled = false,
     energy_required = 1,
     ingredients = {
@@ -194,27 +194,27 @@ data:extend {{
         {type = "item", name = "carbon-fiber",    amount = 1},
     },
     results = {
-        {type = "item", name = "h2o-salt-filter", amount = 1},
+        {type = "item", name = "maraxsis-salt-filter", amount = 1},
     },
     category = "crafting",
 }}
-add_to_tech("h2o-salt-filter")
+add_to_tech("maraxsis-salt-filter")
 
 data:extend {{
     type = "recipe",
-    name = "h2o-salt-filter-recycling",
+    name = "maraxsis-salt-filter-recycling",
     enabled = false,
     energy_required = 1.25,
     ingredients = {
-        {type = "item",  name = "h2o-saturated-salt-filter", amount = 1},
+        {type = "item",  name = "maraxsis-saturated-salt-filter", amount = 1},
         {type = "fluid", name = "water",                     amount = 20},
     },
     results = {
-        {type = "item",  name = "h2o-salt-filter", amount = 1, catalyst_amount = 1, probability = 0.99},
+        {type = "item",  name = "maraxsis-salt-filter", amount = 1, catalyst_amount = 1, probability = 0.99},
         {type = "item",  name = "steel-plate",     amount = 1, probability = 0.01},
         {type = "fluid", name = "saline-water",    amount = 20},
     },
     category = "crafting-with-fluid",
-    main_product = "h2o-salt-filter",
+    main_product = "maraxsis-salt-filter",
 }}
-add_to_tech("h2o-salt-filter-recycling")
+add_to_tech("maraxsis-salt-filter-recycling")

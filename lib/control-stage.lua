@@ -8,7 +8,7 @@ require "events"
 ---@param entity LuaEntity
 ---@param sprite string
 ---@param time_to_live integer
-h2o.draw_error_sprite = function(entity, sprite, time_to_live)
+maraxsis.draw_error_sprite = function(entity, sprite, time_to_live)
 	rendering.draw_sprite {
 		sprite = sprite,
 		x_scale = 0.5,
@@ -23,7 +23,7 @@ end
 ---Creates a localised string tooltip for allowed modules.
 ---@param allowed_modules table<string, any>
 ---@return LocalisedString
-h2o.generate_allowed_module_tooltip = function(allowed_modules)
+maraxsis.generate_allowed_module_tooltip = function(allowed_modules)
 	local item_prototypes = prototypes.item
 	---@type LocalisedString
 	local result = {"", {"gui.module-description"}, "\n"}
@@ -39,7 +39,7 @@ end
 ---@param position Position
 ---@param factor number?
 ---@return Position
-h2o.randomize_position = function(position, factor)
+maraxsis.randomize_position = function(position, factor)
 	local x = position.x or position[1]
 	local y = position.y or position[2]
 	factor = factor or 1
@@ -52,7 +52,7 @@ end
 ---@param player_index integer?
 ---@param message LocalisedString?
 ---@param color Color?
-h2o.cancel_creation = function(entity, player_index, message, color)
+maraxsis.cancel_creation = function(entity, player_index, message, color)
 	local inserted = 0
 	local items_to_place_this = entity.prototype.items_to_place_this
 	local item_to_place = items_to_place_this and items_to_place_this[1]
@@ -104,7 +104,7 @@ local seconds_per_minute = 60
 ---Creates a string representation of a time in seconds.
 ---@param seconds number?
 ---@return string?
-h2o.format_large_time = function(seconds)
+maraxsis.format_large_time = function(seconds)
 	if not seconds then return end
 	local result = ""
 	if seconds >= seconds_per_year then
@@ -147,7 +147,7 @@ end
 ---@param element LuaGuiElement
 ---@param name string
 ---@return LuaGuiElement
-h2o.find_grandparent = function(element, name)
+maraxsis.find_grandparent = function(element, name)
 	while element do
 		if element.name == name then return element end
 		element = element.parent
@@ -169,7 +169,7 @@ local si_prefixes = {
 ---formats a number into the amount of energy. Requires 'W' or 'J' as the second parameter
 ---@param energy number
 ---@param watts_or_joules string
-h2o.format_energy = function(energy, watts_or_joules)
+maraxsis.format_energy = function(energy, watts_or_joules)
 	if watts_or_joules == "W" then
 		watts_or_joules = "si-unit-symbol-watt"
 		energy = energy * 60
@@ -191,7 +191,7 @@ end
 ---@param x number
 ---@param y number
 ---@return number
-h2o.distance = function(x, y)
+maraxsis.distance = function(x, y)
 	return (x ^ 2 + y ^ 2) ^ 0.5
 end
 
@@ -199,7 +199,7 @@ end
 ---@param first Position
 ---@param second Position
 ---@return number
-h2o.distance_squared = function(first, second)
+maraxsis.distance_squared = function(first, second)
 	local x = first.x - second.x
 	local y = first.y - second.y
 	return x * x + y * y

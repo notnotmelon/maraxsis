@@ -1,7 +1,7 @@
 local planet_map_gen = require("prototypes/planet/planet-map-gen")
 local asteroid_util = require("__space-age__.prototypes.planet.asteroid-spawn-definitions")
 
-data:extend {h2o.merge(data.raw.planet.gleba, {
+data:extend {maraxsis.merge(data.raw.planet.gleba, {
     name = "maraxsis",
     starting_area = 1,
     surface_properties = {

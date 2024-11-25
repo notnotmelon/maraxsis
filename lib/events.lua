@@ -3,9 +3,9 @@ local events = {}
 ---Drop-in replacement for script.on_event however it supports multiple handlers per event. You can also use 'on_built' 'on_destroyed' and 'on_init' as shortcuts for multiple events.
 ---@param event defines.events|defines.events[]|string
 ---@param f function
-h2o.on_event = function(event, f)
+maraxsis.on_event = function(event, f)
 	if event == "on_built" then
-		h2o.on_event({
+		maraxsis.on_event({
 			defines.events.on_built_entity,
 			defines.events.on_robot_built_entity,
 			defines.events.script_raised_built,
@@ -14,7 +14,7 @@ h2o.on_event = function(event, f)
 		return
 	end
 	if event == "on_destroyed" then
-		h2o.on_event({
+		maraxsis.on_event({
 			defines.events.on_player_mined_entity,
 			defines.events.on_robot_mined_entity,
 			defines.events.on_entity_died,
@@ -29,7 +29,7 @@ h2o.on_event = function(event, f)
 	end
 end
 
-h2o.on_nth_tick = function(event, f)
+maraxsis.on_nth_tick = function(event, f)
 	events[event] = events[event] or {}
 	table.insert(events[event], f)
 end
@@ -51,7 +51,7 @@ for i = 0, 20 do
 end
 
 local finalized = false
-h2o.finalize_events = function()
+maraxsis.finalize_events = function()
 	if finalized then error("Events already finalized") end
 	local i = 0
 	for event, functions in pairs(events) do
@@ -94,19 +94,19 @@ local function process_gui_event(event)
 end
 
 for event, _ in pairs(gui_events) do
-	h2o.on_event(event, process_gui_event)
+	maraxsis.on_event(event, process_gui_event)
 end
 
 local delayed_functions = {}
 ---use this to execute a script after a delay
 ---example:
----h2o.register_delayed_function('my_delayed_func', function(param1, param2, param3) ... end)
----h2o.execute_later('my_delayed_func', 60, param1, param2, param3)
+---maraxsis.register_delayed_function('my_delayed_func', function(param1, param2, param3) ... end)
+---maraxsis.execute_later('my_delayed_func', 60, param1, param2, param3)
 ---The above code will execute my_delayed_func after waiting for 60 ticks
 ---@param function_key string
 ---@param ticks integer
 ---@param ... any
-function h2o.execute_later(function_key, ticks, ...)
+function maraxsis.execute_later(function_key, ticks, ...)
 	local marked_for_death_render_object = rendering.draw_line {
 		color = {0, 0, 0, 0},
 		width = 0,
@@ -121,7 +121,7 @@ function h2o.execute_later(function_key, ticks, ...)
 	storage._delayed_functions[script.register_on_object_destroyed(marked_for_death_render_object)] = {function_key, {...}}
 end
 
-h2o.on_event(defines.events.on_object_destroyed, function(event)
+maraxsis.on_event(defines.events.on_object_destroyed, function(event)
 	if not storage._delayed_functions then return end
 	local registration_number = event.registration_number
 	local data = storage._delayed_functions[registration_number]
@@ -133,6 +133,6 @@ h2o.on_event(defines.events.on_object_destroyed, function(event)
 	f(table.unpack(data[2]))
 end)
 
-function h2o.register_delayed_function(key, func)
+function maraxsis.register_delayed_function(key, func)
 	delayed_functions[key] = func
 end

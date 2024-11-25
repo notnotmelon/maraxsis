@@ -1,9 +1,9 @@
-_G.h2o = require 'scripts.constants'
+_G.maraxsis = require "scripts.constants"
 require 'lib.lib'
 
-h2o.prototypes = {
-    [h2o.MARAXSIS_SURFACE_NAME] = require 'scripts.map-gen.surfaces.maraxsis',
-    [h2o.TRENCH_SURFACE_NAME] = require 'scripts.map-gen.surfaces.maraxsis-trench',
+maraxsis.prototypes = {
+    [maraxsis.MARAXSIS_SURFACE_NAME] = require 'scripts.map-gen.surfaces.maraxsis',
+    [maraxsis.TRENCH_SURFACE_NAME] = require 'scripts.map-gen.surfaces.maraxsis-trench',
 }
 
 require 'scripts.submarine'
@@ -14,4 +14,4 @@ require 'scripts.pressure-dome'
 require 'scripts.composite-entity'
 require 'scripts.hydro-plant'
 
-h2o.finalize_events()
+maraxsis.finalize_events()

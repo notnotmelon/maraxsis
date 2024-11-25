@@ -45,11 +45,11 @@ local prototypes_that_cant_be_placed_in_a_dome = {
     "ammo-turret",
     "electric-turret",
     "land-mine",
-    data.raw["assembling-machine"]["h2o-hydro-plant"],
-    data.raw["assembling-machine"]["h2o-hydro-plant-extra-module-slots"],
-    data.raw["radar"]["h2o-sonar"],
-    --data.raw['straight-rail']['h2o-straight-waterway'],
-    --data.raw['curved-rail']['h2o-curved-waterway'],
+    data.raw["assembling-machine"]["maraxsis-hydro-plant"],
+    data.raw["assembling-machine"]["maraxsis-hydro-plant-extra-module-slots"],
+    data.raw["radar"]["maraxsis-sonar"],
+    --data.raw['straight-rail']['maraxsis-straight-waterway'],
+    --data.raw['curved-rail']['maraxsis-curved-waterway'],
 }
 
 local prototypes_that_cant_be_placed_in_a_dome_or_on_water = {
@@ -82,10 +82,10 @@ local prototypes_that_can_be_placed_whereever = {
     data.raw["electric-energy-interface"]["ee-infinity-accumulator-secondary-input"],
     data.raw["electric-energy-interface"]["ee-infinity-accumulator-tertiary-input"],
     data.raw["electric-energy-interface"]["ee-infinity-accumulator-tertiary-buffer"],
-    data.raw["spider-leg"]["h2o-submarine-leg"],
-    data.raw["spider-vehicle"]["h2o-diesel-submarine"],
-    data.raw["spider-vehicle"]["h2o-nuclear-submarine"],
-    data.raw.tile["h2o-pressure-dome-tile"],
+    data.raw["spider-leg"]["maraxsis-submarine-leg"],
+    data.raw["spider-vehicle"]["maraxsis-diesel-submarine"],
+    data.raw["spider-vehicle"]["maraxsis-nuclear-submarine"],
+    data.raw.tile["maraxsis-pressure-dome-tile"],
 
     "arithmetic-combinator",
     "constant-combinator",

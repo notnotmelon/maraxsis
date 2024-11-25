@@ -1,22 +1,22 @@
-h2o.tints = {
+maraxsis.tints = {
 	{r = 1.0,   g = 1.0,   b = 0.0,   a = 1.0},
 	{r = 1.0,   g = 0.0,   b = 0.0,   a = 1.0},
 	{r = 0.223, g = 0.490, b = 0.858, a = 1.0},
 	{r = 1.0,   g = 0.0,   b = 1.0,   a = 1.0}
 }
 
-h2o.light_tints = {}
-for i, tint in pairs(h2o.tints) do
-	h2o.light_tints[i] = {}
+maraxsis.light_tints = {}
+for i, tint in pairs(maraxsis.tints) do
+	maraxsis.light_tints[i] = {}
 	for color, amount in pairs(tint) do
-		h2o.light_tints[i][color] = (amount - 0.5) / 2 + 0.5
+		maraxsis.light_tints[i][color] = (amount - 0.5) / 2 + 0.5
 	end
-	h2o.light_tints[i].a = 1
+	maraxsis.light_tints[i].a = 1
 end
 
 ---@param color Color
 ---@return Color
-function h2o.color_normalize(color)
+function maraxsis.color_normalize(color)
 	local r = color.r or color[1]
 	local g = color.g or color[2]
 	local b = color.b or color[3]
@@ -32,9 +32,9 @@ end
 ---@param b Color
 ---@param percent number
 ---@return Color
-function h2o.color_combine(a, b, percent)
-	a = h2o.color_normalize(a)
-	b = h2o.color_normalize(b)
+function maraxsis.color_combine(a, b, percent)
+	a = maraxsis.color_normalize(a)
+	b = maraxsis.color_normalize(b)
 
 	return {
 		r = a.r * percent + b.r * (1 - percent),

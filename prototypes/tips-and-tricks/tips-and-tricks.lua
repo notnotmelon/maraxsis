@@ -6,13 +6,13 @@ data:extend {{
 
 data:extend {{
     type = "tips-and-tricks-item",
-    name = "h2o-maraxsis",
+    name = "maraxsis-maraxsis",
     category = "maraxsis",
-    tag = "[technology=h2o-maraxsis]",
+    tag = "[technology=maraxsis-maraxsis]",
     indent = 0,
     trigger = {
         type = "research",
-        technology = "h2o-maraxsis"
+        technology = "maraxsis-maraxsis"
     },
     simulation = {
         save = "__maraxsis__/prototypes/tips-and-tricks/maraxsis.zip",
@@ -26,14 +26,14 @@ data:extend {{
 
 data:extend {{
     type = "tips-and-tricks-item",
-    name = "h2o-trench-exploration",
+    name = "maraxsis-trench-exploration",
     category = "maraxsis",
-    tag = "[item=h2o-diesel-submarine]",
+    tag = "[item=maraxsis-diesel-submarine]",
     indent = 1,
     trigger = {
         type = "build-entity",
         count = 1,
-        entity = "h2o-diesel-submarine",
+        entity = "maraxsis-diesel-submarine",
     },
     simulation = {
         save = "__maraxsis__/prototypes/tips-and-tricks/maraxsis.zip", -- todo: change to trench exploration save
@@ -46,13 +46,13 @@ data:extend {{
 
 data:extend {{
     type = "tips-and-tricks-item",
-    name = "h2o-underwater-machines",
+    name = "maraxsis-underwater-machines",
     category = "maraxsis",
-    tag = "[item=h2o-hydro-plant]",
+    tag = "[item=maraxsis-hydro-plant]",
     indent = 1,
     trigger = {
         type = "research",
-        technology = "h2o-maraxsis"
+        technology = "maraxsis-maraxsis"
     },
-    dependencies = {"h2o-maraxsis"}
+    dependencies = {"maraxsis-maraxsis"}
 }}

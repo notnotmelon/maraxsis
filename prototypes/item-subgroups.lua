@@ -18,40 +18,40 @@ local function make_subgroup(subgroup_name, subgroup_order, group, members)
     end
 end
 
-make_subgroup("h2o-maraxsis-intermediants", "ge", "intermediate-products", {
-    data.raw.recipe["h2o-saline-electrolysis"],
+make_subgroup("maraxsis-maraxsis-intermediants", "ge", "intermediate-products", {
+    data.raw.recipe["maraxsis-saline-electrolysis"],
     data.raw.item["limestone"],
     data.raw.item["sand"],
-    data.raw.item["h2o-glass-panes"],
-    data.raw.item["h2o-saturated-salt-filter"],
-    data.raw.recipe["h2o-saturated-salt-filter"],
-    data.raw.item["h2o-salt-filter"],
-    data.raw.recipe["h2o-salt-filter"],
-    data.raw.capsule["h2o-tropical-fish"],
-    data.raw.item["h2o-microplastics"],
-    data.raw.item["h2o-wyrm-specimen"],
-    data.raw.item["h2o-wyrm-confinement-cell"],
+    data.raw.item["maraxsis-glass-panes"],
+    data.raw.item["maraxsis-saturated-salt-filter"],
+    data.raw.recipe["maraxsis-saturated-salt-filter"],
+    data.raw.item["maraxsis-salt-filter"],
+    data.raw.recipe["maraxsis-salt-filter"],
+    data.raw.capsule["maraxsis-tropical-fish"],
+    data.raw.item["maraxsis-microplastics"],
+    data.raw.item["maraxsis-wyrm-specimen"],
+    data.raw.item["maraxsis-wyrm-confinement-cell"],
 })
 
-make_subgroup("h2o-machines", "ee", "production", {
-    data.raw.item["h2o-diesel-submarine"],
-    data.raw.item["h2o-nuclear-submarine"],
-    data.raw["rail-planner"]["h2o-waterway"],
-    data.raw["simple-entity"]["h2o-water-shader-32-1-1"],
-    data.raw.item["h2o-hydro-plant"],
-    data.raw.item["h2o-sonar"],
-    data.raw.lamp["h2o-sonar-light-1"],
-    data.raw.lamp["h2o-sonar-light-2"],
-    data.raw.item["h2o-pressure-dome"],
-    data.raw.lamp["h2o-pressure-dome-lamp"],
-    data.raw["constant-combinator"]["h2o-pressure-dome-combinator"],
+make_subgroup("maraxsis-machines", "ee", "production", {
+    data.raw.item["maraxsis-diesel-submarine"],
+    data.raw.item["maraxsis-nuclear-submarine"],
+    data.raw["rail-planner"]["maraxsis-waterway"],
+    data.raw["simple-entity"]["maraxsis-water-shader-32-1-1"],
+    data.raw.item["maraxsis-hydro-plant"],
+    data.raw.item["maraxsis-sonar"],
+    data.raw.lamp["maraxsis-sonar-light-1"],
+    data.raw.lamp["maraxsis-sonar-light-2"],
+    data.raw.item["maraxsis-pressure-dome"],
+    data.raw.lamp["maraxsis-pressure-dome-lamp"],
+    data.raw["constant-combinator"]["maraxsis-pressure-dome-combinator"],
 })
 
 data.raw.fluid["saline-water"].order = "f[maraxsis-fluids]-a[saline-water]"
 data.raw.fluid["brackish-water"].order = "f[maraxsis-fluids]-b[brackish-water]"
 data.raw.fluid["oxygen"].order = "f[maraxsis-fluids]-c[oxygen]"
 data.raw.fluid["hydrogen"].order = "f[maraxsis-fluids]-d[hydrogen]"
-data.raw.fluid["h2o-atmosphere"].order = "f[maraxsis-fluids]-f[atmosphere]"
+data.raw.fluid["maraxsis-atmosphere"].order = "f[maraxsis-fluids]-f[atmosphere]"
 
-data.raw.capsule["h2o-big-cliff-explosives"].subgroup = data.raw.capsule["cliff-explosives"].subgroup
-data.raw.capsule["h2o-big-cliff-explosives"].order = "e[big-cliff-explosives]"
+data.raw.capsule["maraxsis-big-cliff-explosives"].subgroup = data.raw.capsule["cliff-explosives"].subgroup
+data.raw.capsule["maraxsis-big-cliff-explosives"].order = "e[big-cliff-explosives]"

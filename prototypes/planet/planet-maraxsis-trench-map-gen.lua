@@ -1,4 +1,4 @@
-local TRENCH_MOVEMENT_FACTOR = h2o.TRENCH_MOVEMENT_FACTOR
+local TRENCH_MOVEMENT_FACTOR = maraxsis.TRENCH_MOVEMENT_FACTOR
 
 data:extend {{
     type = "noise-expression",

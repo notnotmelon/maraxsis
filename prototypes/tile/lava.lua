@@ -4,8 +4,8 @@ data:extend {{
     localised_name = {"", {"tile-name.lava"}, " (lamp)"},
     energy_usage_per_tick = "1W",
     energy_source = {type = "void"},
-    picture_on = h2o.empty_image(),
-    picture_off = h2o.empty_image(),
+    picture_on = maraxsis.empty_image(),
+    picture_off = maraxsis.empty_image(),
     light = {
         type = "basic",
         intensity = 0.5,

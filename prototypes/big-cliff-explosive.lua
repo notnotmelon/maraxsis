@@ -1,19 +1,19 @@
 data:extend {{
     type = "technology",
-    name = "h2o-depth-charges",
+    name = "maraxsis-depth-charges",
     icon = "__maraxsis__/graphics/technology/depth-charges.png",
     icon_size = 256,
     effects = {
         {
             type = "unlock-recipe",
-            recipe = "h2o-big-cliff-explosives"
+            recipe = "maraxsis-big-cliff-explosives"
         },
         {
             type = "unlock-recipe",
-            recipe = "h2o-atomic-torpedo",
+            recipe = "maraxsis-atomic-torpedo",
         },
     },
-    prerequisites = {"cliff-explosives", "h2o-hydraulic-science-pack", "atomic-bomb"},
+    prerequisites = {"cliff-explosives", "maraxsis-hydraulic-science-pack", "atomic-bomb"},
     unit = {
         count = 3000,
         ingredients = {
@@ -27,7 +27,7 @@ data:extend {{
             {"metallurgic-science-pack",     1},
             {"electromagnetic-science-pack", 1},
             {"agricultural-science-pack",    1},
-            {"h2o-hydraulic-science-pack",   1},
+            {"maraxsis-hydraulic-science-pack",   1},
         },
         time = 60,
     },
@@ -36,7 +36,7 @@ data:extend {{
 
 data:extend {{
     type = "recipe",
-    name = "h2o-big-cliff-explosives",
+    name = "maraxsis-big-cliff-explosives",
     enabled = false,
     energy_required = 10,
     ingredients = {
@@ -44,14 +44,14 @@ data:extend {{
         {type = "item", name = "atomic-bomb",      amount = 1},
     },
     results = {
-        {type = "item", name = "h2o-big-cliff-explosives", amount = 1},
+        {type = "item", name = "maraxsis-big-cliff-explosives", amount = 1},
     },
-    category = "h2o-hydro-plant",
+    category = "maraxsis-hydro-plant",
 }}
 
 data:extend {{
     type = "capsule",
-    name = "h2o-big-cliff-explosives",
+    name = "maraxsis-big-cliff-explosives",
     icon = "__maraxsis__/graphics/icons/big-cliff-explosives.png",
     icon_size = 64,
     stack_size = 10,
@@ -72,7 +72,7 @@ data:extend {{
                     type = "direct",
                     action_delivery = {
                         type = "projectile",
-                        projectile = "h2o-big-cliff-explosives",
+                        projectile = "maraxsis-big-cliff-explosives",
                         starting_speed = 0.3
                     }
                 }
@@ -81,8 +81,8 @@ data:extend {{
     },
 }}
 
-data:extend {h2o.merge(data.raw.projectile["cliff-explosives"], {
-    name = "h2o-big-cliff-explosives",
+data:extend {maraxsis.merge(data.raw.projectile["cliff-explosives"], {
+    name = "maraxsis-big-cliff-explosives",
     action = {
         {
             action_delivery = {

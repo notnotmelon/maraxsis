@@ -6,7 +6,7 @@ local function swap_nightvision(grid, surface, equipment)
     local equipment_name = equipment.name
     local position = equipment.position
     local target
-    if surface.name == h2o.TRENCH_SURFACE_NAME then
+    if surface.name == maraxsis.TRENCH_SURFACE_NAME then
         if equipment_name:match("%-disabled$") then return end
         target = equipment_name .. "-disabled"
     else
@@ -34,7 +34,7 @@ local function swap_nightvision_to_correct_prototype(grid, surface)
     end
 end
 
-h2o.on_event({
+maraxsis.on_event({
     defines.events.on_player_changed_surface,
     defines.events.on_player_armor_inventory_changed,
     defines.events.on_player_created,
@@ -57,7 +57,7 @@ h2o.on_event({
     end
 end)
 
-h2o.on_event(defines.events.on_equipment_inserted, function(event)
+maraxsis.on_event(defines.events.on_equipment_inserted, function(event)
     local equipment = event.equipment
     if not equipment.valid or equipment.type ~= "night-vision-equipment" then return end
     local grid = event.grid

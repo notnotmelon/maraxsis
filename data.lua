@@ -12,7 +12,7 @@ end
 _G.dome_collision_mask = "h2o_dome_collision_mask"
 _G.maraxsis_collision_mask = "h2o_maraxsis_collision_mask"
 
-_G.h2o = require "scripts.constants"
+_G.maraxsis = require "scripts.constants"
 require "lib.lib"
 require "prototypes.tile.water"
 require "prototypes.submarine"

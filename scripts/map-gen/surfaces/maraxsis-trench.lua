@@ -1,9 +1,9 @@
 local function get_surface()
-	local surface = game.surfaces[h2o.TRENCH_SURFACE_NAME]
+	local surface = game.surfaces[maraxsis.TRENCH_SURFACE_NAME]
 
 	if not surface then
-		surface = game.create_surface(h2o.TRENCH_SURFACE_NAME, {
-			seed = h2o.prototypes[h2o.MARAXSIS_SURFACE_NAME].get_surface().map_gen_settings.seed,
+		surface = game.create_surface(maraxsis.TRENCH_SURFACE_NAME, {
+			seed = maraxsis.prototypes[maraxsis.MARAXSIS_SURFACE_NAME].get_surface().map_gen_settings.seed,
 			autoplace_settings = {
 				entity = {
 					treat_missing_as_default = false,

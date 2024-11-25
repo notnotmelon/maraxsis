@@ -1,19 +1,19 @@
 data:extend {{
     type = "technology",
-    name = "h2o-wyrm-confinement",
+    name = "maraxsis-wyrm-confinement",
     icon = "__maraxsis__/graphics/technology/wyrm-confinement.png",
     icon_size = 256,
     effects = {
         {
             type = "unlock-recipe",
-            recipe = "h2o-wyrm-confinement-cell",
+            recipe = "maraxsis-wyrm-confinement-cell",
         },
         {
             type = "unlock-recipe",
-            recipe = "h2o-wyrm-specimen",
+            recipe = "maraxsis-wyrm-specimen",
         },
     },
-    prerequisites = {"h2o-glassworking"},
+    prerequisites = {"maraxsis-glassworking"},
     unit = {
         count = 3000,
         ingredients = {
@@ -35,7 +35,7 @@ data:extend {{
 
 data:extend {{
     type = "item",
-    name = "h2o-wyrm-confinement-cell",
+    name = "maraxsis-wyrm-confinement-cell",
     icon = "__maraxsis__/graphics/icons/wyrm-confinement-cell.png",
     icon_size = 64,
     stack_size = 10,
@@ -54,7 +54,7 @@ end
 
 data:extend {{
     type = "item",
-    name = "h2o-wyrm-specimen",
+    name = "maraxsis-wyrm-specimen",
     icon = "__maraxsis__/graphics/icons/wyrm-specimen-2.png",
     pictures = wyrm_variants,
     icon_size = 64,
@@ -63,37 +63,37 @@ data:extend {{
 
 data:extend {{
     type = "recipe",
-    name = "h2o-wyrm-confinement-cell",
+    name = "maraxsis-wyrm-confinement-cell",
     enabled = false,
     energy_required = 10,
     ingredients = {
-        {type = "item", name = "h2o-glass-panes",  amount = 3},
+        {type = "item", name = "maraxsis-glass-panes",  amount = 3},
         {type = "item", name = "advanced-circuit", amount = 1},
         {type = "item", name = "steel-plate",      amount = 1},
     },
     results = {
-        {type = "item", name = "h2o-wyrm-confinement-cell", amount = 1},
+        {type = "item", name = "maraxsis-wyrm-confinement-cell", amount = 1},
     },
 }}
 
 data:extend {{
     type = "recipe",
-    name = "h2o-wyrm-specimen",
+    name = "maraxsis-wyrm-specimen",
     enabled = false,
     energy_required = 10,
     ingredients = {
-        {type = "item", name = "h2o-wyrm-confinement-cell", amount = 1},
+        {type = "item", name = "maraxsis-wyrm-confinement-cell", amount = 1},
     },
     results = {
-        {type = "item", name = "h2o-wyrm-specimen", amount = 1},
+        {type = "item", name = "maraxsis-wyrm-specimen", amount = 1},
     },
 }}
 
 --[[
 local legs = {}
 
-data:extend{h2o.merge(data.raw['spider-vehicle']['spidertron'], {
-    name = 'h2o-wyrm',
+data:extend{maraxsis.merge(data.raw['spider-vehicle']['spidertron'], {
+    name = 'maraxsis-wyrm',
     icon = '__maraxsis__/graphics/icons/wyrm-specimen-2.png', -- todo: change to an actual icon
     icon_size = 64,
     flags = {'placeable-enemy', 'placeable-off-grid', 'not-repairable', 'breaths-air'},
@@ -116,8 +116,8 @@ data:extend{h2o.merge(data.raw['spider-vehicle']['spidertron'], {
     trash_inventory_size = 0,
 })}
 
-local leg = h2o.merge(data.raw['spider-leg']['spidertron-leg-' .. ((i % 8) + 1)], {
-    name = 'h2o-wyrm-leg-' .. i,
+local leg = maraxsis.merge(data.raw['spider-leg']['spidertron-leg-' .. ((i % 8) + 1)], {
+    name = 'maraxsis-wyrm-leg-' .. i,
     part_length = i / 4,
     flags = {'not-on-map', 'placeable-off-grid'},
     movement_acceleration = data.raw['spider-leg']['spidertron-leg-1'].movement_acceleration * (num_legs - i + 1),

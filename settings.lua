@@ -1,6 +1,6 @@
 data:extend {{
     type = "double-setting",
-    name = "h2o-water-opacity",
+    name = "maraxsis-water-opacity",
     setting_type = "startup",
     default_value = 255,
     minimum_value = 0,

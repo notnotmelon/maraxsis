@@ -1,7 +1,7 @@
 ---Returns a random number generator based on another generator.
 ---@param generator LuaRandomGenerator
 ---@return LuaRandomGenerator
-h2o.reseed = function(generator)
+maraxsis.reseed = function(generator)
 	return game.create_random_generator(generator(341, 2147483647))
 end
 
@@ -9,10 +9,10 @@ end
 ---@param i integer
 ---@param surface LuaSurface
 ---@param data number
-h2o.set_noise_constant = function(i, surface, data)
+maraxsis.set_noise_constant = function(i, surface, data)
 	local mgs = surface.map_gen_settings
 	mgs.autoplace_controls = mgs.autoplace_controls or {}
-	mgs.autoplace_controls["h2o-autoplace-control-" .. i] = mgs.autoplace_controls["h2o-autoplace-control-" .. i] or {}
-	mgs.autoplace_controls["h2o-autoplace-control-" .. i].richness = data
+	mgs.autoplace_controls["maraxsis-autoplace-control-" .. i] = mgs.autoplace_controls["maraxsis-autoplace-control-" .. i] or {}
+	mgs.autoplace_controls["maraxsis-autoplace-control-" .. i].richness = data
 	surface.map_gen_settings = mgs
 end

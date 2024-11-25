@@ -1,15 +1,15 @@
 data:extend {{
     type = "technology",
-    name = "h2o-sonar",
+    name = "maraxsis-sonar",
     icon = "__maraxsis__/graphics/technology/sonar.png",
     icon_size = 256,
     effects = {
         {
             type = "unlock-recipe",
-            recipe = "h2o-sonar"
+            recipe = "maraxsis-sonar"
         }
     },
-    prerequisites = {"h2o-maraxsis"},
+    prerequisites = {"maraxsis-maraxsis"},
     unit = {
         count = 3000,
         ingredients = {
@@ -29,16 +29,16 @@ data:extend {{
 
 data:extend {{
     type = "item",
-    name = "h2o-sonar",
+    name = "maraxsis-sonar",
     icon = "__maraxsis__/graphics/icons/sonar.png",
     icon_size = 64,
     stack_size = 10,
-    place_result = "h2o-sonar",
+    place_result = "maraxsis-sonar",
 }}
 
 data:extend {{
     type = "recipe",
-    name = "h2o-sonar",
+    name = "maraxsis-sonar",
     enabled = false,
     ingredients = {
         {type = "item", name = "steel-plate",           amount = 10},
@@ -48,18 +48,18 @@ data:extend {{
         {type = "item", name = "small-lamp",            amount = 2},
     },
     results = {
-        {type = "item", name = "h2o-sonar", amount = 1},
+        {type = "item", name = "maraxsis-sonar", amount = 1},
     },
     energy_required = 10,
 }}
 
-data:extend {h2o.merge(data.raw.radar.radar, {
+data:extend {maraxsis.merge(data.raw.radar.radar, {
     type = "radar",
-    name = "h2o-sonar",
+    name = "maraxsis-sonar",
     icon = "__maraxsis__/graphics/icons/sonar.png",
     icon_size = 64,
     flags = {"placeable-player", "player-creation"},
-    minable = {mining_time = 0.5, result = "h2o-sonar"},
+    minable = {mining_time = 0.5, result = "maraxsis-sonar"},
     max_health = 550,
     corpse = "radar-remnants",
     dying_explosion = "radar-explosion",
@@ -152,11 +152,11 @@ light_layers["hr-light-1-on"].shift.y = light_layers["hr-light-1-on"].shift.y - 
 light_layers["hr-light-2"].shift.y = light_layers["hr-light-2"].shift.y + 1
 light_layers["hr-light-2-on"].shift.y = light_layers["hr-light-2-on"].shift.y + 1
 
-data:extend {h2o.merge(data.raw.lamp["small-lamp"], {
-    name = "h2o-sonar-light-1",
+data:extend {maraxsis.merge(data.raw.lamp["small-lamp"], {
+    name = "maraxsis-sonar-light-1",
     collision_box = {},
-    localised_name = {"entity-name.h2o-sonar"},
-    localised_description = {"entity-description.h2o-sonar"},
+    localised_name = {"entity-name.maraxsis-sonar"},
+    localised_description = {"entity-description.maraxsis-sonar"},
     icon = "__maraxsis__/graphics/icons/sonar.png",
     icon_size = 64,
     flags = {"placeable-neutral", "player-creation"},
@@ -164,8 +164,8 @@ data:extend {h2o.merge(data.raw.lamp["small-lamp"], {
     max_health = 100,
     corpse = "small-remnants",
     dying_explosion = "nil",
-    collision_box = table.deepcopy(data.raw.radar["h2o-sonar"].collision_box),
-    selection_box = table.deepcopy(data.raw.radar["h2o-sonar"].selection_box),
+    collision_box = table.deepcopy(data.raw.radar["maraxsis-sonar"].collision_box),
+    selection_box = table.deepcopy(data.raw.radar["maraxsis-sonar"].selection_box),
     selectable_in_game = false,
     circuit_wire_connection_point = "nil",
     circuit_wire_max_distance = "nil",
@@ -186,8 +186,8 @@ data:extend {h2o.merge(data.raw.lamp["small-lamp"], {
     },
 })}
 
-data:extend {h2o.merge(data.raw.lamp["h2o-sonar-light-1"], {
-    name = "h2o-sonar-light-2",
+data:extend {maraxsis.merge(data.raw.lamp["maraxsis-sonar-light-1"], {
+    name = "maraxsis-sonar-light-2",
     picture_on = {
         layers = {
             light_layers["hr-light-2"],
@@ -210,10 +210,10 @@ local function shift_collision_box(entity, amount)
     entity.selection_box = {{x1, y1 + amount}, {x2, y2 + amount}}
 end
 
-shift_collision_box(data.raw.lamp["h2o-sonar-light-1"], -1)
-shift_collision_box(data.raw.lamp["h2o-sonar-light-2"], 1)
+shift_collision_box(data.raw.lamp["maraxsis-sonar-light-1"], -1)
+shift_collision_box(data.raw.lamp["maraxsis-sonar-light-2"], 1)
 
-for _, lamp in pairs {"h2o-sonar-light-1", "h2o-sonar-light-2"} do
+for _, lamp in pairs {"maraxsis-sonar-light-1", "maraxsis-sonar-light-2"} do
     lamp = data.raw.lamp[lamp]
     lamp.energy_source.render_no_power_icon = false
     lamp.energy_source.render_no_network_icon = false
