@@ -4,7 +4,7 @@ local events = {}
 ---@param event defines.events|defines.events[]|string
 ---@param f function
 h2o.on_event = function(event, f)
-	if event == 'on_built' then
+	if event == "on_built" then
 		h2o.on_event({
 			defines.events.on_built_entity,
 			defines.events.on_robot_built_entity,
@@ -13,7 +13,7 @@ h2o.on_event = function(event, f)
 		}, f)
 		return
 	end
-	if event == 'on_destroyed' then
+	if event == "on_destroyed" then
 		h2o.on_event({
 			defines.events.on_player_mined_entity,
 			defines.events.on_robot_mined_entity,
@@ -22,7 +22,7 @@ h2o.on_event = function(event, f)
 		}, f)
 		return
 	end
-	for _, event in pairs(type(event) == 'table' and event or {event}) do
+	for _, event in pairs(type(event) == "table" and event or {event}) do
 		event = tostring(event)
 		events[event] = events[event] or {}
 		table.insert(events[event], f)
@@ -52,13 +52,13 @@ end
 
 local finalized = false
 h2o.finalize_events = function()
-	if finalized then error('Events already finalized') end
+	if finalized then error("Events already finalized") end
 	local i = 0
 	for event, functions in pairs(events) do
 		local f = one_function_from_many(functions)
-		if type(event) == 'number' then
+		if type(event) == "number" then
 			script.on_nth_tick(event, f)
-		elseif event == 'on_init' then
+		elseif event == "on_init" then
 			script.on_init(f)
 			script.on_configuration_changed(f)
 		else
@@ -67,7 +67,7 @@ h2o.finalize_events = function()
 		i = i + 1
 	end
 	finalized = true
-	log('Finalized ' .. i .. ' events for ' .. script.mod_name)
+	log("Finalized " .. i .. " events for " .. script.mod_name)
 end
 
 _G.gui_events = {
@@ -86,7 +86,9 @@ _G.gui_events = {
 local function process_gui_event(event)
 	if event.element and event.element.valid then
 		for pattern, f in pairs(gui_events[event.name]) do
-			if event.element.name:match(pattern) then f(event); return end
+			if event.element.name:match(pattern) then
+				f(event); return
+			end
 		end
 	end
 end
@@ -112,7 +114,7 @@ function h2o.execute_later(function_key, ticks, ...)
 		from = {0, 0},
 		to = {0, 0},
 		create_build_effect_smoke = false,
-		surface = 'nauvis',
+		surface = "nauvis",
 		time_to_live = ticks
 	}
 	storage._delayed_functions = storage._delayed_functions or {}
@@ -127,7 +129,7 @@ h2o.on_event(defines.events.on_object_destroyed, function(event)
 	storage._delayed_functions[registration_number] = nil
 
 	local f = delayed_functions[data[1]]
-	if not f then error('No function found for key: ' .. function_key) end
+	if not f then error("No function found for key: " .. function_key) end
 	f(table.unpack(data[2]))
 end)
 

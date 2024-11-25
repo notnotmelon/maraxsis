@@ -1,18 +1,18 @@
 local composite_entity_creation = {
-    ['h2o-sonar'] = function(entity)
+    ["h2o-sonar"] = function(entity)
         local surface = entity.surface
         local position = entity.position
         local x, y = position.x, position.y
         local force = entity.force_index
 
         local light_1 = surface.create_entity {
-            name = 'h2o-sonar-light-1',
+            name = "h2o-sonar-light-1",
             position = {x, y + 1},
             force = force,
         }
 
         local light_2 = surface.create_entity {
-            name = 'h2o-sonar-light-2',
+            name = "h2o-sonar-light-2",
             position = {x, y - 1},
             force = force,
         }
@@ -21,7 +21,7 @@ local composite_entity_creation = {
     end,
 }
 
-h2o.on_event('on_init', function()
+h2o.on_event("on_init", function()
     storage.composite_entities = storage.composite_entities or {}
 end)
 
@@ -33,7 +33,7 @@ local function on_built(event)
     local sub_entities = f(entity)
     if not entity.valid then return end
     for _, sub_entity in pairs(sub_entities) do
-        if type(sub_entity) == 'table' then
+        if type(sub_entity) == "table" then
             sub_entity.destructible = false
             sub_entity.operable = false
             sub_entity.minable = false
@@ -42,7 +42,7 @@ local function on_built(event)
     end
     storage.composite_entities[entity.unit_number] = sub_entities
 end
-h2o.on_event('on_built', on_built)
+h2o.on_event("on_built", on_built)
 
 local function on_destroyed(event)
     local entity = event.entity
@@ -50,7 +50,7 @@ local function on_destroyed(event)
     local sub_entities = storage.composite_entities[entity.unit_number]
     if not sub_entities then return end
     for _, sub_entity in pairs(sub_entities) do
-        if type(sub_entity) == 'number' then
+        if type(sub_entity) == "number" then
             rendering.destroy(sub_entity)
         elseif sub_entity.valid then
             sub_entity.destroy()
@@ -59,7 +59,7 @@ local function on_destroyed(event)
     storage.composite_entities[entity.unit_number] = nil
 end
 
-h2o.on_event('on_destroyed', on_destroyed)
+h2o.on_event("on_destroyed", on_destroyed)
 
 h2o.on_event(defines.events.on_entity_cloned, function(event)
     local source = event.source

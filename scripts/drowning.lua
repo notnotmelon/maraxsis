@@ -3,11 +3,11 @@ local WARNING_MESSAGE = FULL_BREATH_NUM_TICKS / 4
 local UPDATE_RATE = 71
 
 local SUBMARINES = {
-    ['h2o-diesel-submarine'] = true,
-    ['h2o-nuclear-submarine'] = true,
+    ["h2o-diesel-submarine"] = true,
+    ["h2o-nuclear-submarine"] = true,
 }
 
-h2o.on_event('on_init', function()
+h2o.on_event("on_init", function()
     storage.breath = storage.breath or {}
 end)
 
@@ -35,14 +35,14 @@ h2o.on_nth_tick(UPDATE_RATE, function()
             if not surface.valid then goto continue_2 end
             local surface_index = surface.index
             if surface_index ~= player_surface_index then goto continue_2 end
-            
+
             local dome_position = pressure_dome_data.position
             local x, y = position.x - dome_position.x, position.y - dome_position.y
             if is_point_in_polygon(x, y) then
                 storage.breath[player.index] = nil
                 goto continue
             end
-            
+
             ::continue_2::
         end
 
@@ -54,7 +54,7 @@ h2o.on_nth_tick(UPDATE_RATE, function()
         storage.breath[player.index] = breath
 
         if breath <= WARNING_MESSAGE then
-            player.print({'maraxsis.drowning'}, {
+            player.print({"maraxsis.drowning"}, {
                 skip = defines.print_skip.if_visible
             })
         end
@@ -65,7 +65,7 @@ h2o.on_nth_tick(UPDATE_RATE, function()
 
         local true_damage = character.health - character.prototype.max_health * 0.1
         if true_damage <= 0 then
-            character.die('neutral')
+            character.die("neutral")
         else
             character.health = true_damage
         end

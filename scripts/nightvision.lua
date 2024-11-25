@@ -7,14 +7,14 @@ local function swap_nightvision(grid, surface, equipment)
     local position = equipment.position
     local target
     if surface.name == h2o.TRENCH_SURFACE_NAME then
-        if equipment_name:match('%-disabled$') then return end
-        target = equipment_name .. '-disabled'
+        if equipment_name:match("%-disabled$") then return end
+        target = equipment_name .. "-disabled"
     else
-        target = equipment_name:gsub('%-disabled$', '')
+        target = equipment_name:gsub("%-disabled$", "")
         if target == equipment_name then return end
     end
 
-    local all_nightvision = prototypes.get_filtered_equipment {{filter = 'type', type = 'night-vision-equipment'}}
+    local all_nightvision = prototypes.get_filtered_equipment {{filter = "type", type = "night-vision-equipment"}}
     if not all_nightvision[target] then return end
 
     local energy = equipment.energy
@@ -28,7 +28,7 @@ end
 ---@param surface LuaSurface
 local function swap_nightvision_to_correct_prototype(grid, surface)
     for _, equipment in pairs(grid.equipment) do
-        if equipment.type == 'night-vision-equipment' then
+        if equipment.type == "night-vision-equipment" then
             swap_nightvision(grid, surface, equipment)
         end
     end
@@ -59,7 +59,7 @@ end)
 
 h2o.on_event(defines.events.on_equipment_inserted, function(event)
     local equipment = event.equipment
-    if not equipment.valid or equipment.type ~= 'night-vision-equipment' then return end
+    if not equipment.valid or equipment.type ~= "night-vision-equipment" then return end
     local grid = event.grid
     if not grid.valid then return end
 

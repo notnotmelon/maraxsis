@@ -1,6 +1,6 @@
-local fish = require 'graphics.entity.fish.fish'
+local fish = require "graphics.entity.fish.fish"
 
-local map_colors = table.deepcopy{
+local map_colors = table.deepcopy {
     defines.color.goldenrod,
     defines.color.azure,
     defines.color.yellowgreen,
@@ -30,15 +30,15 @@ end
 h2o.tropical_fish_names = {}
 
 for i, v in pairs(fish) do
-    local name = 'h2o-tropical-fish-' .. i
-    
-    v.filename = '__maraxsis__/graphics/entity/fish/' .. i .. '.png'
+    local name = "h2o-tropical-fish-" .. i
+
+    v.filename = "__maraxsis__/graphics/entity/fish/" .. i .. ".png"
     v.direction_count = 32
     v.frame_count = 10
     v.animation_speed = 0.4
     v.scale = 1.25
     v.apply_projection = true
-    v.flags = {'no-scale'}
+    v.flags = {"no-scale"}
     v = {
         layers = {
             v,
@@ -48,45 +48,45 @@ for i, v in pairs(fish) do
     v.layers[2].draw_as_shadow = true
     v.layers[2].shift.x = v.layers[2].shift.x + 3
     v.layers[2].shift.y = v.layers[2].shift.y + 3.5
-    data:extend{{
-        localised_name = {'entity-name.fish'},
-        type = 'unit',
+    data:extend {{
+        localised_name = {"entity-name.fish"},
+        type = "unit",
         name = name,
-        render_layer = 'higher-object-above',
-        icon = '__maraxsis__/graphics/entity/fish/icons/' .. i .. '.png',
+        render_layer = "higher-object-above",
+        icon = "__maraxsis__/graphics/entity/fish/icons/" .. i .. ".png",
         icon_size = 64,
         icon_mipmaps = nil,
-        subgroup = 'creatures',
-        order = 'c-' .. i,
-        flags = {'placeable-neutral', 'placeable-off-grid', 'not-repairable', 'breaths-air'},
-        max_health = data.raw.fish['fish'].max_health,
+        subgroup = "creatures",
+        order = "c-" .. i,
+        flags = {"placeable-neutral", "placeable-off-grid", "not-repairable", "breaths-air"},
+        max_health = data.raw.fish["fish"].max_health,
         map_color = map_colors[tonumber(i)],
-        healing_per_tick = data.raw.fish['fish'].healing_per_tick,
+        healing_per_tick = data.raw.fish["fish"].healing_per_tick,
         collision_box = {{0, 0}, {0, 0}},
         selection_box = {{-0.5, -1}, {0.5, 1}},
         collision_mask = {layers = {}},
         autoplace = {
-            probability_expression = 'maraxsis_tropical_fish_' .. i,
+            probability_expression = "maraxsis_tropical_fish_" .. i,
         },
         vision_distance = 0,
-        movement_speed = data.raw.unit['small-biter'].movement_speed * 2,
-        distance_per_frame = data.raw.unit['small-biter'].distance_per_frame,
+        movement_speed = data.raw.unit["small-biter"].movement_speed * 2,
+        distance_per_frame = data.raw.unit["small-biter"].distance_per_frame,
         run_animation = v,
         attack_parameters = {
-            type = 'projectile',
-            ammo_category = 'melee',
+            type = "projectile",
+            ammo_category = "melee",
             cooldown = 60,
             range = 0,
             ammo_type = {
-                category = 'melee',
+                category = "melee",
                 action = {
-                    type = 'direct',
+                    type = "direct",
                     action_delivery = {
-                        type = 'instant',
+                        type = "instant",
                         target_effects = {
                             {
-                                type = 'damage',
-                                damage = {amount = 0, type = 'physical'}
+                                type = "damage",
+                                damage = {amount = 0, type = "physical"}
                             }
                         }
                     }
@@ -94,11 +94,11 @@ for i, v in pairs(fish) do
             },
             animation = v,
         },
-        water_reflection = data.raw.fish['fish'].water_reflection,
+        water_reflection = data.raw.fish["fish"].water_reflection,
         absorbtions_to_join_attack = {},
         distraction_cooldown = 300,
         rotation_speed = 0.1,
-        dying_sound = data.raw.fish['fish'].mining_sound,
+        dying_sound = data.raw.fish["fish"].mining_sound,
         has_belt_immunity = true,
         ai_settings = {
             destroy_when_commands_fail = false,
@@ -108,9 +108,9 @@ for i, v in pairs(fish) do
         },
         affected_by_tiles = false,
         minable = {
-            mining_time = data.raw.fish['fish'].minable.mining_time,
+            mining_time = data.raw.fish["fish"].minable.mining_time,
             results = {
-                {type = 'item', name = 'h2o-tropical-fish', amount = 5},
+                {type = "item", name = "h2o-tropical-fish", amount = 5},
             }
         }
     }}
@@ -118,115 +118,115 @@ for i, v in pairs(fish) do
     h2o.tropical_fish_names[i] = name
 end
 
-data:extend{{
-    type = 'technology',
-    name = 'h2o-piscary',
-    icon = '__maraxsis__/graphics/technology/piscary.png',
+data:extend {{
+    type = "technology",
+    name = "h2o-piscary",
+    icon = "__maraxsis__/graphics/technology/piscary.png",
     icon_size = 256,
     icon_mipmaps = nil,
     effects = {},
-    prerequisites = {'h2o-water-treatment', 'uranium-ammo'},
+    prerequisites = {"h2o-water-treatment", "uranium-ammo"},
     unit = {
         count = 3000,
         ingredients = {
-            {'automation-science-pack',    1},
-            {'logistic-science-pack',      1},
-            {'chemical-science-pack',      1},
-            {'space-science-pack',      1},
-            {'production-science-pack',    1},
-            {'utility-science-pack',       1},
-            {'metallurgic-science-pack', 1},
-            {'electromagnetic-science-pack', 1},
-            {'agricultural-science-pack', 1},
+            {"automation-science-pack",      1},
+            {"logistic-science-pack",        1},
+            {"chemical-science-pack",        1},
+            {"space-science-pack",           1},
+            {"production-science-pack",      1},
+            {"utility-science-pack",         1},
+            {"metallurgic-science-pack",     1},
+            {"electromagnetic-science-pack", 1},
+            {"agricultural-science-pack",    1},
         },
         time = 60,
     },
-    order = 'ed[piscary]',
+    order = "ed[piscary]",
 }}
 
 local function add_to_tech(recipe)
-    table.insert(data.raw.technology['h2o-piscary'].effects, {type = 'unlock-recipe', recipe = recipe})
+    table.insert(data.raw.technology["h2o-piscary"].effects, {type = "unlock-recipe", recipe = recipe})
 end
 
 local microplastics_variants = {}
 for i = 1, 3 do
     microplastics_variants[i] = {
-        filename = '__maraxsis__/graphics/icons/microplastics-' .. i .. '.png',
+        filename = "__maraxsis__/graphics/icons/microplastics-" .. i .. ".png",
         width = 64,
         height = 64,
         scale = 1 / 3,
-        flags = {'icon'},
+        flags = {"icon"},
         mipmap_count = 4,
         icon_mipmaps = 4,
         mipmaps = 4, -- i forgor the name
     }
 end
 
-data:extend{{
-    type = 'item',
-    name = 'h2o-microplastics',
-    icon = '__maraxsis__/graphics/icons/microplastics-1.png',
+data:extend {{
+    type = "item",
+    name = "h2o-microplastics",
+    icon = "__maraxsis__/graphics/icons/microplastics-1.png",
     icon_size = 64,
     icon_mipmaps = 4,
     pictures = microplastics_variants,
-    stack_size = data.raw.item['plastic-bar'].stack_size / 2,
+    stack_size = data.raw.item["plastic-bar"].stack_size / 2,
 }}
 
-data:extend{{
-    type = 'recipe',
+data:extend {{
+    type = "recipe",
     name = "h2o-microplastics",
     enabled = false,
     energy_required = 10,
     ingredients = {
-        {type = 'item', name = 'h2o-tropical-fish', amount = 1},
-        {type = 'item', name = 'uranium-rounds-magazine', amount = 1},
+        {type = "item", name = "h2o-tropical-fish",       amount = 1},
+        {type = "item", name = "uranium-rounds-magazine", amount = 1},
     },
     results = {
-        {type = 'item', name = 'h2o-microplastics', amount = 1},
+        {type = "item", name = "h2o-microplastics", amount = 1},
     },
-    category = 'h2o-hydro-plant',
+    category = "h2o-hydro-plant",
     main_product = "h2o-microplastics",
     allow_productivity = true,
 }}
 add_to_tech("h2o-microplastics")
 
-data:extend{{
-    type = 'recipe',
-    name = 'h2o-smelt-microplastics',
+data:extend {{
+    type = "recipe",
+    name = "h2o-smelt-microplastics",
     enabled = false,
-    energy_required = data.raw.recipe['iron-plate'].energy_required,
+    energy_required = data.raw.recipe["iron-plate"].energy_required,
     ingredients = {
-        {type = 'item', name = 'h2o-microplastics', amount = 1},
+        {type = "item", name = "h2o-microplastics", amount = 1},
     },
     results = {
-        {type = 'item', name = 'plastic-bar', amount = 1},
+        {type = "item", name = "plastic-bar", amount = 1},
     },
     category = "smelting",
     allow_productivity = true,
-    main_product = 'plastic-bar',
+    main_product = "plastic-bar",
     emissions_multiplier = 3
 }}
-add_to_tech('h2o-smelt-microplastics')
+add_to_tech("h2o-smelt-microplastics")
 
 local tropical_fish_variants = {}
 for i, v in pairs(fish) do
     tropical_fish_variants[tonumber(i)] = {
-        filename = '__maraxsis__/graphics/entity/fish/icons/' .. i .. '.png',
+        filename = "__maraxsis__/graphics/entity/fish/icons/" .. i .. ".png",
         width = 64,
         height = 64,
         scale = 1 / 3,
-        flags = {'icon'},
+        flags = {"icon"},
     }
 end
-data:extend{{
-    type = 'capsule',
-    name = 'h2o-tropical-fish',
-    icon = '__maraxsis__/graphics/icons/tropical-fish.png',
+data:extend {{
+    type = "capsule",
+    name = "h2o-tropical-fish",
+    icon = "__maraxsis__/graphics/icons/tropical-fish.png",
     icon_size = 64,
     icon_mipmaps = nil,
     pictures = tropical_fish_variants,
-    stack_size = data.raw.capsule['raw-fish'].stack_size,
-    capsule_action = table.deepcopy(data.raw.capsule['raw-fish'].capsule_action),
+    stack_size = data.raw.capsule["raw-fish"].stack_size,
+    capsule_action = table.deepcopy(data.raw.capsule["raw-fish"].capsule_action),
 }}
-local dmg = data.raw.capsule['h2o-tropical-fish'].capsule_action.attack_parameters.ammo_type.action.action_delivery.target_effects[1].damage
+local dmg = data.raw.capsule["h2o-tropical-fish"].capsule_action.attack_parameters.ammo_type.action.action_delivery.target_effects[1].damage
 dmg.amount = dmg.amount * 1.5

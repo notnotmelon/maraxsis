@@ -34,7 +34,7 @@ end
 ---@return any, any
 ---@overload fun(tbl: table, v: any): any, any
 table.find = function(tbl, f, ...)
-    if type(f) == 'function' then
+    if type(f) == "function" then
         for k, v in pairs(tbl) do if f(v, k, ...) then return v, k end end
     else
         for k, v in pairs(tbl) do if v == f then return v, k end end
@@ -59,7 +59,7 @@ end
 ---@return boolean
 ---@overload fun(tbl: table, v: any): boolean
 table.all = function(tbl, f, ...)
-    if type(f) == 'function' then
+    if type(f) == "function" then
         for k, v in pairs(tbl) do if not f(v, k, ...) then return false end end
     else
         for k, v in pairs(tbl) do if v ~= f then return false end end
@@ -132,7 +132,7 @@ end
 ---@return table
 table.merge = function(...)
     local result = {}
-    for _, tbl in pairs{...} do
+    for _, tbl in pairs {...} do
         for k, v in pairs(tbl) do result[k] = v end
     end
     return result
@@ -143,7 +143,7 @@ end
 ---@return any[]
 table.array_combine = function(...)
     local result = {}
-    for _, tbl in pairs{...} do
+    for _, tbl in pairs {...} do
         for _, v in pairs(tbl) do result[#result + 1] = v end
     end
     return result
@@ -153,41 +153,41 @@ end
 ---@param tbl any[]
 ---@return any[]
 table.reverse = function(tbl)
-	for i = 1, #tbl / 2 do
+    for i = 1, #tbl / 2 do
         tbl[i], tbl[#tbl - i + 1] = tbl[#tbl - i + 1], tbl[i]
     end
     return tbl
 end
 
 local function shuffle(t)
-	local keys = {}
-	local n = 0
-	for k in pairs(t) do
-		n = n + 1
-		keys[n] = k
-	end
+    local keys = {}
+    local n = 0
+    for k in pairs(t) do
+        n = n + 1
+        keys[n] = k
+    end
 
-	while n > 1 do
-		local k = math.random(n)
-		keys[n], keys[k] = keys[k], keys[n]
-		n = n - 1
-	end
+    while n > 1 do
+        local k = math.random(n)
+        keys[n], keys[k] = keys[k], keys[n]
+        n = n - 1
+    end
 
-	return keys
+    return keys
 end
 ---Like normal pairs(), but in deterministic randomized order
 ---@param t table
 ---@return fun():any, any
 function h2o.shuffled_pairs(t)
-	local shuffled_keys = shuffle(t)
-	local i = 0
-	return function()
-		i = i + 1
-		local key = shuffled_keys[i]
-		if key then
-			return key, t[key]
-		end
-	end
+    local shuffled_keys = shuffle(t)
+    local i = 0
+    return function()
+        i = i + 1
+        local key = shuffled_keys[i]
+        if key then
+            return key, t[key]
+        end
+    end
 end
 
 ---Returns a new array with duplicates removed.

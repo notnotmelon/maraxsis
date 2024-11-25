@@ -1,14 +1,14 @@
 local dome = {
-    filename = '__maraxsis__/graphics/entity/pressure-dome/pressure-dome.png',
+    filename = "__maraxsis__/graphics/entity/pressure-dome/pressure-dome.png",
     width = 1344,
     height = 1344,
     scale = 0.935,
     shift = {0, -1.25},
-    flags = {'no-scale'},
+    flags = {"no-scale"},
 }
 
 local light_2 = {
-    filename = '__core__/graphics/light-medium.png',
+    filename = "__core__/graphics/light-medium.png",
     width = 300,
     height = 300,
     scale = 7,
@@ -17,106 +17,106 @@ local light_2 = {
 }
 
 local base_shadow = {
-    filename = '__maraxsis__/graphics/entity/pressure-dome/base-shadow.png',
+    filename = "__maraxsis__/graphics/entity/pressure-dome/base-shadow.png",
     width = 1344,
     height = 1344,
     scale = 0.935,
     shift = {0, -1.25},
-    flags = {'no-scale'},
+    flags = {"no-scale"},
     draw_as_shadow = true,
 }
 
 local cage_shadow = {
-    filename = '__maraxsis__/graphics/entity/pressure-dome/cage-shadow.png',
+    filename = "__maraxsis__/graphics/entity/pressure-dome/cage-shadow.png",
     width = 1344,
     height = 1344,
     scale = 0.935,
     shift = {0, -1.25},
-    flags = {'no-scale'},
+    flags = {"no-scale"},
 }
 
 data:extend {{
-    type = 'item',
-    name = 'h2o-pressure-dome',
-    icon = '__maraxsis__/graphics/icons/pressure-dome.png',
+    type = "item",
+    name = "h2o-pressure-dome",
+    icon = "__maraxsis__/graphics/icons/pressure-dome.png",
     icon_size = 64,
-    place_result = 'h2o-pressure-dome',
+    place_result = "h2o-pressure-dome",
     stack_size = 10,
 }}
 
 data:extend {{
-    type = 'recipe',
-    name = 'h2o-pressure-dome',
+    type = "recipe",
+    name = "h2o-pressure-dome",
     enabled = false,
     ingredients = {
-        {type = 'item', name = 'pump',             amount = 10},
-        {type = 'item', name = 'pipe',             amount = 50},
-        {type = 'item', name = 'steel-plate',      amount = 500},
-        {type = 'item', name = 'h2o-glass-panes',  amount = 5000},
-        {type = 'item', name = 'space-platform-foundation', amount = 880},
-        {type = 'item', name = 'small-lamp',       amount = 30},
+        {type = "item", name = "pump",                      amount = 10},
+        {type = "item", name = "pipe",                      amount = 50},
+        {type = "item", name = "steel-plate",               amount = 500},
+        {type = "item", name = "h2o-glass-panes",           amount = 5000},
+        {type = "item", name = "space-platform-foundation", amount = 880},
+        {type = "item", name = "small-lamp",                amount = 30},
     },
     results = {
-        {type = 'item', name = 'h2o-pressure-dome', amount = 1},
+        {type = "item", name = "h2o-pressure-dome", amount = 1},
     },
     energy_required = 10,
-    category = 'h2o-hydro-plant',
+    category = "h2o-hydro-plant",
 }}
 
 local function collision_box() return {{-16, -16}, {16, 16}} end
 
 data:extend {{
-    type = 'simple-entity-with-owner',
-    name = 'h2o-pressure-dome',
-    remove_decoratives = 'false',
-    icon = '__maraxsis__/graphics/icons/pressure-dome.png',
+    type = "simple-entity-with-owner",
+    name = "h2o-pressure-dome",
+    remove_decoratives = "false",
+    icon = "__maraxsis__/graphics/icons/pressure-dome.png",
     icon_size = 64,
-    flags = {'placeable-player', 'player-creation', 'not-on-map'},
+    flags = {"placeable-player", "player-creation", "not-on-map"},
     max_health = 10000,
     collision_box = collision_box(),
-    minable = {mining_time = 1, result = 'h2o-pressure-dome'},
+    minable = {mining_time = 1, result = "h2o-pressure-dome"},
     selection_box = {{-16.5, -16.5}, {16.5, 16.5}},
     drawing_box = collision_box(),
-    collision_mask = {colliding_with_tiles_only = true, layers = {['empty_space'] = true}},
-    render_layer = 'higher-object-above',
+    collision_mask = {colliding_with_tiles_only = true, layers = {["empty_space"] = true}},
+    render_layer = "higher-object-above",
     picture = {
         layers = {cage_shadow, base_shadow, dome},
     },
     build_sound = {
-        filename = '__core__/sound/build-ghost-tile.ogg',
+        filename = "__core__/sound/build-ghost-tile.ogg",
         volume = 0
     },
     created_smoke = {
-        type = 'create-trival-smoke',
-        smoke_name = 'h2o-invisible-smoke',
+        type = "create-trival-smoke",
+        smoke_name = "h2o-invisible-smoke",
     },
     created_effect = {
-        type = 'direct',
+        type = "direct",
         action_delivery = {
-            type = 'instant',
+            type = "instant",
             source_effects = {
-                type = 'script',
-                effect_id = 'on_built_maraxsis_pressure_dome'
+                type = "script",
+                effect_id = "on_built_maraxsis_pressure_dome"
             }
         }
     }
 }}
 
-data:extend{{
-    type = 'sprite',
-    name = 'h2o-pressure-dome-sprite',
+data:extend {{
+    type = "sprite",
+    name = "h2o-pressure-dome-sprite",
     layers = {cage_shadow, base_shadow, dome},
 }}
 
-data:extend {h2o.merge(data.raw['lamp']['small-lamp'], {
-    type = 'lamp',
-    name = 'h2o-pressure-dome-lamp',
-    localised_name = {'entity-name.h2o-pressure-dome'},
-    localised_description = {'entity-description.h2o-pressure-dome'},
-    remove_decoratives = 'false',
-    icon = '__maraxsis__/graphics/icons/pressure-dome.png',
+data:extend {h2o.merge(data.raw["lamp"]["small-lamp"], {
+    type = "lamp",
+    name = "h2o-pressure-dome-lamp",
+    localised_name = {"entity-name.h2o-pressure-dome"},
+    localised_description = {"entity-description.h2o-pressure-dome"},
+    remove_decoratives = "false",
+    icon = "__maraxsis__/graphics/icons/pressure-dome.png",
     icon_size = 64,
-    flags = {'placeable-player', 'player-creation', 'not-on-map', 'not-blueprintable'},
+    flags = {"placeable-player", "player-creation", "not-on-map", "not-blueprintable"},
     max_health = 10000,
     collision_box = collision_box(),
     selection_box = {{-0.01, -0.01}, {0.01, 0.01}},
@@ -127,7 +127,7 @@ data:extend {h2o.merge(data.raw['lamp']['small-lamp'], {
     picture_on = h2o.empty_image(),
     picture_off = h2o.empty_image(),
     circuit_wire_max_distance = 16,
-    energy_usage_per_tick = '2MW',
+    energy_usage_per_tick = "2MW",
     glow_size = 30,
     light = {
         size = 45,
@@ -149,15 +149,15 @@ data:extend {h2o.merge(data.raw['lamp']['small-lamp'], {
     },
 })}
 
-data:extend{h2o.merge(data.raw['constant-combinator']['constant-combinator'], {
-    type = 'constant-combinator',
-    name = 'h2o-pressure-dome-combinator',
-    localised_name = {'entity-name.h2o-pressure-dome'},
-    localised_description = {'entity-description.h2o-pressure-dome'},
-    remove_decoratives = 'false',
-    icon = '__maraxsis__/graphics/icons/pressure-dome.png',
+data:extend {h2o.merge(data.raw["constant-combinator"]["constant-combinator"], {
+    type = "constant-combinator",
+    name = "h2o-pressure-dome-combinator",
+    localised_name = {"entity-name.h2o-pressure-dome"},
+    localised_description = {"entity-description.h2o-pressure-dome"},
+    remove_decoratives = "false",
+    icon = "__maraxsis__/graphics/icons/pressure-dome.png",
     icon_size = 64,
-    flags = {'placeable-player', 'player-creation', 'not-on-map', 'not-blueprintable'},
+    flags = {"placeable-player", "player-creation", "not-on-map", "not-blueprintable"},
     max_health = 10000,
     selectable_in_game = false,
     item_slot_count = 500,
@@ -187,9 +187,9 @@ data:extend{h2o.merge(data.raw['constant-combinator']['constant-combinator'], {
     },
     draw_copper_wires = false,
     draw_circuit_wires = false,
-    sprites = 'nil',
-    activity_led_sprites = 'nil',
-    activity_led_light = 'nil',
+    sprites = "nil",
+    activity_led_sprites = "nil",
+    activity_led_light = "nil",
     collision_mask = {layers = {}},
 })}
 
@@ -219,55 +219,55 @@ local function shift_the_circuit_connection_point(entity, x, y)
     end
 end
 
-shift_the_circuit_connection_point(data.raw['lamp']['h2o-pressure-dome-lamp'], 4, 17)
+shift_the_circuit_connection_point(data.raw["lamp"]["h2o-pressure-dome-lamp"], 4, 17)
 
 data:extend {{
-    type = 'trivial-smoke',
-    name = 'h2o-invisible-smoke',
+    type = "trivial-smoke",
+    name = "h2o-invisible-smoke",
     duration = 1,
     fade_away_duration = 1,
     spread_duration = 1,
     animation = {
-        filename = '__core__/graphics/empty.png',
-        priority = 'high',
+        filename = "__core__/graphics/empty.png",
+        priority = "high",
         width = 1,
         height = 1,
-        flags = {'smoke'},
+        flags = {"smoke"},
         frame_count = 1,
     },
     cyclic = true
 }}
 
 data:extend {{
-    type = 'fluid',
-    name = 'h2o-atmosphere',
+    type = "fluid",
+    name = "h2o-atmosphere",
     default_temperature = 25,
     max_temperature = 100,
-    heat_capacity = '1kJ',
+    heat_capacity = "1kJ",
     base_flow_rate = data.raw.fluid.steam.base_flow_rate,
     base_color = {1, 1, 1},
     flow_color = {0.5, 0.5, 1},
-    icon = '__maraxsis__/graphics/icons/atmosphere.png',
+    icon = "__maraxsis__/graphics/icons/atmosphere.png",
     icon_size = 64,
     gas_temperature = 25,
 }}
 
-local tile = h2o.merge(data.raw.tile['space-platform-foundation'], {
-    name = 'h2o-pressure-dome-tile',
+local tile = h2o.merge(data.raw.tile["space-platform-foundation"], {
+    name = "h2o-pressure-dome-tile",
     is_foundation = true,
     minable = {
-        mining_time = 2^63-1, -- weird hack needed to make this a "top" tile. top tiles require minable properties however these dome tiles actually should not be minable
+        mining_time = 2 ^ 63 - 1, -- weird hack needed to make this a "top" tile. top tiles require minable properties however these dome tiles actually should not be minable
         results = {},
     },
     collision_mask = {layers = {[dome_collision_mask] = true}},
     map_color = {r = 0.5, g = 0.5, b = 0.75},
     can_be_part_of_blueprint = false,
-    layer_group = 'ground-artificial'
+    layer_group = "ground-artificial"
 })
 data:extend {tile}
 
 local blank_animation = {
-    filename = '__core__/graphics/empty.png',
+    filename = "__core__/graphics/empty.png",
     line_length = 1,
     width = 1,
     height = 1,
@@ -276,33 +276,33 @@ local blank_animation = {
 }
 
 data:extend {{
-    type = 'simple-entity-with-owner',
-    name = 'h2o-pressure-dome-collision',
-    localised_name = {'entity-name.h2o-pressure-dome'},
-    icon = '__maraxsis__/graphics/icons/pressure-dome.png',
+    type = "simple-entity-with-owner",
+    name = "h2o-pressure-dome-collision",
+    localised_name = {"entity-name.h2o-pressure-dome"},
+    icon = "__maraxsis__/graphics/icons/pressure-dome.png",
     icon_size = 64,
-    flags = {'placeable-player', 'player-creation', 'placeable-off-grid', 'not-on-map', 'building-direction-8-way', 'not-blueprintable'},
+    flags = {"placeable-player", "player-creation", "placeable-off-grid", "not-on-map", "building-direction-8-way", "not-blueprintable"},
     max_health = 10000,
     collision_box = {{-7, -0.3}, {7, 0.3}},
     selection_box = {{-7, -0.5}, {7, 0.5}},
     drawing_box = {{0, 0}, {0, 0}},
     collision_mask = {layers = {
-        ['water_tile'] = true,
-        ['object'] = true,
-        ['item'] = true,
-        [maraxsis_collision_mask] = true, 
+        ["water_tile"] = true,
+        ["object"] = true,
+        ["item"] = true,
+        [maraxsis_collision_mask] = true,
         [dome_collision_mask] = true
     }},
     squeak_behaviour = false,
-    minable = {mining_time = 1, result = 'h2o-pressure-dome'},
-    placeable_by = {{item = 'h2o-pressure-dome', count = 1}},
+    minable = {mining_time = 1, result = "h2o-pressure-dome"},
+    placeable_by = {{item = "h2o-pressure-dome", count = 1}},
     resistances = {
         {
-            type = 'acid',
+            type = "acid",
             percent = 90
         },
         {
-            type = 'fire',
+            type = "fire",
             percent = 100
         },
     }

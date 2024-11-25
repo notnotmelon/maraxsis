@@ -1,12 +1,12 @@
 local TRENCH_MOVEMENT_FACTOR = 2 -- each tile moved in the trench layer = 2 tiles in the surface layer
 
 local SUBMARINES = {
-    ['h2o-diesel-submarine'] = true,
-    ['h2o-nuclear-submarine'] = true,
+    ["h2o-diesel-submarine"] = true,
+    ["h2o-nuclear-submarine"] = true,
 }
 
-local TRENCH_SURFACE_NAME = 'Trench'
-local MARAXSIS_SURFACE_NAME = 'maraxsis'
+local TRENCH_SURFACE_NAME = "Trench"
+local MARAXSIS_SURFACE_NAME = "maraxsis"
 
 local MARAXSIS_SURFACES = { -- all surfaces with water mechanics
     [TRENCH_SURFACE_NAME] = true,

@@ -1,13 +1,13 @@
-local collision_mask_util = require '__core__/lualib/collision-mask-util'
+local collision_mask_util = require "__core__/lualib/collision-mask-util"
 
-data:extend{{
+data:extend {{
     name = maraxsis_collision_mask,
-    type = 'collision-layer',
+    type = "collision-layer",
 }}
 
 data:extend {{
     name = dome_collision_mask,
-    type = 'collision-layer',
+    type = "collision-layer",
 }}
 
 local processed_prototypes = table.deepcopy(defines.prototypes.entity)
@@ -16,149 +16,149 @@ for prototype, _ in pairs(processed_prototypes) do
 end
 
 local prototypes_that_cant_be_placed_on_water = {
-    'container',
-    'linked-container',
-    'logistic-container',
-    'infinity-container',
-    'accumulator',
-    'lab',
-    'assembling-machine',
-    'boiler',
-    'burner-generator',
-    'electric-energy-interface',
-    'fire',
-    'furnace',
-    'generator',
-    'market',
-    'reactor',
-    'roboport',
-    'tree',
-    'power-switch',
-    'simple-entity-with-force',
-    'simple-entity-with-owner',
-    'solar-panel',
+    "container",
+    "linked-container",
+    "logistic-container",
+    "infinity-container",
+    "accumulator",
+    "lab",
+    "assembling-machine",
+    "boiler",
+    "burner-generator",
+    "electric-energy-interface",
+    "fire",
+    "furnace",
+    "generator",
+    "market",
+    "reactor",
+    "roboport",
+    "tree",
+    "power-switch",
+    "simple-entity-with-force",
+    "simple-entity-with-owner",
+    "solar-panel",
 }
 
 local prototypes_that_cant_be_placed_in_a_dome = {
-    'rocket-silo',
-    'turret',
-    'ammo-turret',
-    'electric-turret',
-    'land-mine',
-    data.raw['assembling-machine']['h2o-hydro-plant'],
-    data.raw['assembling-machine']['h2o-hydro-plant-extra-module-slots'],
-    data.raw['radar']['h2o-sonar'],
+    "rocket-silo",
+    "turret",
+    "ammo-turret",
+    "electric-turret",
+    "land-mine",
+    data.raw["assembling-machine"]["h2o-hydro-plant"],
+    data.raw["assembling-machine"]["h2o-hydro-plant-extra-module-slots"],
+    data.raw["radar"]["h2o-sonar"],
     --data.raw['straight-rail']['h2o-straight-waterway'],
     --data.raw['curved-rail']['h2o-curved-waterway'],
 }
 
 local prototypes_that_cant_be_placed_in_a_dome_or_on_water = {
-    'artillery-turret',
-    'artillery-wagon',
-    'car',
-    'cargo-wagon',
-    'combat-robot',
+    "artillery-turret",
+    "artillery-wagon",
+    "car",
+    "cargo-wagon",
+    "combat-robot",
     --'curved-rail',
-    'fluid-turret',
-    'fluid-wagon',
-    'locomotive',
-    'spider-leg',
-    'spider-vehicle',
-    'straight-rail',
-    'unit',
-    'unit-spawner',
-    'tile',
-    'radar', -- todo: add sonar
-    data.raw['mining-drill']['burner-mining-drill']
+    "fluid-turret",
+    "fluid-wagon",
+    "locomotive",
+    "spider-leg",
+    "spider-vehicle",
+    "straight-rail",
+    "unit",
+    "unit-spawner",
+    "tile",
+    "radar", -- todo: add sonar
+    data.raw["mining-drill"]["burner-mining-drill"]
 }
 
 local prototypes_that_can_be_placed_whereever = {
-    data.raw['assembling-machine']['chemical-plant'],
-    data.raw['electric-energy-interface']['electric-energy-interface'],
-    data.raw['electric-energy-interface']['ee-infinity-accumulator-primary-output'],
-    data.raw['electric-energy-interface']['ee-infinity-accumulator-secondary-output'],
-    data.raw['electric-energy-interface']['ee-infinity-accumulator-tertiary-output'],
-    data.raw['electric-energy-interface']['ee-infinity-accumulator-primary-input'],
-    data.raw['electric-energy-interface']['ee-infinity-accumulator-secondary-input'],
-    data.raw['electric-energy-interface']['ee-infinity-accumulator-tertiary-input'],
-    data.raw['electric-energy-interface']['ee-infinity-accumulator-tertiary-buffer'],
-    data.raw['spider-leg']['h2o-submarine-leg'],
-    data.raw['spider-vehicle']['h2o-diesel-submarine'],
-    data.raw['spider-vehicle']['h2o-nuclear-submarine'],
-    data.raw.tile['h2o-pressure-dome-tile'],
+    data.raw["assembling-machine"]["chemical-plant"],
+    data.raw["electric-energy-interface"]["electric-energy-interface"],
+    data.raw["electric-energy-interface"]["ee-infinity-accumulator-primary-output"],
+    data.raw["electric-energy-interface"]["ee-infinity-accumulator-secondary-output"],
+    data.raw["electric-energy-interface"]["ee-infinity-accumulator-tertiary-output"],
+    data.raw["electric-energy-interface"]["ee-infinity-accumulator-primary-input"],
+    data.raw["electric-energy-interface"]["ee-infinity-accumulator-secondary-input"],
+    data.raw["electric-energy-interface"]["ee-infinity-accumulator-tertiary-input"],
+    data.raw["electric-energy-interface"]["ee-infinity-accumulator-tertiary-buffer"],
+    data.raw["spider-leg"]["h2o-submarine-leg"],
+    data.raw["spider-vehicle"]["h2o-diesel-submarine"],
+    data.raw["spider-vehicle"]["h2o-nuclear-submarine"],
+    data.raw.tile["h2o-pressure-dome-tile"],
 
-    'arithmetic-combinator',
-    'constant-combinator',
-    'decider-combinator',
+    "arithmetic-combinator",
+    "constant-combinator",
+    "decider-combinator",
 
-    'linked-belt',
-    'loader',
-    'loader-1x1',
-    'splitter',
-    'underground-belt',
-    'transport-belt',
+    "linked-belt",
+    "loader",
+    "loader-1x1",
+    "splitter",
+    "underground-belt",
+    "transport-belt",
 
-    'infinity-pipe',
-    'pipe',
-    'pipe-to-ground',
-    'storage-tank',
+    "infinity-pipe",
+    "pipe",
+    "pipe-to-ground",
+    "storage-tank",
 
-    'train-stop',
-    'rail-chain-signal',
-    'rail-remnants',
-    'rail-signal',
-    
-    'gate',
-    'wall',
+    "train-stop",
+    "rail-chain-signal",
+    "rail-remnants",
+    "rail-signal",
 
-    'electric-pole', -- todo: consider replacing with fiber optic cable
-    'arrow',
-    'artillery-flare',
-    'artillery-projectile',
-    'beacon',
-    'beam',
-    'character',
-    'character-corpse',
-    'cliff',
-    'construction-robot',
-    'logistic-robot',
-    'corpse',
-    'deconstructible-tile-proxy',
-    'entity-ghost',
-    'explosion',
-    'fish',
-    'flame-thrower-explosion',
-    'heat-interface',
-    'heat-pipe',
-    'highlight-box',
-    'inserter', -- todo: consider loaders?
-    'item-entity',
-    'item-request-proxy',
-    'lamp',
-    'leaf-particle',
-    'mining-drill',
-    'offshore-pump',
-    'particle',
-    'particle-source',
-    'player-port',
-    'programmable-speaker',
-    'projectile',
-    'pump',
-    'resource',
-    'rocket-silo-rocket',
-    'rocket-silo-rocket-shadow',
-    'simple-entity',
-    'smoke',
-    'smoke-with-trigger',
-    'speech-bubble',
-    'sticker',
-    'stream',
-    'tile-ghost',
+    "gate",
+    "wall",
+
+    "electric-pole", -- todo: consider replacing with fiber optic cable
+    "arrow",
+    "artillery-flare",
+    "artillery-projectile",
+    "beacon",
+    "beam",
+    "character",
+    "character-corpse",
+    "cliff",
+    "construction-robot",
+    "logistic-robot",
+    "corpse",
+    "deconstructible-tile-proxy",
+    "entity-ghost",
+    "explosion",
+    "fish",
+    "flame-thrower-explosion",
+    "heat-interface",
+    "heat-pipe",
+    "highlight-box",
+    "inserter", -- todo: consider loaders?
+    "item-entity",
+    "item-request-proxy",
+    "lamp",
+    "leaf-particle",
+    "mining-drill",
+    "offshore-pump",
+    "particle",
+    "particle-source",
+    "player-port",
+    "programmable-speaker",
+    "projectile",
+    "pump",
+    "resource",
+    "rocket-silo-rocket",
+    "rocket-silo-rocket-shadow",
+    "simple-entity",
+    "smoke",
+    "smoke-with-trigger",
+    "speech-bubble",
+    "sticker",
+    "stream",
+    "tile-ghost",
 }
 
 for _, anywhere in pairs(prototypes_that_can_be_placed_whereever) do
-    if type(anywhere) == 'string' then
-       processed_prototypes[anywhere] = true
+    if type(anywhere) == "string" then
+        processed_prototypes[anywhere] = true
     end
 end
 
@@ -171,7 +171,7 @@ local function block_placement_tile(tile, layer)
         end
     end
     if not item_to_place then return end
-    
+
     local place_as_tile = item_to_place.place_as_tile
     place_as_tile.condition = place_as_tile.condition or {}
     place_as_tile.condition[layer] = true
@@ -184,7 +184,7 @@ local function block_placement(prototype, layer)
         if e == prototype then return end
     end
 
-    if prototype.type and prototype.type == 'tile' then
+    if prototype.type and prototype.type == "tile" then
         block_placement_tile(prototype, layer)
         return
     end
@@ -197,7 +197,7 @@ end
 
 local function add_collision_layer_to_prototypes(prototypes, layer)
     for _, blacklisted in pairs(prototypes) do
-        if type(blacklisted) == 'table' then
+        if type(blacklisted) == "table" then
             block_placement(blacklisted, layer)
         else
             for _, prototype in pairs(data.raw[blacklisted]) do
@@ -210,7 +210,7 @@ end
 
 local function remove_collision_layer_to_prototypes(prototypes, layer)
     for _, blacklisted in pairs(prototypes) do
-        if type(blacklisted) == 'table' then
+        if type(blacklisted) == "table" then
             blacklisted.collision_mask = collision_mask_util.get_mask(blacklisted)
             blacklisted.collision_mask[layer] = nil
         else

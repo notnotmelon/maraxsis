@@ -12,7 +12,7 @@ end
 h2o.set_noise_constant = function(i, surface, data)
 	local mgs = surface.map_gen_settings
 	mgs.autoplace_controls = mgs.autoplace_controls or {}
-	mgs.autoplace_controls['h2o-autoplace-control-' .. i] = mgs.autoplace_controls['h2o-autoplace-control-' .. i] or {}
-	mgs.autoplace_controls['h2o-autoplace-control-' .. i].richness = data
+	mgs.autoplace_controls["h2o-autoplace-control-" .. i] = mgs.autoplace_controls["h2o-autoplace-control-" .. i] or {}
+	mgs.autoplace_controls["h2o-autoplace-control-" .. i].richness = data
 	surface.map_gen_settings = mgs
 end

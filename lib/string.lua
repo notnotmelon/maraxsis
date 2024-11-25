@@ -6,7 +6,7 @@
 ---@return table
 string.split = function(s, seperator)
     local result = {}
-    for match in (s..seperator):gmatch('(.-)'..seperator) do
+    for match in (s .. seperator):gmatch("(.-)" .. seperator) do
         result[#result + 1] = match
     end
     return result
@@ -16,7 +16,7 @@ end
 ---@param s string
 ---@return boolean
 string.is_digit = function(s)
-    return s:match('%d') ~= nil
+    return s:match("%d") ~= nil
 end
 
 ---Returns a boolean indicating if the first string starts with the second string.
@@ -24,5 +24,5 @@ end
 ---@param start string
 ---@return boolean
 string.starts_with = function(s, start)
-	return s:sub(1, #start) == start
+    return s:sub(1, #start) == start
 end

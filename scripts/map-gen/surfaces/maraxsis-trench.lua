@@ -40,5 +40,5 @@ end
 
 return {
 	get_surface = get_surface,
-	type = 'maraxsis-trench',
+	type = "maraxsis-trench",
 }

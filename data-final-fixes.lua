@@ -1,1 +1,1 @@
-require 'prototypes.collision-mask'
+require "prototypes.collision-mask"

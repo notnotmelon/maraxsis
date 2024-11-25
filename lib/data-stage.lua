@@ -6,9 +6,9 @@ h2o.on_event = function() end
 ---@return table
 h2o.empty_image = function()
     return {
-        filename = '__core__/graphics/empty.png',
+        filename = "__core__/graphics/empty.png",
         size = 1,
-        priority = 'high',
+        priority = "high",
         direction_count = 1,
         frame_count = 1,
         line_length = 1
@@ -20,36 +20,36 @@ end
 ---@param prototype data.AnyPrototype
 ---@param localised_string LocalisedString
 h2o.add_to_description = function(type, prototype, localised_string)
-    if prototype.localised_description and prototype.localised_description ~= '' then
-        prototype.localised_description = {'', prototype.localised_description, '\n', localised_string}
+    if prototype.localised_description and prototype.localised_description ~= "" then
+        prototype.localised_description = {"", prototype.localised_description, "\n", localised_string}
         return
     end
 
     local place_result = prototype.place_result or prototype.placed_as_equipment_result
-    if type == 'item' and place_result then
+    if type == "item" and place_result then
         for _, machine in pairs(data.raw) do
             machine = machine[place_result]
             if machine and machine.localised_description then
                 prototype.localised_description = {
-                    '?',
-                    {'', machine.localised_description, '\n', localised_string},
+                    "?",
+                    {"", machine.localised_description, "\n", localised_string},
                     localised_string
                 }
                 return
             end
         end
 
-        local entity_type = prototype.place_result and 'entity' or 'equipment'
+        local entity_type = prototype.place_result and "entity" or "equipment"
         prototype.localised_description = {
-            '?',
-            {'', {entity_type .. '-description.' .. place_result}, '\n', localised_string},
-            {'', {type .. '-description.' .. prototype.name},      '\n', localised_string},
+            "?",
+            {"", {entity_type .. "-description." .. place_result}, "\n", localised_string},
+            {"", {type .. "-description." .. prototype.name},      "\n", localised_string},
             localised_string
         }
     else
         prototype.localised_description = {
-            '?',
-            {'', {type .. '-description.' .. prototype.name}, '\n', localised_string},
+            "?",
+            {"", {type .. "-description." .. prototype.name}, "\n", localised_string},
             localised_string
         }
     end
@@ -59,7 +59,7 @@ end
 ---@param prototype data.ItemPrototype
 h2o.make_item_glowing = function(prototype)
     if not prototype then
-        error('No prototype provided')
+        error("No prototype provided")
     end
     if prototype.pictures then
         for _, picture in pairs(prototype.pictures) do
@@ -72,7 +72,7 @@ h2o.make_item_glowing = function(prototype)
         prototype.icon = nil
     end
     if not prototype.icons then
-        error('No icon found for ' .. prototype.name)
+        error("No icon found for " .. prototype.name)
     end
     local pictures = {}
     for _, picture in pairs(table.deepcopy(prototype.icons)) do
@@ -97,12 +97,12 @@ end
 ---@return data.AnyPrototype
 h2o.merge = function(old, new)
     if not old then
-        error('Failed to h2o.merge: Old prototype is nil', 2)
+        error("Failed to h2o.merge: Old prototype is nil", 2)
     end
 
     old = table.deepcopy(old)
     for k, v in pairs(new) do
-        if v == 'nil' then
+        if v == "nil" then
             old[k] = nil
         else
             old[k] = v
@@ -168,8 +168,8 @@ h2o.pipe_pictures = function(pictures, shift_north, shift_south, shift_west, shi
     local new_pictures = {
         north = shift_north and
             {
-                filename = '__base__/graphics/entity/' .. pictures .. '/' .. pictures .. '-pipe-N.png',
-                priority = 'extra-high',
+                filename = "__base__/graphics/entity/" .. pictures .. "/" .. pictures .. "-pipe-N.png",
+                priority = "extra-high",
                 width = 35,
                 height = 18,
                 shift = shift_north
@@ -177,8 +177,8 @@ h2o.pipe_pictures = function(pictures, shift_north, shift_south, shift_west, shi
             h2o.empty_image(),
         south = shift_south and
             {
-                filename = '__base__/graphics/entity/' .. pictures .. '/' .. pictures .. '-pipe-S.png',
-                priority = 'extra-high',
+                filename = "__base__/graphics/entity/" .. pictures .. "/" .. pictures .. "-pipe-S.png",
+                priority = "extra-high",
                 width = 44,
                 height = 31,
                 shift = shift_south
@@ -186,8 +186,8 @@ h2o.pipe_pictures = function(pictures, shift_north, shift_south, shift_west, shi
             h2o.empty_image(),
         west = shift_west and
             {
-                filename = '__base__/graphics/entity/' .. pictures .. '/' .. pictures .. '-pipe-W.png',
-                priority = 'extra-high',
+                filename = "__base__/graphics/entity/" .. pictures .. "/" .. pictures .. "-pipe-W.png",
+                priority = "extra-high",
                 width = 19,
                 height = 37,
                 shift = shift_west
@@ -195,8 +195,8 @@ h2o.pipe_pictures = function(pictures, shift_north, shift_south, shift_west, shi
             h2o.empty_image(),
         east = shift_east and
             {
-                filename = '__base__/graphics/entity/' .. pictures .. '/' .. pictures .. '-pipe-E.png',
-                priority = 'extra-high',
+                filename = "__base__/graphics/entity/" .. pictures .. "/" .. pictures .. "-pipe-E.png",
+                priority = "extra-high",
                 width = 20,
                 height = 38,
                 shift = shift_east
@@ -204,7 +204,7 @@ h2o.pipe_pictures = function(pictures, shift_north, shift_south, shift_west, shi
             h2o.empty_image()
     }
     for direction, image in pairs(replacements or {}) do
-        if not (new_pictures[direction].filename == '__core__/graphics/empty.png') then
+        if not (new_pictures[direction].filename == "__core__/graphics/empty.png") then
             new_pictures[direction].filename = image.filename
             new_pictures[direction].width = image.width
             new_pictures[direction].height = image.height
@@ -230,15 +230,15 @@ h2o.pipe_covers = function(n, s, w, e)
         {
             layers = {
                 {
-                    filename = '__base__/graphics/entity/pipe-covers/hr-pipe-cover-north.png',
-                    priority = 'extra-high',
+                    filename = "__base__/graphics/entity/pipe-covers/hr-pipe-cover-north.png",
+                    priority = "extra-high",
                     width = 128,
                     height = 128,
                     scale = 0.5
                 },
                 {
-                    filename = '__base__/graphics/entity/pipe-covers/hr-pipe-cover-north-shadow.png',
-                    priority = 'extra-high',
+                    filename = "__base__/graphics/entity/pipe-covers/hr-pipe-cover-north-shadow.png",
+                    priority = "extra-high",
                     width = 128,
                     height = 128,
                     scale = 0.5,
@@ -252,15 +252,15 @@ h2o.pipe_covers = function(n, s, w, e)
         {
             layers = {
                 {
-                    filename = '__base__/graphics/entity/pipe-covers/hr-pipe-cover-east.png',
-                    priority = 'extra-high',
+                    filename = "__base__/graphics/entity/pipe-covers/hr-pipe-cover-east.png",
+                    priority = "extra-high",
                     width = 128,
                     height = 128,
                     scale = 0.5
                 },
                 {
-                    filename = '__base__/graphics/entity/pipe-covers/hr-pipe-cover-east-shadow.png',
-                    priority = 'extra-high',
+                    filename = "__base__/graphics/entity/pipe-covers/hr-pipe-cover-east-shadow.png",
+                    priority = "extra-high",
                     width = 128,
                     height = 128,
                     scale = 0.5,
@@ -274,15 +274,15 @@ h2o.pipe_covers = function(n, s, w, e)
         {
             layers = {
                 {
-                    filename = '__base__/graphics/entity/pipe-covers/hr-pipe-cover-south.png',
-                    priority = 'extra-high',
+                    filename = "__base__/graphics/entity/pipe-covers/hr-pipe-cover-south.png",
+                    priority = "extra-high",
                     width = 128,
                     height = 128,
                     scale = 0.5
                 },
                 {
-                    filename = '__base__/graphics/entity/pipe-covers/hr-pipe-cover-south-shadow.png',
-                    priority = 'extra-high',
+                    filename = "__base__/graphics/entity/pipe-covers/hr-pipe-cover-south-shadow.png",
+                    priority = "extra-high",
                     width = 128,
                     height = 128,
                     scale = 0.5,
@@ -296,15 +296,15 @@ h2o.pipe_covers = function(n, s, w, e)
         {
             layers = {
                 {
-                    filename = '__base__/graphics/entity/pipe-covers/hr-pipe-cover-west.png',
-                    priority = 'extra-high',
+                    filename = "__base__/graphics/entity/pipe-covers/hr-pipe-cover-west.png",
+                    priority = "extra-high",
                     width = 128,
                     height = 128,
                     scale = 0.5
                 },
                 {
-                    filename = '__base__/graphics/entity/pipe-covers/hr-pipe-cover-west-shadow.png',
-                    priority = 'extra-high',
+                    filename = "__base__/graphics/entity/pipe-covers/hr-pipe-cover-west-shadow.png",
+                    priority = "extra-high",
                     width = 128,
                     height = 128,
                     scale = 0.5,
@@ -321,13 +321,13 @@ end
 ---@param p data.IngredientPrototype | data.ProductPrototype | string
 ---@return data.IngredientPrototype | data.ProductPrototype
 h2o.standardize_product = function(p)
-    if type(p) == 'string' then p = {p, 1} end
+    if type(p) == "string" then p = {p, 1} end
     local name = p.name or p[1]
     if not p.type and name then
         if data.raw.fluid[name] then
-            p.type = 'fluid'
+            p.type = "fluid"
         else
-            p.type = 'item'
+            p.type = "item"
         end
     end
 

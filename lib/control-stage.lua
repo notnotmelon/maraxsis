@@ -2,34 +2,34 @@
 
 local random = math.random
 
-require 'events'
+require "events"
 
 ---Draws a red error icon at the entity's position.
 ---@param entity LuaEntity
 ---@param sprite string
 ---@param time_to_live integer
 h2o.draw_error_sprite = function(entity, sprite, time_to_live)
-    rendering.draw_sprite{
-        sprite = sprite,
-        x_scale = 0.5,
-        y_scale = 0.5,
-        target = entity,
-        surface = entity.surface,
-        time_to_live = time_to_live or 30,
-        render_layer = 'air-entity-info-icon'
-    }
+	rendering.draw_sprite {
+		sprite = sprite,
+		x_scale = 0.5,
+		y_scale = 0.5,
+		target = entity,
+		surface = entity.surface,
+		time_to_live = time_to_live or 30,
+		render_layer = "air-entity-info-icon"
+	}
 end
 
 ---Creates a localised string tooltip for allowed modules.
 ---@param allowed_modules table<string, any>
 ---@return LocalisedString
 h2o.generate_allowed_module_tooltip = function(allowed_modules)
-    local item_prototypes = prototypes.item
-    ---@type LocalisedString
-	local result = {'', {'gui.module-description'}, '\n'}
+	local item_prototypes = prototypes.item
+	---@type LocalisedString
+	local result = {"", {"gui.module-description"}, "\n"}
 	for module, _ in pairs(allowed_modules) do
-		result[#result + 1] = {'', '[font=heading-2][item=' .. module .. '][/font]', ' ', item_prototypes[module].localised_name}
-		result[#result + 1] = '\n'
+		result[#result + 1] = {"", "[font=heading-2][item=" .. module .. "][/font]", " ", item_prototypes[module].localised_name}
+		result[#result + 1] = "\n"
 	end
 	result[#result] = nil
 	return result
@@ -69,7 +69,7 @@ h2o.cancel_creation = function(entity, player_index, message, color)
 	end
 
 	if inserted == 0 and item_to_place then
-		surface.spill_item_stack{
+		surface.spill_item_stack {
 			position = position,
 			stack = item_to_place,
 			enable_looted = true,
@@ -78,7 +78,7 @@ h2o.cancel_creation = function(entity, player_index, message, color)
 		}
 	end
 
-	entity.destroy{raise_destroy = true}
+	entity.destroy {raise_destroy = true}
 
 	if not message then return end
 
@@ -86,7 +86,7 @@ h2o.cancel_creation = function(entity, player_index, message, color)
 	local last_message = storage._last_cancel_creation_message or 0
 	if last_message + 60 < tick then
 		for _, player in pairs(game.connected_players) do
-			player.create_local_flying_text{
+			player.create_local_flying_text {
 				text = message,
 				position = position,
 				color = color,
@@ -105,40 +105,40 @@ local seconds_per_minute = 60
 ---@param seconds number?
 ---@return string?
 h2o.format_large_time = function(seconds)
-    if not seconds then return end
-    local result = ''
+	if not seconds then return end
+	local result = ""
 	if seconds >= seconds_per_year then
 		local years = math.floor(seconds / seconds_per_year)
-		result = result .. years .. 'y '
+		result = result .. years .. "y "
 		seconds = seconds % seconds_per_year
 	end
-    
-    if seconds >= seconds_per_day or result ~= '' then
-    	local days = math.floor(seconds / seconds_per_day)
-        result = result .. days .. 'd '
-        seconds = seconds % seconds_per_day
-    end
 
-    if seconds >= seconds_per_hour or result ~= '' then
+	if seconds >= seconds_per_day or result ~= "" then
+		local days = math.floor(seconds / seconds_per_day)
+		result = result .. days .. "d "
+		seconds = seconds % seconds_per_day
+	end
+
+	if seconds >= seconds_per_hour or result ~= "" then
 		local hours = math.floor(seconds / seconds_per_hour)
-        result = result .. hours .. ':'
-        seconds = seconds % seconds_per_hour
-    end
+		result = result .. hours .. ":"
+		seconds = seconds % seconds_per_hour
+	end
 
-    local minutes = math.floor(seconds / seconds_per_minute)
-    if minutes < 10 then
-        result = result .. '0' .. minutes .. ':'
-    else
-        result = result .. minutes .. ':'
-    end
-    seconds = seconds % seconds_per_minute
+	local minutes = math.floor(seconds / seconds_per_minute)
+	if minutes < 10 then
+		result = result .. "0" .. minutes .. ":"
+	else
+		result = result .. minutes .. ":"
+	end
+	seconds = seconds % seconds_per_minute
 
-    seconds = math.ceil(seconds)
-    if seconds < 10 then
-        result = result .. '0' .. seconds
-    else
-        result = result .. seconds
-    end
+	seconds = math.ceil(seconds)
+	if seconds < 10 then
+		result = result .. "0" .. seconds
+	else
+		result = result .. seconds
+	end
 
 	return result
 end
@@ -152,39 +152,39 @@ h2o.find_grandparent = function(element, name)
 		if element.name == name then return element end
 		element = element.parent
 	end
-	error('Could not find parent gui element with name: ' .. name)
+	error("Could not find parent gui element with name: " .. name)
 end
 
 local si_prefixes = {
-    [0] = '',
-    'si-prefix-symbol-kilo',
-    'si-prefix-symbol-mega',
-    'si-prefix-symbol-giga',
-    'si-prefix-symbol-tera',
-    'si-prefix-symbol-peta',
-    'si-prefix-symbol-exa',
-    'si-prefix-symbol-zetta',
-    'si-prefix-symbol-yotta'
+	[0] = "",
+	"si-prefix-symbol-kilo",
+	"si-prefix-symbol-mega",
+	"si-prefix-symbol-giga",
+	"si-prefix-symbol-tera",
+	"si-prefix-symbol-peta",
+	"si-prefix-symbol-exa",
+	"si-prefix-symbol-zetta",
+	"si-prefix-symbol-yotta"
 }
 ---formats a number into the amount of energy. Requires 'W' or 'J' as the second parameter
 ---@param energy number
 ---@param watts_or_joules string
 h2o.format_energy = function(energy, watts_or_joules)
-	if watts_or_joules == 'W' then
-        watts_or_joules = 'si-unit-symbol-watt'
-        energy = energy * 60
-    elseif watts_or_joules == 'J' then
-        watts_or_joules = 'si-unit-symbol-joule'
-    else
-        error()
-    end
+	if watts_or_joules == "W" then
+		watts_or_joules = "si-unit-symbol-watt"
+		energy = energy * 60
+	elseif watts_or_joules == "J" then
+		watts_or_joules = "si-unit-symbol-joule"
+	else
+		error()
+	end
 
-    local prefix = 0
+	local prefix = 0
 	while energy >= 1000 do
-        energy = energy / 1000
-        prefix = prefix + 1
-    end
-	return {'' , string.format('%.1f', energy), ' ', si_prefixes[prefix] and {si_prefixes[prefix]} or '* 10^'..(prefix*3)..' ', {watts_or_joules}}
+		energy = energy / 1000
+		prefix = prefix + 1
+	end
+	return {"", string.format("%.1f", energy), " ", si_prefixes[prefix] and {si_prefixes[prefix]} or "* 10^" .. (prefix * 3) .. " ", {watts_or_joules}}
 end
 
 ---Returns the distance from 0,0
@@ -192,7 +192,7 @@ end
 ---@param y number
 ---@return number
 h2o.distance = function(x, y)
-    return (x ^ 2 + y ^ 2) ^ 0.5
+	return (x ^ 2 + y ^ 2) ^ 0.5
 end
 
 ---Returns the squared distance between two points.

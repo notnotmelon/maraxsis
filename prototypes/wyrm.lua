@@ -1,43 +1,43 @@
 data:extend {{
-    type = 'technology',
-    name = 'h2o-wyrm-confinement',
-    icon = '__maraxsis__/graphics/technology/wyrm-confinement.png',
+    type = "technology",
+    name = "h2o-wyrm-confinement",
+    icon = "__maraxsis__/graphics/technology/wyrm-confinement.png",
     icon_size = 256,
     icon_mipmaps = nil,
     effects = {
         {
-            type = 'unlock-recipe',
-            recipe = 'h2o-wyrm-confinement-cell',
+            type = "unlock-recipe",
+            recipe = "h2o-wyrm-confinement-cell",
         },
         {
-            type = 'unlock-recipe',
-            recipe = 'h2o-wyrm-specimen',
+            type = "unlock-recipe",
+            recipe = "h2o-wyrm-specimen",
         },
     },
-    prerequisites = {'h2o-glassworking'},
+    prerequisites = {"h2o-glassworking"},
     unit = {
         count = 3000,
         ingredients = {
-            {'automation-science-pack', 1},
-            {'logistic-science-pack',   1},
-            {'military-science-pack',   1},
-            {'chemical-science-pack',   1},
-            {'space-science-pack',      1},
-            {'production-science-pack', 1},
-            {'utility-science-pack',    1},
-            {'metallurgic-science-pack', 1},
-            {'electromagnetic-science-pack', 1},
-            {'agricultural-science-pack', 1},
+            {"automation-science-pack",      1},
+            {"logistic-science-pack",        1},
+            {"military-science-pack",        1},
+            {"chemical-science-pack",        1},
+            {"space-science-pack",           1},
+            {"production-science-pack",      1},
+            {"utility-science-pack",         1},
+            {"metallurgic-science-pack",     1},
+            {"electromagnetic-science-pack", 1},
+            {"agricultural-science-pack",    1},
         },
         time = 60,
     },
-    order = 'ee[wyrm-confinement]',
+    order = "ee[wyrm-confinement]",
 }}
 
 data:extend {{
-    type = 'item',
-    name = 'h2o-wyrm-confinement-cell',
-    icon = '__maraxsis__/graphics/icons/wyrm-confinement-cell.png',
+    type = "item",
+    name = "h2o-wyrm-confinement-cell",
+    icon = "__maraxsis__/graphics/icons/wyrm-confinement-cell.png",
     icon_size = 64,
     icon_mipmaps = nil,
     stack_size = 10,
@@ -46,18 +46,18 @@ data:extend {{
 local wyrm_variants = {}
 for i = 1, 4 do
     wyrm_variants[i] = {
-        filename = '__maraxsis__/graphics/icons/wyrm-specimen-' .. i .. '.png',
+        filename = "__maraxsis__/graphics/icons/wyrm-specimen-" .. i .. ".png",
         width = 64,
         height = 64,
         scale = 1 / 3,
-        flags = {'icon'}
+        flags = {"icon"}
     }
 end
 
 data:extend {{
-    type = 'item',
-    name = 'h2o-wyrm-specimen',
-    icon = '__maraxsis__/graphics/icons/wyrm-specimen-2.png',
+    type = "item",
+    name = "h2o-wyrm-specimen",
+    icon = "__maraxsis__/graphics/icons/wyrm-specimen-2.png",
     pictures = wyrm_variants,
     icon_size = 64,
     icon_mipmaps = nil,
@@ -65,30 +65,30 @@ data:extend {{
 }}
 
 data:extend {{
-    type = 'recipe',
-    name = 'h2o-wyrm-confinement-cell',
+    type = "recipe",
+    name = "h2o-wyrm-confinement-cell",
     enabled = false,
     energy_required = 10,
     ingredients = {
-        {type = 'item', name = 'h2o-glass-panes',  amount = 3},
-        {type = 'item', name = 'advanced-circuit', amount = 1},
-        {type = 'item', name = 'steel-plate',      amount = 1},
+        {type = "item", name = "h2o-glass-panes",  amount = 3},
+        {type = "item", name = "advanced-circuit", amount = 1},
+        {type = "item", name = "steel-plate",      amount = 1},
     },
     results = {
-        {type = 'item', name = 'h2o-wyrm-confinement-cell', amount = 1},
+        {type = "item", name = "h2o-wyrm-confinement-cell", amount = 1},
     },
 }}
 
 data:extend {{
-    type = 'recipe',
-    name = 'h2o-wyrm-specimen',
+    type = "recipe",
+    name = "h2o-wyrm-specimen",
     enabled = false,
     energy_required = 10,
     ingredients = {
-        {type = 'item', name = 'h2o-wyrm-confinement-cell', amount = 1},
+        {type = "item", name = "h2o-wyrm-confinement-cell", amount = 1},
     },
     results = {
-        {type = 'item', name = 'h2o-wyrm-specimen', amount = 1},
+        {type = "item", name = "h2o-wyrm-specimen", amount = 1},
     },
 }}
 

@@ -1,95 +1,95 @@
 data:extend {{
-    type = 'technology',
-    name = 'h2o-sonar',
-    icon = '__maraxsis__/graphics/technology/sonar.png',
+    type = "technology",
+    name = "h2o-sonar",
+    icon = "__maraxsis__/graphics/technology/sonar.png",
     icon_size = 256,
     icon_mipmaps = nil,
     effects = {
         {
-            type = 'unlock-recipe',
-            recipe = 'h2o-sonar'
+            type = "unlock-recipe",
+            recipe = "h2o-sonar"
         }
     },
-    prerequisites = {'h2o-maraxsis'},
+    prerequisites = {"h2o-maraxsis"},
     unit = {
         count = 3000,
         ingredients = {
-            {'automation-science-pack', 1},
-            {'logistic-science-pack',   1},
-            {'chemical-science-pack',   1},
-            {'space-science-pack',      1},
-            {'production-science-pack', 1},
-            {'utility-science-pack',    1},
-            {'metallurgic-science-pack', 1},
-            {'electromagnetic-science-pack', 1},
-            {'agricultural-science-pack', 1},
+            {"automation-science-pack",      1},
+            {"logistic-science-pack",        1},
+            {"chemical-science-pack",        1},
+            {"space-science-pack",           1},
+            {"production-science-pack",      1},
+            {"utility-science-pack",         1},
+            {"metallurgic-science-pack",     1},
+            {"electromagnetic-science-pack", 1},
+            {"agricultural-science-pack",    1},
         },
         time = 60,
     },
 }}
 
 data:extend {{
-    type = 'item',
-    name = 'h2o-sonar',
-    icon = '__maraxsis__/graphics/icons/sonar.png',
+    type = "item",
+    name = "h2o-sonar",
+    icon = "__maraxsis__/graphics/icons/sonar.png",
     icon_size = 64,
     icon_mipmaps = 4,
     stack_size = 10,
-    place_result = 'h2o-sonar',
+    place_result = "h2o-sonar",
 }}
 
 data:extend {{
-    type = 'recipe',
-    name = 'h2o-sonar',
+    type = "recipe",
+    name = "h2o-sonar",
     enabled = false,
     ingredients = {
-        {type = 'item', name = 'steel-plate',           amount = 10},
-        {type = 'item', name = 'low-density-structure', amount = 10},
-        {type = 'item', name = 'radar',                 amount = 1},
-        {type = 'item', name = 'processing-unit',       amount = 5},
-        {type = 'item', name = 'small-lamp',            amount = 2},
+        {type = "item", name = "steel-plate",           amount = 10},
+        {type = "item", name = "low-density-structure", amount = 10},
+        {type = "item", name = "radar",                 amount = 1},
+        {type = "item", name = "processing-unit",       amount = 5},
+        {type = "item", name = "small-lamp",            amount = 2},
     },
     results = {
-        {type = 'item', name = 'h2o-sonar', amount = 1},
+        {type = "item", name = "h2o-sonar", amount = 1},
     },
     energy_required = 10,
 }}
 
 data:extend {h2o.merge(data.raw.radar.radar, {
-    type = 'radar',
-    name = 'h2o-sonar',
-    icon = '__maraxsis__/graphics/icons/sonar.png',
+    type = "radar",
+    name = "h2o-sonar",
+    icon = "__maraxsis__/graphics/icons/sonar.png",
     icon_size = 64,
     icon_mipmaps = 4,
-    flags = {'placeable-player', 'player-creation'},
-    minable = {mining_time = 0.5, result = 'h2o-sonar'},
+    flags = {"placeable-player", "player-creation"},
+    minable = {mining_time = 0.5, result = "h2o-sonar"},
     max_health = 550,
-    corpse = 'radar-remnants',
-    dying_explosion = 'radar-explosion',
+    corpse = "radar-remnants",
+    dying_explosion = "radar-explosion",
     resistances = {
         {
-            type = 'fire',
+            type = "fire",
             percent = 70
         },
         {
-            type = 'impact',
+            type = "impact",
             percent = 30
         }
     },
     collision_box = {{-2.8, -2.3}, {2.8, 2.3}},
     selection_box = {{-3, -2.5}, {3, 2.5}},
-    energy_per_sector = '40MJ',
+    energy_per_sector = "40MJ",
     max_distance_of_sector_revealed = 36,
     max_distance_of_nearby_sector_revealed = 6,
     energy_source = {
-        type = 'electric',
-        usage_priority = 'secondary-input'
+        type = "electric",
+        usage_priority = "secondary-input"
     },
-    energy_usage = '900kW',
+    energy_usage = "900kW",
     pictures = {
         layers = {
             {
-                filename = '__maraxsis__/graphics/entity/sonar/hr-sonar.png',
+                filename = "__maraxsis__/graphics/entity/sonar/hr-sonar.png",
                 width = 320,
                 height = 384,
                 apply_projection = false,
@@ -99,7 +99,7 @@ data:extend {h2o.merge(data.raw.radar.radar, {
                 shift = util.by_pixel(0, -30 - 16),
             },
             {
-                filename = '__maraxsis__/graphics/entity/sonar/hr-sonar-shadow.png',
+                filename = "__maraxsis__/graphics/entity/sonar/hr-sonar-shadow.png",
                 width = 384,
                 height = 192,
                 scale = 0.65,
@@ -113,7 +113,7 @@ data:extend {h2o.merge(data.raw.radar.radar, {
     working_sound = {
         sound = {
             {
-                filename = '__maraxsis__/sounds/sonar.ogg',
+                filename = "__maraxsis__/sounds/sonar.ogg",
                 speed = 0.5,
                 volume = 1
             }
@@ -126,8 +126,8 @@ data:extend {h2o.merge(data.raw.radar.radar, {
     rotation_speed = 0.005,
     water_reflection = {
         pictures = {
-            filename = '__base__/graphics/entity/radar/radar-reflection.png',
-            priority = 'extra-high',
+            filename = "__base__/graphics/entity/radar/radar-reflection.png",
+            priority = "extra-high",
             width = 28,
             height = 32,
             shift = util.by_pixel(5, 35),
@@ -139,68 +139,68 @@ data:extend {h2o.merge(data.raw.radar.radar, {
     }
 })}
 
-local light_layers = require 'graphics.entity.sonar.lights.lights'
+local light_layers = require "graphics.entity.sonar.lights.lights"
 for _, layer in pairs(light_layers) do
     layer.scale = (layer.scale or 1) * 0.65
     layer.shift = {
         x = (layer.shift.x or 0) * 0.65,
-        y = (layer.shift.y or 0) * 0.65 - 30/32 - 16/32,
+        y = (layer.shift.y or 0) * 0.65 - 30 / 32 - 16 / 32,
     }
 end
-light_layers['hr-light-1-on'].draw_as_glow = true
-light_layers['hr-light-2-on'].draw_as_glow = true
+light_layers["hr-light-1-on"].draw_as_glow = true
+light_layers["hr-light-2-on"].draw_as_glow = true
 
-light_layers['hr-light-1'].shift.y = light_layers['hr-light-1'].shift.y - 1
-light_layers['hr-light-1-on'].shift.y = light_layers['hr-light-1-on'].shift.y - 1
-light_layers['hr-light-2'].shift.y = light_layers['hr-light-2'].shift.y + 1
-light_layers['hr-light-2-on'].shift.y = light_layers['hr-light-2-on'].shift.y + 1
+light_layers["hr-light-1"].shift.y = light_layers["hr-light-1"].shift.y - 1
+light_layers["hr-light-1-on"].shift.y = light_layers["hr-light-1-on"].shift.y - 1
+light_layers["hr-light-2"].shift.y = light_layers["hr-light-2"].shift.y + 1
+light_layers["hr-light-2-on"].shift.y = light_layers["hr-light-2-on"].shift.y + 1
 
-data:extend {h2o.merge(data.raw.lamp['small-lamp'], {
-    name = 'h2o-sonar-light-1',
+data:extend {h2o.merge(data.raw.lamp["small-lamp"], {
+    name = "h2o-sonar-light-1",
     collision_box = {},
-    localised_name = {'entity-name.h2o-sonar'},
-    localised_description = {'entity-description.h2o-sonar'},
-    icon = '__maraxsis__/graphics/icons/sonar.png',
+    localised_name = {"entity-name.h2o-sonar"},
+    localised_description = {"entity-description.h2o-sonar"},
+    icon = "__maraxsis__/graphics/icons/sonar.png",
     icon_size = 64,
     icon_mipmaps = 4,
-    flags = {'placeable-neutral', 'player-creation'},
-    minable = 'nil',
+    flags = {"placeable-neutral", "player-creation"},
+    minable = "nil",
     max_health = 100,
-    corpse = 'small-remnants',
-    dying_explosion = 'nil',
-    collision_box = table.deepcopy(data.raw.radar['h2o-sonar'].collision_box),
-    selection_box = table.deepcopy(data.raw.radar['h2o-sonar'].selection_box),
+    corpse = "small-remnants",
+    dying_explosion = "nil",
+    collision_box = table.deepcopy(data.raw.radar["h2o-sonar"].collision_box),
+    selection_box = table.deepcopy(data.raw.radar["h2o-sonar"].selection_box),
     selectable_in_game = false,
-    circuit_wire_connection_point = 'nil',
-    circuit_wire_max_distance = 'nil',
+    circuit_wire_connection_point = "nil",
+    circuit_wire_max_distance = "nil",
     draw_copper_wires = false,
     draw_circuit_wires = false,
-    circuit_connector = 'nil',
-    light_when_colored = 'nil',
+    circuit_connector = "nil",
+    light_when_colored = "nil",
     picture_on = {
         layers = {
-            light_layers['hr-light-1'],
-            light_layers['hr-light-1-on'],
+            light_layers["hr-light-1"],
+            light_layers["hr-light-1-on"],
         }
     },
     picture_off = {
         layers = {
-            light_layers['hr-light-1'],
+            light_layers["hr-light-1"],
         }
     },
 })}
 
-data:extend {h2o.merge(data.raw.lamp['h2o-sonar-light-1'], {
-    name = 'h2o-sonar-light-2',
+data:extend {h2o.merge(data.raw.lamp["h2o-sonar-light-1"], {
+    name = "h2o-sonar-light-2",
     picture_on = {
         layers = {
-            light_layers['hr-light-2'],
-            light_layers['hr-light-2-on'],
+            light_layers["hr-light-2"],
+            light_layers["hr-light-2-on"],
         }
     },
     picture_off = {
         layers = {
-            light_layers['hr-light-2'],
+            light_layers["hr-light-2"],
         }
     },
 })}
@@ -214,10 +214,10 @@ local function shift_collision_box(entity, amount)
     entity.selection_box = {{x1, y1 + amount}, {x2, y2 + amount}}
 end
 
-shift_collision_box(data.raw.lamp['h2o-sonar-light-1'], -1)
-shift_collision_box(data.raw.lamp['h2o-sonar-light-2'], 1)
+shift_collision_box(data.raw.lamp["h2o-sonar-light-1"], -1)
+shift_collision_box(data.raw.lamp["h2o-sonar-light-2"], 1)
 
-for _, lamp in pairs {'h2o-sonar-light-1', 'h2o-sonar-light-2'} do
+for _, lamp in pairs {"h2o-sonar-light-1", "h2o-sonar-light-2"} do
     lamp = data.raw.lamp[lamp]
     lamp.energy_source.render_no_power_icon = false
     lamp.energy_source.render_no_network_icon = false
