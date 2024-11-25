@@ -18,7 +18,7 @@ maraxsis.on_event(defines.events.on_chunk_generated, function(event)
 end)
 
 local function get_surface()
-	return game.surfaces[maraxsis.MARAXSIS_SURFACE_NAME]
+	return game.planets[maraxsis.MARAXSIS_SURFACE_NAME].create_surface()
 end
 
 return {
