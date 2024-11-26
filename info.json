@@ -9,7 +9,6 @@
   "dependencies": [
     "base",
     "space-age >= 2.0.0",
-    "biolabs-in-space >= 1.1.0",
     "! pystellarexpedition"
   ],
   "quality_required": true,

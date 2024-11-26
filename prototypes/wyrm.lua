@@ -13,7 +13,10 @@ data:extend {{
             recipe = "maraxsis-wyrm-specimen",
         },
     },
-    prerequisites = {"maraxsis-glassworking"},
+    prerequisites = {
+        "maraxsis-glassworking",
+        "maraxsis-piscary",
+    },
     research_trigger = {
         type = "craft-item",
         item = "maraxsis-pressure-dome"

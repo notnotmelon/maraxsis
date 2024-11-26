@@ -98,7 +98,7 @@ data:extend {{
         {type = "fluid", name = "water", amount = 300},
     },
     allow_productivity = true,
-    category = "maraxsis-hydro-plant",
+    category = "chemistry",
     main_product = "water",
 }}
 add_to_tech("maraxsis-water")
@@ -124,7 +124,7 @@ data:extend {{
         {type = "item",  name = "maraxsis-saturated-salt-filter", amount = 1,  ignored_by_stats = 1, ignored_by_stats = 1},
         {type = "fluid", name = "brackish-water",            amount = 100},
     },
-    category = "chemistry",
+    category = "maraxsis-hydro-plant",
     main_product = "brackish-water",
     allow_productivity = true,
 }}

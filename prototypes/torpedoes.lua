@@ -31,7 +31,7 @@ data:extend {{
         },
         time = 60,
     },
-    order = "ea[wyrm-confinement]",
+    order = "ea[torpedoes]",
 }}
 
 data:extend {{

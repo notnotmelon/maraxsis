@@ -102,7 +102,7 @@ data:extend {{
     water_reflection = require("__space-age__.prototypes.entity.electromagnetic-plant-pictures").water_reflection,
     collision_box = {{-1.9, -1.9}, {1.9, 1.9}},
     selection_box = {{-2, -2}, {2, 2}},
-    effect_receiver = {base_effect = {productivity = 0.5}},
+    effect_receiver = {base_effect = {quality = 0.5}},
     drawing_box_vertical_extension = 1,
     damaged_trigger_effect = hit_effects.entity(),
     fluid_boxes = {
@@ -172,7 +172,6 @@ data:extend {{
     icon_draw_specification = {scale = 1.75, shift = {0, -0.3}},
     energy_usage = "2MW",
     module_specification = {module_slots = 4, module_info_icon_shift = {0, 1.7}, module_info_icon_scale = 1},
-    allowed_effects = {"consumption", "speed", "productivity", "pollution"}, -- todo: add quality
     open_sound = sounds.machine_open,
     close_sound = sounds.machine_close,
     collision_mask = {layers = {["item"] = true, ["object"] = true, ["player"] = true}},
@@ -208,6 +207,7 @@ data:extend {{
         {type = "item", name = "stone-brick",      amount = 20},
         {type = "item", name = "advanced-circuit", amount = 10},
         {type = "item", name = "pipe",             amount = 10},
+        {type = "item", name = "quality-module-3", amount = 10},
     },
     results = {
         {type = "item", name = "maraxsis-hydro-plant", amount = 1},

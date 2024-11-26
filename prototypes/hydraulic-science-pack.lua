@@ -24,24 +24,13 @@ data:extend {{
             recipe = "hydraulic-science-pack",
         },
     },
-    unit = {
-        count = 3000,
-        ingredients = {
-            {"automation-science-pack",      1},
-            {"logistic-science-pack",        1},
-            {"chemical-science-pack",        1},
-            {"space-science-pack",           1},
-            {"production-science-pack",      1},
-            {"utility-science-pack",         1},
-            {"metallurgic-science-pack",     1},
-            {"electromagnetic-science-pack", 1},
-            {"agricultural-science-pack",    1},
-        },
-        time = 60,
+    research_trigger = {
+        type = "craft-item",
+        item = "maraxsis-wyrm-specimen",
+        amount = 1,
     },
     prerequisites = {
         "maraxsis-wyrm-confinement",
-        "maraxsis-piscary",
     },
     order = "eg[hydraulic-science-pack]",
 }}

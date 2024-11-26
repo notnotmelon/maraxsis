@@ -25,7 +25,8 @@ data:extend {{
     prerequisites = {
         "advanced-asteroid-processing",
         "rocket-turret",
-        "asteroid-reprocessing"
+        "asteroid-reprocessing",
+        "quality-module-3",
     },
     unit = {
         count = 3000,
