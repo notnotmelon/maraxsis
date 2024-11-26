@@ -70,11 +70,6 @@ data:extend {{
 
 data:extend {{
     type = "recipe-category",
-    name = "maraxsis-science-packs",
-}}
-
-data:extend {{
-    type = "recipe-category",
     name = "maraxsis-hydro-plant-or-assembling",
 }}
 
@@ -102,7 +97,7 @@ data:extend {{
     water_reflection = require("__space-age__.prototypes.entity.electromagnetic-plant-pictures").water_reflection,
     collision_box = {{-1.9, -1.9}, {1.9, 1.9}},
     selection_box = {{-2, -2}, {2, 2}},
-    effect_receiver = {base_effect = {quality = 0.5}},
+    effect_receiver = {base_effect = {quality = 5}},
     drawing_box_vertical_extension = 1,
     damaged_trigger_effect = hit_effects.entity(),
     fluid_boxes = {
@@ -148,7 +143,7 @@ data:extend {{
     graphics_set = {
         working_visualisations = working_visualisations
     },
-    crafting_categories = {"maraxsis-hydro-plant", "maraxsis-science-packs", "maraxsis-hydro-plant-or-assembling"},
+    crafting_categories = {"maraxsis-hydro-plant", "maraxsis-hydro-plant-or-assembling"},
     scale_entity_info_icon = true,
     impact_category = data.raw["assembling-machine"]["electromagnetic-plant"].impact_category,
     --[[working_sound = {
@@ -204,10 +199,11 @@ data:extend {{
     energy_required = 5,
     ingredients = {
         {type = "item", name = "steel-plate",      amount = 20},
-        {type = "item", name = "stone-brick",      amount = 20},
-        {type = "item", name = "advanced-circuit", amount = 10},
+        {type = "item", name = "concrete",      amount = 20},
+        {type = "item", name = "processing-unit", amount = 10},
         {type = "item", name = "pipe",             amount = 10},
-        {type = "item", name = "quality-module-3", amount = 10},
+        {type = "item", name = "quality-module-3", amount = 4},
+        {type = "fluid", name = "water", amount = 500},
     },
     results = {
         {type = "item", name = "maraxsis-hydro-plant", amount = 1},

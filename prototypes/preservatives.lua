@@ -62,6 +62,7 @@ data:extend{{
     },
     allow_productivity = false,
     category = "maraxsis-hydro-plant",
+    result_is_always_fresh = false,
 }}
 
 data:extend{{
@@ -78,6 +79,7 @@ data:extend{{
     },
     allow_productivity = false,
     category = "maraxsis-hydro-plant",
+    result_is_always_fresh = false,
 }}
 
 data:extend{{
@@ -94,4 +96,5 @@ data:extend{{
     },
     allow_productivity = false,
     category = "maraxsis-hydro-plant",
+    result_is_always_fresh = false,
 }}

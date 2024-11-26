@@ -161,15 +161,17 @@ data:extend {{
     type = "recipe",
     name = "maraxsis-microplastics",
     enabled = false,
-    energy_required = 10,
+    energy_required = 2,
     ingredients = {
         {type = "item", name = "maraxsis-tropical-fish",       amount = 1},
         {type = "item", name = "uranium-rounds-magazine", amount = 1},
     },
     results = {
-        {type = "item", name = "maraxsis-microplastics", amount = 1},
+        {type = "item", name = "maraxsis-microplastics", amount = 10},
+        {type = "item", name = "jelly", amount = 10},
     },
     category = "maraxsis-hydro-plant",
+    localised_name = {"recipe-name.maraxsis-microplastics"},
     main_product = "maraxsis-microplastics",
     allow_productivity = true,
 }}

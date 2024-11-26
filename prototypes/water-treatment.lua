@@ -98,7 +98,7 @@ data:extend {{
         {type = "fluid", name = "water", amount = 300},
     },
     allow_productivity = true,
-    category = "chemistry",
+    category = "chemistry-or-cryogenics",
     main_product = "water",
 }}
 add_to_tech("maraxsis-water")
@@ -113,7 +113,7 @@ data:extend {{
 
 data:extend {{
     type = "recipe",
-    name = "maraxsis-saturated-salt-filter",
+    name = "brackish-water",
     enabled = false,
     energy_required = 2.5,
     ingredients = {
@@ -121,14 +121,14 @@ data:extend {{
         {type = "fluid", name = "saline-water",    amount = 100},
     },
     results = {
+        {type = "fluid", name = "brackish-water",                 amount = 100},
         {type = "item",  name = "maraxsis-saturated-salt-filter", amount = 1,  ignored_by_stats = 1, ignored_by_stats = 1},
-        {type = "fluid", name = "brackish-water",            amount = 100},
     },
     category = "maraxsis-hydro-plant",
     main_product = "brackish-water",
     allow_productivity = true,
 }}
-add_to_tech("maraxsis-saturated-salt-filter")
+add_to_tech("brackish-water")
 
 local salt_variants = {}
 for i = 1, 3 do
