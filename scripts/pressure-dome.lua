@@ -200,24 +200,36 @@ local function update_combinator(pressure_dome_data)
 
     local all_machines_inside = {}
     for _, e in pairs(pressure_dome_data.contained_entities) do
+        local quality = e.quality.name
         if e.valid then
             for _, item_to_place in pairs(e.prototype.items_to_place_this or {}) do
-                all_machines_inside[item_to_place.name] = (all_machines_inside[item_to_place.name] or 0) + 1
+                all_machines_inside[item_to_place.name] = all_machines_inside[item_to_place.name] or {}
+                all_machines_inside[item_to_place.name][quality] = (all_machines_inside[item_to_place.name][quality] or 0) + 1
             end
         end
     end
 
     local control_behavior = combinator.get_or_create_control_behavior()
-    control_behavior.parameters = nil
-    local parameters = {}
-    for name, count in pairs(all_machines_inside) do
-        parameters[#parameters + 1] = {
-            signal = {type = "item", name = name},
-            count = count,
-            index = #parameters + 1,
-        }
+
+    if not control_behavior.get_section(1) then
+        control_behavior.add_section()
     end
-    control_behavior.parameters = parameters
+
+    local section = control_behavior.get_section(1)
+    section.group = ""
+
+    local parameters = {}
+    for name, by_quality in pairs(all_machines_inside) do
+        for quality, count in pairs(by_quality) do
+            parameters[#parameters + 1] = {
+                value = {type = "item", name = name, quality = quality},
+                min = count,
+                max = count,
+            }
+        end
+    end
+    game.print(serpent.block(parameters))
+    section.filters = parameters
 end
 
 maraxsis.on_event("on_built", function(event)
