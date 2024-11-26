@@ -11,7 +11,7 @@ data:extend {{
     },
     prerequisites = {"hydraulic-science-pack", "radar"},
     unit = {
-        count = 3000,
+        count = 1000,
         ingredients = {
             {"automation-science-pack",      1},
             {"logistic-science-pack",        1},

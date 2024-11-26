@@ -147,7 +147,7 @@ data:extend {{
     icon = "__maraxsis__/graphics/icons/salt-2.png",
     pictures = salt_variants,
     icon_size = 64,
-    stack_size = 10,
+    stack_size = 100,
 }}
 
 data:extend {{
@@ -155,7 +155,7 @@ data:extend {{
     name = "maraxsis-salt-filter",
     icon = "__maraxsis__/graphics/icons/salt-filter.png",
     icon_size = 64,
-    stack_size = 10,
+    stack_size = 50,
 }}
 
 data:extend {{
@@ -172,6 +172,7 @@ data:extend {{
         {type = "item", name = "maraxsis-salt-filter", amount = 1},
     },
     category = "crafting",
+    allow_productivity = true,
 }}
 add_to_tech("maraxsis-salt-filter")
 
@@ -185,11 +186,12 @@ data:extend {{
         {type = "fluid", name = "water",                     amount = 20},
     },
     results = {
-        {type = "item",  name = "maraxsis-salt-filter", amount = 1, catalyst_amount = 1, probability = 0.99},
-        {type = "item",  name = "steel-plate",     amount = 1, probability = 0.01},
-        {type = "fluid", name = "saline-water",    amount = 20},
+        {type = "item",  name = "maraxsis-salt-filter", amount = 1, probability = 0.95, ignored_by_stats = 1, ignored_by_productivity = 1},
+        {type = "item",  name = "carbon-fiber",     amount = 1, probability = 0.025},
+        {type = "item", name = "salt",    amount = 1},
     },
-    category = "crafting-with-fluid",
+    category = "maraxsis-hydro-plant",
     main_product = "maraxsis-salt-filter",
+    allow_productivity = true,
 }}
 add_to_tech("maraxsis-salt-filter-recycling")

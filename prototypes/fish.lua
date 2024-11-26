@@ -123,7 +123,7 @@ data:extend {{
     icon = "__maraxsis__/graphics/technology/piscary.png",
     icon_size = 256,
     effects = {},
-    prerequisites = {"maraxsis-hydro-plant", "uranium-ammo"},
+    prerequisites = {"maraxsis-hydro-plant"},
     research_trigger = {
         type = "craft-fluid",
         fluid = "brackish-water",
@@ -144,7 +144,6 @@ for i = 1, 3 do
         height = 64,
         scale = 1 / 3,
         flags = {"icon"},
-        mipmap_count = 4,
     }
 end
 
@@ -176,6 +175,22 @@ data:extend {{
     allow_productivity = true,
 }}
 add_to_tech("maraxsis-microplastics")
+
+data:extend {{
+    type = "recipe",
+    name = "maraxsis-carbon",
+    enabled = false,
+    energy_required = 2,
+    ingredients = {
+        {type = "item", name = "maraxsis-tropical-fish", amount = 1},
+    },
+    results = {
+        {type = "item", name = "carbon", amount = 5},
+    },
+    category = "smelting",
+    allow_productivity = true,
+    main_product = "carbon",
+}}
 
 data:extend {{
     type = "recipe",

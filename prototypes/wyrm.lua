@@ -59,7 +59,7 @@ data:extend {{
     energy_required = 10,
     ingredients = {
         {type = "item", name = "maraxsis-glass-panes",  amount = 3},
-        {type = "item", name = "advanced-circuit", amount = 1},
+        {type = "item", name = "slowdown-capsule", amount = 1},
         {type = "item", name = "steel-plate",      amount = 1},
     },
     results = {

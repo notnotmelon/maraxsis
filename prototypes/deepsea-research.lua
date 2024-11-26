@@ -8,7 +8,7 @@ data:extend {{
     effects = effects,
     prerequisites = {"hydraulic-science-pack"},
     unit = {
-        count = 5000,
+        count = 2000,
         ingredients = {
             {"automation-science-pack",      1},
             {"logistic-science-pack",        1},

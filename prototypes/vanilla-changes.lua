@@ -22,7 +22,8 @@ local function add_hydraulic_pack(tech_name, direct_prereq)
 end
 
 add_hydraulic_pack("legendary-quality", true)
-add_hydraulic_pack("promethium-science-pack", true)
+add_hydraulic_pack("promethium-science-pack", false)
+table.insert(data.raw["technology"]["promethium-science-pack"].prerequisites, "maraxsis-deepsea-research")
 add_hydraulic_pack("research-productivity", false)
 
 for _, machine in pairs(data.raw["assembling-machine"]) do

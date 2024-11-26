@@ -3,7 +3,10 @@ require "prototypes/planet/planet-maraxsis-trench-map-gen"
 local planet_map_gen = require("__space-age__/prototypes/planet/planet-map-gen")
 -- get vanilla planets from space age
 
-local entity_spawn_settings = {}
+local entity_spawn_settings = {
+    ["maraxsis-coral-reef"] = {},
+}
+
 for _, tropical_fish in pairs(maraxsis.tropical_fish_names) do
     entity_spawn_settings[tropical_fish] = {}
 end
@@ -29,7 +32,7 @@ planet_map_gen.maraxsis = function()
             richness = 0.98
         },
         autoplace_controls = {
-            ["iron-ore"] = {},
+            ["maraxsis-coral-reef"] = {},
         },
         autoplace_settings = {
             ["tile"] = {
@@ -95,8 +98,8 @@ planet_map_gen.maraxsis = function()
                     ["wispy-lichen"] = {},
                     ["grey-cracked-mud-decal"] = {},
                     ["barnacles-decal"] = {},
-                    --['nerv-roots-dense'] = {},
-                    --['nerv-roots-light'] = {},
+                    ["nerve-roots-dense"] = {},
+                    --["nerve-roots-light"] = {},
                     --["tentacles"] = {},
                     --shared
                     ["light-mud-decal"] = {},
@@ -133,7 +136,7 @@ planet_map_gen.maraxsis_trench = function()
             cliff_elevation = "cliff_elevation_from_elevation",
         },
         autoplace_controls = {
-            ["iron-ore"] = {},
+            ["sulfuric_acid_geyser"] = {},
         },
         autoplace_settings = {
             ["tile"] = {
@@ -151,7 +154,7 @@ planet_map_gen.maraxsis_trench = function()
             },
             ["entity"] = {
                 settings = {
-                    
+
                 },
             },
         }

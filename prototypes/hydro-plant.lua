@@ -199,9 +199,9 @@ data:extend {{
     energy_required = 5,
     ingredients = {
         {type = "item", name = "steel-plate",      amount = 20},
-        {type = "item", name = "concrete",      amount = 20},
         {type = "item", name = "processing-unit", amount = 10},
-        {type = "item", name = "pipe",             amount = 10},
+        {type = "item", name = "pipe",             amount = 30},
+        {type = "item", name = "pistol",             amount = 1},
         {type = "item", name = "quality-module-3", amount = 4},
         {type = "fluid", name = "water", amount = 500},
     },

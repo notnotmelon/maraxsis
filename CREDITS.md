@@ -27,9 +27,16 @@ If you are the author of one of these projects, and feel that your license has b
 #### Submarine & Nuclear Submarine
 
 - **Creator**: Archezekiel
-- **Source**: Commissioned
+- **Source**: Commissioned. Created in Blender.
 - **License**: N/A
 - **Changes**: Yes. Compressed for Factorio with [Spritter](https://github.com/fgardt/factorio-spritter)
+
+#### Pressure Dome
+
+- **Creator**: Concept art by notnotmelon. 3D model by KaueNP. Shadow & item icon by notnotmelon.
+- **Source**: Commissioned. Created in 3DS max studio.
+- **License**: N/A
+- **Changes**: No.
 
 #### Sonar
 
