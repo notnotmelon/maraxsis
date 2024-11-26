@@ -13,10 +13,10 @@ data:extend {{
             recipe = "maraxsis-wyrm-specimen",
         },
     },
-    prerequisites = {"maraxsis-hydro-plant"},
+    prerequisites = {"maraxsis-glassworking"},
     research_trigger = {
-        type = "build-entity",
-        entity = "maraxsis-hydro-plant"
+        type = "craft-item",
+        item = "maraxsis-pressure-dome"
     },
     order = "ee[wyrm-confinement]",
 }}

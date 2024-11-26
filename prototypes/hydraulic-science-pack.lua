@@ -5,8 +5,10 @@ data:extend {{
     icon_size = 64,
     subgroup = "science-pack",
     order = "j[hydraulic-science-pack]",
-    stack_size = 200,
+    stack_size = data.raw.tool["automation-science-pack"].stack_size,
     durability = data.raw.tool["automation-science-pack"].durability,
+    durability_description_key = data.raw.tool["automation-science-pack"].durability_description_key,
+    durability_description_value = data.raw.tool["automation-science-pack"].durability_description_value,
     weight = data.raw.tool["automation-science-pack"].weight,
 }}
 

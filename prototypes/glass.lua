@@ -13,21 +13,10 @@ data:extend {{
             recipe = "maraxsis-pressure-dome",
         },
     },
-    prerequisites = {"maraxsis"},
-    unit = {
-        count = 3000,
-        ingredients = {
-            {"automation-science-pack",      1},
-            {"logistic-science-pack",        1},
-            {"chemical-science-pack",        1},
-            {"space-science-pack",           1},
-            {"production-science-pack",      1},
-            {"utility-science-pack",         1},
-            {"metallurgic-science-pack",     1},
-            {"electromagnetic-science-pack", 1},
-            {"agricultural-science-pack",    1},
-        },
-        time = 60,
+    prerequisites = {"maraxsis-hydro-plant"},
+    research_trigger = {
+        type = "build-entity",
+        entity = "maraxsis-hydro-plant"
     },
     order = "eb[glassworking]",
 }}

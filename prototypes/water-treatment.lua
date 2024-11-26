@@ -6,26 +6,6 @@ local function add_to_tech(recipe)
 end
 
 data:extend {{
-    type = "technology",
-    name = "maraxsis-hydro-plant",
-    icon = "__maraxsis__/graphics/technology/hydro-plant.png",
-    icon_size = 256,
-    effects = {
-        {
-            type = "unlock-recipe",
-            recipe = "maraxsis-hydro-plant",
-        },
-    },
-    prerequisites = {"maraxsis-glassworking"},
-    research_trigger = {
-        type = "craft-item",
-        item = "maraxsis-glass-panes",
-        amount = 1,
-    },
-    order = "ec[water-treatment]",
-}}
-
-data:extend {{
     type = "fluid",
     name = "saline-water",
     icon = "__maraxsis__/graphics/icons/saline-water.png",

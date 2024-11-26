@@ -24,3 +24,14 @@ end
 add_hydraulic_pack("legendary-quality", true)
 add_hydraulic_pack("promethium-science-pack", true)
 add_hydraulic_pack("research-productivity", false)
+
+for _, machine in pairs(data.raw["assembling-machine"]) do
+    if machine.crafting_categories then
+        for _, category in pairs(machine.crafting_categories) do
+            if category == "crafting" then
+                table.insert(machine.crafting_categories, "maraxsis-hydro-plant-or-assembling")
+                break
+            end
+        end
+    end
+end

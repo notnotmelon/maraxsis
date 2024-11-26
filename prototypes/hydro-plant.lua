@@ -1,6 +1,26 @@
 local hit_effects = require("__base__/prototypes/entity/hit-effects")
 local sounds = require("__base__/prototypes/entity/sounds")
 
+data:extend {{
+    type = "technology",
+    name = "maraxsis-hydro-plant",
+    icon = "__maraxsis__/graphics/technology/hydro-plant.png",
+    icon_size = 256,
+    effects = {
+        {
+            type = "unlock-recipe",
+            recipe = "maraxsis-hydro-plant",
+        },
+    },
+    prerequisites = {"maraxsis"},
+    research_trigger = {
+        type = "craft-item",
+        item = "maraxsis-diesel-submarine",
+        amount = 1,
+    },
+    order = "ec[water-treatment]",
+}}
+
 local working_visualisations = {
     {
         always_draw = true,
@@ -24,7 +44,7 @@ local working_visualisations = {
             priority = "high",
             width = 600,
             height = 400,
-            shift = util.by_pixel(10, -12),
+            shift = util.by_pixel(0, -16),
             frame_count = 1,
             line_length = 1,
             animation_speed = 1,
@@ -149,6 +169,7 @@ data:extend {{
             pollution = 6,
         }
     },
+    icon_draw_specification = {scale = 1.75, shift = {0, -0.3}},
     energy_usage = "2MW",
     module_specification = {module_slots = 4, module_info_icon_shift = {0, 1.7}, module_info_icon_scale = 1},
     allowed_effects = {"consumption", "speed", "productivity", "pollution"}, -- todo: add quality
@@ -185,7 +206,6 @@ data:extend {{
     ingredients = {
         {type = "item", name = "steel-plate",      amount = 20},
         {type = "item", name = "stone-brick",      amount = 20},
-        {type = "item", name = "maraxsis-glass-panes",      amount = 50},
         {type = "item", name = "advanced-circuit", amount = 10},
         {type = "item", name = "pipe",             amount = 10},
     },
