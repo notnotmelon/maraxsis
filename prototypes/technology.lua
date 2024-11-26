@@ -44,3 +44,41 @@ data:extend {{
     },
     order = "ea[maraxsis]",
 }}
+
+data:extend {{
+    type = "technology",
+    name = "cargo-landing-pad-capacity",
+    icon = data.raw.technology["space-platform"].icon,
+    icon_size = data.raw.technology["space-platform"].icon_size,
+    effects = {
+        {
+            type = "cargo-landing-pad-count",
+            modifier = 1,
+            icons = {
+                {
+                    icon = "__maraxsis__/graphics/icons/cargo-landing-pad-capacity.png",
+                    icon_size = 64,
+                }
+            }
+        }
+    },
+    prerequisites = {"hydraulic-science-pack"},
+    unit = {
+        count_formula = "2^(L-1)*3000",
+        ingredients = {
+            {"automation-science-pack",      1},
+            {"logistic-science-pack",        1},
+            {"chemical-science-pack",        1},
+            {"space-science-pack",           1},
+            {"production-science-pack",      1},
+            {"utility-science-pack",         1},
+            {"metallurgic-science-pack",     1},
+            {"electromagnetic-science-pack", 1},
+            {"agricultural-science-pack",    1},
+            {"hydraulic-science-pack",       1},
+        },
+        time = 60
+    },
+    max_level = "infinite",
+    order = "ex[maraxsis]",
+}}
