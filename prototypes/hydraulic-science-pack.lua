@@ -42,6 +42,7 @@ data:extend {{
     energy_required = 10,
     ingredients = {
         {type = "item", name = "maraxsis-wyrm-specimen", amount = 1},
+        {type = "item", name = "maraxsis-tropical-fish", amount = 1},
     },
     results = {
         {type = "item", name = "hydraulic-science-pack", amount = 1},
