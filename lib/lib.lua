@@ -2,7 +2,6 @@ require "table"
 require "string"
 require "defines"
 require "color"
-require "world-generation"
 
 if data and data.raw and not data.raw.item["iron-plate"] then
     maraxsis.stage = "settings"

@@ -14,7 +14,7 @@ local DOME_POLYGON = {
 
 local PRESSURE_DOME_TILE = "maraxsis-pressure-dome-tile"
 
-maraxsis.on_event("on_init", function()
+maraxsis.on_event(maraxsis.events.on_init(), function()
     if remote.interfaces["PickerDollies"] and remote.interfaces["PickerDollies"]["add_blacklist_name"] then
         remote.call("PickerDollies", "add_blacklist_name", "maraxsis-pressure-dome")
     end
@@ -232,7 +232,7 @@ local function update_combinator(pressure_dome_data)
     section.filters = parameters
 end
 
-maraxsis.on_event("on_built", function(event)
+maraxsis.on_event(maraxsis.events.on_built(), function(event)
     local entity = event.entity or event.created_entity
     if not entity.valid or entity.name == "maraxsis-pressure-dome" then return end
     local surface = entity.surface
@@ -409,7 +409,7 @@ local function check_can_build_dome(entity)
     end
 end
 
-maraxsis.on_event("on_built", function(event)
+maraxsis.on_event(maraxsis.events.on_built(), function(event)
     local entity = event.entity
     if not entity.valid or entity.name ~= "maraxsis-pressure-dome" then return end
     local player = game.get_player(event.player_index)
@@ -589,7 +589,7 @@ local function on_dome_died(event, pressure_dome_data)
     end
 end
 
-maraxsis.on_event("on_destroyed", function(event)
+maraxsis.on_event(maraxsis.events.on_destroyed(), function(event)
     local entity = event.entity
     if not entity.valid then return end
     local unit_number = entity.unit_number
@@ -715,7 +715,7 @@ local function distance(entity1, entity2)
     return sqrt((x1 - x2) ^ 2 + (y1 - y2) ^ 2)
 end
 
-maraxsis.on_event("open-gui", function(event)
+maraxsis.on_event(maraxsis.events.on_entity_clicked(), function(event)
     local player = game.get_player(event.player_index)
     if not player or not player.valid then return end
     local entity = player.selected

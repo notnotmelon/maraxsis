@@ -20,7 +20,7 @@ local function rotate_hydro_plant(entity)
     entity.direction = direction
 end
 
-maraxsis.on_event("on_built", function(event)
+maraxsis.on_event(maraxsis.events.on_built(), function(event)
     local entity = event.entity
     if not entity.valid then return end
     if not is_hydro_plant(entity) then return end

@@ -7,7 +7,7 @@ local SUBMARINES = {
     ["maraxsis-nuclear-submarine"] = true,
 }
 
-maraxsis.on_event("on_init", function()
+maraxsis.on_event(maraxsis.events.on_init(), function()
     storage.breath = storage.breath or {}
 end)
 

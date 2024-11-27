@@ -1,4 +1,4 @@
-maraxsis.on_event("on_built", function(event)
+maraxsis.on_event(maraxsis.events.on_built(), function(event)
     local entity = event.entity
     if not entity.valid then return end
 

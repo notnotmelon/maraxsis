@@ -6,7 +6,7 @@ local default_colors = {
     {r = 0.3, g = 0.8, b = 0.3, a = 0.5},
 }
 
-maraxsis.on_event("on_built", function(event)
+maraxsis.on_event(maraxsis.events.on_built(), function(event)
     local entity = event.entity
     if not entity.valid then return end
     if not SUBMARINES[entity.name] then return end

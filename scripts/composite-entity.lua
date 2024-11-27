@@ -21,7 +21,7 @@ local composite_entity_creation = {
     end,
 }
 
-maraxsis.on_event("on_init", function()
+maraxsis.on_event(maraxsis.events.on_init(), function()
     storage.composite_entities = storage.composite_entities or {}
 end)
 
@@ -42,7 +42,7 @@ local function on_built(event)
     end
     storage.composite_entities[entity.unit_number] = sub_entities
 end
-maraxsis.on_event("on_built", on_built)
+maraxsis.on_event(maraxsis.events.on_built(), on_built)
 
 local function on_destroyed(event)
     local entity = event.entity
@@ -59,7 +59,7 @@ local function on_destroyed(event)
     storage.composite_entities[entity.unit_number] = nil
 end
 
-maraxsis.on_event("on_destroyed", on_destroyed)
+maraxsis.on_event(maraxsis.events.on_destroyed(), on_destroyed)
 
 maraxsis.on_event(defines.events.on_entity_cloned, function(event)
     local source = event.source

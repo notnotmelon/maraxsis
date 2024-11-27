@@ -20,21 +20,6 @@ maraxsis.draw_error_sprite = function(entity, sprite, time_to_live)
 	}
 end
 
----Creates a localised string tooltip for allowed modules.
----@param allowed_modules table<string, any>
----@return LocalisedString
-maraxsis.generate_allowed_module_tooltip = function(allowed_modules)
-	local item_prototypes = prototypes.item
-	---@type LocalisedString
-	local result = {"", {"gui.module-description"}, "\n"}
-	for module, _ in pairs(allowed_modules) do
-		result[#result + 1] = {"", "[font=heading-2][item=" .. module .. "][/font]", " ", item_prototypes[module].localised_name}
-		result[#result + 1] = "\n"
-	end
-	result[#result] = nil
-	return result
-end
-
 ---Randomizes a position by a factor.
 ---@param position Position
 ---@param factor number?
@@ -110,52 +95,6 @@ maraxsis.cancel_creation = function(entity, player_index, message, color)
 		end
 		storage._last_cancel_creation_message = game.tick
 	end
-end
-
-local seconds_per_year = 60 * 60 * 24 * 365.25
-local seconds_per_day = 60 * 60 * 24
-local seconds_per_hour = 60 * 60
-local seconds_per_minute = 60
----Creates a string representation of a time in seconds.
----@param seconds number?
----@return string?
-maraxsis.format_large_time = function(seconds)
-	if not seconds then return end
-	local result = ""
-	if seconds >= seconds_per_year then
-		local years = math.floor(seconds / seconds_per_year)
-		result = result .. years .. "y "
-		seconds = seconds % seconds_per_year
-	end
-
-	if seconds >= seconds_per_day or result ~= "" then
-		local days = math.floor(seconds / seconds_per_day)
-		result = result .. days .. "d "
-		seconds = seconds % seconds_per_day
-	end
-
-	if seconds >= seconds_per_hour or result ~= "" then
-		local hours = math.floor(seconds / seconds_per_hour)
-		result = result .. hours .. ":"
-		seconds = seconds % seconds_per_hour
-	end
-
-	local minutes = math.floor(seconds / seconds_per_minute)
-	if minutes < 10 then
-		result = result .. "0" .. minutes .. ":"
-	else
-		result = result .. minutes .. ":"
-	end
-	seconds = seconds % seconds_per_minute
-
-	seconds = math.ceil(seconds)
-	if seconds < 10 then
-		result = result .. "0" .. seconds
-	else
-		result = result .. seconds
-	end
-
-	return result
 end
 
 ---Returns the grandparent gui element with the given name.
