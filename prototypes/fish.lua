@@ -52,7 +52,7 @@ for i, v in pairs(fish) do
         localised_name = {"entity-name.fish"},
         type = "unit",
         name = name,
-        render_layer = "higher-object-above",
+        render_layer = "light-effect",
         icon = "__maraxsis__/graphics/entity/fish/icons/" .. i .. ".png",
         icon_size = 64,
         subgroup = "creatures",
