@@ -145,18 +145,6 @@ local function recursively_replace_cliff_shadows_to_vulcanus(cliff_orientations)
 end
 recursively_replace_cliff_shadows_to_vulcanus(cliff.orientations)
 cliff.map_color = maraxsis.color_combine(cliff.map_color, data.raw.tile["deepwater"].map_color, 0.3)
-cliff.collision_mask = {
-    layers = {
-        ["cliff"] = true,
-        --[[['item'] = true,
-        ['is_lower_object'] = true,
-        ['is_object'] = true,
-        ['object'] = true,
-        ['meltable'] = true,
-        ['water_tile'] = true--]]
-    },
-    not_colliding_with_itself = true
-} -- player should 'swim over' cliffs
 data:extend {cliff}
 collision_mask_util.get_mask(cliff)[maraxsis_collision_mask] = nil
 

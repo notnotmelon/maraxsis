@@ -14,7 +14,7 @@ _G.maraxsis_collision_mask = "h2o_maraxsis_collision_mask"
 
 _G.maraxsis = require "scripts.constants"
 require "lib.lib"
-require "prototypes.tile.water"
+require "prototypes.tile.water-and-cliffs"
 require "prototypes.submarine"
 require "prototypes.technology"
 require "prototypes.glass"
