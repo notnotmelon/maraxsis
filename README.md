@@ -76,6 +76,7 @@ This mod makes a few changes to Factorio: Space Age in order for Maraxsis to fit
   - Banned unbarrelling of heavy oil in space.
   - The research productivity technology now requires hydraulic science packs.
   - No more "haste makes waste". Speed modules no longer reduce quality.
+  - Added a new endgame technology which grants productivity to promethium science packs.
 
 ---
 

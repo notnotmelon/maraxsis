@@ -33,6 +33,7 @@ require "prototypes.coral"
 require "prototypes.project-seadragon"
 require "prototypes.deepsea-research"
 require "prototypes.preservatives"
+require "prototypes.promethium-productivity"
 require "prototypes.tile.lava"
 require "prototypes.tips-and-tricks.tips-and-tricks"
 
