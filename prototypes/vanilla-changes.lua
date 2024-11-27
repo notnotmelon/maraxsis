@@ -66,6 +66,7 @@ table.insert(rocket_part.surface_conditions, {
 
 table.insert(data.raw.furnace["electric-furnace"].crafting_categories, "maraxsis-smelting-or-biochamber")
 table.insert(data.raw["assembling-machine"]["biochamber"].crafting_categories, "maraxsis-smelting-or-biochamber")
+table.insert(data.raw["assembling-machine"]["biochamber"].crafting_categories, "maraxsis-hydro-plant-or-biochamber")
 
 table.insert(data.raw.technology["rocket-part-productivity"].effects, {
     type = "change-recipe-productivity",

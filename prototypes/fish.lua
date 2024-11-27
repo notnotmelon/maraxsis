@@ -123,7 +123,7 @@ data:extend {{
     icon = "__maraxsis__/graphics/technology/piscary.png",
     icon_size = 256,
     effects = {},
-    prerequisites = {"maraxsis-hydro-plant"},
+    prerequisites = {"maraxsis-hydro-plant-or-biochamber"},
     research_trigger = {
         type = "craft-fluid",
         fluid = "brackish-water",

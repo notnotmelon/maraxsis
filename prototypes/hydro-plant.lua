@@ -74,6 +74,11 @@ data:extend {{
 }}
 
 data:extend {{
+    type = "recipe-category",
+    name = "maraxsis-hydro-plant-or-biochamber",
+}}
+
+data:extend {{
     type = "assembling-machine",
     name = "maraxsis-hydro-plant",
     icon = "__maraxsis__/graphics/icons/hydro-plant.png",
@@ -143,7 +148,7 @@ data:extend {{
     graphics_set = {
         working_visualisations = working_visualisations
     },
-    crafting_categories = {"maraxsis-hydro-plant", "maraxsis-hydro-plant-or-assembling"},
+    crafting_categories = {"maraxsis-hydro-plant", "maraxsis-hydro-plant-or-assembling", "maraxsis-hydro-plant-or-biochamber"},
     scale_entity_info_icon = true,
     impact_category = data.raw["assembling-machine"]["electromagnetic-plant"].impact_category,
     --[[working_sound = {
