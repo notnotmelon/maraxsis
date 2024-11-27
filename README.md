@@ -1,26 +1,5 @@
 [![Release](https://github.com/notnotmelon/maraxsis/actions/workflows/release.yml/badge.svg?branch=main)](https://github.com/notnotmelon/maraxsis/actions/workflows/release.yml) [![Discord](https://img.shields.io/discord/1260754935952314418?color=lightblue&label=Community%20Chat&logo=Discord&logoColor=aqua)](https://discord.gg/xRYEZYz5WR) [![Bug reports](https://img.shields.io/github/issues/notnotmelon/maraxsis?label=Bug%20Reports)](https://github.com/notnotmelon/maraxsis/issues) [![factorio.com](https://img.shields.io/badge/dynamic/json?color=orange&label=Factorio&query=downloads_count&suffix=%20downloads&url=https%3A%2F%2Fmods.factorio.com%2Fapi%2Fmods%2Fmaraxsis)](https://mods.factorio.com/mod/maraxsis)
 
----
-
-### Introduction
-
-In 2016, we were first introduced to Nauvis—Factorio's first planet. It revolutionized the automation genre, pushing the limits of production to new heights not seen in other games. Eight years later, Factorio Space Age expands the universe further, adding Vulcanus, Fulgora, Gleba, and Aquilo—each bringing unique mechanics that redefine factory design.
-
-- Vulcanus: A world where coal is the only resource. Craft rocket parts from freely available sulfuric acid and extract precious materials from molten lava.
-- Fulgora: Experience the challenge of limited space on scattered islands. Reverse the recipe tree and deconstruct advanced products into their basic components.
-- Gleba: Experiment with the time dimension in a world where every item is rapidly transforming into something else.
-- Aquilo: ???
-
-These new worlds are compelling, but one question still lingers: where do we go from here?
-
----
-
-### DISCLAIMER
-
-This mod is currently non-functional. I am just claiming the name! Please wait until the release of Space Age to play this mod.
-
----
-
 ### Welcome to Maraxsis
 
 Let me introduce this pristine, submerged world. Far away from the sun, this planet paradoxically maintains a comfortable temperature through a runaway greenhouse effect. Preliminary surface scans show an average temperature of 101°F. It's not too hot and not too cold, the perfect Goldilocks zone for liquid water. Maybe even too perfect...
@@ -72,14 +51,6 @@ todo: write this section
 
 ---
 
-### Fiber optics
-
-Standard power poles are ineffective underwater, rendering traditional circuit and power transfer methods unusable. To overcome this challenge, you’ll need to invest in deep-sea fiber optic cables, which allow the transfer of both power and signals.
-
-Fiber optic cables function similarly to pipes, as they are 1x1 entities that connect on all four sides. However, unlike vanilla pipes, these cables can transmit energy and signals vertically, reaching the deepest trenches of Maraxsis.
-
----
-
 ### Pressure domes
 
 As you explore Maraxsis, you’ll quickly discover that many of your standard machines are ineffective underwater. You are able to research new designs that function underwater however many recipes are still impossible. In these situations, constructing high-pressure domes becomes essential.
@@ -90,23 +61,21 @@ These specialized structures are designed to withstand the immense pressures of 
 
 ---
 
-### Pressure domes circuit connectivity
+### Progression
 
-Have you ever wanted to build a giant underwater disco dome in Factorio? No? Well I coded it anyway
+Maraxsis is available at the same time as Aquilo. The mod does not change any vanilla recipes meaning the mod can be seamlessly added to any existing Space Age save, even if the save is completed. The mod leans heavily into the puzzle genera requiring creative setups to solve difficult challenges. Do you have what it takes to craft the hydraulic science pack?
 
-![](https://files.catbox.moe/ivqc9z.mp4)
-
-You can also connect the dome to a wire to read the entities inside.
-
-![](https://files.catbox.moe/gv0fmf.png)
+![](https://files.catbox.moe/vhpfuz.png)
 
 ---
 
-### Progression
+### Vanilla Changes
 
-Maraxsis is available at the same time as Aquilo. The mod does not change any vanilla recipes meaning the mod can be seamlessly added to any existing Space Age save, even if the save is completed. The tech tree on Maraxsis is designed to be small, focused, and efficient. The mod leans heavily into the puzzle genera requiring creative setups to solve difficult challenges. Do you have what it takes to craft the hydraulic science pack?
-
-![](https://files.catbox.moe/vhpfuz.png)
+This mod makes a few changes to Factorio: Space Age in order for Maraxsis to fit seamlessly into the tech tree.
+  - Adds a recipe for the pistol.
+  - Banned unbarrelling of heavy oil in space.
+  - The research productivity technology now requires hydraulic science packs.
+  - No more "haste makes waste". Speed modules no longer reduce quality.
 
 ---
 
