@@ -173,6 +173,7 @@ data:extend {{
     localised_name = {"recipe-name.maraxsis-microplastics"},
     main_product = "maraxsis-microplastics",
     allow_productivity = true,
+    auto_recycle = false,
 }}
 add_to_tech("maraxsis-microplastics")
 
@@ -197,6 +198,7 @@ data:extend {{
     main_product = "carbon",
     icon = "__maraxsis__/graphics/icons/burnt-fish.png",
     icon_size = 64,
+    auto_recycle = false,
 }}
 add_to_tech("maraxsis-carbon")
 
@@ -215,6 +217,7 @@ data:extend {{
     allow_productivity = true,
     main_product = "plastic-bar",
     emissions_multiplier = 3
+    auto_recycle = false,
 }}
 add_to_tech("maraxsis-smelt-microplastics")
 

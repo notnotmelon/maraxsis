@@ -81,6 +81,7 @@ data:extend {{
     category = "maraxsis-hydro-plant",
     icon = "__maraxsis__/graphics/icons/saline-electrolysis.png",
     icon_size = 128,
+    auto_recycle = false,
     allow_productivity = true,
 }}
 add_to_tech("maraxsis-saline-electrolysis")
@@ -125,6 +126,7 @@ data:extend {{
         {type = "item",  name = "maraxsis-saturated-salt-filter", amount = 1,  ignored_by_stats = 1, ignored_by_stats = 1},
     },
     category = "maraxsis-hydro-plant",
+    auto_recycle = false,
     main_product = "brackish-water",
     allow_productivity = true,
 }}
@@ -195,5 +197,7 @@ data:extend {{
     allow_productivity = true,
     icon = "__maraxsis__/graphics/icons/salt-filter-cleaning.png",
     icon_size = 64,
+    allow_decomposition = false,
+    auto_recycle = false,
 }}
 add_to_tech("maraxsis-salt-filter-cleaning")

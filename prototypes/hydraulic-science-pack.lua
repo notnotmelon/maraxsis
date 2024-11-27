@@ -49,5 +49,6 @@ data:extend {{
         {type = "item", name = "hydraulic-science-pack", amount = 3},
     },
     allow_productivity = true,
-    category = "maraxsis-hydro-plant"
+    category = "maraxsis-hydro-plant",
+    auto_recycle = false,
 }}

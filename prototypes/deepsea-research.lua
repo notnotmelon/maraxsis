@@ -75,6 +75,7 @@ for _, recipe in pairs{
     recipe.category = "maraxsis-hydro-plant"
     recipe.subgroup = "maraxsis-deepsea-research"
     recipe.enabled = false
+    recipe.auto_recycle = false
     effects[#effects + 1] = {type = "unlock-recipe", recipe = recipe.name}
 end
 

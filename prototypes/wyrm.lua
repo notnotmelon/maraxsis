@@ -79,6 +79,7 @@ data:extend {{
     results = {
         {type = "item", name = "maraxsis-wyrm-specimen", amount = 1},
     },
+    auto_recycle = false,
     category = "maraxsis-hydro-plant"
 }}
 
