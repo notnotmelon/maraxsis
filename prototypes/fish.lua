@@ -216,7 +216,7 @@ data:extend {{
     category = "smelting",
     allow_productivity = true,
     main_product = "plastic-bar",
-    emissions_multiplier = 3
+    emissions_multiplier = 3,
     auto_recycle = false,
 }}
 add_to_tech("maraxsis-smelt-microplastics")

@@ -240,20 +240,6 @@ data:extend {{
     cyclic = true
 }}
 
-data:extend {{
-    type = "fluid",
-    name = "maraxsis-atmosphere",
-    default_temperature = 25,
-    max_temperature = 100,
-    heat_capacity = "1kJ",
-    base_flow_rate = data.raw.fluid.steam.base_flow_rate,
-    base_color = {1, 1, 1},
-    flow_color = {0.5, 0.5, 1},
-    icon = "__maraxsis__/graphics/icons/atmosphere.png",
-    icon_size = 64,
-    gas_temperature = 25,
-}}
-
 local tile = maraxsis.merge(data.raw.tile["space-platform-foundation"], {
     name = "maraxsis-pressure-dome-tile",
     is_foundation = true,

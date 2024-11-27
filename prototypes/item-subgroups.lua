@@ -67,6 +67,8 @@ data.raw.fluid["hydrogen"].order = "f[maraxsis-fluids]-d[hydrogen]"
 data.raw.fluid["hydrogen"].subgroup = "fluid"
 data.raw.fluid["maraxsis-atmosphere"].order = "f[maraxsis-fluids]-f[atmosphere]"
 data.raw.fluid["maraxsis-atmosphere"].subgroup = "fluid"
+data.raw.fluid["maraxsis-liquid-atmosphere"].order = "f[maraxsis-fluids]-f[liquid-atmosphere]"
+data.raw.fluid["maraxsis-liquid-atmosphere"].subgroup = "fluid"
 
 data.raw.capsule["maraxsis-big-cliff-explosives"].subgroup = data.raw.capsule["cliff-explosives"].subgroup
 data.raw.capsule["maraxsis-big-cliff-explosives"].order = "e[big-cliff-explosives]"

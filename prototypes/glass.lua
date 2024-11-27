@@ -12,6 +12,10 @@ data:extend {{
             type = "unlock-recipe",
             recipe = "maraxsis-pressure-dome",
         },
+        {
+            type = "unlock-recipe",
+            recipe = "maraxsis-atmosphere",
+        },
     },
     prerequisites = {"maraxsis-hydro-plant"},
     research_trigger = {
