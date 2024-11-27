@@ -228,7 +228,7 @@ local function update_combinator(pressure_dome_data)
             }
         end
     end
-    game.print(serpent.block(parameters))
+    
     section.filters = parameters
 end
 
