@@ -84,7 +84,7 @@ for i = 1, 3 do
         filename = "__maraxsis__/graphics/icons/sand-" .. i .. ".png",
         width = 64,
         height = 64,
-        scale = 1 / 3,
+        scale = 1 / 2,
         flags = {"icon"}
     }
 end

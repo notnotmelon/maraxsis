@@ -4,7 +4,7 @@ local planet_map_gen = require("__space-age__/prototypes/planet/planet-map-gen")
 -- get vanilla planets from space age
 
 local entity_spawn_settings = {
-    ["maraxsis-coral-reef"] = {},
+    ["maraxsis-coral"] = {},
 }
 
 for _, tropical_fish in pairs(maraxsis.tropical_fish_names) do
@@ -32,7 +32,7 @@ planet_map_gen.maraxsis = function()
             richness = 0.98
         },
         autoplace_controls = {
-            ["maraxsis-coral-reef"] = {},
+            ["maraxsis-coral"] = {},
         },
         autoplace_settings = {
             ["tile"] = {

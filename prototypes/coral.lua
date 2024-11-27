@@ -4,7 +4,7 @@ local sounds = require "__base__.prototypes.entity.sounds"
 data:extend {{
     type = "autoplace-control",
     category = "resource",
-    name = "maraxsis-coral-reef",
+    name = "maraxsis-coral",
     order = "e-0",
     richness = true
 }}
@@ -32,10 +32,11 @@ data:extend {{
 
 data:extend{{
     type = "resource",
-    name = "maraxsis-coral-reef",
+    name = "maraxsis-coral",
+    hidden_in_factoriopedia = true,
     icon = "__maraxsis__/graphics/icons/coral-1.png",
     flags = {"placeable-neutral"},
-    order = "a-b-x[maraxsis-coral-reef]",
+    order = "a-b-x[maraxsis-coral]",
     tree_removal_probability = 0.8,
     tree_removal_max_distance = 32 * 32,
     minable = {
@@ -51,7 +52,7 @@ data:extend{{
     collision_box = {{-0.1, -0.1}, {0.1, 0.1}},
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
     autoplace = resource_autoplace.resource_autoplace_settings{
-        name = "maraxsis-coral-reef",
+        name = "maraxsis-coral",
         order = "f",
         base_density = 8,
         --base_spots_per_km = autoplace_parameters.base_spots_per_km2,
@@ -74,5 +75,5 @@ data:extend{{
     },
     map_color = {255, 20, 147},
     mining_visualisation_tint = {255, 20, 147},
-    factoriopedia_simulation = { init = make_resource("copper-ore") }
+    factoriopedia_simulation = {init = make_resource("maraxsis-coral")}
   }}

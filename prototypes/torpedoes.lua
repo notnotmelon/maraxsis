@@ -36,7 +36,10 @@ data:extend {{
 
 data:extend {{
     type = "ammo-category",
-    name = "maraxsis-torpedoes"
+    name = "maraxsis-torpedoes",
+    icon = "__maraxsis__/graphics/icons/ammo-category/torpedo.png",
+    subgroup = "ammo-category",
+    order = "x[torpedoes]",
 }}
 
 local torpedo = table.deepcopy(data.raw["ammo"]["rocket"])
@@ -234,6 +237,7 @@ for i = 1, 3 do
         name = "maraxsis-" .. names[i] .. "-projectile",
         flags = {"not-on-map"},
         acceleration = 0.005,
+        hidden = true,
         action = {
             type = "direct",
             action_delivery = action_delivery[i],

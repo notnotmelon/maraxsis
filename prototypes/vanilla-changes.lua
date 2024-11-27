@@ -47,6 +47,7 @@ end
 -- ban certain recipes in space
 for _, recipe in pairs{
     "simple-coal-liquefaction",
+    "rocket-part",
     "empty-heavy-oil-barrel", -- I know it doesn't make sense. But oil processing in space is cool :)
 } do
     recipe = data.raw.recipe[recipe]
@@ -57,9 +58,7 @@ for _, recipe in pairs{
     })
 end
 
-local rocket_part = data.raw.recipe["rocket-part"]
-rocket_part.surface_conditions = rocket_part.surface_conditions or {}
-table.insert(rocket_part.surface_conditions, {
+table.insert(data.raw.recipe["rocket-part"].surface_conditions, {
     property = "pressure",
     max = 50000,
 })
