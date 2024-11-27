@@ -58,13 +58,14 @@ data:extend {{
     enabled = false,
     energy_required = 10,
     ingredients = {
-        {type = "item", name = "maraxsis-glass-panes",  amount = 3},
+        {type = "item", name = "maraxsis-glass-panes",  amount = 10},
         {type = "item", name = "slowdown-capsule", amount = 1},
         {type = "item", name = "steel-plate",      amount = 1},
     },
     results = {
         {type = "item", name = "maraxsis-wyrm-confinement-cell", amount = 1},
     },
+    allow_productivity = true
 }}
 
 data:extend {{
@@ -78,6 +79,7 @@ data:extend {{
     results = {
         {type = "item", name = "maraxsis-wyrm-specimen", amount = 1},
     },
+    category = "maraxsis-hydro-plant"
 }}
 
 --[[
