@@ -322,7 +322,7 @@ local function unplace_tiles(pressure_dome_data)
     end
 end
 
-local function place_collision_boxes(pressure_dome_data, health)
+local function place_collision_boxes(pressure_dome_data, health, player)
     local surface = pressure_dome_data.surface
     if not surface.valid then return end
     local position = pressure_dome_data.position
@@ -348,12 +348,15 @@ local function place_collision_boxes(pressure_dome_data, health)
             position = {pos_x, pos_y},
             force = force,
             create_build_effect_smoke = false,
-            direction = orientation
+            direction = orientation,
+            player = player -- setup the undo queue
         }
         collision_box.health = health
         collision_box.active = false
         collision_box.operable = false -- vanilla bug: operable does nothing on cars
         table.insert(pressure_dome_data.collision_boxes, collision_box)
+
+        player = nil -- only setup the undo queue for 1 entity. do not spam the undo queue
     end
 end
 
@@ -406,27 +409,12 @@ local function check_can_build_dome(entity)
     end
 end
 
-local ALLOWED_CONTROLLERS = {
-    [defines.controllers.character] = true,
-    [defines.controllers.god] = true,
-    [defines.controllers.cutscene] = true,
-}
-local function get_player_from_trigger_effect(event)
-    local entity = event.source_entity
-    local player = entity.last_user
-    if not player then return nil end
-
-    if not ALLOWED_CONTROLLERS[player.controller_type] then return nil end
-    if player.surface_index ~= entity.surface.index then return nil end
-
-    return player
-end
-
-maraxsis.on_event(defines.events.on_script_trigger_effect, function(event)
-    if event.effect_id ~= "on_built_maraxsis_pressure_dome" then return end
-    local entity = event.source_entity
+maraxsis.on_event("on_built", function(event)
+    local entity = event.entity
     if not entity.valid or entity.name ~= "maraxsis-pressure-dome" then return end
-    local player = get_player_from_trigger_effect(event)
+    local player = game.get_player(event.player_index)
+
+    local undo_index = 0
 
     local can_build, contained_entities, error_msg = check_can_build_dome(entity)
     if not can_build then
@@ -434,7 +422,13 @@ maraxsis.on_event(defines.events.on_script_trigger_effect, function(event)
         local to_unmark = {}
         for _, colliding_entity in pairs(contained_entities) do
             if not colliding_entity.to_be_deconstructed() then
-                local deconstructed = colliding_entity.order_deconstruction(entity.force)
+                local deconstructed
+                if player then
+                    colliding_entity.order_deconstruction(entity.force, player, undo_index)
+                    undo_index = 1
+                else
+                    colliding_entity.order_deconstruction(entity.force)
+                end
                 successfully_cleared_area = successfully_cleared_area and deconstructed
                 if deconstructed then to_unmark[#to_unmark + 1] = colliding_entity end
             end
@@ -488,7 +482,7 @@ maraxsis.on_event(defines.events.on_script_trigger_effect, function(event)
 
     create_dome_light(pressure_dome_data)
     update_combinator(pressure_dome_data)
-    place_collision_boxes(pressure_dome_data, health)
+    place_collision_boxes(pressure_dome_data, health, player)
     place_tiles(pressure_dome_data)
 
     if table_size(contained_entities) ~= 0 then

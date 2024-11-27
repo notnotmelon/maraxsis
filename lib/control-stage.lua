@@ -58,11 +58,26 @@ maraxsis.cancel_creation = function(entity, player_index, message, color)
 	local item_to_place = items_to_place_this and items_to_place_this[1]
 	local surface = entity.surface
 	local position = entity.position
+	local name = entity.name
 
 	if player_index then
 		local player = game.get_player(player_index)
 		if player.mine_entity(entity, false) then
 			inserted = 1
+
+			-- remove from undo stack
+			local undo_stack = player.undo_redo_stack
+			local top
+			for i = 1, undo_stack.get_undo_item_count() do
+				top = undo_stack.get_undo_item(i)
+				for j, action in pairs(top) do
+					local target = action.target
+					if target and target.name == name and serpent.line(target.position) == serpent.line(position) then
+						undo_stack.remove_undo_action(i, j)
+						break
+					end
+				end
+			end
 		elseif item_to_place then
 			inserted = player.insert(item_to_place)
 		end
