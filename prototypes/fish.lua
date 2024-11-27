@@ -177,22 +177,28 @@ data:extend {{
 add_to_tech("maraxsis-microplastics")
 
 data:extend {{
+    type = "recipe-category",
+    name = "maraxsis-smelting-or-biochamber",
+}}
+
+data:extend {{
     type = "recipe",
     name = "maraxsis-carbon",
     enabled = false,
-    energy_required = 2,
+    energy_required = 3,
     ingredients = {
         {type = "item", name = "maraxsis-tropical-fish", amount = 1},
     },
     results = {
-        {type = "item", name = "carbon", amount = 5},
+        {type = "item", name = "carbon", amount = 6},
     },
-    category = "smelting",
+    category = "maraxsis-smelting-or-biochamber",
     allow_productivity = true,
     main_product = "carbon",
     icon = "__maraxsis__/graphics/icons/burnt-fish.png",
     icon_size = 64,
 }}
+add_to_tech("maraxsis-carbon")
 
 data:extend {{
     type = "recipe",

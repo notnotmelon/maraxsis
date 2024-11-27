@@ -65,24 +65,21 @@ local fuel_sources = {
 
 local recipes = {
     ["maraxsis-diesel-submarine"] = {
-        {type = "item", name = "steel-plate",          amount = 200},
-        {type = "item", name = "electric-engine-unit", amount = 50},
+        {type = "item", name = "steel-plate",          amount = 50},
+        {type = "item", name = "electric-engine-unit", amount = 10},
         {type = "item", name = "processing-unit",      amount = 100},
         {type = "item", name = "pump",                 amount = 4},
-        {type = "item", name = "battery-equipment",    amount = 2},
-        {type = "item", name = "raw-fish",             amount = 1},
+        {type = "item", name = "supercapacitor",                 amount = 8},
     },
     ["maraxsis-nuclear-submarine"] = {
-        {type = "item", name = "maraxsis-diesel-submarine",  amount = 1},
         {type = "item", name = "maraxsis-sonar",             amount = 1},
-        {type = "item", name = "maraxsis-glass-panes",       amount = 1000},
+        {type = "item", name = "maraxsis-glass-panes",       amount = 500},
         {type = "item", name = "nuclear-reactor",       amount = 1},
         {type = "item", name = "heat-exchanger",        amount = 4},
         {type = "item", name = "pump",                  amount = 8},
         {type = "item", name = "processing-unit",       amount = 200},
-        {type = "item", name = "battery-mk2-equipment", amount = 2},
-        {type = "item", name = "speed-module-3",        amount = 2},
-        {type = "item", name = "maraxsis-tropical-fish",     amount = 1},
+        {type = "item", name = "maraxsis-super-sealant-substance", amount = 100},
+        {type = "item", name = "supercapacitor",                   amount = 16},
     },
 }
 

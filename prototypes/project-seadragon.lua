@@ -33,7 +33,7 @@ data:extend {{
 
 local maraxsis_rocket_part = table.deepcopy(data.raw["recipe"]["rocket-part"])
 maraxsis_rocket_part.name = "maraxsis-rocket-part"
-maraxsis_rocket_part.localised_name = maraxsis_rocket_part.localised_name  or {"item-name.rocket-part"}
+maraxsis_rocket_part.localised_name = maraxsis_rocket_part.localised_name or {"item-name.rocket-part"}
 table.insert(maraxsis_rocket_part.ingredients, {type = "item", name = "maraxsis-super-sealant-substance", amount = 1})
 maraxsis_rocket_part.enabled = false
 maraxsis_rocket_part.surface_conditions = {
@@ -48,9 +48,9 @@ data:extend {{
     enabled = false,
     energy_required = 2,
     ingredients = {
-        {type = "item", name = "sulfur", amount = 1},
+        {type = "item",  name = "sulfur",    amount = 1},
         {type = "fluid", name = "heavy-oil", amount = 200},
-        {type = "fluid", name = "steam", amount = 100},
+        {type = "fluid", name = "steam",     amount = 100},
     },
     results = {
         {type = "item", name = "maraxsis-super-sealant-substance", amount = 1},
@@ -72,4 +72,32 @@ data:extend {{
     icon_size = 64,
     stack_size = data.raw.item["rocket-fuel"].stack_size,
     weight = data.raw.item["rocket-fuel"].weight,
+}}
+
+data:extend {{
+    type = "technology",
+    name = "maraxsis-super-sealant-substance-productivity",
+    icons = util.technology_icon_constant_recipe_productivity("__maraxsis__/graphics/technology/super-sealant-substance-productivity.png"),
+    icon_size = 256,
+    effects = {
+        {
+            type = "change-recipe-productivity",
+            recipe = "maraxsis-super-sealant-substance",
+            change = 0.1
+        },
+    },
+    prerequisites = {"maraxsis-project-seadragon"},
+    unit = {
+        count_formula = "1.5^L*1000",
+        ingredients = {
+            {"automation-science-pack",   1},
+            {"logistic-science-pack",     1},
+            {"chemical-science-pack",     1},
+            {"utility-science-pack",   1},
+            {"hydraulic-science-pack", 1},
+        },
+        time = 60
+    },
+    max_level = "infinite",
+    upgrade = true
 }}

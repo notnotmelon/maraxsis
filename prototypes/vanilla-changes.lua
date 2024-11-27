@@ -44,23 +44,32 @@ for _, silo in pairs(data.raw["rocket-silo"]) do
     end
 end
 
-local simple_coal_liquefaction = data.raw.recipe["coal-liquefaction"]
-simple_coal_liquefaction.surface_conditions = simple_coal_liquefaction.surface_conditions or {}
-table.insert(simple_coal_liquefaction.surface_conditions, {
-    property = "gravity",
-    min = 0.5,
-})
-
-local empty_heavy_oil_barrel = data.raw.recipe["empty-heavy-oil-barrel"] -- I know it doesn't make sense. But oil processing in space is cool :)
-empty_heavy_oil_barrel.surface_conditions = empty_heavy_oil_barrel.surface_conditions or {}
-table.insert(empty_heavy_oil_barrel.surface_conditions, {
-    property = "gravity",
-    min = 0.5,
-})
+-- ban certain recipes in space
+for _, recipe in pairs{
+    "simple-coal-liquefaction",
+    "empty-heavy-oil-barrel", -- I know it doesn't make sense. But oil processing in space is cool :)
+} do
+    recipe = data.raw.recipe[recipe]
+    recipe.surface_conditions = recipe.surface_conditions or {}
+    table.insert(recipe.surface_conditions, {
+        property = "gravity",
+        min = 0.5,
+    })
+end
 
 local rocket_part = data.raw.recipe["rocket-part"]
 rocket_part.surface_conditions = rocket_part.surface_conditions or {}
 table.insert(rocket_part.surface_conditions, {
     property = "pressure",
     max = 50000,
+})
+
+table.insert(data.raw.furnace["electric-furnace"].crafting_categories, "maraxsis-smelting-or-biochamber")
+table.insert(data.raw["assembling-machine"]["biochamber"].crafting_categories, "maraxsis-smelting-or-biochamber")
+
+table.insert(data.raw.technology["rocket-part-productivity"].effects, {
+    type = "change-recipe-productivity",
+    recipe = "maraxsis-rocket-part",
+    change = 0.1,
+    hidden = true
 })

@@ -74,6 +74,7 @@ data:extend {{
     ingredients = {
         {type = "item", name = "rocket",      amount = 1},
         {type = "item", name = "rocket-fuel", amount = 1},
+        {type = "item", name = "maraxsis-super-sealant-substance", amount = 1},
     },
     results = {
         {type = "item", name = "maraxsis-torpedo", amount = 1},
@@ -88,7 +89,8 @@ data:extend {{
     energy_required = 10,
     ingredients = {
         {type = "item", name = "explosive-rocket", amount = 1},
-        {type = "item", name = "rocket-fuel",      amount = 1},
+        {type = "item", name = "rocket-fuel",                      amount = 1},
+        {type = "item", name = "maraxsis-super-sealant-substance", amount = 1},
     },
     results = {
         {type = "item", name = "maraxsis-explosive-torpedo", amount = 1},
@@ -103,7 +105,8 @@ data:extend {{
     energy_required = 10,
     ingredients = {
         {type = "item", name = "atomic-bomb", amount = 1},
-        {type = "item", name = "rocket-fuel", amount = 1},
+        {type = "item", name = "rocket-fuel",                      amount = 1},
+        {type = "item", name = "maraxsis-super-sealant-substance", amount = 1},
     },
     results = {
         {type = "item", name = "maraxsis-atomic-torpedo", amount = 1},
