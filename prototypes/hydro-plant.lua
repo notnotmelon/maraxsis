@@ -203,7 +203,6 @@ data:extend {{
         {type = "item", name = "pipe",             amount = 30},
         {type = "item", name = "pistol",             amount = 1},
         {type = "item", name = "quality-module-3", amount = 4},
-        {type = "fluid", name = "water", amount = 500},
     },
     results = {
         {type = "item", name = "maraxsis-hydro-plant", amount = 1},
