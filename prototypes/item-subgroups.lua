@@ -36,7 +36,6 @@ make_subgroup("maraxsis-intermediants", "ge", "intermediate-products", {
 make_subgroup("maraxsis-machines", "ee", "production", {
     data.raw["item-with-entity-data"]["maraxsis-diesel-submarine"],
     data.raw["item-with-entity-data"]["maraxsis-nuclear-submarine"],
-    data.raw["rail-planner"]["maraxsis-waterway"],
     data.raw["simple-entity"]["maraxsis-water-shader-32-1-1"],
     data.raw.item["maraxsis-hydro-plant"],
     data.raw.item["maraxsis-sonar"],

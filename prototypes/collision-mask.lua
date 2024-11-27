@@ -48,8 +48,6 @@ local prototypes_that_cant_be_placed_in_a_dome = {
     data.raw["assembling-machine"]["maraxsis-hydro-plant"],
     data.raw["assembling-machine"]["maraxsis-hydro-plant-extra-module-slots"],
     data.raw["radar"]["maraxsis-sonar"],
-    --data.raw['straight-rail']['maraxsis-straight-waterway'],
-    --data.raw['curved-rail']['maraxsis-curved-waterway'],
 }
 
 local prototypes_that_cant_be_placed_in_a_dome_or_on_water = {

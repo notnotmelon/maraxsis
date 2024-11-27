@@ -8,7 +8,6 @@ maraxsis.prototypes = {
 
 require "scripts.submarine"
 require "scripts.drowning"
-require "scripts.waterway"
 require "scripts.nightvision"
 require "scripts.pressure-dome"
 require "scripts.composite-entity"
