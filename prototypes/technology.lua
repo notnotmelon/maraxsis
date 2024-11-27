@@ -1,10 +1,9 @@
 data:extend {{
     type = "technology",
-    name = "maraxsis",
+    name = "planet-discovery-maraxsis",
     icons = util.technology_icon_constant_planet("__maraxsis__/graphics/technology/maraxsis.png"),
     icon_size = 256,
     essential = true,
-    localised_name = {"space-location-name.maraxsis"},
     localised_description = {"space-location-description.maraxsis"},
     effects = {
         {
