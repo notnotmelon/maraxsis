@@ -93,3 +93,9 @@ table.insert(data.raw["technology"]["military"].effects, 1, {
     type = "unlock-recipe",
     recipe = "pistol",
 })
+
+for _, module in pairs(data.raw.module) do -- you're welcome
+    if module.name:find("speed%-module%-") then
+        module.effect.quality = math.max(0, module.effect.quality)
+    end
+end
