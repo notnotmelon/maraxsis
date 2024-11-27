@@ -188,6 +188,8 @@ data:extend {maraxsis.merge(data.raw["constant-combinator"]["constant-combinator
     draw_copper_wires = false,
     draw_circuit_wires = false,
     sprites = "nil",
+    quality_indicator_scale = 0,
+    icon_draw_specification = {scale = 0, scale_for_many = 0},
     activity_led_sprites = "nil",
     activity_led_light = "nil",
     collision_mask = {layers = {}},
