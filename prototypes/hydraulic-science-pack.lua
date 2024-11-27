@@ -39,13 +39,13 @@ data:extend {{
     type = "recipe",
     name = "hydraulic-science-pack",
     enabled = false,
-    energy_required = 10,
+    energy_required = 30,
     ingredients = {
         {type = "item", name = "maraxsis-wyrm-specimen", amount = 1},
         {type = "item", name = "maraxsis-tropical-fish", amount = 1},
     },
     results = {
-        {type = "item", name = "hydraulic-science-pack", amount = 1},
+        {type = "item", name = "hydraulic-science-pack", amount = 3},
     },
     allow_productivity = true,
     category = "maraxsis-hydro-plant"
