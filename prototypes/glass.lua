@@ -101,7 +101,7 @@ data:extend {{
 data:extend {{
     type = "technology",
     name = "maraxsis-glass-productivity",
-    icons = util.technology_icon_constant_recipe_productivity("__maraxsis__/graphics/technology/glassworking.png"),
+    icons = util.technology_icon_constant_recipe_productivity("__maraxsis__/graphics/technology/glass-productivity.png"),
     icon_size = 256,
     effects = {
         {
