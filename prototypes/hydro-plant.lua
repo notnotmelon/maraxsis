@@ -138,7 +138,7 @@ data:extend {{
             secondary_draw_orders = {north = -1},
         },
     },
-    perceived_performance = {minimum = 0.25, performance_to_activity_rate = 2.0, maximum = 10},
+    perceived_performance = {minimum = 0.25, performance_to_activity_rate = 20.0, maximum = 5},
     off_when_no_fluid_recipe = true,
     graphics_set = {
         working_visualisations = working_visualisations
