@@ -190,6 +190,8 @@ data:extend {{
     category = "smelting",
     allow_productivity = true,
     main_product = "carbon",
+    icon = "__maraxsis__/graphics/icons/burnt-fish.png",
+    icon_size = 64,
 }}
 
 data:extend {{

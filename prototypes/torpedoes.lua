@@ -13,7 +13,7 @@ data:extend {{
             recipe = "maraxsis-explosive-torpedo"
         }
     },
-    prerequisites = {"hydraulic-science-pack", "explosive-rocketry"},
+    prerequisites = {"maraxsis-project-seadragon", "explosive-rocketry"},
     unit = {
         count = 1000,
         ingredients = {

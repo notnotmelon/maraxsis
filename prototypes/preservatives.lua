@@ -17,7 +17,7 @@ data:extend {{
             recipe = "maraxsis-defluxed-bioflux"
         },
     },
-    prerequisites = {"hydraulic-science-pack"},
+    prerequisites = {"maraxsis-project-seadragon"},
     unit = {
         count = 1000,
         ingredients = {

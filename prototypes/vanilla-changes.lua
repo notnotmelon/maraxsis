@@ -18,7 +18,7 @@ local function add_hydraulic_pack(tech_name, direct_prereq)
     if not tech then return end
 
     if tech.unit and tech.unit.ingredients then table.insert(tech.unit.ingredients, {"hydraulic-science-pack", 1}) end
-    if direct_prereq and tech.prerequisites then table.insert(tech.prerequisites, "hydraulic-science-pack") end
+    if direct_prereq and tech.prerequisites then table.insert(tech.prerequisites, "maraxsis-project-seadragon") end
 end
 
 add_hydraulic_pack("legendary-quality", true)
@@ -36,3 +36,31 @@ for _, machine in pairs(data.raw["assembling-machine"]) do
         end
     end
 end
+
+for _, silo in pairs(data.raw["rocket-silo"]) do
+    if silo.fixed_recipe == "rocket-part" then
+        silo.fixed_recipe = nil
+        silo.disabled_when_recipe_not_researched = true
+    end
+end
+
+local simple_coal_liquefaction = data.raw.recipe["coal-liquefaction"]
+simple_coal_liquefaction.surface_conditions = simple_coal_liquefaction.surface_conditions or {}
+table.insert(simple_coal_liquefaction.surface_conditions, {
+    property = "gravity",
+    min = 0.5,
+})
+
+local empty_heavy_oil_barrel = data.raw.recipe["empty-heavy-oil-barrel"] -- I know it doesn't make sense. But oil processing in space is cool :)
+empty_heavy_oil_barrel.surface_conditions = empty_heavy_oil_barrel.surface_conditions or {}
+table.insert(empty_heavy_oil_barrel.surface_conditions, {
+    property = "gravity",
+    min = 0.5,
+})
+
+local rocket_part = data.raw.recipe["rocket-part"]
+rocket_part.surface_conditions = rocket_part.surface_conditions or {}
+table.insert(rocket_part.surface_conditions, {
+    property = "pressure",
+    max = 50000,
+})

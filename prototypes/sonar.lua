@@ -9,7 +9,7 @@ data:extend {{
             recipe = "maraxsis-sonar"
         }
     },
-    prerequisites = {"hydraulic-science-pack", "radar"},
+    prerequisites = {"maraxsis-project-seadragon", "radar"},
     unit = {
         count = 1000,
         ingredients = {

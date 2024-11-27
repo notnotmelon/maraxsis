@@ -7,13 +7,13 @@ data:extend {maraxsis.merge(data.raw.planet.gleba, {
     surface_properties = {
         ["day-night-cycle"] = 5 * minute,
         ["magnetic-field"] = 25,
-        ["solar-power"] = 30,
+        ["solar-power"] = 1,
         pressure = 200000,
         gravity = 20,
     },
-    starmap_icon = "__maraxsis__/graphics/planets/maraxsis.png",
+    starmap_icon = "__maraxsis__/graphics/planets/maraxsis-starmap-icon.png",
     starmap_icon_size = 512,
-    icon = "__maraxsis__/graphics/technology/maraxsis.png",
+    icon = "__maraxsis__/graphics/planets/maraxsis.png",
     icon_size = 256,
     order = "ce[maraxsis]",
     pollutant_type = "nil",
@@ -31,8 +31,8 @@ data:extend {maraxsis.merge(data.raw.planet.gleba, {
     surface_properties = {
         ["day-night-cycle"] = 5 * minute,
         ["magnetic-field"] = 25,
-        ["solar-power"] = 30,
-        pressure = 200000,
+        ["solar-power"] = 0,
+        pressure = 300000,
         gravity = 20,
     },
     starmap_icon = "__maraxsis__/graphics/planets/maraxsis-trench.png",
@@ -60,6 +60,6 @@ data:extend {{
     from = "maraxsis",
     to = "vulcanus",
     order = "f",
-    length = 100000,
+    length = 30000,
     asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.gleba_aquilo)
 }}

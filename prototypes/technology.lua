@@ -63,7 +63,7 @@ data:extend {{
             }
         }
     },
-    prerequisites = {"hydraulic-science-pack"},
+    prerequisites = {"maraxsis-project-seadragon"},
     unit = {
         count_formula = "2^(L-1)*3000",
         ingredients = {

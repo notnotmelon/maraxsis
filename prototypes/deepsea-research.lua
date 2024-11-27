@@ -6,7 +6,7 @@ data:extend {{
     icon = "__maraxsis__/graphics/technology/deepsea-research.png",
     icon_size = 256,
     effects = effects,
-    prerequisites = {"hydraulic-science-pack"},
+    prerequisites = {"maraxsis-project-seadragon"},
     unit = {
         count = 2000,
         ingredients = {
