@@ -49,9 +49,6 @@ planet_map_gen.maraxsis = function()
                     ["urchin-cactus"] = {},
 
                     -- nauvis decoratives
-                    ["v-brown-carpet-grass"] = {},
-                    ["v-green-hairy-grass"] = {},
-                    ["v-brown-hairy-grass"] = {},
                     ["v-red-pita"] = {},
                     -- end of nauvis
                     ["vulcanus-dune-decal"] = {},
