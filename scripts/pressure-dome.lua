@@ -200,8 +200,8 @@ local function update_combinator(pressure_dome_data)
 
     local all_machines_inside = {}
     for _, e in pairs(pressure_dome_data.contained_entities) do
-        local quality = e.quality.name
         if e.valid then
+            local quality = e.quality.name
             for _, item_to_place in pairs(e.prototype.items_to_place_this or {}) do
                 all_machines_inside[item_to_place.name] = all_machines_inside[item_to_place.name] or {}
                 all_machines_inside[item_to_place.name][quality] = (all_machines_inside[item_to_place.name][quality] or 0) + 1
