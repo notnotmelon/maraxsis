@@ -12,7 +12,7 @@ data:extend {{
     indent = 0,
     trigger = {
         type = "research",
-        technology = "maraxsis"
+        technology = "planet-discovery-maraxsis"
     },
     simulation = {
         save = "__maraxsis__/prototypes/tips-and-tricks/maraxsis.zip",
@@ -52,7 +52,7 @@ data:extend {{
     indent = 1,
     trigger = {
         type = "research",
-        technology = "maraxsis"
+        technology = "planet-discovery-maraxsis"
     },
     dependencies = {"maraxsis"}
 }}

@@ -12,7 +12,7 @@ data:extend {{
             recipe = "maraxsis-hydro-plant",
         },
     },
-    prerequisites = {"maraxsis"},
+    prerequisites = {"planet-discovery-maraxsis"},
     research_trigger = {
         type = "craft-item",
         item = "maraxsis-diesel-submarine",
