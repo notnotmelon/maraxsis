@@ -96,8 +96,7 @@ planet_map_gen.maraxsis = function()
                     ["grey-cracked-mud-decal"] = {},
                     ["barnacles-decal"] = {},
                     ["nerve-roots-dense"] = {},
-                    --["nerve-roots-light"] = {},
-                    --["tentacles"] = {},
+                    ["nerve-roots-sparse"] = {},
                     --shared
                     ["light-mud-decal"] = {},
                     ["dark-mud-decal"] = {},
