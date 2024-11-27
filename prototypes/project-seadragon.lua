@@ -65,13 +65,25 @@ data:extend {{
     }}
 }}
 
+local super_sealant_substance_variants = {}
+for i = 1, 3 do
+    super_sealant_substance_variants[i] = {
+        filename = "__maraxsis__/graphics/icons/super-sealant-substance-" .. i .. ".png",
+        width = 64,
+        height = 64,
+        scale = 1 / 2,
+        flags = {"icon"}
+    }
+end
+
 data:extend {{
     type = "item",
     name = "maraxsis-super-sealant-substance",
-    icon = "__maraxsis__/graphics/icons/super-sealant-substance.png",
+    icon = "__maraxsis__/graphics/icons/super-sealant-substance-1.png",
     icon_size = 64,
     stack_size = data.raw.item["rocket-fuel"].stack_size,
     weight = data.raw.item["rocket-fuel"].weight,
+    pictures = super_sealant_substance_variants,
 }}
 
 data:extend {{
