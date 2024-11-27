@@ -73,3 +73,23 @@ table.insert(data.raw.technology["rocket-part-productivity"].effects, {
     change = 0.1,
     hidden = true
 })
+
+data:extend{{
+    type = "recipe",
+    name = "pistol",
+    enabled = false,
+    ingredients = {
+        {type = "item", name = "iron-plate", amount = 5},
+        {type = "item", name = "copper-plate", amount = 5},
+    },
+    results = {
+        {type = "item", name = "pistol", amount = 1},
+    },
+    category = "crafting",
+    energy_required = 15,
+}}
+
+table.insert(data.raw["technology"]["military"].effects, 1, {
+    type = "unlock-recipe",
+    recipe = "pistol",
+})
