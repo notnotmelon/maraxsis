@@ -53,16 +53,15 @@ data:extend{{
     driving_sound = stone_driving_sound, -- todo
     collision_box = {{-0.1, -0.1}, {0.1, 0.1}},
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
-    autoplace = resource_autoplace.resource_autoplace_settings{
-        name = "maraxsis-coral",
-        order = "f",
-        base_density = 8,
-        --base_spots_per_km = autoplace_parameters.base_spots_per_km2,
-        has_starting_area_placement = true,
-        regular_rq_factor_multiplier = 1.1,
-        starting_rq_factor_multiplier = 1.2,
-        candidate_spot_count = 22,
-        --tile_restriction = autoplace_parameters.tile_restriction
+    autoplace = {
+        control = "maraxsis-coral",
+        default_enabled = false,
+        force = "neutral",
+        order = "z",
+        placement_density = 1,
+        --tile_restriction = {"sand-1-underwater"},
+        probability_expression = "1",
+        richness_expression = "random_penalty(x, y, 9232, 99, 1000)",
     },
     stage_counts = {15000, 9500, 5500, 2900, 1300, 400, 150, 80},
     stages = {
