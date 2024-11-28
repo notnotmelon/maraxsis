@@ -11,6 +11,7 @@ require "scripts.drowning"
 require "scripts.nightvision"
 require "scripts.pressure-dome"
 require "scripts.composite-entity"
+require "scripts.sand-extractor"
 require "scripts.hydro-plant"
 require "scripts.project-seadragon"
 

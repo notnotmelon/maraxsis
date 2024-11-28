@@ -14,9 +14,8 @@ data:extend {{
     },
     prerequisites = {"planet-discovery-maraxsis"},
     research_trigger = {
-        type = "craft-item",
-        item = "maraxsis-diesel-submarine",
-        amount = 1,
+        type = "build-entity",
+        entity = "maraxsis-diesel-submarine"
     },
     order = "ec[water-treatment]",
 }}
