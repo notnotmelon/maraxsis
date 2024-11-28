@@ -15,7 +15,7 @@ data:extend {{
     },
     prerequisites = {"cliff-explosives", "maraxsis-torpedoes", "atomic-bomb"},
     unit = {
-        count = 3000,
+        count = 5000,
         ingredients = {
             {"automation-science-pack",      1},
             {"logistic-science-pack",        1},

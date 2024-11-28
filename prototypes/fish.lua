@@ -52,7 +52,7 @@ for i, v in pairs(fish) do
         localised_name = {"entity-name.fish"},
         type = "unit",
         name = name,
-        render_layer = "light-effect",
+        render_layer = "air-entity-info-icon",
         icon = "__maraxsis__/graphics/entity/fish/icons/" .. i .. ".png",
         icon_size = 64,
         subgroup = "creatures",
@@ -135,6 +135,8 @@ data:extend {{
 local function add_to_tech(recipe)
     table.insert(data.raw.technology["maraxsis-piscary"].effects, {type = "unlock-recipe", recipe = recipe})
 end
+
+add_to_tech("maraxsis-fish-food")
 
 local microplastics_variants = {}
 for i = 1, 3 do

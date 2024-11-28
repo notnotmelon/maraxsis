@@ -174,6 +174,7 @@ data:extend {maraxsis.merge(data.raw.lamp["small-lamp"], {
     draw_copper_wires = false,
     draw_circuit_wires = false,
     circuit_connector = "nil",
+    hidden = true,
     light_when_colored = "nil",
     picture_on = {
         layers = {

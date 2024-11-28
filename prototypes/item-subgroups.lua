@@ -1,5 +1,5 @@
 local letters = {
-    "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l"
+    "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n"
 }
 
 local function make_subgroup(subgroup_name, subgroup_order, group, members)
@@ -23,11 +23,16 @@ make_subgroup("maraxsis-intermediants", "ge", "intermediate-products", {
     data.raw.item["limestone"],
     data.raw.item["sand"],
     data.raw.item["maraxsis-glass-panes"],
+    data.raw.item["maraxsis-fish-food"],
     data.raw.capsule["maraxsis-tropical-fish"],
     data.raw.item["maraxsis-microplastics"],
+    data.raw.recipe["maraxsis-carbon"],
     data.raw.item["maraxsis-wyrm-specimen"],
     data.raw.item["maraxsis-wyrm-confinement-cell"],
     data.raw.item["maraxsis-super-sealant-substance"],
+    data.raw.recipe["maraxsis-atmosphere"],
+    data.raw.recipe["maraxsis-liquid-atmosphere-decompression"],
+    data.raw.recipe["maraxsis-liquid-atmosphere"],
 })
 
 make_subgroup("maraxsis-salt", "gf", "intermediate-products", {

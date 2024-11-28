@@ -171,7 +171,6 @@ data:extend {{
     },
     icon_draw_specification = {scale = 1.75, shift = {0, -0.3}},
     energy_usage = "2MW",
-    module_specification = {module_slots = 4, module_info_icon_shift = {0, 1.7}, module_info_icon_scale = 1},
     open_sound = sounds.machine_open,
     close_sound = sounds.machine_close,
     collision_mask = {layers = {["item"] = true, ["object"] = true, ["player"] = true}},
@@ -179,8 +178,8 @@ data:extend {{
 
 local extra_module_slots = table.deepcopy(data.raw["assembling-machine"]["maraxsis-hydro-plant"])
 extra_module_slots.name = "maraxsis-hydro-plant-extra-module-slots"
-extra_module_slots.module_specification.module_slots = extra_module_slots.module_specification.module_slots + 2
-extra_module_slots.module_specification.module_info_icon_scale = 0.8
+extra_module_slots.module_slots = extra_module_slots.module_slots + 2
+extra_module_slots.hidden_in_factoriopedia = true
 extra_module_slots.placeable_by = {{item = "maraxsis-hydro-plant", count = 1}}
 extra_module_slots.localised_name = {"entity-name.maraxsis-hydro-plant"}
 extra_module_slots.localised_description = {"entity-description.maraxsis-hydro-plant"}

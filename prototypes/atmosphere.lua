@@ -33,15 +33,15 @@ data:extend {{
 data:extend {{
     type = "fluid",
     name = "maraxsis-liquid-atmosphere",
-    default_temperature = 25,
-    max_temperature = 100,
+    default_temperature = -200,
+    max_temperature = -196,
     heat_capacity = "1kJ",
     base_flow_rate = data.raw.fluid.steam.base_flow_rate,
     flow_color = {1, 1, 1},
     base_color = {0.5, 0.5, 1},
     icon = "__maraxsis__/graphics/icons/liquid-atmosphere.png",
     icon_size = 64,
-    gas_temperature = 100,
+    gas_temperature = -196,
 }}
 
 data:extend {{
@@ -50,10 +50,12 @@ data:extend {{
     category = "cryogenics",
     energy_required = 10,
     ingredients = {
-        {type = "fluid", name = "maraxsis-atmosphere", amount = 100}
+        {type = "fluid", name = "maraxsis-atmosphere", amount = 100},
+        {type = "fluid", name = "fluoroketone-cold", amount = 1}
     },
     results = {
-        {type = "fluid", name = "maraxsis-liquid-atmosphere", amount = 1}
+        {type = "fluid", name = "maraxsis-liquid-atmosphere", amount = 1},
+        {type = "fluid", name = "fluoroketone-hot",          amount = 1}
     },
     enabled = false,
     main_product = "maraxsis-liquid-atmosphere",
