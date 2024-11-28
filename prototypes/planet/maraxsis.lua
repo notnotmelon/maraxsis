@@ -63,3 +63,16 @@ data:extend {{
     length = 30000,
     asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.gleba_aquilo)
 }}
+
+if mods.tenebris then
+    data:extend {{
+        type = "space-connection",
+        name = "maraxsis-tenebris",
+        subgroup = "planet-connections",
+        from = "maraxsis",
+        to = "tenebris",
+        order = "g",
+        length = 30000,
+        asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.gleba_aquilo)
+    }}
+end
