@@ -103,6 +103,8 @@ local waterifiy = {
     end,
 }
 
+data:extend(waterifiy.tile("lowland-cream-red", true))
+data.raw.tile["lowland-cream-red-underwater"].map_color = defines.color.orange
 data:extend(waterifiy.tile("sand-1", true))
 data:extend(waterifiy.tile("sand-2", true))
 data:extend(waterifiy.tile("sand-3", true))

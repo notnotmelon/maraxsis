@@ -43,7 +43,7 @@ data:extend{{
     tree_removal_max_distance = 32 * 32,
     minable = {
         mining_particle = "copper-ore-particle",
-        mining_time = 2,
+        mining_time = 5,
         results = {
             {type = "item", name = "maraxsis-coral", amount = 1},
             {type = "item", name = "limestone", amount = 1},
@@ -60,7 +60,7 @@ data:extend{{
         order = "z",
         placement_density = 1,
         probability_expression = "maraxsis_coral_ore",
-        richness_expression = "random_penalty(x, y, 9232, 99, 1000)",
+        richness_expression = "random_penalty(x, y, 9232 + (sqrt(x*x + y*y) / 10), 99, 1000)",
     },
     stage_counts = {15000, 9500, 5500, 2900, 1300, 400, 150, 80},
     stages = {

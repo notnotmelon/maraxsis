@@ -42,6 +42,7 @@ planet_map_gen.maraxsis = function()
                     ["sand-2-underwater"] = {},
                     ["sand-3-underwater"] = {},
                     ["dirt-5-underwater"] = {},
+                    ["lowland-cream-red-underwater"] = {},
                 }
             },
             ["decorative"] = {

@@ -115,14 +115,14 @@ data:extend {{
 }}
 
 data:extend {{
-    type = "noise-expression",
+    type = "noise-function",
     name = "maraxsis_coral_reef",
     expression = "(maraxsis_elevation > 0.8) * (maraxsis_elevation < 1.1) * (coral_zones > 0.5) * (coral_beds > 0.8)",
     local_expressions = {
         coral_beds = [[
             multioctave_noise{
-                x = x,
-                y = y,
+                x = xx,
+                y = yy,
                 persistence = 0.5,
                 seed0 = map_seed,
                 seed1 = 1542,
@@ -133,8 +133,8 @@ data:extend {{
         ]],
         coral_zones = [[
             multioctave_noise{
-                x = x,
-                y = y,
+                x = xx,
+                y = yy,
                 persistence = 0.5,
                 seed0 = map_seed,
                 seed1 = 15442,
@@ -143,13 +143,14 @@ data:extend {{
                 output_scale = 1
             }
         ]],
-    }
+    },
+    parameters = {"xx", "yy"}
 }}
 
 data:extend {{
     type = "noise-expression",
     name = "maraxsis_coral_ore",
-    expression = "(maraxsis_coral_reef * coral_spots) > 0.8",
+    expression = "(maraxsis_coral_reef(x, y) * coral_spots) > 0.8",
     local_expressions = {
         coral_spots = [[
             multioctave_noise{
@@ -180,30 +181,37 @@ for i = 1, table_size(maraxsis.tropical_fish_names) do
     }}
 end
 
+data.raw.tile["lowland-cream-red-underwater"].autoplace = {
+    probability_expression = [[
+        (maraxsis_coral_reef(x - 1, y) + maraxsis_coral_reef(x + 1, y) + maraxsis_coral_reef(x, y - 1) + maraxsis_coral_reef(x, y + 1)) >= 1
+    ]],
+    order = "a[coral]-a[maraxsis]"
+}
+
 data.raw.tile["sand-3-underwater"].autoplace = {
     probability_expression = [[
         maraxsis_elevation > 0.703
     ]],
-    order = "a[sand]-a[maraxsis]"
+    order = "b[sand]-a[maraxsis]"
 }
 
 data.raw.tile["sand-2-underwater"].autoplace = {
     probability_expression = [[
         maraxsis_elevation > 0.503
     ]],
-    order = "a[sand]-b[maraxsis]"
+    order = "b[sand]-b[maraxsis]"
 }
 
 data.raw.tile["sand-1-underwater"].autoplace = {
     probability_expression = [[
         maraxsis_elevation > 0.303
     ]],
-    order = "a[sand]-c[maraxsis]"
+    order = "b[sand]-c[maraxsis]"
 }
 
 data.raw.tile["dirt-5-underwater"].autoplace = {
     probability_expression = [[
         1
     ]],
-    order = "a[sand]-d[maraxsis]"
+    order = "b[sand]-d[maraxsis]"
 }
