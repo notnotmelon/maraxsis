@@ -114,6 +114,58 @@ data:extend {{
     expression = "maraxsis_elevation < 0.03"
 }}
 
+data:extend {{
+    type = "noise-expression",
+    name = "maraxsis_coral_reef",
+    expression = "(maraxsis_elevation > 0.8) * (maraxsis_elevation < 1.1) * (coral_zones > 0.5) * (coral_beds > 0.8)",
+    local_expressions = {
+        coral_beds = [[
+            multioctave_noise{
+                x = x,
+                y = y,
+                persistence = 0.5,
+                seed0 = map_seed,
+                seed1 = 1542,
+                octaves = 2,
+                input_scale = 0.03,
+                output_scale = 1
+            }
+        ]],
+        coral_zones = [[
+            multioctave_noise{
+                x = x,
+                y = y,
+                persistence = 0.5,
+                seed0 = map_seed,
+                seed1 = 15442,
+                octaves = 2,
+                input_scale = 0.01,
+                output_scale = 1
+            }
+        ]],
+    }
+}}
+
+data:extend {{
+    type = "noise-expression",
+    name = "maraxsis_coral_ore",
+    expression = "(maraxsis_coral_reef * coral_spots) > 0.8",
+    local_expressions = {
+        coral_spots = [[
+            multioctave_noise{
+                x = x,
+                y = y,
+                persistence = 0.5,
+                seed0 = map_seed,
+                seed1 = 154,
+                octaves = 6,
+                input_scale = 128 / 20,
+                output_scale = 3
+            }
+        ]]
+    }
+}}
+
 for i = 1, table_size(maraxsis.tropical_fish_names) do
     data:extend {{
         type = "noise-expression",
