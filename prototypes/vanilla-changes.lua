@@ -45,7 +45,6 @@ end
 
 -- ban certain recipes in space
 for _, recipe in pairs{
-    "simple-coal-liquefaction",
     "rocket-part",
     "empty-heavy-oil-barrel", -- I know it doesn't make sense. But oil processing in space is cool :)
 } do
