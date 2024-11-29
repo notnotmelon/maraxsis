@@ -10,6 +10,7 @@
     "base",
     "space-age >= 2.0.0",
     "? tenebris",
+    "! Land-Pump",
     "! pystellarexpedition"
   ],
   "quality_required": true,
