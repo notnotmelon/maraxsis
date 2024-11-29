@@ -18,6 +18,7 @@ local function transfer_equipment_grid(old_armor, new_armor)
 end
 
 local function transfer_armor_item(armor, target_armor_name)
+    if not armor.valid or not armor.valid_for_read then return end
     if not prototypes.item[target_armor_name] then return end
     local temp_inventory = game.create_inventory(1)
     local stack = temp_inventory[1]
@@ -33,6 +34,7 @@ local function transfer_armor_item(armor, target_armor_name)
     armor.set_stack(stack)
     temp_inventory.destroy()
 end
+maraxsis.register_delayed_function("transfer_armor_item", transfer_armor_item)
 
 local function update_armor(player)
     local armor_inventory
@@ -49,13 +51,27 @@ local function update_armor(player)
     local armor_name = armor.name
     local target_armor_name
     local physical_surface = player.physical_surface
-    if maraxsis.MARAXSIS_SURFACES[physical_surface.name] then
+    local started_swimming = not not maraxsis.MARAXSIS_SURFACES[physical_surface.name]
+    if started_swimming then
         target_armor_name = armor_name .. "-maraxsis-swimming"
     else
         target_armor_name = armor_name:gsub("%-maraxsis%-swimming", "")
     end
 
     if armor_name == target_armor_name then return end
+
+    -- teleport the player to a safe location
+    if not started_swimming and player.character then
+        local character = player.character
+
+        local currently_collides = character.surface.entity_prototype_collides(character.name, character.position, false)
+        if currently_collides then
+            local safe_location = character.surface.find_non_colliding_position(character.name, character.position, 32, 0.5)
+            if safe_location then character.teleport(safe_location) end
+            maraxsis.execute_later("transfer_armor_item", 30, armor, target_armor_name)
+            return
+        end
+    end
 
     transfer_armor_item(armor, target_armor_name)
 end
