@@ -1,5 +1,5 @@
 local FULL_BREATH_NUM_TICKS = 2 * 60 * 60 -- two minutes before you start drowning
-local WARNING_MESSAGE = FULL_BREATH_NUM_TICKS / 4
+local WARNING_MESSAGE = FULL_BREATH_NUM_TICKS / 3
 local UPDATE_RATE = 71
 
 local SUBMARINES = {

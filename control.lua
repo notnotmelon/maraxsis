@@ -14,5 +14,6 @@ require "scripts.composite-entity"
 require "scripts.sand-extractor"
 require "scripts.hydro-plant"
 require "scripts.project-seadragon"
+require "scripts.swimming"
 
 maraxsis.finalize_events()
