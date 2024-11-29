@@ -6,6 +6,10 @@ data:extend {{
     effects = {
         {
             type = "unlock-recipe",
+            recipe = "sand",
+        },
+        {
+            type = "unlock-recipe",
             recipe = "maraxsis-glass-panes",
         },
         {
@@ -68,7 +72,7 @@ for i = 1, 9 do
         filename = "__maraxsis__/graphics/icons/glass-panes-" .. i .. ".png",
         width = 64,
         height = 64,
-        scale = 1 / 3,
+        scale = 1 / 2,
         flags = {"icon"}
     }
 end
@@ -88,7 +92,7 @@ for i = 1, 3 do
         filename = "__maraxsis__/graphics/icons/sand-" .. i .. ".png",
         width = 64,
         height = 64,
-        scale = 1 / 2,
+        scale = 0.575,
         flags = {"icon"}
     }
 end

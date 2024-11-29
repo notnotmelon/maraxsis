@@ -15,7 +15,7 @@ for i = 1, 3 do
         filename = "__maraxsis__/graphics/icons/coral-" .. i .. ".png",
         width = 64,
         height = 64,
-        scale = 1 / 3,
+        scale = 0.65,
         flags = {"icon"},
     }
 end

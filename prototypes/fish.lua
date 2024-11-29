@@ -144,7 +144,7 @@ for i = 1, 3 do
         filename = "__maraxsis__/graphics/icons/microplastics-" .. i .. ".png",
         width = 64,
         height = 64,
-        scale = 1 / 3,
+        scale = 1 / 2,
         flags = {"icon"},
     }
 end
@@ -229,7 +229,7 @@ for i, v in pairs(fish) do
         filename = "__maraxsis__/graphics/entity/fish/icons/" .. i .. ".png",
         width = 64,
         height = 64,
-        scale = 1 / 3,
+        scale = 2/3,
         flags = {"icon"},
     }
 end
