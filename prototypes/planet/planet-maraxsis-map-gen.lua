@@ -190,21 +190,21 @@ data.raw.tile["lowland-cream-red-underwater"].autoplace = {
 
 data.raw.tile["sand-3-underwater"].autoplace = {
     probability_expression = [[
-        maraxsis_elevation > 0.703
+        maraxsis_elevation > 0.93
     ]],
     order = "b[sand]-a[maraxsis]"
 }
 
 data.raw.tile["sand-2-underwater"].autoplace = {
     probability_expression = [[
-        maraxsis_elevation > 0.503
+        maraxsis_elevation > 0.73
     ]],
     order = "b[sand]-b[maraxsis]"
 }
 
 data.raw.tile["sand-1-underwater"].autoplace = {
     probability_expression = [[
-        maraxsis_elevation > 0.303
+        maraxsis_elevation > 0.33
     ]],
     order = "b[sand]-c[maraxsis]"
 }
