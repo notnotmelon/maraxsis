@@ -150,6 +150,24 @@ cliff.map_color = maraxsis.color_combine(cliff.map_color, data.raw.tile["deepwat
 data:extend {cliff}
 collision_mask_util.get_mask(cliff)[maraxsis_collision_mask] = nil
 
+local collisionless_cliff = table.deepcopy(cliff)
+collisionless_cliff.name = cliff.name .. "-collisionless"
+collisionless_cliff.collision_mask = {layers = {}}
+collisionless_cliff.created_effect = {
+    type = "direct",
+    action_delivery = {
+        type = "instant",
+        source_effects = {
+            {
+                type = "script",
+                effect_id = "maraxsis-cliff-created",
+            },
+        }
+    }
+}
+collisionless_cliff.hidden = true
+data:extend {collisionless_cliff}
+
 data:extend {{
     type = "tile-effect",
     name = "maraxsis-trench",

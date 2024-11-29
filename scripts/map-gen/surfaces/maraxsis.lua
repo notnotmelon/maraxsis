@@ -21,6 +21,25 @@ local function get_surface()
 	return game.planets[maraxsis.MARAXSIS_SURFACE_NAME].create_surface()
 end
 
+maraxsis.on_event(defines.events.on_script_trigger_effect, function(event)
+    if event.effect_id ~= "maraxsis-cliff-created" then return end
+
+	local old_cliff = event.target_entity
+	local surface = old_cliff.surface
+	local position = old_cliff.position
+	local force_index = old_cliff.force_index
+	local cliff_orientation = old_cliff.cliff_orientation
+
+	old_cliff.destroy()
+	local new_cliff = surface.create_entity {
+		name = "cliff-maraxsis",
+		position = position,
+		cliff_orientation = cliff_orientation,
+		force = force_index,
+		create_build_effect_smoke = false
+	}
+end)
+
 return {
 	type = "maraxsis",
 	get_surface = get_surface,
