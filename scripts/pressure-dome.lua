@@ -431,7 +431,7 @@ end
 maraxsis.on_event(maraxsis.events.on_built(), function(event)
     local entity = event.entity
     if not entity.valid or entity.name ~= "maraxsis-pressure-dome" then return end
-    local player = game.get_player(event.player_index)
+    local player = event.player_index and game.get_player(event.player_index)
 
     local undo_index = 0
 
