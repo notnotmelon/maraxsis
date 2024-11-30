@@ -43,7 +43,7 @@ data:extend {{
     name = "maraxsis-sonar",
     enabled = false,
     ingredients = {
-        {type = "item", name = "steel-plate",           amount = 10},
+        {type = "item", name = "maraxsis-glass-panes",           amount = 10},
         {type = "item", name = "low-density-structure", amount = 10},
         {type = "item", name = "radar",                 amount = 1},
         {type = "item", name = "processing-unit",       amount = 5},
