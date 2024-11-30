@@ -58,7 +58,7 @@ for i, v in pairs(fish) do
         subgroup = "creatures",
         order = "c-" .. i,
         flags = {"placeable-neutral", "placeable-off-grid", "not-repairable", "breaths-air"},
-        max_health = data.raw.fish["fish"].max_health,
+        max_health = 200,
         map_color = map_colors[tonumber(i)],
         healing_per_tick = data.raw.fish["fish"].healing_per_tick,
         collision_box = {{0, 0}, {0, 0}},
