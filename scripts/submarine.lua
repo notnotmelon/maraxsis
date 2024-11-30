@@ -94,8 +94,8 @@ local function determine_submerge_direction(submarine)
     local target_surface = maraxsis.prototypes[opposite_surface_name].get_surface()
 
     if surface_name == maraxsis.MARAXSIS_SURFACE_NAME then
-        local tile_at_surface = surface.get_tile(position.x, position.y)
-        if not tile_at_surface.valid or tile_at_surface.name ~= "trench-entrance" then return nil end
+        local tile_at_surface = surface.get_tile(position)
+        if not tile_at_surface.valid or tile_at_surface.name ~= "maraxsis-trench-entrance" then return nil end
         local target_position = {x = position.x * TRENCH_MOVEMENT_FACTOR, y = position.y * TRENCH_MOVEMENT_FACTOR}
         target_surface.request_to_generate_chunks(target_position, 1)
         target_surface.force_generate_chunk_requests()
@@ -106,8 +106,8 @@ local function determine_submerge_direction(submarine)
         local target_position = {x = position.x / TRENCH_MOVEMENT_FACTOR, y = position.y / TRENCH_MOVEMENT_FACTOR}
         target_surface.request_to_generate_chunks(target_position, 1)
         target_surface.force_generate_chunk_requests()
-        local tile_at_surface = target_surface.get_tile(target_position.x, target_position.y)
-        if tile_at_surface.valid and tile_at_surface.name ~= "trench-entrance" then
+        local tile_at_surface = target_surface.get_tile(target_position)
+        if tile_at_surface.valid and tile_at_surface.name ~= "maraxsis-trench-entrance" then
             for _, player in pairs(game.connected_players) do
                 player.create_local_flying_text {
                     text = {"maraxsis.rocks-in-the-way"},
