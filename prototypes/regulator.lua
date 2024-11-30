@@ -44,6 +44,7 @@ regulator.placeable_by = {item = "maraxsis-pressure-dome", count = 1}
 regulator.minable = nil
 regulator.icon = "__maraxsis__/graphics/icons/regulator.png"
 regulator.icon_size = 64
+regulator.surface_conditions = maraxsis.surface_conditions()
 
 data.raw.recipe["service_station"].hidden = true
 data.raw.item["service_station"].hidden = true
