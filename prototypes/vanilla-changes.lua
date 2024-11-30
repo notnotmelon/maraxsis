@@ -97,3 +97,11 @@ for _, module in pairs(data.raw.module) do -- you're welcome
         module.effect.quality = math.max(0, module.effect.quality)
     end
 end
+
+local new_spidertron_effects = {}
+for _, effect in pairs(data.raw.technology["spidertron"].effects) do
+    if effect.recipe ~= "service_station" then
+        table.insert(new_spidertron_effects, effect)
+    end
+end
+data.raw.technology["spidertron"].effects = new_spidertron_effects

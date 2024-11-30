@@ -406,6 +406,28 @@ local function check_can_build_dome(entity)
     end
 end
 
+local function place_regulator(pressure_dome_data)
+    local surface = pressure_dome_data.surface
+    if not surface.valid then return end
+    local position = pressure_dome_data.position
+    local x, y = position.x, position.y
+    local force = pressure_dome_data.force_index
+
+    local regulator = surface.create_entity {
+        name = "service_station",
+        position = {x, y},
+        force = force,
+        create_build_effect_smoke = false,
+        raise_built = true,
+    }
+
+    regulator.minable = false
+    regulator.destructible = false
+    regulator.operable = true
+
+    pressure_dome_data.regulator = regulator
+end
+
 maraxsis.on_event(maraxsis.events.on_built(), function(event)
     local entity = event.entity
     if not entity.valid or entity.name ~= "maraxsis-pressure-dome" then return end
@@ -481,6 +503,7 @@ maraxsis.on_event(maraxsis.events.on_built(), function(event)
     update_combinator(pressure_dome_data)
     place_collision_boxes(pressure_dome_data, health, player)
     place_tiles(pressure_dome_data)
+    place_regulator(pressure_dome_data)
 
     if table_size(contained_entities) ~= 0 then
         for _, e in pairs(pressure_dome_data.collision_boxes) do
@@ -521,6 +544,11 @@ local function destroy_collision_boxes(pressure_dome_data)
         collision_box.destroy()
     end
     pressure_dome_data.collision_boxes = {}
+
+    if pressure_dome_data.regulator then
+        pressure_dome_data.regulator.destroy()
+        pressure_dome_data.regulator = nil
+    end
 end
 
 local function bigass_explosion(surface, x, y) -- this looks really stupid. too bad!

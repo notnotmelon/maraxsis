@@ -66,7 +66,20 @@ data:extend {{
 local function collision_box() return {{-16, -16}, {16, 16}} end
 
 data:extend {{
-    type = "simple-entity-with-owner",
+    type = "roboport",
+    logistics_connection_distance = data.raw.roboport["service_station"].logistics_connection_distance,
+    radar_range = data.raw.roboport["service_station"].radar_range,
+    logistics_radius = data.raw.roboport["service_station"].logistics_radius,
+    construction_radius = data.raw.roboport["service_station"].construction_radius,
+    energy_source = {type = "void"},
+    energy_usage = "0W",
+    recharge_minimum = "0W",
+    charging_energy = "0W",
+    spawn_and_station_height = 0,
+    charge_approach_distance = 0,
+    request_to_open_door_timeout = 0,
+    robot_slots_count = 0,
+    material_slots_count = 0,
     name = "maraxsis-pressure-dome",
     remove_decoratives = "false",
     icon = "__maraxsis__/graphics/icons/pressure-dome.png",
@@ -79,8 +92,12 @@ data:extend {{
     drawing_box = collision_box(),
     collision_mask = {colliding_with_tiles_only = true, layers = {["empty_space"] = true}},
     render_layer = "higher-object-above",
-    picture = {
-        layers = {cage_shadow, base_shadow, dome},
+    base = {
+        layers = table.array_combine({
+            cage_shadow,
+            base_shadow,
+            dome,   
+        }, table.deepcopy(data.raw.roboport["service_station"].base_animation.layers))
     },
     surface_conditions = maraxsis.surface_conditions(),
     build_sound = {
@@ -102,6 +119,7 @@ data:extend {{
 data:extend {maraxsis.merge(data.raw["lamp"]["small-lamp"], {
     type = "lamp",
     name = "maraxsis-pressure-dome-lamp",
+    factoriopedia_alternative = "maraxsis-pressure-dome",
     localised_name = {"entity-name.maraxsis-pressure-dome"},
     localised_description = {"entity-description.maraxsis-pressure-dome"},
     remove_decoratives = "false",
@@ -146,6 +164,7 @@ data:extend {maraxsis.merge(data.raw["lamp"]["small-lamp"], {
 data:extend {maraxsis.merge(data.raw["constant-combinator"]["constant-combinator"], {
     type = "constant-combinator",
     name = "maraxsis-pressure-dome-combinator",
+    factoriopedia_alternative = "maraxsis-pressure-dome",
     surface_conditions = maraxsis.surface_conditions(),
     localised_name = {"entity-name.maraxsis-pressure-dome"},
     localised_description = {"entity-description.maraxsis-pressure-dome"},
@@ -263,6 +282,7 @@ local blank_animation = {
 data:extend {{
     type = "simple-entity-with-owner",
     name = "maraxsis-pressure-dome-collision",
+    factoriopedia_alternative = "maraxsis-pressure-dome",
     localised_name = {"entity-name.maraxsis-pressure-dome"},
     icon = "__maraxsis__/graphics/icons/pressure-dome.png",
     surface_conditions = maraxsis.surface_conditions(),
