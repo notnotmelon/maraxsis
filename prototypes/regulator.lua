@@ -4,6 +4,7 @@ regulator.logistics_connection_distance = nil
 regulator.radar_range = 1
 regulator.logistics_radius = 16
 regulator.construction_radius = 0
+regulator.base_animation = nil
 regulator.base = nil
 regulator.base_patch = nil
 regulator.frozen_patch = nil
@@ -11,7 +12,7 @@ regulator.door_animation_up = nil
 regulator.door_animation_down = nil
 regulator.hidden = false
 regulator.drawing_box_vertical_extension = 0.5
-regulator.base_animation = {
+regulator.integration_patch = {
     layers = {
         {
             filename = "__maraxsis__/graphics/entity/regulator/regulator.png",
@@ -40,6 +41,7 @@ regulator.base_animation = {
         }
     }
 }
+regulator.integration_patch_render_layer = "object-under"
 regulator.placeable_by = {item = "maraxsis-pressure-dome", count = 1}
 regulator.minable = nil
 regulator.icon = "__maraxsis__/graphics/icons/regulator.png"
@@ -65,6 +67,7 @@ data:extend{{
     crafting_categories = {"maraxsis-regulator"},
     crafting_speed = 1,
     energy_usage = "1MW",
+    icon_draw_specification = {scale = 0, scale_for_many = 0},
     fixed_recipe = "maraxsis-regulator",
     energy_source = {
         type = "fluid",
@@ -81,10 +84,44 @@ data:extend{{
             pipe_connections = {
                 {position = {0.5, -1.5}, direction = defines.direction.north, flow_direction = "input-output"},
                 {position = {-0.5, 1.5}, direction = defines.direction.south, flow_direction = "input-output"},
+                {position = {1.5, 0.5}, direction = defines.direction.east, flow_direction = "input-output"},
+                {position = {-1.5, -0.5}, direction = defines.direction.west, flow_direction = "input-output"},
             },
             filter = "maraxsis-atmosphere",
+            secondary_draw_orders = {north = -1},
         },
     },
+    graphics_set = {
+        animation = {
+            layers = {
+                {
+                    filename = "__maraxsis__/graphics/entity/regulator/regulator.png",
+                    priority = "high",
+                    width = 1680 / 8,
+                    height = 2320 / 8,
+                    shift = {0, -0.5},
+                    frame_count = 60,
+                    line_length = 8,
+                    animation_speed = 1.5,
+                    scale = 0.5 * 4 / 3,
+                    flags = {"no-scale"}
+                },
+                {
+                    filename = "__maraxsis__/graphics/entity/regulator/sh.png",
+                    priority = "high",
+                    width = 400,
+                    height = 350,
+                    shift = util.by_pixel(0, -16),
+                    frame_count = 1,
+                    line_length = 1,
+                    repeat_count = 60,
+                    animation_speed = 1.5,
+                    scale = 0.5 * 4 / 3,
+                    draw_as_shadow = true,
+                }
+            }
+        }
+    }
 }}
 
 data:extend{{

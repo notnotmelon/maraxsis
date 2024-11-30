@@ -98,7 +98,7 @@ data:extend {{
             cage_shadow,
             base_shadow,
             dome,   
-        }, table.deepcopy(data.raw.roboport["service_station"].base_animation.layers))
+        }, table.deepcopy(data.raw.roboport["service_station"].integration_patch.layers))
     },
     surface_conditions = maraxsis.surface_conditions(),
     build_sound = {
