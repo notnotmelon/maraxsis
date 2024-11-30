@@ -1,7 +1,7 @@
 local regulator = data.raw.roboport["service_station"]
 
 regulator.logistics_connection_distance = 128
-regulator.radar_range = 2
+regulator.radar_range = 1
 regulator.logistics_radius = 20
 regulator.construction_radius = 0
 regulator.base = nil
