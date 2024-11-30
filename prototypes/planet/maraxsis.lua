@@ -47,6 +47,7 @@ data:extend {maraxsis.merge(data.raw.planet.gleba, {
     distance = 15.6,
     label_orientation = 0.3,
     magnitude = 0.65,
+    player_effects = "nil",
     orientation = 0.5,
     auto_save_on_first_trip = false,
     asteroid_spawn_definitions = "nil",
