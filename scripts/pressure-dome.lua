@@ -393,7 +393,7 @@ local function check_can_build_dome(entity)
     for xx = -math.floor(size) + x, math.floor(size) + x do
         for yy = -math.floor(size) + y, math.floor(size) + y do
             local tile = surface.get_tile(xx, yy)
-            if tile.collides_with("water_tile") then
+            if tile.collides_with("object") then
                 return false, colliding_entities, {"cant-build-reason.entity-in-the-way", tile.prototype.localised_name}
             end
         end
