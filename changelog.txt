@@ -1,4 +1,9 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.10.2
+Date: 2024-11-30
+  Bugfixes:
+    - Fixed a crash related to mod incompatibility in the speed module code. Resolves https://github.com/notnotmelon/maraxsis/issues/1
+---------------------------------------------------------------------------------------------------
 Version: 1.10.1
 Date: 2024-11-30
   Bugfixes:
