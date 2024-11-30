@@ -9,7 +9,7 @@ regulator.base_patch = nil
 regulator.frozen_patch = nil
 regulator.door_animation_up = nil
 regulator.door_animation_down = nil
-regulator.hidden = true
+regulator.hidden = false
 regulator.drawing_box_vertical_extension = 0.5
 regulator.base_animation = {
     layers = {
@@ -40,7 +40,7 @@ regulator.base_animation = {
         }
     }
 }
-regulator.placeable_by = {{type = "item", name = "maraxsis-pressure-dome", amount = 1}}
+regulator.placeable_by = {item = "maraxsis-pressure-dome", count = 1}
 regulator.minable = nil
 regulator.icon = "__maraxsis__/graphics/icons/regulator.png"
 regulator.icon_size = 64
