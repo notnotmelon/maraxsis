@@ -108,6 +108,8 @@ data:extend {{
         1 - (1 - min(1, elevation) + 0.03) ^ 3 + elevation/3
     ]],
     local_expressions = {
+        xx = "xxx - 38",
+        yy = "yyy + 14",
         elevation = [[
             if(
                 distance_from_0_0(xx, yy) < maraxsis_starting_area,
@@ -116,7 +118,7 @@ data:extend {{
             )
         ]]
     },
-    parameters = {"xx", "yy"}
+    parameters = {"xxx", "yyy"}
 }}
 
 data:extend {{
