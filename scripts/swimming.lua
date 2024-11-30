@@ -17,7 +17,29 @@ local function transfer_equipment_grid(old_armor, new_armor)
     end
 end
 
-local function transfer_armor_item(armor, target_armor_name)
+local function restore_walking_speed(character_unit_number)
+    if not character_unit_number then return end
+    local previous_character_running_speed_modifier = storage.previous_character_running_speed_modifier
+    if not previous_character_running_speed_modifier then return end
+    previous_character_running_speed_modifier = previous_character_running_speed_modifier[character_unit_number]
+    if not previous_character_running_speed_modifier then return end
+
+    local character
+    for _, player in pairs(game.connected_players) do
+        if player.character and player.character.unit_number == character_unit_number then
+            character = player.character
+            break
+        end
+    end
+
+    if not character then return end
+    character.character_running_speed_modifier = previous_character_running_speed_modifier
+    storage.previous_character_running_speed_modifier[character_unit_number] = nil
+end
+
+local function transfer_armor_item(armor, target_armor_name, character_unit_number)
+    restore_walking_speed(character_unit_number)
+
     if not armor.valid or not armor.valid_for_read then return end
     if not prototypes.item[target_armor_name] then return end
     local temp_inventory = game.create_inventory(1)
@@ -67,9 +89,14 @@ local function update_armor(player)
         local currently_collides = character.surface.entity_prototype_collides(character.name, character.position, false)
         if currently_collides then
             local safe_location = character.surface.find_non_colliding_position(character.name, character.position, 32, 0.5)
-            if safe_location then character.teleport(safe_location) end
-            maraxsis.execute_later("transfer_armor_item", 30, armor, target_armor_name)
-            return
+            if safe_location then
+                storage.previous_character_running_speed_modifier = storage.previous_character_running_speed_modifier or {}
+                storage.previous_character_running_speed_modifier[character.unit_number] = character.character_running_speed_modifier
+                character.character_running_speed_modifier = -1
+                character.teleport(safe_location)
+                maraxsis.execute_later("transfer_armor_item", 30, armor, target_armor_name, character.unit_number)
+                return
+            end
         end
     end
 
