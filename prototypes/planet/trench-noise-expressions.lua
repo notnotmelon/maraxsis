@@ -7,3 +7,10 @@ data:extend {{
         maraxsis_trench_entrance
     ]]
 }}
+
+data.raw.tile["maraxsis-lava"].autoplace = {
+    probability_expression = [[
+        maraxsis_elevation > 0.93
+    ]],
+    order = "a[lava]-a[maraxsis]"
+}

@@ -14,3 +14,18 @@ data:extend {{
     collision_mask = {layers = {}},
     hidden = true,
 }}
+
+local maraxsis_lava = table.deepcopy(data.raw.tile["lava-hot"])
+
+maraxsis_lava.name = "maraxsis-lava"
+maraxsis_lava.collision_mask = {
+    layers = {
+        decal = true,
+        doodad = true,
+        water_tile = true,
+        object = true,
+        player = true,
+    }
+}
+
+data:extend {maraxsis_lava}
