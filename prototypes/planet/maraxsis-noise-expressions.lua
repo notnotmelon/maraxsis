@@ -5,26 +5,28 @@ data:extend {{
 }}
 
 data:extend {{
-    type = "noise-expression",
+    type = "noise-function",
     name = "distance_from_0_0",
-    expression = "sqrt(x * x + y * y)"
+    expression = "sqrt(xx * xx + yy * yy)",
+    parameters = {"xx", "yy"}
 }}
 
 data:extend {{
-    type = "noise-expression",
+    type = "noise-function",
     name = "maraxsis_elevation_bonus",
     expression = [[
-        (1 - distance_from_0_0 / maraxsis_starting_area)
-    ]]
+        (1 - distance_from_0_0(xx, yy) / maraxsis_starting_area)
+    ]],
+    parameters = {"xx", "yy"}
 }}
 
 data:extend {{
-    type = "noise-expression",
+    type = "noise-function",
     name = "maraxsis_moisture",
     expression = [[
         abs(multioctave_noise{
-            x = maraxsis_wx(x, y),
-            y = maraxsis_wy(x, y),
+            x = maraxsis_wx(xx, yy),
+            y = maraxsis_wy(xx, yy),
             persistence = 0.25,
             seed0 = map_seed,
             seed1 = 1,
@@ -32,7 +34,14 @@ data:extend {{
             input_scale = 1/1300,
             output_scale = 1
         })
-    ]]
+    ]],
+    parameters = {"xx", "yy"}
+}}
+
+data:extend {{
+    type = "noise-expression",
+    name = "maraxsis_surface_moisture",
+    expression = "maraxsis_moisture(x, y)"
 }}
 
 data:extend {{ -- distorted x. Also offset grid so that the starting area is in the middle of a cell
@@ -88,11 +97,12 @@ data:extend {{ -- We usually want a lot of wobble or none at all, so wobble_infl
                 output_scale = 3
             }
         ]]
-    }
+    },
+    parameters = {"xx", "yy"}
 }}
 
 data:extend {{
-    type = "noise-expression",
+    type = "noise-function",
     name = "maraxsis_elevation",
     expression = [[
         1 - (1 - min(1, elevation) + 0.03) ^ 3 + elevation/3
@@ -100,24 +110,31 @@ data:extend {{
     local_expressions = {
         elevation = [[
             if(
-                distance_from_0_0 < maraxsis_starting_area,
-                maraxsis_moisture + maraxsis_elevation_bonus,
-                maraxsis_moisture
+                distance_from_0_0(xx, yy) < maraxsis_starting_area,
+                maraxsis_moisture(xx, yy) + maraxsis_elevation_bonus(xx, yy),
+                maraxsis_moisture(xx, yy)
             )
         ]]
-    }
+    },
+    parameters = {"xx", "yy"}
+}}
+
+data:extend {{
+    type = "noise-expression",
+    name = "maraxsis_surface_elevation",
+    expression = "maraxsis_elevation(x, y)"
 }}
 
 data:extend {{
     type = "noise-expression",
     name = "maraxsis_trench_entrance",
-    expression = "maraxsis_elevation < 0.03"
+    expression = "maraxsis_surface_elevation < 0.03"
 }}
 
 data:extend {{
     type = "noise-function",
     name = "maraxsis_coral_reef",
-    expression = "(maraxsis_elevation > 0.8) * (maraxsis_elevation < 1.1) * (coral_zones > 0.5) * (coral_beds > 0.8)",
+    expression = "(maraxsis_elevation(xx, yy) > 0.8) * (maraxsis_elevation(xx, yy) < 1.1) * (coral_zones > 0.5) * (coral_beds > 0.8)",
     local_expressions = {
         coral_beds = [[
             multioctave_noise{
@@ -190,21 +207,21 @@ data.raw.tile["lowland-cream-red-underwater"].autoplace = {
 
 data.raw.tile["sand-3-underwater"].autoplace = {
     probability_expression = [[
-        maraxsis_elevation > 0.93
+        maraxsis_surface_elevation > 0.93
     ]],
     order = "b[sand]-a[maraxsis]"
 }
 
 data.raw.tile["sand-2-underwater"].autoplace = {
     probability_expression = [[
-        maraxsis_elevation > 0.73
+        maraxsis_surface_elevation > 0.73
     ]],
     order = "b[sand]-b[maraxsis]"
 }
 
 data.raw.tile["sand-1-underwater"].autoplace = {
     probability_expression = [[
-        maraxsis_elevation > 0.33
+        maraxsis_surface_elevation > 0.33
     ]],
     order = "b[sand]-c[maraxsis]"
 }
