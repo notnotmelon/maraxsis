@@ -40,6 +40,7 @@ require "prototypes.preservatives"
 require "prototypes.promethium-productivity"
 require "prototypes.tile.lava"
 require "prototypes.tips-and-tricks.tips-and-tricks"
+require "prototypes.offshore-pump"
 
 data:extend {{
     type = "custom-input",

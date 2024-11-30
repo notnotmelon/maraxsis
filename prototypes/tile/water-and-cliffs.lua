@@ -49,10 +49,10 @@ local waterifiy = {
     ---@return table
     tile = function(tile, include_submarine_exclusion_zone)
         tile = table.deepcopy(data.raw.tile[tile])
-        tile.localised_name = {"tile-name.underwater"}
         tile.name = tile.name .. "-underwater"
         tile.collision_mask = {layers = {[maraxsis_collision_mask] = true}}
         tile.layer = layer
+        tile.fluid = "saline-water"
         ---@diagnostic disable-next-line: param-type-mismatch
         tile.map_color = maraxsis.color_combine(tile.map_color or data.raw.tile["water"].map_color, data.raw.tile["deepwater"].map_color, 0.25)
         tile.absorptions_per_second = table.deepcopy(data.raw.tile["water"].absorptions_per_second)
@@ -66,6 +66,7 @@ local waterifiy = {
         local submarine_exclusion_zone = table.deepcopy(tile)
         submarine_exclusion_zone.layer = layer
         submarine_exclusion_zone.name = tile.name .. "-submarine-exclusion-zone"
+        submarine_exclusion_zone.localised_name = {"tile-name." .. tile.name}
         submarine_exclusion_zone.collision_mask = {
             layers = {[maraxsis_collision_mask] = true, ["rail"] = true}
         }
@@ -79,12 +80,10 @@ local waterifiy = {
     entity = function(entity)
         local underwater
         for entity_prototype in pairs(defines.prototypes.entity) do
-            if entity_prototype ~= "player-port" then -- todo: remove this check when vanilla updates spage age
-                for _, prototype in pairs(data.raw[entity_prototype]) do
-                    if prototype.name == entity then
-                        underwater = prototype
-                        break
-                    end
+            for _, prototype in pairs(data.raw[entity_prototype] or {}) do
+                if prototype.name == entity then
+                    underwater = prototype
+                    break
                 end
             end
         end
@@ -95,7 +94,6 @@ local waterifiy = {
 
         underwater.localised_name = underwater.localised_name or {"entity-name." .. underwater.name}
         collision_mask_util.get_mask(underwater)[maraxsis_collision_mask] = nil
-        --collision_mask_util.get_mask(underwater)
         ---@diagnostic disable-next-line: param-type-mismatch
         underwater.map_color = maraxsis.color_combine(underwater.map_color or data.raw.tile["water"].map_color, data.raw.tile["deepwater"].map_color, 0.3)
 
@@ -103,13 +101,12 @@ local waterifiy = {
     end,
 }
 
-data:extend(waterifiy.tile("lowland-cream-red", true))
-data.raw.tile["lowland-cream-red-underwater"].map_color = defines.color.orange
 data:extend(waterifiy.tile("sand-1", true))
 data:extend(waterifiy.tile("sand-2", true))
 data:extend(waterifiy.tile("sand-3", true))
 data:extend(waterifiy.tile("dirt-5", true))
-data:extend(waterifiy.tile("grass-2", false))
+data:extend(waterifiy.tile("lowland-cream-red", false))
+data.raw.tile["lowland-cream-red-underwater"].map_color = defines.color.orange
 data:extend(waterifiy.entity("big-sand-rock"))
 
 local simulations = require("__space-age__.prototypes.factoriopedia-simulations")
