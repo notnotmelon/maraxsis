@@ -25,7 +25,7 @@ local function restore_walking_speed(character_unit_number)
     if not previous_character_running_speed_modifier then return end
 
     local character
-    for _, player in pairs(game.connected_players) do
+    for _, player in pairs(game.players) do
         if player.character and player.character.unit_number == character_unit_number then
             character = player.character
             break
