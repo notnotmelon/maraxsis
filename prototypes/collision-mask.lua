@@ -57,7 +57,8 @@ local prototypes_that_cant_be_placed_in_a_dome = {
     "cargo-landing-pad",
     "cargo-bay",
     "agricultural-tower",
-    data.raw.radar["maraxsis-sonar"]
+    data.raw.radar["maraxsis-sonar"],
+    "mining-drill",
 }
 
 local prototypes_that_cant_be_placed_in_a_dome_or_on_water = {
@@ -66,7 +67,17 @@ local prototypes_that_cant_be_placed_in_a_dome_or_on_water = {
     "car",
     "cargo-wagon",
     "combat-robot",
-    --'curved-rail',
+    "curved-rail-a",
+    "curved-rail-b",
+    "legacy-curved-rail",
+    "legacy-straight-rail",
+    "half-diagonal-rail",
+    "elevated-curved-rail-a",
+    "elevated-curved-rail-b",
+    "elevated-half-diagonal-rail",
+    "elevated-straight-rail",
+    "rail-ramp",
+    "rail-support",
     "fluid-turret",
     "fluid-wagon",
     "locomotive",
