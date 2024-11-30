@@ -45,9 +45,9 @@ local prototypes_that_cant_be_placed_in_a_dome = {
     "ammo-turret",
     "electric-turret",
     "land-mine",
-    data.raw["assembling-machine"]["maraxsis-hydro-plant"],
-    data.raw["assembling-machine"]["maraxsis-hydro-plant-extra-module-slots"],
-    data.raw["radar"]["maraxsis-sonar"],
+    "cargo-landing-pad",
+    "cargo-bay",
+    "agricultural-tower",
 }
 
 local prototypes_that_cant_be_placed_in_a_dome_or_on_water = {
@@ -72,6 +72,8 @@ local prototypes_that_cant_be_placed_in_a_dome_or_on_water = {
 }
 
 local prototypes_that_can_be_placed_whereever = {
+    data.raw["assembling-machine"]["maraxsis-hydro-plant"],
+    data.raw["assembling-machine"]["maraxsis-hydro-plant-extra-module-slots"],
     data.raw["assembling-machine"]["chemical-plant"],
     data.raw["electric-energy-interface"]["electric-energy-interface"],
     data.raw["electric-energy-interface"]["ee-infinity-accumulator-primary-output"],
@@ -85,74 +87,6 @@ local prototypes_that_can_be_placed_whereever = {
     data.raw["spider-vehicle"]["maraxsis-diesel-submarine"],
     data.raw["spider-vehicle"]["maraxsis-nuclear-submarine"],
     data.raw.tile["maraxsis-pressure-dome-tile"],
-
-    "arithmetic-combinator",
-    "constant-combinator",
-    "decider-combinator",
-
-    "linked-belt",
-    "loader",
-    "loader-1x1",
-    "splitter",
-    "underground-belt",
-    "transport-belt",
-
-    "infinity-pipe",
-    "pipe",
-    "pipe-to-ground",
-    "storage-tank",
-
-    "train-stop",
-    "rail-chain-signal",
-    "rail-remnants",
-    "rail-signal",
-
-    "gate",
-    "wall",
-
-    "electric-pole",
-    "arrow",
-    "artillery-flare",
-    "artillery-projectile",
-    "beacon",
-    "beam",
-    "character",
-    "character-corpse",
-    "cliff",
-    "construction-robot",
-    "logistic-robot",
-    "corpse",
-    "deconstructible-tile-proxy",
-    "entity-ghost",
-    "explosion",
-    "fish",
-    "flame-thrower-explosion",
-    "heat-interface",
-    "heat-pipe",
-    "highlight-box",
-    "inserter", -- todo: consider loaders?
-    "item-entity",
-    "item-request-proxy",
-    "lamp",
-    "leaf-particle",
-    "mining-drill",
-    "offshore-pump",
-    "particle",
-    "particle-source",
-    "player-port",
-    "programmable-speaker",
-    "projectile",
-    "pump",
-    "resource",
-    "rocket-silo-rocket",
-    "rocket-silo-rocket-shadow",
-    "simple-entity",
-    "smoke",
-    "smoke-with-trigger",
-    "speech-bubble",
-    "sticker",
-    "stream",
-    "tile-ghost",
 }
 
 for _, anywhere in pairs(prototypes_that_can_be_placed_whereever) do
@@ -222,6 +156,7 @@ local function remove_collision_layer_to_prototypes(prototypes, layer)
 end
 
 local function blacklist_via_surface_condition(entity)
+    if processed_prototypes[entity.name] then return end
     entity.surface_conditions = entity.surface_conditions or {}
 
     for _, surface_condition in pairs(entity.surface_conditions) do
@@ -236,16 +171,15 @@ local function blacklist_via_surface_condition(entity)
         property = "pressure",
         max = 50000
     })
+    processed_prototypes[entity.name] = true
 end
 
 for _, blacklisted in pairs(prototypes_that_cant_be_placed_in_a_dome_or_on_water) do
     if type(blacklisted) == "table" then
         processed_prototypes[blacklisted.name] = true
-        blacklist_via_surface_condition(blacklisted)
     else
         for _, prototype in pairs(data.raw[blacklisted]) do
             processed_prototypes[prototype.name] = true
-            blacklist_via_surface_condition(prototype)
         end
     end
 end
