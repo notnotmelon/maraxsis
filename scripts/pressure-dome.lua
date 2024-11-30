@@ -209,9 +209,29 @@ local function update_combinator(pressure_dome_data)
     section.filters = parameters
 end
 
+local mobile_entities = {
+    ["unit"] = true,
+    ["spider-unit"] = true,
+    ["car"] = true,
+    ["spider-vehicle"] = true,
+    ["cargo-wagon"] = true,
+    ["fluid-wagon"] = true,
+    ["locomotive"] = true,
+    ["artillery-wagon"] = true,
+    ["logistic-robot"] = true,
+    ["construction-robot"] = true,
+    ["combat-robot"] = true,
+    ["character"] = true,
+    ["segmented-unit"] = true,
+    ["segment"] = true,
+    ["spider-leg"] = true,
+    ["fish"] = true,
+}
+
 maraxsis.on_event(maraxsis.events.on_built(), function(event)
     local entity = event.entity or event.created_entity
     if not entity.valid or entity.name == "maraxsis-pressure-dome" then return end
+    if mobile_entities[entity.type] then return end
     local surface = entity.surface
 
     for _, pressure_dome_data in pairs(storage.pressure_domes) do
