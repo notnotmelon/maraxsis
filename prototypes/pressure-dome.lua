@@ -82,6 +82,7 @@ data:extend {{
     picture = {
         layers = {cage_shadow, base_shadow, dome},
     },
+    surface_conditions = maraxsis.surface_conditions(),
     build_sound = {
         filename = "__core__/sound/build-ghost-tile.ogg",
         volume = 0
@@ -90,16 +91,6 @@ data:extend {{
         type = "create-trival-smoke",
         smoke_name = "maraxsis-invisible-smoke",
     },
-    created_effect = {
-        type = "direct",
-        action_delivery = {
-            type = "instant",
-            source_effects = {
-                type = "script",
-                effect_id = "on_built_maraxsis_pressure_dome"
-            }
-        }
-    }
 }}
 
 data:extend {{
@@ -115,6 +106,7 @@ data:extend {maraxsis.merge(data.raw["lamp"]["small-lamp"], {
     localised_description = {"entity-description.maraxsis-pressure-dome"},
     remove_decoratives = "false",
     hidden_in_factoriopedia = true,
+    surface_conditions = maraxsis.surface_conditions(),
     minable = "nil",
     icon = "__maraxsis__/graphics/icons/pressure-dome.png",
     icon_size = 64,
@@ -154,6 +146,7 @@ data:extend {maraxsis.merge(data.raw["lamp"]["small-lamp"], {
 data:extend {maraxsis.merge(data.raw["constant-combinator"]["constant-combinator"], {
     type = "constant-combinator",
     name = "maraxsis-pressure-dome-combinator",
+    surface_conditions = maraxsis.surface_conditions(),
     localised_name = {"entity-name.maraxsis-pressure-dome"},
     localised_description = {"entity-description.maraxsis-pressure-dome"},
     remove_decoratives = "false",
@@ -272,6 +265,7 @@ data:extend {{
     name = "maraxsis-pressure-dome-collision",
     localised_name = {"entity-name.maraxsis-pressure-dome"},
     icon = "__maraxsis__/graphics/icons/pressure-dome.png",
+    surface_conditions = maraxsis.surface_conditions(),
     icon_size = 64,
     hidden = true,
     flags = {"placeable-player", "player-creation", "placeable-off-grid", "not-on-map", "building-direction-8-way", "not-blueprintable"},
