@@ -1,5 +1,6 @@
 require "prototypes.vanilla-changes"
 require "prototypes.spidertron-patrols"
+require "prototypes.item-weight"
 
 local function add_fuel_value(fluid, value)
     fluid = data.raw.fluid[fluid]
