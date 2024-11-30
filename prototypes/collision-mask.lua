@@ -66,7 +66,8 @@ local prototypes_that_cant_be_placed_in_a_dome_or_on_water = {
     "unit",
     "unit-spawner",
     "tile",
-    "radar", -- todo: add sonar
+    "roboport",
+    data.raw.radar.radar,
     data.raw["mining-drill"]["burner-mining-drill"]
 }
 
@@ -109,7 +110,7 @@ local prototypes_that_can_be_placed_whereever = {
     "gate",
     "wall",
 
-    "electric-pole", -- todo: consider replacing with fiber optic cable
+    "electric-pole",
     "arrow",
     "artillery-flare",
     "artillery-projectile",
@@ -220,8 +221,35 @@ local function remove_collision_layer_to_prototypes(prototypes, layer)
     end
 end
 
-add_collision_layer_to_prototypes(prototypes_that_cant_be_placed_in_a_dome_or_on_water, maraxsis_collision_mask)
-add_collision_layer_to_prototypes(prototypes_that_cant_be_placed_in_a_dome_or_on_water, dome_collision_mask)
+local function blacklist_via_surface_condition(entity)
+    entity.surface_conditions = entity.surface_conditions or {}
+
+    for _, surface_condition in pairs(entity.surface_conditions) do
+        if surface_condition.property == "pressure" then
+            assert((surface_condition.max or 0) < 50000)
+            surface_condition.max = math.min(50000, surface_condition.max or 50000)
+            return
+        end
+    end
+
+    table.insert(entity.surface_conditions, {
+        property = "pressure",
+        max = 50000
+    })
+end
+
+for _, blacklisted in pairs(prototypes_that_cant_be_placed_in_a_dome_or_on_water) do
+    if type(blacklisted) == "table" then
+        processed_prototypes[blacklisted.name] = true
+        blacklist_via_surface_condition(blacklisted)
+    else
+        for _, prototype in pairs(data.raw[blacklisted]) do
+            processed_prototypes[prototype.name] = true
+            blacklist_via_surface_condition(prototype)
+        end
+    end
+end
+
 add_collision_layer_to_prototypes(prototypes_that_cant_be_placed_on_water, maraxsis_collision_mask)
 remove_collision_layer_to_prototypes(prototypes_that_cant_be_placed_on_water, dome_collision_mask)
 add_collision_layer_to_prototypes(prototypes_that_cant_be_placed_in_a_dome, dome_collision_mask)

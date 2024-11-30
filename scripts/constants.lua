@@ -19,7 +19,6 @@ local MARAXSIS_GET_OPPOSITE_SURFACE = {
 }
 
 local MARAXSIS_SAND_EXTRACTORS = {
-    ["burner-mining-drill"] = true,
     ["electric-mining-drill"] = true,
     ["big-mining-drill"] = true,
 }
