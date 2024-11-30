@@ -53,29 +53,6 @@ function is_point_in_polygon(x, y)
     return wn % 2 ~= 0 -- even/odd rule
 end
 
-local function find_entities_inside_octagon(pressure_dome_data)
-    local dome_position = pressure_dome_data.position
-    local x, y = dome_position.x, dome_position.y
-
-    local entities_inside_square = entity.surface.find_entities_filtered {
-        area = {
-            {x - size, y - size},
-            {x + size, y + size},
-        },
-        collision_mask = {layers = {["object"] = true},},
-    }
-
-    local entities_inside_octagon = {}
-    for _, e in pairs(entities_inside_square) do
-        local e_x, e_y = e.position.x, e.position.y
-        if is_point_in_polygon(e_x - x, e_y - y) then
-            table.insert(entities_inside_octagon, e)
-        end
-    end
-
-    return entities_inside_octagon
-end
-
 local function get_four_corners(entity)
     local position = entity.position
     local x, y = position.x, position.y
