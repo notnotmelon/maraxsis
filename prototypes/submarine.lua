@@ -65,13 +65,14 @@ local fuel_sources = {
 
 local recipes = {
     ["maraxsis-diesel-submarine"] = {
-        {type = "item", name = "steel-plate",          amount = 50},
+        {type = "item", name = "tungsten-plate",          amount = 50},
         {type = "item", name = "electric-engine-unit", amount = 10},
         {type = "item", name = "processing-unit",      amount = 100},
         {type = "item", name = "pump",                 amount = 4},
         {type = "item", name = "supercapacitor",                 amount = 8},
     },
     ["maraxsis-nuclear-submarine"] = {
+        {type = "item", name = "tungsten-plate",                   amount = 100},
         {type = "item", name = "maraxsis-sonar",             amount = 1},
         {type = "item", name = "maraxsis-glass-panes",       amount = 500},
         {type = "item", name = "nuclear-reactor",       amount = 1},
@@ -211,8 +212,10 @@ for i = 1, 2 do
     entity.icon = icon
     entity.icon_size = 64
     entity.height = 0
+    entity.flags = {"placeable-player", "player-creation", "placeable-off-grid", "no-automated-item-removal", "no-automated-item-insertion"}
     entity.torso_bob_speed = 0.4
     entity.minable.result = name
+    entity.surface_conditions = maraxsis.surface_conditions()
     entity.max_health = 3000 * 2 ^ (i - 1)
     entity.collision_box = {{-1.4, -1.4}, {1.4, 1.4}}
     entity.selection_box = {{-1.4, -1.4}, {1.4, 1.4}}

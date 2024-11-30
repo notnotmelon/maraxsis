@@ -188,18 +188,19 @@ data:extend {{
     type = "recipe",
     name = "maraxsis-carbon",
     enabled = false,
-    energy_required = 3,
+    energy_required = 16,
     ingredients = {
         {type = "item", name = "maraxsis-tropical-fish", amount = 1},
     },
     results = {
-        {type = "item", name = "carbon", amount = 6},
+        {type = "item", name = "carbon", amount = 32},
     },
     category = "maraxsis-smelting-or-biochamber",
     allow_productivity = true,
     main_product = "carbon",
     icon = "__maraxsis__/graphics/icons/burnt-fish.png",
     icon_size = 64,
+    show_amount_in_title = false,
     auto_recycle = false,
 }}
 add_to_tech("maraxsis-carbon")

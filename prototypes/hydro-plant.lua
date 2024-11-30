@@ -17,7 +17,7 @@ data:extend {{
         type = "build-entity",
         entity = "maraxsis-diesel-submarine"
     },
-    order = "ec[water-treatment]",
+    order = "ea[hydro-plant]",
 }}
 
 local working_visualisations = {

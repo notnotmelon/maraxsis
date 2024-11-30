@@ -48,7 +48,7 @@ data:extend {{
     results = {
         {type = "item", name = "maraxsis-big-cliff-explosives", amount = 1},
     },
-    category = "maraxsis-hydro-plant",
+    category = "maraxsis-hydro-plant-or-assembling",
 }}
 
 data:extend {{

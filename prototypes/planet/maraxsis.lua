@@ -32,7 +32,7 @@ data:extend {maraxsis.merge(data.raw.planet.gleba, {
         ["day-night-cycle"] = 5 * minute,
         ["magnetic-field"] = 25,
         ["solar-power"] = 0,
-        pressure = 300000,
+        pressure = 400000,
         gravity = 20,
     },
     starmap_icon = "__maraxsis__/graphics/planets/maraxsis-trench.png",

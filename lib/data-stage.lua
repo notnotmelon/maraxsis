@@ -34,3 +34,11 @@ maraxsis.merge = function(old, new)
     end
     return old
 end
+
+maraxsis.surface_conditions = function()
+    return {{
+        property = "pressure",
+        min = 200000,
+        max = 400000,
+    }}
+end
