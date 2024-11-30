@@ -9,7 +9,7 @@
   "dependencies": [
     "base",
     "SpidertronPatrols",
-    "space-age >= 2.0.0",
+    "space-age >= 2.0.21",
     "? tenebris",
     "! Land-Pump",
     "! pystellarexpedition"
