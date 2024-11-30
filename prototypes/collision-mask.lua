@@ -19,7 +19,6 @@ local prototypes_that_cant_be_placed_on_water = {
     "container",
     "linked-container",
     "logistic-container",
-    "infinity-container",
     "accumulator",
     "lab",
     "assembling-machine",
