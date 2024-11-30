@@ -22,5 +22,5 @@ data:extend{{
     },
     allow_productivity = true,
     main_product = "maraxsis-fish-food",
-    category = "crafting"
+    category = "maraxsis-hydro-plant-or-biochamber"
 }}

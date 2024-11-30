@@ -105,3 +105,6 @@ for _, effect in pairs(data.raw.technology["spidertron"].effects) do
     end
 end
 data.raw.technology["spidertron"].effects = new_spidertron_effects
+
+table.insert(data.raw["assembling-machine"]["chemical-plant"].crafting_categories, "maraxsis-hydro-plant-or-chemistry")
+data.raw.recipe["ice-melting"].category = "maraxsis-hydro-plant-or-chemistry"

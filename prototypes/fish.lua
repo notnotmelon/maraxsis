@@ -176,6 +176,7 @@ data:extend {{
     main_product = "maraxsis-microplastics",
     allow_productivity = true,
     auto_recycle = false,
+    surface_conditions = maraxsis.surface_conditions(),
 }}
 add_to_tech("maraxsis-microplastics")
 
@@ -202,6 +203,7 @@ data:extend {{
     icon_size = 64,
     show_amount_in_title = false,
     auto_recycle = false,
+    surface_conditions = maraxsis.surface_conditions(),
 }}
 add_to_tech("maraxsis-carbon")
 

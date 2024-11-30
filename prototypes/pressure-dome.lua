@@ -60,7 +60,8 @@ data:extend {{
         {type = "item", name = "maraxsis-pressure-dome", amount = 1},
     },
     energy_required = 10,
-    category = "maraxsis-hydro-plant-or-assembling"
+    category = "maraxsis-hydro-plant-or-assembling",
+    surface_conditions = maraxsis.surface_conditions(),
 }}
 
 local function collision_box() return {{-16, -16}, {16, 16}} end

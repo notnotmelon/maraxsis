@@ -402,3 +402,5 @@ data.raw["spider-vehicle"]["maraxsis-nuclear-submarine"].guns = {
     "maraxsis-torpedo-launch-silo-5",
     "maraxsis-torpedo-launch-silo-6",
 }
+
+data.raw.recipe["maraxsis-nuclear-submarine"].surface_conditions = maraxsis.surface_conditions()

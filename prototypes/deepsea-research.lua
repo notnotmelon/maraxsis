@@ -76,6 +76,11 @@ for _, recipe in pairs{
     recipe.subgroup = "maraxsis-deepsea-research"
     recipe.enabled = false
     recipe.auto_recycle = false
+    recipe.surface_conditions = {{
+        property = "pressure",
+        min = 400000,
+        max = 400000,
+    }}
     effects[#effects + 1] = {type = "unlock-recipe", recipe = recipe.name}
 end
 

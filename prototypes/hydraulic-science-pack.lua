@@ -51,4 +51,5 @@ data:extend {{
     allow_productivity = true,
     category = "maraxsis-hydro-plant",
     auto_recycle = false,
+    surface_conditions = maraxsis.surface_conditions(),
 }}

@@ -16,6 +16,7 @@ data:extend{{
     show_amount_in_title = false,
     allow_decomposition = false,
     allow_productivity = true,
+    surface_conditions = maraxsis.surface_conditions(),
 }}
 
 for i = 1, 10 do

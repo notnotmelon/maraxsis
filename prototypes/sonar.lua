@@ -53,6 +53,7 @@ data:extend {{
         {type = "item", name = "maraxsis-sonar", amount = 1},
     },
     energy_required = 10,
+    category = "maraxsis-hydro-plant"
 }}
 
 data:extend {maraxsis.merge(data.raw.radar.radar, {

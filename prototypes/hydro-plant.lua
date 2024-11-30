@@ -74,6 +74,11 @@ data:extend {{
 
 data:extend {{
     type = "recipe-category",
+    name = "maraxsis-hydro-plant-or-chemistry",
+}}
+
+data:extend {{
+    type = "recipe-category",
     name = "maraxsis-hydro-plant-or-biochamber",
 }}
 
@@ -83,7 +88,7 @@ data:extend {{
     icon = "__maraxsis__/graphics/icons/hydro-plant.png",
     icon_size = 64,
     flags = {"placeable-neutral", "placeable-player", "player-creation"},
-    minable = {mining_time = 1, results = {{type = "item", name = "maraxsis-hydro-plant", amount = 1}}},
+    minable = {mining_time = 0.5, results = {{type = "item", name = "maraxsis-hydro-plant", amount = 1}}},
     max_health = 400,
     corpse = data.raw["assembling-machine"]["electromagnetic-plant"].corpse,
     dying_explosion = "big-explosion",
@@ -147,7 +152,12 @@ data:extend {{
     graphics_set = {
         working_visualisations = working_visualisations
     },
-    crafting_categories = {"maraxsis-hydro-plant", "maraxsis-hydro-plant-or-assembling", "maraxsis-hydro-plant-or-biochamber"},
+    crafting_categories = {
+        "maraxsis-hydro-plant",
+        "maraxsis-hydro-plant-or-assembling",
+        "maraxsis-hydro-plant-or-biochamber",
+        "maraxsis-hydro-plant-or-chemistry"
+    },
     scale_entity_info_icon = true,
     impact_category = data.raw["assembling-machine"]["electromagnetic-plant"].impact_category,
     --[[working_sound = {
@@ -211,4 +221,5 @@ data:extend {{
         {type = "item", name = "maraxsis-hydro-plant", amount = 1},
     },
     category = "maraxsis-hydro-plant-or-assembling",
+    surface_conditions = maraxsis.surface_conditions(),
 }}
