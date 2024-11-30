@@ -413,13 +413,16 @@ local function place_regulator(pressure_dome_data)
     local x, y = position.x, position.y
     local force = pressure_dome_data.force_index
 
-    local regulator = surface.create_entity {
-        name = "service_station",
-        position = {x, y},
-        force = force,
-        create_build_effect_smoke = false,
-        raise_built = true,
-    }
+    local regulator = pressure_dome_data.regulator
+    if not regulator or not regulator.valid then
+        regulator = surface.create_entity {
+            name = "service_station",
+            position = {x, y},
+            force = force,
+            create_build_effect_smoke = false,
+            raise_built = true,
+        }
+    end
 
     regulator.minable = false
     regulator.destructible = false
@@ -427,12 +430,15 @@ local function place_regulator(pressure_dome_data)
 
     pressure_dome_data.regulator = regulator
 
-    local regulator_fluidbox = surface.create_entity {
-        name = "maraxsis-regulator-fluidbox",
-        position = {x, y},
-        force = force,
-        create_build_effect_smoke = false,
-    }
+    local regulator_fluidbox = pressure_dome_data.regulator_fluidbox
+    if not regulator_fluidbox or not regulator_fluidbox.valid then
+        regulator_fluidbox = surface.create_entity {
+            name = "maraxsis-regulator-fluidbox",
+            position = {x, y},
+            force = force,
+            create_build_effect_smoke = false,
+        }
+    end
 
     regulator_fluidbox.minable = false
     regulator_fluidbox.destructible = false
