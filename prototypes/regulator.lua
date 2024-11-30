@@ -49,3 +49,60 @@ regulator.surface_conditions = maraxsis.surface_conditions()
 data.raw.recipe["service_station"].hidden = true
 data.raw.item["service_station"].hidden = true
 data.raw.item["service_station"].place_result = nil
+
+data:extend{{
+    type = "assembling-machine",
+    name = "maraxsis-regulator-fluidbox",
+    icon = "__maraxsis__/graphics/icons/regulator.png",
+    icon_size = 64,
+    flags = {"placeable-neutral", "player-creation", "not-on-map"},
+    minable = nil,
+    hidden = true,
+    max_health = 99999,
+    collision_mask = {layers = {}},
+    factoriopedia_alternative = "service_station",
+    collision_box = {{-1.9, -1.9}, {1.9, 1.9}},
+    crafting_categories = {"maraxsis-regulator"},
+    crafting_speed = 1,
+    energy_usage = "1MW",
+    fixed_recipe = "maraxsis-regulator",
+    energy_source = {
+        type = "fluid",
+        burns_fluid = false,
+        scale_fluid_usage = false,
+        destroy_non_fuel_fluid = false,
+        maximum_temperature = 0,
+        fluid_box = {
+            production_type = "input",
+            pipe_picture = require("__space-age__.prototypes.entity.electromagnetic-plant-pictures").pipe_pictures,
+            pipe_picture_frozen = require("__space-age__.prototypes.entity.electromagnetic-plant-pictures").pipe_pictures_frozen,
+            pipe_covers = pipecoverspictures(),
+            volume = 100,
+            pipe_connections = {
+                {position = {0.5, -1.5}, direction = defines.direction.north, flow_direction = "input-output"},
+                {position = {-0.5, 1.5}, direction = defines.direction.south, flow_direction = "input-output"},
+            },
+            filter = "maraxsis-atmosphere",
+        },
+    },
+}}
+
+data:extend{{
+    type = "recipe",
+    name = "maraxsis-regulator",
+    enabled = false,
+    hidden = true,
+    energy_required = 100,
+    ingredients = {},
+    results = {},
+    category = "maraxsis-regulator",
+    subgroup = "fluid",
+    order = "a[fluid]-a[maraxsis-atmosphere]-a[regulator]",
+    icon = "__maraxsis__/graphics/icons/atmosphere.png",
+    icon_size = 64,
+}}
+
+data:extend{{
+    type = "recipe-category",
+    name = "maraxsis-regulator",
+}}

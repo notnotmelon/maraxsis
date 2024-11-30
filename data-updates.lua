@@ -61,4 +61,6 @@ for _, tech in pairs(data.raw.technology) do
     end
 end
 
+data.raw.recipe["empty-maraxsis-atmosphere-barrel"].results[1].temperature = 25
+
 require "prototypes.item-subgroups"

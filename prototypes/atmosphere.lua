@@ -1,7 +1,7 @@
 data:extend {{
     type = "fluid",
     name = "maraxsis-atmosphere",
-    default_temperature = 25,
+    default_temperature = 0,
     max_temperature = 100,
     heat_capacity = "1kJ",
     base_flow_rate = data.raw.fluid.steam.base_flow_rate,
@@ -19,7 +19,7 @@ data:extend {{
     energy_required = 10,
     ingredients = {},
     results = {
-        {type = "fluid", name = "maraxsis-atmosphere", amount = 100}
+        {type = "fluid", name = "maraxsis-atmosphere", amount = 100, temperature = 25}
     },
     enabled = false,
     main_product = "maraxsis-atmosphere",
@@ -73,7 +73,7 @@ data:extend {{
         {type = "fluid", name = "maraxsis-liquid-atmosphere", amount = 1}
     },
     results = {
-        {type = "fluid", name = "maraxsis-atmosphere", amount = 90}
+        {type = "fluid", name = "maraxsis-atmosphere", amount = 90, temperature = 25}
     },
     enabled = false,
     main_product = "maraxsis-atmosphere",

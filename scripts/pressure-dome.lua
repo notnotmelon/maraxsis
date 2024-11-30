@@ -426,6 +426,19 @@ local function place_regulator(pressure_dome_data)
     regulator.operable = true
 
     pressure_dome_data.regulator = regulator
+
+    local regulator_fluidbox = surface.create_entity {
+        name = "maraxsis-regulator-fluidbox",
+        position = {x, y},
+        force = force,
+        create_build_effect_smoke = false,
+    }
+
+    regulator_fluidbox.minable = false
+    regulator_fluidbox.destructible = false
+    regulator_fluidbox.operable = false
+
+    pressure_dome_data.regulator_fluidbox = regulator_fluidbox
 end
 
 maraxsis.on_event(maraxsis.events.on_built(), function(event)
@@ -548,6 +561,11 @@ local function destroy_collision_boxes(pressure_dome_data)
     if pressure_dome_data.regulator then
         pressure_dome_data.regulator.destroy()
         pressure_dome_data.regulator = nil
+    end
+
+    if pressure_dome_data.regulator_fluidbox then
+        pressure_dome_data.regulator_fluidbox.destroy()
+        pressure_dome_data.regulator_fluidbox = nil
     end
 end
 
