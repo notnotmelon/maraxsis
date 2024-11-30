@@ -415,6 +415,7 @@ local function place_regulator(pressure_dome_data)
 
     local regulator = pressure_dome_data.regulator
     if not regulator or not regulator.valid then
+        storage.script_placing_the_regulator = true
         regulator = surface.create_entity {
             name = "service_station",
             position = {x, y},
@@ -422,6 +423,7 @@ local function place_regulator(pressure_dome_data)
             create_build_effect_smoke = false,
             raise_built = true,
         }
+        storage.script_placing_the_regulator = false
     end
 
     regulator.minable = false
@@ -812,4 +814,35 @@ maraxsis.on_event(maraxsis.events.on_entity_clicked(), function(event)
     player.selected = light
     player.drag_wire {position = light.position}
     player.selected = entity
+end)
+
+-- handle the case of ghost pressure domes being built via blueprint
+maraxsis.on_event(maraxsis.events.on_built(), function(event)
+    if storage.script_placing_the_regulator then return end
+
+    local entity = event.entity
+    if not entity.valid then return end
+    local is_ghost = entity.name == "entity-ghost" -- this would only be false in the editor mode.
+
+    local name = is_ghost and entity.ghost_name or entity.name
+    if name ~= "service_station" then return end
+    local quality = entity.quality
+    local position = entity.position
+    local surface = entity.surface
+    local force_index = entity.force_index
+    local tags = entity.tags
+    local player = event.player_index and game.get_player(event.player_index)
+
+    entity.destroy()
+
+    local new_dome_ghost = surface.create_entity {
+        name = is_ghost and "entity-ghost" or "maraxsis-pressure-dome",
+        inner_name = is_ghost and "maraxsis-pressure-dome" or nil,
+        tags = tags,
+        force = force_index,
+        position = position,
+        player = player,
+        quality = quality,
+        raise_built = true,
+    }
 end)
