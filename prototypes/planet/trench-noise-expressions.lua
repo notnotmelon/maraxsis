@@ -8,7 +8,7 @@ data:extend {{
     ]]
 }}
 
-data.raw.tile["maraxsis-lava"].autoplace = {
+data.raw.tile["lava-hot-underwater"].autoplace = {
     probability_expression = [[
         maraxsis_elevation > 0.93
     ]],

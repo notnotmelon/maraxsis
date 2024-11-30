@@ -52,12 +52,11 @@ local waterifiy = {
         tile.name = tile.name .. "-underwater"
         tile.collision_mask = {layers = {[maraxsis_collision_mask] = true}}
         tile.layer = layer
-        tile.fluid = "saline-water"
+        tile.fluid = tile.fluid or "saline-water"
         ---@diagnostic disable-next-line: param-type-mismatch
         tile.map_color = maraxsis.color_combine(tile.map_color or data.raw.tile["water"].map_color, data.raw.tile["deepwater"].map_color, 0.25)
         tile.absorptions_per_second = table.deepcopy(data.raw.tile["water"].absorptions_per_second)
         tile.draw_in_water_layer = true
-        --tile.walking_sound = nil -- TODO: add a swimming sound
         tile.walking_speed_modifier = 0.2
         water_tile_type_names[#water_tile_type_names + 1] = tile.name
 
@@ -101,6 +100,9 @@ local waterifiy = {
     end,
 }
 
+data:extend(waterifiy.tile("lava-hot", false))
+data.raw.tile["lava-hot-underwater"].collision_mask.layers.player = true
+data.raw.tile["lava-hot-underwater"].collision_mask.layers.object = true
 data:extend(waterifiy.tile("sand-1", true))
 data:extend(waterifiy.tile("sand-2", true))
 data:extend(waterifiy.tile("sand-3", true))

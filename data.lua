@@ -31,7 +31,6 @@ require "prototypes.sand-extractor"
 require "prototypes.bubbles"
 require "prototypes.torpedoes"
 require "prototypes.water-treatment"
-require "prototypes.planet.maraxsis"
 require "prototypes.big-cliff-explosive"
 require "prototypes.atmosphere"
 require "prototypes.hydraulic-science-pack"
@@ -42,6 +41,7 @@ require "prototypes.preservatives"
 require "prototypes.promethium-productivity"
 require "prototypes.tips-and-tricks.tips-and-tricks"
 require "prototypes.offshore-pump"
+require "prototypes.planet.map-gen"
 
 data:extend {{
     type = "custom-input",
