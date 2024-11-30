@@ -394,7 +394,7 @@ local function check_can_build_dome(entity)
         for yy = -math.floor(size) + y, math.floor(size) + y do
             local tile = surface.get_tile(xx, yy)
             if tile.collides_with("object") then
-                return false, colliding_entities, {"cant-build-reason.entity-in-the-way", tile.prototype.localised_name}
+                return false, colliding_entities, {"cant-build-reason.entity-in-the-way", tile.prototype.localised_name}, true
             end
         end
     end
@@ -452,20 +452,25 @@ maraxsis.on_event(maraxsis.events.on_built(), function(event)
     if not entity.valid or entity.name ~= "maraxsis-pressure-dome" then return end
     local player = event.player_index and game.get_player(event.player_index)
 
-    local undo_index = 0
+    local can_build, contained_entities, error_msg, tile_collision = check_can_build_dome(entity)
 
-    local can_build, contained_entities, error_msg = check_can_build_dome(entity)
+    if tile_collision then
+        maraxsis.cancel_creation(entity, player and player.index, error_msg)
+        return
+    end
+
     if not can_build then
         local successfully_cleared_area = true
         local to_unmark = {}
+        local undo_index = 0
         for _, colliding_entity in pairs(contained_entities) do
             if colliding_entity.valid and not colliding_entity.to_be_deconstructed() then
                 local deconstructed
                 if player then
-                    colliding_entity.order_deconstruction(entity.force, player, undo_index)
+                    deconstructed = colliding_entity.order_deconstruction(entity.force, player, undo_index)
                     undo_index = 1
                 else
-                    colliding_entity.order_deconstruction(entity.force)
+                    deconstructed = colliding_entity.order_deconstruction(entity.force)
                 end
                 successfully_cleared_area = successfully_cleared_area and deconstructed
                 if deconstructed then to_unmark[#to_unmark + 1] = colliding_entity end
@@ -481,6 +486,7 @@ maraxsis.on_event(maraxsis.events.on_built(), function(event)
         local surface = entity.surface
         local force_index = entity.force_index
         local position = entity.position
+        local quality = entity.quality
         maraxsis.cancel_creation(entity, player and player.index, error_msg)
 
         if successfully_cleared_area then
@@ -491,6 +497,7 @@ maraxsis.on_event(maraxsis.events.on_built(), function(event)
                 force = force_index,
                 position = position,
                 player = player,
+                quality = quality,
             }
         end
         return
