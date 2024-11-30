@@ -140,3 +140,10 @@ If you are the author of one of these projects, and feel that your license has b
 - **Source**: [Factorio+](https://mods.factorio.com/mod/factorioplus)
 - **License**: [MIT](https://opensource.org/license/MIT)
 - **Changes**: Yes. Resized to create a low-resolution version. Added lamps.
+
+#### Submarine AI
+
+- **Creator**: Xorimuth
+- **Source**: [Spidertron Patrols](https://mods.factorio.com/mod/SpidertronPatrols)
+- **License**: [MIT](https://opensource.org/license/MIT)
+- **Changes**: Yes. Updated the code to work with submarines.
