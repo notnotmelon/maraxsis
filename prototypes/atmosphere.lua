@@ -25,8 +25,8 @@ data:extend {{
     main_product = "maraxsis-atmosphere",
     surface_conditions = {{
         property = "pressure",
-        min = 1000,
-        max = 2000,
+        min = 100,
+        max = 4000,
     }}
 }}
 
@@ -62,6 +62,11 @@ data:extend {{
     show_amount_in_title = true,
     allow_decomposition = false,
     allow_productivity = true,
+    surface_conditions = {{
+        property = "pressure",
+        min = 100,
+        max = 600,
+    }}
 }}
 
 data:extend {{
