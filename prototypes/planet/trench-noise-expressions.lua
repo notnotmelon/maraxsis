@@ -43,8 +43,8 @@ data:extend {{
             persistence = 0.5,
             seed0 = map_seed,
             seed1 = 1344,
-            octaves = 4,
-            input_scale = 1/500,
+            octaves = 5,
+            input_scale = 1/100,
             output_scale = 1
         }
     ]]
@@ -137,13 +137,13 @@ data:extend {{
 
 data.raw.tile["lava-hot-underwater"].autoplace = {
     probability_expression = [[
-        maraxsis_trench_wall * (maraxsis_lava_master_master > 0.3) * maraxsis_lava_tile(1)
+        maraxsis_trench_wall * (maraxsis_lava_master_master > 0) * maraxsis_lava_tile(1)
     ]],
     order = "b[lava]-a[maraxsis]"
 }
 
 data.raw["simple-entity"]["maraxsis-lava-lamp"].autoplace = {
-    probability_expression = "maraxsis_4x4_grid * (maraxsis_lava_master_master > 0.3) * maraxsis_trench_wall * maraxsis_lava_tile(1)",
+    probability_expression = "maraxsis_4x4_grid * (maraxsis_lava_master_master > 0) * maraxsis_trench_wall * maraxsis_lava_tile(1)",
     order = "b[lava]-a[maraxsis]"
 }
 
