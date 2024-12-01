@@ -202,7 +202,7 @@ maraxsis.on_event("toggle-driving", function(event)
 end)
 
 -- hijack the remote api for spidertron patrols and allow submarines to submerge
-maraxsis.on_event(defines.events.on_spider_command_completed, function(event)
+local function automated_submerge(event)
     local submarine = event.vehicle
     if not submarine or not submarine.valid then return end
     if not maraxsis.SUBMARINES[submarine.name] then return end
@@ -213,7 +213,9 @@ maraxsis.on_event(defines.events.on_spider_command_completed, function(event)
     local waypoints = schedule.waypoints
     if not waypoints or table_size(waypoints) == 1 then return end
 
-    local current = waypoints[schedule.current_index]
+    local current_index = schedule.current_index - 1
+    if current_index == 0 then current_index = table_size(waypoints) end
+    local current = waypoints[current_index]
     if not current then return end
 
     if current.type ~= "passenger-not-present" then return end -- this event has been renamed to "submerge" in the gui
@@ -221,4 +223,9 @@ maraxsis.on_event(defines.events.on_spider_command_completed, function(event)
     if not decend_or_ascend(submarine) then
         submarine.force.print {"maraxsis.submarine-failed-to-submerge", submarine.gps_tag}
     end
+end
+maraxsis.register_delayed_function("automated_submerge", automated_submerge)
+
+maraxsis.on_event(defines.events.on_spider_command_completed, function(event)
+    maraxsis.execute_later("automated_submerge", 10, event)
 end)
