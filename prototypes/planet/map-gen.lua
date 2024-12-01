@@ -103,7 +103,6 @@ planet_map_gen.maraxsis = function()
                     ["nerve-roots-sparse"] = {},
                     --shared
                     ["light-mud-decal"] = {},
-                    ["dark-mud-decal"] = {},
                     ["cracked-mud-decal"] = {},
                     ["red-desert-bush"] = {},
                     ["white-desert-bush"] = {},
@@ -155,7 +154,6 @@ planet_map_gen.maraxsis_trench = function()
                     -- nauvis decoratives
                     ["v-red-pita"] = {},
                     ["sand-dune-decal"] = {},
-                    ["dark-mud-decal"] = {},
                     ["grey-cracked-mud-decal"] = {},
                     ["vulcanus-lava-fire"] = {},
                     -- end of nauvis
@@ -174,7 +172,6 @@ planet_map_gen.maraxsis_trench = function()
                     ["waves-decal"] = {},
                     ["vulcanus-crack-decal"] = {},
                     ["vulcanus-crack-decal-huge-warm"] = {},
-                    ["vulcanus-crack-decal-large"] = {},
                     ["vulcanus-crack-decal-warm"] = {},
                     ["vulcanus-rock-decal-large"] = {},
                     ["vulcanus-sand-decal"] = {},
@@ -213,7 +210,6 @@ planet_map_gen.maraxsis_trench = function()
                     ["nerve-roots-sparse"] = {},
                     --shared
                     ["light-mud-decal"] = {},
-                    ["dark-mud-decal"] = {},
                     ["cracked-mud-decal"] = {},
                     ["red-desert-bush"] = {},
                     ["white-desert-bush"] = {},
