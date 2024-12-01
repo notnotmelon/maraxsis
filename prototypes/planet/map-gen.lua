@@ -135,7 +135,6 @@ planet_map_gen.maraxsis_trench = function()
             cliff_elevation = "cliff_elevation_from_elevation",
         },
         autoplace_controls = {
-            ["sulfuric_acid_geyser"] = {},
         },
         autoplace_settings = {
             ["tile"] = {
