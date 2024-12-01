@@ -45,9 +45,8 @@ local layer = 4
 local waterifiy = {
     ---creates a copy of a tile prototype that can be used underneath py fancy water
     ---@param tile string
-    ---@param include_submarine_exclusion_zone boolean
     ---@return table
-    tile = function(tile, include_submarine_exclusion_zone)
+    tile = function(tile)
         tile = table.deepcopy(data.raw.tile[tile])
         tile.name = tile.name .. "-underwater"
         tile.collision_mask = {layers = {[maraxsis_collision_mask] = true}}
@@ -61,19 +60,7 @@ local waterifiy = {
         tile.allows_being_covered = false
         water_tile_type_names[#water_tile_type_names + 1] = tile.name
 
-        if not include_submarine_exclusion_zone then return {tile} end
-
-        local submarine_exclusion_zone = table.deepcopy(tile)
-        submarine_exclusion_zone.layer = layer
-        submarine_exclusion_zone.name = tile.name .. "-submarine-exclusion-zone"
-        submarine_exclusion_zone.localised_name = {"tile-name." .. tile.name}
-        submarine_exclusion_zone.collision_mask = {
-            layers = {[maraxsis_collision_mask] = true, ["rail"] = true}
-        }
-        water_tile_type_names[#water_tile_type_names + 1] = submarine_exclusion_zone.name
-
-        layer = layer + 1
-        return {tile, submarine_exclusion_zone}
+        return {tile}
     end,
     ---@param entity string
     ---@return table
@@ -101,17 +88,17 @@ local waterifiy = {
     end,
 }
 
-data:extend(waterifiy.tile("lava-hot", false))
+data:extend(waterifiy.tile("lava-hot"))
 data.raw.tile["lava-hot-underwater"].collision_mask.layers.player = true
 data.raw.tile["lava-hot-underwater"].collision_mask.layers.object = true
 data.raw.tile["lava-hot-underwater"].collision_mask.layers.lava_tile = nil
 data.raw.tile["lava-hot-underwater"].collision_mask.layers.decal = true
 data.raw.tile["lava-hot-underwater"].collision_mask.layers.doodad = true
-data:extend(waterifiy.tile("sand-1", true))
-data:extend(waterifiy.tile("sand-2", true))
-data:extend(waterifiy.tile("sand-3", true))
-data:extend(waterifiy.tile("dirt-5", true))
-data:extend(waterifiy.tile("lowland-cream-red", false))
+data:extend(waterifiy.tile("sand-1"))
+data:extend(waterifiy.tile("sand-2"))
+data:extend(waterifiy.tile("sand-3"))
+data:extend(waterifiy.tile("dirt-5"))
+data:extend(waterifiy.tile("lowland-cream-red"))
 data.raw.tile["lowland-cream-red-underwater"].map_color = defines.color.orange
 data.raw.tile["lowland-cream-red-underwater"].searchable = true
 data:extend(waterifiy.entity("big-sand-rock"))
