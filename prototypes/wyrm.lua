@@ -77,7 +77,11 @@ data:extend {{
         {type = "item", name = "maraxsis-wyrm-specimen", amount = 1},
     },
     auto_recycle = false,
-    category = "maraxsis-hydro-plant"
+    category = "maraxsis-hydro-plant",
+    surface_conditions = {{
+        property = "pressure",
+        max = 300000
+    }}
 }}
 
 --[[
