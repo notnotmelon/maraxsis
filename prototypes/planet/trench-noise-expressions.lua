@@ -119,14 +119,27 @@ data:extend{{
     ]]
 }}
 
+data:extend{{
+    type = "noise-expression",
+    name = "maraxsis_3x3_grid",
+    expression = [[
+        ((y %% 3) == 0) * ((x %% 3) == 0)
+    ]]
+}}
+
 data.raw.tile["lava-hot-underwater"].autoplace = {
     probability_expression = "maraxsis_lava_tile",
     order = "a[lava]-a[maraxsis]"
 }
 
+data.raw["simple-entity"]["maraxsis-lava-lamp"].autoplace = {
+    probability_expression = "maraxsis_3x3_grid * maraxsis_lava_tile",
+    order = "a[lava]-a[maraxsis]"
+}
+
 data.raw["simple-entity"]["maraxsis-trench-wall-collisionless"].autoplace = {
     probability_expression = [[
-        ((y %% 3) == 0) * ((x %% 3) == 0) * (maraxsis_trench_elevation < 0.04) * (maraxsis_trench_elevation >= 0.028)
+        maraxsis_3x3_grid * (maraxsis_trench_elevation < 0.04) * (maraxsis_trench_elevation >= 0.028)
     ]],
     order = "a[lava]-a[maraxsis]"
 }

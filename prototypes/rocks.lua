@@ -18,12 +18,23 @@ for _, picture in pairs(trench_wall.pictures) do
     picture.scale = 1.2
 end
 
+trench_wall.icons = {
+    {
+        icon = trench_wall.icon,
+        tint = {r = 0.2, g = 0.2, b = 0.3},
+        icon_size = trench_wall.icon_size,
+    }
+}
+trench_wall.icon = nil
+trench_wall.icon_size = nil
+
 data:extend {trench_wall}
 
 local trench_wall_collisionless = table.deepcopy(trench_wall)
 trench_wall_collisionless.name = "maraxsis-trench-wall-collisionless"
 trench_wall_collisionless.collision_mask = {layers = {}}
 trench_wall_collisionless.hidden = true
+trench_wall_collisionless.localised_name = {"entity-name.maraxsis-trench-wall"}
 trench_wall_collisionless.created_effect = {
     type = "direct",
     action_delivery = {

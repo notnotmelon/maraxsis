@@ -153,6 +153,7 @@ planet_map_gen.maraxsis_trench = function()
             },
             ["entity"] = {
                 settings = {
+                    ["maraxsis-lava-lamp"] = {},
                     ["maraxsis-trench-wall-collisionless"] = {},
                 },
             },
