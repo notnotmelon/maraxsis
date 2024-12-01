@@ -226,6 +226,6 @@ data:extend {{
     results = {
         {type = "item", name = "maraxsis-hydro-plant", amount = 1},
     },
-    category = "maraxsis-hydro-plant-or-assembling",
+    category = "maraxsis-hydro-plant-or-chemistry",
     surface_conditions = maraxsis.surface_conditions(),
 }}
