@@ -47,5 +47,3 @@ data:extend {{
     key_sequence = "",
     linked_game_control = "open-gui"
 }}
-
-data.raw.fluid.lava.auto_barrel = true

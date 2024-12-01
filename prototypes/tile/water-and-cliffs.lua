@@ -50,7 +50,7 @@ local waterifiy = {
         assert(data.raw.tile[tile], "tile not found " .. tile)
         tile = table.deepcopy(data.raw.tile[tile])
         tile.name = tile.name .. "-underwater"
-        tile.collision_mask = {layers = {[maraxsis_collision_mask] = true}}
+        tile.collision_mask = {layers = {ground_tile = true, [maraxsis_collision_mask] = true}}
         tile.layer = layer
         tile.fluid = tile.fluid or "saline-water"
         ---@diagnostic disable-next-line: param-type-mismatch
@@ -91,10 +91,12 @@ local waterifiy = {
 
 data:extend(waterifiy.tile("lava-hot"))
 data.raw.tile["lava-hot-underwater"].collision_mask.layers.player = true
-data.raw.tile["lava-hot-underwater"].collision_mask.layers.object = true
 data.raw.tile["lava-hot-underwater"].collision_mask.layers.lava_tile = nil
 data.raw.tile["lava-hot-underwater"].collision_mask.layers.decal = true
 data.raw.tile["lava-hot-underwater"].collision_mask.layers.doodad = true
+data.raw.tile["lava-hot-underwater"].collision_mask.layers.ground_tile = nil
+data.raw.tile["lava-hot-underwater"].collision_mask.layers.item = true
+data.raw.tile["lava-hot-underwater"].collision_mask.layers.transport_belt = true
 
 data:extend(waterifiy.tile("volcanic-cracks-hot"))
 data:extend(waterifiy.tile("volcanic-cracks-warm"))
