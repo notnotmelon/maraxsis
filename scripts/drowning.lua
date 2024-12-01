@@ -2,11 +2,6 @@ local FULL_BREATH_NUM_TICKS = 2 * 60 * 60 -- two minutes before you start drowni
 local WARNING_MESSAGE = FULL_BREATH_NUM_TICKS / 3
 local UPDATE_RATE = 71
 
-local SUBMARINES = {
-    ["maraxsis-diesel-submarine"] = true,
-    ["maraxsis-nuclear-submarine"] = true,
-}
-
 maraxsis.on_event(maraxsis.events.on_init(), function()
     storage.breath = storage.breath or {}
 end)
@@ -25,7 +20,7 @@ maraxsis.on_nth_tick(UPDATE_RATE, function()
         end
 
         local vehicle = player.vehicle
-        if vehicle and SUBMARINES[vehicle.name] then
+        if vehicle then
             storage.breath[player.index] = nil
             goto continue
         end
