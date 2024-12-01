@@ -3,7 +3,7 @@ _G.maraxsis_collision_mask = "maraxsis_collision_mask"
 _G.maraxsis_lava_collision_mask = "maraxsis_lava_collision_mask"
 _G.maraxsis_fishing_tower_collision_mask = "maraxsis_fishing_tower_collision_mask"
 
-local TRENCH_MOVEMENT_FACTOR = 1.5 -- each tile moved in the trench layer = 1.5 tiles in the surface layer
+local TRENCH_MOVEMENT_FACTOR = 1
 
 local SUBMARINES = {
     ["maraxsis-diesel-submarine"] = {r = 255, g = 195, b = 0, a = 0.5},

@@ -141,7 +141,21 @@ local function decend_or_ascend(submarine)
         driver = driver.player
     end
 
+    local players_to_open_gui = {}
+    for _, player in pairs(game.players) do
+        if player.opened == submarine and player.surface ~= target_surface then table.insert(players_to_open_gui, player) end
+    end
     submarine.teleport(target_position, target_surface, true)
+    for _, player in pairs(players_to_open_gui) do
+        if player.surface ~= target_surface then
+            player.set_controller{
+                type = defines.controllers.remote,
+                position = target_position,
+                surface = target_surface
+            }
+        end
+        player.opened = submarine
+    end
 
     if passenger then
         passenger.teleport(target_position, target_surface, true)
@@ -184,5 +198,27 @@ maraxsis.on_event("toggle-driving", function(event)
         -- case 3: player is hovering the sub and trying to enter. the vanilla vechicle enter range is too low for water vehicles so we artificially increase it
     elseif can_enter_submarine(player, selected) then
         enter_submarine(player, selected)
+    end
+end)
+
+-- hijack the remote api for spidertron patrols and allow submarines to submerge
+maraxsis.on_event(defines.events.on_spider_command_completed, function(event)
+    local submarine = event.vehicle
+    if not submarine or not submarine.valid then return end
+    if not maraxsis.SUBMARINES[submarine.name] then return end
+
+    local schedule = remote.call("SpidertronPatrols", "get_waypoints", submarine)
+    if not schedule.on_patrol then return end
+
+    local waypoints = schedule.waypoints
+    if not waypoints or table_size(waypoints) == 1 then return end
+
+    local current = waypoints[schedule.current_index]
+    if not current then return end
+
+    if current.type ~= "passenger-not-present" then return end -- this event has been renamed to "submerge" in the gui
+
+    if not decend_or_ascend(submarine) then
+        submarine.force.print {"maraxsis.submarine-failed-to-submerge", submarine.gps_tag}
     end
 end)
