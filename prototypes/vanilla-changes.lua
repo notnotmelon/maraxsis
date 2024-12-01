@@ -64,6 +64,8 @@ table.insert(data.raw.recipe["rocket-part"].surface_conditions, {
 table.insert(data.raw.furnace["electric-furnace"].crafting_categories, "maraxsis-smelting-or-biochamber")
 table.insert(data.raw["assembling-machine"]["biochamber"].crafting_categories, "maraxsis-smelting-or-biochamber")
 table.insert(data.raw["assembling-machine"]["biochamber"].crafting_categories, "maraxsis-hydro-plant-or-biochamber")
+table.insert(data.raw["assembling-machine"]["chemical-plant"].crafting_categories, "maraxsis-hydro-plant-or-chemistry")
+table.insert(data.raw["assembling-machine"]["foundry"].crafting_categories, "maraxsis-hydro-plant-or-foundry")
 
 table.insert(data.raw.technology["rocket-part-productivity"].effects, {
     type = "change-recipe-productivity",
@@ -105,8 +107,6 @@ for _, effect in pairs(data.raw.technology["spidertron"].effects) do
     end
 end
 data.raw.technology["spidertron"].effects = new_spidertron_effects
-
-table.insert(data.raw["assembling-machine"]["chemical-plant"].crafting_categories, "maraxsis-hydro-plant-or-chemistry")
 
 data.raw.recipe["ice-melting"].category = "maraxsis-hydro-plant-or-chemistry"
 data.raw.recipe["advanced-thruster-fuel"].category = "maraxsis-hydro-plant-or-chemistry"

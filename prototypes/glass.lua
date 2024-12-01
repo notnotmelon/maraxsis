@@ -67,7 +67,7 @@ data:extend {{
         {type = "item", name = "maraxsis-glass-panes", amount = 1},
     },
     allow_productivity = true,
-    category = "metallurgy"
+    category = "maraxsis-hydro-plant-or-foundry"
 }}
 
 local glass_variants = {}
