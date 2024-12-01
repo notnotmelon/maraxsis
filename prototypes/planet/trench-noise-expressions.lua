@@ -43,7 +43,7 @@ data:extend {{
             persistence = 0.5,
             seed0 = map_seed,
             seed1 = 1344,
-            octaves = 1,
+            octaves = 4,
             input_scale = 1/500,
             output_scale = 1
         }
@@ -92,15 +92,11 @@ data:extend {{
             maraxsis_lava_master_master < 0,
             lava_thickness * (0.3 + maraxsis_lava_master_master) / 0.3,
             lava_thickness
-        ), 0.5)
+        ), 0.3)
     ]],
     local_expressions = {
-        -- ensure there is always a land bridge through the center
         lava_thickness = [[
-            abs(maraxsis_lava_master) * (abs(maraxsis_trench_elevation) ^ 0.3) * 1.2
-        ]],
-        normalized_elevation = [[
-            abs(maraxsis_trench_elevation) / 0.03
+            abs(maraxsis_lava_master)
         ]]
     }
 }}
@@ -131,15 +127,23 @@ data:extend {{
     ]]
 }}
 
+data:extend {{
+    type = "noise-expression",
+    name = "maraxsis_4x4_grid",
+    expression = [[
+        ((y %% 4) == 0) * ((x %% 4) == 0)
+    ]]
+}}
+
 data.raw.tile["lava-hot-underwater"].autoplace = {
     probability_expression = [[
-        maraxsis_trench_wall * (maraxsis_lava_master_master > -0.3) * maraxsis_lava_tile(1)
+        maraxsis_trench_wall * (maraxsis_lava_master_master > 0.3) * maraxsis_lava_tile(1)
     ]],
     order = "b[lava]-a[maraxsis]"
 }
 
 data.raw["simple-entity"]["maraxsis-lava-lamp"].autoplace = {
-    probability_expression = "maraxsis_trench_wall * maraxsis_3x3_grid * maraxsis_lava_tile(1)",
+    probability_expression = "maraxsis_4x4_grid * (maraxsis_lava_master_master > 0.3) * maraxsis_trench_wall * maraxsis_lava_tile(1)",
     order = "b[lava]-a[maraxsis]"
 }
 

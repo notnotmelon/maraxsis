@@ -4,7 +4,6 @@ local trench_wall = maraxsis.merge(data.raw["simple-entity"]["huge-rock"], {
     minable = "nil",
     selectable_in_game = false,
     map_color = {0, 0, 0},
-    render_layer = "higher-object-under",
     autoplace = {
         probability_expression = "maraxsis_trench_wall",
     },
