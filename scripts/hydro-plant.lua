@@ -49,8 +49,8 @@ maraxsis.on_event(defines.events.on_player_rotated_entity, function(event)
 end)
 
 local swap_target = {
-    ["maraxsis-hydro-plant"] = {"maraxsis-hydro-plant-extra-module-slots", maraxsis.TRENCH_SURFACE_NAME},
-    ["maraxsis-hydro-plant-extra-module-slots"] = {"maraxsis-hydro-plant", maraxsis.MARAXSIS_SURFACE_NAME},
+    ["maraxsis-hydro-plant"] = "maraxsis-hydro-plant-extra-module-slots",
+    ["maraxsis-hydro-plant-extra-module-slots"] = "maraxsis-hydro-plant",
 }
 
 -- swap the hydro plant with 2 extra modules slots in the trench surface
@@ -59,19 +59,25 @@ maraxsis.on_event(maraxsis.events.on_built(), function(event)
     if not entity.valid then return end
     
     if not is_hydro_plant(entity) then return end
+    local surface = entity.surface
     local is_ghost = entity.name == "entity-ghost"
     local name = is_ghost and entity.ghost_name or entity.name
+    
+    local is_space = not not surface.platform
+    if name == "maraxsis-hydro-plant" and surface.name == maraxsis.MARAXSIS_SURFACE_NAME then
+        return
+    elseif name == "maraxsis-hydro-plant-extra-module-slots" and surface.name == maraxsis.TRENCH_SURFACE_NAME then
+        return
+    elseif name == "maraxsis-hydro-plant-extra-module-slots" and is_space then
+        return
+    end
     local swap_target = swap_target[name]
-    local target = swap_target[1]
-    local target_surface_name = swap_target[2]
-
-    if target_surface_name ~= entity.surface.name then return end
 
     local player = event.player_index and game.get_player(event.player_index)
 
-    local new_entity = entity.surface.create_entity{
-        name = is_ghost and "entity-ghost" or target,
-        inner_name = is_ghost and target or nil,
+    local new_entity = surface.create_entity{
+        name = is_ghost and "entity-ghost" or swap_target,
+        inner_name = is_ghost and swap_target or nil,
         tags = is_ghost and entity.tags or nil,
         position = entity.position,
         direction = entity.direction,
@@ -91,7 +97,7 @@ maraxsis.on_event(maraxsis.events.on_built(), function(event)
             local inserted_count = new_entity.insert(item)
             if inserted_count < item.count then
                 item.count = item.count - inserted_count
-                entity.surface.spill_item_stack{
+                surface.spill_item_stack{
                     position = entity.position,
                     stack = item,
                     enable_looted = true,
