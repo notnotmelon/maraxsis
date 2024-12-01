@@ -47,7 +47,7 @@ torpedo.order = "de[torpedoes]-a[torpedo]"
 torpedo.name = "maraxsis-torpedo"
 torpedo.icon = "__maraxsis__/graphics/icons/torpedo.png"
 torpedo.icon_size = 64
-torpedo.ammo_type.category = "maraxsis-torpedoes"
+torpedo.ammo_category = "maraxsis-torpedoes"
 torpedo.ammo_type.action.action_delivery.projectile = "maraxsis-torpedo-projectile"
 data:extend {torpedo}
 
@@ -56,7 +56,7 @@ explosive_torpedo.order = "de[torpedoes]-b[explosive-torpedo]"
 explosive_torpedo.name = "maraxsis-explosive-torpedo"
 explosive_torpedo.icon = "__maraxsis__/graphics/icons/explosive-torpedo.png"
 explosive_torpedo.icon_size = 64
-explosive_torpedo.ammo_type.category = "maraxsis-torpedoes"
+explosive_torpedo.ammo_category = "maraxsis-torpedoes"
 explosive_torpedo.ammo_type.action.action_delivery.projectile = "maraxsis-explosive-torpedo-projectile"
 data:extend {explosive_torpedo}
 
@@ -65,7 +65,7 @@ atomic_torpedo.order = "de[torpedoes]-c[atomic-torpedo]"
 atomic_torpedo.name = "maraxsis-atomic-torpedo"
 atomic_torpedo.icon = "__maraxsis__/graphics/icons/atomic-torpedo.png"
 atomic_torpedo.icon_size = 64
-atomic_torpedo.ammo_type.category = "maraxsis-torpedoes"
+atomic_torpedo.ammo_category = "maraxsis-torpedoes"
 atomic_torpedo.ammo_type.action.action_delivery.projectile = "maraxsis-atomic-torpedo-projectile"
 data:extend {atomic_torpedo}
 
