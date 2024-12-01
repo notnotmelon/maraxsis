@@ -7,9 +7,6 @@ if tech_tree_screenshot_mode then
     end
 end
 
-_G.dome_collision_mask = "maraxsis_dome_collision_mask"
-_G.maraxsis_collision_mask = "maraxsis_collision_mask"
-
 _G.maraxsis = require "scripts.constants"
 require "lib.lib"
 require "prototypes.tile.water-and-cliffs"
