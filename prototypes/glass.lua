@@ -20,6 +20,10 @@ data:extend {{
             type = "unlock-recipe",
             recipe = "maraxsis-atmosphere",
         },
+        {
+            type = "unlock-recipe",
+            recipe = "maraxsis-limestone-processing",
+        },
     },
     prerequisites = {"maraxsis-hydro-plant"},
     research_trigger = {
@@ -134,4 +138,23 @@ data:extend {{
     },
     max_level = "infinite",
     upgrade = true
+}}
+
+data:extend{{
+    type = "recipe",
+    name = "maraxsis-limestone-processing",
+    enabled = false,
+    energy_required = 5,
+    ingredients = {
+        {type = "item", name = "limestone", amount = 1},
+    },
+    results = {
+        {type = "item", name = "calcite", amount = 1},
+        {type = "item", name = "stone", amount = 1},
+    },
+    allow_productivity = true,
+    category = "maraxsis-hydro-plant",
+    allow_decomposition = false,
+    main_product = "calcite",
+    auto_recycle = false,
 }}
