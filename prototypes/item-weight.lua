@@ -13,6 +13,7 @@ local function i_want_to_fit_this_many_per_rocket(item, count)
     error("Could not find item " .. item)
 end
 
+i_want_to_fit_this_many_per_rocket("maraxsis-fishing-tower", 20)
 i_want_to_fit_this_many_per_rocket("maraxsis-big-cliff-explosives", 10)
 i_want_to_fit_this_many_per_rocket("sp-spidertron-dock", 20)
 i_want_to_fit_this_many_per_rocket("maraxsis-diesel-submarine", 1)

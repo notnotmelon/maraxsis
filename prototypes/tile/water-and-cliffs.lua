@@ -50,7 +50,7 @@ local waterifiy = {
         assert(data.raw.tile[tile], "tile not found " .. tile)
         tile = table.deepcopy(data.raw.tile[tile])
         tile.name = tile.name .. "-underwater"
-        tile.collision_mask = {layers = {[maraxsis_collision_mask] = true}}
+        tile.collision_mask = {layers = {[maraxsis_collision_mask] = true, [maraxsis_fishing_tower_collision_mask] = true}}
         tile.layer = layer
         layer = layer + 1
         tile.fluid = tile.fluid or "saline-water"
@@ -111,6 +111,7 @@ data:extend(waterifiy.tile("lowland-cream-red"))
 
 data.raw.tile["lowland-cream-red-underwater"].map_color = defines.color.orange
 data.raw.tile["lowland-cream-red-underwater"].searchable = true
+data.raw.tile["lowland-cream-red-underwater"].collision_mask.layers[maraxsis_fishing_tower_collision_mask] = nil
 data:extend(waterifiy.entity("big-sand-rock"))
 
 local simulations = require("__space-age__.prototypes.factoriopedia-simulations")

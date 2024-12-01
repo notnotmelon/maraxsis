@@ -136,6 +136,7 @@ local function add_to_tech(recipe)
     table.insert(data.raw.technology["maraxsis-piscary"].effects, {type = "unlock-recipe", recipe = recipe})
 end
 
+add_to_tech("maraxsis-fishing-tower")
 add_to_tech("maraxsis-fish-food")
 
 local microplastics_variants = {}
