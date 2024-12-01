@@ -1,4 +1,9 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.10.11
+Date: 2024-12-01
+  Bugfixes:
+    - Blacklisted the "buoyant-spidertrons" mod. Resolves https://github.com/notnotmelon/maraxsis/issues/4
+---------------------------------------------------------------------------------------------------
 Version: 1.10.10
 Date: 2024-12-01
   Bugfixes:
