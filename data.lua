@@ -4,13 +4,11 @@ local tech_tree_screenshot_mode = false
 if tech_tree_screenshot_mode then
     for _, t in pairs(data.raw.technology) do
         t.enabled = false
-        if t.normal then t.normal.enabled = false end
-        if t.expensive then t.expensive.enabled = false end
     end
 end
 
-_G.dome_collision_mask = "h2o_dome_collision_mask"
-_G.maraxsis_collision_mask = "h2o_maraxsis_collision_mask"
+_G.dome_collision_mask = "maraxsis_dome_collision_mask"
+_G.maraxsis_collision_mask = "maraxsis_collision_mask"
 
 _G.maraxsis = require "scripts.constants"
 require "lib.lib"
@@ -49,3 +47,5 @@ data:extend {{
     key_sequence = "",
     linked_game_control = "open-gui"
 }}
+
+data.raw.fluid.lava.auto_barrel = true
