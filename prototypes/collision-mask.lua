@@ -32,7 +32,6 @@ local prototypes_that_cant_be_placed_on_water = {
     "storage-tank",
     "beacon",
     "reactor",
-    "roboport",
     "tree",
     "arithmetic-combinator",
     "decider-combinator",
@@ -57,6 +56,8 @@ local prototypes_that_cant_be_placed_on_water = {
     "rail-ramp",
     "rail-support",
     "straight-rail",
+    data.raw.roboport["aai-signal-sender"],
+    data.raw.roboport["aai-signal-receiver"],
 }
 
 local prototypes_that_cant_be_placed_in_a_dome = {
@@ -167,6 +168,11 @@ local function blacklist_via_surface_condition(entity)
     })
 end
 
+add_collision_layer_to_prototypes(prototypes_that_cant_be_placed_on_water, maraxsis_collision_mask)
+remove_collision_layer_to_prototypes(prototypes_that_cant_be_placed_on_water, dome_collision_mask)
+add_collision_layer_to_prototypes(prototypes_that_cant_be_placed_in_a_dome, dome_collision_mask)
+remove_collision_layer_to_prototypes(prototypes_that_cant_be_placed_in_a_dome, maraxsis_collision_mask)
+
 for _, blacklisted in pairs(prototypes_that_cant_be_placed_in_a_dome_or_on_water) do
     if type(blacklisted) == "table" then
         blacklist_via_surface_condition(blacklisted)
@@ -176,8 +182,3 @@ for _, blacklisted in pairs(prototypes_that_cant_be_placed_in_a_dome_or_on_water
         end
     end
 end
-
-add_collision_layer_to_prototypes(prototypes_that_cant_be_placed_on_water, maraxsis_collision_mask)
-remove_collision_layer_to_prototypes(prototypes_that_cant_be_placed_on_water, dome_collision_mask)
-add_collision_layer_to_prototypes(prototypes_that_cant_be_placed_in_a_dome, dome_collision_mask)
-remove_collision_layer_to_prototypes(prototypes_that_cant_be_placed_in_a_dome, maraxsis_collision_mask)
