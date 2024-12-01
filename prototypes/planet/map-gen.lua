@@ -149,6 +149,19 @@ planet_map_gen.maraxsis_trench = function()
             },
             ["decorative"] = {
                 settings = {
+                    ["vulcanus-dune-decal"] = {},
+                    ["vulcanus-sand-decal"] = {},
+                    ["crater-small"] = {},
+                    ["crater-large"] = {},
+                    ["pumice-relief-decal"] = {},
+                    ["small-volcanic-rock"] = {},
+                    ["medium-volcanic-rock"] = {},
+                    ["tiny-volcanic-rock"] = {},
+                    ["tiny-rock-cluster"] = {},
+                    ["small-sulfur-rock"] = {},
+                    ["tiny-sulfur-rock"] = {},
+                    ["sulfur-rock-cluster"] = {},
+                    ["waves-decal"] = {},
                 }
             },
             ["entity"] = {
