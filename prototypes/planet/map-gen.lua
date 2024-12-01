@@ -144,6 +144,7 @@ planet_map_gen.maraxsis_trench = function()
                     ["sand-2-underwater"] = {},
                     ["sand-3-underwater"] = {},
                     ["dirt-5-underwater"] = {},
+                    ["out-of-map"] = {},
                 }
             },
             ["decorative"] = {
@@ -152,7 +153,7 @@ planet_map_gen.maraxsis_trench = function()
             },
             ["entity"] = {
                 settings = {
-
+                    ["maraxsis-trench-wall-collisionless"] = {},
                 },
             },
         }

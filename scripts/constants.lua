@@ -1,4 +1,4 @@
-local TRENCH_MOVEMENT_FACTOR = 2 -- each tile moved in the trench layer = 2 tiles in the surface layer
+local TRENCH_MOVEMENT_FACTOR = 1.5 -- each tile moved in the trench layer = 1.5 tiles in the surface layer
 
 local SUBMARINES = {
     ["maraxsis-diesel-submarine"] = {r = 255, g = 195, b = 0, a = 0.5},

@@ -7,12 +7,33 @@ local trench_wall = maraxsis.merge(data.raw["simple-entity"]["huge-rock"], {
     render_layer = "higher-object-under",
     autoplace = {
         probability_expression = "maraxsis_trench_wall",
-    }
+    },
+    flags = {"placeable-neutral"},
+    collision_box = {{-3, -3}, {3, 3}},
+    selection_box = {{-3, -3}, {3, 3}},
 })
 
 for _, picture in pairs(trench_wall.pictures) do
     picture.tint = {r = 0.2, g = 0.2, b = 0.3}
-    picture.scale = 1.5
+    picture.scale = 1.2
 end
 
 data:extend {trench_wall}
+
+local trench_wall_collisionless = table.deepcopy(trench_wall)
+trench_wall_collisionless.name = "maraxsis-trench-wall-collisionless"
+trench_wall_collisionless.collision_mask = {layers = {}}
+trench_wall_collisionless.hidden = true
+trench_wall_collisionless.created_effect = {
+    type = "direct",
+    action_delivery = {
+        type = "instant",
+        source_effects = {
+            {
+                type = "script",
+                effect_id = "maraxsis-trench-wall-created",
+            },
+        }
+    }
+}
+data:extend {trench_wall_collisionless}

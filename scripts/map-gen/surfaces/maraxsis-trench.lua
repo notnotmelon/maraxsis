@@ -18,6 +18,24 @@ local function get_surface()
 	return game.planets[maraxsis.TRENCH_SURFACE_NAME].create_surface()
 end
 
+maraxsis.on_event(defines.events.on_script_trigger_effect, function(event)
+	if event.effect_id ~= "maraxsis-trench-wall-created" then return end
+
+	local old_entity = event.target_entity
+	local surface = old_entity.surface
+	local position = old_entity.position
+	local force_index = old_entity.force_index
+
+	old_entity.destroy()
+	local new_entity = surface.create_entity {
+		name = "maraxsis-trench-wall",
+		position = position,
+		force = force_index,
+		create_build_effect_smoke = false
+	}
+	new_entity.destructible = false
+end)
+
 return {
 	get_surface = get_surface,
 	type = "maraxsis-trench",

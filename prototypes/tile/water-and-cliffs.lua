@@ -58,6 +58,7 @@ local waterifiy = {
         tile.absorptions_per_second = table.deepcopy(data.raw.tile["water"].absorptions_per_second)
         tile.draw_in_water_layer = true
         tile.walking_speed_modifier = 0.2
+        tile.allows_being_covered = false
         water_tile_type_names[#water_tile_type_names + 1] = tile.name
 
         if not include_submarine_exclusion_zone then return {tile} end
@@ -103,12 +104,14 @@ local waterifiy = {
 data:extend(waterifiy.tile("lava-hot", false))
 data.raw.tile["lava-hot-underwater"].collision_mask.layers.player = true
 data.raw.tile["lava-hot-underwater"].collision_mask.layers.object = true
+data.raw.tile["lava-hot-underwater"].collision_mask.layers.lava_tile = nil
 data:extend(waterifiy.tile("sand-1", true))
 data:extend(waterifiy.tile("sand-2", true))
 data:extend(waterifiy.tile("sand-3", true))
 data:extend(waterifiy.tile("dirt-5", true))
 data:extend(waterifiy.tile("lowland-cream-red", false))
 data.raw.tile["lowland-cream-red-underwater"].map_color = defines.color.orange
+data.raw.tile["lowland-cream-red-underwater"].searchable = true
 data:extend(waterifiy.entity("big-sand-rock"))
 
 local simulations = require("__space-age__.prototypes.factoriopedia-simulations")
@@ -165,6 +168,7 @@ collisionless_cliff.created_effect = {
     }
 }
 collisionless_cliff.hidden = true
+collisionless_cliff.cliff_explosive = nil
 data:extend {collisionless_cliff}
 
 data:extend {{
