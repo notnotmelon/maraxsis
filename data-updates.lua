@@ -19,13 +19,13 @@ for _, fluid in pairs(data.raw.fluid) do -- todo: check fluid fuel category
     if not fuel_value or type(fuel_value) ~= "string" then goto continue end
     local barrel = data.raw.item[fluid.name .. "-barrel"]
     if not barrel then goto continue end
-    if barrel.fuel_category then error("Maraxsis encountered a mod incompatibility! Barrel " .. barrel.name .. " already has a fuel category. Please report this") end
 
     local number_part, unit = fuel_value:match("^(%d+)(.*)")
     number_part = tonumber(number_part)
     if not number_part then goto continue end
     barrel.fuel_value = tostring(number_part * 50) .. unit -- 50 fluid per barrel
-    barrel.fuel_category = "maraxsis-diesel"
+    barrel.fuel_category = barrel.fuel_category or "maraxsis-diesel"
+    maraxsis.SUBMARINE_FUEL_SOURCES["maraxsis-diesel-submarine"][1] = barrel.fuel_category
     barrel.burnt_result = "barrel"
     ::continue::
 end

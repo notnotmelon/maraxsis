@@ -58,11 +58,6 @@ data:extend {{
     name = "maraxsis-diesel",
 }}
 
-local fuel_sources = {
-    ["maraxsis-diesel-submarine"] = "maraxsis-diesel",
-    ["maraxsis-nuclear-submarine"] = "nuclear",
-}
-
 local recipes = {
     ["maraxsis-diesel-submarine"] = {
         {type = "item", name = "tungsten-plate",       amount = 50},
@@ -241,7 +236,7 @@ for i = 1, 2 do
     entity.weight = entity.weight / (i + 1) * 4 * movement_energy_consumption[i] / 800
     entity.energy_source = {
         type = "burner",
-        fuel_categories = {fuel_sources[name]},
+        fuel_categories = maraxsis.SUBMARINE_FUEL_SOURCES[name],
         effectivity = 1,
         fuel_inventory_size = 4,
         burnt_inventory_size = 4,
