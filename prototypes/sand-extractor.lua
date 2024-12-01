@@ -44,6 +44,7 @@ for extractor in pairs(maraxsis.MARAXSIS_SAND_EXTRACTORS) do
     extractor.fixed_quality = "normal"
     extractor.crafting_speed = extractor.mining_speed
     extractor.mining_speed = nil
+    extractor.next_upgrade = nil
     extractor.allowed_effects = {"productivity", "consumption", "speed", "pollution", "quality"}
     extractor.resource_drain_rate_percent = nil
     extractor.name = extractor.name .. "-sand-extractor"
