@@ -75,13 +75,10 @@ local prototypes_that_cant_be_placed_in_a_dome = {
 local prototypes_that_cant_be_placed_in_a_dome_or_on_water = {
     "artillery-turret",
     "artillery-wagon",
-    "car",\
+    "car",
     "fluid-turret",
     "spider-leg",
     "spider-vehicle",
-    "unit",
-    "unit-spawner",
-    "tile",
     "roboport",
     data.raw.radar.radar,
     data.raw["mining-drill"]["burner-mining-drill"]
@@ -106,26 +103,10 @@ local prototypes_that_can_be_placed_whereever = {
     data.raw["spider-vehicle"]["spidertron-enhancements-dummy-maraxsis-nuclear-submarine"],
     data.raw.roboport.service_station,
     data.raw.roboport["maraxsis-pressure-dome"],
-    data.raw.tile["maraxsis-pressure-dome-tile"],
 }
 
 for _, anywhere in pairs(prototypes_that_can_be_placed_whereever) do
     processed_prototypes[anywhere.name] = true
-end
-
-local function block_placement_tile(tile, layer)
-    local item_to_place
-    for _, item in pairs(data.raw.item) do
-        if item.place_as_tile and item.place_as_tile.result == tile.name then
-            item_to_place = item
-            break
-        end
-    end
-    if not item_to_place then return end
-
-    local place_as_tile = item_to_place.place_as_tile
-    place_as_tile.condition = place_as_tile.condition or {}
-    place_as_tile.condition.layers[layer] = true
 end
 
 local function block_placement(prototype, layer)
@@ -133,11 +114,6 @@ local function block_placement(prototype, layer)
 
     if processed_prototypes[prototype.name] then return end
     processed_prototypes[prototype.name] = true
-
-    if prototype.type and prototype.type == "tile" then
-        block_placement_tile(prototype, layer)
-        return
-    end
 
     prototype.collision_mask = collision_mask_util.get_mask(prototype)
     if not next(prototype.collision_mask) then goto continue end -- skip if no collision mask to save UPS
