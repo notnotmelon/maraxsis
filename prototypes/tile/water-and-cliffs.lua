@@ -47,6 +47,7 @@ local waterifiy = {
     ---@param tile string
     ---@return table
     tile = function(tile)
+        assert(data.raw.tile[tile], "tile not found " .. tile)
         tile = table.deepcopy(data.raw.tile[tile])
         tile.name = tile.name .. "-underwater"
         tile.collision_mask = {layers = {[maraxsis_collision_mask] = true}}
@@ -94,6 +95,11 @@ data.raw.tile["lava-hot-underwater"].collision_mask.layers.object = true
 data.raw.tile["lava-hot-underwater"].collision_mask.layers.lava_tile = nil
 data.raw.tile["lava-hot-underwater"].collision_mask.layers.decal = true
 data.raw.tile["lava-hot-underwater"].collision_mask.layers.doodad = true
+
+data:extend(waterifiy.tile("volcanic-cracks-hot"))
+data:extend(waterifiy.tile("volcanic-cracks-warm"))
+data:extend(waterifiy.tile("volcanic-folds"))
+
 data:extend(waterifiy.tile("sand-1"))
 data:extend(waterifiy.tile("sand-2"))
 data:extend(waterifiy.tile("sand-3"))

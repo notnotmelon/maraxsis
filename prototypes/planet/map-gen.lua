@@ -140,10 +140,9 @@ planet_map_gen.maraxsis_trench = function()
             ["tile"] = {
                 settings = {
                     ["lava-hot-underwater"] = {},
-                    ["sand-1-underwater"] = {},
-                    ["sand-2-underwater"] = {},
-                    ["sand-3-underwater"] = {},
-                    ["dirt-5-underwater"] = {},
+                    ["volcanic-cracks-hot-underwater"] = {},
+                    ["volcanic-cracks-warm-underwater"] = {},
+                    ["volcanic-folds-underwater"] = {},
                     ["out-of-map"] = {},
                 }
             },
