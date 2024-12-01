@@ -75,8 +75,7 @@ local prototypes_that_cant_be_placed_in_a_dome = {
 local prototypes_that_cant_be_placed_in_a_dome_or_on_water = {
     "artillery-turret",
     "artillery-wagon",
-    "car",
-    "combat-robot",
+    "car",\
     "fluid-turret",
     "spider-leg",
     "spider-vehicle",
