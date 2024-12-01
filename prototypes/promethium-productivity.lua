@@ -13,6 +13,7 @@ data:extend {{
     prerequisites = {"promethium-science-pack"},
     unit = {
         count_formula = "1.5^L*1000",
+        ingredients = {},
         -- note: ingredients are set in data-final-fixes.lua
         time = 120
     },
