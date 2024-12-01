@@ -49,10 +49,6 @@ local prototypes_that_cant_be_placed_on_water = {
     "legacy-curved-rail",
     "legacy-straight-rail",
     "half-diagonal-rail",
-    "elevated-curved-rail-a",
-    "elevated-curved-rail-b",
-    "elevated-half-diagonal-rail",
-    "elevated-straight-rail",
     "rail-ramp",
     "rail-support",
     "straight-rail",
@@ -83,6 +79,24 @@ local prototypes_that_cant_be_placed_in_a_dome_or_on_water = {
     "roboport",
     data.raw.radar.radar,
     data.raw["mining-drill"]["burner-mining-drill"]
+}
+
+local prototypes_that_cannot_be_placed_in_the_trench = {
+    "rocket-silo",
+    "cargo-landing-pad",
+    "cargo-bay",
+    "curved-rail-a",
+    "curved-rail-b",
+    "legacy-curved-rail",
+    "legacy-straight-rail",
+    "half-diagonal-rail",
+    "rail-ramp",
+    "rail-support",
+    "straight-rail",
+    "elevated-curved-rail-a",
+    "elevated-curved-rail-b",
+    "elevated-half-diagonal-rail",
+    "elevated-straight-rail",
 }
 
 local prototypes_that_can_be_placed_whereever = {
@@ -148,7 +162,7 @@ local function remove_collision_layer_to_prototypes(prototypes, layer)
     end
 end
 
-local function blacklist_via_surface_condition(entity)
+local function blacklist_via_surface_condition(entity, max_pressure)
     if processed_prototypes[entity.name] then return end
     processed_prototypes[entity.name] = true
     
@@ -156,15 +170,15 @@ local function blacklist_via_surface_condition(entity)
 
     for _, surface_condition in pairs(entity.surface_conditions) do
         if surface_condition.property == "pressure" then
-            assert((surface_condition.min or 0) < 50000, "An error occurred while blacklisting " .. entity.name .. " from being placed in a dome or on water.")
-            surface_condition.max = math.min(50000, surface_condition.max or 50000)
+            assert((surface_condition.min or 0) < max_pressure, "An error occurred while blacklisting " .. entity.name .. " from being placed in a dome or on water.")
+            surface_condition.max = math.min(max_pressure, surface_condition.max or max_pressure)
             return
         end
     end
 
     table.insert(entity.surface_conditions, {
         property = "pressure",
-        max = 50000
+        max = max_pressure
     })
 end
 
@@ -175,10 +189,30 @@ remove_collision_layer_to_prototypes(prototypes_that_cant_be_placed_in_a_dome, m
 
 for _, blacklisted in pairs(prototypes_that_cant_be_placed_in_a_dome_or_on_water) do
     if type(blacklisted) == "table" then
-        blacklist_via_surface_condition(blacklisted)
+        blacklist_via_surface_condition(blacklisted, 50000)
     else
         for _, prototype in pairs(data.raw[blacklisted]) do
-            blacklist_via_surface_condition(prototype)
+            blacklist_via_surface_condition(prototype, 50000)
+        end
+    end
+end
+
+for _, blacklisted in pairs(prototypes_that_cannot_be_placed_in_the_trench) do
+    if type(blacklisted) == "table" then
+        processed_prototypes[blacklisted.name] = false
+        blacklist_via_surface_condition(blacklisted, 300000)
+    else
+        for _, prototype in pairs(data.raw[blacklisted]) do
+            processed_prototypes[prototype.name] = false
+            blacklist_via_surface_condition(prototype, 300000)
+        end
+    end
+end
+
+for _, ramp in pairs(data.raw["rail-ramp"]) do
+    for _, rule in pairs(ramp.tile_buildability_rules or {}) do
+        if rule.required_tiles and rule.required_tiles.layers and rule.required_tiles.layers.ground_tile then
+            rule.required_tiles.layers[dome_collision_mask] = true
         end
     end
 end

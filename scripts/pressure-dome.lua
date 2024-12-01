@@ -226,6 +226,10 @@ local mobile_entities = {
     ["segment"] = true,
     ["spider-leg"] = true,
     ["fish"] = true,
+    ["elevated-curved-rail-a"] = true,
+    ["elevated-curved-rail-b"] = true,
+    ["elevated-half-diagonal-rail"] = true,
+    ["elevated-straight-rail"] = true,
 }
 
 maraxsis.on_event(maraxsis.events.on_built(), function(event)
@@ -393,7 +397,7 @@ local function check_can_build_dome(entity)
     for xx = -math.floor(size) + x, math.floor(size) + x do
         for yy = -math.floor(size) + y, math.floor(size) + y do
             local tile = surface.get_tile(xx, yy)
-            if tile.collides_with("object") then
+            if (tile.collides_with("object") or tile.collides_with("lava_tile")) and is_point_in_polygon(xx - x + 0.5, yy - y) then
                 return false, colliding_entities, {"cant-build-reason.entity-in-the-way", tile.prototype.localised_name}, true
             end
         end

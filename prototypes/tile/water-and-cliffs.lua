@@ -50,8 +50,9 @@ local waterifiy = {
         assert(data.raw.tile[tile], "tile not found " .. tile)
         tile = table.deepcopy(data.raw.tile[tile])
         tile.name = tile.name .. "-underwater"
-        tile.collision_mask = {layers = {ground_tile = true, [maraxsis_collision_mask] = true}}
+        tile.collision_mask = {layers = {[maraxsis_collision_mask] = true}}
         tile.layer = layer
+        layer = layer + 1
         tile.fluid = tile.fluid or "saline-water"
         ---@diagnostic disable-next-line: param-type-mismatch
         tile.map_color = maraxsis.color_combine(tile.map_color or data.raw.tile["water"].map_color, data.raw.tile["deepwater"].map_color, 0.25)
@@ -91,7 +92,7 @@ local waterifiy = {
 
 data:extend(waterifiy.tile("lava-hot"))
 data.raw.tile["lava-hot-underwater"].collision_mask.layers.player = true
-data.raw.tile["lava-hot-underwater"].collision_mask.layers.lava_tile = nil
+data.raw.tile["lava-hot-underwater"].collision_mask.layers.lava_tile = true
 data.raw.tile["lava-hot-underwater"].collision_mask.layers.decal = true
 data.raw.tile["lava-hot-underwater"].collision_mask.layers.doodad = true
 data.raw.tile["lava-hot-underwater"].collision_mask.layers.ground_tile = nil
@@ -102,11 +103,12 @@ data:extend(waterifiy.tile("volcanic-cracks-hot"))
 data:extend(waterifiy.tile("volcanic-cracks-warm"))
 data:extend(waterifiy.tile("volcanic-folds"))
 
-data:extend(waterifiy.tile("sand-1"))
-data:extend(waterifiy.tile("sand-2"))
-data:extend(waterifiy.tile("sand-3"))
 data:extend(waterifiy.tile("dirt-5"))
+data:extend(waterifiy.tile("sand-3"))
+data:extend(waterifiy.tile("sand-2"))
+data:extend(waterifiy.tile("sand-1"))
 data:extend(waterifiy.tile("lowland-cream-red"))
+
 data.raw.tile["lowland-cream-red-underwater"].map_color = defines.color.orange
 data.raw.tile["lowland-cream-red-underwater"].searchable = true
 data:extend(waterifiy.entity("big-sand-rock"))
