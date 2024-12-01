@@ -15,11 +15,11 @@ data:extend {{
     ingredients = {
         {type = "item", name = "maraxsis-tropical-fish", amount = 1},
         {type = "item", name = "sand",                   amount = 1},
-        {type = "item", name = "maraxsis-coral",         amount = 1},
+        {type = "item", name = "maraxsis-coral",         amount = 3},
         {type = "item", name = "plastic-bar",            amount = 1},
     },
     results = {
-        {type = "item", name = "maraxsis-fish-food", amount = 1}
+        {type = "item", name = "maraxsis-fish-food", amount = 3}
     },
     allow_productivity = true,
     main_product = "maraxsis-fish-food",
@@ -106,7 +106,7 @@ data:extend {fishing_tower}
 data:extend{{
     name = "maraxsis-fishing-plant",
     type = "plant",
-    growth_ticks = 8000,
+    growth_ticks = 12000,
     agricultural_tower_tint = {
         primary = defines.color.darkseagreen,
         secondary = defines.color.deepskyblue,

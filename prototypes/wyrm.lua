@@ -72,6 +72,7 @@ data:extend {{
     energy_required = 10,
     ingredients = {
         {type = "item", name = "maraxsis-wyrm-confinement-cell", amount = 1},
+        {type = "item", name = "maraxsis-fish-food", amount = 1},
     },
     results = {
         {type = "item", name = "maraxsis-wyrm-specimen", amount = 1},
