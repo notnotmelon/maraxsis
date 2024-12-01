@@ -51,6 +51,7 @@ local prototypes_that_cant_be_placed_on_water = {
     "half-diagonal-rail",
     "rail-ramp",
     "rail-support",
+    "heat-pipe",
     "straight-rail",
     data.raw.roboport["aai-signal-sender"],
     data.raw.roboport["aai-signal-receiver"],
