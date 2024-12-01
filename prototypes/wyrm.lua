@@ -80,7 +80,7 @@ data:extend {{
     category = "maraxsis-hydro-plant",
     surface_conditions = {{
         property = "pressure",
-        min = 400000
+        min = 400000,
         max = 400000
     }}
 }}

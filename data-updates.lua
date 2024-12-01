@@ -64,3 +64,9 @@ end
 data.raw.recipe["empty-maraxsis-atmosphere-barrel"].results[1].temperature = 25
 
 require "prototypes.item-subgroups"
+
+if mods["assembler-pipe-passthrough"] then
+    appmod.blacklist["maraxsis-hydro-plant"] = true
+    appmod.blacklist["maraxsis-hydro-plant-extra-module-slots"] = true
+    appmod.blacklist["maraxsis-regulator-fluidbox"] = true
+end
