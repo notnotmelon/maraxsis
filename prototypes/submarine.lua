@@ -23,8 +23,8 @@ data:extend {{
             {"metallurgic-science-pack",     1},
             {"electromagnetic-science-pack", 1},
             {"agricultural-science-pack",    1},
-            {"hydraulic-science-pack",   1},
-            {"cryogenic-science-pack",   1},
+            {"hydraulic-science-pack",       1},
+            {"cryogenic-science-pack",       1},
         },
         time = 60,
     },
@@ -65,20 +65,20 @@ local fuel_sources = {
 
 local recipes = {
     ["maraxsis-diesel-submarine"] = {
-        {type = "item", name = "tungsten-plate",          amount = 50},
+        {type = "item", name = "tungsten-plate",       amount = 50},
         {type = "item", name = "electric-engine-unit", amount = 10},
         {type = "item", name = "processing-unit",      amount = 100},
         {type = "item", name = "pump",                 amount = 4},
-        {type = "item", name = "supercapacitor",                 amount = 8},
+        {type = "item", name = "supercapacitor",       amount = 8},
     },
     ["maraxsis-nuclear-submarine"] = {
         {type = "item", name = "tungsten-plate",                   amount = 100},
-        {type = "item", name = "maraxsis-sonar",             amount = 1},
-        {type = "item", name = "maraxsis-glass-panes",       amount = 500},
-        {type = "item", name = "nuclear-reactor",       amount = 1},
-        {type = "item", name = "heat-exchanger",        amount = 4},
-        {type = "item", name = "pump",                  amount = 8},
-        {type = "item", name = "processing-unit",       amount = 200},
+        {type = "item", name = "maraxsis-sonar",                   amount = 1},
+        {type = "item", name = "maraxsis-glass-panes",             amount = 500},
+        {type = "item", name = "nuclear-reactor",                  amount = 1},
+        {type = "item", name = "heat-exchanger",                   amount = 4},
+        {type = "item", name = "pump",                             amount = 8},
+        {type = "item", name = "processing-unit",                  amount = 200},
         {type = "item", name = "maraxsis-super-sealant-substance", amount = 100},
         {type = "item", name = "supercapacitor",                   amount = 16},
     },
@@ -288,7 +288,7 @@ for i = 1, 2 do
             }
         ]]
     }
-    entity.alert_icon_shift = { 0, 0 }
+    entity.alert_icon_shift = {0, 0}
     entity.drawing_box_vertical_extension = 1
     entity.trash_inventory_size = 10
     entity.turret_animation = nil

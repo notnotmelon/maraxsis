@@ -44,7 +44,7 @@ for _, silo in pairs(data.raw["rocket-silo"]) do
 end
 
 -- ban certain recipes in space
-for _, recipe in pairs{
+for _, recipe in pairs {
     "rocket-part",
     "empty-heavy-oil-barrel", -- I know it doesn't make sense. But oil processing in space is cool :)
 } do
@@ -72,12 +72,12 @@ table.insert(data.raw.technology["rocket-part-productivity"].effects, {
     hidden = true
 })
 
-data:extend{{
+data:extend {{
     type = "recipe",
     name = "pistol",
     enabled = false,
     ingredients = {
-        {type = "item", name = "iron-plate", amount = 5},
+        {type = "item", name = "iron-plate",   amount = 5},
         {type = "item", name = "copper-plate", amount = 5},
     },
     results = {

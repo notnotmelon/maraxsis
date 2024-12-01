@@ -102,11 +102,11 @@ data:extend {{
     unit = {
         count_formula = "1.5^L*1000",
         ingredients = {
-            {"automation-science-pack",   1},
-            {"logistic-science-pack",     1},
-            {"chemical-science-pack",     1},
-            {"utility-science-pack",   1},
-            {"hydraulic-science-pack", 1},
+            {"automation-science-pack", 1},
+            {"logistic-science-pack",   1},
+            {"chemical-science-pack",   1},
+            {"utility-science-pack",    1},
+            {"hydraulic-science-pack",  1},
         },
         time = 60
     },

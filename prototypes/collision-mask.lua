@@ -166,7 +166,7 @@ end
 local function blacklist_via_surface_condition(entity, max_pressure)
     if processed_prototypes[entity.name] then return end
     processed_prototypes[entity.name] = true
-    
+
     entity.surface_conditions = table.deepcopy(entity.surface_conditions or {})
 
     for _, surface_condition in pairs(entity.surface_conditions) do

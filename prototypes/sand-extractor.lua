@@ -1,9 +1,9 @@
-data:extend{{
+data:extend {{
     type = "recipe-category",
     name = "maraxsis-sand-extraction"
 }}
 
-data:extend{{
+data:extend {{
     type = "recipe",
     name = "sand",
     category = "maraxsis-sand-extraction",
@@ -47,5 +47,5 @@ for extractor in pairs(maraxsis.MARAXSIS_SAND_EXTRACTORS) do
     extractor.allowed_effects = {"productivity", "consumption", "speed", "pollution", "quality"}
     extractor.resource_drain_rate_percent = nil
     extractor.name = extractor.name .. "-sand-extractor"
-    data:extend{extractor}
+    data:extend {extractor}
 end

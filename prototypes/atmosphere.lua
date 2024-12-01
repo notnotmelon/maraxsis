@@ -51,11 +51,11 @@ data:extend {{
     energy_required = 10,
     ingredients = {
         {type = "fluid", name = "maraxsis-atmosphere", amount = 100},
-        {type = "fluid", name = "fluoroketone-cold", amount = 20}
+        {type = "fluid", name = "fluoroketone-cold",   amount = 20}
     },
     results = {
         {type = "fluid", name = "maraxsis-liquid-atmosphere", amount = 1},
-        {type = "fluid", name = "fluoroketone-hot",          amount = 20}
+        {type = "fluid", name = "fluoroketone-hot",           amount = 20}
     },
     enabled = false,
     main_product = "maraxsis-liquid-atmosphere",

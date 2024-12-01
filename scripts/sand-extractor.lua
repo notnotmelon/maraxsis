@@ -14,13 +14,13 @@ maraxsis.on_event(maraxsis.events.on_entity_clicked(), function(event)
 
     if surface.entity_prototype_collides(cursor_stack.name, position, false) then return end
 
-    surface.create_entity({
+    surface.create_entity {
         name = cursor_stack.name .. "-sand-extractor",
         position = position,
         force = player.force,
         player = player,
         quality = cursor_stack.quality,
-    })
+    }
 
     cursor_stack.count = cursor_stack.count - 1
 end)

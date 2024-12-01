@@ -22,7 +22,7 @@ local function get_surface()
 end
 
 maraxsis.on_event(defines.events.on_script_trigger_effect, function(event)
-    if event.effect_id ~= "maraxsis-cliff-created" then return end
+	if event.effect_id ~= "maraxsis-cliff-created" then return end
 
 	local old_cliff = event.target_entity
 	local surface = old_cliff.surface
@@ -36,8 +36,8 @@ maraxsis.on_event(defines.events.on_script_trigger_effect, function(event)
 		{x = x,     y = y},
 		{x = x + 4, y = y},
 		{x = x - 4, y = y},
-		{x = x, y = y + 4},
-		{x = x, y = y - 4},
+		{x = x,     y = y + 4},
+		{x = x,     y = y - 4},
 	} do
 		if surface.entity_prototype_collides("cliff-maraxsis", checked_position, true) then
 			old_cliff.destructible = false

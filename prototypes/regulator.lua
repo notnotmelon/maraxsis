@@ -52,7 +52,7 @@ data.raw.recipe["service_station"].hidden = true
 data.raw.item["service_station"].hidden = true
 data.raw.item["service_station"].place_result = nil
 
-data:extend{{
+data:extend {{
     type = "assembling-machine",
     name = "maraxsis-regulator-fluidbox",
     icon = "__maraxsis__/graphics/icons/regulator.png",
@@ -82,10 +82,10 @@ data:extend{{
             pipe_covers = pipecoverspictures(),
             volume = 100,
             pipe_connections = {
-                {position = {0.5, -1.5}, direction = defines.direction.north, flow_direction = "input-output"},
-                {position = {-0.5, 1.5}, direction = defines.direction.south, flow_direction = "input-output"},
-                {position = {1.5, 0.5}, direction = defines.direction.east, flow_direction = "input-output"},
-                {position = {-1.5, -0.5}, direction = defines.direction.west, flow_direction = "input-output"},
+                {position = {0.5, -1.5},  direction = defines.direction.north, flow_direction = "input-output"},
+                {position = {-0.5, 1.5},  direction = defines.direction.south, flow_direction = "input-output"},
+                {position = {1.5, 0.5},   direction = defines.direction.east,  flow_direction = "input-output"},
+                {position = {-1.5, -0.5}, direction = defines.direction.west,  flow_direction = "input-output"},
             },
             filter = "maraxsis-atmosphere",
             secondary_draw_orders = {north = -1},
@@ -124,7 +124,7 @@ data:extend{{
     }
 }}
 
-data:extend{{
+data:extend {{
     type = "recipe",
     name = "maraxsis-regulator",
     enabled = false,
@@ -139,7 +139,7 @@ data:extend{{
     icon_size = 64,
 }}
 
-data:extend{{
+data:extend {{
     type = "recipe-category",
     name = "maraxsis-regulator",
 }}

@@ -21,8 +21,8 @@ data:extend {{
     unit = {
         count = 1000,
         ingredients = {
-            {"agricultural-science-pack",    1},
-            {"hydraulic-science-pack",       1},
+            {"agricultural-science-pack", 1},
+            {"hydraulic-science-pack",    1},
         },
         time = 60,
     },
@@ -48,14 +48,14 @@ defluxed_bioflux.icon = "__maraxsis__/graphics/icons/defluxed-bioflux.png"
 defluxed_bioflux.icon_size = 64
 data:extend {defluxed_bioflux}
 
-data:extend{{
+data:extend {{
     type = "recipe",
     name = "maraxsis-salted-fish",
     enabled = false,
     energy_required = 2,
     ingredients = {
         {type = "item", name = "raw-fish", amount = 1},
-        {type = "item", name = "salt", amount = 1},
+        {type = "item", name = "salt",     amount = 1},
     },
     results = {
         {type = "item", name = "maraxsis-salted-fish", amount = 1},
@@ -66,14 +66,14 @@ data:extend{{
     auto_recycle = false,
 }}
 
-data:extend{{
+data:extend {{
     type = "recipe",
     name = "maraxsis-salted-tropical-fish",
     enabled = false,
     energy_required = 2,
     ingredients = {
         {type = "item", name = "maraxsis-tropical-fish", amount = 1},
-        {type = "item", name = "salt", amount = 1},
+        {type = "item", name = "salt",                   amount = 1},
     },
     results = {
         {type = "item", name = "maraxsis-salted-tropical-fish", amount = 1},
@@ -84,14 +84,14 @@ data:extend{{
     auto_recycle = false,
 }}
 
-data:extend{{
+data:extend {{
     type = "recipe",
     name = "maraxsis-defluxed-bioflux",
     enabled = false,
     energy_required = 2,
     ingredients = {
         {type = "item", name = "bioflux", amount = 1},
-        {type = "item", name = "salt", amount = 1},
+        {type = "item", name = "salt",    amount = 1},
     },
     results = {
         {type = "item", name = "maraxsis-defluxed-bioflux", amount = 1},

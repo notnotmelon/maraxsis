@@ -41,10 +41,10 @@ data:extend {{
     enabled = false,
     energy_required = 30,
     ingredients = {
-        {type = "item", name = "maraxsis-wyrm-specimen", amount = 1},
-        {type = "item", name = "maraxsis-tropical-fish", amount = 1},
-        {type = "item", name = "maraxsis-coral", amount = 3},
-        {type = "fluid", name = "saline-water", amount = 300},
+        {type = "item",  name = "maraxsis-wyrm-specimen", amount = 1},
+        {type = "item",  name = "maraxsis-tropical-fish", amount = 1},
+        {type = "item",  name = "maraxsis-coral",         amount = 3},
+        {type = "fluid", name = "saline-water",           amount = 300},
     },
     results = {
         {type = "item", name = "hydraulic-science-pack", amount = 3},

@@ -164,12 +164,12 @@ data:extend {{
     enabled = false,
     energy_required = 2,
     ingredients = {
-        {type = "item", name = "maraxsis-tropical-fish",       amount = 1},
+        {type = "item", name = "maraxsis-tropical-fish",   amount = 1},
         {type = "item", name = "piercing-rounds-magazine", amount = 1},
     },
     results = {
         {type = "item", name = "maraxsis-microplastics", amount = 10},
-        {type = "item", name = "jelly", amount = 10},
+        {type = "item", name = "jelly",                  amount = 10},
     },
     category = "maraxsis-hydro-plant-or-biochamber",
     localised_name = {"recipe-name.maraxsis-microplastics"},
@@ -232,7 +232,7 @@ for i, v in pairs(fish) do
         filename = "__maraxsis__/graphics/entity/fish/icons/" .. i .. ".png",
         width = 64,
         height = 64,
-        scale = 2/3,
+        scale = 2 / 3,
         flags = {"icon"},
     }
 end

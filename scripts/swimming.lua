@@ -69,7 +69,7 @@ local function update_armor(player)
 
     local armor = armor_inventory[1]
     if not armor.valid_for_read then return end
-    
+
     local armor_name = armor.name
     local target_armor_name
     local physical_surface = player.physical_surface

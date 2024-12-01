@@ -10,20 +10,20 @@ data:extend {{
     unit = {
         count = 2000,
         ingredients = {
-            {"automation-science-pack",      1},
-            {"logistic-science-pack",        1},
-            {"military-science-pack",        1},
-            {"chemical-science-pack",        1},
-            {"production-science-pack",      1},
-            {"utility-science-pack",         1},
-            {"hydraulic-science-pack",       1},
+            {"automation-science-pack", 1},
+            {"logistic-science-pack",   1},
+            {"military-science-pack",   1},
+            {"chemical-science-pack",   1},
+            {"production-science-pack", 1},
+            {"utility-science-pack",    1},
+            {"hydraulic-science-pack",  1},
         },
         time = 60,
     },
     order = "ea[deepsea-research]",
 }}
 
-data:extend{{
+data:extend {{
     type = "item-subgroup",
     name = "maraxsis-deepsea-research",
     order = "yy",
@@ -42,7 +42,7 @@ local function update_recipe_icon(recipe, fluid)
     fluid = data.raw.fluid[fluid]
     recipe.icons = {
         {icon = recipe.icon or science_pack.icon, icon_size = recipe.icon_size or science_pack.icon_size},
-        {icon = fluid.icon, icon_size = fluid.icon_size, scale = 0.4, shift = {6, 6}},
+        {icon = fluid.icon,                       icon_size = fluid.icon_size,                           scale = 0.4, shift = {6, 6}},
     }
     recipe.icon = nil
     recipe.icon_size = nil
@@ -62,7 +62,7 @@ table.insert(chemical_science.ingredients, {type = "fluid", name = "maraxsis-atm
 table.insert(production_science.ingredients, {type = "fluid", name = "oxygen", amount = 100})
 table.insert(utility_science.ingredients, {type = "fluid", name = "hydrogen", amount = 200})
 
-for _, recipe in pairs{
+for _, recipe in pairs {
     automation_science,
     logistic_science,
     military_science,

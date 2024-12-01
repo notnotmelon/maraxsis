@@ -205,7 +205,7 @@ local function update_combinator(pressure_dome_data)
             }
         end
     end
-    
+
     section.filters = parameters
 end
 

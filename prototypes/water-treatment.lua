@@ -119,7 +119,7 @@ data:extend {{
     energy_required = 2.5,
     ingredients = {
         {type = "item",  name = "maraxsis-salt-filter", amount = 1},
-        {type = "fluid", name = "saline-water",    amount = 100},
+        {type = "fluid", name = "saline-water",         amount = 100},
     },
     results = {
         {type = "fluid", name = "brackish-water",                 amount = 100},

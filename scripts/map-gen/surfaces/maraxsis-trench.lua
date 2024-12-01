@@ -1,7 +1,7 @@
 maraxsis.on_event(defines.events.on_surface_created, function(event)
 	local surface = game.get_surface(event.surface_index)
 	if not surface or not surface.valid then return end
-	if surface.name ~= maraxsis.TRENCH_SURFACE_NAME then return	end
+	if surface.name ~= maraxsis.TRENCH_SURFACE_NAME then return end
 	local parent_surface = game.planets[maraxsis.MARAXSIS_SURFACE_NAME].create_surface()
 
 	surface.daytime = 0.5

@@ -51,8 +51,8 @@ data:extend {{
     ingredients = {
         {type = "item", name = "pump",                      amount = 10},
         {type = "item", name = "pipe",                      amount = 50},
-        {type = "item", name = "tungsten-plate",               amount = 500},
-        {type = "item", name = "maraxsis-glass-panes",           amount = 5000},
+        {type = "item", name = "tungsten-plate",            amount = 500},
+        {type = "item", name = "maraxsis-glass-panes",      amount = 5000},
         {type = "item", name = "space-platform-foundation", amount = 880},
         {type = "item", name = "small-lamp",                amount = 30},
     },
@@ -97,7 +97,7 @@ data:extend {{
         layers = table.array_combine({
             cage_shadow,
             base_shadow,
-            dome,   
+            dome,
         }, table.deepcopy(data.raw.roboport["service_station"].integration_patch.layers))
     },
     surface_conditions = maraxsis.surface_conditions(),

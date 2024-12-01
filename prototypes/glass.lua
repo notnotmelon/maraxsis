@@ -126,13 +126,13 @@ data:extend {{
     unit = {
         count_formula = "1.5^L*1000",
         ingredients = {
-            {"automation-science-pack", 1},
-            {"logistic-science-pack",   1},
-            {"chemical-science-pack",   1},
-            {"production-science-pack",    1},
-            {"utility-science-pack",    1},
-            {"metallurgic-science-pack",  1},
-            {"hydraulic-science-pack",  1},
+            {"automation-science-pack",  1},
+            {"logistic-science-pack",    1},
+            {"chemical-science-pack",    1},
+            {"production-science-pack",  1},
+            {"utility-science-pack",     1},
+            {"metallurgic-science-pack", 1},
+            {"hydraulic-science-pack",   1},
         },
         time = 60
     },
@@ -140,7 +140,7 @@ data:extend {{
     upgrade = true
 }}
 
-data:extend{{
+data:extend {{
     type = "recipe",
     name = "maraxsis-limestone-processing",
     enabled = false,
@@ -150,7 +150,7 @@ data:extend{{
     },
     results = {
         {type = "item", name = "calcite", amount = 1},
-        {type = "item", name = "stone", amount = 1},
+        {type = "item", name = "stone",   amount = 1},
     },
     allow_productivity = true,
     category = "maraxsis-hydro-plant",

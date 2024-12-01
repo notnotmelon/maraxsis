@@ -32,7 +32,7 @@ data:extend {{
 }}
 
 
-data:extend{{
+data:extend {{
     type = "resource",
     name = "maraxsis-coral",
     hidden_in_factoriopedia = true,
@@ -46,7 +46,7 @@ data:extend{{
         mining_time = 5,
         results = {
             {type = "item", name = "maraxsis-coral", amount = 1},
-            {type = "item", name = "limestone", amount = 1},
+            {type = "item", name = "limestone",      amount = 1},
         }
     },
     walking_sound = sounds.ore,
@@ -76,4 +76,4 @@ data:extend{{
     map_color = {255, 20, 147},
     mining_visualisation_tint = {255, 20, 147},
     factoriopedia_simulation = {init = make_resource("maraxsis-coral")}
-  }}
+}}

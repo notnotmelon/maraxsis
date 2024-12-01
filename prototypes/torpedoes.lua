@@ -27,7 +27,7 @@ data:extend {{
             {"metallurgic-science-pack",     1},
             {"electromagnetic-science-pack", 1},
             {"agricultural-science-pack",    1},
-            {"hydraulic-science-pack",    1},
+            {"hydraulic-science-pack",       1},
         },
         time = 60,
     },
@@ -75,8 +75,8 @@ data:extend {{
     enabled = false,
     energy_required = 10,
     ingredients = {
-        {type = "item", name = "rocket",      amount = 1},
-        {type = "item", name = "rocket-fuel", amount = 1},
+        {type = "item", name = "rocket",                           amount = 1},
+        {type = "item", name = "rocket-fuel",                      amount = 1},
         {type = "item", name = "maraxsis-super-sealant-substance", amount = 1},
     },
     results = {
@@ -91,7 +91,7 @@ data:extend {{
     enabled = false,
     energy_required = 10,
     ingredients = {
-        {type = "item", name = "explosive-rocket", amount = 1},
+        {type = "item", name = "explosive-rocket",                 amount = 1},
         {type = "item", name = "rocket-fuel",                      amount = 1},
         {type = "item", name = "maraxsis-super-sealant-substance", amount = 1},
     },
@@ -107,7 +107,7 @@ data:extend {{
     enabled = false,
     energy_required = 10,
     ingredients = {
-        {type = "item", name = "atomic-bomb", amount = 1},
+        {type = "item", name = "atomic-bomb",                      amount = 1},
         {type = "item", name = "rocket-fuel",                      amount = 1},
         {type = "item", name = "maraxsis-super-sealant-substance", amount = 1},
     },

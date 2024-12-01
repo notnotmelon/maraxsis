@@ -84,7 +84,7 @@ data:extend {{
     ]]
 }}
 
-data:extend{{
+data:extend {{
     type = "noise-expression",
     name = "maraxsis_lava_thickness",
     expression = [[
@@ -105,7 +105,7 @@ data:extend{{
     }
 }}
 
-data:extend{{
+data:extend {{
     type = "noise-function",
     name = "maraxsis_lava_tile",
     expression = [[
@@ -123,7 +123,7 @@ data:extend{{
     parameters = {"lava_thickness_modifier"}
 }}
 
-data:extend{{
+data:extend {{
     type = "noise-expression",
     name = "maraxsis_3x3_grid",
     expression = [[
