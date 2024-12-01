@@ -44,7 +44,19 @@ local prototypes_that_cant_be_placed_on_water = {
     "simple-entity-with-owner",
     "fusion-reactor",
     "fusion-generator",
-    data.raw.container["sp-spidertron-dock"]
+    data.raw.container["sp-spidertron-dock"],
+    "curved-rail-a",
+    "curved-rail-b",
+    "legacy-curved-rail",
+    "legacy-straight-rail",
+    "half-diagonal-rail",
+    "elevated-curved-rail-a",
+    "elevated-curved-rail-b",
+    "elevated-half-diagonal-rail",
+    "elevated-straight-rail",
+    "rail-ramp",
+    "rail-support",
+    "straight-rail",
 }
 
 local prototypes_that_cant_be_placed_in_a_dome = {
@@ -64,25 +76,10 @@ local prototypes_that_cant_be_placed_in_a_dome_or_on_water = {
     "artillery-turret",
     "artillery-wagon",
     "car",
-    "cargo-wagon",
     "combat-robot",
-    "curved-rail-a",
-    "curved-rail-b",
-    "legacy-curved-rail",
-    "legacy-straight-rail",
-    "half-diagonal-rail",
-    "elevated-curved-rail-a",
-    "elevated-curved-rail-b",
-    "elevated-half-diagonal-rail",
-    "elevated-straight-rail",
-    "rail-ramp",
-    "rail-support",
     "fluid-turret",
-    "fluid-wagon",
-    "locomotive",
     "spider-leg",
     "spider-vehicle",
-    "straight-rail",
     "unit",
     "unit-spawner",
     "tile",
@@ -178,8 +175,8 @@ end
 local function blacklist_via_surface_condition(entity)
     if processed_prototypes[entity.name] then return end
     processed_prototypes[entity.name] = true
-
-    entity.surface_conditions = entity.surface_conditions or {}
+    
+    entity.surface_conditions = table.deepcopy(entity.surface_conditions or {})
 
     for _, surface_condition in pairs(entity.surface_conditions) do
         if surface_condition.property == "pressure" then
