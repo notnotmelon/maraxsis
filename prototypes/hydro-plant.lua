@@ -97,6 +97,7 @@ data:extend {{
     max_health = 400,
     corpse = data.raw["assembling-machine"]["electromagnetic-plant"].corpse,
     dying_explosion = "big-explosion",
+    localised_description = {"", {"entity-description.maraxsis-hydro-plant"}, "\n", {"description.base-quality", tostring(50)}},
     resistances = {
         {type = "physical", percent = 50},
         {type = "fire",     percent = 100},
@@ -197,7 +198,6 @@ extra_module_slots.module_slots = extra_module_slots.module_slots + 2
 extra_module_slots.hidden_in_factoriopedia = true
 extra_module_slots.placeable_by = {{item = "maraxsis-hydro-plant", count = 1}}
 extra_module_slots.localised_name = {"entity-name.maraxsis-hydro-plant"}
-extra_module_slots.localised_description = {"entity-description.maraxsis-hydro-plant"}
 extra_module_slots.flags = {"placeable-player", "player-creation", "not-in-made-in"}
 data:extend {extra_module_slots}
 
