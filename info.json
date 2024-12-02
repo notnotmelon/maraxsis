@@ -12,6 +12,7 @@
     "Constructron-Continued >= 2.0.13",
     "SpidertronPatrols >= 2.5.3",
     "aai-signal-transmission >= 0.5.0",
+    "? hd_planets",
     "? tenebris",
     "! Land-Pump",
     "! buoyant-spidertrons",
