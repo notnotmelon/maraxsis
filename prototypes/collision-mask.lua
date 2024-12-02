@@ -52,7 +52,6 @@ local prototypes_that_cant_be_placed_on_water = {
     "simple-entity-with-owner",
     "fusion-reactor",
     "fusion-generator",
-    data.raw.container["sp-spidertron-dock"],
     "curved-rail-a",
     "curved-rail-b",
     "legacy-curved-rail",
@@ -110,6 +109,7 @@ local prototypes_that_cannot_be_placed_in_the_trench = {
 }
 
 local prototypes_that_can_be_placed_whereever = {
+    data.raw.container["sp-spidertron-dock"],
     data.raw["assembling-machine"]["maraxsis-hydro-plant"],
     data.raw["assembling-machine"]["maraxsis-hydro-plant-extra-module-slots"],
     data.raw["assembling-machine"]["chemical-plant"],
