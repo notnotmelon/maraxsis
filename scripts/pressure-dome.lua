@@ -593,7 +593,7 @@ local function bigass_explosion(surface, x, y) -- this looks really stupid. too 
     x = x + math.random(-5, 5)
     y = y + math.random(-5, 5)
     surface.create_entity {
-        name = "kr-big-random-pipes-remnant",
+        name = "cargo-landing-pad-remnants",
         position = {x, y},
     }
     if math.random() > 0.33 then
