@@ -37,5 +37,6 @@ local construction_submarine = table.deepcopy(data.raw["spider-vehicle"]["maraxs
 construction_submarine.name = "constructron"
 construction_submarine.icon = nil
 construction_submarine.icon_size = nil
+construction_submarine.minable = {mining_time = 0.5, result = "constructron"}
 construction_submarine.icons = table.deepcopy(data.raw["item-with-entity-data"]["constructron"].icons)
 data:extend {construction_submarine}
