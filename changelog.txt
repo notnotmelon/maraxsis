@@ -1,4 +1,9 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.16.1
+Date: 2024-12-02
+  Changes:
+    - Changed various crafting categories such that more items are now crafted in the hydro plant.
+---------------------------------------------------------------------------------------------------
 Version: 1.16.0
 Date: 2024-12-02
   Features:
