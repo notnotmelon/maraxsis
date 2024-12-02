@@ -1,4 +1,9 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.13.9
+Date: 2024-12-02
+  Changes:
+    - Various fluid-related machines can now be crafted in the hydro plant. These include thrusters, pumpjacks, offshore pumps, and pumps
+---------------------------------------------------------------------------------------------------
 Version: 1.13.8
 Date: 2024-12-02
   Changes:
