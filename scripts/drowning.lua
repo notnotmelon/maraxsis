@@ -78,3 +78,14 @@ maraxsis.on_event({
     if not player or not player.valid then return end
     storage.breath[player.index] = nil
 end)
+
+maraxsis.on_event(defines.events.on_player_died, function(event)
+    local player = game.get_player(event.player_index)
+    if not player or not player.valid then return end
+    if not maraxsis.MARAXSIS_SURFACES[player.surface.name] then return end
+
+    local character = player.character
+    if not character then return end
+
+    character.teleport({0, 0}, "nauvis")
+end)
