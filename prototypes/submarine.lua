@@ -83,6 +83,11 @@ for i = 1, 2 do
     local name = i == 1 and "maraxsis-diesel-submarine" or "maraxsis-nuclear-submarine"
     local icon = "__maraxsis__/graphics/icons/" .. (i == 1 and "diesel" or "nuclear") .. "-submarine.png"
 
+    local grid = table.deepcopy(data.raw["equipment-grid"]["spidertron-equipment-grid"])
+    grid.height = 3 + 3 * i
+    grid.name = name .. "-equipment-grid"
+    data:extend {grid}
+
     local item = {
         type = "item-with-entity-data",
         name = name,
@@ -205,6 +210,7 @@ for i = 1, 2 do
     local entity = table.deepcopy(data.raw["spider-vehicle"]["spidertron"])
     entity.name = name
     entity.icon = icon
+    entity.equipment_grid = grid.name
     entity.icon_size = 64
     entity.height = 0
     entity.flags = {"placeable-player", "player-creation", "placeable-off-grid", "no-automated-item-removal", "no-automated-item-insertion"}
