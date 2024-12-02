@@ -263,7 +263,7 @@ data:extend {maraxsis.merge(data.raw.planet.gleba, {
 
 if mods["hd_planets"] then
     data.raw["planet"]["maraxsis"].starmap_icon = "__maraxsis__/graphics/planets/maraxsis-hd.png"
-    data.raw["planet"]["maraxsis"].starmap_icon_size = 4096
+    data.raw["planet"]["maraxsis"].starmap_icon_size = 4072
 end
 
 data:extend {maraxsis.merge(data.raw.planet.gleba, {
