@@ -1,4 +1,9 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.13.14
+Date: 2024-12-02
+  Changes:
+    - Removed surface restrictions for the biolab. Resolves https://github.com/notnotmelon/maraxsis/issues/22
+---------------------------------------------------------------------------------------------------
 Version: 1.13.13
 Date: 2024-12-02
   Bugfixes:
