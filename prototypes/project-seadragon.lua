@@ -23,6 +23,10 @@ data:extend {{
             type = "unlock-recipe",
             recipe = "maraxsis-hydrolox-rocket-fuel"
         },
+        {
+            type = "unlock-recipe",
+            recipe = "maraxsis-geothermal-sulfur"
+        },
     },
     prerequisites = {"hydraulic-science-pack", "coal-liquefaction"},
     unit = {
