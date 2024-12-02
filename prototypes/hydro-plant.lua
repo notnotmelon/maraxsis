@@ -14,8 +14,8 @@ data:extend {{
     },
     prerequisites = {"planet-discovery-maraxsis"},
     research_trigger = {
-        type = "build-entity",
-        entity = "maraxsis-diesel-submarine"
+        type = "mine-entity",
+        entity = "big-sand-rock-underwater"
     },
     order = "ea[hydro-plant]",
 }}
