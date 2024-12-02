@@ -6,7 +6,7 @@ data:extend {{
 }}
 
 data:extend {{
-    name = dome_collision_mask,
+    name = maraxsis_dome_collision_mask,
     type = "collision-layer",
 }}
 
@@ -194,8 +194,8 @@ local function blacklist_via_surface_condition(entity, max_pressure)
 end
 
 add_collision_layer_to_prototypes(prototypes_that_cant_be_placed_on_water, maraxsis_collision_mask)
-remove_collision_layer_to_prototypes(prototypes_that_cant_be_placed_on_water, dome_collision_mask)
-add_collision_layer_to_prototypes(prototypes_that_cant_be_placed_in_a_dome, dome_collision_mask)
+remove_collision_layer_to_prototypes(prototypes_that_cant_be_placed_on_water, maraxsis_dome_collision_mask)
+add_collision_layer_to_prototypes(prototypes_that_cant_be_placed_in_a_dome, maraxsis_dome_collision_mask)
 remove_collision_layer_to_prototypes(prototypes_that_cant_be_placed_in_a_dome, maraxsis_collision_mask)
 
 for _, blacklisted in pairs(prototypes_that_cant_be_placed_in_a_dome_or_on_water) do
@@ -223,7 +223,7 @@ end
 for _, ramp in pairs(data.raw["rail-ramp"]) do
     for _, rule in pairs(ramp.tile_buildability_rules or {}) do
         if rule.required_tiles and rule.required_tiles.layers and rule.required_tiles.layers.ground_tile then
-            rule.required_tiles.layers[dome_collision_mask] = true
+            rule.required_tiles.layers[maraxsis_dome_collision_mask] = true
         end
     end
 end

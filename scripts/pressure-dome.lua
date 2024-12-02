@@ -19,7 +19,7 @@ maraxsis.on_event(maraxsis.events.on_init(), function()
         remote.call("PickerDollies", "add_blacklist_name", "maraxsis-pressure-dome")
     end
     for mask in pairs(prototypes.tile[PRESSURE_DOME_TILE].collision_mask.layers) do
-        storage.dome_collision_mask = mask
+        storage.maraxsis_dome_collision_mask = mask
         break
     end
 
@@ -382,7 +382,7 @@ local function check_can_build_dome(entity)
         if count == 0 then
             -- pass
         elseif count == 4 then
-            if e.force.name == "neutral" or e.prototype.collision_mask.layers[storage.dome_collision_mask] then
+            if e.force.name == "neutral" or e.prototype.collision_mask.layers[storage.maraxsis_dome_collision_mask] then
                 error_message = error_message or {"cant-build-reason.entity-in-the-way", e.localised_name}
                 colliding_entities[#colliding_entities + 1] = e
             else
