@@ -82,9 +82,7 @@ This mod makes a few changes to Factorio: Space Age in order for Maraxsis to fit
   - Adds a recipe for the pistol.
   - Banned unbarrelling of heavy oil in space.
   - The research productivity technology now requires hydraulic science packs.
-  - No more "haste makes waste". Speed modules no longer reduce quality. **Why?** Hydro plants grant +50% base quality. Without this feature its possible to cheese many of the puzzles on maraxsis.
-  - Added a new endgame technology which grants productivity to promethium science packs. **Why?** Maraxsis greatly scales the theoretical max SPM. Promethium science needed to be buffed in order to prevent death by lag.
-  - Removed surface restrictions for the biolab. **Why?** This was required in order to make deep sea research a useful technology.
+  - Removed surface restrictions for the biolab.
 
 ---
 

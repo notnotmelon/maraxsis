@@ -101,12 +101,6 @@ table.insert(data.raw["technology"]["military"].effects, 1, {
     recipe = "pistol",
 })
 
-for _, module in pairs(data.raw.module) do -- you're welcome
-    if module.name:find("speed%-module%-") and module.effect.quality then
-        module.effect.quality = math.max(0, module.effect.quality)
-    end
-end
-
 local new_spidertron_effects = {}
 for _, effect in pairs(data.raw.technology["spidertron"].effects) do
     if effect.recipe ~= "service_station" then
