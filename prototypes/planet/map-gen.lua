@@ -299,8 +299,8 @@ data:extend {{
     type = "space-connection",
     name = "vulcanus-maraxsis",
     subgroup = "planet-connections",
-    from = "maraxsis",
-    to = "vulcanus",
+    from = "vulcanus",
+    to = "maraxsis",
     order = "f",
     length = 30000,
     asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.gleba_aquilo)
