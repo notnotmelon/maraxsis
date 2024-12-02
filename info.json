@@ -4,7 +4,7 @@
   "title": "Maraxsis",
   "author": "notnotmelon, ArchEzekiel",
   "homepage": "https://github.com/notnotmelon/maraxsis",
-  "description": "Dive into the uncharted waters of Maraxsis, a world where the sea covers everything. Utilize submarines to explore, deploy fiber optics for long-distance signals, build pressure domes, and master the challenges of deep-sea logistics. But BEWARE: You aren't alone in these depths...",
+  "description": "Dive into the uncharted waters of Maraxsis, a world where the sea covers everything. Utilize submarines to explore, craft advanced fluids inside the hydro plant, build pressure domes, and master the challenges of deep-sea logistics. But BEWARE: You aren't alone in these depths...",
   "factorio_version": "2.0",
   "dependencies": [
     "base",

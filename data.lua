@@ -3,7 +3,7 @@ local collision_mask_util = require "__core__/lualib/collision-mask-util"
 local tech_tree_screenshot_mode = false
 if tech_tree_screenshot_mode then
     for _, t in pairs(data.raw.technology) do
-        t.enabled = false
+        t.hidden = true
     end
 end
 

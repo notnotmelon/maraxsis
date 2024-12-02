@@ -6,7 +6,24 @@ Let me introduce this pristine, submerged world. Far away from the sun, this pla
 
 ![](https://files.catbox.moe/wwq54g.png)
 
-Maraxsis is 100% covered by deep ocean. There is no land on the entire planet meaning you'll have to invest in aquatic technologies such as submarines, torpedos, fiber optic cables, and submerged pressure domes. In terms of progression, Maraxsis is unlocked at the same point as Aquilo. This means the mod can be seamlessly added to a finished Space Age save.
+Maraxsis is 100% covered by deep ocean. There is no land on the entire planet meaning you'll have to invest in aquatic technologies such as submarines, torpedos, hydro plants, and submerged pressure domes. In terms of progression, Maraxsis is unlocked at the same point as Aquilo. This means the mod can be seamlessly added to a finished Space Age save.
+
+---
+
+### Disclaimer
+
+This mod is in early access/beta status. Here are the known issues before it can be moved to a full release:
+
+  - Placeholder graphics for the coral reef.
+  - Placeholder graphics for the fishing tower.
+  - Placeholder graphics for the salted tropical fish.
+  - Missing AI for the construction submarine.
+  - Missing nuclear artillery.
+  - Missing the Maraxsis enemy.
+  - Missing a good way to transfer fluids to the trench. Currently you have to use barrels.
+
+During the beta period, please post factory screenshots, bugs, and balance suggestions on the Discord.
+Your feedback is extremely important!
 
 ---
 
@@ -18,9 +35,6 @@ Your armor is designed to protect against attacks from various creatures, but it
 
 This deep sea vessel is capable of submerging to any depth, and can be automated with a schedule to follow underwater channels.
 With further technologies, construct the nuclear submarine and atomic torpedoes.
-
-![](https://files.catbox.moe/wvjvlm.png)
-
 Be careful, swimming outside the submarine will quickly result in death by extreme pressure, drowning, or both.
 
 ---
@@ -43,14 +57,6 @@ As you are leaving, your sonar systems sense some underwater movement in the dis
 
 ---
 
-### Deep sea logistics
-
-So, Maraxsis has two surfaces. How does item and fluid transfer happen between these two zones?
-
-todo: write this section
-
----
-
 ### Pressure domes
 
 As you explore Maraxsis, you’ll quickly discover that many of your standard machines are ineffective underwater. You are able to research new designs that function underwater however many recipes are still impossible. In these situations, constructing high-pressure domes becomes essential.
@@ -65,18 +71,26 @@ These specialized structures are designed to withstand the immense pressures of 
 
 Maraxsis is available at the same time as Aquilo. The mod does not change any vanilla recipes meaning the mod can be seamlessly added to any existing Space Age save, even if the save is completed. The mod leans heavily into the puzzle genera requiring creative setups to solve difficult challenges. Do you have what it takes to craft the hydraulic science pack?
 
-![](https://files.catbox.moe/vhpfuz.png)
+![](https://files.catbox.moe/1f53fp.png)
 
 ---
 
 ### Vanilla Changes
 
 This mod makes a few changes to Factorio: Space Age in order for Maraxsis to fit seamlessly into the tech tree.
+
   - Adds a recipe for the pistol.
   - Banned unbarrelling of heavy oil in space.
   - The research productivity technology now requires hydraulic science packs.
   - No more "haste makes waste". Speed modules no longer reduce quality.
   - Added a new endgame technology which grants productivity to promethium science packs.
+
+---
+
+### Recommended Mods
+
+  - [HD Planets](https://mods.factorio.com/mod/hd_planets) and [Visible Planets](https://mods.factorio.com/mod/visible-planets) for beautiful space platforms above Maraxsis.
+  - [Starmap: Nexuz](https://mods.factorio.com/user/Tserup) to improve the graphics of the starmap.
 
 ---
 
@@ -110,7 +124,7 @@ Maraxsis would not be possible without the help of these amazing, fantastic, inc
 - **Creators**: ZivixLLC
 - **Source**: [Turbosquid](https://www.turbosquid.com/3d-models/free-tropical-fish-pack-3d-model/652729)
 - **License**: [TurboSquid 3D Model License](https://blog.turbosquid.com/turbosquid-3d-model-license/)
-- **Changes**: Yes. Converted to .PNG via Blender.
+- **Changes**: Yes. Added animations. Added light effects. Converted to .PNG via Blender.
 
 ## Hydro Plant & Regulator
 
