@@ -8,8 +8,7 @@ maraxsis.on_event(maraxsis.events.on_entity_clicked(), function(event)
     if not maraxsis.MARAXSIS_SAND_EXTRACTORS[cursor_stack.name] then return end
 
     local surface = player.surface
-    local surface_name = surface.name
-    if not maraxsis.MARAXSIS_SURFACES[surface_name] then return end
+    if surface.name ~= maraxsis.MARAXSIS_SURFACE_NAME then return end
     local position = event.cursor_position
 
     if surface.entity_prototype_collides(cursor_stack.name, position, false) then return end
