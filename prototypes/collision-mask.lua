@@ -125,6 +125,8 @@ local prototypes_that_can_be_placed_whereever = {
     data.raw["spider-leg"]["maraxsis-submarine-leg"],
     data.raw["spider-vehicle"]["maraxsis-diesel-submarine"],
     data.raw["spider-vehicle"]["spidertron-enhancements-dummy-maraxsis-diesel-submarine"],
+    data.raw["spider-vehicle"]["constructron"],
+    data.raw["spider-vehicle"]["spidertron-enhancements-dummy-constructron"],
     data.raw["spider-vehicle"]["maraxsis-nuclear-submarine"],
     data.raw["spider-vehicle"]["spidertron-enhancements-dummy-maraxsis-nuclear-submarine"],
     data.raw.roboport.service_station,

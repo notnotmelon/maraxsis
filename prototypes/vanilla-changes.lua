@@ -103,7 +103,7 @@ table.insert(data.raw["technology"]["military"].effects, 1, {
 
 local new_spidertron_effects = {}
 for _, effect in pairs(data.raw.technology["spidertron"].effects) do
-    if effect.recipe ~= "service_station" then
+    if effect.recipe ~= "service_station" and effect.recipe ~= "constructron" then
         table.insert(new_spidertron_effects, effect)
     end
 end

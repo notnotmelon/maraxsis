@@ -51,6 +51,7 @@ make_subgroup("maraxsis-salt", "gf", "intermediate-products", {
 
 make_subgroup("maraxsis-machines", "ee", "production", {
     data.raw.item["sp-spidertron-dock"],
+    data.raw["item-with-entity-data"]["constructron"],
     data.raw["item-with-entity-data"]["maraxsis-diesel-submarine"],
     data.raw["item-with-entity-data"]["maraxsis-nuclear-submarine"],
     data.raw.item["maraxsis-hydro-plant"],
