@@ -82,7 +82,7 @@ data:extend {{
     results = {
         {type = "item", name = "maraxsis-torpedo", amount = 1},
     },
-    category = "maraxsis-hydro-plant-or-assembling"
+    category = "maraxsis-hydro-plant"
 }}
 
 data:extend {{
@@ -98,7 +98,7 @@ data:extend {{
     results = {
         {type = "item", name = "maraxsis-explosive-torpedo", amount = 1},
     },
-    category = "maraxsis-hydro-plant-or-assembling"
+    category = "maraxsis-hydro-plant"
 }}
 
 data:extend {{
@@ -114,7 +114,7 @@ data:extend {{
     results = {
         {type = "item", name = "maraxsis-atomic-torpedo", amount = 1},
     },
-    category = "maraxsis-hydro-plant-or-assembling"
+    category = "maraxsis-hydro-plant"
 }}
 
 local names = {

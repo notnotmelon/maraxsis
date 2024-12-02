@@ -51,7 +51,7 @@ data:extend {{
     },
     allow_productivity = false,
     main_product = "maraxsis-fishing-tower",
-    category = "maraxsis-hydro-plant-or-assembling"
+    category = "maraxsis-hydro-plant"
 }}
 
 local function scale_sprite_recursive(graphics)

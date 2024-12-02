@@ -3,7 +3,7 @@ local sounds = require("__base__.prototypes.entity.sounds")
 data:extend {{
     type = "recipe",
     name = "maraxsis-fat-man",
-    category = "maraxsis-hydro-plant-or-assembling",
+    category = "maraxsis-hydro-plant",
     ingredients = {
         {type = "item", name = "artillery-shell", amount = 1},
         {type = "item", name = "maraxsis-super-sealant-substance", amount = 1},
