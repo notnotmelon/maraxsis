@@ -1,4 +1,15 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.15.0
+Date: 2024-12-02
+  Features:
+    - Added construction submarines.
+  Bugfixes:
+    - Fixed that mining a construction submarine would grant a regular diesel submarine.
+  Locale:
+    - Replaced all spidertron automation locale with construction submarines.
+  Changes:
+    - Changed the research trigger requirement for the hydro plant technology to mine 1 sandstone.
+---------------------------------------------------------------------------------------------------
 Version: 1.14.0
 Date: 2024-12-02
   Features:
