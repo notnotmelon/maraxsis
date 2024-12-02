@@ -118,3 +118,8 @@ data.raw.technology["spidertron"].effects = new_spidertron_effects
 data.raw.recipe["ice-melting"].category = "maraxsis-hydro-plant-or-chemistry"
 data.raw.recipe["advanced-thruster-fuel"].category = "maraxsis-hydro-plant-or-chemistry"
 data.raw.recipe["advanced-thruster-oxidizer"].category = "maraxsis-hydro-plant-or-chemistry"
+
+data.raw.lab["biolab"].surface_conditions = {{
+    property = "pressure",
+    max = 300000,
+}}
