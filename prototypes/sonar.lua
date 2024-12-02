@@ -64,6 +64,8 @@ data:extend {maraxsis.merge(data.raw.radar.radar, {
     flags = {"placeable-player", "player-creation"},
     minable = {mining_time = 0.5, result = "maraxsis-sonar"},
     max_health = 550,
+    circuit_connector = circuit_connector_definitions["maraxsis-sonar"],
+    circuit_wire_max_distance = _G.default_circuit_wire_max_distance,
     corpse = "radar-remnants",
     dying_explosion = "radar-explosion",
     resistances = {

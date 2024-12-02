@@ -9,6 +9,7 @@ end
 
 _G.maraxsis = require "scripts.constants"
 require "lib.lib"
+require "prototypes.circuit-connector-definitions"
 require "prototypes.tile.water-and-cliffs"
 require "prototypes.submarine"
 require "prototypes.technology"

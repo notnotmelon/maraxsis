@@ -97,6 +97,8 @@ data:extend {{
     max_health = 400,
     corpse = data.raw["assembling-machine"]["electromagnetic-plant"].corpse,
     dying_explosion = "big-explosion",
+    circuit_connector = circuit_connector_definitions["maraxsis-hydro-plant"],
+    circuit_wire_max_distance = _G.default_circuit_wire_max_distance,
     localised_description = {"", {"entity-description.maraxsis-hydro-plant"}, "\n", {"description.base-quality", tostring(50)}},
     resistances = {
         {type = "physical", percent = 50},

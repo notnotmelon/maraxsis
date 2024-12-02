@@ -47,6 +47,8 @@ regulator.minable = nil
 regulator.icon = "__maraxsis__/graphics/icons/regulator.png"
 regulator.icon_size = 64
 regulator.surface_conditions = maraxsis.surface_conditions()
+regulator.circuit_connector = circuit_connector_definitions["maraxsis-regulator"]
+regulator.circuit_wire_max_distance = _G.default_circuit_wire_max_distance
 
 data.raw.recipe["service_station"].hidden = true
 data.raw.item["service_station"].hidden = true
