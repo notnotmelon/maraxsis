@@ -20,8 +20,8 @@ end
 
 make_subgroup("maraxsis-intermediants", "ge", "intermediate-products", {
     data.raw.item["maraxsis-coral"],
-    data.raw.item["limestone"],
-    data.raw.item["sand"],
+    data.raw.item["maraxsis-limestone"],
+    data.raw.item["maraxsis-sand"],
     data.raw.item["maraxsis-glass-panes"],
     data.raw.item["maraxsis-fish-food"],
     data.raw.capsule["maraxsis-tropical-fish"],
@@ -36,9 +36,9 @@ make_subgroup("maraxsis-intermediants", "ge", "intermediate-products", {
 })
 
 make_subgroup("maraxsis-salt", "gf", "intermediate-products", {
-    data.raw.item["salt"],
+    data.raw.item["maraxsis-salt"],
     data.raw.recipe["maraxsis-saline-electrolysis"],
-    data.raw.recipe["brackish-water"],
+    data.raw.recipe["maraxsis-brackish-water"],
     data.raw.recipe["maraxsis-water"],
     data.raw.item["maraxsis-salt-filter"],
     data.raw.recipe["maraxsis-salt-filter"],
@@ -64,14 +64,14 @@ make_subgroup("maraxsis-machines", "ee", "production", {
     data.raw["simple-entity"]["maraxsis-water-shader-32-1-1"],
 })
 
-data.raw.fluid["saline-water"].order = "f[maraxsis-fluids]-a[saline-water]"
-data.raw.fluid["saline-water"].subgroup = "fluid"
-data.raw.fluid["brackish-water"].order = "f[maraxsis-fluids]-b[brackish-water]"
-data.raw.fluid["brackish-water"].subgroup = "fluid"
-data.raw.fluid["oxygen"].order = "f[maraxsis-fluids]-c[oxygen]"
-data.raw.fluid["oxygen"].subgroup = "fluid"
-data.raw.fluid["hydrogen"].order = "f[maraxsis-fluids]-d[hydrogen]"
-data.raw.fluid["hydrogen"].subgroup = "fluid"
+data.raw.fluid["maraxsis-saline-water"].order = "f[maraxsis-fluids]-a[saline-water]"
+data.raw.fluid["maraxsis-saline-water"].subgroup = "fluid"
+data.raw.fluid["maraxsis-brackish-water"].order = "f[maraxsis-fluids]-b[brackish-water]"
+data.raw.fluid["maraxsis-brackish-water"].subgroup = "fluid"
+data.raw.fluid["maraxsis-oxygen"].order = "f[maraxsis-fluids]-c[oxygen]"
+data.raw.fluid["maraxsis-oxygen"].subgroup = "fluid"
+data.raw.fluid["maraxsis-hydrogen"].order = "f[maraxsis-fluids]-d[hydrogen]"
+data.raw.fluid["maraxsis-hydrogen"].subgroup = "fluid"
 data.raw.fluid["maraxsis-atmosphere"].order = "f[maraxsis-fluids]-f[atmosphere]"
 data.raw.fluid["maraxsis-atmosphere"].subgroup = "fluid"
 data.raw.fluid["maraxsis-liquid-atmosphere"].order = "f[maraxsis-fluids]-f[liquid-atmosphere]"

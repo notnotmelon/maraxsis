@@ -5,12 +5,12 @@ data:extend {{
 
 data:extend {{
     type = "recipe",
-    name = "sand",
+    name = "maraxsis-sand",
     category = "maraxsis-sand-extraction",
     energy_required = 10,
     ingredients = {},
     results = {
-        {type = "item", name = "sand", amount = 1}
+        {type = "item", name = "maraxsis-sand", amount = 1}
     },
     enabled = false,
     show_amount_in_title = false,
@@ -25,7 +25,7 @@ for i = 1, 10 do
 
     table.insert(mining_productivity.effects, {
         type = "change-recipe-productivity",
-        recipe = "sand",
+        recipe = "maraxsis-sand",
         change = 0.1,
         hidden = true
     })
@@ -40,7 +40,7 @@ for extractor in pairs(maraxsis.MARAXSIS_SAND_EXTRACTORS) do
     extractor.localised_name = extractor.localised_name or {"entity-name." .. extractor.name}
     extractor.localised_description = extractor.localised_description or {"?", {"entity-description." .. extractor.name}, ""}
     extractor.hidden_in_factoriopedia = true
-    extractor.fixed_recipe = "sand"
+    extractor.fixed_recipe = "maraxsis-sand"
     extractor.fixed_quality = "normal"
     extractor.crafting_speed = extractor.mining_speed
     extractor.mining_speed = nil

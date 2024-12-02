@@ -27,7 +27,7 @@ data:extend {{
     icon_size = 64,
     pictures = coral_variants,
     stack_size = 50,
-    spoil_result = "limestone",
+    spoil_result = "maraxsis-limestone",
     spoil_ticks = 60 * 60 * 5,
 }}
 
@@ -46,7 +46,7 @@ data:extend {{
         mining_time = 5,
         results = {
             {type = "item", name = "maraxsis-coral", amount = 1},
-            {type = "item", name = "limestone",      amount = 1},
+            {type = "item", name = "maraxsis-limestone",      amount = 1},
         }
     },
     walking_sound = sounds.ore,

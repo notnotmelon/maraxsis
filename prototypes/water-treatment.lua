@@ -7,7 +7,7 @@ end
 
 data:extend {{
     type = "fluid",
-    name = "saline-water",
+    name = "maraxsis-saline-water",
     icon = "__maraxsis__/graphics/icons/saline-water.png",
     icon_size = 64,
     base_flow_rate = data.raw.fluid.water.base_flow_rate,
@@ -22,7 +22,7 @@ data:extend {{
 
 data:extend {{
     type = "fluid",
-    name = "brackish-water",
+    name = "maraxsis-brackish-water",
     icon = "__maraxsis__/graphics/icons/brackish-water.png",
     icon_size = 64,
     base_flow_rate = data.raw.fluid.water.base_flow_rate,
@@ -37,7 +37,7 @@ data:extend {{
 
 data:extend {{
     type = "fluid",
-    name = "oxygen",
+    name = "maraxsis-oxygen",
     icon = "__maraxsis__/graphics/icons/oxygen.png",
     icon_size = 64,
     base_flow_rate = data.raw.fluid.steam.base_flow_rate,
@@ -52,7 +52,7 @@ data:extend {{
 
 data:extend {{
     type = "fluid",
-    name = "hydrogen",
+    name = "maraxsis-hydrogen",
     icon = "__maraxsis__/graphics/icons/hydrogen.png",
     icon_size = 64,
     base_flow_rate = data.raw.fluid.steam.base_flow_rate,
@@ -71,12 +71,12 @@ data:extend {{
     enabled = false,
     energy_required = 10,
     ingredients = {
-        {type = "fluid", name = "brackish-water", amount = 300},
+        {type = "fluid", name = "maraxsis-brackish-water", amount = 300},
     },
     results = {
-        {type = "item",  name = "salt",     amount = 1},
-        {type = "fluid", name = "oxygen",   amount = 100},
-        {type = "fluid", name = "hydrogen", amount = 200},
+        {type = "item",  name = "maraxsis-salt",     amount = 1},
+        {type = "fluid", name = "maraxsis-oxygen",   amount = 100},
+        {type = "fluid", name = "maraxsis-hydrogen", amount = 200},
     },
     category = "maraxsis-hydro-plant",
     icon = "__maraxsis__/graphics/icons/saline-electrolysis.png",
@@ -92,8 +92,8 @@ data:extend {{
     enabled = false,
     energy_required = 2,
     ingredients = {
-        {type = "fluid", name = "oxygen",   amount = 100},
-        {type = "fluid", name = "hydrogen", amount = 200},
+        {type = "fluid", name = "maraxsis-oxygen",   amount = 100},
+        {type = "fluid", name = "maraxsis-hydrogen", amount = 200},
     },
     results = {
         {type = "fluid", name = "water", amount = 300},
@@ -114,23 +114,23 @@ data:extend {{
 
 data:extend {{
     type = "recipe",
-    name = "brackish-water",
+    name = "maraxsis-brackish-water",
     enabled = false,
     energy_required = 2.5,
     ingredients = {
         {type = "item",  name = "maraxsis-salt-filter", amount = 1},
-        {type = "fluid", name = "saline-water",         amount = 100},
+        {type = "fluid", name = "maraxsis-saline-water",         amount = 100},
     },
     results = {
-        {type = "fluid", name = "brackish-water",                 amount = 100},
+        {type = "fluid", name = "maraxsis-brackish-water",                 amount = 100},
         {type = "item",  name = "maraxsis-saturated-salt-filter", amount = 1,  ignored_by_stats = 1, ignored_by_stats = 1},
     },
     category = "maraxsis-hydro-plant",
     auto_recycle = false,
-    main_product = "brackish-water",
+    main_product = "maraxsis-brackish-water",
     allow_productivity = true,
 }}
-add_to_tech("brackish-water")
+add_to_tech("maraxsis-brackish-water")
 
 local salt_variants = {}
 for i = 1, 3 do
@@ -145,7 +145,7 @@ end
 
 data:extend {{
     type = "item",
-    name = "salt",
+    name = "maraxsis-salt",
     icon = "__maraxsis__/graphics/icons/salt-2.png",
     pictures = salt_variants,
     icon_size = 64,
@@ -190,7 +190,7 @@ data:extend {{
     results = {
         {type = "item",  name = "maraxsis-salt-filter", amount = 1, probability = 0.95, ignored_by_stats = 1, ignored_by_productivity = 1},
         {type = "item",  name = "carbon-fiber",         amount = 1, probability = 0.025},
-        {type = "fluid", name = "brackish-water",       amount = 20},
+        {type = "fluid", name = "maraxsis-brackish-water",       amount = 20},
     },
     category = "maraxsis-hydro-plant",
     main_product = "maraxsis-salt-filter",

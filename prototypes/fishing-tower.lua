@@ -14,7 +14,7 @@ data:extend {{
     energy_required = 3,
     ingredients = {
         {type = "item", name = "maraxsis-tropical-fish", amount = 1},
-        {type = "item", name = "sand",                   amount = 1},
+        {type = "item", name = "maraxsis-sand",                   amount = 1},
         {type = "item", name = "maraxsis-coral",         amount = 3},
         {type = "item", name = "plastic-bar",            amount = 1},
     },

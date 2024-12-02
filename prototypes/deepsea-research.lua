@@ -48,19 +48,19 @@ local function update_recipe_icon(recipe, fluid)
     recipe.icon_size = nil
 end
 
-update_recipe_icon(automation_science, "saline-water")
-update_recipe_icon(logistic_science, "brackish-water")
+update_recipe_icon(automation_science, "maraxsis-saline-water")
+update_recipe_icon(logistic_science, "maraxsis-brackish-water")
 update_recipe_icon(military_science, "lava")
 update_recipe_icon(chemical_science, "maraxsis-atmosphere")
-update_recipe_icon(production_science, "oxygen")
-update_recipe_icon(utility_science, "hydrogen")
+update_recipe_icon(production_science, "maraxsis-oxygen")
+update_recipe_icon(utility_science, "maraxsis-hydrogen")
 
-table.insert(automation_science.ingredients, {type = "fluid", name = "saline-water", amount = 50})
-table.insert(logistic_science.ingredients, {type = "fluid", name = "brackish-water", amount = 50})
+table.insert(automation_science.ingredients, {type = "fluid", name = "maraxsis-saline-water", amount = 50})
+table.insert(logistic_science.ingredients, {type = "fluid", name = "maraxsis-brackish-water", amount = 50})
 table.insert(military_science.ingredients, {type = "fluid", name = "lava", amount = 100})
 table.insert(chemical_science.ingredients, {type = "fluid", name = "maraxsis-atmosphere", amount = 100})
-table.insert(production_science.ingredients, {type = "fluid", name = "oxygen", amount = 100})
-table.insert(utility_science.ingredients, {type = "fluid", name = "hydrogen", amount = 200})
+table.insert(production_science.ingredients, {type = "fluid", name = "maraxsis-oxygen", amount = 100})
+table.insert(utility_science.ingredients, {type = "fluid", name = "maraxsis-hydrogen", amount = 200})
 
 for _, recipe in pairs {
     automation_science,

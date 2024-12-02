@@ -126,7 +126,7 @@ data:extend {{
     prerequisites = {"maraxsis-glassworking"},
     research_trigger = {
         type = "craft-fluid",
-        fluid = "brackish-water",
+        fluid = "maraxsis-brackish-water",
         amount = 1000,
     },
     order = "ed[piscary]",

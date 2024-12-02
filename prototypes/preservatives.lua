@@ -55,7 +55,7 @@ data:extend {{
     energy_required = 2,
     ingredients = {
         {type = "item", name = "raw-fish", amount = 1},
-        {type = "item", name = "salt",     amount = 1},
+        {type = "item", name = "maraxsis-salt",     amount = 1},
     },
     results = {
         {type = "item", name = "maraxsis-salted-fish", amount = 1},
@@ -73,7 +73,7 @@ data:extend {{
     energy_required = 2,
     ingredients = {
         {type = "item", name = "maraxsis-tropical-fish", amount = 1},
-        {type = "item", name = "salt",                   amount = 1},
+        {type = "item", name = "maraxsis-salt",                   amount = 1},
     },
     results = {
         {type = "item", name = "maraxsis-salted-tropical-fish", amount = 1},
@@ -91,7 +91,7 @@ data:extend {{
     energy_required = 2,
     ingredients = {
         {type = "item", name = "bioflux", amount = 1},
-        {type = "item", name = "salt",    amount = 1},
+        {type = "item", name = "maraxsis-salt",    amount = 1},
     },
     results = {
         {type = "item", name = "maraxsis-defluxed-bioflux", amount = 1},
