@@ -91,6 +91,11 @@ data:extend {{
             secondary_draw_orders = {north = -1},
         },
     },
+    effect_receiver = {
+        uses_module_effects = false,
+        uses_beacon_effects = false,
+        uses_surface_effects = false,
+    },
     graphics_set = {
         animation = {
             layers = {
