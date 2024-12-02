@@ -1,4 +1,10 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.12.2
+Date: 2024-12-01
+  Bugfixes:
+    - Fixed a softlock where you could not craft glass panes.
+    - Fixed a softlock where you could not craft the hydro plant.
+---------------------------------------------------------------------------------------------------
 Version: 1.12.1
 Date: 2024-12-01
   Bugfixes:
