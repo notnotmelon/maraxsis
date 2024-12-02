@@ -1,4 +1,9 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.13.11
+Date: 2024-12-02
+  Changes:
+    - Expanded the equipment grid size of the nuclear submarine from 6 tiles height to 9 tiles height. Resolves https://github.com/notnotmelon/maraxsis/issues/21
+---------------------------------------------------------------------------------------------------
 Version: 1.13.10
 Date: 2024-12-02
   Bugfixes:
