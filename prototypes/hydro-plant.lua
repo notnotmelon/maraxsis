@@ -52,12 +52,12 @@ local working_visualisations = {
         },
     },
     {
+        fadeout = true,
         constant_speed = true,
         light = {
             intensity = 0.65,
-            size = 4,
-            shift = {1.29, 2},
-            color = {r = 1, g = 0.35, b = 0.2},
+            size = 10,
+            color = {r = 1, g = 1, b = 1},
         },
     },
 }
