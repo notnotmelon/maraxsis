@@ -64,11 +64,10 @@ maraxsis.on_event(maraxsis.events.on_built(), function(event)
     local name = is_ghost and entity.ghost_name or entity.name
 
     local is_space = not not surface.platform
-    if name == "maraxsis-hydro-plant" and surface.name == maraxsis.MARAXSIS_SURFACE_NAME then
+    local is_trench_or_space = is_space or surface.name == maraxsis.TRENCH_SURFACE_NAME
+    if is_trench_or_space and name == "maraxsis-hydro-plant-extra-module-slots" then
         return
-    elseif name == "maraxsis-hydro-plant-extra-module-slots" and surface.name == maraxsis.TRENCH_SURFACE_NAME then
-        return
-    elseif name == "maraxsis-hydro-plant-extra-module-slots" and is_space then
+    elseif not is_trench_or_space and name == "maraxsis-hydro-plant" then
         return
     end
     local swap_target = swap_target[name]
@@ -86,7 +85,6 @@ maraxsis.on_event(maraxsis.events.on_built(), function(event)
         health = entity.health,
         raise_built = true,
         player = player,
-        character = player and player.character,
     }
     new_entity.mirroring = entity.mirroring
     new_entity.copy_settings(entity)
