@@ -1,4 +1,9 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.13.16
+Date: 2024-12-02
+  Bugfixes:
+    - Added circuit connections to the hydro plant, sonar, and regulator. Resolves https://github.com/notnotmelon/maraxsis/issues/26. Resolves https://github.com/notnotmelon/maraxsis/issues/25.
+---------------------------------------------------------------------------------------------------
 Version: 1.13.15
 Date: 2024-12-02
   Bugfixes:
