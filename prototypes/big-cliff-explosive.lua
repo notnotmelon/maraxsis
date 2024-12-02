@@ -12,6 +12,10 @@ data:extend {{
             type = "unlock-recipe",
             recipe = "maraxsis-atomic-torpedo",
         },
+        {
+            type = "unlock-recipe",
+            recipe = "maraxsis-fat-man",
+        },
     },
     prerequisites = {"cliff-explosives", "maraxsis-torpedoes", "atomic-bomb"},
     unit = {

@@ -18,7 +18,6 @@ This mod is in early access/beta status. Here are the known issues before it can
   - Placeholder graphics for the fishing tower.
   - Placeholder graphics for the salted tropical fish.
   - Missing AI for the construction submarine.
-  - Missing nuclear artillery.
   - Missing the Maraxsis enemy.
   - Missing a good way to transfer fluids to the trench. Currently you have to use barrels.
 

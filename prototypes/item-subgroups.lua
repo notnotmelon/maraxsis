@@ -80,5 +80,8 @@ data.raw.fluid["maraxsis-liquid-atmosphere"].subgroup = "fluid"
 data.raw.capsule["maraxsis-big-cliff-explosives"].subgroup = data.raw.capsule["cliff-explosives"].subgroup
 data.raw.capsule["maraxsis-big-cliff-explosives"].order = "e[big-cliff-explosives]"
 
+data.raw.ammo["maraxsis-fat-man"].subgroup = data.raw.ammo["artillery-shell"].subgroup
+data.raw.ammo["maraxsis-fat-man"].order = "e[big-cliff-explosives]"
+
 data.raw.resource["maraxsis-coral"].subgroup = "mineable-fluids"
 data.raw.resource["maraxsis-coral"].order = "x[maraxsis-coral]"
