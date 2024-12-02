@@ -1,4 +1,9 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.13.21
+Date: 2024-12-02
+  Bugfixes:
+    - Fixed crashes when playing on altas size lower than 8192. Resolves https://github.com/notnotmelon/maraxsis/issues/28
+---------------------------------------------------------------------------------------------------
 Version: 1.13.20
 Date: 2024-12-02
   Graphics:
