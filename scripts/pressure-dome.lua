@@ -473,7 +473,7 @@ maraxsis.on_event(maraxsis.events.on_built(), function(event)
             if colliding_entity.valid and not colliding_entity.to_be_deconstructed() then
                 local deconstructed
                 if player then
-                    deconstructed = colliding_entity.order_deconstruction(entity.force, player, undo_index)
+                    deconstructed = pcall(colliding_entity.order_deconstruction, entity.force, player, undo_index)
                     undo_index = 1
                 else
                     deconstructed = colliding_entity.order_deconstruction(entity.force)
@@ -484,7 +484,7 @@ maraxsis.on_event(maraxsis.events.on_built(), function(event)
         end
         if not successfully_cleared_area then
             for _, colliding_entity in pairs(to_unmark) do
-                colliding_entity.cancel_deconstruction(entity.force)
+                if colliding_entity.valid then colliding_entity.cancel_deconstruction(entity.force) end
             end
         end
 
