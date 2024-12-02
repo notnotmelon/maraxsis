@@ -37,6 +37,7 @@ local prototypes_that_cant_be_placed_on_water = {
     "electric-energy-interface",
     "fire",
     "furnace",
+    "beacon",
     "generator",
     "market",
     "storage-tank",
