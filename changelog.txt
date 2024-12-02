@@ -1,4 +1,9 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.13.19
+Date: 2024-12-02
+  Bugfixes:
+    - Fixed nukes creating nuclear ground tiles and skipping the dome mechainc. Resolves https://github.com/notnotmelon/maraxsis/issues/23
+---------------------------------------------------------------------------------------------------
 Version: 1.13.18
 Date: 2024-12-02
   Changes:
