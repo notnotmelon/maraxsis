@@ -141,9 +141,9 @@ data:extend {maraxsis.merge(data.raw["lamp"]["small-lamp"], {
     picture_off = maraxsis.empty_image(),
     circuit_wire_max_distance = 16,
     energy_usage_per_tick = "2MW",
-    glow_size = 30,
+    glow_size = 60,
     light = {
-        size = 45,
+        size = 80,
         color = {
             b = 0.75,
             g = 1,
@@ -158,7 +158,7 @@ data:extend {maraxsis.merge(data.raw["lamp"]["small-lamp"], {
             r = 1
         },
         intensity = 0,
-        size = 30,
+        size = 55,
     },
 })}
 

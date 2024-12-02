@@ -57,7 +57,7 @@ local working_visualisations = {
         light = {
             intensity = 0.65,
             size = 10,
-            color = {r = 1, g = 1, b = 1},
+            color = {r = 1, g = 1, b = 0.75},
         },
     },
 }
