@@ -25,16 +25,23 @@ add_hydraulic_pack("promethium-science-pack", false)
 table.insert(data.raw["technology"]["promethium-science-pack"].prerequisites, "maraxsis-deepsea-research")
 add_hydraulic_pack("research-productivity", false)
 
-for _, machine in pairs(data.raw["assembling-machine"]) do
-    if machine.crafting_categories then
-        for _, category in pairs(machine.crafting_categories) do
-            if category == "crafting" then
-                table.insert(machine.crafting_categories, "maraxsis-hydro-plant-or-assembling")
-                break
+for _, machine_type in pairs{"assembling-machine", "rocket-silo", "furnace", "character"} do
+    for _, machine in pairs(data.raw[machine_type] or {}) do
+        if machine.crafting_categories then
+            for _, category in pairs(machine.crafting_categories) do
+                if category == "crafting" then
+                    table.insert(machine.crafting_categories, "maraxsis-hydro-plant-or-assembling")
+                    break
+                end
             end
         end
     end
 end
+
+data.raw.recipe["thruster"].category = "maraxsis-hydro-plant-or-assembling"
+data.raw.recipe["pumpjack"].category = "maraxsis-hydro-plant-or-assembling"
+data.raw.recipe["offshore-pump"].category = "maraxsis-hydro-plant-or-assembling"
+data.raw.recipe["pump"].category = "maraxsis-hydro-plant-or-assembling"
 
 for _, silo in pairs(data.raw["rocket-silo"]) do
     if silo.fixed_recipe == "rocket-part" then

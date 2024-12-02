@@ -39,3 +39,9 @@ for prototype in pairs(defines.prototypes.entity) do
         end
     end
 end
+
+for _, recipe in pairs(data.raw.recipe) do
+    if recipe.category == "maraxsis-hydro-plant-or-assembling" then
+        recipe.always_show_made_in = true
+    end
+end
