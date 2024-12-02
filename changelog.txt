@@ -1,4 +1,9 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.13.12
+Date: 2024-12-02
+  Bugfixes:
+    - Fixed crash when nuking a pressure dome. Resolves https://github.com/notnotmelon/maraxsis/issues/24
+---------------------------------------------------------------------------------------------------
 Version: 1.13.11
 Date: 2024-12-02
   Changes:
