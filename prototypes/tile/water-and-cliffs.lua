@@ -78,10 +78,7 @@ local waterifiy = {
         end
         if not underwater then error("entity not found " .. entity) end
         underwater = table.deepcopy(underwater)
-        underwater.localised_name = underwater.localised_name or {"entity-name." .. underwater.name}
         underwater.name = underwater.name .. "-underwater"
-
-        underwater.localised_name = underwater.localised_name or {"entity-name." .. underwater.name}
         collision_mask_util.get_mask(underwater)[maraxsis_collision_mask] = nil
         ---@diagnostic disable-next-line: param-type-mismatch
         underwater.map_color = maraxsis.color_combine(underwater.map_color or data.raw.tile["water"].map_color, data.raw.tile["deepwater"].map_color, 0.3)
@@ -112,6 +109,7 @@ data:extend(waterifiy.tile("lowland-cream-red"))
 data.raw.tile["lowland-cream-red-underwater"].map_color = defines.color.orange
 data.raw.tile["lowland-cream-red-underwater"].searchable = true
 data.raw.tile["lowland-cream-red-underwater"].collision_mask.layers[maraxsis_fishing_tower_collision_mask] = nil
+
 data:extend(waterifiy.entity("big-sand-rock"))
 
 local simulations = require("__space-age__.prototypes.factoriopedia-simulations")

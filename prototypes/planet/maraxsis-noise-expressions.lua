@@ -234,3 +234,29 @@ data.raw.tile["dirt-5-underwater"].autoplace = {
     ]],
     order = "b[sand]-d[maraxsis]"
 }
+
+data.raw["simple-entity"]["big-sand-rock-underwater"].autoplace = {
+    probability_expression = [[
+        noise * (random_penalty{x = x, y = y, seed = map_seed, source = 1, amplitude = 1} > 0.7)
+    ]],
+    local_expressions = {
+        noise = [[
+            multioctave_noise {
+                x = x,
+                y = y,
+                persistence = 0.15,
+                seed0 = map_seed,
+                seed1 = 239354,
+                octaves = 2,
+                input_scale = 1 / 40,
+                output_scale = 1
+            } > 0.9
+        ]]
+    },
+    order = "c[rocks]-a[maraxsis]"
+}
+
+data.raw["simple-entity"]["big-sand-rock-underwater"].minable.results = {
+    {type = "item", name = "sand", amount_min = 11, amount_max = 15},
+    {type = "item", name = "stone", amount_min = 11, amount_max = 15}
+}
