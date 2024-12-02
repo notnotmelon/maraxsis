@@ -21,6 +21,15 @@ for _, planet in pairs{"maraxsis", "maraxsis-trench"} do
     end
 end
 
+-- more alien biomes compatibility
+if mods["alien-biomes"] then
+    for _, tile in pairs(data.raw.tile) do
+        if tile.name:find("%-underwater") and tile.collision_mask.layers[maraxsis_collision_mask] then
+            tile.collision_mask.layers.item = nil
+        end     
+    end
+end
+
 -- 5dim compatibility
 for prototype in pairs(defines.prototypes.entity) do
     for name, entity in pairs(data.raw[prototype] or {}) do
