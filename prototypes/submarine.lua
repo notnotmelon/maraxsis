@@ -356,6 +356,17 @@ data:extend {{
     name = "toggle-driving",
 }}
 
+data:extend {{
+    type = "custom-input",
+    key_sequence = "CONTROL + ENTER",
+    name = "maraxsis-trench-submerge",
+    consuming = "game-only",
+    alternative_key_sequence = "",
+    controller_key_sequence = "controller-righttrigger + controller-lefttrigger + controller-y",
+    controller_alternative_key_sequence = "",
+    action = "lua",
+}}
+
 local vehicle_leg = table.deepcopy(data.raw["spider-leg"]["spidertron-leg-1"])
 vehicle_leg.name = "maraxsis-submarine-leg"
 vehicle_leg.graphics_set = {}
