@@ -138,7 +138,7 @@ Maraxsis would not be possible without the help of these amazing, fantastic, inc
 
 #### Pressure Dome
 
-- **Creators**: Concept art by notnotmelon. 3D model by KaueNP. Shadow & item icon by notnotmelon.
+- **Creators**: KaueNP
 - **Source**: Commissioned. Created in 3DS max studio.
 - **License**: N/A
 - **Changes**: No.
@@ -150,9 +150,23 @@ Maraxsis would not be possible without the help of these amazing, fantastic, inc
 - **License**: [MIT](https://opensource.org/license/MIT)
 - **Changes**: Yes. Resized to create a low-resolution version. Added lamps.
 
+#### Coral Reef
+
+- **Creators**: Galdoc
+- **Source**: Commissioned. Created in Blender.
+- **License**: [MIT](https://opensource.org/license/MIT)
+- **Changes**: No.
+
 #### Submarine AI
 
 - **Creators**: Xorimuth, ILLISIS, Apollo314, fgardt
 - **Source**: [Spidertron Enhancements](https://mods.factorio.com/mod/SpidertronEnhancements) & [Spidertron Patrols](https://mods.factorio.com/mod/SpidertronPatrols) & [Spidertron Automation](https://mods.factorio.com/mod/SpidertronPatrols)
 - **License**: [MIT](https://opensource.org/license/MIT)
 - **Changes**: Yes. Updated the code to work with submarines.
+
+#### Devops & CI
+
+- **Creators**: fgardt
+- **Source**: [Factorio Mod Template](https://github.com/fgardt/factorio-mod-template) & [Spritter](https://github.com/fgardt/factorio-spritter)
+- **License**: [MIT](https://opensource.org/license/MIT)
+- **Changes**: No.
