@@ -68,7 +68,7 @@ data:extend {{
     collision_box = {{-1.9, -1.9}, {1.9, 1.9}},
     crafting_categories = {"maraxsis-regulator"},
     crafting_speed = 1,
-    energy_usage = "1MW",
+    energy_usage = "500kW",
     icon_draw_specification = {scale = 0, scale_for_many = 0},
     fixed_recipe = "maraxsis-regulator",
     energy_source = {
