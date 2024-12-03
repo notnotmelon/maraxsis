@@ -11,7 +11,7 @@ regulator.frozen_patch = nil
 regulator.door_animation_up = nil
 regulator.door_animation_down = nil
 regulator.hidden = false
-regulator.drawing_box_vertical_extension = 0.5
+regulator.drawing_box_vertical_extension = 0.75
 regulator.integration_patch = {
     layers = {
         {
