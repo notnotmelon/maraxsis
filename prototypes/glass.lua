@@ -152,6 +152,8 @@ data:extend {{
         {type = "item", name = "calcite", amount = 1},
         {type = "item", name = "stone",   amount = 1},
     },
+    icon = "__maraxsis__/graphics/icons/limestone-processing.png",
+    icon_size = 64,
     allow_productivity = true,
     category = "maraxsis-hydro-plant",
     allow_decomposition = false,
