@@ -173,7 +173,7 @@ data:extend {{
     results = {
         {type = "item", name = "maraxsis-salt-filter", amount = 1},
     },
-    category = "crafting",
+    category = "maraxsis-hydro-plant-or-assembling",
     allow_productivity = true,
 }}
 add_to_tech("maraxsis-salt-filter")
