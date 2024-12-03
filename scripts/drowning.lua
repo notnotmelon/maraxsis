@@ -19,7 +19,7 @@ maraxsis.on_nth_tick(UPDATE_RATE, function()
             goto continue
         end
 
-        local vehicle = player.vehicle
+        local vehicle = player.physical_vehicle
         if vehicle then
             storage.breath[player.index] = nil
             goto continue
