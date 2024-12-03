@@ -150,3 +150,6 @@ for _, armor in pairs(data.raw.armor) do
     end
     ::continue::
 end
+
+data.raw.recipe["engine-unit"].category = "maraxsis-hydro-plant-or-assembling"
+data.raw.recipe["electric-engine-unit"].category = "maraxsis-hydro-plant-or-assembling"
