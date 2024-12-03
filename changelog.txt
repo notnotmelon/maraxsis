@@ -1,4 +1,11 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.18.0
+Date: 2024-12-03
+  Features:
+    - Added abyssal diving gear
+  Changes:
+    - Engine units and electric engine units can now be crafted in the hydro plant.
+---------------------------------------------------------------------------------------------------
 Version: 1.17.14
 Date: 2024-12-03
   Bugfixes:
