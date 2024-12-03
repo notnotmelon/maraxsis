@@ -131,6 +131,7 @@ local function create_dome_light(pressure_dome_data)
         name = "maraxsis-pressure-dome-lamp",
         position = pressure_dome_data.position,
         force = pressure_dome_data.force_index,
+        quality = pressure_dome_data.quality,
         create_build_effect_smoke = false,
     }
 
@@ -153,6 +154,7 @@ local function create_dome_combinator(pressure_dome_data)
         name = "maraxsis-pressure-dome-combinator",
         position = light.position,
         force = light.force,
+        quality = light.quality,
         create_build_effect_smoke = false,
     }
 
@@ -338,6 +340,7 @@ local function place_collision_boxes(pressure_dome_data, health, player)
     local position = pressure_dome_data.position
     local x, y = position.x, position.y
     local force = pressure_dome_data.force_index
+    local quality = pressure_dome_data.quality
 
     local diagonal_offset = 4.75
     local positions_and_orientations = {
@@ -357,6 +360,7 @@ local function place_collision_boxes(pressure_dome_data, health, player)
             name = "maraxsis-pressure-dome-collision",
             position = {pos_x, pos_y},
             force = force,
+            quality = quality,
             create_build_effect_smoke = false,
             direction = orientation,
             player = player -- setup the undo queue
@@ -425,6 +429,7 @@ local function place_regulator(pressure_dome_data)
     local position = pressure_dome_data.position
     local x, y = position.x, position.y
     local force = pressure_dome_data.force_index
+    local quality = pressure_dome_data.quality
 
     local regulator = pressure_dome_data.regulator
     if not regulator or not regulator.valid then
@@ -432,6 +437,7 @@ local function place_regulator(pressure_dome_data)
         regulator = surface.create_entity {
             name = "service_station",
             position = {x, y},
+            quality = quality,
             force = force,
             create_build_effect_smoke = false,
             raise_built = true,
@@ -451,6 +457,7 @@ local function place_regulator(pressure_dome_data)
             name = "maraxsis-regulator-fluidbox",
             position = {x, y},
             force = force,
+            quality = quality,
             create_build_effect_smoke = false,
         }
     end
@@ -522,6 +529,7 @@ maraxsis.on_event(maraxsis.events.on_built(), function(event)
     local surface = entity.surface
     local force_index = entity.force_index
     local health = entity.health
+    local quality = entity.quality.name
     entity.destroy()
     entity = rendering.draw_sprite {
         sprite = "maraxsis-pressure-dome-sprite",
@@ -535,6 +543,7 @@ maraxsis.on_event(maraxsis.events.on_built(), function(event)
         unit_number = entity.id,
         position = position,
         surface = surface,
+        quality = quality,
         contained_entities = contained_entities,
         force_index = force_index,
         collision_boxes = {},

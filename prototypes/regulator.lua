@@ -62,6 +62,7 @@ data:extend {{
     flags = {"placeable-neutral", "player-creation", "not-on-map"},
     minable = nil,
     hidden = true,
+    quality_indicator_scale = 0,
     max_health = 99999,
     collision_mask = {layers = {}},
     factoriopedia_alternative = "service_station",

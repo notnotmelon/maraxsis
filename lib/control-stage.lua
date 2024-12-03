@@ -43,6 +43,7 @@ maraxsis.cancel_creation = function(entity, player_index, message, color)
 	local item_to_place = items_to_place_this and items_to_place_this[1]
 	local surface = entity.surface
 	local position = entity.position
+	local quality = entity.quality.name
 	local name = entity.name
 
 	if player_index then
@@ -64,11 +65,13 @@ maraxsis.cancel_creation = function(entity, player_index, message, color)
 				end
 			end
 		elseif item_to_place then
+			item_to_place.quality = quality
 			inserted = player.insert(item_to_place)
 		end
 	end
 
 	if inserted == 0 and item_to_place then
+		item_to_place.quality = quality
 		surface.spill_item_stack {
 			position = position,
 			stack = item_to_place,
