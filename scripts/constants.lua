@@ -33,6 +33,31 @@ local SUBMARINE_FUEL_SOURCES = {
     ["maraxsis-nuclear-submarine"] = {"nuclear"},
 }
 
+local DOME_DISABLEABLE_TYPES = {
+    ["assembling-machine"] = true,
+    ["furnace"] = true,
+    ["lab"] = true,
+    ["beacon"] = true,
+    ["mining-drill"] = true,
+    ["rocket-silo"] = true,
+    ["inserter"] = true,
+    ["pump"] = true,
+    ["offshore-pump"] = true,
+    ["lamp"] = true,
+    ["generator"] = true,
+    ["fusion-generator"] = true,
+    ["fusion-reactor"] = true,
+    ["reactor"] = true,
+    ["boiler"] = true,
+    ["radar"] = true,
+}
+
+local DOME_EXCLUDED_FROM_DISABLE = {
+    ["chemical-plant"] = true,
+    ["maraxsis-hydro-plant"] = true,
+    ["maraxsis-hydro-plant-extra-module-slots"] = true,
+}
+
 return {
     TRENCH_MOVEMENT_FACTOR = TRENCH_MOVEMENT_FACTOR,
     SUBMARINES = SUBMARINES,
@@ -42,4 +67,6 @@ return {
     MARAXSIS_GET_OPPOSITE_SURFACE = MARAXSIS_GET_OPPOSITE_SURFACE,
     MARAXSIS_SAND_EXTRACTORS = MARAXSIS_SAND_EXTRACTORS,
     SUBMARINE_FUEL_SOURCES = SUBMARINE_FUEL_SOURCES,
+    DOME_DISABLEABLE_TYPES = DOME_DISABLEABLE_TYPES,
+    DOME_EXCLUDED_FROM_DISABLE = DOME_EXCLUDED_FROM_DISABLE,
 }

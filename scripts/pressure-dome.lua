@@ -117,6 +117,12 @@ local function count_points_in_dome(pressure_dome_data, entity)
     return count
 end
 
+local DOME_DISABLEABLE_TYPES = maraxsis.DOME_DISABLEABLE_TYPES
+local DOME_EXCLUDED_FROM_DISABLE = maraxsis.DOME_EXCLUDED_FROM_DISABLE
+local function can_be_diabled_by_dome_low_pressure(entity)
+    return entity.valid and DOME_DISABLEABLE_TYPES[entity.type] and not DOME_EXCLUDED_FROM_DISABLE[entity.name]
+end
+
 local function create_dome_light(pressure_dome_data)
     local surface = pressure_dome_data.surface
     if not surface.valid then return end
@@ -250,6 +256,9 @@ maraxsis.on_event(maraxsis.events.on_built(), function(event)
                 if collision_box.valid then
                     collision_box.minable = false
                 end
+            end
+            if can_be_diabled_by_dome_low_pressure(entity) then
+                entity.active = pressure_dome_data.powered_and_has_fluid
             end
             table.insert(pressure_dome_data.contained_entities, entity)
             update_combinator(pressure_dome_data)
@@ -849,4 +858,28 @@ maraxsis.on_event(maraxsis.events.on_built(), function(event)
         quality = quality,
         raise_built = true,
     }
+end)
+
+maraxsis.on_nth_tick(73, function()
+    for _, dome_data in pairs(storage.pressure_domes) do
+        local regulator = dome_data.regulator
+        if not regulator or not regulator.valid then goto continue end
+        local regulator_fluidbox = dome_data.regulator_fluidbox
+        if not regulator_fluidbox or not regulator_fluidbox.valid then goto continue end
+
+        local powered = regulator.energy > 0
+        local has_fluid = (regulator_fluidbox.get_fluid_count("maraxsis-atmosphere") > 0) and regulator_fluidbox.is_crafting()
+        local powered_and_has_fluid = powered and has_fluid
+        if powered_and_has_fluid == dome_data.powered_and_has_fluid then goto continue end
+
+        for _, e in pairs(dome_data.contained_entities) do
+            if can_be_diabled_by_dome_low_pressure(e) then
+                e.active = powered_and_has_fluid                
+            end
+        end
+
+        dome_data.powered_and_has_fluid = powered_and_has_fluid
+
+        ::continue::
+    end
 end)
