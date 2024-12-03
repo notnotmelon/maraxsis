@@ -138,6 +138,7 @@ end
 
 add_to_tech("maraxsis-fishing-tower")
 add_to_tech("maraxsis-fish-food")
+add_to_tech("maraxsis-geothermal-sulfur")
 
 local microplastics_variants = {}
 for i = 1, 3 do
