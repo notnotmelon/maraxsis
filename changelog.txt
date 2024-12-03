@@ -1,4 +1,9 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.17.14
+Date: 2024-12-03
+  Bugfixes:
+    - Fixed that the quality of nightvision equipment would reset to normal when travelling to the trench.
+---------------------------------------------------------------------------------------------------
 Version: 1.17.13
 Date: 2024-12-03
   Changes:
