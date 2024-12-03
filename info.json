@@ -15,8 +15,7 @@
     "? hd_planets",
     "(?) tenebris",
     "! Land-Pump",
-    "! buoyant-spidertrons",
-    "! pystellarexpedition"
+    "! buoyant-spidertrons"
   ],
   "quality_required": true,
   "space_travel_required": true,
