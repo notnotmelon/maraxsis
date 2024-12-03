@@ -1,4 +1,11 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.17.6
+Date: 2024-12-03
+  Changes:
+    - Moved the geothermal sulfur recipe to the piscary technology.
+    - Moved the rocket fuel recipe down to the hydro plant tech.
+    - Reduced the atmosphere consumption of the pressure dome from 10/s to 5/s
+---------------------------------------------------------------------------------------------------
 Version: 1.17.5
 Date: 2024-12-03
   Bugfixes:
