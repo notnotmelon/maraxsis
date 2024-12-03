@@ -1,4 +1,9 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.17.11
+Date: 2024-12-03
+  Changes:
+    - Added a seperate keybinding for the submarine submerge. Resolves https://github.com/notnotmelon/maraxsis/issues/30
+---------------------------------------------------------------------------------------------------
 Version: 1.17.10
 Date: 2024-12-03
   Bugfixes:
