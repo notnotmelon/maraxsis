@@ -40,6 +40,7 @@ end
 
 data.raw.recipe["thruster"].category = "maraxsis-hydro-plant-or-assembling"
 data.raw.recipe["pumpjack"].category = "maraxsis-hydro-plant-or-assembling"
+data.raw.recipe["chemical-plant"].category = "maraxsis-hydro-plant-or-assembling"
 data.raw.recipe["offshore-pump"].category = "maraxsis-hydro-plant-or-assembling"
 data.raw.recipe["pump"].category = "maraxsis-hydro-plant-or-assembling"
 
