@@ -123,7 +123,7 @@ data:extend {{
     },
     results = {
         {type = "fluid", name = "maraxsis-brackish-water",                 amount = 100},
-        {type = "item",  name = "maraxsis-saturated-salt-filter", amount = 1,  ignored_by_stats = 1, ignored_by_stats = 1},
+        {type = "item",  name = "maraxsis-saturated-salt-filter", amount = 1,  ignored_by_stats = 1, ignored_by_productivity = 1},
     },
     category = "maraxsis-hydro-plant",
     auto_recycle = false,
