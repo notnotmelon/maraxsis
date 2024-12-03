@@ -69,7 +69,7 @@ data:extend {{
     type = "recipe",
     name = "maraxsis-saline-electrolysis",
     enabled = false,
-    energy_required = 10,
+    energy_required = 5,
     ingredients = {
         {type = "fluid", name = "maraxsis-brackish-water", amount = 300},
     },
