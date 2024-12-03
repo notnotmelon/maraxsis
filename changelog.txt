@@ -1,4 +1,9 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.17.12
+Date: 2024-12-03
+  Graphics:
+    - Added graphics for the salted tropical fish. Resolves https://github.com/notnotmelon/maraxsis/issues/8
+---------------------------------------------------------------------------------------------------
 Version: 1.17.11
 Date: 2024-12-03
   Changes:
