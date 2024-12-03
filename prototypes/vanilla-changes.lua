@@ -133,3 +133,20 @@ for _, projectile in pairs(data.raw.projectile) do
     end
     ::continue::
 end
+
+for _, armor in pairs(data.raw.armor) do
+    if type(armor) ~= "table" then goto continue end
+    if not armor.equipment_grid then goto continue end
+    local grid = data.raw["equipment-grid"][armor.equipment_grid]
+    if not grid then goto continue end
+    if not grid.equipment_categories then goto continue end
+    if type(grid.equipment_categories) ~= "table" then goto continue end
+
+    for _, category in pairs(grid.equipment_categories) do
+        if category == "armor" then
+            table.insert(grid.equipment_categories, "maraxsis-armor-category")
+            break
+        end
+    end
+    ::continue::
+end
