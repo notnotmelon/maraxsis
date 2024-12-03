@@ -81,6 +81,7 @@ for _, recipe in pairs {
         min = 400000,
         max = 400000,
     }}
+    recipe.results[1].amount = recipe.results[1].amount * 2
     effects[#effects + 1] = {type = "unlock-recipe", recipe = recipe.name}
 end
 
