@@ -5,6 +5,7 @@
 local function swap_nightvision(grid, surface, equipment)
     local equipment_name = equipment.name
     local position = equipment.position
+    local quality = equipment.quality.name
     local target
     if surface.name == maraxsis.TRENCH_SURFACE_NAME then
         if equipment_name:match("%-disabled$") then return end
@@ -19,7 +20,7 @@ local function swap_nightvision(grid, surface, equipment)
 
     local energy = equipment.energy
     grid.take {equipment = equipment}
-    local new_equipment = grid.put {name = target, position = position}
+    local new_equipment = grid.put {name = target, position = position, quality = quality}
     new_equipment.energy = energy
 end
 
