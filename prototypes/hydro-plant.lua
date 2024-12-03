@@ -106,7 +106,7 @@ data:extend {{
         {type = "impact",   percent = 80},
     },
     heating_energy = "2000kW",
-    module_slots = 3,
+    module_slots = 4,
     icons_positioning = {
         {inventory_index = defines.inventory.furnace_modules, shift = {0, 1}}
     },
