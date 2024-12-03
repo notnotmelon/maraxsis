@@ -1,4 +1,10 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.18.2
+Date: 2024-12-03
+  Changes:
+    - Allowed salt filters to also be crafted in the hydro plant.
+    - Doubled the speed of water electrolysis.
+---------------------------------------------------------------------------------------------------
 Version: 1.18.1
 Date: 2024-12-03
   Changes:
