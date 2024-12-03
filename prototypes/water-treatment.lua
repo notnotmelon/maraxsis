@@ -201,3 +201,5 @@ data:extend {{
     auto_recycle = false,
 }}
 add_to_tech("maraxsis-salt-filter-cleaning")
+
+add_to_tech("maraxsis-hydrolox-rocket-fuel")

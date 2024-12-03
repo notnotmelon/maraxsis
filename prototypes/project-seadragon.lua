@@ -19,10 +19,6 @@ data:extend {{
             type = "unlock-recipe",
             recipe = "maraxsis-super-sealant-substance"
         },
-        {
-            type = "unlock-recipe",
-            recipe = "maraxsis-hydrolox-rocket-fuel"
-        },
     },
     prerequisites = {"hydraulic-science-pack", "coal-liquefaction"},
     unit = {
