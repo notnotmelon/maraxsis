@@ -1,4 +1,11 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.17.8
+Date: 2024-12-03
+  Bugfixes:
+    - The regulator running out of atmosphere now properly disables machines.
+  Changes:
+    - Moved atmosphere barreling recipes to chemical and cryogenic plants.
+---------------------------------------------------------------------------------------------------
 Version: 1.17.7
 Date: 2024-12-03
   Changes:
