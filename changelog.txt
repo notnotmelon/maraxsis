@@ -1,4 +1,9 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.17.10
+Date: 2024-12-03
+  Bugfixes:
+    - Added support for quality to the pressure dome. Resolves https://github.com/notnotmelon/maraxsis/issues/19
+---------------------------------------------------------------------------------------------------
 Version: 1.17.9
 Date: 2024-12-03
   Changes:
