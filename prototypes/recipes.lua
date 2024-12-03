@@ -18,4 +18,5 @@ data:extend{{
     }},
     icon = "__maraxsis__/graphics/icons/geothermal-sulfur.png",
     icon_size = 64,
+    allow_productivity = true,
 }}
