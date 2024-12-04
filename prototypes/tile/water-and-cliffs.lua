@@ -166,7 +166,7 @@ collisionless_cliff.created_effect = {
     }
 }
 collisionless_cliff.hidden = true
-collisionless_cliff.cliff_explosive = nil
+collisionless_cliff.factoriopedia_alternative = "cliff-maraxsis"
 data:extend {collisionless_cliff}
 
 data:extend {{

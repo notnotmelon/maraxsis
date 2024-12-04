@@ -30,22 +30,6 @@ maraxsis.on_event(defines.events.on_script_trigger_effect, function(event)
 	local force_index = old_cliff.force_index
 	local cliff_orientation = old_cliff.cliff_orientation
 
-	-- for cliffs on the trench edge, make these indestructible
-	local x, y = position.x, position.y
-	for _, checked_position in pairs {
-		{x = x,     y = y},
-		{x = x + 4, y = y},
-		{x = x - 4, y = y},
-		{x = x,     y = y + 4},
-		{x = x,     y = y - 4},
-	} do
-		if surface.entity_prototype_collides("cliff-maraxsis", checked_position, true) then
-			old_cliff.destructible = false
-			old_cliff.minable = false
-			return
-		end
-	end
-
 	old_cliff.destroy()
 	local new_cliff = surface.create_entity {
 		name = "cliff-maraxsis",
