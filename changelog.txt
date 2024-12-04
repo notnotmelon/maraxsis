@@ -1,4 +1,10 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.18.5
+Date: 2024-12-04
+  Changes:
+    - Reverted "Fixed softlock due to no power in the trench. The trench now has 1% solar energy."
+    - Unbanned the use of combinators outside the pressure dome.
+---------------------------------------------------------------------------------------------------
 Version: 1.18.4
 Date: 2024-12-04
   Bugfixes:
