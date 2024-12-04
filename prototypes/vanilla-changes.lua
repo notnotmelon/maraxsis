@@ -47,6 +47,8 @@ data.raw.recipe["pipe"].category = "maraxsis-hydro-plant-or-assembling"
 data.raw.recipe["pipe-to-ground"].category = "maraxsis-hydro-plant-or-assembling"
 data.raw.recipe["storage-tank"].category = "maraxsis-hydro-plant-or-assembling"
 data.raw.recipe["fluid-wagon"].category = "maraxsis-hydro-plant-or-assembling"
+data.raw.recipe["recycler"].category = "maraxsis-hydro-plant-or-assembling"
+data.raw.recipe["heating-tower"].category = "maraxsis-hydro-plant-or-assembling"
 
 for _, silo in pairs(data.raw["rocket-silo"]) do
     if silo.fixed_recipe == "rocket-part" then
