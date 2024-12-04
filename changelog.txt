@@ -1,4 +1,15 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.19.2
+Date: 2024-12-04
+  Bugfixes:
+    - Removed productivity limit from the sand recipe. Resolves https://github.com/notnotmelon/maraxsis/issues/38
+  Graphics:
+    - Reverted "Removed rain on maraxsis."
+  Changes:
+    - Added a new recipe to get nutrients on maraxsis. Should help fuel the biochambers.
+    - Reduced the glass requirement in the pressure dome from 1000 glass to 500 glass.
+    - The tungsten pipelining recipes must now be crafted on maraxsis.
+---------------------------------------------------------------------------------------------------
 Version: 1.19.1
 Date: 2024-12-04
   Changes:
