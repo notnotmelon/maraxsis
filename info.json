@@ -16,7 +16,8 @@
     "? hd_planets",
     "(?) tenebris",
     "! Land-Pump",
-    "! buoyant-spidertrons"
+    "! buoyant-spidertrons",
+    "! no-quality"
   ],
   "quality_required": true,
   "space_travel_required": true,
