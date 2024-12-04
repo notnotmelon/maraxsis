@@ -64,7 +64,6 @@ local recipes = {
         {type = "item", name = "electric-engine-unit", amount = 10},
         {type = "item", name = "processing-unit",      amount = 100},
         {type = "item", name = "pump",                 amount = 4},
-        {type = "item", name = "supercapacitor",       amount = 8},
     },
     ["maraxsis-nuclear-submarine"] = {
         {type = "item", name = "tungsten-plate",                   amount = 100},
