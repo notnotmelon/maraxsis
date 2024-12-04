@@ -198,6 +198,7 @@ local extra_module_slots = table.deepcopy(data.raw["assembling-machine"]["maraxs
 extra_module_slots.name = "maraxsis-hydro-plant-extra-module-slots"
 extra_module_slots.module_slots = extra_module_slots.module_slots + 2
 extra_module_slots.hidden_in_factoriopedia = true
+extra_module_slots.factoriopedia_alternative = "maraxsis-hydro-plant"
 extra_module_slots.placeable_by = {{item = "maraxsis-hydro-plant", count = 1}}
 extra_module_slots.localised_name = {"entity-name.maraxsis-hydro-plant"}
 extra_module_slots.flags = {"placeable-player", "player-creation", "not-in-made-in"}
