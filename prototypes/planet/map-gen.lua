@@ -253,7 +253,6 @@ data:extend {maraxsis.merge(data.raw.planet.gleba, {
     icon_size = 256,
     order = "ce[maraxsis]",
     pollutant_type = "nil",
-    player_effects = "nil",
     solar_power_in_space = 150,
     map_gen_settings = planet_map_gen.maraxsis(),
     distance = 15,
