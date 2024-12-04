@@ -1,4 +1,15 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.19.0
+Date: 2024-12-04
+  Features:
+    - Added trench ducts for fluid transfer to the trench. Resolves https://github.com/notnotmelon/maraxsis/issues/32 Resolves https://github.com/notnotmelon/maraxsis/issues/12
+  Bugfixes:
+    - Fixed incorrect collision masks for ducts
+    - Fixed some cliffs being invincible.
+  Changes:
+    - Added super sealant substance to the abyssal diving gear.
+    - Replaced iron in ducts to tungsten pipes
+---------------------------------------------------------------------------------------------------
 Version: 1.18.14
 Date: 2024-12-04
   Bugfixes:
