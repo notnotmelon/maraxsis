@@ -108,21 +108,21 @@ This connection is mirrored in their names. The shared suffixes “-kis” or �
 
 Maraxsis would not be possible without the help of these amazing, fantastic, incredible open source projects.
 
-## Unused Renders
+#### Unused Renders
 
 - **Creators**: malcolmriley
 - **Source**: [Unused Renders](https://github.com/malcolmriley/unused-renders)
 - **License**: [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)
 - **Changes**: Yes. Icons rescaled and cropped to 64x64. Various color adjustments.
 
-## Tropical Fish Pack
+#### Tropical Fish Pack
 
 - **Creators**: ZivixLLC
 - **Source**: [Turbosquid](https://www.turbosquid.com/3d-models/free-tropical-fish-pack-3d-model/652729)
 - **License**: [TurboSquid 3D Model License](https://blog.turbosquid.com/turbosquid-3d-model-license/)
 - **Changes**: Yes. Added animations. Added light effects. Converted to .PNG via Blender.
 
-## Hydro Plant & Regulator
+#### Hydro Plant & Regulator
 
 - **Creators**: Hurricane
 - **Source**: [Figma](https://shorturl.at/AFcDm)
@@ -148,7 +148,7 @@ Maraxsis would not be possible without the help of these amazing, fantastic, inc
 - **Creators**: fishbus
 - **Source**: [Factorio+](https://mods.factorio.com/mod/factorioplus)
 - **License**: [MIT](https://opensource.org/license/MIT)
-- **Changes**: Yes. Resized to create a low-resolution version. Added lamps.
+- **Changes**: Yes. Added lamps.
 
 #### Coral Reef
 
@@ -163,6 +163,13 @@ Maraxsis would not be possible without the help of these amazing, fantastic, inc
 - **Source**: [Spidertron Enhancements](https://mods.factorio.com/mod/SpidertronEnhancements) & [Spidertron Patrols](https://mods.factorio.com/mod/SpidertronPatrols) & [Spidertron Automation](https://mods.factorio.com/mod/SpidertronPatrols)
 - **License**: [MIT](https://opensource.org/license/MIT)
 - **Changes**: Yes. Updated the code to work with submarines.
+
+#### Ducts
+
+- **Creators**: Krastor, Linver, iicyan, raiguard
+- **Source**: [Fluid Must Flow](https://mods.factorio.com/mod/FluidMustFlow)
+- **License**: [GNU LGPLv3](https://opensource.org/licenses/lgpl-3.0)
+- **Changes**: Yes. Edited recipes. Added trench duct.
 
 #### Devops & CI
 

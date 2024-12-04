@@ -91,7 +91,7 @@ data:extend {maraxsis.merge(data.raw.radar.radar, {
     pictures = {
         layers = {
             {
-                filename = "__maraxsis__/graphics/entity/sonar/hr-sonar.png",
+                filename = "__maraxsis__/graphics/entity/sonar/sonar.png",
                 width = 320,
                 height = 384,
                 apply_projection = false,
@@ -101,7 +101,7 @@ data:extend {maraxsis.merge(data.raw.radar.radar, {
                 shift = util.by_pixel(0, -30 - 16),
             },
             {
-                filename = "__maraxsis__/graphics/entity/sonar/hr-sonar-shadow.png",
+                filename = "__maraxsis__/graphics/entity/sonar/sonar-shadow.png",
                 width = 384,
                 height = 192,
                 scale = 0.65,

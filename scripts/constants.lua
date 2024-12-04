@@ -2,6 +2,7 @@ _G.maraxsis_dome_collision_mask = "maraxsis_maraxsis_dome_collision_mask"
 _G.maraxsis_collision_mask = "maraxsis_collision_mask"
 _G.maraxsis_lava_collision_mask = "maraxsis_lava_collision_mask"
 _G.maraxsis_fishing_tower_collision_mask = "maraxsis_fishing_tower_collision_mask"
+_G.maraxsis_trench_entrance_collision_mask = "maraxsis_trench_entrance_collision_mask"
 
 local TRENCH_MOVEMENT_FACTOR = 1
 

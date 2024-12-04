@@ -20,6 +20,11 @@ data:extend {{
     type = "collision-layer",
 }}
 
+data:extend {{
+    name = maraxsis_trench_entrance_collision_mask,
+    type = "collision-layer",
+}}
+
 local processed_prototypes = table.deepcopy(defines.prototypes.entity)
 for prototype, _ in pairs(processed_prototypes) do
     processed_prototypes[prototype] = false

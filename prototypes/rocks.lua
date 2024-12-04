@@ -47,3 +47,13 @@ trench_wall_collisionless.created_effect = {
     }
 }
 data:extend {trench_wall_collisionless}
+
+-- sulfur vent thingy
+
+local maraxsis_chimney = table.deepcopy(data.raw["simple-entity"]["vulcanus-chimney"])
+maraxsis_chimney.name = "maraxsis-chimney"
+maraxsis_chimney.hidden = true
+maraxsis_chimney.factoriopedia_alternative = "vulcanus-chimney"
+maraxsis_chimney.localised_name = {"entity-name.vulcanus-chimney"}
+data:extend {maraxsis_chimney}
+

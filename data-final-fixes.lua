@@ -57,3 +57,11 @@ end
 
 data.raw["equipment-grid"]["maraxsis-diesel-submarine-equipment-grid"].equipment_categories = table.deepcopy(data.raw["equipment-grid"]["spidertron-equipment-grid"].equipment_categories)
 data.raw["equipment-grid"]["maraxsis-nuclear-submarine-equipment-grid"].equipment_categories = table.deepcopy(data.raw["equipment-grid"]["spidertron-equipment-grid"].equipment_categories)
+
+-- fix collision masks for the trench entrance
+for _, entity in pairs(collision_mask_util.collect_prototypes_with_layer("object")) do
+    if entity.type ~= "tile" and entity.name ~= "maraxsis-trench-duct" then
+        entity.collision_mask = collision_mask_util.get_mask(entity)
+        entity.collision_mask.layers[maraxsis_trench_entrance_collision_mask] = true
+    end
+end

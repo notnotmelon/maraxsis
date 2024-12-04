@@ -228,7 +228,7 @@ planet_map_gen.maraxsis_trench = function()
                     ["maraxsis-trench-wall-collisionless"] = {},
                     ["vulcanus-chimney-short"] = {},
                     ["vulcanus-chimney-truncated"] = {},
-                    ["vulcanus-chimney"] = {},
+                    ["maraxsis-chimney"] = {},
                     ["vulcanus-chimney-cold"] = {},
                     ["vulcanus-chimney-faded"] = {},
                 },
