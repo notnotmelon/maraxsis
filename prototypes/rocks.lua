@@ -26,6 +26,7 @@ trench_wall.icons = {
 }
 trench_wall.icon = nil
 trench_wall.icon_size = nil
+trench_wall.collision_mask = {layers = {[maraxsis_trench_entrance_collision_mask] = true, item = true, player = true}}
 
 data:extend {trench_wall}
 
@@ -53,7 +54,6 @@ data:extend {trench_wall_collisionless}
 local maraxsis_chimney = table.deepcopy(data.raw["simple-entity"]["vulcanus-chimney"])
 maraxsis_chimney.name = "maraxsis-chimney"
 maraxsis_chimney.hidden = true
-maraxsis_chimney.factoriopedia_alternative = "vulcanus-chimney"
 maraxsis_chimney.localised_name = {"entity-name.vulcanus-chimney"}
 data:extend {maraxsis_chimney}
 

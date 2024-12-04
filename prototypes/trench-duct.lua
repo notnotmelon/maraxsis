@@ -5,7 +5,7 @@ data.raw.technology["ducts"].research_trigger = {
     type = "mine-entity",
     entity = "maraxsis-chimney"
 }
-data.raw.technology["ducts"].prerequisites = {"maraxsis-hydro-plant"}
+data.raw.technology["ducts"].prerequisites = {"maraxsis-hydro-plant", "cliff-explosives"}
 
 data:extend {{
     type = "item",
@@ -51,7 +51,11 @@ data:extend {{
     fast_replaceable_group = "ducts",
     collision_box = {{-0.99, -0.99}, {0.79, 0.79}},
     selection_box = {{-1, -1}, {1, 1}},
-    collision_mask = {layers = {object = true, [maraxsis_collision_mask] = true}},
+    collision_mask = {layers = {object = true, [maraxsis_collision_mask] = true, train = true, is_object = true, is_lower_object = true}},
+    tile_buildability_rules = {
+        {area = {{-1, -2.5}, {1, -1.5}}, required_tiles = {layers = {maraxsis_collision_mask = true}}, colliding_tiles = {layers = {}}},
+    },
+    placeable_position_visualization = table.deepcopy(data.raw["offshore-pump"]["offshore-pump"].placeable_position_visualization),
     surface_conditions = {{
         property = "pressure",
         min = 200000,
@@ -302,5 +306,5 @@ data.raw.recipe["duct-exhaust"].ingredients = {
 }
 
 data.raw.pump["duct-intake"].energy_source = {type = "void"}
-data.raw.pump["duct-intake"].energy_source = {type = "void"}
+data.raw.pump["duct-exhaust"].energy_source = {type = "void"}
 data.raw.pump["non-return-duct"].energy_source = {type = "void"}
