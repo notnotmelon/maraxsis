@@ -40,7 +40,6 @@ local prototypes_that_cant_be_placed_on_water = {
     "beacon",
     "generator",
     "market",
-    "storage-tank",
     "reactor",
     "tree",
     "arithmetic-combinator",
