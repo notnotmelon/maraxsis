@@ -17,7 +17,6 @@ This mod is in early access/beta status. Here are the known issues before it can
   - Placeholder graphics for the coral reef.
   - Placeholder graphics for the fishing tower.
   - Missing the Maraxsis enemy.
-  - Missing a good way to transfer fluids to the trench. Currently you have to use barrels.
 
 During the beta period, please post factory screenshots, bugs, and balance suggestions on the Discord.
 Your feedback is extremely important!
