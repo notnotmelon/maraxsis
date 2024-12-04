@@ -41,6 +41,20 @@ water.animations = {
 }
 data:extend {water}
 
+local function default_destroyed_dropped_item_trigger()
+    return {
+        type = "direct",
+        action_delivery = {
+            type = "instant",
+            source_effects = {
+                type = "create-trivial-smoke",
+                smoke_name = "maraxsis-swimming-bubbles",
+                offset_deviation = {{-0.1, -0.1}, {0.1, 0.1}},
+            }
+        }
+    }
+end
+
 local layer = 4
 local waterifiy = {
     ---creates a copy of a tile prototype that can be used underneath py fancy water
@@ -58,6 +72,8 @@ local waterifiy = {
         tile.map_color = maraxsis.color_combine(tile.map_color or data.raw.tile["water"].map_color, data.raw.tile["deepwater"].map_color, 0.25)
         tile.absorptions_per_second = table.deepcopy(data.raw.tile["water"].absorptions_per_second)
         tile.draw_in_water_layer = true
+        tile.destroys_dropped_items = true
+        tile.default_destroyed_dropped_item_trigger = default_destroyed_dropped_item_trigger()
         tile.walking_speed_modifier = 0.2
         tile.allows_being_covered = false
         water_tile_type_names[#water_tile_type_names + 1] = tile.name
@@ -216,6 +232,7 @@ data:extend {maraxsis.merge(data.raw.tile["out-of-map"], {
     effect_color_secondary = {0, 68, 25},
     map_color = {0, 0, 0.1, 1},
     destroys_dropped_items = true,
+    default_destroyed_dropped_item_trigger = default_destroyed_dropped_item_trigger(),
     allows_being_covered = false,
     walking_speed_modifier = 0.2,
     collision_mask = {layers = {player = true, item = true, doodad = true, decal = true, [maraxsis_trench_entrance_collision_mask] = true, [maraxsis_fishing_tower_collision_mask] = true}},
