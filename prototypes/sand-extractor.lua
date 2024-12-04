@@ -20,7 +20,8 @@ data:extend {{
         property = "pressure",
         min = 200000,
         max = 200000,
-    }}
+    }},
+    maximum_productivity = 9999999
 }}
 
 for i = 1, 10 do
