@@ -43,6 +43,7 @@ data:extend {{
         {type = "item", name = "pipe-to-ground", amount = 2},
         {type = "item", name = "pump", amount = 1},
         {type = "item", name = "maraxsis-glass-panes", amount = 50},
+        {type = "item", name = "maraxsis-super-sealant-substance", amount = 50},
     },
     results = {
         {type = "item", name = "maraxsis-abyssal-diving-gear", amount = 1},
