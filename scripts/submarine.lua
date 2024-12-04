@@ -205,7 +205,7 @@ maraxsis.on_event("toggle-driving", function(event)
         maraxsis.execute_later("exit_submarine", 1, event)
     -- case 2: player is hovering the sub and trying to enter. the vanilla vechicle enter range is too low for water vehicles so we artificially increase it
     elseif can_enter_submarine(player, selected) then
-        enter_submarine(player, selected)
+        maraxsis.execute_later("enter_submarine", 1, player, selected)
     end
 end)
 
