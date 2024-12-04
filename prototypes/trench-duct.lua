@@ -45,6 +45,11 @@ for _, effect in pairs(data.raw.technology["ducts"].effects) do
                 break
             end
         end
+        recipe.surface_conditions = {{
+            property = "pressure",
+            min = 200000,
+            max = 400000
+        }}
     end
 end
 
