@@ -166,8 +166,7 @@ data:extend {{
     enabled = false,
     energy_required = 1,
     ingredients = {
-        {type = "item", name = "steel-plate",     amount = 1},
-        {type = "item", name = "iron-gear-wheel", amount = 2},
+        {type = "item", name = "steel-plate",     amount = 2},
         {type = "item", name = "carbon-fiber",    amount = 1},
     },
     results = {
