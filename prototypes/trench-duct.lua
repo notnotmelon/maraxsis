@@ -39,6 +39,12 @@ for _, effect in pairs(data.raw.technology["ducts"].effects) do
     if effect.type == "unlock-recipe" then
         local recipe = data.raw.recipe[effect.recipe]
         recipe.category = "maraxsis-hydro-plant-or-assembling"
+        for _, ingredient in pairs(recipe.ingredients) do
+            if ingredient.name == "iron-plate" then
+                ingredient.name = "tungsten-plate"
+                break
+            end
+        end
     end
 end
 
@@ -296,12 +302,12 @@ data:extend {{
 }}
 
 data.raw.recipe["duct-intake"].ingredients = {
-    {type = "item", name = "iron-plate", amount = 6},
+    {type = "item", name = "tungsten-plate", amount = 6},
     {type = "item", name = "pump", amount = 1},
 }
 
 data.raw.recipe["duct-exhaust"].ingredients = {
-    {type = "item", name = "iron-plate", amount = 6},
+    {type = "item", name = "tungsten-plate", amount = 6},
     {type = "item", name = "pump", amount = 1},
 }
 
