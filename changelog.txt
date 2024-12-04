@@ -1,4 +1,9 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.19.4
+Date: 2024-12-04
+  Bugfixes:
+    - Fixed difficulty entering submarine. Resolves https://github.com/notnotmelon/maraxsis/issues/36
+---------------------------------------------------------------------------------------------------
 Version: 1.19.3
 Date: 2024-12-04
   Bugfixes:
