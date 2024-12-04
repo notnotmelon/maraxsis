@@ -1,4 +1,11 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.18.6
+Date: 2024-12-04
+  Changes:
+    - Added tungsten-plate to the hydro plant recipe. Removed steel and blue circuits.
+    - Removed supercapacitors from the diesel submarine recipe.
+    - Swapped space platform foundation for tungsten-plate in the pressure dome recipe.
+---------------------------------------------------------------------------------------------------
 Version: 1.18.5
 Date: 2024-12-04
   Changes:
