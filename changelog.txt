@@ -1,4 +1,13 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.18.14
+Date: 2024-12-04
+  Bugfixes:
+    - Fixed hydrolox rocket fuel missing from the rocket fuel productivity tech.
+    - The "maraxsis-hydro-plant-extra-module-slots" entity is now hidden in factoriopedia
+  Changes:
+    - Exapanded the logistics connection radius of the regulator from 16 tiles -> 22 tiles
+    - The boiler can now be crafted in the hydro plant.
+---------------------------------------------------------------------------------------------------
 Version: 1.18.13
 Date: 2024-12-04
   Changes:
