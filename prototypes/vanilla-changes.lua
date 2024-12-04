@@ -88,6 +88,12 @@ table.insert(data.raw.technology["rocket-part-productivity"].effects, {
     hidden = true
 })
 
+table.insert(data.raw.technology["rocket-fuel-productivity"].effects, {
+    type = "change-recipe-productivity",
+    recipe = "maraxsis-hydrolox-rocket-fuel",
+    change = 0.1,
+})
+
 data:extend {{
     type = "recipe",
     name = "pistol",
