@@ -12,6 +12,10 @@ data:extend {{
             type = "unlock-recipe",
             recipe = "maraxsis-wyrm-specimen",
         },
+        {
+            type = "unlock-recipe",
+            recipe = "maraxsis-geothermal-sulfur"
+        }
     },
     prerequisites = {"maraxsis-piscary"},
     research_trigger = {

@@ -138,7 +138,6 @@ end
 
 add_to_tech("maraxsis-fishing-tower")
 add_to_tech("maraxsis-fish-food")
-add_to_tech("maraxsis-geothermal-sulfur")
 
 local microplastics_variants = {}
 for i = 1, 3 do
@@ -251,3 +250,26 @@ data:extend {{
 }}
 local dmg = data.raw.capsule["maraxsis-tropical-fish"].capsule_action.attack_parameters.ammo_type.action.action_delivery.target_effects[1].damage
 dmg.amount = dmg.amount * 1.5
+
+data:extend{{
+    type = "recipe",
+    name = "maraxsis-nutrients-from-tropical-fish",
+    icon = "__maraxsis__/graphics/icons/nutrients-from-tropical-fish.png",
+    icon_size = 64,
+    enabled = false,
+    energy_required = 2,
+    ingredients = {
+        {type = "item", name = "maraxsis-tropical-fish", amount = 1},
+    },
+    results = {
+        {type = "item", name = "nutrients", amount = 10},
+    },
+    auto_recycle = false,
+    allow_decomposition = false,
+    allow_productivity = true,
+    category = "organic",
+    subgroup = "nauvis-agriculture",
+    order = "g[maraxsis]"
+}}
+
+add_to_tech("maraxsis-nutrients-from-tropical-fish")
