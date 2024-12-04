@@ -48,8 +48,8 @@ data:extend {{
     enabled = false,
     energy_required = 10,
     ingredients = {
-        {type = "fluid", name = "maraxsis-oxygen",   amount = 100},
-        {type = "fluid", name = "maraxsis-hydrogen", amount = 200},
+        {type = "fluid", name = "maraxsis-oxygen",   amount = 200},
+        {type = "fluid", name = "maraxsis-hydrogen", amount = 400},
     },
     results = {
         {type = "item", name = "rocket-fuel", amount = 1},
