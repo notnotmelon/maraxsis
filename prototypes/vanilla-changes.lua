@@ -43,6 +43,8 @@ data.raw.recipe["pumpjack"].category = "maraxsis-hydro-plant-or-assembling"
 data.raw.recipe["chemical-plant"].category = "maraxsis-hydro-plant-or-assembling"
 data.raw.recipe["offshore-pump"].category = "maraxsis-hydro-plant-or-assembling"
 data.raw.recipe["pump"].category = "maraxsis-hydro-plant-or-assembling"
+data.raw.recipe["pipe"].category = "maraxsis-hydro-plant-or-assembling"
+data.raw.recipe["pipe-to-ground"].category = "maraxsis-hydro-plant-or-assembling"
 
 for _, silo in pairs(data.raw["rocket-silo"]) do
     if silo.fixed_recipe == "rocket-part" then
