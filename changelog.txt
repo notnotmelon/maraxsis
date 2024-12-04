@@ -1,4 +1,12 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.18.4
+Date: 2024-12-04
+  Bugfixes:
+    - Death now respawns you on maraxsis instead of nauvis.
+  Changes:
+    - Increased the cost of hydrolox rocket fuel by 2x
+    - Unbanned storage tanks from being placed without a dome.
+---------------------------------------------------------------------------------------------------
 Version: 1.18.3
 Date: 2024-12-04
   Bugfixes:
