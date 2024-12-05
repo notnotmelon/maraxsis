@@ -1,4 +1,11 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.19.11
+Date: 2024-12-05
+  Compatibility:
+    - Added hard requirement on SpidertronPatrols >= 2.5.4
+  Changes:
+    - Removed maraxsis crafting requirement for tungsten pipes.
+---------------------------------------------------------------------------------------------------
 Version: 1.19.10
 Date: 2024-12-05
   Compatibility:
