@@ -876,7 +876,8 @@ maraxsis.on_nth_tick(73, function()
         local regulator_fluidbox = dome_data.regulator_fluidbox
         if not regulator_fluidbox or not regulator_fluidbox.valid then goto continue end
 
-        local powered = regulator.energy > 0
+        --local powered = regulator.energy > 0
+        local powered = true -- todo: revert this once the salt reactor is added
         local has_fluid = (regulator_fluidbox.get_fluid_count("maraxsis-atmosphere") > 0) and regulator_fluidbox.is_crafting()
         local powered_and_has_fluid = powered and has_fluid
         if powered_and_has_fluid == dome_data.powered_and_has_fluid then goto continue end
