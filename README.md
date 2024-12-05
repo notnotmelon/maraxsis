@@ -75,7 +75,6 @@ Maraxsis is available at the same time as Aquilo. The mod does not change any va
 
 This mod makes a few changes to Factorio: Space Age in order for Maraxsis to fit seamlessly into the tech tree.
 
-  - Adds a recipe for the pistol.
   - Banned unbarrelling of heavy oil in space.
   - The research productivity technology now requires hydraulic science packs.
   - Removed surface restrictions for the biolab.

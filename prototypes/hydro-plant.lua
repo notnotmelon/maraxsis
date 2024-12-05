@@ -222,7 +222,6 @@ data:extend {{
     ingredients = {
         {type = "item", name = "tungsten-plate",      amount = 35},
         {type = "item", name = "pipe",             amount = 30},
-        {type = "item", name = "pistol",           amount = 1},
         {type = "item", name = "quality-module-3", amount = 4},
         {type = "fluid", name = "maraxsis-saline-water", amount = 300},
     },

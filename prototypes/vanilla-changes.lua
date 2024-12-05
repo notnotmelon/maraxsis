@@ -95,26 +95,6 @@ table.insert(data.raw.technology["rocket-fuel-productivity"].effects, {
     change = 0.1,
 })
 
-data:extend {{
-    type = "recipe",
-    name = "pistol",
-    enabled = false,
-    ingredients = {
-        {type = "item", name = "iron-plate",   amount = 5},
-        {type = "item", name = "copper-plate", amount = 5},
-    },
-    results = {
-        {type = "item", name = "pistol", amount = 1},
-    },
-    category = "crafting",
-    energy_required = 15,
-}}
-
-table.insert(data.raw["technology"]["military"].effects, 1, {
-    type = "unlock-recipe",
-    recipe = "pistol",
-})
-
 local new_spidertron_effects = {}
 for _, effect in pairs(data.raw.technology["spidertron"].effects) do
     if effect.recipe ~= "service_station" and effect.recipe ~= "constructron" then
