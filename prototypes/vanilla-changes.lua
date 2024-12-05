@@ -82,18 +82,22 @@ table.insert(data.raw["assembling-machine"]["biochamber"].crafting_categories, "
 table.insert(data.raw["assembling-machine"]["chemical-plant"].crafting_categories, "maraxsis-hydro-plant-or-chemistry")
 table.insert(data.raw["assembling-machine"]["foundry"].crafting_categories, "maraxsis-hydro-plant-or-foundry")
 
-table.insert(data.raw.technology["rocket-part-productivity"].effects, {
-    type = "change-recipe-productivity",
-    recipe = "maraxsis-rocket-part",
-    change = 0.1,
-    hidden = true
-})
+if data.raw.technology["rocket-part-productivity"] then
+    table.insert(data.raw.technology["rocket-part-productivity"].effects, {
+        type = "change-recipe-productivity",
+        recipe = "maraxsis-rocket-part",
+        change = 0.1,
+        hidden = true
+    })
+end
 
-table.insert(data.raw.technology["rocket-fuel-productivity"].effects, {
-    type = "change-recipe-productivity",
-    recipe = "maraxsis-hydrolox-rocket-fuel",
-    change = 0.1,
-})
+if data.raw.technology["rocket-fuel-productivity"] then
+    table.insert(data.raw.technology["rocket-fuel-productivity"].effects, {
+        type = "change-recipe-productivity",
+        recipe = "maraxsis-hydrolox-rocket-fuel",
+        change = 0.1,
+    })
+end
 
 local new_spidertron_effects = {}
 for _, effect in pairs(data.raw.technology["spidertron"].effects) do
