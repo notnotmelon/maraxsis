@@ -59,7 +59,7 @@ data:extend {{
     selection_box = {{-1, -1}, {1, 1}},
     collision_mask = {layers = {object = true, [maraxsis_collision_mask] = true, train = true, is_object = true, is_lower_object = true}},
     tile_buildability_rules = {
-        {area = {{-1, -2.5}, {1, -1.5}}, required_tiles = {layers = {maraxsis_collision_mask = true}}, colliding_tiles = {layers = {}}},
+        {area = {{-1, -2}, {1, -1.5}}, required_tiles = {layers = {maraxsis_collision_mask = true}}, colliding_tiles = {layers = {}}},
     },
     placeable_position_visualization = table.deepcopy(data.raw["offshore-pump"]["offshore-pump"].placeable_position_visualization),
     surface_conditions = {{
