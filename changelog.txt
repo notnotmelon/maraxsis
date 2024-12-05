@@ -1,4 +1,9 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.19.13
+Date: 2024-12-05
+  Bugfixes:
+    - Fixed being able to force destroy dome tiles. Resolves https://github.com/notnotmelon/maraxsis/issues/34
+---------------------------------------------------------------------------------------------------
 Version: 1.19.12
 Date: 2024-12-05
   Changes:
