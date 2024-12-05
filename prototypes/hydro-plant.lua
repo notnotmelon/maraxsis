@@ -222,8 +222,8 @@ data:extend {{
     ingredients = {
         {type = "item", name = "tungsten-plate",      amount = 35},
         {type = "item", name = "pipe",             amount = 30},
-        {type = "item", name = "quality-module-3", amount = 4},
         {type = "fluid", name = "maraxsis-saline-water", amount = 300},
+        {type = "item", name = mods.upcycler and "speed-module-3" or "quality-module-3", amount = 4},
     },
     results = {
         {type = "item", name = "maraxsis-hydro-plant", amount = 1},
