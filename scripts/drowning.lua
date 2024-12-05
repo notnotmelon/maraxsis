@@ -6,6 +6,11 @@ maraxsis.on_event(maraxsis.events.on_init(), function()
     storage.breath = storage.breath or {}
 end)
 
+local is_abyssal_diving_gear = {
+    ["maraxsis-abyssal-diving-gear"] = true,
+    ["maraxsis-abyssal-diving-gear-disabled"] = true,
+}
+
 maraxsis.on_nth_tick(UPDATE_RATE, function()
     for _, player in pairs(game.connected_players) do
         local character = player.character
@@ -23,6 +28,16 @@ maraxsis.on_nth_tick(UPDATE_RATE, function()
         if vehicle then
             storage.breath[player.index] = nil
             goto continue
+        end
+
+        local grid = character.grid
+        if grid then
+            for _, equipment in pairs(grid.get_contents()) do
+                if is_abyssal_diving_gear[equipment.name] then
+                    storage.breath[player.index] = nil
+                    goto continue
+                end
+            end
         end
 
         for _, pressure_dome_data in pairs(storage.pressure_domes) do

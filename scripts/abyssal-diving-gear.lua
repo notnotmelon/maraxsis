@@ -31,7 +31,6 @@ local function update_abyssal_light_cone(player)
         if equipment.name == "maraxsis-abyssal-diving-gear" then
             local quality = prototypes.quality[equipment.quality]
             light_size = light_size + (equipment.count * get_quality_buff(quality.level))
-            break
         end
     end
 
@@ -44,7 +43,7 @@ local function update_abyssal_light_cone(player)
 
     storage.abyssal_light_cones[player.index] = rendering.draw_light {
         sprite = "utility/light_medium",
-        scale = light_size + 1.5,
+        scale = light_size * 0.6 + 3.5,
         target = character,
         surface = character.surface,
         players = {player},
