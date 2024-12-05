@@ -179,3 +179,10 @@ data.raw.tile["volcanic-folds-underwater"].autoplace = {
     probability_expression = [[maraxsis_trench_wall]],
     order = "e[tile]-a[maraxsis]"
 }
+
+data.raw["simple-entity"]["maraxsis-chimney"].autoplace = {
+    probability_expression = [[
+        maraxsis_trench_wall * maraxsis_3x3_grid * (random_penalty{x = x, y = y, seed = map_seed, source = 1, amplitude = 1} > 0.995)
+    ]],
+    order = "f[entity]-a[chimney]"
+}

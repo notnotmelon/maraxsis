@@ -53,7 +53,8 @@ data:extend {trench_wall_collisionless}
 
 local maraxsis_chimney = table.deepcopy(data.raw["simple-entity"]["vulcanus-chimney"])
 maraxsis_chimney.name = "maraxsis-chimney"
-maraxsis_chimney.hidden = true
+maraxsis_chimney.hidden_in_factoriopedia = true
+maraxsis_chimney.map_color = {153, 166, 77}
 maraxsis_chimney.localised_name = {"entity-name.vulcanus-chimney"}
 data:extend {maraxsis_chimney}
 
