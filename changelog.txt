@@ -1,4 +1,9 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.19.16
+Date: 2024-12-05
+  Changes:
+    - Added a temp fix for a softlock caused by no power in the trench. The regulator no longer needs energy and can activate machines with just air. Once the salt reactor is added this feature will go away.
+---------------------------------------------------------------------------------------------------
 Version: 1.19.15
 Date: 2024-12-05
   Bugfixes:
