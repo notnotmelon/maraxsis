@@ -1,8 +1,7 @@
 data:extend {{
     name = "maraxsis-abyssal-diving-gear",
     type = "technology",
-    icon = "__maraxsis__/graphics/technology/abyssal-diving-gear.png",
-    icon_size = 256,
+    icons = util.technology_icon_constant_equipment("__maraxsis__/graphics/technology/abyssal-diving-gear.png"),
     effects = {
         {
             type = "unlock-recipe",
