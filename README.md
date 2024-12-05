@@ -82,13 +82,6 @@ This mod makes a few changes to Factorio: Space Age in order for Maraxsis to fit
 
 ---
 
-### Recommended Mods
-
-  - [HD Planets](https://mods.factorio.com/mod/hd_planets) and [Visible Planets](https://mods.factorio.com/mod/visible-planets) for beautiful space platforms above Maraxsis.
-  - [Starmap: Nexuz](https://mods.factorio.com/user/Tserup) to improve the graphics of the starmap.
-
----
-
 ### Etymology
 
 The name "Maraxsis" draws inspiration from Frank Herbert's Arrakis. The two worlds can be considered "equal but opposite".
