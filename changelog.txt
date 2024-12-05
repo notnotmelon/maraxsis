@@ -1,4 +1,19 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.19.15
+Date: 2024-12-05
+  Bugfixes:
+    - Fixed abyssal diving gear not properly providing light.
+    - Fixed abyssal diving gear not protecting drowning damage.
+    - The abyssal diving gear can no longer be inserted into tanks.
+  Graphics:
+    - Improved the tech icon for abyssal diving gear.
+  Locale:
+    - Added a quality diamond to the abyssal diving gear tooltip.
+  Changes:
+    - Increased the energy usage for the abyssal diving gear from 100kW to 400kW
+    - Removed pistols in the hydro plant recipe.
+    - Slightly tweaked the collision box for the trench duct.
+---------------------------------------------------------------------------------------------------
 Version: 1.19.14
 Date: 2024-12-05
   Graphics:
