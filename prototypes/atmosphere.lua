@@ -55,7 +55,7 @@ data:extend {{
     },
     results = {
         {type = "fluid", name = "maraxsis-liquid-atmosphere", amount = 1},
-        {type = "fluid", name = "fluoroketone-hot",           amount = 20, ignored_by_stats = true, ignored_by_productivity = true}
+        {type = "fluid", name = "fluoroketone-hot",           amount = 20, ignored_by_stats = 20, ignored_by_productivity = 20}
     },
     enabled = false,
     main_product = "maraxsis-liquid-atmosphere",
