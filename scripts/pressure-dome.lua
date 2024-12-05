@@ -457,7 +457,7 @@ local function place_regulator(pressure_dome_data)
             name = "maraxsis-regulator-fluidbox",
             position = {x, y},
             force = force,
-            quality = quality,
+            --quality = quality, https://github.com/notnotmelon/maraxsis/issues/50
             create_build_effect_smoke = false,
         }
     end
