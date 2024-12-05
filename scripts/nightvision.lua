@@ -40,8 +40,6 @@ maraxsis.on_event({
     defines.events.on_player_armor_inventory_changed,
     defines.events.on_player_created,
 }, function(event)
-    if storage.stop_infinite_nightvision_recursion_loop then return end
-
     local player = game.get_player(event.player_index)
     if not player then return end
     local armor = player.get_inventory(defines.inventory.character_armor)
@@ -52,7 +50,7 @@ maraxsis.on_event({
         if stack.valid_for_read and stack.is_armor then
             local grid = stack.grid
             if grid then
-                swap_nightvision_to_correct_prototype(grid, player.surface)
+                swap_nightvision_to_correct_prototype(grid, player.physical_surface)
             end
         end
     end
@@ -70,7 +68,7 @@ maraxsis.on_event(defines.events.on_equipment_inserted, function(event)
         for i = 1, #armor do
             local stack = armor[i]
             if stack.valid_for_read and stack.is_armor and stack.grid == grid then
-                swap_nightvision(grid, player.surface, equipment)
+                swap_nightvision(grid, player.physical_surface, equipment)
             end
         end
         ::continue::

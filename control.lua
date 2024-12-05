@@ -16,5 +16,6 @@ require "scripts.hydro-plant"
 require "scripts.project-seadragon"
 require "scripts.swimming"
 require "scripts.trench-duct"
+require "scripts.abyssal-diving-gear"
 
 maraxsis.finalize_events()

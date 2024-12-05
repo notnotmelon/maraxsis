@@ -90,3 +90,11 @@ data:extend {{
         type = "full"
     },
 }}
+
+local disabled = table.deepcopy(data.raw["movement-bonus-equipment"]["maraxsis-abyssal-diving-gear"])
+disabled.name = "maraxsis-abyssal-diving-gear-disabled"
+disabled.movement_bonus = 0
+disabled.energy_consumption = "1W"
+disabled.localised_name = {"equipment-name.maraxsis-abyssal-diving-gear"}
+disabled.localised_description = {"", {"equipment-description.maraxsis-abyssal-diving-gear"}, "\n", {"equipment-description.maraxsis-abyssal-diving-gear-disabled"}}
+data:extend {disabled}
