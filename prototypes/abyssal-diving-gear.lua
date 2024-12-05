@@ -72,10 +72,10 @@ data:extend {{
     energy_source = {
         type = "electric",
         usage_priority = "secondary-input",
-        input_flow_limit = "150kW",
+        input_flow_limit = "500kW",
         buffer_capacity = "10kJ"
     },
-    energy_consumption = "100kW",
+    energy_consumption = "400kW",
     movement_bonus = 0.5,
     sprite = {
         filename = "__maraxsis__/graphics/technology/abyssal-diving-gear.png",
