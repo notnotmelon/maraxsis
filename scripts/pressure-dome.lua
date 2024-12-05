@@ -260,7 +260,7 @@ maraxsis.on_event(maraxsis.events.on_built(), function(event)
                 end
             end
             if can_be_diabled_by_dome_low_pressure(entity) then
-                entity.active = pressure_dome_data.powered_and_has_fluid
+                entity.active = not not pressure_dome_data.powered_and_has_fluid
             end
             table.insert(pressure_dome_data.contained_entities, entity)
             update_combinator(pressure_dome_data)
@@ -884,7 +884,7 @@ maraxsis.on_nth_tick(73, function()
 
         for _, e in pairs(dome_data.contained_entities) do
             if can_be_diabled_by_dome_low_pressure(e) then
-                e.active = powered_and_has_fluid                
+                e.active = not not powered_and_has_fluid                
             end
         end
 
