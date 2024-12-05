@@ -139,6 +139,77 @@ end
 add_to_tech("maraxsis-fishing-tower")
 add_to_tech("maraxsis-fish-food")
 
+data:extend {{
+    type = "recipe",
+    name = "maraxsis-carbon",
+    enabled = false,
+    energy_required = 16,
+    ingredients = {
+        {type = "item", name = "maraxsis-tropical-fish", amount = 1},
+    },
+    results = {
+        {type = "item", name = "carbon", amount = 32},
+    },
+    category = "maraxsis-smelting-or-biochamber",
+    allow_productivity = true,
+    main_product = "carbon",
+    icon = "__maraxsis__/graphics/icons/burnt-fish.png",
+    icon_size = 64,
+    show_amount_in_title = false,
+    auto_recycle = false,
+    surface_conditions = maraxsis.surface_conditions(),
+}}
+add_to_tech("maraxsis-carbon")
+
+local tropical_fish_variants = {}
+for i, v in pairs(fish) do
+    tropical_fish_variants[tonumber(i)] = {
+        filename = "__maraxsis__/graphics/entity/fish/icons/" .. i .. ".png",
+        width = 64,
+        height = 64,
+        scale = 2 / 3,
+        flags = {"icon"},
+    }
+end
+data:extend {{
+    type = "capsule",
+    name = "maraxsis-tropical-fish",
+    icon = "__maraxsis__/graphics/icons/tropical-fish.png",
+    icon_size = 64,
+    pictures = tropical_fish_variants,
+    stack_size = data.raw.capsule["raw-fish"].stack_size,
+    capsule_action = table.deepcopy(data.raw.capsule["raw-fish"].capsule_action),
+    spoil_result = "spoilage",
+    spoil_ticks = data.raw.capsule["raw-fish"].spoil_ticks,
+}}
+local dmg = data.raw.capsule["maraxsis-tropical-fish"].capsule_action.attack_parameters.ammo_type.action.action_delivery.target_effects[1].damage
+dmg.amount = dmg.amount * 1.5
+
+data:extend{{
+    type = "recipe",
+    name = "maraxsis-nutrients-from-tropical-fish",
+    icon = "__maraxsis__/graphics/icons/nutrients-from-tropical-fish.png",
+    icon_size = 64,
+    enabled = false,
+    energy_required = 2,
+    ingredients = {
+        {type = "item", name = "maraxsis-tropical-fish", amount = 1},
+    },
+    results = {
+        {type = "item", name = "nutrients", amount = 10},
+    },
+    auto_recycle = false,
+    allow_decomposition = false,
+    allow_productivity = true,
+    category = "organic",
+    subgroup = "nauvis-agriculture",
+    order = "g[maraxsis]"
+}}
+
+add_to_tech("maraxsis-nutrients-from-tropical-fish")
+
+-- MICROPLASTICS --
+
 local microplastics_variants = {}
 for i = 1, 3 do
     microplastics_variants[i] = {
@@ -188,28 +259,6 @@ data:extend {{
 
 data:extend {{
     type = "recipe",
-    name = "maraxsis-carbon",
-    enabled = false,
-    energy_required = 16,
-    ingredients = {
-        {type = "item", name = "maraxsis-tropical-fish", amount = 1},
-    },
-    results = {
-        {type = "item", name = "carbon", amount = 32},
-    },
-    category = "maraxsis-smelting-or-biochamber",
-    allow_productivity = true,
-    main_product = "carbon",
-    icon = "__maraxsis__/graphics/icons/burnt-fish.png",
-    icon_size = 64,
-    show_amount_in_title = false,
-    auto_recycle = false,
-    surface_conditions = maraxsis.surface_conditions(),
-}}
-add_to_tech("maraxsis-carbon")
-
-data:extend {{
-    type = "recipe",
     name = "maraxsis-smelt-microplastics",
     enabled = false,
     energy_required = data.raw.recipe["iron-plate"].energy_required,
@@ -226,50 +275,3 @@ data:extend {{
     auto_recycle = false,
 }}
 add_to_tech("maraxsis-smelt-microplastics")
-
-local tropical_fish_variants = {}
-for i, v in pairs(fish) do
-    tropical_fish_variants[tonumber(i)] = {
-        filename = "__maraxsis__/graphics/entity/fish/icons/" .. i .. ".png",
-        width = 64,
-        height = 64,
-        scale = 2 / 3,
-        flags = {"icon"},
-    }
-end
-data:extend {{
-    type = "capsule",
-    name = "maraxsis-tropical-fish",
-    icon = "__maraxsis__/graphics/icons/tropical-fish.png",
-    icon_size = 64,
-    pictures = tropical_fish_variants,
-    stack_size = data.raw.capsule["raw-fish"].stack_size,
-    capsule_action = table.deepcopy(data.raw.capsule["raw-fish"].capsule_action),
-    spoil_result = "spoilage",
-    spoil_ticks = data.raw.capsule["raw-fish"].spoil_ticks,
-}}
-local dmg = data.raw.capsule["maraxsis-tropical-fish"].capsule_action.attack_parameters.ammo_type.action.action_delivery.target_effects[1].damage
-dmg.amount = dmg.amount * 1.5
-
-data:extend{{
-    type = "recipe",
-    name = "maraxsis-nutrients-from-tropical-fish",
-    icon = "__maraxsis__/graphics/icons/nutrients-from-tropical-fish.png",
-    icon_size = 64,
-    enabled = false,
-    energy_required = 2,
-    ingredients = {
-        {type = "item", name = "maraxsis-tropical-fish", amount = 1},
-    },
-    results = {
-        {type = "item", name = "nutrients", amount = 10},
-    },
-    auto_recycle = false,
-    allow_decomposition = false,
-    allow_productivity = true,
-    category = "organic",
-    subgroup = "nauvis-agriculture",
-    order = "g[maraxsis]"
-}}
-
-add_to_tech("maraxsis-nutrients-from-tropical-fish")
