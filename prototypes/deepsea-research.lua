@@ -39,6 +39,7 @@ local utility_science = table.deepcopy(data.raw.recipe["utility-science-pack"])
 
 local function update_recipe_icon(recipe, fluid)
     local science_pack = data.raw.tool[recipe.name]
+    if not (recipe.icon or science_pack.icon) then return end
     fluid = data.raw.fluid[fluid]
     recipe.icons = {
         {icon = recipe.icon or science_pack.icon, icon_size = recipe.icon_size or science_pack.icon_size},
