@@ -1,4 +1,11 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.19.19
+Date: 2024-12-05
+  Bugfixes:
+    - Fixed a crash with pressure domes.
+    - Fixed the tips and tricks for maraxsis briefing
+    - Fixed the tips and tricks for maraxsis briefing
+---------------------------------------------------------------------------------------------------
 Version: 1.19.18
 Date: 2024-12-05
   Graphics:
