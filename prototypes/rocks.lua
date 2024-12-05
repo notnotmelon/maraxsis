@@ -10,6 +10,7 @@ local trench_wall = maraxsis.merge(data.raw["simple-entity"]["huge-rock"], {
     flags = {"placeable-neutral"},
     collision_box = {{-3, -3}, {3, 3}},
     selection_box = {{-3, -3}, {3, 3}},
+    render_layer = "object-under",
 })
 
 for _, picture in pairs(trench_wall.pictures) do
