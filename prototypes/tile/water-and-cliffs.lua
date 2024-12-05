@@ -111,6 +111,7 @@ data.raw.tile["lava-hot-underwater"].collision_mask.layers.doodad = true
 data.raw.tile["lava-hot-underwater"].collision_mask.layers.ground_tile = nil
 data.raw.tile["lava-hot-underwater"].collision_mask.layers.item = true
 data.raw.tile["lava-hot-underwater"].collision_mask.layers.transport_belt = true
+data.raw.tile["lava-hot-underwater"].map_color = maraxsis.color_combine(data.raw.tile["lava-hot"].map_color, data.raw.tile["deepwater"].map_color, 0.6)
 
 data:extend(waterifiy.tile("volcanic-cracks-hot"))
 data:extend(waterifiy.tile("volcanic-cracks-warm"))
