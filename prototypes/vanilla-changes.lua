@@ -148,6 +148,15 @@ for _, projectile in pairs(data.raw.projectile) do
     ::continue::
 end
 
+-- fix equipment grids for the abyssal diving gear
+local tank = data.raw.car.tank
+if tank.equipment_grid == "medium-equipment-grid" then
+    local medium_grid = table.deepcopy(data.raw["equipment-grid"]["medium-equipment-grid"])
+    medium_grid.name = "tank-equipment-grid"
+    data:extend{medium_grid}
+    tank.equipment_grid = "tank-equipment-grid"
+end
+
 for _, armor in pairs(data.raw.armor) do
     if type(armor) ~= "table" then goto continue end
     if not armor.equipment_grid then goto continue end
