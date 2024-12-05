@@ -1,4 +1,14 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.19.21
+Date: 2024-12-05
+  Compatibility:
+    - Fixed a crash when a mod nils the rocket-part-productivity technology. Resolves https://github.com/notnotmelon/maraxsis/issues/53
+  Bugfixes:
+    - Fixed deepsea research Icon compatibility issue. Resolves https://github.com/notnotmelon/maraxsis/issues/31
+    - Fixed Higher quality domes consume more atmosphere. Resolves https://github.com/notnotmelon/maraxsis/issues/50
+  Graphics:
+    - Changed the map color for the deepsea geothermal vent.
+---------------------------------------------------------------------------------------------------
 Version: 1.19.20
 Date: 2024-12-05
   Locale:
