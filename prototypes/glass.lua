@@ -155,7 +155,7 @@ data:extend {{
     icon = "__maraxsis__/graphics/icons/limestone-processing.png",
     icon_size = 64,
     allow_productivity = true,
-    category = "maraxsis-hydro-plant",
+    category = "maraxsis-hydro-plant-or-foundry",
     allow_decomposition = false,
     main_product = "calcite",
     auto_recycle = false,
