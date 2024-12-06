@@ -1,4 +1,9 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.19.28
+Date: 2024-12-06
+  Bugfixes:
+    - Fixed cannot submerge a submarine in remote view. Resolves https://github.com/notnotmelon/maraxsis/issues/46
+---------------------------------------------------------------------------------------------------
 Version: 1.19.27
 Date: 2024-12-06
   Bugfixes:
