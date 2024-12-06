@@ -99,6 +99,14 @@ if data.raw.technology["rocket-fuel-productivity"] then
     })
 end
 
+if data.raw.technology["plastic-bar-productivity"] then
+    table.insert(data.raw.technology["plastic-bar-productivity"].effects, 2, {
+        type = "change-recipe-productivity",
+        recipe = "maraxsis-smelt-microplastics",
+        change = 0.1,
+    })
+end
+
 local new_spidertron_effects = {}
 for _, effect in pairs(data.raw.technology["spidertron"].effects) do
     if effect.recipe ~= "service_station" and effect.recipe ~= "constructron" then
