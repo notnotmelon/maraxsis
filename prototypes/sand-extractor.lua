@@ -44,7 +44,7 @@ for extractor in pairs(maraxsis.MARAXSIS_SAND_EXTRACTORS) do
     extractor.placeable_by = {item = extractor.name, count = 1}
     extractor.localised_name = extractor.localised_name or {"entity-name." .. extractor.name}
     extractor.localised_description = extractor.localised_description or {"?", {"entity-description." .. extractor.name}, ""}
-    extractor.hidden_in_factoriopedia = true
+    extractor.hidden_in_factoriopedia = false
     extractor.fixed_recipe = "maraxsis-sand"
     extractor.fixed_quality = "normal"
     extractor.crafting_speed = extractor.mining_speed
