@@ -131,6 +131,10 @@ local prototypes_that_can_be_placed_whereever = {
     data.raw.roboport["maraxsis-pressure-dome"],
 }
 
+for extractor in pairs(maraxsis.MARAXSIS_SAND_EXTRACTORS) do
+    table.insert(prototypes_that_can_be_placed_whereever, data.raw["assembling-machine"][extractor .. "-sand-extractor"])
+end
+
 for _, anywhere in pairs(prototypes_that_can_be_placed_whereever) do
     processed_prototypes[anywhere.name] = true
 end

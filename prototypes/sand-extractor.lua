@@ -55,3 +55,17 @@ for extractor in pairs(maraxsis.MARAXSIS_SAND_EXTRACTORS) do
     extractor.name = extractor.name .. "-sand-extractor"
     data:extend {extractor}
 end
+
+data:extend {{
+    type = "custom-input",
+    name = "build",
+    key_sequence = "",
+    linked_game_control = "build"
+}}
+
+data:extend {{
+    type = "custom-input",
+    name = "build-ghost",
+    key_sequence = "",
+    linked_game_control = "build-ghost"
+}}

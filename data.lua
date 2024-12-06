@@ -43,10 +43,3 @@ require "prototypes.promethium-productivity"
 require "prototypes.tips-and-tricks.tips-and-tricks"
 require "prototypes.offshore-pump"
 require "prototypes.planet.map-gen"
-
-data:extend {{
-    type = "custom-input",
-    name = "open-gui",
-    key_sequence = "",
-    linked_game_control = "open-gui"
-}}

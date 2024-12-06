@@ -1,4 +1,6 @@
-maraxsis.on_event(maraxsis.events.on_entity_clicked(), function(event)
+-- "build" and "build-ghost" are custom keybind inputs
+
+maraxsis.on_event({"build", "build-ghost"}, function(event)
     local player = game.get_player(event.player_index)
     if not player or not player.valid then return end
 
@@ -11,10 +13,13 @@ maraxsis.on_event(maraxsis.events.on_entity_clicked(), function(event)
     if surface.name ~= maraxsis.MARAXSIS_SURFACE_NAME then return end
     local position = event.cursor_position
 
-    if surface.entity_prototype_collides(cursor_stack.name, position, false) then return end
+    local name = cursor_stack.name .. "-sand-extractor"
+    if surface.entity_prototype_collides(name, position, false) then return end
+    local is_ghost = event.input_name == "build-ghost"
 
     surface.create_entity {
-        name = cursor_stack.name .. "-sand-extractor",
+        name = is_ghost and "entity-ghost" or name,
+        inner_name = is_ghost and name or nil,
         position = position,
         force = player.force,
         player = player,
