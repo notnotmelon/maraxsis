@@ -1,4 +1,9 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.19.27
+Date: 2024-12-06
+  Bugfixes:
+    - Fixed wrong map icons for the submarine. Resolves https://github.com/notnotmelon/maraxsis/issues/29
+---------------------------------------------------------------------------------------------------
 Version: 1.19.26
 Date: 2024-12-06
   Bugfixes:
