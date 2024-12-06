@@ -1,4 +1,14 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.19.30
+Date: 2024-12-06
+  Changes:
+    - Reduced the cost of the abyssal diving gear.
+    - Reduced the cost of the hydro plant.
+    - Reduced the cost of the pressure dome.
+    - Reduced the cost of the sonar.
+    - Reduced the cost of the submarine and nuclear submarine.
+    - Reduced the cost of the wyrm specimen.
+---------------------------------------------------------------------------------------------------
 Version: 1.19.29
 Date: 2024-12-06
   Changes:
