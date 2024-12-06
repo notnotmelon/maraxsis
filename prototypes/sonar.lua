@@ -44,9 +44,7 @@ data:extend {{
     enabled = false,
     ingredients = {
         {type = "item", name = "maraxsis-glass-panes",  amount = 10},
-        {type = "item", name = "low-density-structure", amount = 10},
         {type = "item", name = "radar",                 amount = 1},
-        {type = "item", name = "processing-unit",       amount = 5},
         {type = "item", name = "small-lamp",            amount = 2},
     },
     results = {
