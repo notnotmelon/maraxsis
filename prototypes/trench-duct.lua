@@ -29,6 +29,7 @@ data:extend {{
     results = {
         {type = "item", name = "maraxsis-trench-duct", amount = 1},
     },
+    energy_required = 10,
 }}
 table.insert(data.raw.technology["ducts"].effects, {
     type = "unlock-recipe",
