@@ -1,4 +1,11 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.19.26
+Date: 2024-12-06
+  Bugfixes:
+    - Allow to build blueprint ghosts of the sand extractor. Resolves https://github.com/notnotmelon/maraxsis/issues/54
+  Locale:
+    - Made it more obvious how to get sand.
+---------------------------------------------------------------------------------------------------
 Version: 1.19.25
 Date: 2024-12-06
   Bugfixes:
