@@ -1,11 +1,6 @@
 local TRENCH_MOVEMENT_FACTOR = maraxsis.TRENCH_MOVEMENT_FACTOR
 local SUBMARINES = maraxsis.SUBMARINES
 
-local default_colors = {
-    {r = 255, g = 195, b = 0,   a = 0.5},
-    {r = 0.3, g = 0.8, b = 0.3, a = 0.5},
-}
-
 maraxsis.on_event(maraxsis.events.on_built(), function(event)
     local entity = event.entity
     if not entity.valid then return end
