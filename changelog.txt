@@ -1,4 +1,9 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.19.24
+Date: 2024-12-06
+  Bugfixes:
+    - Fixed too quick crafting speed for the trench duct. Resolves https://github.com/notnotmelon/maraxsis/issues/55
+---------------------------------------------------------------------------------------------------
 Version: 1.19.23
 Date: 2024-12-05
   Compatibility:
