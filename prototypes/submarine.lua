@@ -212,6 +212,7 @@ for i = 1, 2 do
     entity.equipment_grid = grid.name
     entity.icon_size = 64
     entity.height = 0
+    entity.selected_minimap_representation = nil
     entity.flags = {"placeable-player", "player-creation", "placeable-off-grid", "no-automated-item-removal", "no-automated-item-insertion"}
     entity.torso_bob_speed = 0.4
     entity.minable.result = name
