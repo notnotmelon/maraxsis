@@ -166,12 +166,12 @@ local function decend_or_ascend(submarine)
         player.opened = submarine
     end
 
-    if passenger then
+    if passenger and passenger.physical_vehicle == submarine then
         passenger.teleport(target_position, target_surface, true)
         maraxsis.execute_later("enter_submarine", 1, passenger, submarine)
     end
 
-    if driver then
+    if driver and driver.physical_vehicle == submarine then
         driver.teleport(target_position, target_surface, true)
         maraxsis.execute_later("enter_submarine", 1, driver, submarine)
     end
@@ -182,9 +182,9 @@ end
 maraxsis.on_event("maraxsis-trench-submerge", function(event)
     local player = game.get_player(event.player_index)
     if not player then return end
-    local submarine = player.physical_vehicle
+    local submarine = player.vehicle
 
-    if submarine and SUBMARINES[submarine.name] and player.physical_surface == player.surface then
+    if submarine and SUBMARINES[submarine.name] then
         decend_or_ascend(submarine)
     end
 end)
