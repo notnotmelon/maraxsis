@@ -1,4 +1,12 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.19.25
+Date: 2024-12-06
+  Bugfixes:
+    - Added proper default request locations for all maraxis items. Resolves https://github.com/notnotmelon/maraxsis/issues/56
+    - Fix microplastics smelting not being effected by prod research.
+  Changes:
+    - Tungsten pipes default request location is now vulcanus.
+---------------------------------------------------------------------------------------------------
 Version: 1.19.24
 Date: 2024-12-06
   Bugfixes:
