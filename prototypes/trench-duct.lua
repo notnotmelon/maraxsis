@@ -46,6 +46,8 @@ for _, effect in pairs(data.raw.technology["ducts"].effects) do
                 break
             end
         end
+        local item = data.raw.item[effect.recipe]
+        item.default_import_location = "vulcanus"
     end
 end
 
