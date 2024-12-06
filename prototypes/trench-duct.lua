@@ -43,6 +43,7 @@ for _, effect in pairs(data.raw.technology["ducts"].effects) do
         for _, ingredient in pairs(recipe.ingredients) do
             if ingredient.name == "iron-plate" then
                 ingredient.name = "tungsten-plate"
+                ingredient.amount = ingredient.amount / 4
                 break
             end
         end
