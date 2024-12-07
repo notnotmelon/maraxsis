@@ -1,4 +1,9 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.20.20
+Date: 2024-12-07
+  Locale:
+    - Added French translation. Credit to Fr_Dae. Resolves https://github.com/notnotmelon/maraxsis/issues/63
+---------------------------------------------------------------------------------------------------
 Version: 1.20.19
 Date: 2024-12-07
   Graphics:
