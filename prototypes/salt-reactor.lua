@@ -24,7 +24,6 @@ data:extend {{
         },
         items_per_trigger = 1,
     },
-    place_result = "maraxsis-electricity",
     flags = {"only-in-cursor", "ignore-spoil-time-modifier"},
     spoil_ticks = (0.5 * 60) * 1.35 + 10, -- items start to spoil when the recipe starts.
 }}
