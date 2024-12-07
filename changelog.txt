@@ -1,4 +1,13 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.20.1
+Date: 2024-12-07
+  Bugfixes:
+    - Fixed that the salt reactor could get disabled while inside a dome with no atmosphere.
+  Locale:
+    - Added the salt reactor to the tips and tricks.
+  Changes:
+    - Increased the drowning time from 2 minutes to 15 minutes.
+---------------------------------------------------------------------------------------------------
 Version: 1.20.0
 Date: 2024-12-07
   Features:
