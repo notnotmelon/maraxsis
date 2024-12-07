@@ -4,6 +4,7 @@ require "prototypes.collision-mask"
 require "prototypes.swimming"
 require "compat.5-dim"
 require "compat.alien-biomes"
+require "compat.combat-mechanics-overhaul"
 
 data.raw["technology"]["maraxsis-promethium-productivity"].unit.ingredients = table.deepcopy(data.raw["technology"]["research-productivity"].unit.ingredients)
 
