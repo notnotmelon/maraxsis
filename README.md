@@ -134,6 +134,6 @@ More details in Credit.md](https://github.com/notnotmelon/maraxsis/blob/main/Cre
 #### Translation
 
 - **Contributor**: 
-- 🇫🇷 [FR] [Fr_Dae](@Fr-Dae)
-- 🇷🇺 [RU] [GafarovMaxim ](@GafarovMaxim )
-- 🇨🇳 [zt-CH] [PlexPt(@PlexPt)
+- 🇫🇷 [FR] [Fr_Dae](https://github.com/Fr-Dae)
+- 🇷🇺 [RU] [GafarovMaxim ](https://github.com/GafarovMaxim)
+- 🇨🇳 [zt-CH] [PlexPt(https://github.com/PlexPt)
