@@ -2,6 +2,8 @@ require "prototypes.vanilla-changes"
 require "prototypes.spidertron-patrols"
 require "prototypes.item-weight"
 require "prototypes.default-import-location"
+require "compat.aai-industry"
+require "compat.transport-ring-teleporter"
 
 local function add_fuel_value(fluid, value)
     fluid = data.raw.fluid[fluid]
@@ -88,28 +90,6 @@ if mods["assembler-pipe-passthrough"] then
     appmod.blacklist["maraxsis-hydro-plant"] = true
     appmod.blacklist["maraxsis-hydro-plant-extra-module-slots"] = true
     appmod.blacklist["maraxsis-regulator-fluidbox"] = true
-end
-
--- https://github.com/notnotmelon/maraxsis/issues/41
-if mods["transport-ring-teleporter"] then
-    for _, name in pairs {
-        "ring-teleporter",
-        "ring-teleporter-2",
-        "ring-teleporter-placer",
-        "ring-teleporter-back",
-        "ring-teleporter-barrier",
-        "ring-teleporter-sprite",
-    } do
-        local ring_teleporter = data.raw["accumulator"][name] or data.raw["simple-entity-with-force"][name]
-        if ring_teleporter then
-            ring_teleporter.surface_conditions = ring_teleporter.surface_conditions or {}
-            table.insert(ring_teleporter.surface_conditions, {
-                property = "pressure",
-                max = 50000,
-                min = 0
-            })
-        end
-    end
 end
 
 -- salt reactor localised description
