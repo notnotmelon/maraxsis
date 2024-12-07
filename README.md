@@ -25,7 +25,9 @@
 
 ### Welcome to Maraxsis
 
-Let me introduce this pristine, submerged world. Far away from the sun, this planet paradoxically maintains a comfortable temperature through a runaway greenhouse effect. Preliminary surface scans show an average temperature of 101°F. It's not too hot and not too cold, the perfect Goldilocks zone for liquid water. Maybe even too perfect...
+Let me introduce this pristine, submerged world. Far away from the sun, this planet paradoxically maintains a comfortable temperature through a runaway greenhouse effect. 
+
+Preliminary surface scans show an average temperature of 101°F. It's not too hot and not too cold, the perfect Goldilocks zone for liquid water. Maybe even too perfect...
 
 ![](https://files.catbox.moe/wwq54g.png)
 
@@ -40,7 +42,9 @@ Your armor is designed to protect against attacks from various creatures, but it
 ![](https://files.catbox.moe/l31tkf.mp4)
 
 This deep sea vessel is capable of submerging to any depth, and can be automated with a schedule to follow underwater channels.
+
 With further technologies, construct the nuclear submarine and atomic torpedoes.
+
 Be careful, swimming outside the submarine will quickly result in death by extreme pressure, drowning, or both.
 
 ---
