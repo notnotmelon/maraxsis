@@ -810,6 +810,7 @@ maraxsis.on_event(maraxsis.events.on_entity_clicked(), function(event)
         local dome = pressure_dome_data.entity
         if not dome.valid then return end
         pressure_dome_data.light = create_dome_light(pressure_dome_data)
+        light = pressure_dome_data.light
     end
 
     local wire_type = figure_out_wire_type(player)
