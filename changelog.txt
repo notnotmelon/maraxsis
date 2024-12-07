@@ -1,10 +1,31 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.20.19
+Date: 2024-12-07
+  Graphics:
+    - Added a working visualization light cone to the salt reactor.
+---------------------------------------------------------------------------------------------------
+Version: 1.20.18
+Date: 2024-12-07
+  Graphics:
+    - Add bubbles to the regulator.
+    - Add bubbles to the salt reactor.
+---------------------------------------------------------------------------------------------------
+Version: 1.20.17
+Date: 2024-12-07
+  Compatibility:
+    - Fixed a crash with alien biomes. Resolves https://github.com/notnotmelon/maraxsis/issues/67
+---------------------------------------------------------------------------------------------------
+Version: 1.20.16
+Date: 2024-12-07
+  Compatibility:
+    - Added a check to ensure maraxsis-promethium-productivity was not deleted by other mods.
+  Graphics:
+    - Improved the alt mode icon positions for the salt reactor.
+---------------------------------------------------------------------------------------------------
 Version: 1.20.15
 Date: 2024-12-07
-  Info:
-    - Updated by Fr_Dae
-  Locale:
-    - Add Fr localisation.
+  Compatibility:
+    - Fixed crash with the infinite quality tiers mod. Resolves https://github.com/notnotmelon/maraxsis/issues/62
 ---------------------------------------------------------------------------------------------------
 Version: 1.20.14
 Date: 2024-12-07

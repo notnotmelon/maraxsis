@@ -12,7 +12,7 @@ data:extend {{
                 type = "instant",
                 source_effects = {
                     type = "create-entity",
-                    entity_name = "maraxsis-salt-reactor-energy-generation-trigger",
+                    entity_name = "maraxsis-electricity",
                     affects_target = true,
                     show_in_tooltip = false,
                     as_enemy = false,
@@ -24,13 +24,14 @@ data:extend {{
         },
         items_per_trigger = 1,
     },
+    place_result = "maraxsis-electricity",
     flags = {"only-in-cursor", "ignore-spoil-time-modifier"},
     spoil_ticks = (0.5 * 60) * 1.35 + 10, -- items start to spoil when the recipe starts.
 }}
 
 data:extend {{
     type = "simple-entity-with-owner",
-    name = "maraxsis-salt-reactor-energy-generation-trigger",
+    name = "maraxsis-electricity",
     flags = {"not-on-map", "placeable-off-grid"},
     collision_mask = {layers = {}},
     hidden = true,
@@ -66,6 +67,10 @@ data:extend {{
         uses_beacon_effects = false,
         uses_surface_effects = false,
     },
+    icon_draw_specification = {shift = {0, -0.5}, scale = 1.5},
+    icons_positioning = {{
+        inventory_index = defines.inventory.furnace_modules, shift = {0, 0.9}, max_icons_per_row = 3
+    }},
     graphics_set = {
         animation = {
             layers = {
@@ -97,6 +102,20 @@ data:extend {{
         effectivity = 1,
         fuel_inventory_size = 1,
         burnt_inventory_size = 1,
+        smoke = {
+            {
+                name = "maraxsis-swimming-bubbles",
+                frequency = 50,
+                position = {2.2, -0.5},
+                starting_vertical_speed = 0.03
+            }
+        },
+        light_flicker = {
+            color = defines.color.limegreen,
+            minimum_intensity = 0.6,
+            maximum_intensity = 0.9,
+            minimum_light_size = 2.5
+        }
     },
     energy_usage = "80MW",
     source_inventory_size = 1,

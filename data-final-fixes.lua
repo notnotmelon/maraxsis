@@ -6,7 +6,9 @@ require "compat.5-dim"
 require "compat.alien-biomes"
 require "compat.combat-mechanics-overhaul"
 
-data.raw["technology"]["maraxsis-promethium-productivity"].unit.ingredients = table.deepcopy(data.raw["technology"]["research-productivity"].unit.ingredients)
+if data.raw["technology"]["maraxsis-promethium-productivity"] then
+    data.raw["technology"]["maraxsis-promethium-productivity"].unit.ingredients = table.deepcopy(data.raw["technology"]["research-productivity"].unit.ingredients)
+end
 
 for _, recipe in pairs(data.raw.recipe) do
     if recipe.category == "maraxsis-hydro-plant-or-assembling" then

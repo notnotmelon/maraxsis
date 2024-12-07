@@ -109,12 +109,12 @@ Maraxsis would not be possible without the help of these amazing, fantastic, inc
 - **License**: [TurboSquid 3D Model License](https://blog.turbosquid.com/turbosquid-3d-model-license/)
 - **Changes**: Yes. Added animations. Added light effects. Converted to .PNG via Blender.
 
-#### Hydro Plant & Regulator
+#### Hydro Plant & Regulator & Salt Reactor
 
 - **Creators**: Hurricane
 - **Source**: [Figma](https://shorturl.at/AFcDm)
 - **License**: [CC BY](https://creativecommons.org/licenses/by/4.0/)
-- **Changes**: Yes. Technology icon added. Renamed to "Hydro Plant". Renamed to "Regulator"
+- **Changes**: Yes. Technology icon added. Renamed to "Hydro Plant". Renamed to "Regulator". Renamed to "Salt Reactor".
 
 #### Submarine & Nuclear Submarine
 

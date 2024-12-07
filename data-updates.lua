@@ -93,7 +93,7 @@ if mods["assembler-pipe-passthrough"] then
 end
 
 -- salt reactor localised description
-local electricity_description = nil
+local electricity_description = {""}
 
 for _, quality in pairs(data.raw.quality) do
     if quality.hidden then goto continue end
@@ -107,26 +107,25 @@ for _, quality in pairs(data.raw.quality) do
     if quality_level >= 5 then quality_level = quality_level - 1 end
     local mj = 10 * (2 ^ quality_level)
 
-    local this_description = {"recipe-description.maraxsis-electricity-quality-description", quality_name, tostring(mj), r, g, b}
-    if not electricity_description then
-        electricity_description = this_description
-    else
-        electricity_description = {"", electricity_description, "\n", this_description}
-    end
+    table.insert(electricity_description, {"recipe-description.maraxsis-electricity-quality-description", quality_name, tostring(mj), r, g, b})
+    table.insert(electricity_description, "\n")
     ::continue::
 end
+electricity_description[#electricity_description] = nil
 
-data.raw.recipe["maraxsis-electricity"].localised_description = maraxsis.shorten_localised_string {
+electricity_description = maraxsis.shorten_localised_string(electricity_description)
+
+data.raw.recipe["maraxsis-electricity"].localised_description = {
     "recipe-description.maraxsis-electricity",
     electricity_description
 }
 
-data.raw.furnace["maraxsis-salt-reactor"].localised_description = maraxsis.shorten_localised_string {
+data.raw.furnace["maraxsis-salt-reactor"].localised_description = {
     "entity-description.maraxsis-salt-reactor",
     electricity_description
 }
 
-data.raw["electric-energy-interface"]["maraxsis-salt-reactor-energy-interface"].localised_description = maraxsis.shorten_localised_string {
+data.raw["electric-energy-interface"]["maraxsis-salt-reactor-energy-interface"].localised_description = {
     "entity-description.maraxsis-salt-reactor",
     electricity_description
 }

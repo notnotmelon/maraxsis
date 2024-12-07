@@ -62,5 +62,5 @@ maraxsis.shorten_localised_string = function(localised_string)
         end
     end
 
-    return {"", shorten_localised_string(first_half), shorten_localised_string(second_half)}
+    return {"", maraxsis.shorten_localised_string(first_half), maraxsis.shorten_localised_string(second_half)}
 end
