@@ -6,6 +6,11 @@ require "compat.5-dim"
 require "compat.alien-biomes"
 require "compat.combat-mechanics-overhaul"
 
+for extractor in pairs(maraxsis.MARAXSIS_SAND_EXTRACTORS) do
+    local mask = collision_mask_util.get_mask(data.raw["mining-drill"][extractor])
+    data.raw["assembling-machine"][extractor .. "-sand-extractor"].collision_mask = mask
+end
+
 if data.raw["technology"]["maraxsis-promethium-productivity"] then
     data.raw["technology"]["maraxsis-promethium-productivity"].unit.ingredients = table.deepcopy(data.raw["technology"]["research-productivity"].unit.ingredients)
 end
