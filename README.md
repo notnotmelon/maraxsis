@@ -164,3 +164,10 @@ Maraxsis would not be possible without the help of these amazing, fantastic, inc
 - **Source**: [Factorio Mod Template](https://github.com/fgardt/factorio-mod-template) & [Spritter](https://github.com/fgardt/factorio-spritter)
 - **License**: [MIT](https://opensource.org/license/MIT)
 - **Changes**: No.
+
+#### Translations to French, Chinese, and Russian
+
+- **Creators**: Fr_Dae (FR), GafarovMaxim (RU), PlexPt (zh-CN)
+- **Source**: [GitHub](https://github.com/notnotmelon/maraxsis/pulls)
+- **License**: N/A
+- **Changes**: No.
