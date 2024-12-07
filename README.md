@@ -10,19 +10,6 @@ Maraxsis is 100% covered by deep ocean. There is no land on the entire planet me
 
 ---
 
-### Disclaimer
-
-This mod is in early access/beta status. Here are the known issues before it can be moved to a full release:
-
-  - Placeholder graphics for the coral reef.
-  - Placeholder graphics for the fishing tower.
-  - Missing the Maraxsis enemy.
-
-During the beta period, please post factory screenshots, bugs, and balance suggestions on the Discord.
-Your feedback is extremely important!
-
----
-
 ### Submarines
 
 Your armor is designed to protect against attacks from various creatures, but it's totally useless against the immense pressure of the ocean. Your only hope is to build an underwater pressure can; the submarine.
@@ -61,13 +48,21 @@ As you explore Maraxsis, you’ll quickly discover that many of your standard ma
 
 These specialized structures are designed to withstand the immense pressures of Maraxsis’ depths. However, maintaining equilibrium inside the domes requires continuous supply of atmospheric gases into ballast pumps.
 
+Domes can be connected to the circuit network to change their color and read their contents. Feel free to create a giant underwater disco ball.
+
 ---
 
 ### Progression
 
 Maraxsis is available at the same time as Aquilo. The mod does not change any vanilla recipes meaning the mod can be seamlessly added to any existing Space Age save, even if the save is completed. The mod leans heavily into the puzzle genera requiring creative setups to solve difficult challenges. Do you have what it takes to craft the hydraulic science pack?
 
-![](https://files.catbox.moe/1f53fp.png)
+Here's a sample of some of the technologies available on Maraxsis:
+
+![](https://files.catbox.moe/yeqogf.png)
+![](https://files.catbox.moe/5oc9bo.png)
+![](https://files.catbox.moe/pl2ees.png)
+![](https://files.catbox.moe/xqp167.png)
+![](https://files.catbox.moe/0g9rux.png)
 
 ---
 
