@@ -1,5 +1,5 @@
-local FULL_BREATH_NUM_TICKS = 2 * 60 * 60 -- two minutes before you start drowning
-local WARNING_MESSAGE = FULL_BREATH_NUM_TICKS / 3
+local FULL_BREATH_NUM_TICKS = 15 * 60 * 60 -- fifteen minutes before you start drowning
+local WARNING_MESSAGE = FULL_BREATH_NUM_TICKS / 5
 local UPDATE_RATE = 71
 
 maraxsis.on_event(maraxsis.events.on_init(), function()
@@ -59,7 +59,7 @@ maraxsis.on_nth_tick(UPDATE_RATE, function()
         local breath = storage.breath[player.index] or FULL_BREATH_NUM_TICKS
         local breath_loss = UPDATE_RATE
         local is_trench = surface_name == maraxsis.TRENCH_SURFACE_NAME
-        if is_trench then breath_loss = breath_loss * 4 end
+        if is_trench then breath_loss = breath_loss * 30 end
         breath = math.max(0, breath - breath_loss)
         storage.breath[player.index] = breath
 
