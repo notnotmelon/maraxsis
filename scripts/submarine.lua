@@ -230,5 +230,5 @@ end
 maraxsis.register_delayed_function("automated_submerge", automated_submerge)
 
 maraxsis.on_event(defines.events.on_spider_command_completed, function(event)
-    maraxsis.execute_later("automated_submerge", 10, event)
+    maraxsis.execute_later("automated_submerge", 30, event)
 end)
