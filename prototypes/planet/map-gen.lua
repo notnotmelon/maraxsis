@@ -303,7 +303,7 @@ data:extend {{
     from = "vulcanus",
     to = "maraxsis",
     order = "f",
-    length = 30000,
+    length = 20000,
     asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.gleba_aquilo)
 }}
 
@@ -315,7 +315,7 @@ if mods.tenebris then
         from = "maraxsis",
         to = "tenebris",
         order = "g",
-        length = 30000,
+        length = 20000,
         asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.gleba_aquilo)
     }}
 else
@@ -326,7 +326,7 @@ else
         from = "fulgora",
         to = "maraxsis",
         order = "f",
-        length = 30000,
+        length = 20000,
         asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.gleba_aquilo)
     }}
 end
