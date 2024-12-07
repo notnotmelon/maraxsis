@@ -293,7 +293,7 @@ local function place_tiles(pressure_dome_data)
     surface.set_tiles(tiles, true, false, true, false)
 end
 
-local DEFAULT_MARAXSIS_TILE = "dirt-5-underwater"
+local DEFAULT_MARAXSIS_TILE = "sand-3-underwater"
 local function unplace_tiles(pressure_dome_data)
     local surface = pressure_dome_data.surface
     if not surface.valid then return end
@@ -892,4 +892,18 @@ maraxsis.on_nth_tick(73, function()
 
         ::continue::
     end
+end)
+
+-- https://github.com/notnotmelon/maraxsis/issues/34
+maraxsis.on_event(maraxsis.events.on_mined_tile(), function(event)
+    local dome_tiles_to_rebuild = {}
+    for _, tile in pairs(event.tiles) do
+        local name = tile.old_tile.name
+        if name == PRESSURE_DOME_TILE then
+            dome_tiles_to_rebuild[#dome_tiles_to_rebuild + 1] = {position = tile.position, name = name}
+        end
+    end
+    if not dome_tiles_to_rebuild[1] then return end
+    local surface = game.get_surface(event.surface_index)
+    surface.set_tiles(dome_tiles_to_rebuild, true, false, false, false)
 end)
