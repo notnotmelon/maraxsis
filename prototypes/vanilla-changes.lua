@@ -25,7 +25,7 @@ add_hydraulic_pack("promethium-science-pack", false)
 table.insert(data.raw["technology"]["promethium-science-pack"].prerequisites, "maraxsis-deepsea-research")
 add_hydraulic_pack("research-productivity", false)
 
-for _, machine_type in pairs{"assembling-machine", "rocket-silo", "furnace", "character"} do
+for _, machine_type in pairs {"assembling-machine", "rocket-silo", "furnace", "character"} do
     for _, machine in pairs(data.raw[machine_type] or {}) do
         if machine.crafting_categories then
             for _, category in pairs(machine.crafting_categories) do
@@ -148,7 +148,7 @@ local tank = data.raw.car.tank
 if tank.equipment_grid == "medium-equipment-grid" then
     local medium_grid = table.deepcopy(data.raw["equipment-grid"]["medium-equipment-grid"])
     medium_grid.name = "tank-equipment-grid"
-    data:extend{medium_grid}
+    data:extend {medium_grid}
     tank.equipment_grid = "tank-equipment-grid"
 end
 

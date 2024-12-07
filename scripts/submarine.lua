@@ -152,7 +152,7 @@ local function decend_or_ascend(submarine)
     submarine.teleport(target_position, target_surface, true)
     for _, player in pairs(players_to_open_gui) do
         if player.surface ~= target_surface then
-            player.set_controller{
+            player.set_controller {
                 type = defines.controllers.remote,
                 position = target_position,
                 surface = target_surface
@@ -198,7 +198,7 @@ maraxsis.on_event("toggle-driving", function(event)
     -- case 1: player is not hovering the sub but trying to exit.
     if submarine and SUBMARINES[submarine.name] and not selected_submarine then
         maraxsis.execute_later("exit_submarine", 1, event)
-    -- case 2: player is hovering the sub and trying to enter. the vanilla vechicle enter range is too low for water vehicles so we artificially increase it
+        -- case 2: player is hovering the sub and trying to enter. the vanilla vechicle enter range is too low for water vehicles so we artificially increase it
     elseif can_enter_submarine(player, selected) then
         maraxsis.execute_later("enter_submarine", 1, player, selected)
     end

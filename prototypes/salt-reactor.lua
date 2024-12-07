@@ -7,12 +7,12 @@ data:extend {{
     stack_size = 100,
     spoil_to_trigger_result = {
         trigger = {
-            type = 'direct',
+            type = "direct",
             action_delivery = {
-                type = 'instant',
+                type = "instant",
                 source_effects = {
-                    type = 'script',
-                    effect_id = 'maraxsis-salt-reactor-energy-created'
+                    type = "script",
+                    effect_id = "maraxsis-salt-reactor-energy-created"
                 }
             }
         },
@@ -99,9 +99,9 @@ data:extend {{
     energy_required = 10,
     ingredients = {
         {type = "item", name = "maraxsis-glass-panes", amount = 50},
-        {type = "item", name = "tungsten-plate", amount = 100},
-        {type = "item", name = "processing-unit", amount = 100},
-        {type = "item", name = "nuclear-reactor", amount = 1},
+        {type = "item", name = "tungsten-plate",       amount = 100},
+        {type = "item", name = "processing-unit",      amount = 100},
+        {type = "item", name = "nuclear-reactor",      amount = 1},
     },
     results = {
         {type = "item", name = "maraxsis-salt-reactor", amount = 1},

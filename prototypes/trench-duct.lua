@@ -22,9 +22,9 @@ data:extend {{
     name = "maraxsis-trench-duct",
     enabled = false,
     ingredients = {
-        {type = "item", name = "duct-small", amount = 300},
+        {type = "item", name = "duct-small",     amount = 300},
         {type = "item", name = "tungsten-plate", amount = 300},
-        {type = "item", name = "pump", amount = 10},
+        {type = "item", name = "pump",           amount = 10},
     },
     results = {
         {type = "item", name = "maraxsis-trench-duct", amount = 1},
@@ -95,7 +95,7 @@ data:extend {{
         max_sounds_per_type = 3,
     },
     vehicle_impact_sound = {filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65},
-    pictures = { picture = {
+    pictures = {picture = {
         north = {
             layers = {
                 {
@@ -220,7 +220,7 @@ data:extend {{
         max_sounds_per_type = 3,
     },
     vehicle_impact_sound = {filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65},
-    pictures = { picture = {
+    pictures = {picture = {
         north = {
             layers = {
                 {
@@ -307,12 +307,12 @@ data:extend {{
 
 data.raw.recipe["duct-intake"].ingredients = {
     {type = "item", name = "tungsten-plate", amount = 6},
-    {type = "item", name = "pump", amount = 1},
+    {type = "item", name = "pump",           amount = 1},
 }
 
 data.raw.recipe["duct-exhaust"].ingredients = {
     {type = "item", name = "tungsten-plate", amount = 6},
-    {type = "item", name = "pump", amount = 1},
+    {type = "item", name = "pump",           amount = 1},
 }
 
 data.raw.pump["duct-intake"].energy_source = {type = "void"}

@@ -58,4 +58,3 @@ maraxsis_chimney.hidden_in_factoriopedia = true
 maraxsis_chimney.map_color = {153, 166, 77}
 maraxsis_chimney.localised_name = {"entity-name.vulcanus-chimney"}
 data:extend {maraxsis_chimney}
-

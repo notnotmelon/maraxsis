@@ -185,7 +185,7 @@ data:extend {{
 local dmg = data.raw.capsule["maraxsis-tropical-fish"].capsule_action.attack_parameters.ammo_type.action.action_delivery.target_effects[1].damage
 dmg.amount = dmg.amount * 1.5
 
-data:extend{{
+data:extend {{
     type = "recipe",
     name = "maraxsis-nutrients-from-tropical-fish",
     icon = "__maraxsis__/graphics/icons/nutrients-from-tropical-fish.png",

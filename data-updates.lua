@@ -62,14 +62,14 @@ for _, tech in pairs(data.raw.technology) do
     end
 end
 
-data:extend{{
+data:extend {{
     type = "item-subgroup",
     name = "maraxsis-atmosphere-barreling",
     order = "ff",
     group = "intermediate-products",
 }}
 
-for recipe, category in pairs{
+for recipe, category in pairs {
     ["empty-maraxsis-atmosphere-barrel"] = "chemistry",
     ["maraxsis-atmosphere-barrel"] = "chemistry",
     ["empty-maraxsis-liquid-atmosphere-barrel"] = "cryogenics",
@@ -92,7 +92,7 @@ end
 
 -- https://github.com/notnotmelon/maraxsis/issues/41
 if mods["transport-ring-teleporter"] then
-    for _, name in pairs{
+    for _, name in pairs {
         "ring-teleporter",
         "ring-teleporter-2",
         "ring-teleporter-placer",
@@ -119,7 +119,7 @@ for _, quality in pairs(data.raw.quality) do
     if quality.hidden then goto continue end
     local quality_name = quality.localised_name or {"quality-name." .. quality.name}
 
-    local color = maraxsis.color_combine(quality.color, {1,1,1}, 0.7)
+    local color = maraxsis.color_combine(quality.color, {1, 1, 1}, 0.7)
     local r, g, b = color.r or color[1], color.g or color[2], color.b or color[3]
     local r, g, b = tostring(r), tostring(g), tostring(b)
 

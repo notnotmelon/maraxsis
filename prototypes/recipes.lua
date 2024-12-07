@@ -1,9 +1,9 @@
-data:extend{{
+data:extend {{
     type = "recipe",
     name = "maraxsis-geothermal-sulfur",
     ingredients = {
         {type = "fluid", name = "steam", amount = 100},
-        {type = "fluid", name = "lava", amount = 100},
+        {type = "fluid", name = "lava",  amount = 100},
     },
     results = {
         {type = "item", name = "sulfur", amount = 2},

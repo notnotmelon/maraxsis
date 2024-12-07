@@ -14,7 +14,7 @@ data:extend {{
     energy_required = 3,
     ingredients = {
         {type = "item", name = "maraxsis-tropical-fish", amount = 1},
-        {type = "item", name = "maraxsis-sand",                   amount = 1},
+        {type = "item", name = "maraxsis-sand",          amount = 1},
         {type = "item", name = "maraxsis-coral",         amount = 3},
         {type = "item", name = "plastic-bar",            amount = 1},
     },
@@ -41,8 +41,8 @@ data:extend {{
     enabled = false,
     energy_required = 3,
     ingredients = {
-        {type = "item", name = "agricultural-tower", amount = 1},
-        {type = "item", name = "maraxsis-coral", amount = 10},
+        {type = "item", name = "agricultural-tower",   amount = 1},
+        {type = "item", name = "maraxsis-coral",       amount = 10},
         {type = "item", name = "maraxsis-glass-panes", amount = 10},
     },
     results = {
@@ -63,7 +63,7 @@ local function scale_sprite_recursive(graphics)
     for _, g in pairs(graphics) do
         scale_sprite_recursive(g)
     end
-    
+
     if graphics.filename then
         graphics.scale = (graphics.scale or 1) * 4 / 3
         local shift = graphics.shift or {0, 0}
@@ -102,7 +102,7 @@ fishing_tower.radius_visualisation_picture = {
 }
 data:extend {fishing_tower}
 
-data:extend{{
+data:extend {{
     name = "maraxsis-fishing-plant",
     type = "plant",
     growth_ticks = 12000,

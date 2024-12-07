@@ -28,11 +28,11 @@ end)
 
 local effect_id = "maraxsis-salt-reactor-energy-created"
 maraxsis.on_event(defines.events.on_script_trigger_effect, function(event)
-	if event.effect_id ~= effect_id then return end
-    
+    if event.effect_id ~= effect_id then return end
+
     local entity = event.source_entity
     if not entity or not entity.valid then return end
-    
+
     local reactor_data = storage.salt_reactors[entity.unit_number]
     if not reactor_data then return end
 

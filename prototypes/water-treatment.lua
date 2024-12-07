@@ -118,11 +118,11 @@ data:extend {{
     enabled = false,
     energy_required = 2.5,
     ingredients = {
-        {type = "item",  name = "maraxsis-salt-filter", amount = 1},
-        {type = "fluid", name = "maraxsis-saline-water",         amount = 100},
+        {type = "item",  name = "maraxsis-salt-filter",  amount = 1},
+        {type = "fluid", name = "maraxsis-saline-water", amount = 100},
     },
     results = {
-        {type = "fluid", name = "maraxsis-brackish-water",                 amount = 100},
+        {type = "fluid", name = "maraxsis-brackish-water",        amount = 100},
         {type = "item",  name = "maraxsis-saturated-salt-filter", amount = 1,  ignored_by_stats = 1, ignored_by_productivity = 1},
     },
     category = "maraxsis-hydro-plant",
@@ -166,8 +166,8 @@ data:extend {{
     enabled = false,
     energy_required = 1,
     ingredients = {
-        {type = "item", name = "steel-plate",     amount = 2},
-        {type = "item", name = "carbon-fiber",    amount = 1},
+        {type = "item", name = "steel-plate",  amount = 2},
+        {type = "item", name = "carbon-fiber", amount = 1},
     },
     results = {
         {type = "item", name = "maraxsis-salt-filter", amount = 1},
@@ -187,9 +187,9 @@ data:extend {{
         {type = "fluid", name = "water",                          amount = 20},
     },
     results = {
-        {type = "item",  name = "maraxsis-salt-filter", amount = 1, probability = 0.95, ignored_by_stats = 1, ignored_by_productivity = 1},
-        {type = "item",  name = "carbon-fiber",         amount = 1, probability = 0.025},
-        {type = "fluid", name = "maraxsis-brackish-water",       amount = 20},
+        {type = "item",  name = "maraxsis-salt-filter",    amount = 1, probability = 0.95, ignored_by_stats = 1, ignored_by_productivity = 1},
+        {type = "item",  name = "carbon-fiber",            amount = 1, probability = 0.025},
+        {type = "fluid", name = "maraxsis-brackish-water", amount = 20},
     },
     category = "maraxsis-hydro-plant",
     main_product = "maraxsis-salt-filter",

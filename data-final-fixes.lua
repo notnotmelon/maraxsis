@@ -8,7 +8,7 @@ data.raw["technology"]["maraxsis-promethium-productivity"].unit.ingredients = ta
 data.raw.radar["maraxsis-sonar"].next_upgrade = nil -- fix crash with 5dim
 
 -- alien biomes compatibility
-for _, planet in pairs{"maraxsis", "maraxsis-trench"} do
+for _, planet in pairs {"maraxsis", "maraxsis-trench"} do
     planet = data.raw.planet[planet]
     local decoratives = planet.map_gen_settings.autoplace_settings.decorative.settings
     for name in pairs(decoratives) do
@@ -26,7 +26,7 @@ if mods["alien-biomes"] then
     for _, tile in pairs(data.raw.tile) do
         if tile.name:find("%-underwater") and tile.collision_mask.layers[maraxsis_collision_mask] then
             tile.collision_mask.layers.item = nil
-        end     
+        end
     end
 end
 
