@@ -57,6 +57,7 @@ local DOME_EXCLUDED_FROM_DISABLE = {
     ["chemical-plant"] = true,
     ["maraxsis-hydro-plant"] = true,
     ["maraxsis-hydro-plant-extra-module-slots"] = true,
+    ["maraxsis-salt-reactor"] = true,
 }
 
 return {
