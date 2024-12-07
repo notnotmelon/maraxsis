@@ -1,4 +1,13 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.20.0
+Date: 2024-12-07
+  Features:
+    - Added the salt reactor. Resolves https://github.com/notnotmelon/maraxsis/issues/40
+  Graphics:
+    - Edited the default color of the diesel and construction submarines.
+  Changes:
+    - Fixed a broken changelog.
+---------------------------------------------------------------------------------------------------
 Version: 1.19.32
 Date: 2024-12-06
   Graphics:
