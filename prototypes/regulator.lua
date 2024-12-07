@@ -93,6 +93,14 @@ data:extend {{
             filter = "maraxsis-atmosphere",
             secondary_draw_orders = {north = -1},
         },
+        smoke = {
+            {
+                name = "maraxsis-swimming-bubbles",
+                frequency = 100,
+                position = {-0.9, -2.7},
+                starting_vertical_speed = 0.03
+            }
+        }
     },
     effect_receiver = {
         uses_module_effects = false,
