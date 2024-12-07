@@ -1,4 +1,9 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.20.5
+Date: 2024-12-07
+  Bugfixes:
+    - Throwing items into the ocean no longer voids them. Resolves https://github.com/notnotmelon/maraxsis/issues/59
+---------------------------------------------------------------------------------------------------
 Version: 1.20.4
 Date: 2024-12-07
   Changes:
