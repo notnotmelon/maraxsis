@@ -41,7 +41,7 @@ data:extend {{
     name = "maraxsis-salt-reactor",
     icon = "__maraxsis__/graphics/icons/salt-reactor.png",
     icon_size = 64,
-    flags = {"placeable-neutral", "placeable-player", "player-creation", "no-automated-item-removal"},
+    flags = {"placeable-neutral", "placeable-player", "player-creation"},
     minable = {mining_time = 0.5, result = "maraxsis-salt-reactor"},
     max_health = 1000,
     corpse = "big-remnants",
