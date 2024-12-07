@@ -1,8 +1,26 @@
 [![](https://img.shields.io/badge/dynamic/json?color=orange&label=Factorio&query=downloads_count&suffix=%20downloads&url=https%3A%2F%2Fmods.factorio.com%2Fapi%2Fmods%2Fmaraxsis&style=for-the-badge)](https://mods.factorio.com/mod/maraxsis) [![](https://img.shields.io/badge/Discord-Community-blue?style=for-the-badge)](https://discord.gg/xRYEZYz5WR) [![](https://img.shields.io/github/issues/notnotmelon/maraxsis?label=Bug%20Reports&style=for-the-badge)](https://github.com/notnotmelon/maraxsis/issues) [![](https://img.shields.io/github/issues-pr/notnotmelon/maraxsis?label=Pull%20Requests&style=for-the-badge)](https://github.com/notnotmelon/maraxsis/pulls) [![Ko-Fi](https://img.shields.io/badge/Ko--fi-support%20me-ff5e5b?logo=kofi&logoColor=white&style=for-the-badge)](https://ko-fi.com/notnotmelon)
 
+------------
+
+### Table of Contents
+
+1. [Welcome to Maraxsis](https://github.com/notnotmelon/maraxsis/blob/main/README.md#welcome-to-maraxsis)
+2. [Submarines](https://github.com/notnotmelon/maraxsis/blob/main/README.md#Submarines)
+3. [Trenches](https://github.com/notnotmelon/maraxsis/blob/main/README.md#Trenches)
+4. [Pressure domes](https://github.com/notnotmelon/maraxsis/blob/main/README.md#Pressure%20domes "Pressure domes")
+5. [Progression](https://github.com/notnotmelon/maraxsis/blob/main/README.md#Progression)
+6. [Vanilla Changes](https://github.com/notnotmelon/maraxsis/blob/main/README.md#Vanilla%20Changes)
+7. [Etymology](https://github.com/notnotmelon/maraxsis/blob/main/README.md#Etymology)
+8. [Credits](https://github.com/notnotmelon/maraxsis/blob/main/README.md#Credits)
+9. [Translations](https://github.com/notnotmelon/maraxsis/blob/main/README.md#Translation)
+
+------------
+
 ### Welcome to Maraxsis
 
-Let me introduce this pristine, submerged world. Far away from the sun, this planet paradoxically maintains a comfortable temperature through a runaway greenhouse effect. Preliminary surface scans show an average temperature of 101°F. It's not too hot and not too cold, the perfect Goldilocks zone for liquid water. Maybe even too perfect...
+Let me introduce this pristine, submerged world. Far away from the sun, this planet paradoxically maintains a comfortable temperature through a runaway greenhouse effect. 
+
+Preliminary surface scans show an average temperature of 101°F (38,33°c). It's not too hot and not too cold, the perfect Goldilocks zone for liquid water. Maybe even too perfect...
 
 ![](https://files.catbox.moe/wwq54g.png)
 
@@ -17,7 +35,9 @@ Your armor is designed to protect against attacks from various creatures, but it
 ![](https://files.catbox.moe/l31tkf.mp4)
 
 This deep sea vessel is capable of submerging to any depth, and can be automated with a schedule to follow underwater channels.
+
 With further technologies, construct the nuclear submarine and atomic torpedoes.
+
 Be careful, swimming outside the submarine will quickly result in death by extreme pressure, drowning, or both.
 
 ---
@@ -54,7 +74,9 @@ Domes can be connected to the circuit network to change their color and read the
 
 ### Progression
 
-Maraxsis is available at the same time as Aquilo. The mod does not change any vanilla recipes meaning the mod can be seamlessly added to any existing Space Age save, even if the save is completed. The mod leans heavily into the puzzle genera requiring creative setups to solve difficult challenges. Do you have what it takes to craft the hydraulic science pack?
+Maraxsis is available at the same time as Aquilo. The mod does not change any vanilla recipes meaning the mod can be seamlessly added to any existing Space Age save, even if the save is completed. 
+
+The mod leans heavily into the puzzle genera requiring creative setups to solve difficult challenges. Do you have what it takes to craft the hydraulic science pack?
 
 Here's a sample of some of the technologies available on Maraxsis:
 
@@ -95,79 +117,22 @@ This connection is mirrored in their names. The shared suffixes “-kis” or �
 
 Maraxsis would not be possible without the help of these amazing, fantastic, incredible open source projects.
 
-#### Unused Renders
+ - Unused Renders - [malcolmriley](https://github.com/malcolmriley)
+ - Tropical Fish Pack - [ZivixLLC](https://github.com/ZivixLLC)
+ - Hydro Plant & Regulator & Salt Reactor - [Hurricane](https://github.com/Hurricane)
+ - Submarine & Nuclear Submarine - [Archezekiel](https://github.com/Archezekiel)
+ - Pressure Dome - [KaueNP](https://github.com/KaueNP)
+ - Sonar - [fishbus](https://github.com/fishbus)
+ - Coral Reef - [Galdoc](https://github.com/Galdoc)
+ - Submarine AI - [Xorimuth](https://github.com/Xorimuth), [ILLISIS](https://github.com/ILLISIS), [Apollo314](https://github.com/Apollo314) , [fgardt](https://github.com/fgardt)
+ - Ducts - Krastor, [Linver](https://github.com/Linver), [iicyan](https://github.com/iicyan), [raiguard](https://github.com/raiguard)
+ - Devops & CI - [fgardt](https://github.com/fgardt)
 
-- **Creators**: malcolmriley
-- **Source**: [Unused Renders](https://github.com/malcolmriley/unused-renders)
-- **License**: [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)
-- **Changes**: Yes. Icons rescaled and cropped to 64x64. Various color adjustments.
+[More details in Credits.md](https://github.com/notnotmelon/maraxsis/blob/main/Credits.md)
 
-#### Tropical Fish Pack
+#### Translation
 
-- **Creators**: ZivixLLC
-- **Source**: [Turbosquid](https://www.turbosquid.com/3d-models/free-tropical-fish-pack-3d-model/652729)
-- **License**: [TurboSquid 3D Model License](https://blog.turbosquid.com/turbosquid-3d-model-license/)
-- **Changes**: Yes. Added animations. Added light effects. Converted to .PNG via Blender.
-
-#### Hydro Plant & Regulator & Salt Reactor
-
-- **Creators**: Hurricane
-- **Source**: [Figma](https://shorturl.at/AFcDm)
-- **License**: [CC BY](https://creativecommons.org/licenses/by/4.0/)
-- **Changes**: Yes. Technology icon added. Renamed to "Hydro Plant". Renamed to "Regulator". Renamed to "Salt Reactor".
-
-#### Submarine & Nuclear Submarine
-
-- **Creators**: Archezekiel
-- **Source**: Commissioned. Created in Blender.
-- **License**: N/A
-- **Changes**: Yes. Compressed for Factorio with [Spritter](https://github.com/fgardt/factorio-spritter)
-
-#### Pressure Dome
-
-- **Creators**: KaueNP
-- **Source**: Commissioned. Created in 3DS max studio.
-- **License**: N/A
-- **Changes**: No.
-
-#### Sonar
-
-- **Creators**: fishbus
-- **Source**: [Factorio+](https://mods.factorio.com/mod/factorioplus)
-- **License**: [MIT](https://opensource.org/license/MIT)
-- **Changes**: Yes. Added lamps.
-
-#### Coral Reef
-
-- **Creators**: Galdoc
-- **Source**: Commissioned. Created in Blender.
-- **License**: [MIT](https://opensource.org/license/MIT)
-- **Changes**: No.
-
-#### Submarine AI
-
-- **Creators**: Xorimuth, ILLISIS, Apollo314, fgardt
-- **Source**: [Spidertron Enhancements](https://mods.factorio.com/mod/SpidertronEnhancements) & [Spidertron Patrols](https://mods.factorio.com/mod/SpidertronPatrols) & [Spidertron Automation](https://mods.factorio.com/mod/SpidertronPatrols)
-- **License**: [MIT](https://opensource.org/license/MIT)
-- **Changes**: Yes. Updated the code to work with submarines.
-
-#### Ducts
-
-- **Creators**: Krastor, Linver, iicyan, raiguard
-- **Source**: [Fluid Must Flow](https://mods.factorio.com/mod/FluidMustFlow)
-- **License**: [GNU LGPLv3](https://opensource.org/licenses/lgpl-3.0)
-- **Changes**: Yes. Edited recipes. Added trench duct.
-
-#### Devops & CI
-
-- **Creators**: fgardt
-- **Source**: [Factorio Mod Template](https://github.com/fgardt/factorio-mod-template) & [Spritter](https://github.com/fgardt/factorio-spritter)
-- **License**: [MIT](https://opensource.org/license/MIT)
-- **Changes**: No.
-
-#### Translations to French, Chinese, and Russian
-
-- **Creators**: Fr_Dae (FR), GafarovMaxim (RU), PlexPt (zh-CN)
-- **Source**: [GitHub](https://github.com/notnotmelon/maraxsis/pulls)
-- **License**: N/A
-- **Changes**: No.
+- **Contributor**: 
+- 🇫🇷 [FR] [Fr_Dae](https://github.com/Fr-Dae)
+- 🇷🇺 [RU] [GafarovMaxim](https://github.com/GafarovMaxim)
+- 🇨🇳 [zh-CH] [PlexPt](https://github.com/PlexPt)
