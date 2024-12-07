@@ -1,4 +1,9 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.20.17
+Date: 2024-12-07
+  Compatibility:
+    - Fixed a crash with alien biomes. Resolves https://github.com/notnotmelon/maraxsis/issues/67
+---------------------------------------------------------------------------------------------------
 Version: 1.20.16
 Date: 2024-12-07
   Compatibility:
