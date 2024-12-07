@@ -74,7 +74,7 @@ data:extend {{
         {type = "fluid", name = "maraxsis-brackish-water", amount = 300},
     },
     results = {
-        {type = "item",  name = "maraxsis-salt",     amount = 1},
+        {type = "item",  name = "maraxsis-salt",     amount = 3},
         {type = "fluid", name = "maraxsis-oxygen",   amount = 100},
         {type = "fluid", name = "maraxsis-hydrogen", amount = 200},
     },
