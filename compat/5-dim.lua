@@ -1,3 +1,5 @@
+local collision_mask_util = require("collision-mask-util")
+
 data.raw.radar["maraxsis-sonar"].next_upgrade = nil
 
 for prototype in pairs(defines.prototypes.entity) do
