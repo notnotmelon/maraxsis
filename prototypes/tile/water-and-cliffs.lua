@@ -65,7 +65,7 @@ local waterifiy = {
         tile = table.deepcopy(data.raw.tile[tile])
         tile.name = tile.name .. "-underwater"
         tile.collision_mask = {layers = {[maraxsis_collision_mask] = true, [maraxsis_fishing_tower_collision_mask] = true}}
-        tile.layer = layer
+        tile.layer = math.min(layer, 255)
         layer = layer + 1
         tile.fluid = tile.fluid or "maraxsis-saline-water"
         ---@diagnostic disable-next-line: param-type-mismatch
