@@ -1,4 +1,9 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.20.7
+Date: 2024-12-07
+  Compatibility:
+    - Added conversion between AAI sand and maraxsis sand. Resolves https://github.com/notnotmelon/maraxsis/issues/60
+---------------------------------------------------------------------------------------------------
 Version: 1.20.6
 Date: 2024-12-07
   Changes:
