@@ -63,6 +63,7 @@ Here's a sample of some of the technologies available on Maraxsis:
 ![](https://files.catbox.moe/pl2ees.png)
 ![](https://files.catbox.moe/xqp167.png)
 ![](https://files.catbox.moe/0g9rux.png)
+![](https://files.catbox.moe/o1ib7m.png)
 
 ---
 
