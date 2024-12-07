@@ -38,11 +38,11 @@ maraxsis.on_event(defines.events.on_script_trigger_effect, function(event)
 
     local energy_interface = reactor_data.energy_interface
     if not energy_interface or not energy_interface.valid then return end
-
-    local _, quality = entity.get_recipe()
-    if not quality then return end
-
-    local quality_level = quality.level
+    
+    local previous_recipe = entity.previous_recipe
+    if not previous_recipe then return end
+    
+    local quality_level = previous_recipe.quality.level
     if quality_level >= 5 then quality_level = quality_level - 1 end
     energy_interface.energy = energy_interface.energy + 10000000 * (2 ^ quality_level)
 end)
