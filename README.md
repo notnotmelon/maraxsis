@@ -167,7 +167,7 @@ Maraxsis would not be possible without the help of these amazing, fantastic, inc
 
 #### Translations to French, Chinese, and Russian
 
-- **Creators**: Fr_Dae (FR), GafarovMaxim (RU), PlexPt (zh-CN)
-- **Source**: [GitHub](https://github.com/notnotmelon/maraxsis/pulls)
-- **License**: N/A
-- **Changes**: No.
+- **Contributor**: 
+- 🇫🇷 [FR] [Fr_Dae](@Fr-Dae)
+- 🇷🇺 [RU] [GafarovMaxim ](@GafarovMaxim )
+- 🇨🇳 [zt-CH] [PlexPt(@PlexPt)
