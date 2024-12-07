@@ -38,7 +38,7 @@ make_subgroup("maraxsis-intermediants", "ge", "intermediate-products", {
 
 make_subgroup("maraxsis-salt", "gf", "intermediate-products", {
     data.raw.item["maraxsis-salt"],
-    data.raw.recipe["maraxsis-saline-electrolysis"],
+    data.raw.recipe["maraxsis-salt"],
     data.raw.recipe["maraxsis-brackish-water"],
     data.raw.recipe["maraxsis-water"],
     data.raw.item["maraxsis-salt-filter"],

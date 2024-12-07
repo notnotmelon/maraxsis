@@ -67,7 +67,7 @@ data:extend {{
 
 data:extend {{
     type = "recipe",
-    name = "maraxsis-saline-electrolysis",
+    name = "maraxsis-salt",
     enabled = false,
     energy_required = 5,
     ingredients = {
@@ -83,8 +83,10 @@ data:extend {{
     icon_size = 128,
     auto_recycle = false,
     allow_productivity = true,
+    main_product = "maraxsis-salt",
+    localised_name = {"recipe-name.maraxsis-salt"},
 }}
-add_to_tech("maraxsis-saline-electrolysis")
+add_to_tech("maraxsis-salt")
 
 data:extend {{
     type = "recipe",
