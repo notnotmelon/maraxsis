@@ -15,6 +15,7 @@ require "scripts.sand-extractor"
 require "scripts.hydro-plant"
 require "scripts.project-seadragon"
 require "scripts.swimming"
+require "scripts.salt-reactor"
 require "scripts.trench-duct"
 require "scripts.abyssal-diving-gear"
 

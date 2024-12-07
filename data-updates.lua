@@ -111,3 +111,42 @@ if mods["transport-ring-teleporter"] then
         end
     end
 end
+
+-- salt reactor localised description
+local electricity_description = nil
+
+for _, quality in pairs(data.raw.quality) do
+    if quality.hidden then goto continue end
+    local quality_name = quality.localised_name or {"quality-name." .. quality.name}
+
+    local color = maraxsis.color_combine(quality.color, {1,1,1}, 0.7)
+    local r, g, b = color.r or color[1], color.g or color[2], color.b or color[3]
+    local r, g, b = tostring(r), tostring(g), tostring(b)
+
+    local quality_level = quality.level
+    if quality_level >= 5 then quality_level = quality_level - 1 end
+    local mj = 10 * (2 ^ quality_level)
+
+    local this_description = {"recipe-description.maraxsis-electricity-quality-description", quality_name, tostring(mj), r, g, b}
+    if not electricity_description then
+        electricity_description = this_description
+    else
+        electricity_description = {"", electricity_description, "\n", this_description}
+    end
+    ::continue::
+end
+
+data.raw.recipe["maraxsis-electricity"].localised_description = maraxsis.shorten_localised_string {
+    "recipe-description.maraxsis-electricity",
+    electricity_description
+}
+
+data.raw.furnace["maraxsis-salt-reactor"].localised_description = maraxsis.shorten_localised_string {
+    "entity-description.maraxsis-salt-reactor",
+    electricity_description
+}
+
+data.raw["electric-energy-interface"]["maraxsis-salt-reactor-energy-interface"].localised_description = maraxsis.shorten_localised_string {
+    "entity-description.maraxsis-salt-reactor",
+    electricity_description
+}
