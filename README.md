@@ -1,6 +1,9 @@
 [![](https://img.shields.io/badge/dynamic/json?color=orange&label=Factorio&query=downloads_count&suffix=%20downloads&url=https%3A%2F%2Fmods.factorio.com%2Fapi%2Fmods%2Fmaraxsis&style=for-the-badge)](https://mods.factorio.com/mod/maraxsis) [![](https://img.shields.io/badge/Discord-Community-blue?style=for-the-badge)](https://discord.gg/xRYEZYz5WR) [![](https://img.shields.io/github/issues/notnotmelon/maraxsis?label=Bug%20Reports&style=for-the-badge)](https://github.com/notnotmelon/maraxsis/issues) [![](https://img.shields.io/github/issues-pr/notnotmelon/maraxsis?label=Pull%20Requests&style=for-the-badge)](https://github.com/notnotmelon/maraxsis/pulls) [![Ko-Fi](https://img.shields.io/badge/Ko--fi-support%20me-ff5e5b?logo=kofi&logoColor=white&style=for-the-badge)](https://ko-fi.com/notnotmelon)
 
-[TOC]
+------------
+
+### Table of Contents
+
 1. [Welcome to Maraxsis](https://github.com/notnotmelon/maraxsis/blob/main/README.md#welcome-to-maraxsis)
 2. [Submarines](https://github.com/notnotmelon/maraxsis/blob/main/README.md#Submarines)
 3. [Trenches](https://github.com/notnotmelon/maraxsis/blob/main/README.md#Trenches)
@@ -9,17 +12,7 @@
 6. [Vanilla Changes](https://github.com/notnotmelon/maraxsis/blob/main/README.md#Vanilla%20Changes)
 7. [Etymology](https://github.com/notnotmelon/maraxsis/blob/main/README.md#Etymology)
 8. [Credits](https://github.com/notnotmelon/maraxsis/blob/main/README.md#Credits)
- - [Unused Renders]
- - [Tropical Fish Pack]
- - [Hydro Plant & Regulator & Salt Reactor]
- - [Submarine & Nuclear Submarine]
- - [Pressure Dome]
- - [Sonar]
- - [Coral Reef]
- - [Submarine AI]
- - [Ducts]
- - [Devops & CI]
- - [Translations](https://github.com/notnotmelon/maraxsis/blob/main/README.md#Translation)
+9. [Translations](https://github.com/notnotmelon/maraxsis/blob/main/README.md#Translation)
 
 ------------
 
@@ -135,7 +128,7 @@ Maraxsis would not be possible without the help of these amazing, fantastic, inc
  - Ducts - Krastor, [Linver](https://github.com/Linver), [iicyan](https://github.com/iicyan), [raiguard](https://github.com/raiguard)
  - Devops & CI - [fgardt](https://github.com/fgardt)
 
-More details in Credit.md](https://github.com/notnotmelon/maraxsis/blob/main/Credit.md)
+[More details in Credits.md](https://github.com/notnotmelon/maraxsis/blob/main/Credits.md)
 
 #### Translation
 
