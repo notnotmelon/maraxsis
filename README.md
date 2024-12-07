@@ -27,7 +27,7 @@
 
 Let me introduce this pristine, submerged world. Far away from the sun, this planet paradoxically maintains a comfortable temperature through a runaway greenhouse effect. 
 
-Preliminary surface scans show an average temperature of 101°F. It's not too hot and not too cold, the perfect Goldilocks zone for liquid water. Maybe even too perfect...
+Preliminary surface scans show an average temperature of 101°F (38,33°c). It's not too hot and not too cold, the perfect Goldilocks zone for liquid water. Maybe even too perfect...
 
 ![](https://files.catbox.moe/wwq54g.png)
 
@@ -81,7 +81,9 @@ Domes can be connected to the circuit network to change their color and read the
 
 ### Progression
 
-Maraxsis is available at the same time as Aquilo. The mod does not change any vanilla recipes meaning the mod can be seamlessly added to any existing Space Age save, even if the save is completed. The mod leans heavily into the puzzle genera requiring creative setups to solve difficult challenges. Do you have what it takes to craft the hydraulic science pack?
+Maraxsis is available at the same time as Aquilo. The mod does not change any vanilla recipes meaning the mod can be seamlessly added to any existing Space Age save, even if the save is completed. 
+
+The mod leans heavily into the puzzle genera requiring creative setups to solve difficult challenges. Do you have what it takes to craft the hydraulic science pack?
 
 Here's a sample of some of the technologies available on Maraxsis:
 
