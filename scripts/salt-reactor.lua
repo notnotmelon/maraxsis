@@ -26,23 +26,21 @@ maraxsis.on_event(maraxsis.events.on_built(), function(event)
     }
 end)
 
-local effect_id = "maraxsis-salt-reactor-energy-created"
-maraxsis.on_event(defines.events.on_script_trigger_effect, function(event)
-    if event.effect_id ~= effect_id then return end
+local effect_id = "maraxsis-salt-reactor-energy-generation-trigger"
+maraxsis.on_event(defines.events.on_trigger_created_entity, function(event)
+    local entity = event.entity
+    if entity.name ~= effect_id then return end
+    local quality_level = entity.quality.level
+    entity.destroy()
 
-    local entity = event.source_entity
-    if not entity or not entity.valid then return end
-
-    local reactor_data = storage.salt_reactors[entity.unit_number]
+    local reactor = event.source
+    if not reactor or not reactor.valid then return end
+    local reactor_data = storage.salt_reactors[reactor.unit_number]
     if not reactor_data then return end
 
     local energy_interface = reactor_data.energy_interface
     if not energy_interface or not energy_interface.valid then return end
     
-    local previous_recipe = entity.previous_recipe
-    if not previous_recipe then return end
-    
-    local quality_level = previous_recipe.quality.level
     if quality_level >= 5 then quality_level = quality_level - 1 end
     energy_interface.energy = energy_interface.energy + 10000000 * (2 ^ quality_level)
 end)

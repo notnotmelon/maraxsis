@@ -11,8 +11,14 @@ data:extend {{
             action_delivery = {
                 type = "instant",
                 source_effects = {
-                    type = "script",
-                    effect_id = "maraxsis-salt-reactor-energy-created"
+                    type = "create-entity",
+                    entity_name = "maraxsis-salt-reactor-energy-generation-trigger",
+                    affects_target = true,
+                    show_in_tooltip = false,
+                    as_enemy = false,
+                    find_non_colliding_position = false,
+                    trigger_created_entity = true,
+                    check_buildability = false,
                 }
             }
         },
@@ -20,6 +26,14 @@ data:extend {{
     },
     flags = {"only-in-cursor", "ignore-spoil-time-modifier"},
     spoil_ticks = (0.5 * 60) * 1.35 + 10, -- items start to spoil when the recipe starts.
+}}
+
+data:extend {{
+    type = "simple-entity-with-owner",
+    name = "maraxsis-salt-reactor-energy-generation-trigger",
+    flags = {"not-on-map", "placeable-off-grid"},
+    collision_mask = {layers = {}},
+    hidden = true
 }}
 
 data:extend {{
