@@ -26,7 +26,7 @@ maraxsis.on_event(maraxsis.events.on_built(), function(event)
     }
 end)
 
-local effect_id = "maraxsis-salt-reactor-energy-generation-trigger"
+local effect_id = "maraxsis-electricity"
 maraxsis.on_event(defines.events.on_trigger_created_entity, function(event)
     local entity = event.entity
     if entity.name ~= effect_id then return end
