@@ -4,7 +4,7 @@
 1. [Welcome to Maraxsis](https://github.com/notnotmelon/maraxsis/blob/main/README.md#welcome-to-maraxsis)
 2. [Submarines](https://github.com/notnotmelon/maraxsis/blob/main/README.md#Submarines)
 3. [Trenches](https://github.com/notnotmelon/maraxsis/blob/main/README.md#Trenches)
-4. [[Pressure domes](https://github.com/notnotmelon/maraxsis/blob/main/README.md#Pressure%20domes "Pressure domes")
+4. [Pressure domes](https://github.com/notnotmelon/maraxsis/blob/main/README.md#Pressure%20domes "Pressure domes")
 5. [Progression](https://github.com/notnotmelon/maraxsis/blob/main/README.md#Progression)
 6. [Vanilla Changes](https://github.com/notnotmelon/maraxsis/blob/main/README.md#Vanilla%20Changes)
 7. [Etymology](https://github.com/notnotmelon/maraxsis/blob/main/README.md#Etymology)
@@ -142,4 +142,4 @@ More details in Credit.md](https://github.com/notnotmelon/maraxsis/blob/main/Cre
 - **Contributor**: 
 - 🇫🇷 [FR] [Fr_Dae](https://github.com/Fr-Dae)
 - 🇷🇺 [RU] [GafarovMaxim ](https://github.com/GafarovMaxim)
-- 🇨🇳 [zt-CH] [PlexPt](https://github.com/PlexPt)
+- 🇨🇳 [zh-CH] [PlexPt](https://github.com/PlexPt)

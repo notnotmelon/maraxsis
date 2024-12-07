@@ -1,4 +1,4 @@
-### Credit
+### Credits
 #### Unused Renders
 
 - **Creators**: [malcolmriley](https://github.com/malcolmriley)
