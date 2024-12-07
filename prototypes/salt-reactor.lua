@@ -109,6 +109,12 @@ data:extend {{
                 position = {2.2, -0.5},
                 starting_vertical_speed = 0.03
             }
+        },
+        light_flicker = {
+            color = defines.color.limegreen,
+            minimum_intensity = 0.6,
+            maximum_intensity = 0.9,
+            minimum_light_size = 2.5
         }
     },
     energy_usage = "80MW",
