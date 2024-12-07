@@ -1,4 +1,12 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.20.2
+Date: 2024-12-07
+  Locale:
+    - Change "legendary: 160MW" to "legendary salt: 160.0 MW"
+    - Standarized the casing of "MJ" in the salt reactor description.
+  Changes:
+    - Reactors, heat exchanger, and steam turbine can now be crafted in the hydro plant.
+---------------------------------------------------------------------------------------------------
 Version: 1.20.1
 Date: 2024-12-07
   Bugfixes:
