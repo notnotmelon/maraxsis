@@ -33,7 +33,11 @@ data:extend {{
     name = "maraxsis-salt-reactor-energy-generation-trigger",
     flags = {"not-on-map", "placeable-off-grid"},
     collision_mask = {layers = {}},
-    hidden = true
+    hidden = true,
+    icon = "__maraxsis__/graphics/icons/electricity.png",
+    icon_size = 40,
+    localised_name = {"item-name.maraxsis-electricity"},
+    factoriopedia_alternative = "maraxsis-salt-reactor",
 }}
 
 data:extend {{
@@ -185,6 +189,7 @@ data:extend {{
     selectable_in_game = false,
     hidden = true,
     collision_mask = {layers = {}},
+    factoriopedia_alternative = "maraxsis-salt-reactor",
     energy_source = {
         type = "electric",
         usage_priority = "secondary-output",
