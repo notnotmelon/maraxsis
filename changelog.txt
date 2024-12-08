@@ -1,4 +1,15 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.21.0
+Date: 2024-12-08
+  Features:
+    - Added mollusk husks. These spawn as rocks on the map which can be mined for glass.
+  Balancing:
+    - Glass panes are no longer crafted in the hydro plant. They are now only made in the foundry.
+    - Liquid atmosphere has been moved to a seperate technology unlocked with hydraulic science packs.
+    - Reworked the tech tree to help guide the player.
+    - The pressure dome now requires 500 glass instead of 300.
+    - Tropical fish now spoils again. But in 8 hours instead of 2.
+---------------------------------------------------------------------------------------------------
 Version: 1.20.30
 Date: 2024-12-08
   Locale:
