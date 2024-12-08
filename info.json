@@ -10,7 +10,7 @@
     "base",
     "space-age >= 2.0.21",
     "Constructron-Continued >= 2.0.13",
-    "SpidertronPatrols >= 2.5.5",
+    "SpidertronPatrols >= 2.5.4",
     "FluidMustFlow >= 1.4.0",
     "? aai-signal-transmission",
     "(?) tenebris",

@@ -18,6 +18,5 @@ require "scripts.swimming"
 require "scripts.salt-reactor"
 require "scripts.trench-duct"
 require "scripts.abyssal-diving-gear"
-require "scripts.remote"
 
 maraxsis.finalize_events()
