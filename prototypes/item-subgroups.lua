@@ -32,6 +32,8 @@ make_subgroup("maraxsis-intermediants", "ge", "intermediate-products", {
     data.raw.item["maraxsis-wyrm-confinement-cell"],
     data.raw.item["maraxsis-super-sealant-substance"],
     data.raw.recipe["maraxsis-atmosphere"],
+    data.raw.recipe["maraxsis-liquid-atmosphere-decompression"],
+    data.raw.recipe["maraxsis-liquid-atmosphere"],
 })
 
 make_subgroup("maraxsis-salt", "gf", "intermediate-products", {
@@ -77,6 +79,8 @@ data.raw.fluid["maraxsis-hydrogen"].order = "f[maraxsis-fluids]-d[hydrogen]"
 data.raw.fluid["maraxsis-hydrogen"].subgroup = "fluid"
 data.raw.fluid["maraxsis-atmosphere"].order = "f[maraxsis-fluids]-f[atmosphere]"
 data.raw.fluid["maraxsis-atmosphere"].subgroup = "fluid"
+data.raw.fluid["maraxsis-liquid-atmosphere"].order = "f[maraxsis-fluids]-f[liquid-atmosphere]"
+data.raw.fluid["maraxsis-liquid-atmosphere"].subgroup = "fluid"
 
 data.raw.capsule["maraxsis-big-cliff-explosives"].subgroup = data.raw.capsule["cliff-explosives"].subgroup
 data.raw.capsule["maraxsis-big-cliff-explosives"].order = "e[big-cliff-explosives]"
