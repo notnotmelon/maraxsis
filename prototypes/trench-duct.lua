@@ -5,7 +5,7 @@ data.raw.technology["ducts"].research_trigger = {
     type = "mine-entity",
     entity = "maraxsis-chimney"
 }
-data.raw.technology["ducts"].prerequisites = {"sp-spidertron-automation", "cliff-explosives"}
+data.raw.technology["ducts"].prerequisites = {"sp-spidertron-automation"}
 
 data:extend {{
     type = "item",
