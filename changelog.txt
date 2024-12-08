@@ -3,7 +3,7 @@ Version: 1.20.27
 Date: 2024-12-08
   Balancing:
     - Coral mining no longer grants limestone.
-    - Microplastics are now crafted in the assembling machine isntead of the biochamber.
+    - Microplastics are now crafted in the assembling machine instead of the hydro plant.
     - Swapped coral for salt in the science pack recipe.
     - The pressure dome no longer requires energy to activate machienes. Just atmosphere.
     - Tropical fish no longer spoils.
