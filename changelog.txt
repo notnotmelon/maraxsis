@@ -1,4 +1,9 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.20.29
+Date: 2024-12-08
+  Locale:
+    - Fixed French locale would crash the game. Resolves https://github.com/notnotmelon/maraxsis/issues/77.
+---------------------------------------------------------------------------------------------------
 Version: 1.20.28
 Date: 2024-12-08
   Balancing:
