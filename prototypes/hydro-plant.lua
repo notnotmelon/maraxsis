@@ -197,6 +197,9 @@ data:extend {{
 local extra_module_slots = table.deepcopy(data.raw["assembling-machine"]["maraxsis-hydro-plant"])
 extra_module_slots.name = "maraxsis-hydro-plant-extra-module-slots"
 extra_module_slots.module_slots = extra_module_slots.module_slots + 2
+extra_module_slots.icons_positioning = {{
+    inventory_index = defines.inventory.assembling_machine_modules, shift = {0, 0.9}, max_icons_per_row = 3
+}}
 extra_module_slots.hidden_in_factoriopedia = true
 extra_module_slots.factoriopedia_alternative = "maraxsis-hydro-plant"
 extra_module_slots.placeable_by = {{item = "maraxsis-hydro-plant", count = 1}}
