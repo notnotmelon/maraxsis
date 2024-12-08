@@ -1,4 +1,15 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.21.1
+Date: 2024-12-08
+  Balancing:
+    - Decreased the craft time for wyrm confinement cells from 10 seconds to 5 seconds.
+    - Decreased the tungsten plate requirement in the trench duct from 600 -> 200.
+    - Removed heat exchangers from the nuclear submarine recipe. Swapped nuclear reactors for salt reactors.
+    - Removed lamps from the pressure dome recipe.
+    - Removed nuclear reactors from the salt reactor recipe.
+    - Removed quality modules from the hydro plant recipe.
+    - Removed steel chests from the spidertron dock recipe.
+---------------------------------------------------------------------------------------------------
 Version: 1.21.0
 Date: 2024-12-08
   Features:
