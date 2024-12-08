@@ -22,8 +22,8 @@ data:extend {{
     name = "maraxsis-trench-duct",
     enabled = false,
     ingredients = {
-        {type = "item", name = "duct-small",     amount = 300},
-        {type = "item", name = "tungsten-plate", amount = 300},
+        {type = "item", name = "duct-small",     amount = 100},
+        {type = "item", name = "tungsten-plate", amount = 100},
         {type = "item", name = "pump",           amount = 10},
     },
     results = {
