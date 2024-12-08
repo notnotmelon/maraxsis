@@ -179,8 +179,6 @@ data:extend {{
     pictures = tropical_fish_variants,
     stack_size = data.raw.capsule["raw-fish"].stack_size,
     capsule_action = table.deepcopy(data.raw.capsule["raw-fish"].capsule_action),
-    spoil_result = "spoilage",
-    spoil_ticks = data.raw.capsule["raw-fish"].spoil_ticks,
 }}
 local dmg = data.raw.capsule["maraxsis-tropical-fish"].capsule_action.attack_parameters.ammo_type.action.action_delivery.target_effects[1].damage
 dmg.amount = dmg.amount * 1.5
