@@ -169,7 +169,7 @@ data:extend {{
             recipe = "maraxsis-electricity"
         }
     },
-    prerequisites = {"nuclear-power", "maraxsis-glassworking"},
+    prerequisites = {"nuclear-power", "maraxsis-hydro-plant"},
     research_trigger = {
         type = "craft-item",
         item = "maraxsis-salt",

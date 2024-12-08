@@ -125,9 +125,8 @@ data:extend {{
     effects = {},
     prerequisites = {"maraxsis-glassworking"},
     research_trigger = {
-        type = "craft-fluid",
-        fluid = "maraxsis-brackish-water",
-        amount = 1000,
+        type = "craft-item",
+        item = "maraxsis-pressure-dome"
     },
     order = "ed[piscary]",
 }}

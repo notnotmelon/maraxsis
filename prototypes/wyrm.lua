@@ -17,10 +17,10 @@ data:extend {{
             recipe = "maraxsis-geothermal-sulfur"
         }
     },
-    prerequisites = {"maraxsis-piscary"},
+    prerequisites = {"maraxsis-piscary", "ducts", "maraxsis-salt-reactor"},
     research_trigger = {
-        type = "craft-item",
-        item = "maraxsis-pressure-dome"
+        type = "build-entity",
+        entity = "maraxsis-trench-duct"
     },
     order = "ee[wyrm-confinement]",
 }}
