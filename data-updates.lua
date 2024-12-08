@@ -74,8 +74,6 @@ data:extend {{
 for recipe, category in pairs {
     ["empty-maraxsis-atmosphere-barrel"] = "chemistry",
     ["maraxsis-atmosphere-barrel"] = "chemistry",
-    ["empty-maraxsis-liquid-atmosphere-barrel"] = "cryogenics",
-    ["maraxsis-liquid-atmosphere-barrel"] = "cryogenics",
 } do
     local recipe = data.raw.recipe[recipe]
     recipe.hidden_in_factoriopedia = false
