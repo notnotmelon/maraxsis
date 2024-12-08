@@ -1,4 +1,12 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.21.2
+Date: 2024-12-08
+  Balancing:
+    - Increased the microplastics requirement in the "smelt microplastics" recipe from 1 -> 3.
+    - Reverted tropical fish spoil time to their original value of 2 hours.
+  Locale:
+    - Updated the locale for the submarines to explain how to set a schedule.
+---------------------------------------------------------------------------------------------------
 Version: 1.21.1
 Date: 2024-12-08
   Balancing:
