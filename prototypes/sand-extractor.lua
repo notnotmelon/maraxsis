@@ -69,3 +69,10 @@ data:extend {{
     key_sequence = "",
     linked_game_control = "build-ghost"
 }}
+
+data:extend {{
+    type = "custom-input",
+    name = "super-forced-build",
+    key_sequence = "",
+    linked_game_control = "super-forced-build"
+}}
