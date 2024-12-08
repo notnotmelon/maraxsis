@@ -253,10 +253,43 @@ data.raw["simple-entity"]["big-sand-rock-underwater"].autoplace = {
             } > 0.9
         ]]
     },
-    order = "c[rocks]-a[maraxsis]"
+    order = "c[rocks]-a[big-sand-rock-underwater]"
 }
 
 data.raw["simple-entity"]["big-sand-rock-underwater"].minable.results = {
     {type = "item", name = "maraxsis-sand", amount_min = 11, amount_max = 15},
     {type = "item", name = "stone",         amount_min = 11, amount_max = 15}
+}
+
+data.raw["simple-entity"]["maraxsis-mollusk-husk"].autoplace = {
+    probability_expression = [[
+        (maraxsis_elevation(x, y) > 1.1) * master_noise * noise * (random_penalty{x = x, y = y, seed = map_seed, source = 1, amplitude = 1} > 0.9)
+    ]],
+    local_expressions = {
+        noise = [[
+            multioctave_noise {
+                x = x,
+                y = y,
+                persistence = 0.15,
+                seed0 = map_seed,
+                seed1 = 31359,
+                octaves = 2,
+                input_scale = 1 / 20,
+                output_scale = 1
+            } > 0.95
+        ]],
+        master_noise = [[
+            multioctave_noise {
+                x = x,
+                y = y,
+                persistence = 0.5,
+                seed0 = map_seed,
+                seed1 = 31359,
+                octaves = 4,
+                input_scale = 1 / 200,
+                output_scale = 1
+            } > 0.2
+        ]],
+    },
+    order = "c[rocks]-b[mollusk-husk]"
 }
