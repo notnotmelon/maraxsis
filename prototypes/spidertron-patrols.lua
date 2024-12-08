@@ -18,7 +18,6 @@ data.raw.recipe["sp-spidertron-dock"].category = "maraxsis-hydro-plant-or-assemb
 data.raw.recipe["sp-spidertron-dock"].ingredients = {
     {type = "item", name = "tungsten-plate", amount = 16},
     {type = "item", name = "bulk-inserter",  amount = 4},
-    {type = "item", name = "steel-chest",    amount = 1},
 }
 
 local function add_surface_conditions_to_submarine_dock(dock_name)
