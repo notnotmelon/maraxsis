@@ -1,4 +1,23 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.20.27
+Date: 2024-12-08
+  Balancing:
+    - Coral mining no longer grants limestone.
+    - Microplastics are now crafted in the assembling machine isntead of the biochamber.
+    - Swapped coral for salt in the science pack recipe.
+    - The pressure dome no longer requires energy to activate machienes. Just atmosphere.
+    - Tropical fish no longer spoils.
+  Bugfixes:
+    - Fix wrong dirt color when a dome is mined. Resolves https://github.com/notnotmelon/maraxsis/issues/34
+    - Fixed ghost building of the sand extractor not working in remote view.
+    - Fixed sand extractors working inside pressure domes.
+    - You can now rotate the hydro plant in any direction.
+  Graphics:
+    - Tweaked the icon draw specfications for the space and trench hydro plant.
+  Changes:
+    - Greatly increased the connection distance between two regulators. Also added a construction radius.
+    - Trigger release.
+---------------------------------------------------------------------------------------------------
 Version: 1.20.26
 Date: 2024-12-07
   Compatibility:
