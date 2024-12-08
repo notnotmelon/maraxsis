@@ -1,4 +1,20 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.20.30
+Date: 2024-12-08
+  Locale:
+    - Updated the Chinese locale.
+---------------------------------------------------------------------------------------------------
+Version: 1.20.29
+Date: 2024-12-08
+  Locale:
+    - Fixed French locale would crash the game. Resolves https://github.com/notnotmelon/maraxsis/issues/77.
+---------------------------------------------------------------------------------------------------
+Version: 1.20.28
+Date: 2024-12-08
+  Balancing:
+    - Fish rendering no longer requires piecing ammo.
+    - The pressure dome is now crafted with 300 glass instead of 500 glass.
+---------------------------------------------------------------------------------------------------
 Version: 1.20.27
 Date: 2024-12-08
   Balancing:
