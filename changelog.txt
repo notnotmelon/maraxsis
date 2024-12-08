@@ -1,4 +1,9 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.21.4
+Date: 2024-12-08
+  Bugfixes:
+    - Fixed crash when drowning inside the trench. Resolves https://github.com/notnotmelon/maraxsis/issues/79
+---------------------------------------------------------------------------------------------------
 Version: 1.21.3
 Date: 2024-12-08
   Balancing:
