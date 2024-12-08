@@ -97,7 +97,7 @@ end)
 maraxsis.on_event(defines.events.on_player_died, function(event)
     local player = game.get_player(event.player_index)
     if not player or not player.valid then return end
-    if not player.surface.name ~= maraxsis.TRENCH_SURFACE_NAME then return end
+    if player.physical_surface.name ~= maraxsis.TRENCH_SURFACE_NAME then return end
 
     local character = player.character
     if not character then return end
