@@ -1,4 +1,10 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.20.28
+Date: 2024-12-08
+  Balancing:
+    - Fish rendering no longer requires piecing ammo.
+    - The pressure dome is now crafted with 300 glass instead of 500 glass.
+---------------------------------------------------------------------------------------------------
 Version: 1.20.27
 Date: 2024-12-08
   Balancing:
