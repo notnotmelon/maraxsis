@@ -41,16 +41,11 @@ local DOME_DISABLEABLE_TYPES = {
     ["beacon"] = true,
     ["mining-drill"] = true,
     ["rocket-silo"] = true,
-    ["inserter"] = true,
-    ["pump"] = true,
-    ["offshore-pump"] = true,
-    ["lamp"] = true,
     ["generator"] = true,
     ["fusion-generator"] = true,
     ["fusion-reactor"] = true,
     ["reactor"] = true,
     ["boiler"] = true,
-    ["radar"] = true,
 }
 
 local DOME_EXCLUDED_FROM_DISABLE = {
