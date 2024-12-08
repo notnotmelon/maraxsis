@@ -46,7 +46,6 @@ data:extend {{
         mining_time = 5,
         results = {
             {type = "item", name = "maraxsis-coral",     amount = 1},
-            {type = "item", name = "maraxsis-limestone", amount = 1},
         }
     },
     walking_sound = sounds.ore,
