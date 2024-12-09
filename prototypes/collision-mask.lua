@@ -71,6 +71,7 @@ local prototypes_that_cant_be_placed_in_a_dome = {
     "cargo-bay",
     "agricultural-tower",
     data.raw.radar["maraxsis-sonar"],
+    data.raw["electric-energy-interface"]["wind-turbine-2"],
     "mining-drill",
 }
 
@@ -102,6 +103,7 @@ local prototypes_that_cannot_be_placed_in_the_trench = {
     "elevated-curved-rail-b",
     "elevated-half-diagonal-rail",
     "elevated-straight-rail",
+    data.raw["electric-energy-interface"]["wind-turbine-2"],
 }
 
 local prototypes_that_can_be_placed_whereever = {
@@ -225,3 +227,5 @@ for _, ramp in pairs(data.raw["rail-ramp"]) do
         end
     end
 end
+
+require "compat.ks-power"
