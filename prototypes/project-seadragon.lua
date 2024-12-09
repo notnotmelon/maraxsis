@@ -68,7 +68,7 @@ data:extend {{
     energy_required = 5,
     ingredients = {
         {type = "item",  name = "sulfur",    amount = 1},
-        {type = "fluid", name = "heavy-oil", amount = 200},
+        {type = "fluid", name = "heavy-oil", amount = 100},
         {type = "fluid", name = "steam",     amount = 100},
     },
     results = {
