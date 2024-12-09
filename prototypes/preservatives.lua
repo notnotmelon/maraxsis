@@ -67,7 +67,7 @@ data:extend {{
     type = "recipe",
     name = "maraxsis-salted-fish",
     enabled = false,
-    energy_required = 2,
+    energy_required = 0.5,
     ingredients = {
         {type = "item", name = "raw-fish",      amount = 1},
         {type = "item", name = "maraxsis-salt", amount = 1},
@@ -85,7 +85,7 @@ data:extend {{
     type = "recipe",
     name = "maraxsis-salted-tropical-fish",
     enabled = false,
-    energy_required = 2,
+    energy_required = 0.5,
     ingredients = {
         {type = "item", name = "maraxsis-tropical-fish", amount = 1},
         {type = "item", name = "maraxsis-salt",          amount = 1},
@@ -103,7 +103,7 @@ data:extend {{
     type = "recipe",
     name = "maraxsis-defluxed-bioflux",
     enabled = false,
-    energy_required = 2,
+    energy_required = 0.5,
     ingredients = {
         {type = "item", name = "bioflux",       amount = 1},
         {type = "item", name = "maraxsis-salt", amount = 1},
@@ -121,7 +121,7 @@ data:extend {{
     type = "recipe",
     name = "maraxsis-salted-science",
     enabled = false,
-    energy_required = 2,
+    energy_required = 0.5,
     ingredients = {
         {type = "item", name = "agricultural-science-pack", amount = 1},
         {type = "item", name = "maraxsis-salt",          amount = 1},
