@@ -113,10 +113,22 @@ local function count_points_in_dome(pressure_dome_data, entity)
     return count
 end
 
+local FLOODED_STATUS = {
+    diode = defines.entity_status_diode.red,
+    label = {"entity-status.flooded"},
+}
 local DOME_DISABLEABLE_TYPES = maraxsis.DOME_DISABLEABLE_TYPES
 local DOME_EXCLUDED_FROM_DISABLE = maraxsis.DOME_EXCLUDED_FROM_DISABLE
-local function can_be_diabled_by_dome_low_pressure(entity)
-    return entity.valid and DOME_DISABLEABLE_TYPES[entity.type] and not DOME_EXCLUDED_FROM_DISABLE[entity.name]
+local function disable_due_to_dome_low_pressure(entity, powered_and_has_fluid)
+    if not entity.valid or not DOME_DISABLEABLE_TYPES[entity.type] or DOME_EXCLUDED_FROM_DISABLE[entity.name] then return end
+
+    entity.active = not not powered_and_has_fluid
+
+    if powered_and_has_fluid then
+        entity.custom_status = nil
+    else
+        entity.custom_status = FLOODED_STATUS
+    end
 end
 
 local function create_dome_light(pressure_dome_data)
@@ -255,9 +267,7 @@ maraxsis.on_event(maraxsis.events.on_built(), function(event)
                     collision_box.minable = false
                 end
             end
-            if can_be_diabled_by_dome_low_pressure(entity) then
-                entity.active = not not pressure_dome_data.powered_and_has_fluid
-            end
+            disable_due_to_dome_low_pressure(entity, pressure_dome_data.powered_and_has_fluid)
             table.insert(pressure_dome_data.contained_entities, entity)
             update_combinator(pressure_dome_data)
         else
@@ -891,9 +901,7 @@ maraxsis.on_nth_tick(73, function()
         if powered_and_has_fluid == dome_data.powered_and_has_fluid then goto continue end
 
         for _, e in pairs(dome_data.contained_entities) do
-            if can_be_diabled_by_dome_low_pressure(e) then
-                e.active = not not powered_and_has_fluid
-            end
+            disable_due_to_dome_low_pressure(e, powered_and_has_fluid)
         end
 
         dome_data.powered_and_has_fluid = powered_and_has_fluid
