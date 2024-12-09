@@ -1,4 +1,13 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.21.9
+Date: 2024-12-09
+  Balancing:
+    - Buffed the crafting speed of all salination recipes from 2s -> 0.5s
+    - Increased the rocket capacity of salt from 500 -> 1000.
+    - Increased the stack size of salt from 100 -> 200.
+  Changes:
+    - The preservatives technology now additionally allows salination of gleba science.
+---------------------------------------------------------------------------------------------------
 Version: 1.21.8
 Date: 2024-12-09
   Locale:
