@@ -10,7 +10,7 @@ data.raw.technology["ducts"].prerequisites = {"sp-spidertron-automation"}
 data:extend {{
     type = "item",
     name = "maraxsis-trench-duct",
-    icon = "__FluidMustFlow__/graphics/icons/buildings/duct-to-ground.png",
+    icon = "__maraxsis__/graphics/icons/trench-duct.png",
     stack_size = 5,
     place_result = "maraxsis-trench-duct",
     subgroup = "energy-pipe-distribution",
@@ -55,7 +55,7 @@ end
 data:extend {{
     type = "storage-tank",
     name = "maraxsis-trench-duct",
-    icon = "__FluidMustFlow__/graphics/icons/buildings/duct-to-ground.png",
+    icon = "__maraxsis__/graphics/icons/trench-duct.png",
     flags = {"placeable-player", "player-creation"},
     minable = {mining_time = 0.8, result = "maraxsis-trench-duct"},
     fast_replaceable_group = "ducts",
@@ -190,7 +190,7 @@ data:extend {{
 data:extend {{
     type = "storage-tank",
     name = "maraxsis-trench-duct-lower",
-    icon = "__FluidMustFlow__/graphics/icons/buildings/duct-to-ground.png",
+    icon = "__maraxsis__/graphics/icons/trench-duct.png",
     hidden = true,
     factoriopedia_alternative = "maraxsis-trench-duct",
     localised_name = {"entity-name.maraxsis-trench-duct"},
