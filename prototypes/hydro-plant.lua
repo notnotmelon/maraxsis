@@ -1,3 +1,6 @@
+local easy_mode = settings.startup["maraxsis-easy-mode"] and settings.startup["maraxsis-easy-mode"].value or false
+easy_mode = easy_mode or mods["no-quality"]
+
 local hit_effects = require("__base__/prototypes/entity/hit-effects")
 local sounds = require("__base__/prototypes/entity/sounds")
 
@@ -87,6 +90,13 @@ data:extend {{
     name = "maraxsis-hydro-plant-or-foundry",
 }}
 
+local localised_description
+if easy_mode then
+    localised_description = {"entity-description.maraxsis-hydro-plant"}
+else
+    localised_description = {"", {"entity-description.maraxsis-hydro-plant"}, "\n", {"description.base-quality", tostring(50)}}
+end
+
 data:extend {{
     type = "assembling-machine",
     name = "maraxsis-hydro-plant",
@@ -99,7 +109,7 @@ data:extend {{
     dying_explosion = "big-explosion",
     circuit_connector = circuit_connector_definitions["maraxsis-hydro-plant"],
     circuit_wire_max_distance = _G.default_circuit_wire_max_distance,
-    localised_description = {"", {"entity-description.maraxsis-hydro-plant"}, "\n", {"description.base-quality", tostring(50)}},
+    localised_description = localised_description,
     resistances = {
         {type = "physical", percent = 50},
         {type = "fire",     percent = 100},
@@ -114,7 +124,7 @@ data:extend {{
     water_reflection = require("__space-age__.prototypes.entity.electromagnetic-plant-pictures").water_reflection,
     collision_box = {{-1.9, -1.9}, {1.9, 1.9}},
     selection_box = {{-2, -2}, {2, 2}},
-    effect_receiver = {base_effect = {quality = 5}},
+    effect_receiver = (not mods["no-quality"]) and {base_effect = {quality = 5}} or nil,
     drawing_box_vertical_extension = 1,
     damaged_trigger_effect = hit_effects.entity(),
     fluid_boxes = {
@@ -194,6 +204,12 @@ data:extend {{
     collision_mask = {layers = {["item"] = true, ["object"] = true, ["player"] = true}},
 }}
 
+if easy_mode then
+    data.raw["assembling-machine"]["maraxsis-hydro-plant"].effect_receiver = {
+        base_effect = {productivity = 0.50},
+    }
+end
+
 local extra_module_slots = table.deepcopy(data.raw["assembling-machine"]["maraxsis-hydro-plant"])
 extra_module_slots.name = "maraxsis-hydro-plant-extra-module-slots"
 extra_module_slots.module_slots = extra_module_slots.module_slots + 2
@@ -225,8 +241,8 @@ data:extend {{
     ingredients = {
         {type = "item",  name = "tungsten-plate",                                         amount = 20},
         {type = "item",  name = "pipe",                                                   amount = 10},
+        {type = "item",  name = "processing-unit",                                                   amount = 10},
         {type = "fluid", name = "maraxsis-saline-water",                                  amount = 300},
-        {type = "item",  name = mods.upcycler and "speed-module-3" or "quality-module-3", amount = 1},
     },
     results = {
         {type = "item", name = "maraxsis-hydro-plant", amount = 1},

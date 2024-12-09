@@ -25,10 +25,10 @@ data:extend {{
             recipe = "maraxsis-limestone-processing",
         },
     },
-    prerequisites = {"maraxsis-hydro-plant"},
+    prerequisites = {"planet-discovery-maraxsis"},
     research_trigger = {
-        type = "build-entity",
-        entity = "maraxsis-hydro-plant"
+        type = "mine-entity",
+        entity = "maraxsis-mollusk-husk"
     },
     order = "eb[glassworking]",
 }}
@@ -67,7 +67,7 @@ data:extend {{
         {type = "item", name = "maraxsis-glass-panes", amount = 1},
     },
     allow_productivity = true,
-    category = "maraxsis-hydro-plant-or-foundry"
+    category = "metallurgy",
 }}
 
 local glass_variants = {}

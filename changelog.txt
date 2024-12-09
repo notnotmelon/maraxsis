@@ -1,4 +1,77 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.21.9
+Date: 2024-12-09
+  Balancing:
+    - Buffed the crafting speed of all salination recipes from 2s -> 0.5s
+    - Increased the rocket capacity of salt from 500 -> 1000.
+    - Increased the stack size of salt from 100 -> 200.
+  Changes:
+    - The preservatives technology now additionally allows salination of gleba science.
+---------------------------------------------------------------------------------------------------
+Version: 1.21.8
+Date: 2024-12-09
+  Locale:
+    - Added a description for the trench surface on the starmap.
+---------------------------------------------------------------------------------------------------
+Version: 1.21.7
+Date: 2024-12-09
+  Balancing:
+    - Coal synthesis can now be performed in a hydro plant.
+    - Increased the crafting time of super sealant substance from 2s -> 5s
+    - Reduced the heavy oil requirement for super sealant substance from 200 -> 100.
+  Bugfixes:
+    - Fixed duplication glitch which could give infinite big mining drills. Resolves https://github.com/notnotmelon/maraxsis/issues/82
+---------------------------------------------------------------------------------------------------
+Version: 1.21.6
+Date: 2024-12-08
+  Balancing:
+    - Pump, offshore pump, radar, lamp, and inserter are no longer disabled inside an inactive dome.
+---------------------------------------------------------------------------------------------------
+Version: 1.21.5
+Date: 2024-12-08
+  Locale:
+    - Added german translation (Credit to  OC1024)
+---------------------------------------------------------------------------------------------------
+Version: 1.21.4
+Date: 2024-12-08
+  Bugfixes:
+    - Fixed crash when drowning inside the trench. Resolves https://github.com/notnotmelon/maraxsis/issues/79
+---------------------------------------------------------------------------------------------------
+Version: 1.21.3
+Date: 2024-12-08
+  Balancing:
+    - Buffed the construction area for the pressure dome from 60x60 to 120x120.
+---------------------------------------------------------------------------------------------------
+Version: 1.21.2
+Date: 2024-12-08
+  Balancing:
+    - Increased the microplastics requirement in the "smelt microplastics" recipe from 1 -> 3.
+    - Reverted tropical fish spoil time to their original value of 2 hours.
+  Locale:
+    - Updated the locale for the submarines to explain how to set a schedule.
+---------------------------------------------------------------------------------------------------
+Version: 1.21.1
+Date: 2024-12-08
+  Balancing:
+    - Decreased the craft time for wyrm confinement cells from 10 seconds to 5 seconds.
+    - Decreased the tungsten plate requirement in the trench duct from 600 -> 200.
+    - Removed heat exchangers from the nuclear submarine recipe. Swapped nuclear reactors for salt reactors.
+    - Removed lamps from the pressure dome recipe.
+    - Removed nuclear reactors from the salt reactor recipe.
+    - Removed quality modules from the hydro plant recipe.
+    - Removed steel chests from the spidertron dock recipe.
+---------------------------------------------------------------------------------------------------
+Version: 1.21.0
+Date: 2024-12-08
+  Features:
+    - Added mollusk husks. These spawn as rocks on the map which can be mined for glass.
+  Balancing:
+    - Glass panes are no longer crafted in the hydro plant. They are now only made in the foundry.
+    - Liquid atmosphere has been moved to a seperate technology unlocked with hydraulic science packs.
+    - Reworked the tech tree to help guide the player.
+    - The pressure dome now requires 500 glass instead of 300.
+    - Tropical fish now spoils again. But in 8 hours instead of 2.
+---------------------------------------------------------------------------------------------------
 Version: 1.20.30
 Date: 2024-12-08
   Locale:

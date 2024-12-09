@@ -36,6 +36,15 @@ maraxsis.on_event(defines.events.on_script_trigger_effect, function(event)
 	new_entity.destructible = false
 end)
 
+maraxsis.on_event(defines.events.on_space_platform_changed_state, function(event)
+	local platform = event.platform
+	local space_location = platform.space_location
+	if not space_location then return end
+	if space_location.name ~= maraxsis.TRENCH_SURFACE_NAME then return end
+	game.print {"maraxsis.invalid-space-platform", platform.name}
+	platform.destroy(0)
+end)
+
 return {
 	get_surface = get_surface,
 	type = "maraxsis-trench",

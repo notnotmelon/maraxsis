@@ -134,10 +134,10 @@ data:extend {{
     enabled = false,
     energy_required = 10,
     ingredients = {
-        {type = "item", name = "maraxsis-glass-panes", amount = 50},
+        {type = "item", name = "maraxsis-glass-panes", amount = 100},
         {type = "item", name = "tungsten-plate",       amount = 100},
         {type = "item", name = "processing-unit",      amount = 100},
-        {type = "item", name = "nuclear-reactor",      amount = 1},
+        {type = "fluid", name = "maraxsis-brackish-water",      amount = 300},
     },
     results = {
         {type = "item", name = "maraxsis-salt-reactor", amount = 1},
@@ -169,7 +169,7 @@ data:extend {{
             recipe = "maraxsis-electricity"
         }
     },
-    prerequisites = {"nuclear-power", "maraxsis-glassworking"},
+    prerequisites = {"nuclear-power", "maraxsis-hydro-plant"},
     research_trigger = {
         type = "craft-item",
         item = "maraxsis-salt",

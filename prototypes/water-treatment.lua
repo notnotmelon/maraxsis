@@ -151,7 +151,7 @@ data:extend {{
     icon = "__maraxsis__/graphics/icons/salt-2.png",
     pictures = salt_variants,
     icon_size = 64,
-    stack_size = 100,
+    stack_size = 200,
 }}
 
 data:extend {{

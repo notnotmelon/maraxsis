@@ -7,3 +7,13 @@ data:extend {{
     maximum_value = 255,
     order = "a"
 }}
+
+if mods["no-quality"] then return end
+
+data:extend {{
+    type = "bool-setting",
+    name = "maraxsis-easy-mode",
+    setting_type = "startup",
+    default_value = false,
+    order = "b"
+}}

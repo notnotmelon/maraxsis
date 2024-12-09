@@ -49,6 +49,7 @@ make_subgroup("maraxsis-salt", "gf", "intermediate-products", {
     data.raw.capsule["maraxsis-salted-fish"],
     data.raw.capsule["maraxsis-salted-tropical-fish"],
     data.raw.capsule["maraxsis-defluxed-bioflux"],
+    data.raw.tool["maraxsis-salted-science"],
 })
 
 make_subgroup("maraxsis-machines", "ee", "production", {
@@ -92,3 +93,5 @@ data.raw.resource["maraxsis-coral"].subgroup = "mineable-fluids"
 data.raw.resource["maraxsis-coral"].order = "x[maraxsis-coral]"
 
 data.raw.item["service_station"].subgroup = nil
+
+require "compat.schall-transport-group"

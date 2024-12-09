@@ -125,9 +125,8 @@ data:extend {{
     effects = {},
     prerequisites = {"maraxsis-glassworking"},
     research_trigger = {
-        type = "craft-fluid",
-        fluid = "maraxsis-brackish-water",
-        amount = 1000,
+        type = "craft-item",
+        item = "maraxsis-pressure-dome"
     },
     order = "ed[piscary]",
 }}
@@ -179,6 +178,8 @@ data:extend {{
     pictures = tropical_fish_variants,
     stack_size = data.raw.capsule["raw-fish"].stack_size,
     capsule_action = table.deepcopy(data.raw.capsule["raw-fish"].capsule_action),
+    spoil_result = "spoilage",
+    spoil_ticks = data.raw.capsule["raw-fish"].spoil_ticks,
 }}
 local dmg = data.raw.capsule["maraxsis-tropical-fish"].capsule_action.attack_parameters.ammo_type.action.action_delivery.target_effects[1].damage
 dmg.amount = dmg.amount * 1.5
@@ -260,7 +261,7 @@ data:extend {{
     enabled = false,
     energy_required = data.raw.recipe["iron-plate"].energy_required,
     ingredients = {
-        {type = "item", name = "maraxsis-microplastics", amount = 1},
+        {type = "item", name = "maraxsis-microplastics", amount = 3},
     },
     results = {
         {type = "item", name = "plastic-bar", amount = 1},

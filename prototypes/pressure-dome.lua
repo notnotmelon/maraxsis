@@ -50,9 +50,8 @@ data:extend {{
     enabled = false,
     ingredients = {
         {type = "item", name = "pipe",                 amount = 30},
-        {type = "item", name = "maraxsis-glass-panes", amount = 300},
+        {type = "item", name = "maraxsis-glass-panes", amount = 500},
         {type = "item", name = "tungsten-plate",       amount = 100},
-        {type = "item", name = "small-lamp",           amount = 10},
     },
     results = {
         {type = "item", name = "maraxsis-pressure-dome", amount = 1},

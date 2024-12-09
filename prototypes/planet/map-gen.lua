@@ -5,7 +5,8 @@ local asteroid_util = require("__space-age__.prototypes.planet.asteroid-spawn-de
 
 local entity_spawn_settings = {
     ["maraxsis-coral"] = {},
-    ["big-sand-rock-underwater"] = {}
+    ["big-sand-rock-underwater"] = {},
+    ["maraxsis-mollusk-husk"] = {},
 }
 
 for _, tropical_fish in pairs(maraxsis.tropical_fish_names) do

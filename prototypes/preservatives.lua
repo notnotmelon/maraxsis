@@ -16,6 +16,10 @@ data:extend {{
             type = "unlock-recipe",
             recipe = "maraxsis-defluxed-bioflux"
         },
+        {
+            type = "unlock-recipe",
+            recipe = "maraxsis-salted-science"
+        },
     },
     prerequisites = {"maraxsis-project-seadragon"},
     unit = {
@@ -51,11 +55,19 @@ defluxed_bioflux.icon = "__maraxsis__/graphics/icons/defluxed-bioflux.png"
 defluxed_bioflux.icon_size = 64
 data:extend {defluxed_bioflux}
 
+local salted_science = table.deepcopy(data.raw.tool["agricultural-science-pack"])
+salted_science.name = "maraxsis-salted-science"
+salted_science.spoil_result = "agricultural-science-pack"
+salted_science.icon = "__maraxsis__/graphics/icons/salted-science.png"
+salted_science.icon_size = 64
+salted_science.localised_description = nil
+data:extend {salted_science}
+
 data:extend {{
     type = "recipe",
     name = "maraxsis-salted-fish",
     enabled = false,
-    energy_required = 2,
+    energy_required = 0.5,
     ingredients = {
         {type = "item", name = "raw-fish",      amount = 1},
         {type = "item", name = "maraxsis-salt", amount = 1},
@@ -73,7 +85,7 @@ data:extend {{
     type = "recipe",
     name = "maraxsis-salted-tropical-fish",
     enabled = false,
-    energy_required = 2,
+    energy_required = 0.5,
     ingredients = {
         {type = "item", name = "maraxsis-tropical-fish", amount = 1},
         {type = "item", name = "maraxsis-salt",          amount = 1},
@@ -91,7 +103,7 @@ data:extend {{
     type = "recipe",
     name = "maraxsis-defluxed-bioflux",
     enabled = false,
-    energy_required = 2,
+    energy_required = 0.5,
     ingredients = {
         {type = "item", name = "bioflux",       amount = 1},
         {type = "item", name = "maraxsis-salt", amount = 1},
@@ -105,8 +117,26 @@ data:extend {{
     auto_recycle = false,
 }}
 
+data:extend {{
+    type = "recipe",
+    name = "maraxsis-salted-science",
+    enabled = false,
+    energy_required = 0.5,
+    ingredients = {
+        {type = "item", name = "agricultural-science-pack", amount = 1},
+        {type = "item", name = "maraxsis-salt",          amount = 1},
+    },
+    results = {
+        {type = "item", name = "maraxsis-salted-science", amount = 1},
+    },
+    allow_productivity = false,
+    category = "maraxsis-hydro-plant",
+    result_is_always_fresh = false,
+    auto_recycle = false,
+}}
+
 local function update_recipe_icon(recipe)
-    local item = data.raw.capsule[recipe.name] or data.raw.item[recipe.name]
+    local item = data.raw.capsule[recipe.name] or data.raw.item[recipe.name] or data.raw.tool[recipe.name]
     local salt = data.raw.item["maraxsis-salt"]
     recipe.icons = {
         {icon = recipe.icon or item.icon, icon_size = recipe.icon_size or item.icon_size},
@@ -119,3 +149,4 @@ end
 update_recipe_icon(data.raw.recipe["maraxsis-salted-fish"])
 update_recipe_icon(data.raw.recipe["maraxsis-salted-tropical-fish"])
 update_recipe_icon(data.raw.recipe["maraxsis-defluxed-bioflux"])
+update_recipe_icon(data.raw.recipe["maraxsis-salted-science"])
