@@ -67,6 +67,8 @@ data:extend {{
     collision_mask = {layers = {}},
     factoriopedia_alternative = "service_station",
     collision_box = {{-1.9, -1.9}, {1.9, 1.9}},
+    selection_box = {{-2, -2}, {2, 2}},
+    selectable_in_game = false,
     crafting_categories = {"maraxsis-regulator"},
     crafting_speed = 1,
     energy_usage = "500kW",
