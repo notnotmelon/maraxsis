@@ -1,3 +1,6 @@
+local easy_mode = settings.startup["maraxsis-easy-mode"] and settings.startup["maraxsis-easy-mode"].value or false
+easy_mode = easy_mode or mods["no-quality"]
+
 local hit_effects = require("__base__/prototypes/entity/hit-effects")
 local sounds = require("__base__/prototypes/entity/sounds")
 
@@ -88,7 +91,7 @@ data:extend {{
 }}
 
 local localised_description
-if mods["no-quality"] then
+if easy_mode then
     localised_description = {"entity-description.maraxsis-hydro-plant"}
 else
     localised_description = {"", {"entity-description.maraxsis-hydro-plant"}, "\n", {"description.base-quality", tostring(50)}}
@@ -200,6 +203,12 @@ data:extend {{
     close_sound = sounds.machine_close,
     collision_mask = {layers = {["item"] = true, ["object"] = true, ["player"] = true}},
 }}
+
+if easy_mode then
+    data.raw["assembling-machine"]["maraxsis-hydro-plant"].effect_receiver = {
+        base_effect = {productivity = 0.50},
+    }
+end
 
 local extra_module_slots = table.deepcopy(data.raw["assembling-machine"]["maraxsis-hydro-plant"])
 extra_module_slots.name = "maraxsis-hydro-plant-extra-module-slots"
