@@ -14,6 +14,7 @@
     "FluidMustFlow >= 1.4.0",
     "? aai-signal-transmission",
     "(?) tenebris",
+    "(?) SchallTransportGroup",
     "! Land-Pump",
     "! buoyant-spidertrons"
   ],
