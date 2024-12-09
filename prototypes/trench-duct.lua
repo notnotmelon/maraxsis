@@ -65,6 +65,14 @@ data:extend {{
     tile_buildability_rules = {
         {area = {{-1, -2}, {1, -1.5}}, required_tiles = {layers = {maraxsis_collision_mask = true}}, colliding_tiles = {layers = {}}},
     },
+    integration_patch_render_layer = "under-tiles",
+    integration_patch = {
+        filename = "__maraxsis__/graphics/entity/trench-duct/trench-duct.png",
+        width = 128,
+        height = 561,
+        scale = 0.5,
+        shift = {0, 4.3}
+    },
     placeable_position_visualization = table.deepcopy(data.raw["offshore-pump"]["offshore-pump"].placeable_position_visualization),
     surface_conditions = {{
         property = "pressure",
