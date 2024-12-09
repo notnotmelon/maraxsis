@@ -2,6 +2,7 @@ require "prototypes.vanilla-changes"
 require "prototypes.spidertron-patrols"
 require "prototypes.item-weight"
 require "prototypes.default-import-location"
+require "prototypes.fluid-void"
 require "compat.aai-industry"
 require "compat.transport-ring-teleporter"
 
