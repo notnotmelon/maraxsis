@@ -278,17 +278,18 @@ data.raw["simple-entity"]["maraxsis-mollusk-husk"].autoplace = {
                 output_scale = 1
             } > 0.95
         ]],
+        -- force these to spawn in the starting area as they are used in a trigger technology
         master_noise = [[
-            multioctave_noise {
+            (multioctave_noise {
                 x = x,
                 y = y,
                 persistence = 0.5,
                 seed0 = map_seed,
                 seed1 = 31359,
                 octaves = 4,
-                input_scale = 1 / 200,
+                input_scale = 1 / 100,
                 output_scale = 1
-            } > 0.2
+            } > 0.2) + (distance_from_0_0(x, y) < 30)
         ]],
     },
     order = "c[rocks]-b[mollusk-husk]"
