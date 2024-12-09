@@ -1,4 +1,13 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.21.7
+Date: 2024-12-09
+  Balancing:
+    - Coal synthesis can now be performed in a hydro plant.
+    - Increased the crafting time of super sealant substance from 2s -> 5s
+    - Reduced the heavy oil requirement for super sealant substance from 200 -> 100.
+  Bugfixes:
+    - Fixed duplication glitch which could give infinite big mining drills. Resolves https://github.com/notnotmelon/maraxsis/issues/82
+---------------------------------------------------------------------------------------------------
 Version: 1.21.6
 Date: 2024-12-08
   Balancing:
