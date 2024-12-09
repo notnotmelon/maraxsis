@@ -27,7 +27,7 @@ maraxsis.on_event({"build", "build-ghost", "super-forced-build"}, function(event
     local position = event.cursor_position
 
     if surface.entity_prototype_collides(name, position, false) then return end
-    local is_ghost = event.input_name == "build-ghost" or event.input_name == "super-forced-build"
+    local is_ghost = (not cursor_stack_valid) or event.input_name == "build-ghost" or event.input_name == "super-forced-build"
     
     surface.create_entity {
         name = is_ghost and "entity-ghost" or name,
@@ -38,7 +38,7 @@ maraxsis.on_event({"build", "build-ghost", "super-forced-build"}, function(event
         quality = quality,
     }
 
-    if not is_ghost and cursor_stack_valid then
+    if not is_ghost then
         cursor_stack.count = cursor_stack.count - 1
     end
 end)
