@@ -1,6 +1,10 @@
 local TRENCH_MOVEMENT_FACTOR = maraxsis.TRENCH_MOVEMENT_FACTOR
 local SUBMARINES = maraxsis.SUBMARINES
 
+maraxsis.on_event(maraxsis.events.on_init(), function()
+    storage.submarines = storage.submarines or {}
+end)
+
 maraxsis.on_event(maraxsis.events.on_built(), function(event)
     local entity = event.entity
     if not entity.valid then return end
@@ -11,6 +15,8 @@ maraxsis.on_event(maraxsis.events.on_built(), function(event)
     if is_default then
         entity.color = SUBMARINES[entity.name]
     end
+
+    storage.submarines[entity.unit_number] = entity
 end)
 
 local function exit_submarine(event)
@@ -212,5 +218,28 @@ maraxsis.on_event("on_spidertron_patrol_waypoint_reached", function(event)
 
     if not decend_or_ascend(submarine) then
         submarine.force.print {"maraxsis.submarine-failed-to-submerge", submarine.gps_tag}
+    end
+end)
+
+maraxsis.on_nth_tick(277, function()
+    for k, submarine in pairs(storage.submarines) do
+        if not submarine.valid then
+            storage.submarines[k] = nil
+            return
+        end
+
+        local fuel_inventory = submarine.get_fuel_inventory()
+        if fuel_inventory.is_empty() then
+            for _, player in pairs(submarine.force.players) do
+                player.add_alert(submarine, defines.alert_type.train_out_of_fuel)
+            end
+        else
+            for _, player in pairs(submarine.force.players) do
+                player.remove_alert{
+                    entity = submarine,
+                    type = defines.alert_type.train_out_of_fuel
+                }
+            end
+        end
     end
 end)
