@@ -65,7 +65,7 @@ data:extend {{
     type = "recipe",
     name = "maraxsis-super-sealant-substance",
     enabled = false,
-    energy_required = 2,
+    energy_required = 5,
     ingredients = {
         {type = "item",  name = "sulfur",    amount = 1},
         {type = "fluid", name = "heavy-oil", amount = 200},
