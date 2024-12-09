@@ -18,10 +18,6 @@ maraxsis.on_event(maraxsis.events.on_init(), function()
     if remote.interfaces["PickerDollies"] and remote.interfaces["PickerDollies"]["add_blacklist_name"] then
         remote.call("PickerDollies", "add_blacklist_name", "maraxsis-pressure-dome")
     end
-    for mask in pairs(prototypes.tile[PRESSURE_DOME_TILE].collision_mask.layers) do
-        storage.maraxsis_dome_collision_mask = mask
-        break
-    end
 
     storage.pressure_domes = storage.pressure_domes or {}
 end)
@@ -374,12 +370,27 @@ local function place_collision_boxes(pressure_dome_data, health, player)
     end
 end
 
-local function check_can_build_dome(entity)
+local function intersects_with_2x2_box(entity, box_location)
+    local corners = get_four_corners(entity)
+
+    local box_x, box_y = box_location.x, box_location.y
+    local box_left_top = {x = box_x - 1, y = box_y - 1}
+    local box_right_bottom = {x = box_x + 1, y = box_y + 1}
+
+    for _, corner in pairs(corners) do
+        local x, y = corner.x, corner.y
+        if x >= box_left_top.x and x <= box_right_bottom.x and y >= box_left_top.y and y <= box_right_bottom.y then
+            return true
+        end
+    end
+
+    return false
+end
+
+local function check_can_build_dome(surface, position)
     local error_message = nil
     local contained_entities = {}
     local colliding_entities = {}
-    local surface = entity.surface
-    local position = entity.position
     local x, y = position.x, position.y
 
     local entities_inside_square = surface.find_entities_filtered {
@@ -395,7 +406,11 @@ local function check_can_build_dome(entity)
         if count == 0 then
             -- pass
         elseif count == 4 then
-            if e.force.name == "neutral" or e.prototype.collision_mask.layers[storage.maraxsis_dome_collision_mask] then
+            local layers = e.prototype.collision_mask.layers
+            if e.force.name == "neutral" or layers[maraxsis_dome_collision_mask] then
+                error_message = error_message or {"cant-build-reason.entity-in-the-way", e.localised_name}
+                colliding_entities[#colliding_entities + 1] = e
+            elseif layers.object and intersects_with_2x2_box(e, position) then
                 error_message = error_message or {"cant-build-reason.entity-in-the-way", e.localised_name}
                 colliding_entities[#colliding_entities + 1] = e
             else
@@ -474,7 +489,10 @@ maraxsis.on_event(maraxsis.events.on_built(), function(event)
     if not entity.valid or entity.name ~= "maraxsis-pressure-dome" then return end
     local player = event.player_index and game.get_player(event.player_index)
 
-    local can_build, contained_entities, error_msg, tile_collision = check_can_build_dome(entity)
+    local surface, position = entity.surface, entity.position
+    local can_build, contained_entities, error_msg, tile_collision = check_can_build_dome(surface, position)
+    local force_index = entity.force_index
+    local quality = entity.quality
 
     if tile_collision then
         maraxsis.cancel_creation(entity, player and player.index, error_msg)
@@ -505,10 +523,6 @@ maraxsis.on_event(maraxsis.events.on_built(), function(event)
         end
 
         local tags = entity.tags
-        local surface = entity.surface
-        local force_index = entity.force_index
-        local position = entity.position
-        local quality = entity.quality
         maraxsis.cancel_creation(entity, player and player.index, error_msg)
 
         if successfully_cleared_area then
@@ -525,11 +539,7 @@ maraxsis.on_event(maraxsis.events.on_built(), function(event)
         return
     end
 
-    local position = entity.position
-    local surface = entity.surface
-    local force_index = entity.force_index
     local health = entity.health
-    local quality = entity.quality.name
     entity.destroy()
     entity = rendering.draw_sprite {
         sprite = "maraxsis-pressure-dome-sprite",
