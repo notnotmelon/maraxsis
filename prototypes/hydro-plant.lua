@@ -87,6 +87,13 @@ data:extend {{
     name = "maraxsis-hydro-plant-or-foundry",
 }}
 
+local localised_description
+if mods["no-quality"] then
+    localised_description = {"entity-description.maraxsis-hydro-plant"}
+else
+    localised_description = {"", {"entity-description.maraxsis-hydro-plant"}, "\n", {"description.base-quality", tostring(50)}}
+end
+
 data:extend {{
     type = "assembling-machine",
     name = "maraxsis-hydro-plant",
@@ -99,7 +106,7 @@ data:extend {{
     dying_explosion = "big-explosion",
     circuit_connector = circuit_connector_definitions["maraxsis-hydro-plant"],
     circuit_wire_max_distance = _G.default_circuit_wire_max_distance,
-    localised_description = {"", {"entity-description.maraxsis-hydro-plant"}, "\n", {"description.base-quality", tostring(50)}},
+    localised_description = localised_description,
     resistances = {
         {type = "physical", percent = 50},
         {type = "fire",     percent = 100},
@@ -114,7 +121,7 @@ data:extend {{
     water_reflection = require("__space-age__.prototypes.entity.electromagnetic-plant-pictures").water_reflection,
     collision_box = {{-1.9, -1.9}, {1.9, 1.9}},
     selection_box = {{-2, -2}, {2, 2}},
-    effect_receiver = {base_effect = {quality = 5}},
+    effect_receiver = (not mods["no-quality"]) and {base_effect = {quality = 5}} or nil,
     drawing_box_vertical_extension = 1,
     damaged_trigger_effect = hit_effects.entity(),
     fluid_boxes = {

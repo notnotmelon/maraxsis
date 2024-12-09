@@ -15,8 +15,7 @@
     "? aai-signal-transmission",
     "(?) tenebris",
     "! Land-Pump",
-    "! buoyant-spidertrons",
-    "! no-quality"
+    "! buoyant-spidertrons"
   ],
   "quality_required": true,
   "space_travel_required": true,
