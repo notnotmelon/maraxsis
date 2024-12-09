@@ -49,6 +49,7 @@ make_subgroup("maraxsis-salt", "gf", "intermediate-products", {
     data.raw.capsule["maraxsis-salted-fish"],
     data.raw.capsule["maraxsis-salted-tropical-fish"],
     data.raw.capsule["maraxsis-defluxed-bioflux"],
+    data.raw.tool["maraxsis-salted-science"],
 })
 
 make_subgroup("maraxsis-machines", "ee", "production", {
