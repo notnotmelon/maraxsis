@@ -67,11 +67,34 @@ data:extend {{
     },
     integration_patch_render_layer = "under-tiles",
     integration_patch = {
-        filename = "__maraxsis__/graphics/entity/trench-duct/trench-duct.png",
-        width = 128,
-        height = 561,
-        scale = 0.5,
-        shift = {0, 4.3}
+        north = {
+            filename = "__maraxsis__/graphics/entity/trench-duct/trench-duct.png",
+            width = 128,
+            height = 561,
+            scale = 0.5,
+            shift = {-0.05, 4}
+        },
+        east = {
+            filename = "__maraxsis__/graphics/entity/trench-duct/trench-duct.png",
+            width = 128,
+            height = 561,
+            scale = 0.5,
+            shift = {0, 4.3}
+        },
+        south = {
+            filename = "__maraxsis__/graphics/entity/trench-duct/trench-duct.png",
+            width = 128,
+            height = 561,
+            scale = 0.5,
+            shift = {0, 4.3}
+        },
+        west = {
+            filename = "__maraxsis__/graphics/entity/trench-duct/trench-duct.png",
+            width = 128,
+            height = 561,
+            scale = 0.5,
+            shift = {-0.1, 4.3}
+        },
     },
     placeable_position_visualization = table.deepcopy(data.raw["offshore-pump"]["offshore-pump"].placeable_position_visualization),
     surface_conditions = {{
