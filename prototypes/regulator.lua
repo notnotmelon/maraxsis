@@ -61,6 +61,7 @@ data:extend {{
     icon_size = 64,
     flags = {"placeable-neutral", "player-creation", "not-on-map"},
     minable = nil,
+    localised_name = {"entity-name.service_station"},
     hidden = true,
     quality_indicator_scale = 0,
     max_health = 99999,
@@ -155,6 +156,7 @@ data:extend {{
     order = "a[fluid]-a[maraxsis-atmosphere]-a[regulator]",
     icon = "__maraxsis__/graphics/icons/atmosphere.png",
     icon_size = 64,
+    localised_name = {"entity-name.service_station"},
 }}
 
 data:extend {{
