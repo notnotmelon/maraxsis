@@ -105,7 +105,7 @@ for _, quality in pairs(data.raw.quality) do
     local r, g, b = tostring(r), tostring(g), tostring(b)
 
     local quality_level = quality.level
-    if quality_level >= 5 then quality_level = quality_level - 1 end
+    if quality_level >= 5 and not mods["infinite-quality-tiers"] then quality_level = quality_level - 1 end
     local mj = 10 * (2 ^ quality_level)
 
     table.insert(electricity_description, {"recipe-description.maraxsis-electricity-quality-description", quality_name, tostring(mj), r, g, b})
