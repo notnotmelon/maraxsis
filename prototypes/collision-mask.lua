@@ -136,6 +136,7 @@ for _, anywhere in pairs(prototypes_that_can_be_placed_whereever) do
 end
 
 local function block_placement(prototype, layer)
+    if prototype.hidden then return end
     if prototype.allow_maraxsis_water_placement then return end -- this check is not used by maraxsis however it may be useful for 3rd party mods doing compatibility
 
     if processed_prototypes[prototype.name] then return end
@@ -166,14 +167,17 @@ local function remove_collision_layer_to_prototypes(prototypes, layer)
             blacklisted.collision_mask.layers[layer] = nil
         else
             for _, prototype in pairs(data.raw[blacklisted]) do
+                if prototype.hidden then goto continue end
                 prototype.collision_mask = collision_mask_util.get_mask(prototype)
                 prototype.collision_mask.layers[layer] = nil
+                ::continue::
             end
         end
     end
 end
 
 local function blacklist_via_surface_condition(entity, max_pressure)
+    if entity.hidden then return end
     if processed_prototypes[entity.name] then return end
     processed_prototypes[entity.name] = true
 
@@ -203,7 +207,9 @@ for _, blacklisted in pairs(prototypes_that_cant_be_placed_in_a_dome_or_on_water
         blacklist_via_surface_condition(blacklisted, 50000)
     else
         for _, prototype in pairs(data.raw[blacklisted]) do
+            if prototype.hidden then goto continue end
             blacklist_via_surface_condition(prototype, 50000)
+            ::continue::
         end
     end
 end
@@ -221,11 +227,13 @@ for _, blacklisted in pairs(prototypes_that_cannot_be_placed_in_the_trench) do
 end
 
 for _, ramp in pairs(data.raw["rail-ramp"]) do
+    if ramp.hidden then goto continue end
     for _, rule in pairs(ramp.tile_buildability_rules or {}) do
         if rule.required_tiles and rule.required_tiles.layers and rule.required_tiles.layers.ground_tile then
             rule.required_tiles.layers[maraxsis_dome_collision_mask] = true
         end
     end
+    ::continue::
 end
 
 require "compat.ks-power"
