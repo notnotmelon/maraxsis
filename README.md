@@ -1,21 +1,5 @@
 [![](https://img.shields.io/badge/dynamic/json?color=orange&label=Factorio&query=downloads_count&suffix=%20downloads&url=https%3A%2F%2Fmods.factorio.com%2Fapi%2Fmods%2Fmaraxsis&style=for-the-badge)](https://mods.factorio.com/mod/maraxsis) [![](https://img.shields.io/badge/Discord-Community-blue?style=for-the-badge)](https://discord.gg/xRYEZYz5WR) [![](https://img.shields.io/github/issues/notnotmelon/maraxsis?label=Bug%20Reports&style=for-the-badge)](https://github.com/notnotmelon/maraxsis/issues) [![](https://img.shields.io/github/issues-pr/notnotmelon/maraxsis?label=Pull%20Requests&style=for-the-badge)](https://github.com/notnotmelon/maraxsis/pulls) [![Ko-Fi](https://img.shields.io/badge/Ko--fi-support%20me-ff5e5b?logo=kofi&logoColor=white&style=for-the-badge)](https://ko-fi.com/notnotmelon)
 
-------------
-
-### Table of Contents
-
-1. [Welcome to Maraxsis](https://github.com/notnotmelon/maraxsis/blob/main/README.md#welcome-to-maraxsis)
-2. [Submarines](https://github.com/notnotmelon/maraxsis/blob/main/README.md#Submarines)
-3. [Trenches](https://github.com/notnotmelon/maraxsis/blob/main/README.md#Trenches)
-4. [Pressure domes](https://github.com/notnotmelon/maraxsis/blob/main/README.md#Pressure%20domes "Pressure domes")
-5. [Progression](https://github.com/notnotmelon/maraxsis/blob/main/README.md#Progression)
-6. [Vanilla Changes](https://github.com/notnotmelon/maraxsis/blob/main/README.md#Vanilla%20Changes)
-7. [Etymology](https://github.com/notnotmelon/maraxsis/blob/main/README.md#Etymology)
-8. [Credits](https://github.com/notnotmelon/maraxsis/blob/main/README.md#Credits)
-9. [Translations](https://github.com/notnotmelon/maraxsis/blob/main/README.md#Translation)
-
-------------
-
 ### Welcome to Maraxsis
 
 Let me introduce this pristine, submerged world. Far away from the sun, this planet paradoxically maintains a comfortable temperature through a runaway greenhouse effect. 
@@ -132,7 +116,7 @@ Maraxsis would not be possible without the help of these amazing, fantastic, inc
 
 #### Translation
 
-- **Contributor**: 
-- 🇫🇷 [FR] [Fr_Dae](https://github.com/Fr-Dae)
-- 🇷🇺 [RU] [GafarovMaxim](https://github.com/GafarovMaxim)
-- 🇨🇳 [zh-CH] [PlexPt](https://github.com/PlexPt)
+- 🇫🇷 [French] [Fr_Dae](https://github.com/Fr-Dae)
+- 🇷🇺 [Russian] [GafarovMaxim](https://github.com/GafarovMaxim)
+- 🇨🇳 [Chinese] [PlexPt](https://github.com/PlexPt)
+- 🇩🇪 [German] [OC1024](https://github.com/OC1024)
