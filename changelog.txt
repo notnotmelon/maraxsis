@@ -1,4 +1,44 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.22.0
+Date: 2024-12-10
+  Features:
+    - Added a new mod setting for "easy mode". This setting swaps the +50% quality on the hydro plant for +50% productivity.
+    - Added an alert on the map whenever a submarine runs out of fuel. NOTE: Only works for newly placed subs. Resolves https://github.com/notnotmelon/maraxsis/issues/80
+    - The hydro plant can now void any fluid.
+  Balancing:
+    - Buffed the spoil time of coral from 5min -> 10min
+    - Force spawn the mollusk husk at 0,0. Also I bumped the segmentation (patches are smaller, but more frequent).
+    - Reduced the hydrogen requirement for hydrolox-rocket-fuel from 400 -> 200.
+    - The hydro plant now requires to craft 10 processing units.
+  Compatibility:
+    - Added compatibility with "Schall Transport Group". Resolves https://github.com/notnotmelon/maraxsis/issues/98
+    - Added compatibility with the infinite quality tiers mod.
+    - Allowed the wind turbine from KS power to be placed outside of a dome. Resolves https://github.com/notnotmelon/maraxsis/issues/100
+    - Greatly improved the interaction with spidertron patrols. Resolves https://github.com/notnotmelon/maraxsis/issues/72
+    - Removed incompatibility flag with the "no quality" mod.
+  Bugfixes:
+    - Banned the creation of trench space platforms in editor mode. Resolves https://github.com/notnotmelon/maraxsis/issues/95
+    - Fix that the pressure dome tiles were counted as "fishable ground".
+    - Fixed being able to place entities intersecting with the regulator.
+    - Fixed improper shift amount for trench duct integration patch in north and west orientations.
+    - Fixed unknown key errors when viewing the regulator in editor mode.
+    - The regulator fluidbox hidden entity now has a proper 4x4 selection box.
+  Graphics:
+    - Added new graphics for the trench duct. Resolves https://github.com/notnotmelon/maraxsis/issues/102
+    - Added new item icon for the trench duct.
+  Locale:
+    - Added lamps and mining drills to the "underwater machines" tips and tricks page. Resolves https://github.com/notnotmelon/maraxsis/issues/84. Resolves https://github.com/notnotmelon/maraxsis/issues/83
+    - Improved the description of the trench duct to tell players how to place this entity.
+    - Provide the names of the required entities and fluids in the flooded entity status.
+    - Replaced the "Disabled by script" tag on machines with "Flooded. Provide [fluid=maraxsis-atmosphere] to the [entity=service_station]." Resolves https://github.com/notnotmelon/maraxsis/issues/101
+    - Updated German translation.
+    - Updated RU locale.
+    - Updated the description for the regulator to better explain how it works.
+    - Updated the locale for the pressure dome to explain how to get atmosphere.
+    - Updated the tech description for sonar to explain it can be placed on land.
+  Changes:
+    - Bump version.
+---------------------------------------------------------------------------------------------------
 Version: 1.21.9
 Date: 2024-12-09
   Balancing:
