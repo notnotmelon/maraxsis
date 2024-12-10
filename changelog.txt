@@ -1,4 +1,10 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.22.1
+Date: 2024-12-10
+  Bugfixes:
+    - Fixed being able to place the dome on top of trench tiles.
+    - Fixed duplication of agri science packs with the "easy mode" setting enabled.
+---------------------------------------------------------------------------------------------------
 Version: 1.22.0
 Date: 2024-12-10
   Features:
