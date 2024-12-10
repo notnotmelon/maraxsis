@@ -435,7 +435,11 @@ local function check_can_build_dome(surface, position)
     for xx = -math.floor(size) + x, math.floor(size) + x do
         for yy = -math.floor(size) + y, math.floor(size) + y do
             local tile = surface.get_tile(xx, yy)
-            if (tile.collides_with("object") or tile.collides_with(maraxsis_lava_collision_mask)) and is_point_in_polygon(xx - x + 0.5, yy - y) then
+            local tile_collision = tile.collides_with("object")
+                or tile.collides_with(maraxsis_lava_collision_mask)
+                or tile.collides_with(maraxsis_trench_entrance_collision_mask)
+                
+            if tile_collision and is_point_in_polygon(xx - x + 0.5, yy - y) then
                 return false, colliding_entities, {"cant-build-reason.entity-in-the-way", tile.prototype.localised_name}, true
             end
         end
