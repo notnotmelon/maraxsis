@@ -79,6 +79,7 @@ data:extend {{
     category = "maraxsis-hydro-plant",
     result_is_always_fresh = false,
     auto_recycle = false,
+    maximum_productivity = 0,
 }}
 
 data:extend {{
@@ -97,6 +98,7 @@ data:extend {{
     category = "maraxsis-hydro-plant",
     result_is_always_fresh = false,
     auto_recycle = false,
+    maximum_productivity = 0,
 }}
 
 data:extend {{
@@ -115,6 +117,7 @@ data:extend {{
     category = "maraxsis-hydro-plant",
     result_is_always_fresh = false,
     auto_recycle = false,
+    maximum_productivity = 0,
 }}
 
 data:extend {{
@@ -133,6 +136,7 @@ data:extend {{
     category = "maraxsis-hydro-plant",
     result_is_always_fresh = false,
     auto_recycle = false,
+    maximum_productivity = 0,
 }}
 
 local function update_recipe_icon(recipe)
