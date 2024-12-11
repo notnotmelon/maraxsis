@@ -77,6 +77,11 @@ data:extend {{
 
 data:extend {{
     type = "recipe-category",
+    name = "maraxsis-hydro-plant-or-advanced-crafting",
+}}
+
+data:extend {{
+    type = "recipe-category",
     name = "maraxsis-hydro-plant-or-chemistry",
 }}
 
@@ -173,6 +178,7 @@ data:extend {{
     crafting_categories = {
         "maraxsis-hydro-plant",
         "maraxsis-hydro-plant-or-assembling",
+        "maraxsis-hydro-plant-or-advanced-crafting",
         "maraxsis-hydro-plant-or-biochamber",
         "maraxsis-hydro-plant-or-chemistry",
         "maraxsis-hydro-plant-or-foundry"

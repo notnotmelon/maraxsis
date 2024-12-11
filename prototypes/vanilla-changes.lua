@@ -31,7 +31,8 @@ for _, machine_type in pairs {"assembling-machine", "rocket-silo", "furnace", "c
             for _, category in pairs(machine.crafting_categories) do
                 if category == "crafting" then
                     table.insert(machine.crafting_categories, "maraxsis-hydro-plant-or-assembling")
-                    break
+                elseif category == "advanced-crafting" then
+                    table.insert(machine.crafting_categories, "maraxsis-hydro-plant-or-advanced-crafting")
                 end
             end
         end
@@ -164,8 +165,8 @@ for _, armor in pairs(data.raw.armor) do
     ::continue::
 end
 
-data.raw.recipe["engine-unit"].category = "maraxsis-hydro-plant-or-assembling"
-data.raw.recipe["electric-engine-unit"].category = "maraxsis-hydro-plant-or-assembling"
+data.raw.recipe["engine-unit"].category = "maraxsis-hydro-plant-or-advanced-crafting"
+data.raw.recipe["electric-engine-unit"].category = "maraxsis-hydro-plant-or-advanced-crafting"
 
 for _, module in pairs(data.raw.module) do
     if module.name:find("quality%-module") and not module.beacon_tint then
