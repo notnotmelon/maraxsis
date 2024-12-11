@@ -1,4 +1,15 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.23.0
+Date: 2024-12-11
+  Features:
+    - Added a new recipe to convert petroleum gas into heavy oil.
+    - Added the conduit. A powerful new beacon unlocked on maraxsis. It accepts quality modules and can be built on the seafloor. Graphics credit: Hurricane.
+  Balancing:
+    - We are no longer banning the unbarreling of heavy oil in space. Resolves https://github.com/notnotmelon/maraxsis/issues/123
+  Locale:
+    - Renamed glass panes to glass.
+    - Renamed trench duct to duct to trench
+---------------------------------------------------------------------------------------------------
 Version: 1.22.2
 Date: 2024-12-11
   Balancing:
