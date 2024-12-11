@@ -1,4 +1,15 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.23.1
+Date: 2024-12-11
+  Balancing:
+    - Allow productivity in the petroleum-gas-cracking recipe.
+    - Buffed the blast radius for big cliff explosives from 300 tiles -> 450 tiles.
+  Bugfixes:
+    - Fix sometimes being unable to move after leaving maraxsis.
+    - Fixed that engine units could be crafted by hand. Resolves https://github.com/notnotmelon/maraxsis/issues/120
+  Locale:
+    - Removed several redundant locale keys that now exist in spidertron patrols.
+---------------------------------------------------------------------------------------------------
 Version: 1.23.0
 Date: 2024-12-11
   Features:
