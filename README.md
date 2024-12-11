@@ -77,7 +77,6 @@ Here's a sample of some of the technologies available on Maraxsis:
 
 This mod makes a few changes to Factorio: Space Age in order for Maraxsis to fit seamlessly into the tech tree.
 
-  - Banned unbarrelling of heavy oil in space.
   - The research productivity technology now requires hydraulic science packs.
   - Removed surface restrictions for the biolab.
 
