@@ -1,12 +1,3 @@
-local collision_mask_util = require "__core__/lualib/collision-mask-util"
-
-local tech_tree_screenshot_mode = false
-if tech_tree_screenshot_mode then
-    for _, t in pairs(data.raw.technology) do
-        t.hidden = true
-    end
-end
-
 _G.maraxsis = require "scripts.constants"
 require "lib.lib"
 require "prototypes.abyssal-diving-gear"
@@ -44,3 +35,4 @@ require "prototypes.promethium-productivity"
 require "prototypes.tips-and-tricks.tips-and-tricks"
 require "prototypes.offshore-pump"
 require "prototypes.planet.map-gen"
+require "prototypes.conduit"

@@ -103,7 +103,7 @@ Maraxsis would not be possible without the help of these amazing, fantastic, inc
 
  - Unused Renders - [malcolmriley](https://github.com/malcolmriley)
  - Tropical Fish Pack - [ZivixLLC](https://github.com/ZivixLLC)
- - Hydro Plant & Regulator & Salt Reactor - [Hurricane](https://github.com/Hurricane)
+ - Hydro Plant, Regulator, Salt Reactor, & Conduit - [Hurricane](https://github.com/Hurricane)
  - Submarine & Nuclear Submarine - [Archezekiel](https://github.com/Archezekiel)
  - Pressure Dome - [KaueNP](https://github.com/KaueNP)
  - Sonar - [fishbus](https://github.com/fishbus)

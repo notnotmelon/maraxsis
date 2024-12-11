@@ -13,7 +13,7 @@
 - **License**: [TurboSquid 3D Model License](https://blog.turbosquid.com/turbosquid-3d-model-license/)
 - **Changes**: Yes. Added animations. Added light effects. Converted to .PNG via Blender.
 
-#### Hydro Plant & Regulator & Salt Reactor
+#### Hydro Plant, Regulator, Salt Reactor, & Conduit
 
 - **Creators**: [Hurricane](https://github.com/Hurricane)
 - **Source**: [Figma](https://shorturl.at/AFcDm)

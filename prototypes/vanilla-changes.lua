@@ -172,3 +172,12 @@ end
 
 data.raw.recipe["engine-unit"].category = "maraxsis-hydro-plant-or-assembling"
 data.raw.recipe["electric-engine-unit"].category = "maraxsis-hydro-plant-or-assembling"
+
+for _, module in pairs(data.raw.module) do
+    if module.name:find("quality%-module") and not module.beacon_tint then
+        module.beacon_tint = {
+            primary = {1, 0, 0},
+            secondary = {1, 0.37, 0.37},
+        }
+    end
+end

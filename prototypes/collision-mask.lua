@@ -128,7 +128,8 @@ local prototypes_that_can_be_placed_whereever = {
     data.raw["spider-vehicle"]["spidertron-enhancements-dummy-maraxsis-nuclear-submarine"],
     data.raw.roboport.service_station,
     data.raw.roboport["maraxsis-pressure-dome"],
-    data.raw.furnace["maraxsis-salt-reactor"]
+    data.raw.furnace["maraxsis-salt-reactor"],
+    data.raw.beacon["maraxsis-conduit"],
 }
 
 for _, anywhere in pairs(prototypes_that_can_be_placed_whereever) do

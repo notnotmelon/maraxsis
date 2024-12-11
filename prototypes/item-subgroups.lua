@@ -93,5 +93,7 @@ data.raw.resource["maraxsis-coral"].subgroup = "mineable-fluids"
 data.raw.resource["maraxsis-coral"].order = "x[maraxsis-coral]"
 
 data.raw.item["service_station"].subgroup = nil
+data.raw.item["maraxsis-conduit"].subgroup = data.raw.item.beacon.subgroup
+data.raw.item["maraxsis-conduit"].order = data.raw.item.beacon.order .. "a[maraxsis-conduit]"
 
 require "compat.schall-transport-group"
