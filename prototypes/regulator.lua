@@ -1,9 +1,9 @@
 local regulator = data.raw.roboport["service_station"]
 
-regulator.logistics_connection_distance = nil
-regulator.radar_range = 1
-regulator.logistics_radius = 22
-regulator.construction_radius = 0
+regulator.logistics_connection_distance = 90
+regulator.radar_range = 2
+regulator.logistics_radius = 30
+regulator.construction_radius = 60
 regulator.base_animation = nil
 regulator.base = nil
 regulator.base_patch = nil
@@ -61,12 +61,15 @@ data:extend {{
     icon_size = 64,
     flags = {"placeable-neutral", "player-creation", "not-on-map"},
     minable = nil,
+    localised_name = {"entity-name.service_station"},
     hidden = true,
     quality_indicator_scale = 0,
     max_health = 99999,
     collision_mask = {layers = {}},
     factoriopedia_alternative = "service_station",
     collision_box = {{-1.9, -1.9}, {1.9, 1.9}},
+    selection_box = {{-2, -2}, {2, 2}},
+    selectable_in_game = false,
     crafting_categories = {"maraxsis-regulator"},
     crafting_speed = 1,
     energy_usage = "500kW",
@@ -93,6 +96,14 @@ data:extend {{
             filter = "maraxsis-atmosphere",
             secondary_draw_orders = {north = -1},
         },
+        smoke = {
+            {
+                name = "maraxsis-swimming-bubbles",
+                frequency = 100,
+                position = {-0.9, -2.7},
+                starting_vertical_speed = 0.03
+            }
+        }
     },
     effect_receiver = {
         uses_module_effects = false,
@@ -145,6 +156,7 @@ data:extend {{
     order = "a[fluid]-a[maraxsis-atmosphere]-a[regulator]",
     icon = "__maraxsis__/graphics/icons/atmosphere.png",
     icon_size = 64,
+    localised_name = {"entity-name.service_station"},
 }}
 
 data:extend {{

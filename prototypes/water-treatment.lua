@@ -67,14 +67,14 @@ data:extend {{
 
 data:extend {{
     type = "recipe",
-    name = "maraxsis-saline-electrolysis",
+    name = "maraxsis-salt",
     enabled = false,
     energy_required = 5,
     ingredients = {
         {type = "fluid", name = "maraxsis-brackish-water", amount = 300},
     },
     results = {
-        {type = "item",  name = "maraxsis-salt",     amount = 1},
+        {type = "item",  name = "maraxsis-salt",     amount = 3},
         {type = "fluid", name = "maraxsis-oxygen",   amount = 100},
         {type = "fluid", name = "maraxsis-hydrogen", amount = 200},
     },
@@ -83,8 +83,10 @@ data:extend {{
     icon_size = 128,
     auto_recycle = false,
     allow_productivity = true,
+    main_product = "maraxsis-salt",
+    localised_name = {"recipe-name.maraxsis-salt"},
 }}
-add_to_tech("maraxsis-saline-electrolysis")
+add_to_tech("maraxsis-salt")
 
 data:extend {{
     type = "recipe",
@@ -118,11 +120,11 @@ data:extend {{
     enabled = false,
     energy_required = 2.5,
     ingredients = {
-        {type = "item",  name = "maraxsis-salt-filter", amount = 1},
-        {type = "fluid", name = "maraxsis-saline-water",         amount = 100},
+        {type = "item",  name = "maraxsis-salt-filter",  amount = 1},
+        {type = "fluid", name = "maraxsis-saline-water", amount = 100},
     },
     results = {
-        {type = "fluid", name = "maraxsis-brackish-water",                 amount = 100},
+        {type = "fluid", name = "maraxsis-brackish-water",        amount = 100},
         {type = "item",  name = "maraxsis-saturated-salt-filter", amount = 1,  ignored_by_stats = 1, ignored_by_productivity = 1},
     },
     category = "maraxsis-hydro-plant",
@@ -149,7 +151,7 @@ data:extend {{
     icon = "__maraxsis__/graphics/icons/salt-2.png",
     pictures = salt_variants,
     icon_size = 64,
-    stack_size = 100,
+    stack_size = 200,
 }}
 
 data:extend {{
@@ -166,8 +168,8 @@ data:extend {{
     enabled = false,
     energy_required = 1,
     ingredients = {
-        {type = "item", name = "steel-plate",     amount = 2},
-        {type = "item", name = "carbon-fiber",    amount = 1},
+        {type = "item", name = "steel-plate",  amount = 2},
+        {type = "item", name = "carbon-fiber", amount = 1},
     },
     results = {
         {type = "item", name = "maraxsis-salt-filter", amount = 1},
@@ -187,9 +189,9 @@ data:extend {{
         {type = "fluid", name = "water",                          amount = 20},
     },
     results = {
-        {type = "item",  name = "maraxsis-salt-filter", amount = 1, probability = 0.95, ignored_by_stats = 1, ignored_by_productivity = 1},
-        {type = "item",  name = "carbon-fiber",         amount = 1, probability = 0.025},
-        {type = "fluid", name = "maraxsis-brackish-water",       amount = 20},
+        {type = "item",  name = "maraxsis-salt-filter",    amount = 1, probability = 0.95, ignored_by_stats = 1, ignored_by_productivity = 1},
+        {type = "item",  name = "carbon-fiber",            amount = 1, probability = 0.025},
+        {type = "fluid", name = "maraxsis-brackish-water", amount = 20},
     },
     category = "maraxsis-hydro-plant",
     main_product = "maraxsis-salt-filter",

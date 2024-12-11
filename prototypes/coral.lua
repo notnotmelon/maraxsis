@@ -26,9 +26,9 @@ data:extend {{
     icon = "__maraxsis__/graphics/icons/coral-1.png",
     icon_size = 64,
     pictures = coral_variants,
-    stack_size = 50,
+    stack_size = 200,
     spoil_result = "maraxsis-limestone",
-    spoil_ticks = 60 * 60 * 5,
+    spoil_ticks = 60 * 60 * 10,
 }}
 
 
@@ -45,8 +45,7 @@ data:extend {{
         mining_particle = "copper-ore-particle",
         mining_time = 5,
         results = {
-            {type = "item", name = "maraxsis-coral", amount = 1},
-            {type = "item", name = "maraxsis-limestone",      amount = 1},
+            {type = "item", name = "maraxsis-coral",     amount = 1},
         }
     },
     walking_sound = sounds.ore,

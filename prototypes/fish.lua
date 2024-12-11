@@ -125,9 +125,8 @@ data:extend {{
     effects = {},
     prerequisites = {"maraxsis-glassworking"},
     research_trigger = {
-        type = "craft-fluid",
-        fluid = "maraxsis-brackish-water",
-        amount = 1000,
+        type = "craft-item",
+        item = "maraxsis-pressure-dome"
     },
     order = "ed[piscary]",
 }}
@@ -185,7 +184,7 @@ data:extend {{
 local dmg = data.raw.capsule["maraxsis-tropical-fish"].capsule_action.attack_parameters.ammo_type.action.action_delivery.target_effects[1].damage
 dmg.amount = dmg.amount * 1.5
 
-data:extend{{
+data:extend {{
     type = "recipe",
     name = "maraxsis-nutrients-from-tropical-fish",
     icon = "__maraxsis__/graphics/icons/nutrients-from-tropical-fish.png",
@@ -237,13 +236,12 @@ data:extend {{
     energy_required = 2,
     ingredients = {
         {type = "item", name = "maraxsis-tropical-fish",   amount = 1},
-        {type = "item", name = "piercing-rounds-magazine", amount = 1},
     },
     results = {
         {type = "item", name = "maraxsis-microplastics", amount = 10},
         {type = "item", name = "jelly",                  amount = 10},
     },
-    category = "maraxsis-hydro-plant-or-biochamber",
+    category = "organic-or-assembling",
     localised_name = {"recipe-name.maraxsis-microplastics"},
     main_product = "maraxsis-microplastics",
     allow_productivity = true,
@@ -263,7 +261,7 @@ data:extend {{
     enabled = false,
     energy_required = data.raw.recipe["iron-plate"].energy_required,
     ingredients = {
-        {type = "item", name = "maraxsis-microplastics", amount = 1},
+        {type = "item", name = "maraxsis-microplastics", amount = 3},
     },
     results = {
         {type = "item", name = "plastic-bar", amount = 1},

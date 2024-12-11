@@ -1,10 +1,9 @@
 local TRENCH_MOVEMENT_FACTOR = maraxsis.TRENCH_MOVEMENT_FACTOR
 local SUBMARINES = maraxsis.SUBMARINES
 
-local default_colors = {
-    {r = 255, g = 195, b = 0,   a = 0.5},
-    {r = 0.3, g = 0.8, b = 0.3, a = 0.5},
-}
+maraxsis.on_event(maraxsis.events.on_init(), function()
+    storage.submarines = storage.submarines or {}
+end)
 
 maraxsis.on_event(maraxsis.events.on_built(), function(event)
     local entity = event.entity
@@ -16,6 +15,8 @@ maraxsis.on_event(maraxsis.events.on_built(), function(event)
     if is_default then
         entity.color = SUBMARINES[entity.name]
     end
+
+    storage.submarines[entity.unit_number] = entity
 end)
 
 local function exit_submarine(event)
@@ -157,7 +158,7 @@ local function decend_or_ascend(submarine)
     submarine.teleport(target_position, target_surface, true)
     for _, player in pairs(players_to_open_gui) do
         if player.surface ~= target_surface then
-            player.set_controller{
+            player.set_controller {
                 type = defines.controllers.remote,
                 position = target_position,
                 surface = target_surface
@@ -166,12 +167,12 @@ local function decend_or_ascend(submarine)
         player.opened = submarine
     end
 
-    if passenger then
+    if passenger and passenger.physical_vehicle == submarine then
         passenger.teleport(target_position, target_surface, true)
         maraxsis.execute_later("enter_submarine", 1, passenger, submarine)
     end
 
-    if driver then
+    if driver and driver.physical_vehicle == submarine then
         driver.teleport(target_position, target_surface, true)
         maraxsis.execute_later("enter_submarine", 1, driver, submarine)
     end
@@ -182,9 +183,9 @@ end
 maraxsis.on_event("maraxsis-trench-submerge", function(event)
     local player = game.get_player(event.player_index)
     if not player then return end
-    local submarine = player.physical_vehicle
+    local submarine = player.vehicle
 
-    if submarine and SUBMARINES[submarine.name] and player.physical_surface == player.surface then
+    if submarine and SUBMARINES[submarine.name] then
         decend_or_ascend(submarine)
     end
 end)
@@ -203,37 +204,42 @@ maraxsis.on_event("toggle-driving", function(event)
     -- case 1: player is not hovering the sub but trying to exit.
     if submarine and SUBMARINES[submarine.name] and not selected_submarine then
         maraxsis.execute_later("exit_submarine", 1, event)
-    -- case 2: player is hovering the sub and trying to enter. the vanilla vechicle enter range is too low for water vehicles so we artificially increase it
+        -- case 2: player is hovering the sub and trying to enter. the vanilla vechicle enter range is too low for water vehicles so we artificially increase it
     elseif can_enter_submarine(player, selected) then
         maraxsis.execute_later("enter_submarine", 1, player, selected)
     end
 end)
 
--- hijack the remote api for spidertron patrols and allow submarines to submerge
-local function automated_submerge(event)
-    local submarine = event.vehicle
+maraxsis.on_event("on_spidertron_patrol_waypoint_reached", function(event)
+    if event.waypoint.type ~= "submerge" then return end
+    local submarine = event.spidertron
     if not submarine or not submarine.valid then return end
     if not maraxsis.SUBMARINES[submarine.name] then return end
-
-    local schedule = remote.call("SpidertronPatrols", "get_waypoints", submarine)
-    if not schedule.on_patrol then return end
-
-    local waypoints = schedule.waypoints
-    if not waypoints or table_size(waypoints) == 1 then return end
-
-    local current_index = schedule.current_index - 1
-    if current_index == 0 then current_index = table_size(waypoints) end
-    local current = waypoints[current_index]
-    if not current then return end
-
-    if current.type ~= "passenger-not-present" then return end -- this event has been renamed to "submerge" in the gui
 
     if not decend_or_ascend(submarine) then
         submarine.force.print {"maraxsis.submarine-failed-to-submerge", submarine.gps_tag}
     end
-end
-maraxsis.register_delayed_function("automated_submerge", automated_submerge)
+end)
 
-maraxsis.on_event(defines.events.on_spider_command_completed, function(event)
-    maraxsis.execute_later("automated_submerge", 10, event)
+maraxsis.on_nth_tick(277, function()
+    for k, submarine in pairs(storage.submarines) do
+        if not submarine.valid then
+            storage.submarines[k] = nil
+            return
+        end
+
+        local fuel_inventory = submarine.get_fuel_inventory()
+        if fuel_inventory.is_empty() then
+            for _, player in pairs(submarine.force.players) do
+                player.add_alert(submarine, defines.alert_type.train_out_of_fuel)
+            end
+        else
+            for _, player in pairs(submarine.force.players) do
+                player.remove_alert{
+                    entity = submarine,
+                    type = defines.alert_type.train_out_of_fuel
+                }
+            end
+        end
+    end
 end)

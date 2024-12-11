@@ -31,6 +31,42 @@ data:extend {{
 }}
 
 data:extend {{
+    type = "technology",
+    name = "maraxsis-liquid-atmosphere",
+    icon = "__maraxsis__/graphics/technology/liquid-atmosphere.png",
+    icon_size = 256,
+    effects = {
+        {
+            type = "unlock-recipe",
+            recipe = "maraxsis-liquid-atmosphere"
+        },
+        {
+            type = "unlock-recipe",
+            recipe = "maraxsis-liquid-atmosphere-decompression"
+        },
+        {
+            type = "unlock-recipe",
+            recipe = "empty-maraxsis-liquid-atmosphere-barrel"
+        },
+        {
+            type = "unlock-recipe",
+            recipe = "maraxsis-liquid-atmosphere-barrel"
+        }
+    },
+    prerequisites = {"cryogenic-science-pack", "maraxsis-project-seadragon"},
+    unit = {
+        count = 1000,
+        ingredients = {
+            {"hydraulic-science-pack",   1},
+            {"cryogenic-science-pack",   1},
+        },
+        time = 60
+    },
+    order = "eb[liquid-atmosphere]",
+    localised_name = {"fluid-name.maraxsis-liquid-atmosphere"}
+}}
+
+data:extend {{
     type = "fluid",
     name = "maraxsis-liquid-atmosphere",
     default_temperature = -200,
@@ -86,13 +122,3 @@ data:extend {{
     allow_decomposition = false,
     allow_productivity = true,
 }}
-
-table.insert(data.raw.technology["cryogenic-plant"].effects, {
-    type = "unlock-recipe",
-    recipe = "maraxsis-liquid-atmosphere"
-})
-
-table.insert(data.raw.technology["cryogenic-plant"].effects, {
-    type = "unlock-recipe",
-    recipe = "maraxsis-liquid-atmosphere-decompression"
-})

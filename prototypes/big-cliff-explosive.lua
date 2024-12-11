@@ -113,7 +113,7 @@ data:extend {maraxsis.merge(data.raw.projectile["cliff-explosives"], {
                     },
                     {
                         explosion = "explosion",
-                        radius = 300,
+                        radius = 450,
                         type = "destroy-cliffs"
                     },
                     {

@@ -5,7 +5,8 @@ local asteroid_util = require("__space-age__.prototypes.planet.asteroid-spawn-de
 
 local entity_spawn_settings = {
     ["maraxsis-coral"] = {},
-    ["big-sand-rock-underwater"] = {}
+    ["big-sand-rock-underwater"] = {},
+    ["maraxsis-mollusk-husk"] = {},
 }
 
 for _, tropical_fish in pairs(maraxsis.tropical_fish_names) do
@@ -254,6 +255,7 @@ data:extend {maraxsis.merge(data.raw.planet.gleba, {
     order = "ce[maraxsis]",
     pollutant_type = "nil",
     solar_power_in_space = 150,
+    player_effects = "nil",
     map_gen_settings = planet_map_gen.maraxsis(),
     distance = 15,
     draw_orbit = false,
@@ -302,7 +304,7 @@ data:extend {{
     from = "vulcanus",
     to = "maraxsis",
     order = "f",
-    length = 30000,
+    length = 20000,
     asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.gleba_aquilo)
 }}
 
@@ -314,7 +316,7 @@ if mods.tenebris then
         from = "maraxsis",
         to = "tenebris",
         order = "g",
-        length = 30000,
+        length = 20000,
         asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.gleba_aquilo)
     }}
 else
@@ -325,7 +327,7 @@ else
         from = "fulgora",
         to = "maraxsis",
         order = "f",
-        length = 30000,
+        length = 20000,
         asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.gleba_aquilo)
     }}
 end

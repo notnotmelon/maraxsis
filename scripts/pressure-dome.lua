@@ -18,10 +18,6 @@ maraxsis.on_event(maraxsis.events.on_init(), function()
     if remote.interfaces["PickerDollies"] and remote.interfaces["PickerDollies"]["add_blacklist_name"] then
         remote.call("PickerDollies", "add_blacklist_name", "maraxsis-pressure-dome")
     end
-    for mask in pairs(prototypes.tile[PRESSURE_DOME_TILE].collision_mask.layers) do
-        storage.maraxsis_dome_collision_mask = mask
-        break
-    end
 
     storage.pressure_domes = storage.pressure_domes or {}
 end)
@@ -117,10 +113,22 @@ local function count_points_in_dome(pressure_dome_data, entity)
     return count
 end
 
+local FLOODED_STATUS = {
+    diode = defines.entity_status_diode.red,
+    label = {"entity-status.flooded"},
+}
 local DOME_DISABLEABLE_TYPES = maraxsis.DOME_DISABLEABLE_TYPES
 local DOME_EXCLUDED_FROM_DISABLE = maraxsis.DOME_EXCLUDED_FROM_DISABLE
-local function can_be_diabled_by_dome_low_pressure(entity)
-    return entity.valid and DOME_DISABLEABLE_TYPES[entity.type] and not DOME_EXCLUDED_FROM_DISABLE[entity.name]
+local function disable_due_to_dome_low_pressure(entity, powered_and_has_fluid)
+    if not entity.valid or not DOME_DISABLEABLE_TYPES[entity.type] or DOME_EXCLUDED_FROM_DISABLE[entity.name] then return end
+
+    entity.active = not not powered_and_has_fluid
+
+    if powered_and_has_fluid then
+        entity.custom_status = nil
+    else
+        entity.custom_status = FLOODED_STATUS
+    end
 end
 
 local function create_dome_light(pressure_dome_data)
@@ -259,9 +267,7 @@ maraxsis.on_event(maraxsis.events.on_built(), function(event)
                     collision_box.minable = false
                 end
             end
-            if can_be_diabled_by_dome_low_pressure(entity) then
-                entity.active = not not pressure_dome_data.powered_and_has_fluid
-            end
+            disable_due_to_dome_low_pressure(entity, pressure_dome_data.powered_and_has_fluid)
             table.insert(pressure_dome_data.contained_entities, entity)
             update_combinator(pressure_dome_data)
         else
@@ -293,7 +299,7 @@ local function place_tiles(pressure_dome_data)
     surface.set_tiles(tiles, true, false, true, false)
 end
 
-local DEFAULT_MARAXSIS_TILE = "dirt-5-underwater"
+local DEFAULT_MARAXSIS_TILE = "sand-3-underwater"
 local function unplace_tiles(pressure_dome_data)
     local surface = pressure_dome_data.surface
     if not surface.valid then return end
@@ -374,12 +380,27 @@ local function place_collision_boxes(pressure_dome_data, health, player)
     end
 end
 
-local function check_can_build_dome(entity)
+local function intersects_with_2x2_box(entity, box_location)
+    local corners = get_four_corners(entity)
+
+    local box_x, box_y = box_location.x, box_location.y
+    local box_left_top = {x = box_x - 1, y = box_y - 1}
+    local box_right_bottom = {x = box_x + 1, y = box_y + 1}
+
+    for _, corner in pairs(corners) do
+        local x, y = corner.x, corner.y
+        if x >= box_left_top.x and x <= box_right_bottom.x and y >= box_left_top.y and y <= box_right_bottom.y then
+            return true
+        end
+    end
+
+    return false
+end
+
+local function check_can_build_dome(surface, position)
     local error_message = nil
     local contained_entities = {}
     local colliding_entities = {}
-    local surface = entity.surface
-    local position = entity.position
     local x, y = position.x, position.y
 
     local entities_inside_square = surface.find_entities_filtered {
@@ -395,7 +416,11 @@ local function check_can_build_dome(entity)
         if count == 0 then
             -- pass
         elseif count == 4 then
-            if e.force.name == "neutral" or e.prototype.collision_mask.layers[storage.maraxsis_dome_collision_mask] then
+            local layers = e.prototype.collision_mask.layers
+            if e.force.name == "neutral" or layers[maraxsis_dome_collision_mask] then
+                error_message = error_message or {"cant-build-reason.entity-in-the-way", e.localised_name}
+                colliding_entities[#colliding_entities + 1] = e
+            elseif layers.object and intersects_with_2x2_box(e, position) then
                 error_message = error_message or {"cant-build-reason.entity-in-the-way", e.localised_name}
                 colliding_entities[#colliding_entities + 1] = e
             else
@@ -410,7 +435,11 @@ local function check_can_build_dome(entity)
     for xx = -math.floor(size) + x, math.floor(size) + x do
         for yy = -math.floor(size) + y, math.floor(size) + y do
             local tile = surface.get_tile(xx, yy)
-            if (tile.collides_with("object") or tile.collides_with(maraxsis_lava_collision_mask)) and is_point_in_polygon(xx - x + 0.5, yy - y) then
+            local tile_collision = tile.collides_with("object")
+                or tile.collides_with(maraxsis_lava_collision_mask)
+                or tile.collides_with(maraxsis_trench_entrance_collision_mask)
+                
+            if tile_collision and is_point_in_polygon(xx - x + 0.5, yy - y) then
                 return false, colliding_entities, {"cant-build-reason.entity-in-the-way", tile.prototype.localised_name}, true
             end
         end
@@ -474,7 +503,10 @@ maraxsis.on_event(maraxsis.events.on_built(), function(event)
     if not entity.valid or entity.name ~= "maraxsis-pressure-dome" then return end
     local player = event.player_index and game.get_player(event.player_index)
 
-    local can_build, contained_entities, error_msg, tile_collision = check_can_build_dome(entity)
+    local surface, position = entity.surface, entity.position
+    local can_build, contained_entities, error_msg, tile_collision = check_can_build_dome(surface, position)
+    local force_index = entity.force_index
+    local quality = entity.quality
 
     if tile_collision then
         maraxsis.cancel_creation(entity, player and player.index, error_msg)
@@ -505,10 +537,6 @@ maraxsis.on_event(maraxsis.events.on_built(), function(event)
         end
 
         local tags = entity.tags
-        local surface = entity.surface
-        local force_index = entity.force_index
-        local position = entity.position
-        local quality = entity.quality
         maraxsis.cancel_creation(entity, player and player.index, error_msg)
 
         if successfully_cleared_area then
@@ -525,11 +553,7 @@ maraxsis.on_event(maraxsis.events.on_built(), function(event)
         return
     end
 
-    local position = entity.position
-    local surface = entity.surface
-    local force_index = entity.force_index
     local health = entity.health
-    local quality = entity.quality.name
     entity.destroy()
     entity = rendering.draw_sprite {
         sprite = "maraxsis-pressure-dome-sprite",
@@ -810,6 +834,7 @@ maraxsis.on_event(maraxsis.events.on_entity_clicked(), function(event)
         local dome = pressure_dome_data.entity
         if not dome.valid then return end
         pressure_dome_data.light = create_dome_light(pressure_dome_data)
+        light = pressure_dome_data.light
     end
 
     local wire_type = figure_out_wire_type(player)
@@ -876,20 +901,29 @@ maraxsis.on_nth_tick(73, function()
         local regulator_fluidbox = dome_data.regulator_fluidbox
         if not regulator_fluidbox or not regulator_fluidbox.valid then goto continue end
 
-        --local powered = regulator.energy > 0
-        local powered = true -- todo: revert this once the salt reactor is added
-        local has_fluid = (regulator_fluidbox.get_fluid_count("maraxsis-atmosphere") > 0) and regulator_fluidbox.is_crafting()
-        local powered_and_has_fluid = powered and has_fluid
+        local powered_and_has_fluid = (regulator_fluidbox.get_fluid_count("maraxsis-atmosphere") > 0) and regulator_fluidbox.is_crafting()
         if powered_and_has_fluid == dome_data.powered_and_has_fluid then goto continue end
 
         for _, e in pairs(dome_data.contained_entities) do
-            if can_be_diabled_by_dome_low_pressure(e) then
-                e.active = not not powered_and_has_fluid                
-            end
+            disable_due_to_dome_low_pressure(e, powered_and_has_fluid)
         end
 
         dome_data.powered_and_has_fluid = powered_and_has_fluid
 
         ::continue::
     end
+end)
+
+-- https://github.com/notnotmelon/maraxsis/issues/34
+maraxsis.on_event(maraxsis.events.on_mined_tile(), function(event)
+    local dome_tiles_to_rebuild = {}
+    for _, tile in pairs(event.tiles) do
+        local name = tile.old_tile.name
+        if name == PRESSURE_DOME_TILE then
+            dome_tiles_to_rebuild[#dome_tiles_to_rebuild + 1] = {position = tile.position, name = name}
+        end
+    end
+    if not dome_tiles_to_rebuild[1] then return end
+    local surface = game.get_surface(event.surface_index)
+    surface.set_tiles(dome_tiles_to_rebuild, true, false, false, false)
 end)

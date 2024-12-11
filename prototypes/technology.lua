@@ -24,7 +24,7 @@ data:extend {{
     prerequisites = {
         "advanced-asteroid-processing",
         "rocket-turret",
-        mods.upcycler and "speed-module-3" or "quality-module-3",
+        "cliff-explosives",
     },
     unit = {
         count = 3000,

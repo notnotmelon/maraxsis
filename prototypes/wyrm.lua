@@ -17,10 +17,10 @@ data:extend {{
             recipe = "maraxsis-geothermal-sulfur"
         }
     },
-    prerequisites = {"maraxsis-piscary"},
+    prerequisites = {"maraxsis-piscary", "ducts", "maraxsis-salt-reactor"},
     research_trigger = {
-        type = "craft-item",
-        item = "maraxsis-pressure-dome"
+        type = "build-entity",
+        entity = "maraxsis-trench-duct"
     },
     order = "ee[wyrm-confinement]",
 }}
@@ -57,10 +57,9 @@ data:extend {{
     type = "recipe",
     name = "maraxsis-wyrm-confinement-cell",
     enabled = false,
-    energy_required = 10,
+    energy_required = 5,
     ingredients = {
-        {type = "item", name = "maraxsis-glass-panes", amount = 10},
-        {type = "item", name = "slowdown-capsule",     amount = 1},
+        {type = "item", name = "maraxsis-glass-panes", amount = 5},
         {type = "item", name = "steel-plate",          amount = 1},
     },
     results = {
@@ -76,7 +75,7 @@ data:extend {{
     energy_required = 10,
     ingredients = {
         {type = "item", name = "maraxsis-wyrm-confinement-cell", amount = 1},
-        {type = "item", name = "maraxsis-fish-food", amount = 1},
+        {type = "item", name = "maraxsis-fish-food",             amount = 1},
     },
     results = {
         {type = "item", name = "maraxsis-wyrm-specimen", amount = 1},

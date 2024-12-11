@@ -175,6 +175,6 @@ maraxsis.events = {
 	end,
 	--- Custom event for when a player clicks on an entity
 	on_entity_clicked = function()
-		return "open-gui"
+		return "build"
 	end
 }

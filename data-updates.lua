@@ -1,6 +1,10 @@
 require "prototypes.vanilla-changes"
 require "prototypes.spidertron-patrols"
 require "prototypes.item-weight"
+require "prototypes.default-import-location"
+require "prototypes.fluid-void"
+require "compat.aai-industry"
+require "compat.transport-ring-teleporter"
 
 local function add_fuel_value(fluid, value)
     fluid = data.raw.fluid[fluid]
@@ -61,14 +65,14 @@ for _, tech in pairs(data.raw.technology) do
     end
 end
 
-data:extend{{
+data:extend {{
     type = "item-subgroup",
     name = "maraxsis-atmosphere-barreling",
     order = "ff",
     group = "intermediate-products",
 }}
 
-for recipe, category in pairs{
+for recipe, category in pairs {
     ["empty-maraxsis-atmosphere-barrel"] = "chemistry",
     ["maraxsis-atmosphere-barrel"] = "chemistry",
     ["empty-maraxsis-liquid-atmosphere-barrel"] = "cryogenics",
@@ -89,24 +93,40 @@ if mods["assembler-pipe-passthrough"] then
     appmod.blacklist["maraxsis-regulator-fluidbox"] = true
 end
 
--- https://github.com/notnotmelon/maraxsis/issues/41
-if mods["transport-ring-teleporter"] then
-    for _, name in pairs{
-        "ring-teleporter",
-        "ring-teleporter-2",
-        "ring-teleporter-placer",
-        "ring-teleporter-back",
-        "ring-teleporter-barrier",
-        "ring-teleporter-sprite",
-    } do
-        local ring_teleporter = data.raw["accumulator"][name] or data.raw["simple-entity-with-force"][name]
-        if ring_teleporter then
-            ring_teleporter.surface_conditions = ring_teleporter.surface_conditions or {}
-            table.insert(ring_teleporter.surface_conditions, {
-                property = "pressure",
-                max = 50000,
-                min = 0
-            })
-        end
-    end
+-- salt reactor localised description
+local electricity_description = {""}
+
+for _, quality in pairs(data.raw.quality) do
+    if quality.hidden then goto continue end
+    local quality_name = quality.localised_name or {"quality-name." .. quality.name}
+
+    local color = maraxsis.color_combine(quality.color, {1, 1, 1}, 0.7)
+    local r, g, b = color.r or color[1], color.g or color[2], color.b or color[3]
+    local r, g, b = tostring(r), tostring(g), tostring(b)
+
+    local quality_level = quality.level
+    if quality_level >= 5 and not mods["infinite-quality-tiers"] then quality_level = quality_level - 1 end
+    local mj = 10 * (2 ^ quality_level)
+
+    table.insert(electricity_description, {"recipe-description.maraxsis-electricity-quality-description", quality_name, tostring(mj), r, g, b})
+    table.insert(electricity_description, "\n")
+    ::continue::
 end
+electricity_description[#electricity_description] = nil
+
+electricity_description = maraxsis.shorten_localised_string(electricity_description)
+
+data.raw.recipe["maraxsis-electricity"].localised_description = {
+    "recipe-description.maraxsis-electricity",
+    electricity_description
+}
+
+data.raw.furnace["maraxsis-salt-reactor"].localised_description = {
+    "entity-description.maraxsis-salt-reactor",
+    electricity_description
+}
+
+data.raw["electric-energy-interface"]["maraxsis-salt-reactor-energy-interface"].localised_description = {
+    "entity-description.maraxsis-salt-reactor",
+    electricity_description
+}

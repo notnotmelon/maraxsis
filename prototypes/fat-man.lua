@@ -5,9 +5,9 @@ data:extend {{
     name = "maraxsis-fat-man",
     category = "maraxsis-hydro-plant",
     ingredients = {
-        {type = "item", name = "artillery-shell", amount = 1},
+        {type = "item", name = "artillery-shell",                  amount = 1},
         {type = "item", name = "maraxsis-super-sealant-substance", amount = 1},
-        {type = "item", name = "atomic-bomb", amount = 1},
+        {type = "item", name = "atomic-bomb",                      amount = 1},
     },
     results = {
         {type = "item", name = "maraxsis-fat-man", amount = 1}
@@ -45,7 +45,7 @@ data:extend {{
     stack_size = 1
 }}
 
-data:extend{{
+data:extend {{
     type = "artillery-projectile",
     name = "maraxsis-nuclear-artillery-projectile",
     flags = {"not-on-map"},

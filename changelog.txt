@@ -1,4 +1,397 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.23.1
+Date: 2024-12-11
+  Balancing:
+    - Allow productivity in the petroleum-gas-cracking recipe.
+    - Buffed the blast radius for big cliff explosives from 300 tiles -> 450 tiles.
+  Bugfixes:
+    - Fix sometimes being unable to move after leaving maraxsis.
+    - Fixed that engine units could be crafted by hand. Resolves https://github.com/notnotmelon/maraxsis/issues/120
+  Locale:
+    - Removed several redundant locale keys that now exist in spidertron patrols.
+---------------------------------------------------------------------------------------------------
+Version: 1.23.0
+Date: 2024-12-11
+  Features:
+    - Added a new recipe to convert petroleum gas into heavy oil.
+    - Added the conduit. A powerful new beacon unlocked on maraxsis. It accepts quality modules and can be built on the seafloor. Graphics credit: Hurricane.
+  Balancing:
+    - We are no longer banning the unbarreling of heavy oil in space. Resolves https://github.com/notnotmelon/maraxsis/issues/123
+  Locale:
+    - Renamed glass panes to glass.
+    - Renamed trench duct to duct to trench
+---------------------------------------------------------------------------------------------------
+Version: 1.22.2
+Date: 2024-12-11
+  Balancing:
+    - Buffed the stack size of coral from 50 -> 200.
+  Graphics:
+    - Optimize bundle size with spritter.
+---------------------------------------------------------------------------------------------------
+Version: 1.22.1
+Date: 2024-12-10
+  Bugfixes:
+    - Fixed being able to place the dome on top of trench tiles.
+    - Fixed duplication of agri science packs with the "easy mode" setting enabled.
+---------------------------------------------------------------------------------------------------
+Version: 1.22.0
+Date: 2024-12-10
+  Features:
+    - Added a new mod setting for "easy mode". This setting swaps the +50% quality on the hydro plant for +50% productivity.
+    - Added an alert on the map whenever a submarine runs out of fuel. NOTE: Only works for newly placed subs. Resolves https://github.com/notnotmelon/maraxsis/issues/80
+    - The hydro plant can now void any fluid.
+  Balancing:
+    - Buffed the spoil time of coral from 5min -> 10min
+    - Force spawn the mollusk husk at 0,0. Also I bumped the segmentation (patches are smaller, but more frequent).
+    - Reduced the hydrogen requirement for hydrolox-rocket-fuel from 400 -> 200.
+    - The hydro plant now requires to craft 10 processing units.
+  Compatibility:
+    - Added compatibility with "Schall Transport Group". Resolves https://github.com/notnotmelon/maraxsis/issues/98
+    - Added compatibility with the infinite quality tiers mod.
+    - Allowed the wind turbine from KS power to be placed outside of a dome. Resolves https://github.com/notnotmelon/maraxsis/issues/100
+    - Greatly improved the interaction with spidertron patrols. Resolves https://github.com/notnotmelon/maraxsis/issues/72
+    - Removed incompatibility flag with the "no quality" mod.
+  Bugfixes:
+    - Banned the creation of trench space platforms in editor mode. Resolves https://github.com/notnotmelon/maraxsis/issues/95
+    - Fix that the pressure dome tiles were counted as "fishable ground".
+    - Fixed being able to place entities intersecting with the regulator.
+    - Fixed improper shift amount for trench duct integration patch in north and west orientations.
+    - Fixed unknown key errors when viewing the regulator in editor mode.
+    - The regulator fluidbox hidden entity now has a proper 4x4 selection box.
+  Graphics:
+    - Added new graphics for the trench duct. Resolves https://github.com/notnotmelon/maraxsis/issues/102
+    - Added new item icon for the trench duct.
+  Locale:
+    - Added lamps and mining drills to the "underwater machines" tips and tricks page. Resolves https://github.com/notnotmelon/maraxsis/issues/84. Resolves https://github.com/notnotmelon/maraxsis/issues/83
+    - Improved the description of the trench duct to tell players how to place this entity.
+    - Provide the names of the required entities and fluids in the flooded entity status.
+    - Replaced the "Disabled by script" tag on machines with "Flooded. Provide [fluid=maraxsis-atmosphere] to the [entity=service_station]." Resolves https://github.com/notnotmelon/maraxsis/issues/101
+    - Updated German translation.
+    - Updated RU locale.
+    - Updated the description for the regulator to better explain how it works.
+    - Updated the locale for the pressure dome to explain how to get atmosphere.
+    - Updated the tech description for sonar to explain it can be placed on land.
+  Changes:
+    - Bump version.
+---------------------------------------------------------------------------------------------------
+Version: 1.21.9
+Date: 2024-12-09
+  Balancing:
+    - Buffed the crafting speed of all salination recipes from 2s -> 0.5s
+    - Increased the rocket capacity of salt from 500 -> 1000.
+    - Increased the stack size of salt from 100 -> 200.
+  Changes:
+    - The preservatives technology now additionally allows salination of gleba science.
+---------------------------------------------------------------------------------------------------
+Version: 1.21.8
+Date: 2024-12-09
+  Locale:
+    - Added a description for the trench surface on the starmap.
+---------------------------------------------------------------------------------------------------
+Version: 1.21.7
+Date: 2024-12-09
+  Balancing:
+    - Coal synthesis can now be performed in a hydro plant.
+    - Increased the crafting time of super sealant substance from 2s -> 5s
+    - Reduced the heavy oil requirement for super sealant substance from 200 -> 100.
+  Bugfixes:
+    - Fixed duplication glitch which could give infinite big mining drills. Resolves https://github.com/notnotmelon/maraxsis/issues/82
+---------------------------------------------------------------------------------------------------
+Version: 1.21.6
+Date: 2024-12-08
+  Balancing:
+    - Pump, offshore pump, radar, lamp, and inserter are no longer disabled inside an inactive dome.
+---------------------------------------------------------------------------------------------------
+Version: 1.21.5
+Date: 2024-12-08
+  Locale:
+    - Added german translation (Credit to  OC1024)
+---------------------------------------------------------------------------------------------------
+Version: 1.21.4
+Date: 2024-12-08
+  Bugfixes:
+    - Fixed crash when drowning inside the trench. Resolves https://github.com/notnotmelon/maraxsis/issues/79
+---------------------------------------------------------------------------------------------------
+Version: 1.21.3
+Date: 2024-12-08
+  Balancing:
+    - Buffed the construction area for the pressure dome from 60x60 to 120x120.
+---------------------------------------------------------------------------------------------------
+Version: 1.21.2
+Date: 2024-12-08
+  Balancing:
+    - Increased the microplastics requirement in the "smelt microplastics" recipe from 1 -> 3.
+    - Reverted tropical fish spoil time to their original value of 2 hours.
+  Locale:
+    - Updated the locale for the submarines to explain how to set a schedule.
+---------------------------------------------------------------------------------------------------
+Version: 1.21.1
+Date: 2024-12-08
+  Balancing:
+    - Decreased the craft time for wyrm confinement cells from 10 seconds to 5 seconds.
+    - Decreased the tungsten plate requirement in the trench duct from 600 -> 200.
+    - Removed heat exchangers from the nuclear submarine recipe. Swapped nuclear reactors for salt reactors.
+    - Removed lamps from the pressure dome recipe.
+    - Removed nuclear reactors from the salt reactor recipe.
+    - Removed quality modules from the hydro plant recipe.
+    - Removed steel chests from the spidertron dock recipe.
+---------------------------------------------------------------------------------------------------
+Version: 1.21.0
+Date: 2024-12-08
+  Features:
+    - Added mollusk husks. These spawn as rocks on the map which can be mined for glass.
+  Balancing:
+    - Glass panes are no longer crafted in the hydro plant. They are now only made in the foundry.
+    - Liquid atmosphere has been moved to a seperate technology unlocked with hydraulic science packs.
+    - Reworked the tech tree to help guide the player.
+    - The pressure dome now requires 500 glass instead of 300.
+    - Tropical fish now spoils again. But in 8 hours instead of 2.
+---------------------------------------------------------------------------------------------------
+Version: 1.20.30
+Date: 2024-12-08
+  Locale:
+    - Updated the Chinese locale.
+---------------------------------------------------------------------------------------------------
+Version: 1.20.29
+Date: 2024-12-08
+  Locale:
+    - Fixed French locale would crash the game. Resolves https://github.com/notnotmelon/maraxsis/issues/77.
+---------------------------------------------------------------------------------------------------
+Version: 1.20.28
+Date: 2024-12-08
+  Balancing:
+    - Fish rendering no longer requires piecing ammo.
+    - The pressure dome is now crafted with 300 glass instead of 500 glass.
+---------------------------------------------------------------------------------------------------
+Version: 1.20.27
+Date: 2024-12-08
+  Balancing:
+    - Coral mining no longer grants limestone.
+    - Microplastics are now crafted in the assembling machine instead of the hydro plant.
+    - Swapped coral for salt in the science pack recipe.
+    - The pressure dome no longer requires energy to activate machienes. Just atmosphere.
+    - Tropical fish no longer spoils.
+  Bugfixes:
+    - Fix wrong dirt color when a dome is mined. Resolves https://github.com/notnotmelon/maraxsis/issues/34
+    - Fixed ghost building of the sand extractor not working in remote view.
+    - Fixed sand extractors working inside pressure domes.
+    - You can now rotate the hydro plant in any direction.
+  Graphics:
+    - Tweaked the icon draw specfications for the space and trench hydro plant.
+  Changes:
+    - Greatly increased the connection distance between two regulators. Also added a construction radius.
+    - Trigger release.
+---------------------------------------------------------------------------------------------------
+Version: 1.20.26
+Date: 2024-12-07
+  Compatibility:
+    - Improved the spidertron patrols compatibility.
+---------------------------------------------------------------------------------------------------
+Version: 1.20.25
+Date: 2024-12-07
+  Compatibility:
+    - Added aai-signal-transmission as an optional dependancy.
+---------------------------------------------------------------------------------------------------
+Version: 1.20.24
+Date: 2024-12-07
+  Changes:
+    - Reduced the space connection length from 30000kM to 20000kM
+---------------------------------------------------------------------------------------------------
+Version: 1.20.23
+Date: 2024-12-07
+  Bugfixes:
+    - Fixed a crash related to invalid pressure dome hidden lights.
+---------------------------------------------------------------------------------------------------
+Version: 1.20.22
+Date: 2024-12-07
+  Bugfixes:
+    - Fixed being able to place electricity as an entity.
+---------------------------------------------------------------------------------------------------
+Version: 1.20.21
+Date: 2024-12-07
+  Locale:
+    - Various fixes to the French translation.
+---------------------------------------------------------------------------------------------------
+Version: 1.20.20
+Date: 2024-12-07
+  Locale:
+    - Added French translation. Credit to Fr_Dae. Resolves https://github.com/notnotmelon/maraxsis/issues/63
+---------------------------------------------------------------------------------------------------
+Version: 1.20.19
+Date: 2024-12-07
+  Graphics:
+    - Added a working visualization light cone to the salt reactor.
+---------------------------------------------------------------------------------------------------
+Version: 1.20.18
+Date: 2024-12-07
+  Graphics:
+    - Add bubbles to the regulator.
+    - Add bubbles to the salt reactor.
+---------------------------------------------------------------------------------------------------
+Version: 1.20.17
+Date: 2024-12-07
+  Compatibility:
+    - Fixed a crash with alien biomes. Resolves https://github.com/notnotmelon/maraxsis/issues/67
+---------------------------------------------------------------------------------------------------
+Version: 1.20.16
+Date: 2024-12-07
+  Compatibility:
+    - Added a check to ensure maraxsis-promethium-productivity was not deleted by other mods.
+  Graphics:
+    - Improved the alt mode icon positions for the salt reactor.
+---------------------------------------------------------------------------------------------------
+Version: 1.20.15
+Date: 2024-12-07
+  Compatibility:
+    - Fixed crash with the infinite quality tiers mod. Resolves https://github.com/notnotmelon/maraxsis/issues/62
+---------------------------------------------------------------------------------------------------
+Version: 1.20.14
+Date: 2024-12-07
+  Locale:
+    - Fixed unknown key errors in salt reactor factoriopedia.
+---------------------------------------------------------------------------------------------------
+Version: 1.20.13
+Date: 2024-12-07
+  Bugfixes:
+    - Fix that you couldn't remove used nuclear fuel cells from the salt reactor.
+    - Fixed quality modules in the salt reactor having no effect.
+---------------------------------------------------------------------------------------------------
+Version: 1.20.12
+Date: 2024-12-07
+  Compatibility:
+    - Removed the dependancy on HD planets.
+---------------------------------------------------------------------------------------------------
+Version: 1.20.11
+Date: 2024-12-07
+  Changes:
+    - Removed dependancy on AAI signal transmission.
+---------------------------------------------------------------------------------------------------
+Version: 1.20.10
+Date: 2024-12-07
+  Bugfixes:
+    - Fix crash in the 5dim compat code. Resolves https://github.com/notnotmelon/maraxsis/issues/61
+---------------------------------------------------------------------------------------------------
+Version: 1.20.9
+Date: 2024-12-07
+  Bugfixes:
+    - Fix submarines submerging at the wrong time.
+---------------------------------------------------------------------------------------------------
+Version: 1.20.8
+Date: 2024-12-07
+  Compatibility:
+    - Fixed crash when landing a cargo pod on maraxsis when combat mechanics overhaul is installed.
+---------------------------------------------------------------------------------------------------
+Version: 1.20.7
+Date: 2024-12-07
+  Compatibility:
+    - Added conversion between AAI sand and maraxsis sand. Resolves https://github.com/notnotmelon/maraxsis/issues/60
+---------------------------------------------------------------------------------------------------
+Version: 1.20.6
+Date: 2024-12-07
+  Changes:
+    - Buffed the radar range of the pressure dome from 1 chunk to 2 chunks.
+    - Unbanned the use of chests in water.
+---------------------------------------------------------------------------------------------------
+Version: 1.20.5
+Date: 2024-12-07
+  Bugfixes:
+    - Throwing items into the ocean no longer voids them. Resolves https://github.com/notnotmelon/maraxsis/issues/59
+---------------------------------------------------------------------------------------------------
+Version: 1.20.4
+Date: 2024-12-07
+  Changes:
+    - Increased the salt output from electrolysis from 1 -> 3
+---------------------------------------------------------------------------------------------------
+Version: 1.20.3
+Date: 2024-12-07
+  Bugfixes:
+    - Fix the salt reactor sometimes eating your salt without generating power.
+  Locale:
+    - Renamed the "electrolysis" recipe to "salt electrolysis"
+  Changes:
+    - Reduced the mining time of the salt reactor from 1 second to 0.5 seconds.
+---------------------------------------------------------------------------------------------------
+Version: 1.20.2
+Date: 2024-12-07
+  Locale:
+    - Change "legendary: 160MW" to "legendary salt: 160.0 MW"
+    - Standarized the casing of "MJ" in the salt reactor description.
+  Changes:
+    - Reactors, heat exchanger, and steam turbine can now be crafted in the hydro plant.
+---------------------------------------------------------------------------------------------------
+Version: 1.20.1
+Date: 2024-12-07
+  Bugfixes:
+    - Fixed that the salt reactor could get disabled while inside a dome with no atmosphere.
+  Locale:
+    - Added the salt reactor to the tips and tricks.
+  Changes:
+    - Increased the drowning time from 2 minutes to 15 minutes.
+---------------------------------------------------------------------------------------------------
+Version: 1.20.0
+Date: 2024-12-07
+  Features:
+    - Added the salt reactor. Resolves https://github.com/notnotmelon/maraxsis/issues/40
+  Graphics:
+    - Edited the default color of the diesel and construction submarines.
+  Changes:
+    - Fixed a broken changelog.
+---------------------------------------------------------------------------------------------------
+Version: 1.19.32
+Date: 2024-12-06
+  Graphics:
+    - Removed rain on maraxsis. Resolves https://github.com/notnotmelon/maraxsis/issues/58
+---------------------------------------------------------------------------------------------------
+Version: 1.19.31
+Date: 2024-12-06
+  Locale:
+    - Updated RU locale.
+---------------------------------------------------------------------------------------------------
+Version: 1.19.30
+Date: 2024-12-06
+  Changes:
+    - Reduced the cost of the abyssal diving gear.
+    - Reduced the cost of the hydro plant.
+    - Reduced the cost of the pressure dome.
+    - Reduced the cost of the sonar.
+    - Reduced the cost of the submarine and nuclear submarine.
+    - Reduced the cost of the wyrm specimen.
+---------------------------------------------------------------------------------------------------
+Version: 1.19.29
+Date: 2024-12-06
+  Changes:
+    - Tungsten pipes now require 4x less tungsten.
+---------------------------------------------------------------------------------------------------
+Version: 1.19.28
+Date: 2024-12-06
+  Bugfixes:
+    - Fixed cannot submerge a submarine in remote view. Resolves https://github.com/notnotmelon/maraxsis/issues/46
+---------------------------------------------------------------------------------------------------
+Version: 1.19.27
+Date: 2024-12-06
+  Bugfixes:
+    - Fixed wrong map icons for the submarine. Resolves https://github.com/notnotmelon/maraxsis/issues/29
+---------------------------------------------------------------------------------------------------
+Version: 1.19.26
+Date: 2024-12-06
+  Bugfixes:
+    - Allow to build blueprint ghosts of the sand extractor. Resolves https://github.com/notnotmelon/maraxsis/issues/54
+  Locale:
+    - Made it more obvious how to get sand.
+---------------------------------------------------------------------------------------------------
+Version: 1.19.25
+Date: 2024-12-06
+  Bugfixes:
+    - Added proper default request locations for all maraxis items. Resolves https://github.com/notnotmelon/maraxsis/issues/56
+    - Fix microplastics smelting not being effected by prod research.
+  Changes:
+    - Tungsten pipes default request location is now vulcanus.
+---------------------------------------------------------------------------------------------------
+Version: 1.19.24
+Date: 2024-12-06
+  Bugfixes:
+    - Fixed too quick crafting speed for the trench duct. Resolves https://github.com/notnotmelon/maraxsis/issues/55
+---------------------------------------------------------------------------------------------------
 Version: 1.19.23
 Date: 2024-12-05
   Compatibility:
@@ -28,7 +421,6 @@ Version: 1.19.19
 Date: 2024-12-05
   Bugfixes:
     - Fixed a crash with pressure domes.
-    - Fixed the tips and tricks for maraxsis briefing
     - Fixed the tips and tricks for maraxsis briefing
 ---------------------------------------------------------------------------------------------------
 Version: 1.19.18

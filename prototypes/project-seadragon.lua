@@ -19,6 +19,10 @@ data:extend {{
             type = "unlock-recipe",
             recipe = "maraxsis-super-sealant-substance"
         },
+        {
+            type = "unlock-recipe",
+            recipe = "maraxsis-petroleum-gas-cracking"
+        },
     },
     prerequisites = {"hydraulic-science-pack", "coal-liquefaction"},
     unit = {
@@ -49,7 +53,7 @@ data:extend {{
     energy_required = 10,
     ingredients = {
         {type = "fluid", name = "maraxsis-oxygen",   amount = 200},
-        {type = "fluid", name = "maraxsis-hydrogen", amount = 400},
+        {type = "fluid", name = "maraxsis-hydrogen", amount = 200},
     },
     results = {
         {type = "item", name = "rocket-fuel", amount = 1},
@@ -65,10 +69,10 @@ data:extend {{
     type = "recipe",
     name = "maraxsis-super-sealant-substance",
     enabled = false,
-    energy_required = 2,
+    energy_required = 5,
     ingredients = {
         {type = "item",  name = "sulfur",    amount = 1},
-        {type = "fluid", name = "heavy-oil", amount = 200},
+        {type = "fluid", name = "heavy-oil", amount = 100},
         {type = "fluid", name = "steam",     amount = 100},
     },
     results = {

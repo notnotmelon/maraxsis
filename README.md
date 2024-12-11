@@ -2,24 +2,13 @@
 
 ### Welcome to Maraxsis
 
-Let me introduce this pristine, submerged world. Far away from the sun, this planet paradoxically maintains a comfortable temperature through a runaway greenhouse effect. Preliminary surface scans show an average temperature of 101°F. It's not too hot and not too cold, the perfect Goldilocks zone for liquid water. Maybe even too perfect...
+Let me introduce this pristine, submerged world. Far away from the sun, this planet paradoxically maintains a comfortable temperature through a runaway greenhouse effect. 
+
+Preliminary surface scans show an average temperature of 101°F (38,33°c). It's not too hot and not too cold, the perfect Goldilocks zone for liquid water. Maybe even too perfect...
 
 ![](https://files.catbox.moe/wwq54g.png)
 
 Maraxsis is 100% covered by deep ocean. There is no land on the entire planet meaning you'll have to invest in aquatic technologies such as submarines, torpedos, hydro plants, and submerged pressure domes. In terms of progression, Maraxsis is unlocked at the same point as Aquilo. This means the mod can be seamlessly added to a finished Space Age save.
-
----
-
-### Disclaimer
-
-This mod is in early access/beta status. Here are the known issues before it can be moved to a full release:
-
-  - Placeholder graphics for the coral reef.
-  - Placeholder graphics for the fishing tower.
-  - Missing the Maraxsis enemy.
-
-During the beta period, please post factory screenshots, bugs, and balance suggestions on the Discord.
-Your feedback is extremely important!
 
 ---
 
@@ -30,7 +19,9 @@ Your armor is designed to protect against attacks from various creatures, but it
 ![](https://files.catbox.moe/l31tkf.mp4)
 
 This deep sea vessel is capable of submerging to any depth, and can be automated with a schedule to follow underwater channels.
+
 With further technologies, construct the nuclear submarine and atomic torpedoes.
+
 Be careful, swimming outside the submarine will quickly result in death by extreme pressure, drowning, or both.
 
 ---
@@ -61,13 +52,24 @@ As you explore Maraxsis, you’ll quickly discover that many of your standard ma
 
 These specialized structures are designed to withstand the immense pressures of Maraxsis’ depths. However, maintaining equilibrium inside the domes requires continuous supply of atmospheric gases into ballast pumps.
 
+Domes can be connected to the circuit network to change their color and read their contents. Feel free to create a giant underwater disco ball.
+
 ---
 
 ### Progression
 
-Maraxsis is available at the same time as Aquilo. The mod does not change any vanilla recipes meaning the mod can be seamlessly added to any existing Space Age save, even if the save is completed. The mod leans heavily into the puzzle genera requiring creative setups to solve difficult challenges. Do you have what it takes to craft the hydraulic science pack?
+Maraxsis is available at the same time as Aquilo. The mod does not change any vanilla recipes meaning the mod can be seamlessly added to any existing Space Age save, even if the save is completed. 
 
-![](https://files.catbox.moe/1f53fp.png)
+The mod leans heavily into the puzzle genera requiring creative setups to solve difficult challenges. Do you have what it takes to craft the hydraulic science pack?
+
+Here's a sample of some of the technologies available on Maraxsis:
+
+![](https://files.catbox.moe/yeqogf.png)
+![](https://files.catbox.moe/5oc9bo.png)
+![](https://files.catbox.moe/pl2ees.png)
+![](https://files.catbox.moe/xqp167.png)
+![](https://files.catbox.moe/0g9rux.png)
+![](https://files.catbox.moe/o1ib7m.png)
 
 ---
 
@@ -75,7 +77,6 @@ Maraxsis is available at the same time as Aquilo. The mod does not change any va
 
 This mod makes a few changes to Factorio: Space Age in order for Maraxsis to fit seamlessly into the tech tree.
 
-  - Banned unbarrelling of heavy oil in space.
   - The research productivity technology now requires hydraulic science packs.
   - Removed surface restrictions for the biolab.
 
@@ -99,72 +100,22 @@ This connection is mirrored in their names. The shared suffixes “-kis” or �
 
 Maraxsis would not be possible without the help of these amazing, fantastic, incredible open source projects.
 
-#### Unused Renders
+ - Unused Renders - [malcolmriley](https://github.com/malcolmriley)
+ - Tropical Fish Pack - [ZivixLLC](https://github.com/ZivixLLC)
+ - Hydro Plant, Regulator, Salt Reactor, & Conduit - [Hurricane](https://github.com/Hurricane)
+ - Submarine & Nuclear Submarine - [Archezekiel](https://github.com/Archezekiel)
+ - Pressure Dome - [KaueNP](https://github.com/KaueNP)
+ - Sonar - [fishbus](https://github.com/fishbus)
+ - Coral Reef - [Galdoc](https://github.com/Galdoc)
+ - Submarine AI - [Xorimuth](https://github.com/Xorimuth), [ILLISIS](https://github.com/ILLISIS), [Apollo314](https://github.com/Apollo314) , [fgardt](https://github.com/fgardt)
+ - Ducts - Krastor, [Linver](https://github.com/Linver), [iicyan](https://github.com/iicyan), [raiguard](https://github.com/raiguard)
+ - Devops & CI - [fgardt](https://github.com/fgardt)
 
-- **Creators**: malcolmriley
-- **Source**: [Unused Renders](https://github.com/malcolmriley/unused-renders)
-- **License**: [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)
-- **Changes**: Yes. Icons rescaled and cropped to 64x64. Various color adjustments.
+[More details in Credits.md](https://github.com/notnotmelon/maraxsis/blob/main/Credits.md)
 
-#### Tropical Fish Pack
+#### Translation
 
-- **Creators**: ZivixLLC
-- **Source**: [Turbosquid](https://www.turbosquid.com/3d-models/free-tropical-fish-pack-3d-model/652729)
-- **License**: [TurboSquid 3D Model License](https://blog.turbosquid.com/turbosquid-3d-model-license/)
-- **Changes**: Yes. Added animations. Added light effects. Converted to .PNG via Blender.
-
-#### Hydro Plant & Regulator
-
-- **Creators**: Hurricane
-- **Source**: [Figma](https://shorturl.at/AFcDm)
-- **License**: [CC BY](https://creativecommons.org/licenses/by/4.0/)
-- **Changes**: Yes. Technology icon added. Renamed to "Hydro Plant". Renamed to "Regulator"
-
-#### Submarine & Nuclear Submarine
-
-- **Creators**: Archezekiel
-- **Source**: Commissioned. Created in Blender.
-- **License**: N/A
-- **Changes**: Yes. Compressed for Factorio with [Spritter](https://github.com/fgardt/factorio-spritter)
-
-#### Pressure Dome
-
-- **Creators**: KaueNP
-- **Source**: Commissioned. Created in 3DS max studio.
-- **License**: N/A
-- **Changes**: No.
-
-#### Sonar
-
-- **Creators**: fishbus
-- **Source**: [Factorio+](https://mods.factorio.com/mod/factorioplus)
-- **License**: [MIT](https://opensource.org/license/MIT)
-- **Changes**: Yes. Added lamps.
-
-#### Coral Reef
-
-- **Creators**: Galdoc
-- **Source**: Commissioned. Created in Blender.
-- **License**: [MIT](https://opensource.org/license/MIT)
-- **Changes**: No.
-
-#### Submarine AI
-
-- **Creators**: Xorimuth, ILLISIS, Apollo314, fgardt
-- **Source**: [Spidertron Enhancements](https://mods.factorio.com/mod/SpidertronEnhancements) & [Spidertron Patrols](https://mods.factorio.com/mod/SpidertronPatrols) & [Spidertron Automation](https://mods.factorio.com/mod/SpidertronPatrols)
-- **License**: [MIT](https://opensource.org/license/MIT)
-- **Changes**: Yes. Updated the code to work with submarines.
-
-#### Ducts
-
-- **Creators**: Krastor, Linver, iicyan, raiguard
-- **Source**: [Fluid Must Flow](https://mods.factorio.com/mod/FluidMustFlow)
-- **License**: [GNU LGPLv3](https://opensource.org/licenses/lgpl-3.0)
-- **Changes**: Yes. Edited recipes. Added trench duct.
-
-#### Devops & CI
-
-- **Creators**: fgardt
-- **Source**: [Factorio Mod Template](https://github.com/fgardt/factorio-mod-template) & [Spritter](https://github.com/fgardt/factorio-spritter)
-- **License**: [MIT](https://opensource.org/license/MIT)
-- **Changes**: No.
+- 🇫🇷 [French] [Fr_Dae](https://github.com/Fr-Dae)
+- 🇷🇺 [Russian] [GafarovMaxim](https://github.com/GafarovMaxim)
+- 🇨🇳 [Chinese] [PlexPt](https://github.com/PlexPt)
+- 🇩🇪 [German] [OC1024](https://github.com/OC1024)

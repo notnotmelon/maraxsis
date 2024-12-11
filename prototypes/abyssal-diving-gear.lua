@@ -37,11 +37,11 @@ data:extend {{
     energy_required = 10,
     category = "maraxsis-hydro-plant",
     ingredients = {
-        {type = "item", name = "low-density-structure", amount = 50},
-        {type = "item", name = "quantum-processor", amount = 20},
-        {type = "item", name = "pipe-to-ground", amount = 2},
-        {type = "item", name = "pump", amount = 1},
-        {type = "item", name = "maraxsis-glass-panes", amount = 50},
+        {type = "item", name = "low-density-structure",            amount = 10},
+        {type = "item", name = "quantum-processor",                amount = 20},
+        {type = "item", name = "pipe-to-ground",                   amount = 2},
+        {type = "item", name = "pump",                             amount = 1},
+        {type = "item", name = "maraxsis-glass-panes",             amount = 50},
         {type = "item", name = "maraxsis-super-sealant-substance", amount = 50},
     },
     results = {

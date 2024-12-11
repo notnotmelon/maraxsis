@@ -60,21 +60,19 @@ data:extend {{
 
 local recipes = {
     ["maraxsis-diesel-submarine"] = {
-        {type = "item", name = "tungsten-plate",       amount = 50},
+        {type = "item", name = "tungsten-plate",       amount = 30},
         {type = "item", name = "electric-engine-unit", amount = 10},
-        {type = "item", name = "processing-unit",      amount = 100},
+        {type = "item", name = "processing-unit",      amount = 10},
         {type = "item", name = "pump",                 amount = 4},
     },
     ["maraxsis-nuclear-submarine"] = {
-        {type = "item", name = "tungsten-plate",                   amount = 100},
+        {type = "item", name = "tungsten-plate",                   amount = 50},
         {type = "item", name = "maraxsis-sonar",                   amount = 1},
-        {type = "item", name = "maraxsis-glass-panes",             amount = 500},
-        {type = "item", name = "nuclear-reactor",                  amount = 1},
-        {type = "item", name = "heat-exchanger",                   amount = 4},
+        {type = "item", name = "maraxsis-glass-panes",             amount = 100},
+        {type = "item", name = "maraxsis-salt-reactor",                  amount = 1},
         {type = "item", name = "pump",                             amount = 8},
-        {type = "item", name = "processing-unit",                  amount = 200},
+        {type = "item", name = "processing-unit",                  amount = 50},
         {type = "item", name = "maraxsis-super-sealant-substance", amount = 100},
-        {type = "item", name = "supercapacitor",                   amount = 16},
     },
 }
 
@@ -212,6 +210,7 @@ for i = 1, 2 do
     entity.equipment_grid = grid.name
     entity.icon_size = 64
     entity.height = 0
+    entity.selected_minimap_representation = nil
     entity.flags = {"placeable-player", "player-creation", "placeable-off-grid", "no-automated-item-removal", "no-automated-item-insertion"}
     entity.torso_bob_speed = 0.4
     entity.minable.result = name

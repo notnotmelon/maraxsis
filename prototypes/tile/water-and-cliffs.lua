@@ -65,15 +65,13 @@ local waterifiy = {
         tile = table.deepcopy(data.raw.tile[tile])
         tile.name = tile.name .. "-underwater"
         tile.collision_mask = {layers = {[maraxsis_collision_mask] = true, [maraxsis_fishing_tower_collision_mask] = true}}
-        tile.layer = layer
+        tile.layer = math.min(layer, 255)
         layer = layer + 1
         tile.fluid = tile.fluid or "maraxsis-saline-water"
         ---@diagnostic disable-next-line: param-type-mismatch
         tile.map_color = maraxsis.color_combine(tile.map_color or data.raw.tile["water"].map_color, data.raw.tile["deepwater"].map_color, 0.25)
         tile.absorptions_per_second = table.deepcopy(data.raw.tile["water"].absorptions_per_second)
         tile.draw_in_water_layer = true
-        tile.destroys_dropped_items = true
-        tile.default_destroyed_dropped_item_trigger = default_destroyed_dropped_item_trigger()
         tile.walking_speed_modifier = 0.2
         tile.allows_being_covered = false
         water_tile_type_names[#water_tile_type_names + 1] = tile.name
