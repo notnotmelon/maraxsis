@@ -41,4 +41,5 @@ data:extend {{
     icon_size = 64,
     auto_recycle = false,
     allow_decomposition = false,
+    maximum_productivity = 1.5,
 }}
