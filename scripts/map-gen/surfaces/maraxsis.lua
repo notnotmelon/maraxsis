@@ -1,3 +1,7 @@
+maraxsis.on_event(maraxsis.events.on_init(), function()
+	storage.coral_animations = storage.coral_animations or {}
+end)
+
 maraxsis.on_event(defines.events.on_chunk_generated, function(event)
 	local surface = event.surface
 	local surface_name = surface.name
@@ -21,9 +25,7 @@ local function get_surface()
 	return game.planets[maraxsis.MARAXSIS_SURFACE_NAME].create_surface()
 end
 
-maraxsis.on_event(defines.events.on_script_trigger_effect, function(event)
-	if event.effect_id ~= "maraxsis-cliff-created" then return end
-
+local function cliff_created(event)
 	local old_cliff = event.target_entity
 	local surface = old_cliff.surface
 	local position = old_cliff.position
@@ -38,6 +40,52 @@ maraxsis.on_event(defines.events.on_script_trigger_effect, function(event)
 		force = force_index,
 		create_build_effect_smoke = false
 	}
+end
+
+local function coral_created(event)
+	local coral = event.target_entity
+	local surface = coral.surface
+	local position = coral.position
+	local force_index = coral.force_index
+
+	local coral_animation = {0, 0}
+	for i = 1, 2 do
+		local new_coral = surface.create_entity {
+			name = "maraxsis-coral-animation",
+			position = maraxsis.randomize_position(position, 0.75),
+			force = force_index,
+			create_build_effect_smoke = false
+		}
+		new_coral.active = false
+		new_coral.destructible = false
+		new_coral.minable = false
+		coral_animation[i] = new_coral
+	end
+
+	if coral_animation[1].graphics_variation == coral_animation[2].graphics_variation then
+		coral_animation[2].graphics_variation = (coral_animation[1].graphics_variation % 8) + 1
+	end
+
+	local registration_number = script.register_on_object_destroyed(coral)
+	storage.coral_animations[registration_number] = coral_animation
+end
+
+maraxsis.on_event(defines.events.on_object_destroyed, function(event)
+	local coral_animation = storage.coral_animations[event.registration_number]
+	if not coral_animation then return end
+
+	for _, entity in pairs(coral_animation) do
+		entity.destroy()
+	end
+end)
+
+maraxsis.on_event(defines.events.on_script_trigger_effect, function(event)
+	local effect_id = event.effect_id
+	if effect_id == "maraxsis-cliff-created" then
+		cliff_created(event)
+	elseif effect_id == "maraxsis-coral-created" then
+		coral_created(event)
+	end	
 end)
 
 return {
