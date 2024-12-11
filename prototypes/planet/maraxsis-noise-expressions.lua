@@ -294,3 +294,13 @@ data.raw["simple-entity"]["maraxsis-mollusk-husk"].autoplace = {
     },
     order = "c[rocks]-b[mollusk-husk]"
 }
+
+data.raw.tree["maraxsis-polylplast"].autoplace = {
+    probability_expression = [[
+        (maraxsis_coral_reef(x, y) * random_1) + random_2
+    ]],
+    local_expressions = {
+        random_1 = "random_penalty{x = x, y = y, seed = map_seed, source = 1, amplitude = 1} > 0.96",
+        random_2 = "random_penalty{x = x, y = y, seed = map_seed, source = 1, amplitude = 1} > 0.9996",
+    }
+}

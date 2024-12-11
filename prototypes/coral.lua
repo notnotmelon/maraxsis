@@ -122,4 +122,18 @@ data:extend {{
     factoriopedia_alternative = "maraxsis-coral",
     localised_name = {"entity-name.maraxsis-coral"},
     localised_description = {"entity-description.maraxsis-coral"},
+    subgroup = "creatures",
+    order = "j-c[maraxsis-polylplast]"
 }}
+
+-- totally not a slipstack
+local maraxsis_polylplast = table.deepcopy(data.raw.tree.slipstack)
+maraxsis_polylplast.name = "maraxsis-polylplast"
+maraxsis_polylplast.subgroup = "creatures"
+maraxsis_polylplast.order = "j-c[maraxsis-polylplast]"
+maraxsis_polylplast.autoplace = nil
+maraxsis_polylplast.minable.results = {
+    {type = "item", name = "maraxsis-coral", amount_min = 20, amount_max = 25},
+    {type = "item", name = "stone", amount_min = 4, amount_max = 6},
+}
+data:extend {maraxsis_polylplast}

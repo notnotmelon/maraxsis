@@ -43,7 +43,6 @@ local prototypes_that_cant_be_placed_on_water = {
     "generator",
     "market",
     "reactor",
-    "tree",
     "simple-entity-with-force",
     "simple-entity-with-owner",
     "fusion-reactor",

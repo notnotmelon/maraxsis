@@ -7,6 +7,7 @@ local entity_spawn_settings = {
     ["maraxsis-coral"] = {},
     ["big-sand-rock-underwater"] = {},
     ["maraxsis-mollusk-husk"] = {},
+    ["maraxsis-polylplast"] = {},
 }
 
 for _, tropical_fish in pairs(maraxsis.tropical_fish_names) do

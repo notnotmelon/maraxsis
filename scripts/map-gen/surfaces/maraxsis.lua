@@ -85,7 +85,7 @@ maraxsis.on_event(defines.events.on_script_trigger_effect, function(event)
 		cliff_created(event)
 	elseif effect_id == "maraxsis-coral-created" then
 		coral_created(event)
-	end	
+	end
 end)
 
 return {
