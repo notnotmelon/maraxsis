@@ -31,7 +31,7 @@ data:extend {{
     results = {
         {type = "fluid", name = "heavy-oil", amount = 10},
     },
-    allow_productivity = false,
+    allow_productivity = true,
     category = "maraxsis-hydro-plant-or-chemistry",
     energy_required = 2,
     subgroup = "fluid-recipes",
