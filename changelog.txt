@@ -1,4 +1,13 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.23.2
+Date: 2024-12-11
+  Bugfixes:
+    - Fixed infinite oil duplication bug in easy mode.
+  Graphics:
+    - Added graphics for the coral reef.
+  Locale:
+    - Fixed typo in the abysal diving gear description. https://github.com/notnotmelon/maraxsis/pull/129
+---------------------------------------------------------------------------------------------------
 Version: 1.23.1
 Date: 2024-12-11
   Balancing:
