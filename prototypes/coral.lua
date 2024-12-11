@@ -26,7 +26,7 @@ data:extend {{
     icon = "__maraxsis__/graphics/icons/coral-1.png",
     icon_size = 64,
     pictures = coral_variants,
-    stack_size = 50,
+    stack_size = 200,
     spoil_result = "maraxsis-limestone",
     spoil_ticks = 60 * 60 * 10,
 }}
