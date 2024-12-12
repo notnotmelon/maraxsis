@@ -23,6 +23,10 @@ data:extend {{
             type = "unlock-recipe",
             recipe = "maraxsis-petroleum-gas-cracking"
         },
+        {
+            type = "unlock-recipe",
+            recipe = "maraxsis-electric-boiler"
+        },
     },
     prerequisites = {"hydraulic-science-pack", "coal-liquefaction"},
     unit = {

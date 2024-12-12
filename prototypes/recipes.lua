@@ -43,3 +43,25 @@ data:extend {{
     allow_decomposition = false,
     maximum_productivity = 1.5,
 }}
+
+data:extend {{
+    type = "recipe",
+    name = "maraxsis-electric-boiler",
+    ingredients = {
+        {type = "fluid", name = "water", amount = 100},
+    },
+    results = {
+        {type = "fluid", name = "steam", amount = 10, temperature = 100},
+    },
+    allow_productivity = false,
+    allow_decomposition = false,
+    category = "maraxsis-hydro-plant",
+    energy_required = 5,
+    surface_conditions = {{
+        property = "pressure",
+        max = 0.1,
+    }},
+    icon = "__maraxsis__/graphics/icons/electric-boiler.png",
+    icon_size = 64,
+    enabled = false,
+}}
