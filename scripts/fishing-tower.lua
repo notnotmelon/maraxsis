@@ -5,7 +5,7 @@ maraxsis.on_event(defines.events.on_script_trigger_effect, function(event)
 
     rendering.draw_animation {
         animation = "maraxsis-fishing-plant-animation",
-        target = entity.position,
+        target = entity,
         surface = entity.surface_index,
         render_layer = "lower-object",
         animation_speed = 0.5,
