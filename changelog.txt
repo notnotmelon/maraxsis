@@ -1,4 +1,14 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.23.10
+Date: 2024-12-12
+  Balancing:
+    - Removed surface restrictions on the submarine dock. Can now be placed anywhere!
+  Compatibility:
+    - The AAI sand dictionary conversion recipe now accepts productivity modules.
+    - The trench is no longer displayed in the background when using the "Visible Planets in Space" mod.
+  Graphics:
+    - Compress coral reef graphics and reduce the bundle size.
+---------------------------------------------------------------------------------------------------
 Version: 1.23.9
 Date: 2024-12-12
   Bugfixes:
