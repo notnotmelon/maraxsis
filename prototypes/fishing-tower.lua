@@ -129,6 +129,24 @@ data:extend {{
         height = 1,
         width = 1,
     },
-    hidden = true
+    hidden = true,
     -- ambient_sounds todo
+    created_effect = {
+        type = "direct",
+        action_delivery = {
+            type = "instant",
+            source_effects = {
+                {
+                    type = "script",
+                    effect_id = "maraxsis-fishing-plant-created",
+                },
+            }
+        }
+    }
 }}
+
+local fishing_plant_animation = table.deepcopy(data.raw["sticker"]["jellynut-speed-sticker"].animation)
+fishing_plant_animation.type = "animation"
+fishing_plant_animation.name = "maraxsis-fishing-plant-animation"
+fishing_plant_animation.shift[2] = fishing_plant_animation.shift[2] - 0.5
+data:extend{fishing_plant_animation}

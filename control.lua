@@ -19,5 +19,6 @@ require "scripts.salt-reactor"
 require "scripts.trench-duct"
 require "scripts.abyssal-diving-gear"
 require "scripts.remote"
+require "scripts.fishing-tower"
 
 maraxsis.finalize_events()
