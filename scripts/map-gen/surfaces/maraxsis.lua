@@ -66,6 +66,18 @@ local function coral_created(event)
 		coral_animation[2].graphics_variation = (coral_animation[1].graphics_variation % 8) + 1
 	end
 
+	-- create polycephalum-slime decorative
+	surface.create_decoratives {
+		check_collision = false,
+		decoratives = {
+			{
+				amount = 1,
+				name = "polycephalum-slime",
+				position = maraxsis.randomize_position(position, 0.75),
+			}
+		}
+	}
+
 	local registration_number = script.register_on_object_destroyed(coral)
 	storage.coral_animations[registration_number] = coral_animation
 end
