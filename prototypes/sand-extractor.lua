@@ -49,10 +49,16 @@ for extractor in pairs(maraxsis.MARAXSIS_SAND_EXTRACTORS) do
     extractor.fixed_quality = "normal"
     extractor.crafting_speed = extractor.mining_speed
     extractor.mining_speed = nil
+    extractor.fast_replaceable_group = (extractor.fast_replaceable_group or extractor.name) .. "-sand-extractor"
     extractor.next_upgrade = nil
     extractor.allowed_effects = {"productivity", "consumption", "speed", "pollution", "quality"}
     extractor.resource_drain_rate_percent = nil
     extractor.name = extractor.name .. "-sand-extractor"
+    extractor.surface_conditions = {{
+        property = "pressure",
+        min = 200000,
+        max = 200000,
+    }}
     data:extend {extractor}
 end
 
