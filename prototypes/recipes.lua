@@ -56,7 +56,7 @@ data:extend {{
     allow_productivity = false,
     allow_decomposition = false,
     category = "maraxsis-hydro-plant",
-    energy_required = 5,
+    energy_required = 1,
     surface_conditions = {{
         property = "pressure",
         max = 0.1,
