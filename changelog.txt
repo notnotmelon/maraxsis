@@ -1,4 +1,10 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.23.5
+Date: 2024-12-12
+  Locale:
+    - HOTFIX ru locale.cfg ([#132](https://github.com/notnotmelon/maraxsis/issues/132))
+    - Remove most Spidertron Enhancements/Patrols locale overrides ([#134](https://github.com/notnotmelon/maraxsis/issues/134))
+---------------------------------------------------------------------------------------------------
 Version: 1.23.4
 Date: 2024-12-11
   Graphics:
