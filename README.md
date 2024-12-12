@@ -115,7 +115,5 @@ Maraxsis would not be possible without the help of these amazing, fantastic, inc
 
 #### Translation
 
-- 🇫🇷 [French] [Fr_Dae](https://github.com/Fr-Dae)
-- 🇷🇺 [Russian] [GafarovMaxim](https://github.com/GafarovMaxim)
-- 🇨🇳 [Chinese] [PlexPt](https://github.com/PlexPt)
-- 🇩🇪 [German] [OC1024](https://github.com/OC1024)
+Want to help translate this mod?
+Visit our [Crowdin](https://crowdin.com/project/factorio-mods-localization) page.
