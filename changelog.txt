@@ -1,4 +1,13 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.23.7
+Date: 2024-12-12
+  Bugfixes:
+    - Fixed that fish food entity could not be manually mined.
+  Graphics:
+    - Added additional tile transitions between coral reef and sand.
+    - Added polycephalum-slime decorative to help integrate corals into the floor.
+    - Fixed missing sprite for the fish food when placed as an entity.
+---------------------------------------------------------------------------------------------------
 Version: 1.23.6
 Date: 2024-12-12
   Bugfixes:
