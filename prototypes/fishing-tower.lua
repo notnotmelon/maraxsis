@@ -105,6 +105,8 @@ data:extend {fishing_tower}
 data:extend {{
     name = "maraxsis-fishing-plant",
     type = "plant",
+    localised_name = {"item-name.maraxsis-fish-food"},
+    localised_description = {"item-description.maraxsis-fish-food"},
     growth_ticks = 12000,
     agricultural_tower_tint = {
         primary = defines.color.darkseagreen,
@@ -113,9 +115,10 @@ data:extend {{
     max_health = 200,
     icon = data.raw.capsule["maraxsis-tropical-fish"].icon,
     icon_size = data.raw.capsule["maraxsis-tropical-fish"].icon_size,
-    selectable_in_game = false,
     collision_mask = {layers = {[maraxsis_fishing_tower_collision_mask] = true}},
     collision_box = {{-0.8, -0.8}, {0.8, 0.8}},
+    selection_box = {{-1, -1}, {1, 1}},
+    selection_priority = 51,
     minable = {
         mining_time = 0.5,
         results = {{type = "item", name = "maraxsis-tropical-fish", amount = 15}},
@@ -146,7 +149,14 @@ data:extend {{
 }}
 
 local fishing_plant_animation = table.deepcopy(data.raw["sticker"]["jellynut-speed-sticker"].animation)
+fishing_plant_animation.shift[2] = fishing_plant_animation.shift[2] - 0.5
+fishing_plant_animation = {
+    layers = {
+        table.deepcopy(fishing_plant_animation),
+        table.deepcopy(fishing_plant_animation),
+    }
+}
+fishing_plant_animation.layers[2].draw_as_glow = true
 fishing_plant_animation.type = "animation"
 fishing_plant_animation.name = "maraxsis-fishing-plant-animation"
-fishing_plant_animation.shift[2] = fishing_plant_animation.shift[2] - 0.5
 data:extend{fishing_plant_animation}
