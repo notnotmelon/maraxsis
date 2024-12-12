@@ -68,6 +68,7 @@ data:extend {{
     },
     allow_productivity = true,
     category = "metallurgy",
+    auto_recycle = true
 }}
 
 local glass_variants = {}
