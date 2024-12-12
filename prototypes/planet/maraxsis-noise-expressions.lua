@@ -136,7 +136,7 @@ data:extend {{
 data:extend {{
     type = "noise-function",
     name = "maraxsis_coral_reef",
-    expression = "(maraxsis_elevation(xx, yy) > 0.8) * (maraxsis_elevation(xx, yy) < 1.1) * (coral_zones > 0.5) * (coral_beds > 0.8)",
+    expression = "(maraxsis_elevation(xx, yy) > 0.8) * (maraxsis_elevation(xx, yy) < 1.1) * (coral_zones > 0.5) * coral_beds",
     local_expressions = {
         coral_beds = [[
             multioctave_noise{
@@ -169,7 +169,7 @@ data:extend {{
 data:extend {{
     type = "noise-expression",
     name = "maraxsis_coral_ore",
-    expression = "(maraxsis_coral_reef(x, y) * coral_spots) > 0.8",
+    expression = "((maraxsis_coral_reef(x, y) > 0.8) * coral_spots) > 0.8",
     local_expressions = {
         coral_spots = [[
             multioctave_noise{
@@ -202,9 +202,16 @@ end
 
 data.raw.tile["lowland-cream-red-underwater"].autoplace = {
     probability_expression = [[
-        (maraxsis_coral_reef(x - 1, y) + maraxsis_coral_reef(x + 1, y) + maraxsis_coral_reef(x, y - 1) + maraxsis_coral_reef(x, y + 1)) >= 1
+        maraxsis_coral_reef(x, y) >= 0.8
     ]],
     order = "a[coral]-a[maraxsis]"
+}
+
+data.raw.tile["lowland-red-vein-2-underwater"].autoplace = {
+    probability_expression = [[
+        maraxsis_coral_reef(x, y) >= 0.67
+    ]],
+    order = "a[coral]-b[maraxsis]"
 }
 
 data.raw.tile["sand-3-underwater"].autoplace = {

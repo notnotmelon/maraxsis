@@ -120,10 +120,15 @@ data:extend(waterifiy.tile("sand-3"))
 data:extend(waterifiy.tile("sand-2"))
 data:extend(waterifiy.tile("sand-1"))
 data:extend(waterifiy.tile("lowland-cream-red"))
+data:extend(waterifiy.tile("lowland-red-vein-2"))
 
 data.raw.tile["lowland-cream-red-underwater"].map_color = defines.color.orange
 data.raw.tile["lowland-cream-red-underwater"].searchable = true
 data.raw.tile["lowland-cream-red-underwater"].collision_mask.layers[maraxsis_fishing_tower_collision_mask] = nil
+
+data.raw.tile["lowland-red-vein-2"].map_color = defines.color.firebrick
+data.raw.tile["lowland-red-vein-2"].collision_mask.layers[maraxsis_fishing_tower_collision_mask] = nil
+data.raw.tile["lowland-red-vein-2"].localised_name = {"tile-name.lowland-cream-red-underwater"}
 
 data:extend(waterifiy.entity("big-sand-rock"))
 
