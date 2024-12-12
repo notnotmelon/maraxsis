@@ -160,3 +160,38 @@ fishing_plant_animation.layers[2].draw_as_glow = true
 fishing_plant_animation.type = "animation"
 fishing_plant_animation.name = "maraxsis-fishing-plant-animation"
 data:extend{fishing_plant_animation}
+
+local result_units = {}
+local probability = 1 / table_size(maraxsis.tropical_fish_names)
+for _, tropical_fish in pairs(maraxsis.tropical_fish_names) do
+    table.insert(result_units, {
+        unit = tropical_fish,
+        spawn_points = {{evolution_factor = 0, spawn_weight = probability}}
+    })
+end
+
+data:extend {{
+    name = "maraxsis-fish-spawner",
+    type = "unit-spawner",
+    max_count_of_owned_units = 5,
+    max_friends_around_to_spawn = 8,
+    spawning_cooldown = {60 * 10, 60 * 20},
+    spawning_radius = 11,
+    spawning_spacing = 3,
+    max_richness_for_spawn_shift = 0,
+    max_spawn_shift = 0,
+    call_for_help_radius = 0,
+    collision_box = {{-1.9, -1.9}, {1.9, 1.9}},
+    selection_box = {{-2, -2}, {2, 2}},
+    graphics_set = {},
+    result_units = result_units,
+    icon = "__maraxsis__/graphics/icons/fishing-tower.png",
+    icon_size = 64,
+    hidden = true,
+    selectable_in_game = false,
+    health = 1,
+    localised_name = {"entity-name.maraxsis-fishing-tower"},
+    localised_description = {"entity-description.maraxsis-fishing-tower"},
+    factoriopedia_alternative = "maraxsis-fishing-tower",
+    collision_mask = {layers = {}}
+}}
