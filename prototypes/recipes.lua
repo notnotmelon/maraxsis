@@ -48,15 +48,15 @@ data:extend {{
     type = "recipe",
     name = "maraxsis-electric-boiler",
     ingredients = {
-        {type = "fluid", name = "water", amount = 100},
+        {type = "fluid", name = "water", amount = 10},
     },
     results = {
-        {type = "fluid", name = "steam", amount = 10, temperature = 100},
+        {type = "fluid", name = "steam", amount = 90, temperature = 100},
     },
     allow_productivity = false,
     allow_decomposition = false,
     category = "maraxsis-hydro-plant",
-    energy_required = 1,
+    energy_required = 10,
     surface_conditions = {{
         property = "pressure",
         max = 0.1,
