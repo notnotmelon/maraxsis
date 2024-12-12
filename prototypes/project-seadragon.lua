@@ -43,6 +43,7 @@ maraxsis_rocket_part.enabled = false
 maraxsis_rocket_part.surface_conditions = {
     {property = "pressure", min = 200000, max = 200000},
 }
+maraxsis_rocket_part.auto_recycle = false
 maraxsis_rocket_part.order = data.raw.item["rocket-part"].order .. "-a[maraxsis]"
 data:extend {maraxsis_rocket_part}
 
@@ -85,7 +86,8 @@ data:extend {{
         property = "gravity",
         min = 0,
         max = 0,
-    }}
+    }},
+    auto_recycle = false,
 }}
 
 local super_sealant_substance_variants = {}
