@@ -222,6 +222,20 @@ for i = 1, 2 do
     entity.light_animation = nil
     entity.tank_driving = true
     entity.collision_mask = collision_mask
+    entity.working_sound = {
+        apparent_volume = 0.5,
+        max_sounds_per_type = 1,
+        audible_distance_modifier = 0.5,
+        fade_in_ticks = 60,
+        fade_out_ticks = 60,
+        sound = {
+            filename = "__maraxsis__/sounds/submarine.ogg",
+            category = "game-effect",
+            speed = 0.5,
+        }
+    }
+    entity.open_sound = table.deepcopy(data.raw.car.tank.open_sound)
+    entity.close_sound = table.deepcopy(data.raw.car.tank.close_sound)
 
     local factoriopedia_colors = {
         {r = 255, g = 195, b = 0},
@@ -234,8 +248,6 @@ for i = 1, 2 do
         tint = factoriopedia_colors[i],
         size = {64, 64}
     }
-    entity.working_sound = table.deepcopy(data.raw.car.car.working_sound)
-    entity.open_sound = nil
     entity.movement_energy_consumption = movement_energy_consumption[i] .. "kW"
     entity.weight = entity.weight / (i + 1) * 4 * movement_energy_consumption[i] / 800
     entity.energy_source = {
@@ -259,7 +271,6 @@ for i = 1, 2 do
         }
     }
     entity.guns = table.deepcopy(data.raw["spider-vehicle"]["spidertron"].guns)
-    entity.close_sound = nil
     entity.resistances = {
         {type = "fire",   percent = 100},
         {type = "impact", percent = 100},
@@ -412,3 +423,12 @@ data.raw["spider-vehicle"]["maraxsis-nuclear-submarine"].guns = {
     "maraxsis-torpedo-launch-silo-5",
     "maraxsis-torpedo-launch-silo-6",
 }
+
+data:extend {{
+    type = "sound",
+    name = "maraxsis-submerge",
+    category = "game-effect",
+    priority = 100,
+    filename = "__maraxsis__/sounds/submerge.ogg",
+    speed = 0.5
+}}

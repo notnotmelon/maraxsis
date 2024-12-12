@@ -24,14 +24,14 @@
 
 - **Creators**: [Archezekiel](https://github.com/Archezekiel)
 - **Source**: Commissioned. Created in Blender.
-- **License**: N/A
+- **License**: Public domain.
 - **Changes**: Yes. Compressed for Factorio with [Spritter](https://github.com/fgardt/factorio-spritter)
 
 #### Pressure Dome
 
 - **Creators**: [KaueNP](https://github.com/KaueNP)
 - **Source**: Commissioned. Created in 3DS max studio.
-- **License**: N/A
+- **License**: Public domain.
 - **Changes**: No.
 
 #### Sonar
@@ -68,3 +68,10 @@
 - **Source**: [Factorio Mod Template](https://github.com/fgardt/factorio-mod-template) & [Spritter](https://github.com/fgardt/factorio-spritter)
 - **License**: [MIT](https://opensource.org/license/MIT)
 - **Changes**: No.
+
+#### Sound Effects
+
+- **Creators**: Pixabay Community
+- **Source**: [Pixabay](https://pixabay.com)
+- **License**: [Pixabay Content License](https://pixabay.com/service/license-summary/)
+- **Changes**: No

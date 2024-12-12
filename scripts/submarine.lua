@@ -104,6 +104,11 @@ local function determine_submerge_direction(submarine)
                     create_at_cursor = false
                 }
             end
+            surface.play_sound {
+                path = "utility/cannot_build",
+                position = position,
+                volume_modifier = 1
+            }
             return nil
         end
         local target_position = {x = position.x * TRENCH_MOVEMENT_FACTOR, y = position.y * TRENCH_MOVEMENT_FACTOR}
@@ -125,6 +130,11 @@ local function determine_submerge_direction(submarine)
                     create_at_cursor = false
                 }
             end
+            surface.play_sound {
+                path = "utility/cannot_build",
+                position = position,
+                volume_modifier = 1
+            }
             return nil
         end
         return target_surface, target_position
@@ -132,6 +142,15 @@ local function determine_submerge_direction(submarine)
 
     return nil
 end
+
+local function play_submerge_sound(target, position)
+    target.play_sound {
+        path = "maraxsis-submerge",
+        position = position,
+        volume_modifier = 1
+    }
+end
+maraxsis.register_delayed_function("play_submerge_sound", play_submerge_sound)
 
 ---transfers a submarine between surfaces
 ---@param submarine LuaEntity
@@ -150,6 +169,9 @@ local function decend_or_ascend(submarine)
     if driver and not driver.is_player() then
         driver = driver.player
     end
+
+    maraxsis.execute_later("play_submerge_sound", 1, submarine.surface, submarine.position)
+    maraxsis.execute_later("play_submerge_sound", 1, target_surface, target_position)
 
     local players_to_open_gui = {}
     for _, player in pairs(game.players) do
