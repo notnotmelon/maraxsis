@@ -3,6 +3,7 @@ require "prototypes.spidertron-patrols"
 require "prototypes.item-weight"
 require "prototypes.default-import-location"
 require "prototypes.fluid-void"
+require "prototypes.item-sounds"
 require "compat.aai-industry"
 require "compat.transport-ring-teleporter"
 
