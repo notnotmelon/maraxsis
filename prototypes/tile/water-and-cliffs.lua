@@ -245,3 +245,12 @@ data:extend {maraxsis.merge(data.raw.tile["out-of-map"], {
     },
 })}
 table.insert(out_of_map_tile_type_names, "maraxsis-trench-entrance")
+
+data:extend {maraxsis.merge(data.raw.tile["out-of-map"], {
+    name = "maraxsis-trench-out-of-map",
+    localised_name = {"tile-name.out-of-map"},
+    hidden = true,
+    factoriopedia_alternative = "out-of-map",
+    effect = "nil",
+})}
+table.insert(out_of_map_tile_type_names, "maraxsis-trench-out-of-map")

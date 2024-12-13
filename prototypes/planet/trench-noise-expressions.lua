@@ -154,11 +154,11 @@ data.raw["simple-entity"]["maraxsis-trench-wall-collisionless"].autoplace = {
     order = "b[lava]-a[maraxsis]"
 }
 
-data.raw.tile["out-of-map"].autoplace = {
+data.raw.tile["maraxsis-trench-out-of-map"].autoplace = {
     probability_expression = [[
         1 - maraxsis_trench_wall
     ]],
-    order = "a[out-of-map]-a[maraxsis]"
+    order = "a[maraxsis-trench-out-of-map]-a[maraxsis]"
 }
 
 data.raw.tile["volcanic-cracks-hot-underwater"].autoplace = {
