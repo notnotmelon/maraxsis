@@ -204,3 +204,24 @@ data:extend {{
 add_to_tech("maraxsis-salt-filter-cleaning")
 
 add_to_tech("maraxsis-hydrolox-rocket-fuel")
+
+data:extend {{
+    type = "recipe",
+    name = "maraxsis-sublimation",
+    ingredients = {
+        {type = "item", name = "ice", amount = 1},
+    },
+    results = {
+        {type = "fluid", name = "steam", amount = 90, temperature = 165},
+    },
+    allow_productivity = false,
+    allow_decomposition = false,
+    category = "maraxsis-hydro-plant",
+    energy_required = 5,
+    icon = "__maraxsis__/graphics/icons/sublimation.png",
+    icon_size = 64,
+    enabled = false,
+    subgroup = "fluid-recipes",
+    order = "d[other-recipes]-c[sublimation]",
+}}
+add_to_tech("maraxsis-sublimation")
