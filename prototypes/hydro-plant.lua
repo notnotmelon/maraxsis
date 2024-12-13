@@ -107,6 +107,19 @@ data:extend {{
     name = "maraxsis-hydro-plant",
     icon = "__maraxsis__/graphics/icons/hydro-plant.png",
     icon_size = 64,
+    open_sound = table.deepcopy(data.raw["assembling-machine"]["chemical-plant"].open_sound),
+    close_sound = table.deepcopy(data.raw["assembling-machine"]["chemical-plant"].close_sound),
+    working_sound = {
+        sound = {
+            filename = "__maraxsis__/sounds/hydro-plant.ogg",
+            volume = 0.50,
+        },
+        apparent_volume = 1.5,
+        max_sounds_per_type = 3,
+        audible_distance_modifier = 1,
+        fade_in_ticks = 4,
+        fade_out_ticks = 20
+    },
     flags = {"placeable-neutral", "placeable-player", "player-creation"},
     minable = {mining_time = 0.5, results = {{type = "item", name = "maraxsis-hydro-plant", amount = 1}}},
     max_health = 400,
@@ -185,15 +198,6 @@ data:extend {{
     },
     scale_entity_info_icon = true,
     impact_category = data.raw["assembling-machine"]["electromagnetic-plant"].impact_category,
-    --[[working_sound = {
-        filename = path .. 'advanced-furnace.ogg',
-        volume = 0.50,
-        aggregation = {
-            max_count = 2,
-            remove = false,
-            count_already_playing = true,
-        },
-    },--]]
     idle_sound = {filename = "__base__/sound/idle1.ogg"},
     crafting_speed = 2,
     energy_source = {
@@ -205,8 +209,6 @@ data:extend {{
     },
     icon_draw_specification = {scale = 1.75, shift = {0, -0.3}},
     energy_usage = "2MW",
-    open_sound = sounds.machine_open,
-    close_sound = sounds.machine_close,
     collision_mask = {layers = {["item"] = true, ["object"] = true, ["player"] = true}},
 }}
 
