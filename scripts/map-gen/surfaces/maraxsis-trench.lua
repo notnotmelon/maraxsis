@@ -14,10 +14,6 @@ maraxsis.on_event(defines.events.on_surface_created, function(event)
 	surface.map_gen_settings = mgs
 end)
 
-local function get_surface()
-	return game.planets[maraxsis.TRENCH_SURFACE_NAME].create_surface()
-end
-
 maraxsis.on_event(defines.events.on_script_trigger_effect, function(event)
 	if event.effect_id ~= "maraxsis-trench-wall-created" then return end
 
@@ -44,8 +40,3 @@ maraxsis.on_event(defines.events.on_space_platform_changed_state, function(event
 	game.print {"maraxsis.invalid-space-platform", platform.name}
 	platform.destroy(0)
 end)
-
-return {
-	get_surface = get_surface,
-	type = "maraxsis-trench",
-}

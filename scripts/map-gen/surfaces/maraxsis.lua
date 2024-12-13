@@ -5,7 +5,7 @@ end)
 maraxsis.on_event(defines.events.on_chunk_generated, function(event)
 	local surface = event.surface
 	local surface_name = surface.name
-	if surface_name ~= maraxsis.MARAXSIS_SURFACE_NAME and surface_name ~= maraxsis.TRENCH_SURFACE_NAME then return end
+	if not maraxsis.MARAXSIS_SURFACES[surface_name] then return end
 
 	local chunkpos = event.position
 	local x = chunkpos.x * 32 + 16
@@ -20,10 +20,6 @@ maraxsis.on_event(defines.events.on_chunk_generated, function(event)
 	fancy_water.destructible = false
 	fancy_water.minable = false
 end)
-
-local function get_surface()
-	return game.planets[maraxsis.MARAXSIS_SURFACE_NAME].create_surface()
-end
 
 local function cliff_created(event)
 	local old_cliff = event.target_entity
@@ -99,8 +95,3 @@ maraxsis.on_event(defines.events.on_script_trigger_effect, function(event)
 		coral_created(event)
 	end
 end)
-
-return {
-	type = "maraxsis",
-	get_surface = get_surface,
-}

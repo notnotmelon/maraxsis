@@ -81,6 +81,11 @@ local function enter_submarine(player, submarine)
 end
 maraxsis.register_delayed_function("enter_submarine", enter_submarine)
 
+local OPPOSITE_SURFACE = {
+    [maraxsis.TRENCH_SURFACE_NAME] = maraxsis.MARAXSIS_SURFACE_NAME,
+    [maraxsis.MARAXSIS_SURFACE_NAME] = maraxsis.TRENCH_SURFACE_NAME,
+}
+
 ---determines if the submarine should rise to the surface or sink to the bottom. returns nil if surface transfer is impossible
 ---@param submarine LuaEntity
 ---@return LuaSurface?, MapPosition?
@@ -88,11 +93,10 @@ local function determine_submerge_direction(submarine)
     local position = submarine.position
     local surface = submarine.surface
     local surface_name = surface.name
-    local prototype = maraxsis.prototypes[surface_name]
-    if not prototype then error("no prototype for surface " .. surface_name) end
 
-    local opposite_surface_name = maraxsis.MARAXSIS_GET_OPPOSITE_SURFACE[surface_name]
-    local target_surface = maraxsis.prototypes[opposite_surface_name].get_surface()
+    local opposite_surface_name = OPPOSITE_SURFACE[surface_name]
+    if not opposite_surface_name then return end
+    local target_surface = game.planets[opposite_surface_name].create_surface()
 
     if surface_name == maraxsis.MARAXSIS_SURFACE_NAME then
         local tile_at_surface = surface.get_tile(position)
