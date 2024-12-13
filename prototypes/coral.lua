@@ -48,6 +48,8 @@ data:extend {{
         }
     },
     walking_sound = sounds.ore,
+    mining_sound = table.deepcopy(data.raw.tree["slipstack"].mining_sound),
+    mined_sound = table.deepcopy(data.raw.tree["slipstack"].mined_sound),
     driving_sound = stone_driving_sound, -- todo
     collision_box = {{-0.1, -0.1}, {0.1, 0.1}},
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
