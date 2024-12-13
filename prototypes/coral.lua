@@ -60,7 +60,7 @@ data:extend {{
         order = "z",
         placement_density = 1,
         probability_expression = "maraxsis_coral_ore",
-        richness_expression = "random_penalty(x, y, 9232 + (sqrt(x*x + y*y) / 10), 99, 1000)",
+        richness_expression = [[var("control:maraxsis-coral:richness") * random_penalty(x, y, 9232 + (sqrt(x*x + y*y) / 10), 99, 1000)]],
     },
     stage_counts = {},
     map_color = {255, 20, 147},

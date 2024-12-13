@@ -147,7 +147,7 @@ data:extend {{
                 seed1 = 1542,
                 octaves = 2,
                 input_scale = 0.03,
-                output_scale = 1
+                output_scale = max(0.8, var("control:maraxsis-coral:size"))
             }
         ]],
         coral_zones = [[
@@ -160,7 +160,17 @@ data:extend {{
                 octaves = 2,
                 input_scale = 0.01,
                 output_scale = 1
-            }
+            } + final_frequency
+        ]],
+        frequency = [[
+            var("control:maraxsis-coral:frequency")
+        ]],
+        final_frequency = [[
+            if (
+                frequency > 1,
+                (frequency - 1) / 5,
+                (frequency - 1) / 2
+            )
         ]],
     },
     parameters = {"xx", "yy"}
