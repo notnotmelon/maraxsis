@@ -1,6 +1,6 @@
--- "build" and "build-ghost" are custom keybind inputs
+-- "build" and "build-ghost" and "super-forced-build" are custom keybind inputs
 
-maraxsis.on_event({"build", "build-ghost", "super-forced-build"}, function(event)
+local function construct_sand_extractor(event)
     local player = game.get_player(event.player_index)
     if not player or not player.valid then return end
 
@@ -41,4 +41,9 @@ maraxsis.on_event({"build", "build-ghost", "super-forced-build"}, function(event
     if not is_ghost then
         cursor_stack.count = cursor_stack.count - 1
     end
+end
+maraxsis.register_delayed_function("construct_sand_extractor", construct_sand_extractor)
+
+maraxsis.on_event({"build", "build-ghost", "super-forced-build"}, function(event)
+    maraxsis.execute_later("construct_sand_extractor", 1, event)
 end)
