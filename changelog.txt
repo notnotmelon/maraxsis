@@ -1,4 +1,9 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.23.19
+Date: 2024-12-12
+  Bugfixes:
+    - Fixed items would spill and equipment energy would be reset when switching out of swimming state. Resolves https://github.com/notnotmelon/maraxsis/issues/138
+---------------------------------------------------------------------------------------------------
 Version: 1.23.18
 Date: 2024-12-12
   Balancing:
