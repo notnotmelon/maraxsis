@@ -26,7 +26,7 @@ data:extend {{
     name = "maraxsis-petroleum-gas-cracking",
     ingredients = {
         {type = "fluid", name = "petroleum-gas", amount = 40},
-        {type = "fluid", name = "water", amount = 30},
+        {type = "fluid", name = "water",         amount = 30},
     },
     results = {
         {type = "fluid", name = "heavy-oil", amount = 10},

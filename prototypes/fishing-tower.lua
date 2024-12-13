@@ -159,7 +159,7 @@ fishing_plant_animation = {
 fishing_plant_animation.layers[2].draw_as_glow = true
 fishing_plant_animation.type = "animation"
 fishing_plant_animation.name = "maraxsis-fishing-plant-animation"
-data:extend{fishing_plant_animation}
+data:extend {fishing_plant_animation}
 
 local result_units = {}
 local probability = 1 / table_size(maraxsis.tropical_fish_names)

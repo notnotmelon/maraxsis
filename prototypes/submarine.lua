@@ -69,7 +69,7 @@ local recipes = {
         {type = "item", name = "tungsten-plate",                   amount = 50},
         {type = "item", name = "maraxsis-sonar",                   amount = 1},
         {type = "item", name = "maraxsis-glass-panes",             amount = 100},
-        {type = "item", name = "maraxsis-salt-reactor",                  amount = 1},
+        {type = "item", name = "maraxsis-salt-reactor",            amount = 1},
         {type = "item", name = "pump",                             amount = 8},
         {type = "item", name = "processing-unit",                  amount = 50},
         {type = "item", name = "maraxsis-super-sealant-substance", amount = 100},

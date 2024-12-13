@@ -245,10 +245,10 @@ data:extend {{
     enabled = false,
     energy_required = 5,
     ingredients = {
-        {type = "item",  name = "tungsten-plate",                                         amount = 20},
-        {type = "item",  name = "pipe",                                                   amount = 10},
-        {type = "item",  name = "processing-unit",                                                   amount = 10},
-        {type = "fluid", name = "maraxsis-saline-water",                                  amount = 300},
+        {type = "item",  name = "tungsten-plate",        amount = 20},
+        {type = "item",  name = "pipe",                  amount = 10},
+        {type = "item",  name = "processing-unit",       amount = 10},
+        {type = "fluid", name = "maraxsis-saline-water", amount = 300},
     },
     results = {
         {type = "item", name = "maraxsis-hydro-plant", amount = 1},

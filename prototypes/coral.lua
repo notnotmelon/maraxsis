@@ -44,7 +44,7 @@ data:extend {{
         mining_particle = "stone-particle",
         mining_time = 5,
         results = {
-            {type = "item", name = "maraxsis-coral",     amount = 1},
+            {type = "item", name = "maraxsis-coral", amount = 1},
         }
     },
     walking_sound = sounds.ore,
@@ -136,6 +136,6 @@ maraxsis_polylplast.order = "j-c[maraxsis-polylplast]"
 maraxsis_polylplast.autoplace = nil
 maraxsis_polylplast.minable.results = {
     {type = "item", name = "maraxsis-coral", amount_min = 20, amount_max = 25},
-    {type = "item", name = "stone", amount_min = 4, amount_max = 6},
+    {type = "item", name = "stone",          amount_min = 4,  amount_max = 6},
 }
 data:extend {maraxsis_polylplast}

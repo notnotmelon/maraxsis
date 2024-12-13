@@ -235,7 +235,7 @@ data:extend {{
     enabled = false,
     energy_required = 2,
     ingredients = {
-        {type = "item", name = "maraxsis-tropical-fish",   amount = 1},
+        {type = "item", name = "maraxsis-tropical-fish", amount = 1},
     },
     results = {
         {type = "item", name = "maraxsis-microplastics", amount = 10},

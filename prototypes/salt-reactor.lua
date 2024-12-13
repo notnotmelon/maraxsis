@@ -134,10 +134,10 @@ data:extend {{
     enabled = false,
     energy_required = 10,
     ingredients = {
-        {type = "item", name = "maraxsis-glass-panes", amount = 100},
-        {type = "item", name = "tungsten-plate",       amount = 100},
-        {type = "item", name = "processing-unit",      amount = 100},
-        {type = "fluid", name = "maraxsis-brackish-water",      amount = 300},
+        {type = "item",  name = "maraxsis-glass-panes",    amount = 100},
+        {type = "item",  name = "tungsten-plate",          amount = 100},
+        {type = "item",  name = "processing-unit",         amount = 100},
+        {type = "fluid", name = "maraxsis-brackish-water", amount = 300},
     },
     results = {
         {type = "item", name = "maraxsis-salt-reactor", amount = 1},

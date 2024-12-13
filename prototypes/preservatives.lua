@@ -127,7 +127,7 @@ data:extend {{
     energy_required = 0.5,
     ingredients = {
         {type = "item", name = "agricultural-science-pack", amount = 1},
-        {type = "item", name = "maraxsis-salt",          amount = 1},
+        {type = "item", name = "maraxsis-salt",             amount = 1},
     },
     results = {
         {type = "item", name = "maraxsis-salted-science", amount = 1},

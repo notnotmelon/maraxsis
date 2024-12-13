@@ -261,7 +261,7 @@ maraxsis.on_nth_tick(277, function()
             end
         else
             for _, player in pairs(submarine.force.players) do
-                player.remove_alert{
+                player.remove_alert {
                     entity = submarine,
                     type = defines.alert_type.train_out_of_fuel
                 }

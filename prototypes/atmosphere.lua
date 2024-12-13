@@ -57,8 +57,8 @@ data:extend {{
     unit = {
         count = 1000,
         ingredients = {
-            {"hydraulic-science-pack",   1},
-            {"cryogenic-science-pack",   1},
+            {"hydraulic-science-pack", 1},
+            {"cryogenic-science-pack", 1},
         },
         time = 60
     },

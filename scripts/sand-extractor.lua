@@ -5,7 +5,7 @@ local function construct_sand_extractor(event)
     if not player or not player.valid then return end
 
     local cursor_stack = player.cursor_stack
-    local cursor_stack_valid = cursor_stack and cursor_stack.valid_for_read and cursor_stack.count > 0 
+    local cursor_stack_valid = cursor_stack and cursor_stack.valid_for_read and cursor_stack.count > 0
 
     local quality
     local name
@@ -28,7 +28,7 @@ local function construct_sand_extractor(event)
 
     if surface.entity_prototype_collides(name, position, false) then return end
     local is_ghost = (not cursor_stack_valid) or event.input_name == "build-ghost" or event.input_name == "super-forced-build"
-    
+
     surface.create_entity {
         name = is_ghost and "entity-ghost" or name,
         inner_name = is_ghost and name or nil,
