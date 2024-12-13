@@ -78,7 +78,7 @@ data:extend {{
     working_sound = {
         sound = {
             filename = "__maraxsis__/sounds/regulator.ogg",
-            volume = 0.6
+            volume = 0.4
         },
         max_sounds_per_type = 3,
         audible_distance_modifier = 0.5,
