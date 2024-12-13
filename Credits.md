@@ -15,7 +15,7 @@
 
 #### Hydro Plant, Regulator, Salt Reactor, & Conduit
 
-- **Creators**: [Hurricane](https://github.com/Hurricane)
+- **Creators**: [Hurricane](https://mods.factorio.com/user/Hurricane046)
 - **Source**: [Figma](https://shorturl.at/AFcDm)
 - **License**: [CC BY](https://creativecommons.org/licenses/by/4.0/)
 - **Changes**: Yes. Technology icon added. Renamed to "Hydro Plant". Renamed to "Regulator". Renamed to "Salt Reactor".
