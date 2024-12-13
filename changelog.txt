@@ -1,4 +1,9 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.23.23
+Date: 2024-12-13
+  Changes:
+    - Replaced the "electric boiler" recipe with sublimation (direct ice to steam). Removed the space requirement.
+---------------------------------------------------------------------------------------------------
 Version: 1.23.22
 Date: 2024-12-13
   Bugfixes:
