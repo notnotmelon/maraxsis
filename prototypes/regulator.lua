@@ -75,6 +75,16 @@ data:extend {{
     energy_usage = "500kW",
     icon_draw_specification = {scale = 0, scale_for_many = 0},
     fixed_recipe = "maraxsis-regulator",
+    working_sound = {
+        sound = {
+            filename = "__maraxsis__/sounds/regulator.ogg",
+            volume = 0.6
+        },
+        max_sounds_per_type = 3,
+        audible_distance_modifier = 0.5,
+        fade_in_ticks = 4,
+        fade_out_ticks = 20
+    },
     energy_source = {
         type = "fluid",
         burns_fluid = false,
