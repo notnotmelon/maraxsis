@@ -41,7 +41,7 @@ data:extend {{
     tree_removal_probability = 0.8,
     tree_removal_max_distance = 32 * 32,
     minable = {
-        mining_particle = "copper-ore-particle",
+        mining_particle = "stone-particle",
         mining_time = 5,
         results = {
             {type = "item", name = "maraxsis-coral",     amount = 1},
