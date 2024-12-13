@@ -1,4 +1,13 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.23.29
+Date: 2024-12-13
+  Bugfixes:
+    - Fixed missing rocket weight for fat man (now 10).
+  Sounds:
+    - Added item sounds to all maraxsis items. Resolves https://github.com/notnotmelon/maraxsis/issues/16
+  Locale:
+    - Updated the locale for conduits to explain how the distribution effectivity curve works. Resolves https://github.com/notnotmelon/maraxsis/issues/139
+---------------------------------------------------------------------------------------------------
 Version: 1.23.28
 Date: 2024-12-13
   Balancing:
