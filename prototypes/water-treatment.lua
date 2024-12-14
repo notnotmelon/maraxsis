@@ -214,7 +214,7 @@ data:extend {{
     results = {
         {type = "fluid", name = "steam", amount = 90, temperature = 165},
     },
-    allow_productivity = false,
+    allow_productivity = true,
     allow_decomposition = false,
     category = "maraxsis-hydro-plant-or-chemistry",
     energy_required = 5,
