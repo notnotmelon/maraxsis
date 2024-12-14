@@ -47,10 +47,8 @@ local colors = { -- default sub colors before they are tinted at runtime
 }
 
 local movement_energy_consumption = {
-    1300,
+    13000,
     3000,
-    6500,
-    12000,
 }
 
 data:extend {{
