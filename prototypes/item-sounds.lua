@@ -24,7 +24,7 @@ add_sound_item("maraxsis-diesel-submarine", item_sounds.mechanical_large_invento
 add_sound_item("maraxsis-nuclear-submarine", item_sounds.mechanical_large_inventory_move, item_sounds.mechanical_large_inventory_pickup, item_sounds.mechanical_large_inventory_move)
 add_sound_item("constructron", item_sounds.mechanical_large_inventory_move, item_sounds.mechanical_large_inventory_pickup, item_sounds.mechanical_large_inventory_move)
 add_sound_item("maraxsis-hydro-plant", item_sounds.fluid_inventory_move, item_sounds.fluid_inventory_pickup, item_sounds.fluid_inventory_move)
-add_sound_item("maraxsis-sonar", item_sounds.mechanical_large_inventory_move, item_sounds.mechanical_large_inventory_pickup, item_sounds.mechanical_large_inventory_move)
+add_sound_item("maraxsis-sonar", item_sounds.metal_large_inventory_move, item_sounds.metal_large_inventory_pickup, item_sounds.metal_large_inventory_move)
 add_sound_item("maraxsis-pressure-dome", item_sounds.metal_large_inventory_move, item_sounds.metal_large_inventory_pickup, item_sounds.metal_large_inventory_move)
 add_sound_item("maraxsis-coral", space_age_item_sounds.agriculture_inventory_move, space_age_item_sounds.agriculture_inventory_pickup, space_age_item_sounds.agriculture_inventory_move)
 add_sound_item("maraxsis-limestone", item_sounds.resource_inventory_move, item_sounds.resource_inventory_pickup, item_sounds.resource_inventory_move)
