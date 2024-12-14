@@ -165,8 +165,12 @@ for _, armor in pairs(data.raw.armor) do
     ::continue::
 end
 
-data.raw.recipe["engine-unit"].category = "maraxsis-hydro-plant-or-advanced-crafting"
-data.raw.recipe["electric-engine-unit"].category = "maraxsis-hydro-plant-or-advanced-crafting"
+if not mods["foundry-expanded"] then
+    data.raw.recipe["engine-unit"].category = "maraxsis-hydro-plant-or-advanced-crafting"
+end
+if not mods["electromagnetic-plant-expanded"] then
+    data.raw.recipe["electric-engine-unit"].category = "maraxsis-hydro-plant-or-advanced-crafting"
+end
 
 for _, module in pairs(data.raw.module) do
     if module.name:find("quality%-module") and not module.beacon_tint then
