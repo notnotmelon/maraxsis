@@ -1,4 +1,9 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.23.31
+Date: 2024-12-14
+  Bugfixes:
+    - The mount remote selection data is now preserved when switching surfaces or when the submarine submerges. Resolves https://github.com/notnotmelon/maraxsis/issues/122
+---------------------------------------------------------------------------------------------------
 Version: 1.23.30
 Date: 2024-12-14
   Sounds:
