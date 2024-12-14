@@ -176,3 +176,14 @@ for _, module in pairs(data.raw.module) do
         }
     end
 end
+
+-- add vehicle acceleration to uranium fuel cells
+
+local uranium_fuel_cell = data.raw.item["uranium-fuel-cell"]
+local nuclear_fuel = data.raw.item["nuclear-fuel"]
+uranium_fuel_cell.fuel_acceleration_multiplier = nuclear_fuel.fuel_acceleration_multiplier
+uranium_fuel_cell.fuel_top_speed_multiplier = nuclear_fuel.fuel_top_speed_multiplier
+uranium_fuel_cell.fuel_emissions_multiplier = nuclear_fuel.fuel_emissions_multiplier
+uranium_fuel_cell.fuel_glow_color = nuclear_fuel.fuel_glow_color
+uranium_fuel_cell.fuel_glow_color = nuclear_fuel.fuel_acceleration_multiplier_quality_bonus
+uranium_fuel_cell.fuel_glow_color = nuclear_fuel.fuel_top_speed_multiplier_quality_bonus
