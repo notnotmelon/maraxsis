@@ -28,9 +28,9 @@ local MARAXSIS_SAND_EXTRACTORS = {
 }
 
 local SUBMARINE_FUEL_SOURCES = {
-    ["maraxsis-diesel-submarine"] = {"maraxsis-diesel"},
-    ["constructron"] = {"maraxsis-diesel"},
-    ["maraxsis-nuclear-submarine"] = {"nuclear"},
+    ["maraxsis-diesel-submarine"] = {"maraxsis-diesel", "rocket-fuel"},
+    ["constructron"] = {"maraxsis-diesel", "rocket-fuel"},
+    ["maraxsis-nuclear-submarine"] = {"nuclear", "nuclear-fuel"},
 }
 
 local DOME_DISABLEABLE_TYPES = {

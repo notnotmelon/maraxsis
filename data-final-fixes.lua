@@ -49,3 +49,31 @@ for _, entity in pairs(collision_mask_util.collect_prototypes_with_layer("object
         entity.collision_mask.layers[maraxsis_trench_entrance_collision_mask] = true
     end
 end
+
+-- allow rocket fuel and nuclear fuel to be used in submarines
+local fuel_category = table.deepcopy(data.raw["fuel-category"]["chemical"])
+fuel_category.name = "rocket-fuel"
+fuel_category.localised_name = {"fuel-category-name.chemical"}
+data:extend {fuel_category}
+local fuel_category = table.deepcopy(data.raw["fuel-category"]["chemical"])
+fuel_category.name = "nuclear-fuel"
+fuel_category.localised_name = {"fuel-category-name.chemical"}
+data:extend {fuel_category}
+
+data.raw.item["rocket-fuel"].fuel_category = "rocket-fuel"
+data.raw.item["nuclear-fuel"].fuel_category = "nuclear-fuel"
+
+for entity_type in pairs(defines.prototypes.entity) do
+    for _, entity in pairs(data.raw[entity_type] or {}) do
+        local burner = entity.burner or entity.energy_source
+        if not burner then goto continue end
+        if burner.type ~= "burner" then goto continue end
+
+        if table.find(burner.fuel_categories or {}, "chemical") then
+            table.insert(burner.fuel_categories, "rocket-fuel")
+            table.insert(burner.fuel_categories, "nuclear-fuel")
+        end
+
+        ::continue::
+    end
+end
