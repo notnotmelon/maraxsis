@@ -3,6 +3,7 @@ local SUBMARINES = maraxsis.SUBMARINES
 
 maraxsis.on_event(maraxsis.events.on_init(), function()
     storage.submarines = storage.submarines or {}
+    storage.previous_spidertron_remote_selection = storage.previous_spidertron_remote_selection or {}
 end)
 
 maraxsis.on_event(maraxsis.events.on_built(), function(event)
@@ -178,10 +179,17 @@ local function decend_or_ascend(submarine)
     maraxsis.execute_later("play_submerge_sound", 1, target_surface, target_position)
 
     local players_to_open_gui = {}
+    local players_to_preserve_spidertron_remote_selection = {}
     for _, player in pairs(game.players) do
-        if player.opened == submarine and player.surface ~= target_surface then table.insert(players_to_open_gui, player) end
+        if player.opened == submarine and player.surface ~= target_surface then
+            table.insert(players_to_open_gui, player)
+        elseif player.spidertron_remote_selection then
+            players_to_preserve_spidertron_remote_selection[player] = player.spidertron_remote_selection
+        end
     end
+
     submarine.teleport(target_position, target_surface, true)
+
     for _, player in pairs(players_to_open_gui) do
         if player.surface ~= target_surface then
             player.set_controller {
@@ -191,6 +199,10 @@ local function decend_or_ascend(submarine)
             }
         end
         player.opened = submarine
+    end
+
+    for player, spidertron_remote_selection in pairs(players_to_preserve_spidertron_remote_selection) do
+        player.spidertron_remote_selection = spidertron_remote_selection
     end
 
     if passenger and passenger.physical_vehicle == submarine then
@@ -205,6 +217,32 @@ local function decend_or_ascend(submarine)
 
     return true
 end
+
+maraxsis.on_event(defines.events.on_player_changed_surface, function(event)
+    local spidertrons = storage.previous_spidertron_remote_selection[event.player_index]
+    if not spidertrons then return end
+    local player = game.get_player(event.player_index)
+    local cursor_stack = player.cursor_stack
+    if not cursor_stack or not cursor_stack.valid_for_read then return end
+    if cursor_stack.type ~= "spidertron-remote" then return end
+    player.spidertron_remote_selection = player.spidertron_remote_selection or spidertrons
+end)
+
+maraxsis.on_event(
+    {
+        defines.events.on_player_selected_area,
+        defines.events.on_player_alt_selected_area,
+        defines.events.on_player_alt_reverse_selected_area,
+        defines.events.on_player_reverse_selected_area,
+        defines.events.on_player_cursor_stack_changed
+    },
+    function(event)
+        storage.previous_spidertron_remote_selection = storage.previous_spidertron_remote_selection or {}
+        local player = game.get_player(event.player_index)
+        local spidertrons = player.spidertron_remote_selection or storage.previous_spidertron_remote_selection[player.index]
+        storage.previous_spidertron_remote_selection[player.index] = spidertrons
+    end
+)
 
 maraxsis.on_event("maraxsis-trench-submerge", function(event)
     local player = game.get_player(event.player_index)
