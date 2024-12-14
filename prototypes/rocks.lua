@@ -78,6 +78,8 @@ data:extend {{
     collision_box              = {{-0.4, -0.4}, {0.4, 0.4}},
     selection_box              = {{-0.9, -0.9}, {0.9, 0.9}},
     map_generator_bounding_box = {{-2.9, -2.9}, {2.9, 2.9}},
+    subgroup                   = "creatures",
+    order                      = "j-d[mollusk-husk]",
     pictures                   = {
         {
             filename = "__maraxsis__/graphics/entity/mollusk-husk/mollusk-husk-1.png",
