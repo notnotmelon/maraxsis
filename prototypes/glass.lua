@@ -72,9 +72,9 @@ data:extend {{
 }}
 
 local glass_variants = {}
-for i = 1, 9 do
+for i = 1, 6 do
     glass_variants[i] = {
-        filename = "__maraxsis__/graphics/icons/glass-panes-" .. i .. ".png",
+        filename = "__maraxsis__/graphics/icons/glass-" .. i .. ".png",
         width = 64,
         height = 64,
         scale = 1 / 2,
@@ -85,7 +85,7 @@ end
 data:extend {{
     type = "item",
     name = "maraxsis-glass-panes",
-    icon = "__maraxsis__/graphics/icons/glass-panes-1.png",
+    icon = "__maraxsis__/graphics/icons/glass-1.png",
     pictures = glass_variants,
     icon_size = 64,
     stack_size = 200,
