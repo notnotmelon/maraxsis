@@ -44,10 +44,10 @@ for _, quality in pairs(data.raw.quality) do
         working_sound = {
             sound = {
                 filename = "__maraxsis__/sounds/regulator.ogg",
-                volume = 0.4
+                volume = 0.3
             },
             max_sounds_per_type = 3,
-            audible_distance_modifier = 0.5,
+            audible_distance_modifier = 0.4,
             fade_in_ticks = 4,
             fade_out_ticks = 20
         },
