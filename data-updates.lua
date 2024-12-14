@@ -94,6 +94,12 @@ if mods["assembler-pipe-passthrough"] then
     appmod.blacklist["maraxsis-regulator-fluidbox"] = true
 end
 
+data.raw.recipe["maraxsis-glass-panes-recycling"].results = {
+    {type = "item", name = "maraxsis-sand",      amount = 1, probability = 0.75},
+    {type = "item", name = "maraxsis-salt",      amount = 1, probability = 0.25},
+    {type = "item", name = "maraxsis-limestone", amount = 1, probability = 0.25},
+}
+
 -- salt reactor localised description
 local electricity_description = {""}
 
@@ -130,10 +136,4 @@ data.raw.furnace["maraxsis-salt-reactor"].localised_description = {
 data.raw["electric-energy-interface"]["maraxsis-salt-reactor-energy-interface"].localised_description = {
     "entity-description.maraxsis-salt-reactor",
     electricity_description
-}
-
-data.raw.recipe["maraxsis-glass-panes-recycling"].results = {
-    {type = "item", name = "maraxsis-sand",      amount = 3, probability = 0.25},
-    {type = "item", name = "maraxsis-salt",      amount = 1, probability = 0.25},
-    {type = "item", name = "maraxsis-limestone", amount = 1, probability = 0.25},
 }
