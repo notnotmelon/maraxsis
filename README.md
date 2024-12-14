@@ -16,7 +16,7 @@ Maraxsis is 100% covered by deep ocean. There is no land on the entire planet me
 
 Your armor is designed to protect against attacks from various creatures, but it's totally useless against the immense pressure of the ocean. Your only hope is to build an underwater pressure can; the submarine.
 
-![](https://files.catbox.moe/l31tkf.mp4)
+![](https://files.catbox.moe/fv87ai.mp4)
 
 This deep sea vessel is capable of submerging to any depth, and can be automated with a schedule to follow underwater channels.
 
