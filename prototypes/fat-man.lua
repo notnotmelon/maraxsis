@@ -50,6 +50,7 @@ data:extend {{
     name = "maraxsis-nuclear-artillery-projectile",
     flags = {"not-on-map"},
     reveal_map = true,
+    hidden = true,
     map_color = {r = 0.5, g = 1, b = 0.5},
     picture = {
         filename = "__base__/graphics/entity/artillery-projectile/shell.png",
