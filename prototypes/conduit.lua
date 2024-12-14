@@ -29,7 +29,7 @@ data:extend {{
 
 data:extend {{
     type = "technology",
-    name = "effect-transmission-2",
+    name = "maraxsis-effect-transmission-2",
     icon = "__maraxsis__/graphics/technology/conduit.png",
     icon_size = 256,
     effects = {
