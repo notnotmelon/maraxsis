@@ -14,11 +14,11 @@ local function add_fuel_value(fluid, value)
     fluid.fuel_value = fluid.fuel_value or value
 end
 
-add_fuel_value("crude-oil", "150kJ")
-add_fuel_value("petroleum-gas", "200kJ")
-add_fuel_value("maraxsis-hydrogen", "225kJ")
-add_fuel_value("heavy-oil", "250kJ")
-add_fuel_value("light-oil", "300kJ")
+add_fuel_value("crude-oil", "1500kJ")
+add_fuel_value("petroleum-gas", "2000kJ")
+add_fuel_value("maraxsis-hydrogen", "2250kJ")
+add_fuel_value("heavy-oil", "2500kJ")
+add_fuel_value("light-oil", "3000kJ")
 
 for _, fluid in pairs(data.raw.fluid) do -- todo: check fluid fuel category
     local fuel_value = fluid.fuel_value
