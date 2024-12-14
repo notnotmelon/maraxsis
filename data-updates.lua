@@ -4,6 +4,7 @@ require "prototypes.item-weight"
 require "prototypes.default-import-location"
 require "prototypes.fluid-void"
 require "prototypes.item-sounds"
+require "prototypes.regulator-fluidbox"
 require "compat.aai-industry"
 require "compat.transport-ring-teleporter"
 
@@ -91,7 +92,6 @@ require "prototypes.item-subgroups"
 if mods["assembler-pipe-passthrough"] then
     appmod.blacklist["maraxsis-hydro-plant"] = true
     appmod.blacklist["maraxsis-hydro-plant-extra-module-slots"] = true
-    appmod.blacklist["maraxsis-regulator-fluidbox"] = true
 end
 
 data.raw.recipe["maraxsis-glass-panes-recycling"].results = {
@@ -137,3 +137,39 @@ data.raw["electric-energy-interface"]["maraxsis-salt-reactor-energy-interface"].
     "entity-description.maraxsis-salt-reactor",
     electricity_description
 }
+
+-- regulator factoriopedia description
+
+local function add_quality_factoriopedia_info(entity, factoriopedia_info)
+    local factoriopedia_description
+
+    for _, factoriopedia_info in pairs(factoriopedia_info or {}) do
+        local header, factoriopedia_function = unpack(factoriopedia_info)
+        local localised_string = {"", "[font=default-semibold]", header, "[/font]"}
+
+        for _, quality in pairs(data.raw.quality) do
+            if quality.hidden then goto continue end
+
+            local quality_buff = factoriopedia_function(entity, quality)
+            if type(quality_buff) ~= "table" then quality_buff = tostring(quality_buff) end
+            table.insert(localised_string, {"", "\n[img=quality." .. quality.name .. "] ", {"quality-name." .. quality.name}, ": [font=default-semibold]", quality_buff, "[/font]"})
+            ::continue::
+        end
+
+        if factoriopedia_description then
+            factoriopedia_description[#factoriopedia_description + 1] = "\n\n"
+            factoriopedia_description[#factoriopedia_description + 1] = maraxsis.shorten_localised_string(localised_string)
+        else
+            factoriopedia_description = localised_string
+        end
+    end
+
+    entity.factoriopedia_description = maraxsis.shorten_localised_string(factoriopedia_description)
+end
+
+add_quality_factoriopedia_info(data.raw["roboport"]["service_station"], {
+    {{"quality-tooltip.atmosphere-consumption"}, function(entity, quality_level)
+        local consumption_per_second = maraxsis.atmosphere_consumption(quality_level)
+        return tostring(consumption_per_second) .. "/s"
+    end}
+})

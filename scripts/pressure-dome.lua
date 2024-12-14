@@ -483,10 +483,9 @@ local function place_regulator(pressure_dome_data)
     local regulator_fluidbox = pressure_dome_data.regulator_fluidbox
     if not regulator_fluidbox or not regulator_fluidbox.valid then
         regulator_fluidbox = surface.create_entity {
-            name = "maraxsis-regulator-fluidbox",
+            name = "maraxsis-regulator-fluidbox-" .. quality.name,
             position = {x, y},
             force = force,
-            --quality = quality, https://github.com/notnotmelon/maraxsis/issues/50
             create_build_effect_smoke = false,
         }
     end
