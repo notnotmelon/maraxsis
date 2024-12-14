@@ -1,4 +1,12 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.23.33
+Date: 2024-12-14
+  Balancing:
+    - Reduced the atmosphere consumption in the chemical science alt recipe from 100 -> 50.
+  Changes:
+    - The pressure dome atmosphere consumption now scales with quality.
+    - Tweaked the glass recycling manual recipe override to better mimic how the game generates recycling recipes.
+---------------------------------------------------------------------------------------------------
 Version: 1.23.32
 Date: 2024-12-14
   Bugfixes:
