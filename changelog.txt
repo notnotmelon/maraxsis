@@ -1,4 +1,13 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.23.30
+Date: 2024-12-14
+  Sounds:
+    - Changed the item sound for sonar.
+  Locale:
+    - Fixed missing localised name for one of the maraxsis coral tiles.
+  Changes:
+    - Increased the size of coral reefs by roughly 80% with default map gen settings.
+---------------------------------------------------------------------------------------------------
 Version: 1.23.29
 Date: 2024-12-13
   Bugfixes:
