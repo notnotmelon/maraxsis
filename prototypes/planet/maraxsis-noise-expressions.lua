@@ -147,7 +147,7 @@ data:extend {{
                 seed1 = 1542,
                 octaves = 2,
                 input_scale = 0.03,
-                output_scale = max(0.8, var("control:maraxsis-coral:size"))
+                output_scale = max(0.65, var("control:maraxsis-coral:size"))
             }
         ]],
         coral_zones = [[
@@ -179,7 +179,7 @@ data:extend {{
 data:extend {{
     type = "noise-expression",
     name = "maraxsis_coral_ore",
-    expression = "((maraxsis_coral_reef(x, y) > 0.8) * coral_spots) > 0.8",
+    expression = "((maraxsis_coral_reef(x, y) > 0.65) * coral_spots) > 0.8",
     local_expressions = {
         coral_spots = [[
             multioctave_noise{
@@ -212,14 +212,14 @@ end
 
 data.raw.tile["lowland-cream-red-underwater"].autoplace = {
     probability_expression = [[
-        maraxsis_coral_reef(x, y) >= 0.8
+        maraxsis_coral_reef(x, y) >= 0.65
     ]],
     order = "a[coral]-a[maraxsis]"
 }
 
 data.raw.tile["lowland-red-vein-2-underwater"].autoplace = {
     probability_expression = [[
-        maraxsis_coral_reef(x, y) >= 0.67
+        maraxsis_coral_reef(x, y) >= 0.45
     ]],
     order = "a[coral]-b[maraxsis]"
 }
