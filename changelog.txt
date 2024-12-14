@@ -1,4 +1,9 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.23.32
+Date: 2024-12-14
+  Bugfixes:
+    - Fixed a crash when moving between surfaces in remote view with a spidertron remote held and that remote refrences now mined submarines.
+---------------------------------------------------------------------------------------------------
 Version: 1.23.31
 Date: 2024-12-14
   Bugfixes:
