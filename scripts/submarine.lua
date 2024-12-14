@@ -218,9 +218,18 @@ local function decend_or_ascend(submarine)
     return true
 end
 
+local function clean_array_of_invalid_luaobjects(array)
+    local new_table = {}
+    for k, v in pairs(array) do
+        if v.valid then table.insert(new_table, v) end
+    end
+    return new_table
+end
+
 maraxsis.on_event(defines.events.on_player_changed_surface, function(event)
     local spidertrons = storage.previous_spidertron_remote_selection[event.player_index]
     if not spidertrons then return end
+    spidertrons = clean_array_of_invalid_luaobjects(spidertrons)
     local player = game.get_player(event.player_index)
     local cursor_stack = player.cursor_stack
     if not cursor_stack or not cursor_stack.valid_for_read then return end
