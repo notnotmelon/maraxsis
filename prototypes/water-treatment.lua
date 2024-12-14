@@ -216,7 +216,7 @@ data:extend {{
     },
     allow_productivity = false,
     allow_decomposition = false,
-    category = "maraxsis-hydro-plant",
+    category = "maraxsis-hydro-plant-or-chemistry",
     energy_required = 5,
     icon = "__maraxsis__/graphics/icons/sublimation.png",
     icon_size = 64,
