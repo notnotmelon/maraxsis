@@ -1,7 +1,7 @@
 ---
 name: Bug report
 about: Create a report to help us improve
-title: "[00.00.00] [BUG]"
+title: ''
 labels: bug
 assignees: ''
 
