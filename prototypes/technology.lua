@@ -47,7 +47,7 @@ data:extend {{
 data:extend {{
     type = "technology",
     name = "cargo-landing-pad-capacity",
-    icon = data.raw.technology["space-platform"].icon,
+    icons = util.technology_icon_constant_capacity(data.raw.technology["space-platform"].icon),
     icon_size = data.raw.technology["space-platform"].icon_size,
     effects = {
         {
