@@ -143,7 +143,7 @@ local function block_placement(prototype, layer)
     processed_prototypes[prototype.name] = true
 
     prototype.collision_mask = collision_mask_util.get_mask(prototype)
-    if not next(prototype.collision_mask.layers) then goto continue end -- skip if no collision mask to save UPS
+    if not prototype.collision_mask.layers.object then goto continue end -- skip if no collision mask to save UPS
     prototype.collision_mask.layers[layer] = true
     ::continue::
 end
