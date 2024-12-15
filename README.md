@@ -38,7 +38,7 @@ Your submarine descends for what feels like hours. Light levels slowly drop unti
 
 While exploring the trench, you come across a geothermal vent. The magma appears to have similar composition as that found on Vulcanus. Perhaps it can be processed into basic metals?
 
-![](https://files.catbox.moe/89en49.png)
+![](https://files.catbox.moe/3zva7p.png)
 
 As you are leaving, your sonar systems sense some underwater movement in the distance. But the equipment must be faulty, it's impossible for anything to live down here. Right?
 

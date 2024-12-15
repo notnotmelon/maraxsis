@@ -178,3 +178,24 @@ add_quality_factoriopedia_info(data.raw["roboport"]["service_station"], {
         return tostring(consumption_per_second) .. "/s"
     end}
 })
+
+-- steal gleba music
+local function copy_music(source_planet, target_planet)
+    assert(source_planet)
+    assert(target_planet)
+    for _, music in pairs(data.raw["ambient-sound"]) do
+        if music.planet == source_planet.name or (music.track_type == "hero-track" and music.name:find(source_planet.name)) then
+            local new_music = table.deepcopy(music)
+            new_music.name = music.name .. "-" .. target_planet.name
+            new_music.planet = target_planet.name
+            if new_music.track_type == "hero-track" then
+                new_music.track_type = "main-track"
+                new_music.weight = 10
+            end
+            data:extend {new_music}
+        end
+    end
+end
+
+copy_music(data.raw["planet"]["gleba"], data.raw["planet"]["maraxsis"])
+copy_music(data.raw["planet"]["vulcanus"], data.raw["planet"]["maraxsis-trench"])
