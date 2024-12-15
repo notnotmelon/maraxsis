@@ -104,6 +104,7 @@ local waterifiy = {
 data:extend(waterifiy.tile("lava-hot"))
 data.raw.tile["lava-hot-underwater"].collision_mask.layers.player = true
 data.raw.tile["lava-hot-underwater"].collision_mask.layers[maraxsis_lava_collision_mask] = true
+data.raw.tile["lava-hot-underwater"].collision_mask.layers.lava_tile = true
 data.raw.tile["lava-hot-underwater"].collision_mask.layers.decal = true
 data.raw.tile["lava-hot-underwater"].collision_mask.layers.doodad = true
 data.raw.tile["lava-hot-underwater"].collision_mask.layers.ground_tile = nil
