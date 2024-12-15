@@ -110,6 +110,7 @@ Maraxsis would not be possible without the help of these amazing, fantastic, inc
  - Submarine AI - [Xorimuth](https://github.com/Xorimuth), [ILLISIS](https://github.com/ILLISIS), [Apollo314](https://github.com/Apollo314), [fgardt](https://github.com/fgardt)
  - Ducts - Krastor, [Linver](https://github.com/Linver), [iicyan](https://github.com/iicyan), [raiguard](https://github.com/raiguard)
  - Devops & CI - [fgardt](https://github.com/fgardt)
+ - Tech & item icon postprocessing - [snouz](https://github.com/snouz)
 
 [More details in Credits.md](https://github.com/notnotmelon/maraxsis/blob/main/Credits.md)
 
