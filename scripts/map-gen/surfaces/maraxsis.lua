@@ -59,7 +59,7 @@ local function coral_created(event)
 	end
 
 	if coral_animation[1].graphics_variation == coral_animation[2].graphics_variation then
-		coral_animation[2].graphics_variation = (coral_animation[1].graphics_variation % 8) + 1
+		coral_animation[2].graphics_variation = (coral_animation[1].graphics_variation % 7) + 1
 	end
 
 	-- create polycephalum-slime decorative
