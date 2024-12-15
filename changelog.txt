@@ -1,4 +1,9 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.23.46
+Date: 2024-12-15
+  Bugfixes:
+    - Added a tips and tricks simulation for trench exploration. Resolves https://github.com/notnotmelon/maraxsis/issues/87
+---------------------------------------------------------------------------------------------------
 Version: 1.23.45
 Date: 2024-12-15
   Bugfixes:
