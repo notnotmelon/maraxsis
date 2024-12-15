@@ -1,4 +1,9 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.23.44
+Date: 2024-12-15
+  Bugfixes:
+    - Fixed maraxsis cliffs generating out of bounds on ribbon worlds. Resolves https://github.com/notnotmelon/maraxsis/issues/130
+---------------------------------------------------------------------------------------------------
 Version: 1.23.43
 Date: 2024-12-15
   Bugfixes:
