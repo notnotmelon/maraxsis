@@ -123,6 +123,7 @@ data:extend {{
     flags = {"placeable-neutral", "placeable-player", "player-creation"},
     minable = {mining_time = 0.5, results = {{type = "item", name = "maraxsis-hydro-plant", amount = 1}}},
     max_health = 400,
+    fast_replaceable_group = "maraxsis-hydro-plant",
     corpse = data.raw["assembling-machine"]["electromagnetic-plant"].corpse,
     dying_explosion = "big-explosion",
     circuit_connector = circuit_connector_definitions["maraxsis-hydro-plant"],
