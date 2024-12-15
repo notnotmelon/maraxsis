@@ -1,4 +1,9 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.23.43
+Date: 2024-12-15
+  Bugfixes:
+    - Fixed maraxsis editing some collision masks its not supposed to. Resolves https://github.com/notnotmelon/maraxsis/issues/35
+---------------------------------------------------------------------------------------------------
 Version: 1.23.42
 Date: 2024-12-15
   Graphics:
