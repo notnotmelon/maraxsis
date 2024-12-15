@@ -1,4 +1,10 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.23.42
+Date: 2024-12-15
+  Graphics:
+    - Added a new map tag for whenever a submarine is selected by a submarine remote.
+    - Deleted some unused graphics in the submarine.
+---------------------------------------------------------------------------------------------------
 Version: 1.23.41
 Date: 2024-12-15
   Bugfixes:
