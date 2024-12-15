@@ -208,7 +208,6 @@ for i = 1, 2 do
     entity.equipment_grid = grid.name
     entity.icon_size = 64
     entity.height = 0
-    entity.selected_minimap_representation = nil
     entity.flags = {"placeable-player", "player-creation", "placeable-off-grid", "no-automated-item-removal", "no-automated-item-insertion"}
     entity.torso_bob_speed = 0.4
     entity.minable.result = name
@@ -245,6 +244,11 @@ for i = 1, 2 do
         flags = {"icon"},
         tint = factoriopedia_colors[i],
         size = {64, 64}
+    }
+    entity.selected_minimap_representation = {
+        filename = "__maraxsis__/graphics/entity/submarine/selected-submarine-map-tag.png",
+        flags = {"icon"},
+        size = {70, 70}
     }
     entity.movement_energy_consumption = movement_energy_consumption[i] .. "kW"
     entity.weight = entity.weight / (i + 1) * 4 * movement_energy_consumption[i] / 800
