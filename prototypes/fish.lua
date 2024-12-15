@@ -232,6 +232,8 @@ data:extend {{
 data:extend {{
     type = "recipe",
     name = "maraxsis-microplastics",
+    icon = "__maraxsis__/graphics/icons/fish-rendering.png",
+    icon_size = 64,
     enabled = false,
     energy_required = 2,
     ingredients = {
@@ -258,6 +260,8 @@ data:extend {{
 data:extend {{
     type = "recipe",
     name = "maraxsis-smelt-microplastics",
+    icon = "__maraxsis__/graphics/icons/microplastics-to-plastic.png",
+    icon_size = 64,
     enabled = false,
     energy_required = data.raw.recipe["iron-plate"].energy_required,
     ingredients = {

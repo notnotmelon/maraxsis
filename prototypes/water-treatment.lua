@@ -80,7 +80,7 @@ data:extend {{
     },
     category = "maraxsis-hydro-plant-or-chemistry",
     icon = "__maraxsis__/graphics/icons/saline-electrolysis.png",
-    icon_size = 128,
+    icon_size = 64,
     auto_recycle = false,
     allow_productivity = true,
     main_product = "maraxsis-salt",
@@ -91,6 +91,8 @@ add_to_tech("maraxsis-salt")
 data:extend {{
     type = "recipe",
     name = "maraxsis-water",
+    icon = "__maraxsis__/graphics/icons/maraxsis-water.png",
+    icon_size = 64,
     enabled = false,
     energy_required = 2,
     ingredients = {

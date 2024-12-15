@@ -2,7 +2,7 @@ data:extend {{
     type = "item",
     name = "maraxsis-electricity",
     icon = "__maraxsis__/graphics/icons/electricity.png",
-    icon_size = 40,
+    icon_size = 64,
     hidden = true,
     stack_size = 100,
     spoil_to_trigger_result = {
@@ -35,7 +35,7 @@ data:extend {{
     collision_mask = {layers = {}},
     hidden = true,
     icon = "__maraxsis__/graphics/icons/electricity.png",
-    icon_size = 40,
+    icon_size = 64,
     localised_name = {"item-name.maraxsis-electricity"},
     factoriopedia_alternative = "maraxsis-salt-reactor",
 }}
