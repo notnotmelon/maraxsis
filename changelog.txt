@@ -1,4 +1,9 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.23.48
+Date: 2024-12-15
+  Bugfixes:
+    - Allowed fast-replace of quality hydro plants from withiin the trench. Resolves https://github.com/notnotmelon/maraxsis/issues/157
+---------------------------------------------------------------------------------------------------
 Version: 1.23.47
 Date: 2024-12-15
   Graphics:
