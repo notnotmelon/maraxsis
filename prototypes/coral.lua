@@ -81,7 +81,7 @@ data:extend {{
 }}
 
 local animations = {}
-for i = 1, 8 do
+for i = 1, 7 do
     local variant = require("__maraxsis__/graphics/entity/coral/" .. i .. ".lua")
     variant.filename = "__maraxsis__/graphics/entity/coral/" .. i .. ".png"
     variant.frame_count = variant.sprite_count
@@ -113,6 +113,7 @@ data:extend {{
     flags = {"placeable-neutral", "placeable-off-grid", "not-on-map"},
     icon = "__maraxsis__/graphics/icons/coral-1.png",
     icon_size = 64,
+    random_animation_offset = true,
     hidden = true,
     max_health = 1,
     collision_box = {{-0.1, -0.1}, {0.1, 0.1}},
