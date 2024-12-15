@@ -1,4 +1,9 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.23.49
+Date: 2024-12-15
+  Locale:
+    - Added a (Trench) tag for the duplicate hydro plants in the upgrade planner. Resolves https://github.com/notnotmelon/maraxsis/issues/160
+---------------------------------------------------------------------------------------------------
 Version: 1.23.48
 Date: 2024-12-15
   Bugfixes:
