@@ -60,7 +60,7 @@ data:extend {{
 
 local total = 0
 local profile = {}
-for i = 1, 100 do
+for i = 1, 5000 do
     total = total + (2 ^ (-i + 1))
     profile[i] = total / i
 end
