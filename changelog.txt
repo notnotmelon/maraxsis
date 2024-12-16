@@ -1,4 +1,15 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.23.53
+Date: 2024-12-16
+  Bugfixes:
+    - Fixed non-diminishing returns after use of 100 conduits.
+  Graphics:
+    - Fixed ugly alt mode module icon draw specfications for the trench hydro plant.
+  Locale:
+    - Added instructions for how to send items to the trench onto the spidertron automation technology description.
+  Changes:
+    - Hydro plant pipe connections are now pass-thru.
+---------------------------------------------------------------------------------------------------
 Version: 1.23.52
 Date: 2024-12-16
   Balancing:
