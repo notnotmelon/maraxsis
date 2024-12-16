@@ -1,4 +1,9 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.23.52
+Date: 2024-12-16
+  Balancing:
+    - Buffed the hydro plant. Number of module slots in the trench (or space) increased from 6 -> 8. This change allows infinite cycling of carbon fiber in the trench without legendary productivity 3 modules. Legendary prod 2s now suffice.
+---------------------------------------------------------------------------------------------------
 Version: 1.23.51
 Date: 2024-12-16
   Bugfixes:
