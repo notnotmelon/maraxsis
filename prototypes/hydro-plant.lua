@@ -153,7 +153,7 @@ data:extend {{
             pipe_picture_frozen = require("__space-age__.prototypes.entity.electromagnetic-plant-pictures").pipe_pictures_frozen,
             pipe_covers = pipecoverspictures(),
             volume = 100,
-            pipe_connections = {{direction = defines.direction.south, flow_direction = "input", position = {-0.5, 1.5}}},
+            pipe_connections = {{direction = defines.direction.south, flow_direction = "input-output", position = {-0.5, 1.5}}},
             secondary_draw_orders = {north = -1},
         },
         {
@@ -162,7 +162,7 @@ data:extend {{
             pipe_picture_frozen = require("__space-age__.prototypes.entity.electromagnetic-plant-pictures").pipe_pictures_frozen,
             pipe_covers = pipecoverspictures(),
             volume = 100,
-            pipe_connections = {{direction = defines.direction.east, flow_direction = "output", position = {1.5, -0.5}}},
+            pipe_connections = {{direction = defines.direction.east, flow_direction = "input-output", position = {1.5, -0.5}}},
             secondary_draw_orders = {north = -1},
         },
         {
@@ -171,7 +171,7 @@ data:extend {{
             pipe_picture_frozen = require("__space-age__.prototypes.entity.electromagnetic-plant-pictures").pipe_pictures_frozen,
             pipe_covers = pipecoverspictures(),
             volume = 100,
-            pipe_connections = {{direction = defines.direction.north, flow_direction = "input", position = {0.5, -1.5}}},
+            pipe_connections = {{direction = defines.direction.north, flow_direction = "input-output", position = {0.5, -1.5}}},
             secondary_draw_orders = {north = -1},
         },
         {
@@ -180,7 +180,7 @@ data:extend {{
             pipe_picture_frozen = require("__space-age__.prototypes.entity.electromagnetic-plant-pictures").pipe_pictures_frozen,
             pipe_covers = pipecoverspictures(),
             volume = 100,
-            pipe_connections = {{direction = defines.direction.west, flow_direction = "output", position = {-1.5, 0.5}}},
+            pipe_connections = {{direction = defines.direction.west, flow_direction = "input-output", position = {-1.5, 0.5}}},
             secondary_draw_orders = {north = -1},
         },
     },
