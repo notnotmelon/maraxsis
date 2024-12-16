@@ -310,6 +310,17 @@ data:extend {{
     asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.gleba_aquilo)
 }}
 
+data:extend {{
+    type = "space-connection",
+    name = "fulgora-maraxsis",
+    subgroup = "planet-connections",
+    from = "fulgora",
+    to = "maraxsis",
+    order = "f",
+    length = 20000,
+    asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.gleba_aquilo)
+}}
+
 if mods.tenebris then
     data:extend {{
         type = "space-connection",
@@ -318,17 +329,6 @@ if mods.tenebris then
         from = "maraxsis",
         to = "tenebris",
         order = "g",
-        length = 20000,
-        asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.gleba_aquilo)
-    }}
-else
-    data:extend {{
-        type = "space-connection",
-        name = "fulgora-maraxsis",
-        subgroup = "planet-connections",
-        from = "fulgora",
-        to = "maraxsis",
-        order = "f",
         length = 20000,
         asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.gleba_aquilo)
     }}
