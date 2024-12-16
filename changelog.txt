@@ -1,4 +1,9 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.23.51
+Date: 2024-12-16
+  Bugfixes:
+    - Fixed that inserters could not automatically interact with the regulator for purposes of automated bot insertion.
+---------------------------------------------------------------------------------------------------
 Version: 1.23.50
 Date: 2024-12-16
   Compatibility:
