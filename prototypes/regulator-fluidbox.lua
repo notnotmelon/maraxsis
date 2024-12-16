@@ -25,7 +25,7 @@ for _, quality in pairs(data.raw.quality) do
         name = "maraxsis-regulator-fluidbox-" .. quality.name,
         icon = "__maraxsis__/graphics/icons/regulator.png",
         icon_size = 64,
-        flags = {"placeable-neutral", "player-creation", "not-on-map"},
+        flags = {"placeable-neutral", "player-creation", "not-on-map", "no-automated-item-removal", "no-automated-item-insertion"},
         minable = nil,
         localised_name = {"entity-name.service_station"},
         hidden = true,
