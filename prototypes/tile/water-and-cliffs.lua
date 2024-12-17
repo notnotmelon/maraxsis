@@ -255,3 +255,6 @@ data:extend {maraxsis.merge(data.raw.tile["out-of-map"], {
     effect = "nil",
 })}
 table.insert(out_of_map_tile_type_names, "maraxsis-trench-out-of-map")
+
+-- https://github.com/notnotmelon/maraxsis/issues/167
+data.raw.tile["maraxsis-trench-out-of-map"].collision_mask.layers.trigger_target = true
