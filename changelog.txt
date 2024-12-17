@@ -1,4 +1,9 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.24.1
+Date: 2024-12-17
+  Changes:
+    - Bump version number. Resolves [#150](https://github.com/notnotmelon/maraxsis/issues/150) Resolves [#164](https://github.com/notnotmelon/maraxsis/issues/164) Resolves [#165](https://github.com/notnotmelon/maraxsis/issues/165) Resolves [#115](https://github.com/notnotmelon/maraxsis/issues/115)
+---------------------------------------------------------------------------------------------------
 Version: 1.24.0
 Date: 2024-12-17
   Features:
