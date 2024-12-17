@@ -30,7 +30,7 @@ planet_map_gen.maraxsis = function()
         },
         cliff_settings = {
             name = "cliff-maraxsis-collisionless",
-            cliff_elevation_0 = 0.03,
+            cliff_elevation_0 = maraxsis.TRENCH_ENTRANCE_ELEVATION,
             cliff_elevation_interval = 0.1,
             cliff_smoothing = 0, -- This is critical for correct cliff placement on the trench entrance.
             richness = 0.98

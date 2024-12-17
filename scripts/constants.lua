@@ -5,6 +5,7 @@ _G.maraxsis_fishing_tower_collision_mask = "maraxsis_fishing_tower_collision_mas
 _G.maraxsis_trench_entrance_collision_mask = "maraxsis_trench_entrance_collision_mask"
 
 local TRENCH_MOVEMENT_FACTOR = 1
+local TRENCH_ENTRANCE_ELEVATION = 0.08
 
 local SUBMARINES = {
     ["maraxsis-diesel-submarine"] = {r = 0.8, g = 0.6, b = 0, a = 0.5},
@@ -63,4 +64,5 @@ return {
     SUBMARINE_FUEL_SOURCES = SUBMARINE_FUEL_SOURCES,
     DOME_DISABLEABLE_TYPES = DOME_DISABLEABLE_TYPES,
     DOME_EXCLUDED_FROM_DISABLE = DOME_EXCLUDED_FROM_DISABLE,
+    TRENCH_ENTRANCE_ELEVATION = TRENCH_ENTRANCE_ELEVATION,
 }

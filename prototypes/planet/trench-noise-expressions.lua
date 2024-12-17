@@ -1,4 +1,5 @@
 local TRENCH_MOVEMENT_FACTOR = maraxsis.TRENCH_MOVEMENT_FACTOR
+local TRENCH_ENTRANCE_ELEVATION = maraxsis.TRENCH_ENTRANCE_ELEVATION
 
 data:extend {{
     type = "noise-expression",
@@ -12,7 +13,7 @@ data:extend {{
     type = "noise-expression",
     name = "maraxsis_trench_wall",
     expression = [[
-        maraxsis_trench_elevation < 0.03
+        maraxsis_trench_elevation < ]] .. TRENCH_ENTRANCE_ELEVATION .. [[
     ]]
 }}
 
@@ -149,7 +150,7 @@ data.raw["simple-entity"]["maraxsis-lava-lamp"].autoplace = {
 
 data.raw["simple-entity"]["maraxsis-trench-wall-collisionless"].autoplace = {
     probability_expression = [[
-        maraxsis_3x3_grid * (maraxsis_trench_elevation < 0.05) * (maraxsis_trench_elevation >= 0.028)
+        maraxsis_3x3_grid * (maraxsis_trench_elevation < ]] .. (TRENCH_ENTRANCE_ELEVATION + 0.02) .. [[) * (maraxsis_trench_elevation >= 0.028)
     ]],
     order = "b[lava]-a[maraxsis]"
 }

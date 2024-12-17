@@ -1,3 +1,5 @@
+local TRENCH_ENTRANCE_ELEVATION = maraxsis.TRENCH_ENTRANCE_ELEVATION
+
 data:extend {{
     type = "noise-expression",
     name = "maraxsis_starting_area",
@@ -105,7 +107,7 @@ data:extend {{
     type = "noise-function",
     name = "maraxsis_elevation",
     expression = [[
-        1 - (1 - min(1, elevation) + 0.03) ^ 3 + elevation/3
+        1 - (1 - min(1, elevation) + ]] .. TRENCH_ENTRANCE_ELEVATION .. [[) ^ 3 + elevation/3
     ]],
     local_expressions = {
         xx = "xxx - 38",
@@ -130,7 +132,7 @@ data:extend {{
 data:extend {{
     type = "noise-expression",
     name = "maraxsis_trench_entrance",
-    expression = "maraxsis_surface_elevation < 0.03"
+    expression = "maraxsis_surface_elevation < " .. TRENCH_ENTRANCE_ELEVATION
 }}
 
 data:extend {{
@@ -226,21 +228,21 @@ data.raw.tile["lowland-red-vein-2-underwater"].autoplace = {
 
 data.raw.tile["sand-3-underwater"].autoplace = {
     probability_expression = [[
-        maraxsis_surface_elevation > 0.93
+        maraxsis_surface_elevation > (0.9 + ]] .. TRENCH_ENTRANCE_ELEVATION .. [[)
     ]],
     order = "b[sand]-a[maraxsis]"
 }
 
 data.raw.tile["sand-2-underwater"].autoplace = {
     probability_expression = [[
-        maraxsis_surface_elevation > 0.73
+        maraxsis_surface_elevation > (0.7 + ]] .. TRENCH_ENTRANCE_ELEVATION .. [[)
     ]],
     order = "b[sand]-b[maraxsis]"
 }
 
 data.raw.tile["sand-1-underwater"].autoplace = {
     probability_expression = [[
-        maraxsis_surface_elevation > 0.33
+        maraxsis_surface_elevation > (0.3 + ]] .. TRENCH_ENTRANCE_ELEVATION .. [[)
     ]],
     order = "b[sand]-c[maraxsis]"
 }
