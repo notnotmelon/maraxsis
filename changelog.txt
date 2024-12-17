@@ -1,4 +1,20 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.24.0
+Date: 2024-12-17
+  Features:
+    - Constructron-Continued is no longer a required dependacy. Rationale: Was too confusing for users to learn two seperate submarine logistics systems that do not interact. Construction of ghosts anywhere on the map can already be performed in remote view via the vanilla spidertron remote. Fixes [#152](https://github.com/notnotmelon/maraxsis/issues/152) [#150](https://github.com/notnotmelon/maraxsis/issues/150) [#164](https://github.com/notnotmelon/maraxsis/issues/164) [#165](https://github.com/notnotmelon/maraxsis/issues/165) [#115](https://github.com/notnotmelon/maraxsis/issues/115)
+  Balancing:
+    - The trench is now 2x wider (roughly).
+  Compatibility:
+    - Added an incompatibility flag on factorio ver 2.0.26 until all API deprecation issues are resolved.
+  Bugfixes:
+    - Fixed lava tiles sometimes generating in incorrect locations inside the trench.
+    - Fixed swimming freely in the trench not colliding with out of map tiles. Resolves https://github.com/notnotmelon/maraxsis/issues/167
+  Graphics:
+    - Removed "quality pips" from submarines.
+  Locale:
+    - Updated the locale of salt reactor to explain that it has 2.5GJ internal buffer.
+---------------------------------------------------------------------------------------------------
 Version: 1.23.53
 Date: 2024-12-16
   Bugfixes:
