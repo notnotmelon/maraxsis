@@ -72,6 +72,14 @@ data.raw.planet["maraxsis-trench"].persistent_ambient_sounds.wind = {
     },
 }
 
+data.raw.planet["maraxsis"].persistent_ambient_sounds.wind = {
+    sound = {
+        filename = "__maraxsis__/sounds/maraxsis-ambiance.ogg",
+        volume = 0.8,
+        speed = 0.5
+    },
+}
+
 data:extend {{
     type = "space-connection",
     name = "vulcanus-maraxsis",
