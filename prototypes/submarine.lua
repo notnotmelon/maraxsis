@@ -250,6 +250,7 @@ for i = 1, 2 do
         flags = {"icon"},
         size = {70, 70}
     }
+    entity.quality_indicator_scale = 0
     entity.movement_energy_consumption = movement_energy_consumption[i] .. "kW"
     entity.weight = entity.weight / (i + 1) * 4 * movement_energy_consumption[i] / 800
     entity.energy_source = {
