@@ -74,12 +74,14 @@ data:extend {{
     },
     results = {
         {type = "item", name = "maraxsis-salted-fish", amount = 1},
+        {type = "item", name = "maraxsis-salt",        amount = 1, probability = 0.8, ignored_by_stats = 1},
     },
     allow_productivity = false,
     category = "maraxsis-hydro-plant",
     result_is_always_fresh = false,
     auto_recycle = false,
     maximum_productivity = 0,
+    main_product = "maraxsis-salted-fish",
 }}
 
 data:extend {{
@@ -93,12 +95,14 @@ data:extend {{
     },
     results = {
         {type = "item", name = "maraxsis-salted-tropical-fish", amount = 1},
+        {type = "item", name = "maraxsis-salt",                 amount = 1, probability = 0.8, ignored_by_stats = 1},
     },
     allow_productivity = false,
     category = "maraxsis-hydro-plant",
     result_is_always_fresh = false,
     auto_recycle = false,
     maximum_productivity = 0,
+    main_product = "maraxsis-salted-tropical-fish",
 }}
 
 data:extend {{
@@ -112,12 +116,14 @@ data:extend {{
     },
     results = {
         {type = "item", name = "maraxsis-defluxed-bioflux", amount = 1},
+        {type = "item", name = "maraxsis-salt",             amount = 1, probability = 0.8, ignored_by_stats = 1},
     },
     allow_productivity = false,
     category = "maraxsis-hydro-plant",
     result_is_always_fresh = false,
     auto_recycle = false,
     maximum_productivity = 0,
+    main_product = "maraxsis-defluxed-bioflux",
 }}
 
 data:extend {{
@@ -131,12 +137,14 @@ data:extend {{
     },
     results = {
         {type = "item", name = "maraxsis-salted-science", amount = 1},
+        {type = "item", name = "maraxsis-salt",           amount = 1, probability = 0.8, ignored_by_stats = 1},
     },
     allow_productivity = false,
     category = "maraxsis-hydro-plant",
     result_is_always_fresh = false,
     auto_recycle = false,
     maximum_productivity = 0,
+    main_product = "maraxsis-salted-science",
 }}
 
 local function update_recipe_icon(recipe)
