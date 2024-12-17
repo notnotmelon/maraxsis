@@ -9,7 +9,6 @@
   "dependencies": [
     "base",
     "space-age >= 2.0.21",
-    "Constructron-Continued >= 2.0.13",
     "SpidertronPatrols >= 2.5.5",
     "FluidMustFlow >= 1.4.0",
     "(?) tenebris",

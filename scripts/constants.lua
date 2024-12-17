@@ -8,7 +8,6 @@ local TRENCH_MOVEMENT_FACTOR = 1
 
 local SUBMARINES = {
     ["maraxsis-diesel-submarine"] = {r = 0.8, g = 0.6, b = 0, a = 0.5},
-    ["constructron"] = {r = 0.8, g = 0.6, b = 0, a = 0.5},
     ["maraxsis-nuclear-submarine"] = {r = 0.2, g = 0.7, b = 0.2, a = 0.5},
 }
 
@@ -29,7 +28,6 @@ local MARAXSIS_SAND_EXTRACTORS = {
 
 local SUBMARINE_FUEL_SOURCES = {
     ["maraxsis-diesel-submarine"] = {"maraxsis-diesel", "rocket-fuel"},
-    ["constructron"] = {"maraxsis-diesel", "rocket-fuel"},
     ["maraxsis-nuclear-submarine"] = {"nuclear", "nuclear-fuel"},
 }
 

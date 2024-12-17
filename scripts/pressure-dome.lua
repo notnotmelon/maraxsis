@@ -464,7 +464,7 @@ local function place_regulator(pressure_dome_data)
     if not regulator or not regulator.valid then
         storage.script_placing_the_regulator = true
         regulator = surface.create_entity {
-            name = "service_station",
+            name = "maraxsis-regulator",
             position = {x, y},
             quality = quality,
             force = force,
@@ -871,7 +871,7 @@ maraxsis.on_event(maraxsis.events.on_built(), function(event)
     local is_ghost = entity.name == "entity-ghost" -- this would only be false in the editor mode.
 
     local name = is_ghost and entity.ghost_name or entity.name
-    if name ~= "service_station" then return end
+    if name ~= "maraxsis-regulator" then return end
     local quality = entity.quality
     local position = entity.position
     local surface = entity.surface

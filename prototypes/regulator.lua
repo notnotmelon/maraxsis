@@ -1,5 +1,6 @@
-local regulator = data.raw.roboport["service_station"]
+local regulator = table.deepcopy(data.raw.roboport.roboport)
 
+regulator.name = "maraxsis-regulator"
 regulator.logistics_connection_distance = 90
 regulator.radar_range = 2
 regulator.logistics_radius = 30
@@ -50,9 +51,7 @@ regulator.surface_conditions = maraxsis.surface_conditions()
 regulator.circuit_connector = circuit_connector_definitions["maraxsis-regulator"]
 regulator.circuit_wire_max_distance = _G.default_circuit_wire_max_distance
 
-data.raw.recipe["service_station"].hidden = true
-data.raw.item["service_station"].hidden = true
-data.raw.item["service_station"].place_result = nil
+data:extend {regulator}
 
 data:extend {{
     type = "recipe",
@@ -67,7 +66,7 @@ data:extend {{
     order = "a[fluid]-a[maraxsis-atmosphere]-a[regulator]",
     icon = "__maraxsis__/graphics/icons/atmosphere.png",
     icon_size = 64,
-    localised_name = {"entity-name.service_station"},
+    localised_name = {"entity-name.maraxsis-regulator"},
 }}
 
 data:extend {{

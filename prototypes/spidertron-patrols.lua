@@ -9,11 +9,6 @@ submarine_automation.research_trigger = {
 submarine_automation.order = "eb[submarine-automation]"
 submarine_automation.prerequisites = {"planet-discovery-maraxsis"}
 
-table.insert(submarine_automation.effects, {
-    type = "unlock-recipe",
-    recipe = "constructron",
-})
-
 data.raw.recipe["sp-spidertron-dock"].category = "maraxsis-hydro-plant-or-assembling"
 data.raw.recipe["sp-spidertron-dock"].ingredients = {
     {type = "item", name = "tungsten-plate", amount = 16},

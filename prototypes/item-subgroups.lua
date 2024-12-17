@@ -54,7 +54,6 @@ make_subgroup("maraxsis-salt", "gf", "intermediate-products", {
 
 make_subgroup("maraxsis-machines", "ee", "production", {
     data.raw.item["sp-spidertron-dock"],
-    data.raw["item-with-entity-data"]["constructron"],
     data.raw["item-with-entity-data"]["maraxsis-diesel-submarine"],
     data.raw["item-with-entity-data"]["maraxsis-nuclear-submarine"],
     data.raw.item["maraxsis-hydro-plant"],
@@ -92,7 +91,6 @@ data.raw.ammo["maraxsis-fat-man"].order = "e[big-cliff-explosives]"
 data.raw.resource["maraxsis-coral"].subgroup = "mineable-fluids"
 data.raw.resource["maraxsis-coral"].order = "x[maraxsis-coral]"
 
-data.raw.item["service_station"].subgroup = nil
 data.raw.item["maraxsis-conduit"].subgroup = data.raw.item.beacon.subgroup
 data.raw.item["maraxsis-conduit"].order = data.raw.item.beacon.order .. "a[maraxsis-conduit]"
 

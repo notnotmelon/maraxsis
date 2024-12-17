@@ -108,7 +108,7 @@ end
 
 local new_spidertron_effects = {}
 for _, effect in pairs(data.raw.technology["spidertron"].effects) do
-    if effect.recipe ~= "service_station" and effect.recipe ~= "constructron" then
+    if effect.recipe ~= "maraxsis-regulator" then
         table.insert(new_spidertron_effects, effect)
     end
 end

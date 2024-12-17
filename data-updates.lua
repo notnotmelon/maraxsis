@@ -40,7 +40,6 @@ for _, fluid in pairs(data.raw.fluid) do -- todo: check fluid fuel category
     barrel.fuel_glow_color = data.raw.item["rocket-fuel"].fuel_top_speed_multiplier_quality_bonus
 
     maraxsis.SUBMARINE_FUEL_SOURCES["maraxsis-diesel-submarine"][1] = barrel.fuel_category
-    maraxsis.SUBMARINE_FUEL_SOURCES["constructron"][1] = barrel.fuel_category
     barrel.burnt_result = "barrel"
     ::continue::
 end
@@ -172,7 +171,7 @@ local function add_quality_factoriopedia_info(entity, factoriopedia_info)
     entity.factoriopedia_description = maraxsis.shorten_localised_string(factoriopedia_description)
 end
 
-add_quality_factoriopedia_info(data.raw["roboport"]["service_station"], {
+add_quality_factoriopedia_info(data.raw["roboport"]["maraxsis-regulator"], {
     {{"quality-tooltip.atmosphere-consumption"}, function(entity, quality_level)
         local consumption_per_second = maraxsis.atmosphere_consumption(quality_level)
         return tostring(consumption_per_second) .. "/s"

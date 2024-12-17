@@ -107,7 +107,7 @@ Maraxsis would not be possible without the help of these amazing, fantastic, inc
  - Pressure Dome - [KaueNP](https://github.com/KaueNP)
  - Sonar - [fishbus](https://github.com/fishbus)
  - Coral Reef - [Galdoc](https://github.com/Galdoc)
- - Submarine AI - [Xorimuth](https://github.com/Xorimuth), [ILLISIS](https://github.com/ILLISIS), [Apollo314](https://github.com/Apollo314), [fgardt](https://github.com/fgardt)
+ - Submarine AI - [Xorimuth](https://github.com/Xorimuth)
  - Ducts - Krastor, [Linver](https://github.com/Linver), [iicyan](https://github.com/iicyan), [raiguard](https://github.com/raiguard)
  - Devops & CI - [fgardt](https://github.com/fgardt)
  - Tech & item icon postprocessing - [snouz](https://github.com/snouz)

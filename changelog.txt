@@ -379,7 +379,7 @@ Date: 2024-12-10
     - Added lamps and mining drills to the "underwater machines" tips and tricks page. Resolves https://github.com/notnotmelon/maraxsis/issues/84. Resolves https://github.com/notnotmelon/maraxsis/issues/83
     - Improved the description of the trench duct to tell players how to place this entity.
     - Provide the names of the required entities and fluids in the flooded entity status.
-    - Replaced the "Disabled by script" tag on machines with "Flooded. Provide [fluid=maraxsis-atmosphere] to the [entity=service_station]." Resolves https://github.com/notnotmelon/maraxsis/issues/101
+    - Replaced the "Disabled by script" tag on machines with "Flooded. Provide [fluid=maraxsis-atmosphere] to the [entity=maraxsis-regulator]." Resolves https://github.com/notnotmelon/maraxsis/issues/101
     - Updated German translation.
     - Updated RU locale.
     - Updated the description for the regulator to better explain how it works.

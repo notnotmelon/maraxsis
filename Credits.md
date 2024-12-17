@@ -48,10 +48,10 @@
 - **License**: [MIT](https://opensource.org/license/MIT)
 - **Changes**: No.
 
-#### Submarine AI
+#### Submarine Patrols
 
-- **Creators**: [Xorimuth](https://github.com/Xorimuth), [ILLISIS](https://github.com/ILLISIS), [Apollo314](https://github.com/Apollo314) , [fgardt](https://github.com/fgardt)
-- **Source**: [Spidertron Enhancements](https://mods.factorio.com/mod/SpidertronEnhancements) & [Spidertron Patrols](https://mods.factorio.com/mod/SpidertronPatrols) & [Spidertron Automation](https://mods.factorio.com/mod/SpidertronPatrols)
+- **Creators**: [Xorimuth](https://github.com/Xorimuth)
+- **Source**: [Spidertron Enhancements](https://mods.factorio.com/mod/SpidertronEnhancements) & [Spidertron Patrols](https://mods.factorio.com/mod/SpidertronPatrols)
 - **License**: [MIT](https://opensource.org/license/MIT)
 - **Changes**: Yes. Updated the code to work with submarines.
 
