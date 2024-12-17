@@ -1,4 +1,15 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.24.2
+Date: 2024-12-17
+  Sounds:
+    - Removed annoying ping sound when riding a submarine. Resolves https://github.com/notnotmelon/maraxsis/issues/148
+    - Replaced ambient gleba wind sounds in the trench with spooky maraxsis trench noises.
+    - Replaced ambient gleba wind sounds on maraxsis with bubbly maraxsis ambient noises.
+  Locale:
+    - Removed various legacy locale keys related to Spidertron Automation.
+  Changes:
+    - Removed the "easy mode" mod setting. This setting is now superceded by the ability to perform the salt chain inside chemical plants.
+---------------------------------------------------------------------------------------------------
 Version: 1.24.1
 Date: 2024-12-17
   Changes:
