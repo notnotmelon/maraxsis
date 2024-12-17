@@ -8,7 +8,7 @@
   "factorio_version": "2.0",
   "dependencies": [
     "base",
-    "space-age >= 2.0.21",
+    "space-age <= 2.0.25",
     "SpidertronPatrols >= 2.5.5",
     "FluidMustFlow >= 1.4.0",
     "(?) tenebris",
