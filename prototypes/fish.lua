@@ -27,8 +27,6 @@ for _, color in pairs(map_colors) do
     color.a = 255
 end
 
-maraxsis.tropical_fish_names = {}
-
 for i, v in pairs(fish) do
     local name = "maraxsis-tropical-fish-" .. i
 
@@ -113,8 +111,6 @@ for i, v in pairs(fish) do
             }
         }
     }}
-
-    maraxsis.tropical_fish_names[i] = name
 end
 
 data:extend {{

@@ -162,8 +162,8 @@ fishing_plant_animation.name = "maraxsis-fishing-plant-animation"
 data:extend {fishing_plant_animation}
 
 local result_units = {}
-local probability = 1 / table_size(maraxsis.tropical_fish_names)
-for _, tropical_fish in pairs(maraxsis.tropical_fish_names) do
+local probability = 1 / table_size(maraxsis.TROPICAL_FISH_NAMES)
+for _, tropical_fish in pairs(maraxsis.TROPICAL_FISH_NAMES) do
     table.insert(result_units, {
         unit = tropical_fish,
         spawn_points = {{evolution_factor = 0, spawn_weight = probability}}

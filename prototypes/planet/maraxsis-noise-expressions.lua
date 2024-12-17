@@ -198,7 +198,7 @@ data:extend {{
     }
 }}
 
-for i = 1, table_size(maraxsis.tropical_fish_names) do
+for i = 1, table_size(maraxsis.TROPICAL_FISH_NAMES) do
     data:extend {{
         type = "noise-expression",
         name = "maraxsis_tropical_fish_" .. i,
