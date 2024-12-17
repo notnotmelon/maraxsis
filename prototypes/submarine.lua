@@ -221,14 +221,14 @@ for i = 1, 2 do
     entity.collision_mask = collision_mask
     entity.working_sound = {
         apparent_volume = 0.5,
-        max_sounds_per_type = 1,
-        audible_distance_modifier = 0.5,
+        max_sounds_per_type = 3,
+        audible_distance_modifier = 1,
         fade_in_ticks = 60,
         fade_out_ticks = 60,
+        match_speed_to_activity = true,
         sound = {
             filename = "__maraxsis__/sounds/submarine.ogg",
             category = "game-effect",
-            speed = 0.5,
         }
     }
     entity.open_sound = table.deepcopy(data.raw.car.tank.open_sound)
