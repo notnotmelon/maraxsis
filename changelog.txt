@@ -1,4 +1,10 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.24.4
+Date: 2024-12-18
+  Graphics:
+    - Added emmissions and working animations to the salt reactor.
+    - New salt reactor tech icon.
+---------------------------------------------------------------------------------------------------
 Version: 1.24.3
 Date: 2024-12-17
   Balancing:
