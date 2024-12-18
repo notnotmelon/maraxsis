@@ -1,4 +1,12 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.24.9
+Date: 2024-12-18
+  Bugfixes:
+    - Fixed preventing use of rocket fuel in certain vechicle mods. Resolves https://github.com/notnotmelon/maraxsis/issues/170
+  Locale:
+    - Greatly improved the salt reactor locale to explain how it works.
+    - Improved the localised description for sonar to explain that it can be placed on land.
+---------------------------------------------------------------------------------------------------
 Version: 1.24.8
 Date: 2024-12-18
   Balancing:
