@@ -7,7 +7,7 @@ local is_abyssal_diving_gear = {
 
 -- returns the default buff amount per quality level in vanilla
 local function get_quality_buff(quality_level)
-    return 1 + quality_level * 0.3
+    return 1 + quality_level
 end
 
 local function get_abyssal_light_size(player)
@@ -59,7 +59,7 @@ local function update_abyssal_light_cone(player)
     local character = player.character
     storage.abyssal_light_cones[player.index] = rendering.draw_light {
         sprite = "utility/light_medium",
-        scale = light_size * 0.6 + 3.5,
+        scale = light_size * 0.6 + 5.5,
         target = character,
         surface = character.surface_index,
         players = {player},
