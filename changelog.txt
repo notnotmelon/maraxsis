@@ -1,4 +1,9 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.24.11
+Date: 2024-12-18
+  Sounds:
+    - Added sound effects to the salt reactor. Resolves https://github.com/notnotmelon/maraxsis/issues/142
+---------------------------------------------------------------------------------------------------
 Version: 1.24.10
 Date: 2024-12-18
   Balancing:
