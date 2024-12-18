@@ -45,7 +45,7 @@ data:extend {{
             seed0 = map_seed,
             seed1 = 1344,
             octaves = 5,
-            input_scale = 1/100,
+            input_scale = 1/200,
             output_scale = 1
         }
     ]]
@@ -136,15 +136,25 @@ data:extend {{
     ]]
 }}
 
+data:extend {{
+    type = "noise-expression",
+    name = "maraxsis_hot_lava",
+    expression = [[
+        maraxsis_trench_wall * (maraxsis_lava_master_master > 0) * maraxsis_lava_tile(1)
+    ]]
+}}
+
 data.raw.tile["lava-hot-underwater"].autoplace = {
     probability_expression = [[
-        maraxsis_trench_wall * (maraxsis_lava_master_master > 0) * maraxsis_lava_tile(1)
+        maraxsis_hot_lava
     ]],
     order = "b[lava]-a[maraxsis]"
 }
 
 data.raw["simple-entity"]["maraxsis-lava-lamp"].autoplace = {
-    probability_expression = "maraxsis_4x4_grid * (maraxsis_lava_master_master > 0) * maraxsis_trench_wall * maraxsis_lava_tile(1)",
+    probability_expression = [[
+        maraxsis_4x4_grid * maraxsis_hot_lava * (maraxsis_trench_elevation < ]] .. TRENCH_ENTRANCE_ELEVATION - 0.05 .. [[)
+    ]],
     order = "b[lava]-a[maraxsis]"
 }
 
