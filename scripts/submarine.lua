@@ -218,6 +218,22 @@ local function decend_or_ascend(submarine)
     return true
 end
 
+---transfers a character between trench and maraxsis surfaces when standing over trench entrance tiles
+---@param character LuaEntity
+---@return boolean true if the character was successfully transferred
+local function decend_or_ascend_character(character)
+    local target_surface, target_position = determine_submerge_direction(character)
+    if not target_surface then return false end
+    if not target_position then return false end
+
+    maraxsis.execute_later("play_submerge_sound", 1, character.surface, character.position)
+    maraxsis.execute_later("play_submerge_sound", 1, target_surface, target_position)
+
+    character.teleport(target_position, target_surface, true)
+
+    return true
+end
+
 local function clean_array_of_invalid_luaobjects(array)
     local new_table = {}
     for k, v in pairs(array) do
@@ -260,6 +276,8 @@ maraxsis.on_event("maraxsis-trench-submerge", function(event)
 
     if submarine and SUBMARINES[submarine.name] then
         decend_or_ascend(submarine)
+    elseif maraxsis.is_wearing_abyssal_diving_gear(player) then
+        decend_or_ascend_character(player.character)
     end
 end)
 
