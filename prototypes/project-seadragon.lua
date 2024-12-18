@@ -82,11 +82,6 @@ data:extend {{
     enabled = false,
     category = "chemistry-or-cryogenics",
     allow_productivity = true,
-    surface_conditions = {{
-        property = "gravity",
-        min = 0,
-        max = 0,
-    }},
     auto_recycle = false,
 }}
 
