@@ -69,7 +69,7 @@ for entity_type in pairs(defines.prototypes.entity) do
         if not burner then goto continue end
         if burner.type ~= "burner" then goto continue end
 
-        if table.find(burner.fuel_categories or {}, "chemical") then
+        if table.find(burner.fuel_categories or {"chemical"}, "chemical") then
             table.insert(burner.fuel_categories, "rocket-fuel")
             table.insert(burner.fuel_categories, "nuclear-fuel")
         end
