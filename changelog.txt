@@ -1,4 +1,13 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.24.10
+Date: 2024-12-18
+  Balancing:
+    - Trench "lava biomes" are now 2x smaller but also 2x more frequent.
+  Bugfixes:
+    - Fixed wyrm specimens not accepting productivity modules.
+  Sounds:
+    - Improved the sound effects for sonar.
+---------------------------------------------------------------------------------------------------
 Version: 1.24.9
 Date: 2024-12-18
   Bugfixes:
