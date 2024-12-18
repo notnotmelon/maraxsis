@@ -96,6 +96,17 @@ data:extend {{
     max_health = 1000,
     corpse = "big-remnants",
     dying_explosion = "medium-explosion",
+    working_sound = {
+        sound = {
+            filename = "__maraxsis__/sounds/salt-reactor.ogg",
+            volume = 1,
+        },
+        apparent_volume = 1.5,
+        max_sounds_per_type = 3,
+        audible_distance_modifier = 1,
+        fade_in_ticks = 4,
+        fade_out_ticks = 20
+    },
     resistances = {
         {
             type = "fire",
