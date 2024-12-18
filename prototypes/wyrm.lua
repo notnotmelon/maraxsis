@@ -86,7 +86,8 @@ data:extend {{
         property = "pressure",
         min = 400000,
         max = 400000
-    }}
+    }},
+    allow_productivity = true
 }}
 
 --[[
