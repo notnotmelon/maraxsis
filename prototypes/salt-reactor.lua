@@ -40,6 +40,52 @@ data:extend {{
     factoriopedia_alternative = "maraxsis-salt-reactor",
 }}
 
+local working_visualisations = {
+    {
+        always_draw = true,
+        animation = {
+            filename = "__maraxsis__/graphics/entity/salt-reactor/salt-reactor.png",
+            priority = "high",
+            width = 3200 / 8,
+            height = 3200 / 8,
+            shift = util.by_pixel(0, -16),
+            frame_count = 60,
+            line_length = 8,
+            animation_speed = 1,
+            scale = 0.5,
+        },
+    },
+    {
+        always_draw = true,
+        animation = {
+            filename = "__maraxsis__/graphics/entity/salt-reactor/salt-reactor-sh.png",
+            priority = "high",
+            width = 800,
+            height = 600,
+            scale = 0.5,
+            frame_count = 1,
+            shift = {0, -0.2},
+            draw_as_shadow = true,
+        },
+    },
+    {
+        fadeout = true,
+        animation = {
+            filename = "__maraxsis__/graphics/entity/salt-reactor/salt-reactor-emission.png",
+            priority = "high",
+            width = 3200 / 8,
+            height = 3200 / 8,
+            shift = util.by_pixel(0, -16),
+            frame_count = 60,
+            line_length = 8,
+            animation_speed = 1,
+            scale = 0.5,
+            draw_as_glow = true,
+            blend_mode = "additive",
+        },
+    },
+}
+
 data:extend {{
     type = "furnace",
     name = "maraxsis-salt-reactor",
@@ -71,29 +117,7 @@ data:extend {{
         inventory_index = defines.inventory.furnace_modules, shift = {0, 0.9}, max_icons_per_row = 3
     }},
     graphics_set = {
-        animation = {
-            layers = {
-                {
-                    filename = "__maraxsis__/graphics/entity/salt-reactor/salt-reactor.png",
-                    priority = "high",
-                    width = 400,
-                    height = 400,
-                    frame_count = 1,
-                    scale = 0.5,
-                    shift = {0, -0.2},
-                },
-                {
-                    filename = "__maraxsis__/graphics/entity/salt-reactor/salt-reactor-sh.png",
-                    priority = "high",
-                    width = 800,
-                    height = 600,
-                    scale = 0.5,
-                    frame_count = 1,
-                    shift = {0, -0.2},
-                    draw_as_shadow = true,
-                },
-            }
-        },
+        working_visualisations = working_visualisations,
     },
     energy_source = {
         type = "burner",
@@ -111,8 +135,8 @@ data:extend {{
         },
         light_flicker = {
             color = defines.color.limegreen,
-            minimum_intensity = 0.6,
-            maximum_intensity = 0.9,
+            minimum_intensity = 0.2,
+            maximum_intensity = 0.4,
             minimum_light_size = 2.5
         }
     },
