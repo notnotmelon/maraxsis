@@ -1,6 +1,6 @@
 {
   "name": "maraxsis",
-  "title": "Planet Maraxsis",
+  "title": "Maraxsis",
   "description": "Dive into the uncharted waters of Maraxsis, a world where the sea covers everything. Utilize submarines to explore, craft advanced fluids inside the hydro plant, build pressure domes, and master the challenges of deep-sea logistics. But BEWARE: You aren't alone in these depths...",
   "author": "notnotmelon",
   "homepage": "https://github.com/notnotmelon/maraxsis",
@@ -8,7 +8,7 @@
   "factorio_version": "2.0",
   "dependencies": [
     "base",
-    "space-age <= 2.0.25",
+    "space-age >= 2.0.26",
     "SpidertronPatrols >= 2.5.5",
     "FluidMustFlow >= 1.4.0",
     "(?) tenebris",

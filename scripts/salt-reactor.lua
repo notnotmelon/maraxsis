@@ -17,7 +17,7 @@ maraxsis.on_event(maraxsis.events.on_built(), function(event)
 
     energy_interface.destructible = false
     energy_interface.operable = false
-    energy_interface.minable = false
+    energy_interface.minable_flag = false
     energy_interface.electric_buffer_size = (50000000 * 50) * (1 + entity.quality.level * 0.3)
 
     storage.salt_reactors[entity.unit_number] = {

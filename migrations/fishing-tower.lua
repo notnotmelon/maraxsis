@@ -13,7 +13,7 @@ for _, entity in pairs(surface.find_entities_filtered {name = "maraxsis-fishing-
     fish_spawner.destructible = false
     fish_spawner.active = true
     fish_spawner.operable = false
-    fish_spawner.minable = false
+    fish_spawner.minable_flag = false
 
     local registration_number = script.register_on_object_destroyed(entity)
     storage.fishing_tower_spawners[registration_number] = fish_spawner

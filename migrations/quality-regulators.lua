@@ -33,7 +33,7 @@ local function place_regulator(pressure_dome_data)
         storage.script_placing_the_regulator = false
     end
 
-    regulator.minable = false
+    regulator.minable_flag = false
     regulator.destructible = false
     regulator.operable = true
 
@@ -49,7 +49,7 @@ local function place_regulator(pressure_dome_data)
         }
     end
 
-    regulator_fluidbox.minable = false
+    regulator_fluidbox.minable_flag = false
     regulator_fluidbox.destructible = false
     regulator_fluidbox.operable = false
 

@@ -18,7 +18,7 @@ maraxsis.on_event(defines.events.on_chunk_generated, function(event)
 	}
 	fancy_water.active = false
 	fancy_water.destructible = false
-	fancy_water.minable = false
+	fancy_water.minable_flag = false
 end)
 
 local function cliff_created(event)
@@ -58,7 +58,7 @@ local function coral_created(event)
 		}
 		new_coral.active = false
 		new_coral.destructible = false
-		new_coral.minable = false
+		new_coral.minable_flag = false
 		coral_animation[i] = new_coral
 	end
 

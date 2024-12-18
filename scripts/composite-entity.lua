@@ -36,7 +36,7 @@ local function on_built(event)
         if type(sub_entity) == "table" then
             sub_entity.destructible = false
             sub_entity.operable = false
-            sub_entity.minable = false
+            sub_entity.minable_flag = false
             sub_entity.rotatable = false
         end
     end

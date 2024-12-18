@@ -120,14 +120,33 @@ local FLOODED_STATUS = {
 local DOME_DISABLEABLE_TYPES = maraxsis.DOME_DISABLEABLE_TYPES
 local DOME_EXCLUDED_FROM_DISABLE = maraxsis.DOME_EXCLUDED_FROM_DISABLE
 local function disable_due_to_dome_low_pressure(entity, powered_and_has_fluid)
-    if not entity.valid or not DOME_DISABLEABLE_TYPES[entity.type] or DOME_EXCLUDED_FROM_DISABLE[entity.name] then return end
+    if not entity.valid or not entity.is_updatable then return end
+    if not DOME_DISABLEABLE_TYPES[entity.type] or DOME_EXCLUDED_FROM_DISABLE[entity.name] then return end
 
-    entity.active = not not powered_and_has_fluid
+    local should_be_active = not not powered_and_has_fluid
+    if entity.active == should_be_active then return end
+    entity.active = should_be_active
 
-    if powered_and_has_fluid then
+    storage.flooded_warning_info_icons = storage.flooded_warning_info_icons or {}
+    local warning = storage.flooded_warning_info_icons[entity.unit_number]
+
+    if should_be_active then
         entity.custom_status = nil
+        if warning then
+            warning.destroy()
+            storage.flooded_warning_info_icons[entity.unit_number] = nil
+        end
     else
         entity.custom_status = FLOODED_STATUS
+        if not warning then
+            warning = rendering.draw_sprite {
+                sprite = "maraxsis-flooded-warning",
+                target = entity,
+                surface = entity.surface_index,
+                target_offset = {0, -1.5},
+            }
+            storage.flooded_warning_info_icons[entity.unit_number] = warning
+        end
     end
 end
 
@@ -143,7 +162,7 @@ local function create_dome_light(pressure_dome_data)
         create_build_effect_smoke = false,
     }
 
-    light.minable = false
+    light.minable_flag = false
     light.destructible = false
 
     local control_behavior = light.get_or_create_control_behavior()
@@ -166,7 +185,7 @@ local function create_dome_combinator(pressure_dome_data)
         create_build_effect_smoke = false,
     }
 
-    combinator.minable = false
+    combinator.minable_flag = false
     combinator.destructible = false
     combinator.operable = false
 
@@ -264,7 +283,7 @@ maraxsis.on_event(maraxsis.events.on_built(), function(event)
         elseif points_in_dome == 4 then
             for _, collision_box in pairs(pressure_dome_data.collision_boxes) do
                 if collision_box.valid then
-                    collision_box.minable = false
+                    collision_box.minable_flag = false
                 end
             end
             disable_due_to_dome_low_pressure(entity, pressure_dome_data.powered_and_has_fluid)
@@ -474,7 +493,7 @@ local function place_regulator(pressure_dome_data)
         storage.script_placing_the_regulator = false
     end
 
-    regulator.minable = false
+    regulator.minable_flag = false
     regulator.destructible = false
     regulator.operable = true
 
@@ -490,7 +509,7 @@ local function place_regulator(pressure_dome_data)
         }
     end
 
-    regulator_fluidbox.minable = false
+    regulator_fluidbox.minable_flag = false
     regulator_fluidbox.destructible = false
     regulator_fluidbox.operable = false
 
@@ -580,7 +599,7 @@ maraxsis.on_event(maraxsis.events.on_built(), function(event)
 
     if table_size(contained_entities) ~= 0 then
         for _, e in pairs(pressure_dome_data.collision_boxes) do
-            e.minable = false
+            e.minable_flag = false
         end
     end
 
@@ -606,7 +625,7 @@ local function delete_invalid_entities_from_contained_entities_list(pressure_dom
     if table_size(pressure_dome_data.contained_entities) == 0 then
         for _, collision_box in pairs(pressure_dome_data.collision_boxes) do
             if collision_box.valid then
-                collision_box.minable = true
+                collision_box.minable_flag = true
             end
         end
     end

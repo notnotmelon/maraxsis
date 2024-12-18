@@ -19,7 +19,7 @@ local function coral_created(event)
         }
         new_coral.active = false
         new_coral.destructible = false
-        new_coral.minable = false
+        new_coral.minable_flag = false
         coral_animation[i] = new_coral
     end
 
