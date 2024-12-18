@@ -1,4 +1,10 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.24.6
+Date: 2024-12-18
+  Balancing:
+    - Nerfed the rocket stack size of super sealant substance from 50 -> 3.
+    - Removed surface restrictions for the super sealant substance recipe.
+---------------------------------------------------------------------------------------------------
 Version: 1.24.5
 Date: 2024-12-18
   Balancing:
