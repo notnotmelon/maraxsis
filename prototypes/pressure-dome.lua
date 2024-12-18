@@ -315,3 +315,14 @@ data:extend {{
         },
     }
 }}
+
+data:extend {{
+    type = "sprite",
+    name = "maraxsis-flooded-warning",
+    filename = "__maraxsis__/graphics/icons/flooded-warning.png",
+    width = 64,
+    height = 64,
+    scale = 0.5,
+    shift = {0, 0},
+    flags = {"no-crop", "no-scale", "icon"},
+}}
