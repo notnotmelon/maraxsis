@@ -1,4 +1,13 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.24.5
+Date: 2024-12-18
+  Balancing:
+    - Added piercing-rounds-magazine to the fish rendering recipe.
+  Graphics:
+    - Added a flooded warning icon whenever a dome runs out of atmosphere.
+  Changes:
+    - Added compatibility with factorio versions >= 2.0.26
+---------------------------------------------------------------------------------------------------
 Version: 1.24.4
 Date: 2024-12-18
   Graphics:
