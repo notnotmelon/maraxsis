@@ -59,6 +59,7 @@ data:extend {maraxsis.merge(data.raw.radar.radar, {
     name = "maraxsis-sonar",
     icon = "__maraxsis__/graphics/icons/sonar.png",
     icon_size = 64,
+    localised_description = {"technology-description.maraxsis-sonar"},
     flags = {"placeable-player", "player-creation"},
     minable = {mining_time = 0.5, result = "maraxsis-sonar"},
     max_health = 550,
