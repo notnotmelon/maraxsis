@@ -1,4 +1,13 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.24.8
+Date: 2024-12-18
+  Balancing:
+    - Greatly increased the effect of quality on the abyssal diving gear light cone radius.
+  Bugfixes:
+    - Fixed the trench being too bright in remote view. Resolves https://github.com/notnotmelon/maraxsis/issues/171
+  Changes:
+    - Allowed submerging with the abyssal diving gear by pressing CTRL+enter. Resolves https://github.com/notnotmelon/maraxsis/issues/162
+---------------------------------------------------------------------------------------------------
 Version: 1.24.7
 Date: 2024-12-18
   Compatibility:
