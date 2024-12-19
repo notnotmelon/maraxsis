@@ -1,4 +1,14 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.24.21
+Date: 2024-12-19
+  Graphics:
+    - Added the "for you if" splash image to the git.
+    - Updated the icon for saline water.
+  Locale:
+    - Updated the technology description for deepsea research to explain that biolabs are placable anywhere.
+  Changes:
+    - Removed torpedos.
+---------------------------------------------------------------------------------------------------
 Version: 1.24.20
 Date: 2024-12-19
   Graphics:
