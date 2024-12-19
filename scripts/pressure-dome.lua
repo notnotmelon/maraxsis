@@ -975,7 +975,9 @@ end)
 maraxsis.on_nth_tick(5, function(event)
     for _, pressure_dome_data in pairs(storage.pressure_domes) do
         local entity = pressure_dome_data.entity
-        if not entity.valid then goto continue end
+        local surface = pressure_dome_data.surface
+        if not entity.valid or not surface.valid then goto continue end
+
         local opacity = pressure_dome_data.opacity or 255
         local dome_position = pressure_dome_data.position
         local x, y = dome_position.x, dome_position.y
@@ -983,7 +985,7 @@ maraxsis.on_nth_tick(5, function(event)
         local any_player_inside = false
         for _, player in pairs(game.connected_players) do
             local player_position = player.position
-            if is_point_in_polygon(player_position.x - x, player_position.y - y) then
+            if player.surface == surface and is_point_in_polygon(player_position.x - x, player_position.y - y) then
                 any_player_inside = true
                 break
             end
@@ -995,8 +997,10 @@ maraxsis.on_nth_tick(5, function(event)
             opacity = math.min(opacity + 16, 255)
         end
 
-        entity.color = {opacity, opacity, opacity, opacity}
-        pressure_dome_data.opacity = opacity
+        if opacity ~= pressure_dome_data.opacity then
+            entity.color = {opacity, opacity, opacity, opacity}
+            pressure_dome_data.opacity = opacity
+        end
         ::continue::
     end
 end)
