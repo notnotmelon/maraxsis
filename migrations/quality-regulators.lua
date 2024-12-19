@@ -18,7 +18,7 @@ local function place_regulator(pressure_dome_data)
     if type(quality) == "string" then
         quality = prototypes.quality[quality]
     end
-    
+
     local regulator = pressure_dome_data.regulator
     if not regulator or not regulator.valid then
         storage.script_placing_the_regulator = true
@@ -38,7 +38,7 @@ local function place_regulator(pressure_dome_data)
     regulator.operable = true
 
     pressure_dome_data.regulator = regulator
-    
+
     local regulator_fluidbox = pressure_dome_data.regulator_fluidbox
     if not regulator_fluidbox or not regulator_fluidbox.valid then
         regulator_fluidbox = surface.create_entity {

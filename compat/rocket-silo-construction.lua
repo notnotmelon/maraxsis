@@ -1,7 +1,7 @@
 if not mods["Rocket-Silo-Construction"] then return end
 local collision_mask_util = require "__core__/lualib/collision-mask-util"
 
-for _, silo in pairs{
+for _, silo in pairs {
     data.raw["assembling-machine"]["rsc-silo-stage1"],
     data.raw["assembling-machine"]["rsc-silo-stage2"],
     data.raw["assembling-machine"]["rsc-silo-stage3"],
