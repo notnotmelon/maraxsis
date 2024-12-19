@@ -542,6 +542,41 @@ maraxsis.on_nth_tick(631, function()
     end
 end)
 
+--- sorts all domes by y position and re-draws.
+--- this prevents Z-fighting.
+--- https://github.com/notnotmelon/maraxsis/issues/174
+local function rerender_all_domes()
+    local sorted_by_y_position = {}
+    for _, pressure_dome_data in pairs(storage.pressure_domes) do
+        table.insert(sorted_by_y_position, pressure_dome_data)
+    end
+    table.sort(sorted_by_y_position, function(a, b)
+        return a.position.y < b.position.y
+    end)
+    
+    storage.pressure_domes = {}
+    for _, pressure_dome_data in pairs(sorted_by_y_position) do
+        local surface = pressure_dome_data.surface
+        if surface.valid then
+            pressure_dome_data.entity.destroy()
+            pressure_dome_data.opacity = pressure_dome_data.opacity or 255
+            local opacity = pressure_dome_data.opacity
+            local entity = rendering.draw_sprite {
+                sprite = "maraxsis-pressure-dome-sprite",
+                render_layer = "higher-object-above",
+                target = pressure_dome_data.position,
+                surface = pressure_dome_data.surface,
+            }
+            entity.color = {opacity, opacity, opacity, opacity}
+            pressure_dome_data.entity = entity
+            pressure_dome_data.unit_number = entity.id
+            storage.pressure_domes[entity.id] = pressure_dome_data
+        else
+            storage.pressure_domes[pressure_dome_data.unit_number] = pressure_dome_data
+        end
+    end
+end
+
 maraxsis.on_event(maraxsis.events.on_built(), function(event)
     local entity = event.entity
     if not entity.valid or entity.name ~= "maraxsis-pressure-dome" then return end
@@ -630,6 +665,7 @@ maraxsis.on_event(maraxsis.events.on_built(), function(event)
     end
 
     storage.pressure_domes[entity.id] = pressure_dome_data
+    rerender_all_domes()
 end)
 
 local function delete_invalid_entities_from_contained_entities_list(pressure_dome_data, additional_entity_to_delete)
