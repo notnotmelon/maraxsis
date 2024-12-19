@@ -175,7 +175,9 @@ local function decend_or_ascend(submarine)
         driver = driver.player
     end
 
-    maraxsis.execute_later("play_submerge_sound", 1, submarine.surface, submarine.position)
+    local old_surface = submarine.surface
+    local old_position = submarine.position
+    maraxsis.execute_later("play_submerge_sound", 1, old_surface, old_position)
     maraxsis.execute_later("play_submerge_sound", 1, target_surface, target_position)
 
     local players_to_open_gui = {}
@@ -215,6 +217,12 @@ local function decend_or_ascend(submarine)
         maraxsis.execute_later("enter_submarine", 1, driver, submarine)
     end
 
+    script.raise_event("maraxsis-on-submerged", {
+        entity = submarine,
+        old_surface_index = old_surface.index,
+        old_position = old_position
+    })
+
     return true
 end
 
@@ -226,11 +234,19 @@ local function decend_or_ascend_character(character)
     if not target_surface then return false end
     if not target_position then return false end
 
-    maraxsis.execute_later("play_submerge_sound", 1, character.surface, character.position)
+    local old_surface = character.surface
+    local old_position = character.position
+    maraxsis.execute_later("play_submerge_sound", 1, old_surface, old_position)
     maraxsis.execute_later("play_submerge_sound", 1, target_surface, target_position)
 
     character.teleport(target_position, target_surface, true)
 
+    script.raise_event("maraxsis-on-submerged", {
+        entity = character,
+        old_surface_index = old_surface.index,
+        old_position = old_position
+    })
+        
     return true
 end
 

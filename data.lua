@@ -35,3 +35,11 @@ require "prototypes.tips-and-tricks.tips-and-tricks"
 require "prototypes.offshore-pump"
 require "prototypes.planet.space-location"
 require "prototypes.conduit"
+
+--- custom event for submarine submerged
+--- also triggers on character submerged with abyssal diving gear
+--- event table: {entity, old_surface_index, old_position}
+data:extend {{
+    type = "custom-event",
+    name = "maraxsis-on-submerged",
+}}
