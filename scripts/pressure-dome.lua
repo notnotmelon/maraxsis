@@ -526,6 +526,22 @@ local function place_regulator(pressure_dome_data)
     pressure_dome_data.regulator_fluidbox = regulator_fluidbox
 end
 
+-- ensure regulators always have the correct temperature of atmosphere (25 deg C)
+maraxsis.on_nth_tick(631, function()
+    for _, pressure_dome_data in pairs(storage.pressure_domes) do
+        local regulator_fluidbox = pressure_dome_data.regulator_fluidbox
+        if not regulator_fluidbox or not regulator_fluidbox.valid then
+            place_regulator(pressure_dome_data)
+        end
+
+        local fluid = regulator_fluidbox.fluidbox[1]
+        if fluid and fluid.temperature ~= 25 then
+            fluid.temperature = 25
+            regulator_fluidbox.fluidbox[1] = fluid
+        end
+    end
+end)
+
 maraxsis.on_event(maraxsis.events.on_built(), function(event)
     local entity = event.entity
     if not entity.valid or entity.name ~= "maraxsis-pressure-dome" then return end
