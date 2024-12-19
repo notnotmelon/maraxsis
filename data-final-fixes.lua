@@ -15,8 +15,14 @@ for extractor in pairs(maraxsis.MARAXSIS_SAND_EXTRACTORS) do
     data.raw["assembling-machine"][extractor .. "-sand-extractor"].collision_mask = mask
 end
 
-if data.raw["technology"]["maraxsis-promethium-productivity"] then
-    data.raw["technology"]["maraxsis-promethium-productivity"].unit.ingredients = table.deepcopy(data.raw["technology"]["research-productivity"].unit.ingredients)
+local promethium_quality = data.raw["technology"]["maraxsis-promethium-quality"]
+if promethium_quality then
+    promethium_quality.unit.ingredients = table.deepcopy(data.raw["technology"]["research-productivity"].unit.ingredients)
+    for _, pack in pairs(promethium_quality.unit.ingredients) do
+        if pack[1] == "cryogenic-science-pack" then
+            pack[1] = "hydraulic-science-pack"
+        end
+    end
 end
 
 for _, recipe in pairs(data.raw.recipe) do
@@ -79,5 +85,30 @@ for entity_type in pairs(defines.prototypes.entity) do
         end
 
         ::continue::
+    end
+end
+
+-- promethium quality module categories
+local cryogenic_crafting_categories = {}
+for _, category in pairs(data.raw["assembling-machine"]["cryogenic-plant"].crafting_categories) do
+    cryogenic_crafting_categories[category] = true
+end
+for _, recipe in pairs(data.raw.recipe) do
+    if cryogenic_crafting_categories[recipe.category] and recipe.name ~= "promethium-science-pack" then
+        local new_allowed_module_categories = {}
+        if recipe.allowed_module_categories then
+            for _, allowed_module_category in pairs(recipe.allowed_module_categories) do
+                if allowed_module_category ~= "promethium-quality-hidden-module" then
+                    table.insert(new_allowed_module_categories, allowed_module_category)
+                end
+            end
+        else
+            for _, module_category in pairs(data.raw["module-category"]) do
+                if module_category.name ~= "promethium-quality-hidden-module" then
+                    table.insert(new_allowed_module_categories, module_category.name)
+                end
+            end
+        end
+        recipe.allowed_module_categories = new_allowed_module_categories
     end
 end

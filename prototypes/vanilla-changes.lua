@@ -23,7 +23,6 @@ end
 
 add_hydraulic_pack("promethium-science-pack", false)
 table.insert(data.raw["technology"]["promethium-science-pack"].prerequisites, "maraxsis-deepsea-research")
-add_hydraulic_pack("research-productivity", false)
 
 for _, machine_type in pairs {"assembling-machine", "rocket-silo", "furnace", "character"} do
     for _, machine in pairs(data.raw[machine_type] or {}) do
