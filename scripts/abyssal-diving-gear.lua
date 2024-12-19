@@ -105,10 +105,10 @@ maraxsis.on_event({
     defines.events.on_player_created,
 }, function(event)
     local player = game.get_player(event.player_index)
+    update_abyssal_light_cone(player)
     local character = player.character
     if not character or not character.grid then return end
     swap_diving_gear_to_correct_prototype(character.grid, player)
-    update_abyssal_light_cone(player)
 end)
 
 maraxsis.on_event(defines.events.on_equipment_inserted, function(event)
