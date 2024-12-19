@@ -1,4 +1,10 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.24.12
+Date: 2024-12-19
+  Compatibility:
+    - Added compatiblity with the "quality seeds" mod.
+    - Added compatiblity with the "rocket silo construction" mod.
+---------------------------------------------------------------------------------------------------
 Version: 1.24.11
 Date: 2024-12-18
   Sounds:
