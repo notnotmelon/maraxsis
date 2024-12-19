@@ -1,4 +1,9 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.24.15
+Date: 2024-12-19
+  Compatibility:
+    - Added a custom event for whenever submarines or players submerge between surfaces.
+---------------------------------------------------------------------------------------------------
 Version: 1.24.14
 Date: 2024-12-19
   Bugfixes:
