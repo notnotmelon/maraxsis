@@ -437,7 +437,7 @@ local function check_can_build_dome(surface, position)
             {x - size, y - size},
             {x + size, y + size},
         },
-        collision_mask = {["object"] = true},
+        collision_mask = {["object"] = true, [maraxsis_trench_entrance_collision_mask] = true},
     }
 
     for _, e in pairs(entities_inside_square) do
