@@ -9,7 +9,7 @@ data:extend {{
             recipe = "maraxsis-nuclear-submarine",
         },
     },
-    prerequisites = {"maraxsis-torpedoes", "maraxsis-sonar", "nuclear-power", "cryogenic-science-pack"},
+    prerequisites = {"maraxsis-project-seadragon", "maraxsis-sonar", "nuclear-power", "cryogenic-science-pack"},
     unit = {
         count = 3000,
         ingredients = {
@@ -403,7 +403,7 @@ for i = 1, 6 do
     launcher.name                                            = "maraxsis-torpedo-launch-silo-" .. i
     launcher.icon                                            = "__base__/graphics/icons/tank-cannon.png"
     launcher.icon_size                                       = 64
-    launcher.attack_parameters.ammo_category                 = "maraxsis-torpedoes"
+    launcher.attack_parameters.ammo_categories               = {"cannon-shell", "tesla"}
     launcher.attack_parameters.projectile_orientation_offset = 0
     launcher.attack_parameters.projectile_creation_distance  = 3
     launcher.attack_parameters.range                         = 96

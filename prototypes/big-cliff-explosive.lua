@@ -10,14 +10,10 @@ data:extend {{
         },
         {
             type = "unlock-recipe",
-            recipe = "maraxsis-atomic-torpedo",
-        },
-        {
-            type = "unlock-recipe",
             recipe = "maraxsis-fat-man",
         },
     },
-    prerequisites = {"cliff-explosives", "maraxsis-torpedoes", "atomic-bomb"},
+    prerequisites = {"cliff-explosives", "maraxsis-nuclear-submarine", "atomic-bomb"},
     unit = {
         count = 5000,
         ingredients = {

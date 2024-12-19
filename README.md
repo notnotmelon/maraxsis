@@ -8,11 +8,11 @@
 
 Let me introduce this pristine, submerged world. Far away from the sun, this planet paradoxically maintains a comfortable temperature through a runaway greenhouse effect. 
 
-Preliminary surface scans show an average temperature of 101°F. It's not too hot and not too cold, the perfect Goldilocks zone for liquid water. Maybe even too perfect...
+Preliminary surface scans show an average temperature of 101°F. It's not too hot and not too cold, the perfect Goldilocks zone for liquid water.
 
 ![](https://files.catbox.moe/wwq54g.png)
 
-Maraxsis is 100% covered by deep ocean. There is no land on the entire planet meaning you'll have to invest in aquatic technologies such as submarines, torpedos, hydro plants, and submerged pressure domes. In terms of progression, Maraxsis is unlocked at the same point as Aquilo. This means the mod can be seamlessly added to a finished Space Age save.
+Maraxsis is 100% covered by deep ocean. There is no land on the entire planet meaning you'll have to invest in aquatic technologies such as submarines, hydro plants, and submerged pressure domes. In terms of progression, Maraxsis is unlocked at the same point as Aquilo. This means the mod can be seamlessly added to a finished Space Age save.
 
 Maraxsis is designed to take approximately fifteen hours to complete. There is also huge megabasing potential for those who would rather stay for longer.
 
@@ -25,8 +25,6 @@ Your armor is designed to protect against attacks from various creatures, but it
 ![](https://files.catbox.moe/qlbluo.mp4)
 
 This deep sea vessel is capable of submerging to any depth, and can be automated with a schedule to follow underwater channels.
-
-With further technologies, construct the nuclear submarine and atomic torpedoes.
 
 Be careful, swimming outside the submarine will quickly result in death by extreme pressure, drowning, or both.
 
@@ -45,8 +43,6 @@ Your submarine descends for what feels like hours. Light levels slowly drop unti
 While exploring the trench, you come across a geothermal vent. The magma appears to have similar composition as that found on Vulcanus. Perhaps it can be processed into basic metals?
 
 ![](https://files.catbox.moe/3zva7p.png)
-
-As you are leaving, your sonar systems sense some underwater movement in the distance. But the equipment must be faulty, it's impossible for anything to live down here. Right?
 
 ---
 
@@ -90,10 +86,7 @@ This mod makes a few changes to Factorio: Space Age in order for Maraxsis to fit
 
 ### Etymology
 
-The name "Maraxsis" draws inspiration from Frank Herbert's Arrakis. The two worlds can be considered "equal but opposite".
-
- - Both lack essential resources—land on Maraxsis, water on Arrakis—making survival difficult.
- - Both are dominated by colossal, worm-like apex predators that terrorize their respective environments.
+The name "Maraxsis" draws inspiration from Frank Herbert's Arrakis. The two worlds can be considered "equal but opposite". Both lack essential resources; land on Maraxsis, water on Arrakis; making survival difficult.
 
 This connection is mirrored in their names. The shared suffixes “-kis” or “-sis” evoke a harsh, guttural sound, hinting at the hostility in these landscapes.
 
