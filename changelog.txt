@@ -1,4 +1,9 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.24.16
+Date: 2024-12-19
+  Graphics:
+    - Domes now fade to transparent whenever a player is inside or viewing in remote view. Resolves https://github.com/notnotmelon/maraxsis/issues/110
+---------------------------------------------------------------------------------------------------
 Version: 1.24.15
 Date: 2024-12-19
   Compatibility:
