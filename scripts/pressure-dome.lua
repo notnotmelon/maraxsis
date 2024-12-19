@@ -971,3 +971,32 @@ maraxsis.on_event(maraxsis.events.on_mined_tile(), function(event)
     local surface = game.get_surface(event.surface_index)
     surface.set_tiles(dome_tiles_to_rebuild, true, false, false, false)
 end)
+
+maraxsis.on_nth_tick(5, function(event)
+    for _, pressure_dome_data in pairs(storage.pressure_domes) do
+        local entity = pressure_dome_data.entity
+        if not entity.valid then goto continue end
+        local opacity = pressure_dome_data.opacity or 255
+        local dome_position = pressure_dome_data.position
+        local x, y = dome_position.x, dome_position.y
+
+        local any_player_inside = false
+        for _, player in pairs(game.connected_players) do
+            local player_position = player.position
+            if is_point_in_polygon(player_position.x - x, player_position.y - y) then
+                any_player_inside = true
+                break
+            end
+        end
+
+        if any_player_inside then
+            opacity = math.max(opacity - 16, 60)
+        else
+            opacity = math.min(opacity + 16, 255)
+        end
+
+        entity.color = {opacity, opacity, opacity, opacity}
+        pressure_dome_data.opacity = opacity
+        ::continue::
+    end
+end)
