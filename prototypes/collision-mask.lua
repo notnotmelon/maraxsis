@@ -72,6 +72,12 @@ local prototypes_that_cant_be_placed_in_a_dome = {
     data.raw.radar["maraxsis-sonar"],
     data.raw["electric-energy-interface"]["wind-turbine-2"],
     "mining-drill",
+    data.raw["assembling-machine"]["rsc-silo-stage1"],
+    data.raw["assembling-machine"]["rsc-silo-stage2"],
+    data.raw["assembling-machine"]["rsc-silo-stage3"],
+    data.raw["assembling-machine"]["rsc-silo-stage4"],
+    data.raw["assembling-machine"]["rsc-silo-stage5"],
+    data.raw["assembling-machine"]["rsc-silo-stage6"],
 }
 
 local prototypes_that_cant_be_placed_in_a_dome_or_on_water = {
@@ -103,6 +109,12 @@ local prototypes_that_cannot_be_placed_in_the_trench = {
     "elevated-half-diagonal-rail",
     "elevated-straight-rail",
     data.raw["electric-energy-interface"]["wind-turbine-2"],
+    data.raw["assembling-machine"]["rsc-silo-stage1"],
+    data.raw["assembling-machine"]["rsc-silo-stage2"],
+    data.raw["assembling-machine"]["rsc-silo-stage3"],
+    data.raw["assembling-machine"]["rsc-silo-stage4"],
+    data.raw["assembling-machine"]["rsc-silo-stage5"],
+    data.raw["assembling-machine"]["rsc-silo-stage6"],
 }
 
 local prototypes_that_can_be_placed_whereever = {

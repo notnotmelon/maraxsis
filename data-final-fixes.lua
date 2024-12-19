@@ -6,6 +6,7 @@ require "compat.5-dim"
 require "compat.alien-biomes"
 require "compat.combat-mechanics-overhaul"
 require "compat.visible-planets-in-space"
+require "compat.rocket-silo-construction"
 
 for extractor in pairs(maraxsis.MARAXSIS_SAND_EXTRACTORS) do
     local mask = collision_mask_util.get_mask(data.raw["mining-drill"][extractor])
