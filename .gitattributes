@@ -14,3 +14,4 @@ README.md export-ignore
 .gitattributes export-ignore
 .releaserc export-ignore
 .py export-ignore
+.pdn export-ignore
