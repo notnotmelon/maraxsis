@@ -1,4 +1,9 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.24.20
+Date: 2024-12-19
+  Graphics:
+    - Fixed some (not all) cases of Z-fighting for pressure domes. Resolves https://github.com/notnotmelon/maraxsis/issues/174
+---------------------------------------------------------------------------------------------------
 Version: 1.24.19
 Date: 2024-12-19
   Bugfixes:
