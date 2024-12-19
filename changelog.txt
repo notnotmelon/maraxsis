@@ -1,4 +1,9 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.24.18
+Date: 2024-12-19
+  Bugfixes:
+    - Fixed shift clicking away your armor does not remove light cone from abyssal diving gear. Resolves https://github.com/notnotmelon/maraxsis/issues/173
+---------------------------------------------------------------------------------------------------
 Version: 1.24.17
 Date: 2024-12-19
   Optimizations:
