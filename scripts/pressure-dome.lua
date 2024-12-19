@@ -150,6 +150,16 @@ local function disable_due_to_dome_low_pressure(entity, powered_and_has_fluid)
     end
 end
 
+maraxsis.on_nth_tick(66667, function()
+    local new_warning_icons = {}
+    for k, warning_icon in pairs(storage.flooded_warning_info_icons or {}) do
+        if warning_icon.valid then
+            new_warning_icons[k] = warning_icon
+        end
+    end
+    storage.flooded_warning_info_icons = new_warning_icons
+end)
+
 local function create_dome_light(pressure_dome_data)
     local surface = pressure_dome_data.surface
     if not surface.valid then return end
