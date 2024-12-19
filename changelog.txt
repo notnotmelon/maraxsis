@@ -1,4 +1,11 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.24.13
+Date: 2024-12-19
+  Optimizations:
+    - Fixed a memory leak involving improper cleanup of dome flooded warning icons.
+  Bugfixes:
+    - Fixed the pressure dome breaking "randomly" when supplying wrong temperature atmosphere through editor mode infinity pipes.
+---------------------------------------------------------------------------------------------------
 Version: 1.24.12
 Date: 2024-12-19
   Compatibility:
