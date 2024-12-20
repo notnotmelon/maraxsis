@@ -41,19 +41,9 @@ maraxsis.on_event({
     defines.events.on_player_created,
 }, function(event)
     local player = game.get_player(event.player_index)
-    if not player then return end
-    local armor = player.get_inventory(defines.inventory.character_armor)
-    if not armor then return end
-
-    for i = 1, #armor do
-        local stack = armor[i]
-        if stack.valid_for_read and stack.is_armor then
-            local grid = stack.grid
-            if grid then
-                swap_nightvision_to_correct_prototype(grid, player.physical_surface)
-            end
-        end
-    end
+    local character = player.character
+    if not character or not character.grid then return end
+    swap_nightvision_to_correct_prototype(character.grid, player.surface)
 end)
 
 maraxsis.on_event(defines.events.on_equipment_inserted, function(event)

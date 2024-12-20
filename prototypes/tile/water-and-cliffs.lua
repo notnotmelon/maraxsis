@@ -104,6 +104,7 @@ local waterifiy = {
 data:extend(waterifiy.tile("lava-hot"))
 data.raw.tile["lava-hot-underwater"].collision_mask.layers.player = true
 data.raw.tile["lava-hot-underwater"].collision_mask.layers[maraxsis_lava_collision_mask] = true
+data.raw.tile["lava-hot-underwater"].collision_mask.layers.lava_tile = true
 data.raw.tile["lava-hot-underwater"].collision_mask.layers.decal = true
 data.raw.tile["lava-hot-underwater"].collision_mask.layers.doodad = true
 data.raw.tile["lava-hot-underwater"].collision_mask.layers.ground_tile = nil
@@ -120,10 +121,15 @@ data:extend(waterifiy.tile("sand-3"))
 data:extend(waterifiy.tile("sand-2"))
 data:extend(waterifiy.tile("sand-1"))
 data:extend(waterifiy.tile("lowland-cream-red"))
+data:extend(waterifiy.tile("lowland-red-vein-2"))
 
 data.raw.tile["lowland-cream-red-underwater"].map_color = defines.color.orange
 data.raw.tile["lowland-cream-red-underwater"].searchable = true
 data.raw.tile["lowland-cream-red-underwater"].collision_mask.layers[maraxsis_fishing_tower_collision_mask] = nil
+
+data.raw.tile["lowland-red-vein-2-underwater"].map_color = defines.color.firebrick
+data.raw.tile["lowland-red-vein-2-underwater"].collision_mask.layers[maraxsis_fishing_tower_collision_mask] = nil
+data.raw.tile["lowland-red-vein-2-underwater"].localised_name = {"tile-name.lowland-cream-red-underwater"}
 
 data:extend(waterifiy.entity("big-sand-rock"))
 
@@ -240,3 +246,15 @@ data:extend {maraxsis.merge(data.raw.tile["out-of-map"], {
     },
 })}
 table.insert(out_of_map_tile_type_names, "maraxsis-trench-entrance")
+
+data:extend {maraxsis.merge(data.raw.tile["out-of-map"], {
+    name = "maraxsis-trench-out-of-map",
+    localised_name = {"tile-name.out-of-map"},
+    hidden = true,
+    factoriopedia_alternative = "out-of-map",
+    effect = "nil",
+})}
+table.insert(out_of_map_tile_type_names, "maraxsis-trench-out-of-map")
+
+-- https://github.com/notnotmelon/maraxsis/issues/167
+data.raw.tile["maraxsis-trench-out-of-map"].collision_mask.layers.trigger_target = true

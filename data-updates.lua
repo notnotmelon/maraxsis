@@ -3,6 +3,8 @@ require "prototypes.spidertron-patrols"
 require "prototypes.item-weight"
 require "prototypes.default-import-location"
 require "prototypes.fluid-void"
+require "prototypes.item-sounds"
+require "prototypes.regulator-fluidbox"
 require "compat.aai-industry"
 require "compat.transport-ring-teleporter"
 
@@ -12,11 +14,11 @@ local function add_fuel_value(fluid, value)
     fluid.fuel_value = fluid.fuel_value or value
 end
 
-add_fuel_value("crude-oil", "150kJ")
-add_fuel_value("petroleum-gas", "200kJ")
-add_fuel_value("maraxsis-hydrogen", "225kJ")
-add_fuel_value("heavy-oil", "250kJ")
-add_fuel_value("light-oil", "300kJ")
+add_fuel_value("crude-oil", "1500kJ")
+add_fuel_value("petroleum-gas", "2000kJ")
+add_fuel_value("maraxsis-hydrogen", "2250kJ")
+add_fuel_value("heavy-oil", "2500kJ")
+add_fuel_value("light-oil", "3000kJ")
 
 for _, fluid in pairs(data.raw.fluid) do -- todo: check fluid fuel category
     local fuel_value = fluid.fuel_value
@@ -29,6 +31,14 @@ for _, fluid in pairs(data.raw.fluid) do -- todo: check fluid fuel category
     if not number_part then goto continue end
     barrel.fuel_value = tostring(number_part * 50) .. unit -- 50 fluid per barrel
     barrel.fuel_category = barrel.fuel_category or "maraxsis-diesel"
+
+    barrel.fuel_acceleration_multiplier = data.raw.item["rocket-fuel"].fuel_acceleration_multiplier
+    barrel.fuel_top_speed_multiplier = data.raw.item["rocket-fuel"].fuel_top_speed_multiplier
+    barrel.fuel_emissions_multiplier = data.raw.item["rocket-fuel"].fuel_emissions_multiplier
+    barrel.fuel_glow_color = data.raw.item["rocket-fuel"].fuel_glow_color
+    barrel.fuel_glow_color = data.raw.item["rocket-fuel"].fuel_acceleration_multiplier_quality_bonus
+    barrel.fuel_glow_color = data.raw.item["rocket-fuel"].fuel_top_speed_multiplier_quality_bonus
+
     maraxsis.SUBMARINE_FUEL_SOURCES["maraxsis-diesel-submarine"][1] = barrel.fuel_category
     barrel.burnt_result = "barrel"
     ::continue::
@@ -55,16 +65,6 @@ for _, nightvision in pairs(data.raw["night-vision-equipment"]) do
 end
 data:extend(nightvision_to_extend)
 
--- add torpedoes to stronger explosives tech
-for _, tech in pairs(data.raw.technology) do
-    if tech.name:find("stronger%-explosives%-%d") then
-        local level = tonumber(tech.name:match("%d$"))
-        if level >= 4 then
-            table.insert(tech.effects, {type = "ammo-damage", infer_icon = true, use_icon_overlay_constant = true, ammo_category = "maraxsis-torpedoes", modifier = 0.2 + (level / 10)})
-        end
-    end
-end
-
 data:extend {{
     type = "item-subgroup",
     name = "maraxsis-atmosphere-barreling",
@@ -90,8 +90,13 @@ require "prototypes.item-subgroups"
 if mods["assembler-pipe-passthrough"] then
     appmod.blacklist["maraxsis-hydro-plant"] = true
     appmod.blacklist["maraxsis-hydro-plant-extra-module-slots"] = true
-    appmod.blacklist["maraxsis-regulator-fluidbox"] = true
 end
+
+data.raw.recipe["maraxsis-glass-panes-recycling"].results = {
+    {type = "item", name = "maraxsis-sand",      amount = 1, probability = 0.75},
+    {type = "item", name = "maraxsis-salt",      amount = 1, probability = 0.25},
+    {type = "item", name = "maraxsis-limestone", amount = 1, probability = 0.25},
+}
 
 -- salt reactor localised description
 local electricity_description = {""}
@@ -100,15 +105,11 @@ for _, quality in pairs(data.raw.quality) do
     if quality.hidden then goto continue end
     local quality_name = quality.localised_name or {"quality-name." .. quality.name}
 
-    local color = maraxsis.color_combine(quality.color, {1, 1, 1}, 0.7)
-    local r, g, b = color.r or color[1], color.g or color[2], color.b or color[3]
-    local r, g, b = tostring(r), tostring(g), tostring(b)
-
     local quality_level = quality.level
     if quality_level >= 5 and not mods["infinite-quality-tiers"] then quality_level = quality_level - 1 end
     local mj = 10 * (2 ^ quality_level)
 
-    table.insert(electricity_description, {"recipe-description.maraxsis-electricity-quality-description", quality_name, tostring(mj), r, g, b})
+    table.insert(electricity_description, {"recipe-description.maraxsis-electricity-quality-description", quality.name, quality_name, tostring(mj)})
     table.insert(electricity_description, "\n")
     ::continue::
 end
@@ -130,3 +131,60 @@ data.raw["electric-energy-interface"]["maraxsis-salt-reactor-energy-interface"].
     "entity-description.maraxsis-salt-reactor",
     electricity_description
 }
+
+-- regulator factoriopedia description
+
+local function add_quality_factoriopedia_info(entity, factoriopedia_info)
+    local factoriopedia_description
+
+    for _, factoriopedia_info in pairs(factoriopedia_info or {}) do
+        local header, factoriopedia_function = unpack(factoriopedia_info)
+        local localised_string = {"", "[font=default-semibold]", header, "[/font]"}
+
+        for _, quality in pairs(data.raw.quality) do
+            if quality.hidden then goto continue end
+
+            local quality_buff = factoriopedia_function(entity, quality)
+            if type(quality_buff) ~= "table" then quality_buff = tostring(quality_buff) end
+            table.insert(localised_string, {"", "\n[img=quality." .. quality.name .. "] ", {"quality-name." .. quality.name}, ": [font=default-semibold]", quality_buff, "[/font]"})
+            ::continue::
+        end
+
+        if factoriopedia_description then
+            factoriopedia_description[#factoriopedia_description + 1] = "\n\n"
+            factoriopedia_description[#factoriopedia_description + 1] = maraxsis.shorten_localised_string(localised_string)
+        else
+            factoriopedia_description = localised_string
+        end
+    end
+
+    entity.factoriopedia_description = maraxsis.shorten_localised_string(factoriopedia_description)
+end
+
+add_quality_factoriopedia_info(data.raw["roboport"]["maraxsis-regulator"], {
+    {{"quality-tooltip.atmosphere-consumption"}, function(entity, quality_level)
+        local consumption_per_second = maraxsis.atmosphere_consumption(quality_level)
+        return tostring(consumption_per_second) .. "/s"
+    end}
+})
+
+-- steal gleba music
+local function copy_music(source_planet, target_planet)
+    assert(source_planet)
+    assert(target_planet)
+    for _, music in pairs(data.raw["ambient-sound"]) do
+        if music.planet == source_planet.name or (music.track_type == "hero-track" and music.name:find(source_planet.name)) then
+            local new_music = table.deepcopy(music)
+            new_music.name = music.name .. "-" .. target_planet.name
+            new_music.planet = target_planet.name
+            if new_music.track_type == "hero-track" then
+                new_music.track_type = "main-track"
+                new_music.weight = 10
+            end
+            data:extend {new_music}
+        end
+    end
+end
+
+copy_music(data.raw["planet"]["gleba"], data.raw["planet"]["maraxsis"])
+copy_music(data.raw["planet"]["vulcanus"], data.raw["planet"]["maraxsis-trench"])

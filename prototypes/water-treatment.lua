@@ -78,9 +78,9 @@ data:extend {{
         {type = "fluid", name = "maraxsis-oxygen",   amount = 100},
         {type = "fluid", name = "maraxsis-hydrogen", amount = 200},
     },
-    category = "maraxsis-hydro-plant",
+    category = "maraxsis-hydro-plant-or-chemistry",
     icon = "__maraxsis__/graphics/icons/saline-electrolysis.png",
-    icon_size = 128,
+    icon_size = 64,
     auto_recycle = false,
     allow_productivity = true,
     main_product = "maraxsis-salt",
@@ -91,6 +91,8 @@ add_to_tech("maraxsis-salt")
 data:extend {{
     type = "recipe",
     name = "maraxsis-water",
+    icon = "__maraxsis__/graphics/icons/maraxsis-water.png",
+    icon_size = 64,
     enabled = false,
     energy_required = 2,
     ingredients = {
@@ -127,7 +129,7 @@ data:extend {{
         {type = "fluid", name = "maraxsis-brackish-water",        amount = 100},
         {type = "item",  name = "maraxsis-saturated-salt-filter", amount = 1,  ignored_by_stats = 1, ignored_by_productivity = 1},
     },
-    category = "maraxsis-hydro-plant",
+    category = "maraxsis-hydro-plant-or-chemistry",
     auto_recycle = false,
     main_product = "maraxsis-brackish-water",
     allow_productivity = true,
@@ -189,13 +191,13 @@ data:extend {{
         {type = "fluid", name = "water",                          amount = 20},
     },
     results = {
-        {type = "item",  name = "maraxsis-salt-filter",    amount = 1, probability = 0.95, ignored_by_stats = 1, ignored_by_productivity = 1},
+        {type = "item",  name = "maraxsis-salt-filter",    amount = 1, probability = 0.95, ignored_by_stats = 1},
         {type = "item",  name = "carbon-fiber",            amount = 1, probability = 0.025},
         {type = "fluid", name = "maraxsis-brackish-water", amount = 20},
     },
-    category = "maraxsis-hydro-plant",
+    category = "maraxsis-hydro-plant-or-chemistry",
     main_product = "maraxsis-salt-filter",
-    allow_productivity = true,
+    allow_productivity = false,
     icon = "__maraxsis__/graphics/icons/salt-filter-cleaning.png",
     icon_size = 64,
     allow_decomposition = false,
@@ -204,3 +206,24 @@ data:extend {{
 add_to_tech("maraxsis-salt-filter-cleaning")
 
 add_to_tech("maraxsis-hydrolox-rocket-fuel")
+
+data:extend {{
+    type = "recipe",
+    name = "maraxsis-sublimation",
+    ingredients = {
+        {type = "item", name = "ice", amount = 1},
+    },
+    results = {
+        {type = "fluid", name = "steam", amount = 90, temperature = 165},
+    },
+    allow_productivity = true,
+    allow_decomposition = false,
+    category = "maraxsis-hydro-plant-or-chemistry",
+    energy_required = 5,
+    icon = "__maraxsis__/graphics/icons/sublimation.png",
+    icon_size = 64,
+    enabled = false,
+    subgroup = "fluid-recipes",
+    order = "d[other-recipes]-c[sublimation]",
+}}
+add_to_tech("maraxsis-sublimation")

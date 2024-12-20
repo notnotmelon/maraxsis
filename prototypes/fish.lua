@@ -27,8 +27,6 @@ for _, color in pairs(map_colors) do
     color.a = 255
 end
 
-maraxsis.tropical_fish_names = {}
-
 for i, v in pairs(fish) do
     local name = "maraxsis-tropical-fish-" .. i
 
@@ -113,8 +111,6 @@ for i, v in pairs(fish) do
             }
         }
     }}
-
-    maraxsis.tropical_fish_names[i] = name
 end
 
 data:extend {{
@@ -232,10 +228,13 @@ data:extend {{
 data:extend {{
     type = "recipe",
     name = "maraxsis-microplastics",
+    icon = "__maraxsis__/graphics/icons/fish-rendering.png",
+    icon_size = 64,
     enabled = false,
     energy_required = 2,
     ingredients = {
         {type = "item", name = "maraxsis-tropical-fish",   amount = 1},
+        {type = "item", name = "piercing-rounds-magazine", amount = 1},
     },
     results = {
         {type = "item", name = "maraxsis-microplastics", amount = 10},
@@ -258,6 +257,8 @@ data:extend {{
 data:extend {{
     type = "recipe",
     name = "maraxsis-smelt-microplastics",
+    icon = "__maraxsis__/graphics/icons/microplastics-to-plastic.png",
+    icon_size = 64,
     enabled = false,
     energy_required = data.raw.recipe["iron-plate"].energy_required,
     ingredients = {

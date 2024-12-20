@@ -108,7 +108,7 @@ end
 
 local new_spidertron_effects = {}
 for _, effect in pairs(data.raw.technology["spidertron"].effects) do
-    if effect.recipe ~= "service_station" and effect.recipe ~= "constructron" then
+    if effect.recipe ~= "maraxsis-regulator" then
         table.insert(new_spidertron_effects, effect)
     end
 end
@@ -165,8 +165,12 @@ for _, armor in pairs(data.raw.armor) do
     ::continue::
 end
 
-data.raw.recipe["engine-unit"].category = "maraxsis-hydro-plant-or-advanced-crafting"
-data.raw.recipe["electric-engine-unit"].category = "maraxsis-hydro-plant-or-advanced-crafting"
+if not mods["foundry-expanded"] then
+    data.raw.recipe["engine-unit"].category = "maraxsis-hydro-plant-or-advanced-crafting"
+end
+if not mods["electromagnetic-plant-expanded"] then
+    data.raw.recipe["electric-engine-unit"].category = "maraxsis-hydro-plant-or-advanced-crafting"
+end
 
 for _, module in pairs(data.raw.module) do
     if module.name:find("quality%-module") and not module.beacon_tint then
@@ -176,3 +180,14 @@ for _, module in pairs(data.raw.module) do
         }
     end
 end
+
+-- add vehicle acceleration to uranium fuel cells
+
+local uranium_fuel_cell = data.raw.item["uranium-fuel-cell"]
+local nuclear_fuel = data.raw.item["nuclear-fuel"]
+uranium_fuel_cell.fuel_acceleration_multiplier = nuclear_fuel.fuel_acceleration_multiplier
+uranium_fuel_cell.fuel_top_speed_multiplier = nuclear_fuel.fuel_top_speed_multiplier
+uranium_fuel_cell.fuel_emissions_multiplier = nuclear_fuel.fuel_emissions_multiplier
+uranium_fuel_cell.fuel_glow_color = nuclear_fuel.fuel_glow_color
+uranium_fuel_cell.fuel_glow_color = nuclear_fuel.fuel_acceleration_multiplier_quality_bonus
+uranium_fuel_cell.fuel_glow_color = nuclear_fuel.fuel_top_speed_multiplier_quality_bonus

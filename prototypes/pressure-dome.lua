@@ -64,10 +64,10 @@ local function collision_box() return {{-16, -16}, {16, 16}} end
 
 data:extend {{
     type = "roboport",
-    logistics_connection_distance = data.raw.roboport["service_station"].logistics_connection_distance,
-    radar_range = data.raw.roboport["service_station"].radar_range,
-    logistics_radius = data.raw.roboport["service_station"].logistics_radius,
-    construction_radius = data.raw.roboport["service_station"].construction_radius,
+    logistics_connection_distance = data.raw.roboport["maraxsis-regulator"].logistics_connection_distance,
+    radar_range = data.raw.roboport["maraxsis-regulator"].radar_range,
+    logistics_radius = data.raw.roboport["maraxsis-regulator"].logistics_radius,
+    construction_radius = data.raw.roboport["maraxsis-regulator"].construction_radius,
     energy_source = {type = "void"},
     energy_usage = "0W",
     recharge_minimum = "0W",
@@ -94,7 +94,7 @@ data:extend {{
             cage_shadow,
             base_shadow,
             dome,
-        }, table.deepcopy(data.raw.roboport["service_station"].integration_patch.layers))
+        }, table.deepcopy(data.raw.roboport["maraxsis-regulator"].integration_patch.layers))
     },
     surface_conditions = maraxsis.surface_conditions(),
     build_sound = {
@@ -314,4 +314,15 @@ data:extend {{
             percent = 100
         },
     }
+}}
+
+data:extend {{
+    type = "sprite",
+    name = "maraxsis-flooded-warning",
+    filename = "__maraxsis__/graphics/icons/flooded-warning.png",
+    width = 64,
+    height = 64,
+    scale = 0.5,
+    shift = {0, 0},
+    flags = {"no-crop", "no-scale", "icon"},
 }}

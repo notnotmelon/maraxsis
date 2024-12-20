@@ -1,5 +1,4 @@
-local easy_mode = settings.startup["maraxsis-easy-mode"] and settings.startup["maraxsis-easy-mode"].value or false
-easy_mode = easy_mode or mods["no-quality"]
+local easy_mode = not not mods["no-quality"]
 
 local hit_effects = require("__base__/prototypes/entity/hit-effects")
 local sounds = require("__base__/prototypes/entity/sounds")
@@ -107,9 +106,23 @@ data:extend {{
     name = "maraxsis-hydro-plant",
     icon = "__maraxsis__/graphics/icons/hydro-plant.png",
     icon_size = 64,
+    open_sound = table.deepcopy(data.raw["assembling-machine"]["chemical-plant"].open_sound),
+    close_sound = table.deepcopy(data.raw["assembling-machine"]["chemical-plant"].close_sound),
+    working_sound = {
+        sound = {
+            filename = "__maraxsis__/sounds/hydro-plant.ogg",
+            volume = 0.50,
+        },
+        apparent_volume = 1.5,
+        max_sounds_per_type = 3,
+        audible_distance_modifier = 1,
+        fade_in_ticks = 4,
+        fade_out_ticks = 20
+    },
     flags = {"placeable-neutral", "placeable-player", "player-creation"},
     minable = {mining_time = 0.5, results = {{type = "item", name = "maraxsis-hydro-plant", amount = 1}}},
     max_health = 400,
+    fast_replaceable_group = "maraxsis-hydro-plant",
     corpse = data.raw["assembling-machine"]["electromagnetic-plant"].corpse,
     dying_explosion = "big-explosion",
     circuit_connector = circuit_connector_definitions["maraxsis-hydro-plant"],
@@ -139,7 +152,7 @@ data:extend {{
             pipe_picture_frozen = require("__space-age__.prototypes.entity.electromagnetic-plant-pictures").pipe_pictures_frozen,
             pipe_covers = pipecoverspictures(),
             volume = 100,
-            pipe_connections = {{direction = defines.direction.south, flow_direction = "input", position = {-0.5, 1.5}}},
+            pipe_connections = {{direction = defines.direction.south, flow_direction = "input-output", position = {-0.5, 1.5}}},
             secondary_draw_orders = {north = -1},
         },
         {
@@ -148,7 +161,7 @@ data:extend {{
             pipe_picture_frozen = require("__space-age__.prototypes.entity.electromagnetic-plant-pictures").pipe_pictures_frozen,
             pipe_covers = pipecoverspictures(),
             volume = 100,
-            pipe_connections = {{direction = defines.direction.east, flow_direction = "output", position = {1.5, -0.5}}},
+            pipe_connections = {{direction = defines.direction.east, flow_direction = "input-output", position = {1.5, -0.5}}},
             secondary_draw_orders = {north = -1},
         },
         {
@@ -157,7 +170,7 @@ data:extend {{
             pipe_picture_frozen = require("__space-age__.prototypes.entity.electromagnetic-plant-pictures").pipe_pictures_frozen,
             pipe_covers = pipecoverspictures(),
             volume = 100,
-            pipe_connections = {{direction = defines.direction.north, flow_direction = "input", position = {0.5, -1.5}}},
+            pipe_connections = {{direction = defines.direction.north, flow_direction = "input-output", position = {0.5, -1.5}}},
             secondary_draw_orders = {north = -1},
         },
         {
@@ -166,7 +179,7 @@ data:extend {{
             pipe_picture_frozen = require("__space-age__.prototypes.entity.electromagnetic-plant-pictures").pipe_pictures_frozen,
             pipe_covers = pipecoverspictures(),
             volume = 100,
-            pipe_connections = {{direction = defines.direction.west, flow_direction = "output", position = {-1.5, 0.5}}},
+            pipe_connections = {{direction = defines.direction.west, flow_direction = "input-output", position = {-1.5, 0.5}}},
             secondary_draw_orders = {north = -1},
         },
     },
@@ -185,15 +198,6 @@ data:extend {{
     },
     scale_entity_info_icon = true,
     impact_category = data.raw["assembling-machine"]["electromagnetic-plant"].impact_category,
-    --[[working_sound = {
-        filename = path .. 'advanced-furnace.ogg',
-        volume = 0.50,
-        aggregation = {
-            max_count = 2,
-            remove = false,
-            count_already_playing = true,
-        },
-    },--]]
     idle_sound = {filename = "__base__/sound/idle1.ogg"},
     crafting_speed = 2,
     energy_source = {
@@ -205,8 +209,6 @@ data:extend {{
     },
     icon_draw_specification = {scale = 1.75, shift = {0, -0.3}},
     energy_usage = "2MW",
-    open_sound = sounds.machine_open,
-    close_sound = sounds.machine_close,
     collision_mask = {layers = {["item"] = true, ["object"] = true, ["player"] = true}},
 }}
 
@@ -218,14 +220,13 @@ end
 
 local extra_module_slots = table.deepcopy(data.raw["assembling-machine"]["maraxsis-hydro-plant"])
 extra_module_slots.name = "maraxsis-hydro-plant-extra-module-slots"
-extra_module_slots.module_slots = extra_module_slots.module_slots + 2
+extra_module_slots.module_slots = extra_module_slots.module_slots + 4
 extra_module_slots.icons_positioning = {{
-    inventory_index = defines.inventory.assembling_machine_modules, shift = {0, 0.9}, max_icons_per_row = 3
+    inventory_index = defines.inventory.assembling_machine_modules, shift = {0, 0.9}, max_icons_per_row = 4
 }}
 extra_module_slots.hidden_in_factoriopedia = true
 extra_module_slots.factoriopedia_alternative = "maraxsis-hydro-plant"
 extra_module_slots.placeable_by = {{item = "maraxsis-hydro-plant", count = 1}}
-extra_module_slots.localised_name = {"entity-name.maraxsis-hydro-plant"}
 extra_module_slots.flags = {"placeable-player", "player-creation", "not-in-made-in"}
 data:extend {extra_module_slots}
 
@@ -245,10 +246,10 @@ data:extend {{
     enabled = false,
     energy_required = 5,
     ingredients = {
-        {type = "item",  name = "tungsten-plate",                                         amount = 20},
-        {type = "item",  name = "pipe",                                                   amount = 10},
-        {type = "item",  name = "processing-unit",                                                   amount = 10},
-        {type = "fluid", name = "maraxsis-saline-water",                                  amount = 300},
+        {type = "item",  name = "tungsten-plate",        amount = 20},
+        {type = "item",  name = "pipe",                  amount = 10},
+        {type = "item",  name = "processing-unit",       amount = 10},
+        {type = "fluid", name = "maraxsis-saline-water", amount = 300},
     },
     results = {
         {type = "item", name = "maraxsis-hydro-plant", amount = 1},

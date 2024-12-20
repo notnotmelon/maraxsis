@@ -59,6 +59,7 @@ data:extend {maraxsis.merge(data.raw.radar.radar, {
     name = "maraxsis-sonar",
     icon = "__maraxsis__/graphics/icons/sonar.png",
     icon_size = 64,
+    localised_description = {"technology-description.maraxsis-sonar"},
     flags = {"placeable-player", "player-creation"},
     minable = {mining_time = 0.5, result = "maraxsis-sonar"},
     max_health = 550,
@@ -118,8 +119,8 @@ data:extend {maraxsis.merge(data.raw.radar.radar, {
                 volume = 1
             }
         },
-        max_sounds_per_type = 3,
-        --audible_distance_modifier = 0.8,
+        max_sounds_per_type = 2,
+        audible_distance_modifier = 0.8,
         use_doppler_shift = false
     },
     radius_minimap_visualisation_color = {r = 0.059, g = 0.092, b = 0.235, a = 0.275},

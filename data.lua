@@ -4,7 +4,6 @@ require "prototypes.abyssal-diving-gear"
 require "prototypes.circuit-connector-definitions"
 require "prototypes.tile.water-and-cliffs"
 require "prototypes.submarine"
-require "prototypes.construction-submarine"
 require "prototypes.salt-reactor"
 require "prototypes.technology"
 require "prototypes.glass"
@@ -21,7 +20,6 @@ require "prototypes.fishing-tower"
 require "prototypes.sand-extractor"
 require "prototypes.bubbles"
 require "prototypes.recipes"
-require "prototypes.torpedoes"
 require "prototypes.fat-man"
 require "prototypes.water-treatment"
 require "prototypes.big-cliff-explosive"
@@ -34,5 +32,13 @@ require "prototypes.preservatives"
 require "prototypes.promethium-productivity"
 require "prototypes.tips-and-tricks.tips-and-tricks"
 require "prototypes.offshore-pump"
-require "prototypes.planet.map-gen"
+require "prototypes.planet.space-location"
 require "prototypes.conduit"
+
+--- custom event for submarine submerged
+--- also triggers on character submerged with abyssal diving gear
+--- event table: {entity, old_surface_index, old_position}
+data:extend {{
+    type = "custom-event",
+    name = "maraxsis-on-submerged",
+}}

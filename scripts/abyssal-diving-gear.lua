@@ -7,24 +7,14 @@ local is_abyssal_diving_gear = {
 
 -- returns the default buff amount per quality level in vanilla
 local function get_quality_buff(quality_level)
-    return 1 + quality_level * 0.3
+    return 1 + quality_level
 end
 
-local function update_abyssal_light_cone(player)
-    local is_on_maraxsis = not not maraxsis.MARAXSIS_SURFACES[player.physical_surface.name]
-    storage.abyssal_light_cones = storage.abyssal_light_cones or {}
-
-    local cone = storage.abyssal_light_cones[player.index]
-    if cone and not is_on_maraxsis then
-        cone.destroy()
-        storage.abyssal_light_cones[player.index] = nil
-        return
-    end
-
+local function get_abyssal_light_size(player)
     local character = player.character
-    if not character then return end
+    if not character then return 0 end
     local grid = character.grid
-    if not grid then return end
+    if not grid then return 0 end
 
     local light_size = 0
     for _, equipment in pairs(grid.get_contents()) do
@@ -34,18 +24,44 @@ local function update_abyssal_light_cone(player)
         end
     end
 
+    return light_size
+end
+
+maraxsis.is_wearing_abyssal_diving_gear = function(player)
+    local character = player.character
+    if not character then return false end
+    local grid = character.grid
+    if not grid then return false end
+
+    for _, equipment in pairs(grid.get_contents()) do
+        if is_abyssal_diving_gear[equipment.name] then
+            return true
+        end
+    end
+
+    return false
+end
+
+local function update_abyssal_light_cone(player)
+    local is_on_maraxsis = not not maraxsis.MARAXSIS_SURFACES[player.physical_surface.name]
+    storage.abyssal_light_cones = storage.abyssal_light_cones or {}
+
+    local cone = storage.abyssal_light_cones[player.index]
     if cone then
         cone.destroy()
         storage.abyssal_light_cones[player.index] = nil
+        if not is_on_maraxsis then return end
     end
 
+    local light_size = get_abyssal_light_size(player)
     if light_size == 0 then return end
 
+    local character = player.character
     storage.abyssal_light_cones[player.index] = rendering.draw_light {
         sprite = "utility/light_medium",
-        scale = light_size * 0.6 + 3.5,
+        scale = light_size * 0.6 + 5.5,
         target = character,
-        surface = character.surface,
+        surface = character.surface_index,
         players = {player},
         intensity = 1,
         color = {r = 1, g = 0.8, b = 0.6},
@@ -89,21 +105,10 @@ maraxsis.on_event({
     defines.events.on_player_created,
 }, function(event)
     local player = game.get_player(event.player_index)
-    if not player then return end
-    local armor = player.get_inventory(defines.inventory.character_armor)
-    if not armor then return end
-
-    for i = 1, #armor do
-        local stack = armor[i]
-        if stack.valid_for_read and stack.is_armor then
-            local grid = stack.grid
-            if grid then
-                swap_diving_gear_to_correct_prototype(grid, player)
-            end
-        end
-    end
-
     update_abyssal_light_cone(player)
+    local character = player.character
+    if not character or not character.grid then return end
+    swap_diving_gear_to_correct_prototype(character.grid, player)
 end)
 
 maraxsis.on_event(defines.events.on_equipment_inserted, function(event)

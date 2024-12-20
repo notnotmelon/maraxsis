@@ -62,23 +62,25 @@ data:extend {maraxsis_chimney}
 -- free glass forever!
 
 data:extend {{
-    type = "simple-entity",
-    name = "maraxsis-mollusk-husk",
-    icon = "__maraxsis__/graphics/icons/mollusk-husk.png",
-    icon_size = 64,
-    flags = {"placeable-neutral", "placeable-off-grid"},
-    minable = {
+    type                       = "simple-entity",
+    name                       = "maraxsis-mollusk-husk",
+    icon                       = "__maraxsis__/graphics/icons/mollusk-husk.png",
+    icon_size                  = 64,
+    flags                      = {"placeable-neutral", "placeable-off-grid"},
+    minable                    = {
         mining_time = 0.2,
         results = {
             {type = "item", name = "maraxsis-glass-panes", amount_min = 35, amount_max = 45},
-            {type = "item", name = "maraxsis-limestone", amount_min = 20, amount_max = 30},
+            {type = "item", name = "maraxsis-limestone",   amount_min = 20, amount_max = 30},
         },
     },
-    max_health = 300,
-    collision_box = {{-0.4, -0.4}, {0.4, 0.4}},
-    selection_box = {{-0.9, -0.9}, {0.9, 0.9}},
-    map_generator_bounding_box  = {{-2.9, -2.9}, {2.9, 2.9}},
-    pictures = {
+    max_health                 = 300,
+    collision_box              = {{-0.4, -0.4}, {0.4, 0.4}},
+    selection_box              = {{-0.9, -0.9}, {0.9, 0.9}},
+    map_generator_bounding_box = {{-2.9, -2.9}, {2.9, 2.9}},
+    subgroup                   = "creatures",
+    order                      = "j-d[mollusk-husk]",
+    pictures                   = {
         {
             filename = "__maraxsis__/graphics/entity/mollusk-husk/mollusk-husk-1.png",
             width = 163,
@@ -110,5 +112,5 @@ data:extend {{
             shift = {0.5, 0}
         },
     },
-    map_color = {149, 145, 108}
+    map_color                  = {149, 145, 108}
 }}

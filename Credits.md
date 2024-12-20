@@ -15,7 +15,7 @@
 
 #### Hydro Plant, Regulator, Salt Reactor, & Conduit
 
-- **Creators**: [Hurricane](https://github.com/Hurricane)
+- **Creators**: [Hurricane](https://mods.factorio.com/user/Hurricane046)
 - **Source**: [Figma](https://shorturl.at/AFcDm)
 - **License**: [CC BY](https://creativecommons.org/licenses/by/4.0/)
 - **Changes**: Yes. Technology icon added. Renamed to "Hydro Plant". Renamed to "Regulator". Renamed to "Salt Reactor".
@@ -24,14 +24,14 @@
 
 - **Creators**: [Archezekiel](https://github.com/Archezekiel)
 - **Source**: Commissioned. Created in Blender.
-- **License**: N/A
+- **License**: Public domain.
 - **Changes**: Yes. Compressed for Factorio with [Spritter](https://github.com/fgardt/factorio-spritter)
 
 #### Pressure Dome
 
 - **Creators**: [KaueNP](https://github.com/KaueNP)
 - **Source**: Commissioned. Created in 3DS max studio.
-- **License**: N/A
+- **License**: Public domain.
 - **Changes**: No.
 
 #### Sonar
@@ -48,10 +48,10 @@
 - **License**: [MIT](https://opensource.org/license/MIT)
 - **Changes**: No.
 
-#### Submarine AI
+#### Submarine Patrols
 
-- **Creators**: [Xorimuth](https://github.com/Xorimuth), [ILLISIS](https://github.com/ILLISIS), [Apollo314](https://github.com/Apollo314) , [fgardt](https://github.com/fgardt)
-- **Source**: [Spidertron Enhancements](https://mods.factorio.com/mod/SpidertronEnhancements) & [Spidertron Patrols](https://mods.factorio.com/mod/SpidertronPatrols) & [Spidertron Automation](https://mods.factorio.com/mod/SpidertronPatrols)
+- **Creators**: [Xorimuth](https://github.com/Xorimuth)
+- **Source**: [Spidertron Enhancements](https://mods.factorio.com/mod/SpidertronEnhancements) & [Spidertron Patrols](https://mods.factorio.com/mod/SpidertronPatrols)
 - **License**: [MIT](https://opensource.org/license/MIT)
 - **Changes**: Yes. Updated the code to work with submarines.
 
@@ -68,3 +68,10 @@
 - **Source**: [Factorio Mod Template](https://github.com/fgardt/factorio-mod-template) & [Spritter](https://github.com/fgardt/factorio-spritter)
 - **License**: [MIT](https://opensource.org/license/MIT)
 - **Changes**: No.
+
+#### Sound Effects
+
+- **Creators**: Pixabay Community
+- **Source**: [Pixabay](https://pixabay.com)
+- **License**: [Pixabay Content License](https://pixabay.com/service/license-summary/)
+- **Changes**: No

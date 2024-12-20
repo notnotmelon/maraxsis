@@ -86,42 +86,6 @@ data:extend {{
         property = "pressure",
         min = 400000,
         max = 400000
-    }}
+    }},
+    allow_productivity = true
 }}
-
---[[
-local legs = {}
-
-data:extend{maraxsis.merge(data.raw['spider-vehicle']['spidertron'], {
-    name = 'maraxsis-wyrm',
-    icon = '__maraxsis__/graphics/icons/wyrm-specimen-2.png', -- todo: change to an actual icon
-    icon_size = 64,
-    flags = {'placeable-enemy', 'placeable-off-grid', 'not-repairable', 'breaths-air'},
-    max_health = 1000,
-    healing_per_tick = 0.01,
-    collision_box = {{-1.5, -1.5}, {1.5, 1.5}},
-    selection_box = {{-1.5, -1.5}, {1.5, 1.5}},
-    energy_source = {
-        type = 'void',
-    },
-    collision_mask = {layers = {}},
-    burner = 'nil',
-    inventory_size = 0,
-    -- graphics_set
-    spider_engine = {legs = legs},
-    -- height
-    chunk_exploration_radius = 0,
-    movement_energy_consumption = '1W',
-    automatic_weapon_cycling = false,
-    trash_inventory_size = 0,
-})}
-
-local leg = maraxsis.merge(data.raw['spider-leg']['spidertron-leg-' .. ((i % 8) + 1)], {
-    name = 'maraxsis-wyrm-leg-' .. i,
-    part_length = i / 4,
-    flags = {'not-on-map', 'placeable-off-grid'},
-    movement_acceleration = data.raw['spider-leg']['spidertron-leg-1'].movement_acceleration * (num_legs - i + 1),
-    allow_maraxsis_water_placement = true,
-    minimal_step_size = 0,
-})
---]]

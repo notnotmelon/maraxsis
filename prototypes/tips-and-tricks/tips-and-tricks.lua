@@ -116,7 +116,6 @@ data:extend {{
             game.surfaces[1].create_decoratives{decoratives = create_list}
         ]],
         checkboard = false,
-        planet = "maraxsis",
         mute_wind_sounds = false,
     },
 }}
@@ -125,7 +124,7 @@ data:extend {{
     type = "tips-and-tricks-item",
     name = "maraxsis-trench-exploration",
     category = "space-age",
-    tag = "[item=maraxsis-diesel-submarine]",
+    tag = "[planet=maraxsis-trench]",
     indent = 1,
     order = "e-b",
     trigger = {
@@ -133,11 +132,92 @@ data:extend {{
         entity = "maraxsis-diesel-submarine",
     },
     simulation = {
-        save = "__maraxsis__/prototypes/tips-and-tricks/maraxsis.zip", -- todo: change to trench exploration save
-        mods = {},
+        planet = "maraxsis-trench",
         generate_map = false,
-        --init = 'game.camera_player = game.get_player(1)', https://forums.factorio.com/viewtopic.php?f=7&t=115110
-        checkboard = false
+        init = [[
+            local surface = game.surfaces[1]
+
+            surface.daytime = 0.5
+            surface.freeze_daytime = true
+            surface.show_clouds = false
+            surface.brightness_visual_weights = {r = 1, g = 1, b = 1}
+            surface.min_brightness = 0
+            game.simulation.camera_position = {0, 1.5}
+
+            for x = -12, 12, 1 do
+                for y = -6, 6 do
+                    surface.set_tiles{{position = {x, y}, name = "volcanic-cracks-warm-underwater"}}
+                end
+            end
+            for x = -12, -6, 1 do
+                for y = -6, -2 do
+                    surface.set_tiles{{position = {x, y}, name = "lava-hot-underwater"}}
+                    if x % 2 == 0 and y % 2 == 0 then
+                        surface.create_entity {
+                            name = "maraxsis-lava-lamp",
+                            position = {x, y},
+                            create_build_effect_smoke = false
+                        }
+                    end
+                end
+            end
+            local y = -1
+            for x = -12, -8, 1 do
+                surface.set_tiles{{position = {x, y}, name = "lava-hot-underwater"}}
+                if x % 2 == 0 and y % 2 == 0 then
+                    surface.create_entity {
+                        name = "maraxsis-lava-lamp",
+                        position = {x, y},
+                        create_build_effect_smoke = false
+                    }
+                end
+            end
+
+            surface.create_entity {
+                name = "maraxsis-water-shader",
+                position = {0, 0},
+                create_build_effect_smoke = false
+            }
+
+            surface.create_entity {
+                name = "maraxsis-chimney",
+                position = {-5, 3},
+                create_build_effect_smoke = false
+            }
+
+            surface.create_entity {
+                name = "maraxsis-chimney",
+                position = {4, -2},
+                create_build_effect_smoke = false
+            }
+
+            surface.create_entity {
+                name = "maraxsis-chimney",
+                position = {1, 8},
+                create_build_effect_smoke = false
+            }.orientation = 0.24
+
+            local create_list = {}
+            table.insert(create_list, { name = "waves-decal", position = {6, -6}, amount = 1})
+            for k, position in pairs {{-10, -3}, {-8, -3}, {4, -3}, {8, 1}} do
+                table.insert(create_list, { name = "solo-barnacle", position = position, amount = 1})
+            end
+            for k, position in pairs {{-10, 2},{-8, 3}, {-7, 3}, {5, 3}, {7, 3}, {3, 4}, {6, 4}, {1, 5}} do
+                table.insert(create_list, { name = "coral-water", position = position, amount = 1})
+            end
+            for k, position in pairs {{-1, 7}, {-2, 8}, {-3, 4}, {0, 3}, {8, 4}} do
+                table.insert(create_list, { name = "pink-lichen-decal", position = position, amount = 1})
+            end
+            surface.create_decoratives{decoratives = create_list}
+
+            surface.create_entity {
+                name = "maraxsis-diesel-submarine",
+                position = {0, 1.5},
+                create_build_effect_smoke = false
+            }
+        ]],
+        checkboard = false,
+        mute_wind_sounds = true,
     },
 }}
 

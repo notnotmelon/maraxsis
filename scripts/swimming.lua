@@ -7,21 +7,35 @@ local function transfer_equipment_grid(old_armor, new_armor)
 
     for _, equipment in pairs(old_armor_grid.equipment) do
         local is_ghost = equipment.type == "equipment-ghost"
-        new_armor_grid.put {
+        local new_equipment = new_armor_grid.put {
             name = is_ghost and equipment.ghost_name or equipment.name,
             position = equipment.position,
             quality = equipment.quality,
             ghost = is_ghost, -- vanilla bug: this just deletes the ghosts if true
             by_player = player,
         }
+        new_equipment.energy = equipment.energy
+        if equipment.type == "energy-shield-equipment" then
+            new_equipment.shield = equipment.shield
+        end
     end
 end
 
-local function transfer_armor_item(armor, target_armor_name, character_unit_number)
+local function reset_inventory_slots_bonus(force)
+    if not force.valid then return end
+    force.character_inventory_slots_bonus = math.max(10, force.character_inventory_slots_bonus - 5000)
+end
+maraxsis.register_delayed_function("reset_inventory_slots_bonus", reset_inventory_slots_bonus)
+
+local function transfer_armor_item(player, armor, target_armor_name)
+    if not player.valid then return end
     if not armor.valid or not armor.valid_for_read then return end
     if not prototypes.item[target_armor_name] then return end
+
+    local force = player.force
     local temp_inventory = game.create_inventory(1)
     local stack = temp_inventory[1]
+
     stack.set_stack {
         name = target_armor_name,
         count = 1,
@@ -31,8 +45,10 @@ local function transfer_armor_item(armor, target_armor_name, character_unit_numb
     }
 
     transfer_equipment_grid(armor, stack)
+    force.character_inventory_slots_bonus = force.character_inventory_slots_bonus + 5000
     armor.set_stack(stack)
     temp_inventory.destroy()
+    maraxsis.execute_later("reset_inventory_slots_bonus", 1, force)
 end
 maraxsis.register_delayed_function("transfer_armor_item", transfer_armor_item)
 
@@ -69,13 +85,13 @@ local function update_armor(player)
             local safe_location = character.surface.find_non_colliding_position(character.name, character.position, 32, 0.5)
             if safe_location then
                 character.teleport(safe_location)
-                maraxsis.execute_later("transfer_armor_item", 30, armor, target_armor_name, character.unit_number)
+                maraxsis.execute_later("transfer_armor_item", 30, player, armor, target_armor_name)
                 return
             end
         end
     end
 
-    transfer_armor_item(armor, target_armor_name)
+    transfer_armor_item(player, armor, target_armor_name)
 end
 
 maraxsis.on_event({
@@ -105,5 +121,5 @@ maraxsis.on_event(defines.events.on_player_cursor_stack_changed, function(event)
     if not cursor_stack_name:find("-maraxsis-swimming", 1, true) then return end
 
     local target_stack_name = cursor_stack_name:gsub("%-maraxsis%-swimming", "")
-    transfer_armor_item(cursor_stack, target_stack_name)
+    transfer_armor_item(player, cursor_stack, target_stack_name)
 end)

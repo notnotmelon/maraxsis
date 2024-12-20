@@ -17,7 +17,7 @@ maraxsis.on_event(maraxsis.events.on_built(), function(event)
 
     energy_interface.destructible = false
     energy_interface.operable = false
-    energy_interface.minable = false
+    energy_interface.minable_flag = false
     energy_interface.electric_buffer_size = (50000000 * 50) * (1 + entity.quality.level * 0.3)
 
     storage.salt_reactors[entity.unit_number] = {
@@ -40,7 +40,7 @@ maraxsis.on_event(defines.events.on_trigger_created_entity, function(event)
 
     local energy_interface = reactor_data.energy_interface
     if not energy_interface or not energy_interface.valid then return end
-    
+
     if quality_level >= 5 and not script.active_mods["infinite-quality-tiers"] then quality_level = quality_level - 1 end
     energy_interface.energy = energy_interface.energy + 10000000 * (2 ^ quality_level)
 end)

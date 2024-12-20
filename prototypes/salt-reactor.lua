@@ -2,7 +2,7 @@ data:extend {{
     type = "item",
     name = "maraxsis-electricity",
     icon = "__maraxsis__/graphics/icons/electricity.png",
-    icon_size = 40,
+    icon_size = 64,
     hidden = true,
     stack_size = 100,
     spoil_to_trigger_result = {
@@ -35,10 +35,56 @@ data:extend {{
     collision_mask = {layers = {}},
     hidden = true,
     icon = "__maraxsis__/graphics/icons/electricity.png",
-    icon_size = 40,
+    icon_size = 64,
     localised_name = {"item-name.maraxsis-electricity"},
     factoriopedia_alternative = "maraxsis-salt-reactor",
 }}
+
+local working_visualisations = {
+    {
+        always_draw = true,
+        animation = {
+            filename = "__maraxsis__/graphics/entity/salt-reactor/salt-reactor.png",
+            priority = "high",
+            width = 3200 / 8,
+            height = 3200 / 8,
+            shift = util.by_pixel(0, -16),
+            frame_count = 60,
+            line_length = 8,
+            animation_speed = 1,
+            scale = 0.5,
+        },
+    },
+    {
+        always_draw = true,
+        animation = {
+            filename = "__maraxsis__/graphics/entity/salt-reactor/salt-reactor-sh.png",
+            priority = "high",
+            width = 800,
+            height = 600,
+            scale = 0.5,
+            frame_count = 1,
+            shift = {0, -0.2},
+            draw_as_shadow = true,
+        },
+    },
+    {
+        fadeout = true,
+        animation = {
+            filename = "__maraxsis__/graphics/entity/salt-reactor/salt-reactor-emission.png",
+            priority = "high",
+            width = 3200 / 8,
+            height = 3200 / 8,
+            shift = util.by_pixel(0, -16),
+            frame_count = 60,
+            line_length = 8,
+            animation_speed = 1,
+            scale = 0.5,
+            draw_as_glow = true,
+            blend_mode = "additive",
+        },
+    },
+}
 
 data:extend {{
     type = "furnace",
@@ -50,6 +96,17 @@ data:extend {{
     max_health = 1000,
     corpse = "big-remnants",
     dying_explosion = "medium-explosion",
+    working_sound = {
+        sound = {
+            filename = "__maraxsis__/sounds/salt-reactor.ogg",
+            volume = 1,
+        },
+        apparent_volume = 1.5,
+        max_sounds_per_type = 3,
+        audible_distance_modifier = 1,
+        fade_in_ticks = 4,
+        fade_out_ticks = 20
+    },
     resistances = {
         {
             type = "fire",
@@ -71,29 +128,7 @@ data:extend {{
         inventory_index = defines.inventory.furnace_modules, shift = {0, 0.9}, max_icons_per_row = 3
     }},
     graphics_set = {
-        animation = {
-            layers = {
-                {
-                    filename = "__maraxsis__/graphics/entity/salt-reactor/salt-reactor.png",
-                    priority = "high",
-                    width = 400,
-                    height = 400,
-                    frame_count = 1,
-                    scale = 0.5,
-                    shift = {0, -0.2},
-                },
-                {
-                    filename = "__maraxsis__/graphics/entity/salt-reactor/salt-reactor-sh.png",
-                    priority = "high",
-                    width = 800,
-                    height = 600,
-                    scale = 0.5,
-                    frame_count = 1,
-                    shift = {0, -0.2},
-                    draw_as_shadow = true,
-                },
-            }
-        },
+        working_visualisations = working_visualisations,
     },
     energy_source = {
         type = "burner",
@@ -111,8 +146,8 @@ data:extend {{
         },
         light_flicker = {
             color = defines.color.limegreen,
-            minimum_intensity = 0.6,
-            maximum_intensity = 0.9,
+            minimum_intensity = 0.2,
+            maximum_intensity = 0.4,
             minimum_light_size = 2.5
         }
     },
@@ -134,10 +169,10 @@ data:extend {{
     enabled = false,
     energy_required = 10,
     ingredients = {
-        {type = "item", name = "maraxsis-glass-panes", amount = 100},
-        {type = "item", name = "tungsten-plate",       amount = 100},
-        {type = "item", name = "processing-unit",      amount = 100},
-        {type = "fluid", name = "maraxsis-brackish-water",      amount = 300},
+        {type = "item",  name = "maraxsis-glass-panes",    amount = 100},
+        {type = "item",  name = "tungsten-plate",          amount = 100},
+        {type = "item",  name = "processing-unit",         amount = 100},
+        {type = "fluid", name = "maraxsis-brackish-water", amount = 300},
     },
     results = {
         {type = "item", name = "maraxsis-salt-reactor", amount = 1},

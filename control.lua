@@ -1,11 +1,9 @@
 _G.maraxsis = require "scripts.constants"
 require "lib.lib"
 
-maraxsis.prototypes = {
-    [maraxsis.MARAXSIS_SURFACE_NAME] = require "scripts.map-gen.surfaces.maraxsis",
-    [maraxsis.TRENCH_SURFACE_NAME] = require "scripts.map-gen.surfaces.maraxsis-trench",
-}
-
+require "scripts.map-gen.maraxsis"
+require "scripts.map-gen.maraxsis-trench"
+require "scripts.map-gen.map-gen-migration"
 require "scripts.submarine"
 require "scripts.drowning"
 require "scripts.nightvision"
@@ -19,5 +17,6 @@ require "scripts.salt-reactor"
 require "scripts.trench-duct"
 require "scripts.abyssal-diving-gear"
 require "scripts.remote"
+require "scripts.fishing-tower"
 
 maraxsis.finalize_events()

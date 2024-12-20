@@ -105,6 +105,8 @@ data:extend {fishing_tower}
 data:extend {{
     name = "maraxsis-fishing-plant",
     type = "plant",
+    localised_name = {"item-name.maraxsis-fish-food"},
+    localised_description = {"item-description.maraxsis-fish-food"},
     growth_ticks = 12000,
     agricultural_tower_tint = {
         primary = defines.color.darkseagreen,
@@ -113,9 +115,10 @@ data:extend {{
     max_health = 200,
     icon = data.raw.capsule["maraxsis-tropical-fish"].icon,
     icon_size = data.raw.capsule["maraxsis-tropical-fish"].icon_size,
-    selectable_in_game = false,
     collision_mask = {layers = {[maraxsis_fishing_tower_collision_mask] = true}},
     collision_box = {{-0.8, -0.8}, {0.8, 0.8}},
+    selection_box = {{-1, -1}, {1, 1}},
+    selection_priority = 51,
     minable = {
         mining_time = 0.5,
         results = {{type = "item", name = "maraxsis-tropical-fish", amount = 15}},
@@ -129,6 +132,66 @@ data:extend {{
         height = 1,
         width = 1,
     },
-    hidden = true
+    hidden = true,
     -- ambient_sounds todo
+    created_effect = {
+        type = "direct",
+        action_delivery = {
+            type = "instant",
+            source_effects = {
+                {
+                    type = "script",
+                    effect_id = "maraxsis-fishing-plant-created",
+                },
+            }
+        }
+    }
+}}
+
+local fishing_plant_animation = table.deepcopy(data.raw["sticker"]["jellynut-speed-sticker"].animation)
+fishing_plant_animation.shift[2] = fishing_plant_animation.shift[2] - 0.5
+fishing_plant_animation = {
+    layers = {
+        table.deepcopy(fishing_plant_animation),
+        table.deepcopy(fishing_plant_animation),
+    }
+}
+fishing_plant_animation.layers[2].draw_as_glow = true
+fishing_plant_animation.type = "animation"
+fishing_plant_animation.name = "maraxsis-fishing-plant-animation"
+data:extend {fishing_plant_animation}
+
+local result_units = {}
+local probability = 1 / table_size(maraxsis.TROPICAL_FISH_NAMES)
+for _, tropical_fish in pairs(maraxsis.TROPICAL_FISH_NAMES) do
+    table.insert(result_units, {
+        unit = tropical_fish,
+        spawn_points = {{evolution_factor = 0, spawn_weight = probability}}
+    })
+end
+
+data:extend {{
+    name = "maraxsis-fish-spawner",
+    type = "unit-spawner",
+    max_count_of_owned_units = 5,
+    max_friends_around_to_spawn = 8,
+    spawning_cooldown = {60 * 10, 60 * 20},
+    spawning_radius = 11,
+    spawning_spacing = 3,
+    max_richness_for_spawn_shift = 0,
+    max_spawn_shift = 0,
+    call_for_help_radius = 0,
+    collision_box = {{-1.9, -1.9}, {1.9, 1.9}},
+    selection_box = {{-2, -2}, {2, 2}},
+    graphics_set = {},
+    result_units = result_units,
+    icon = "__maraxsis__/graphics/icons/fishing-tower.png",
+    icon_size = 64,
+    hidden = true,
+    selectable_in_game = false,
+    health = 1,
+    localised_name = {"entity-name.maraxsis-fishing-tower"},
+    localised_description = {"entity-description.maraxsis-fishing-tower"},
+    factoriopedia_alternative = "maraxsis-fishing-tower",
+    collision_mask = {layers = {}}
 }}

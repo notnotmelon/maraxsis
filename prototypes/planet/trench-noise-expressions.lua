@@ -1,4 +1,5 @@
 local TRENCH_MOVEMENT_FACTOR = maraxsis.TRENCH_MOVEMENT_FACTOR
+local TRENCH_ENTRANCE_ELEVATION = maraxsis.TRENCH_ENTRANCE_ELEVATION
 
 data:extend {{
     type = "noise-expression",
@@ -12,7 +13,7 @@ data:extend {{
     type = "noise-expression",
     name = "maraxsis_trench_wall",
     expression = [[
-        maraxsis_trench_elevation < 0.03
+        maraxsis_trench_elevation < ]] .. TRENCH_ENTRANCE_ELEVATION .. [[
     ]]
 }}
 
@@ -44,7 +45,7 @@ data:extend {{
             seed0 = map_seed,
             seed1 = 1344,
             octaves = 5,
-            input_scale = 1/100,
+            input_scale = 1/200,
             output_scale = 1
         }
     ]]
@@ -135,30 +136,40 @@ data:extend {{
     ]]
 }}
 
+data:extend {{
+    type = "noise-expression",
+    name = "maraxsis_hot_lava",
+    expression = [[
+        maraxsis_trench_wall * (maraxsis_lava_master_master > 0) * maraxsis_lava_tile(1)
+    ]]
+}}
+
 data.raw.tile["lava-hot-underwater"].autoplace = {
     probability_expression = [[
-        maraxsis_trench_wall * (maraxsis_lava_master_master > 0) * maraxsis_lava_tile(1)
+        maraxsis_hot_lava
     ]],
     order = "b[lava]-a[maraxsis]"
 }
 
 data.raw["simple-entity"]["maraxsis-lava-lamp"].autoplace = {
-    probability_expression = "maraxsis_4x4_grid * (maraxsis_lava_master_master > 0) * maraxsis_trench_wall * maraxsis_lava_tile(1)",
+    probability_expression = [[
+        maraxsis_4x4_grid * maraxsis_hot_lava * (maraxsis_trench_elevation < ]] .. TRENCH_ENTRANCE_ELEVATION - 0.05 .. [[)
+    ]],
     order = "b[lava]-a[maraxsis]"
 }
 
 data.raw["simple-entity"]["maraxsis-trench-wall-collisionless"].autoplace = {
     probability_expression = [[
-        maraxsis_3x3_grid * (maraxsis_trench_elevation < 0.05) * (maraxsis_trench_elevation >= 0.028)
+        maraxsis_3x3_grid * (maraxsis_trench_elevation < ]] .. (TRENCH_ENTRANCE_ELEVATION + 0.02) .. [[) * (maraxsis_trench_elevation >= 0.028)
     ]],
     order = "b[lava]-a[maraxsis]"
 }
 
-data.raw.tile["out-of-map"].autoplace = {
+data.raw.tile["maraxsis-trench-out-of-map"].autoplace = {
     probability_expression = [[
         1 - maraxsis_trench_wall
     ]],
-    order = "a[out-of-map]-a[maraxsis]"
+    order = "a[maraxsis-trench-out-of-map]-a[maraxsis]"
 }
 
 data.raw.tile["volcanic-cracks-hot-underwater"].autoplace = {

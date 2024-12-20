@@ -9,7 +9,7 @@ data:extend {{
             recipe = "maraxsis-nuclear-submarine",
         },
     },
-    prerequisites = {"maraxsis-torpedoes", "maraxsis-sonar", "nuclear-power", "cryogenic-science-pack"},
+    prerequisites = {"maraxsis-project-seadragon", "maraxsis-sonar", "nuclear-power", "cryogenic-science-pack"},
     unit = {
         count = 3000,
         ingredients = {
@@ -47,10 +47,8 @@ local colors = { -- default sub colors before they are tinted at runtime
 }
 
 local movement_energy_consumption = {
-    1300,
-    3000,
-    6500,
-    12000,
+    13000,
+    6000,
 }
 
 data:extend {{
@@ -69,7 +67,7 @@ local recipes = {
         {type = "item", name = "tungsten-plate",                   amount = 50},
         {type = "item", name = "maraxsis-sonar",                   amount = 1},
         {type = "item", name = "maraxsis-glass-panes",             amount = 100},
-        {type = "item", name = "maraxsis-salt-reactor",                  amount = 1},
+        {type = "item", name = "maraxsis-salt-reactor",            amount = 1},
         {type = "item", name = "pump",                             amount = 8},
         {type = "item", name = "processing-unit",                  amount = 50},
         {type = "item", name = "maraxsis-super-sealant-substance", amount = 100},
@@ -210,7 +208,6 @@ for i = 1, 2 do
     entity.equipment_grid = grid.name
     entity.icon_size = 64
     entity.height = 0
-    entity.selected_minimap_representation = nil
     entity.flags = {"placeable-player", "player-creation", "placeable-off-grid", "no-automated-item-removal", "no-automated-item-insertion"}
     entity.torso_bob_speed = 0.4
     entity.minable.result = name
@@ -222,6 +219,20 @@ for i = 1, 2 do
     entity.light_animation = nil
     entity.tank_driving = true
     entity.collision_mask = collision_mask
+    entity.working_sound = {
+        apparent_volume = 0.5,
+        max_sounds_per_type = 3,
+        audible_distance_modifier = 1,
+        fade_in_ticks = 60,
+        fade_out_ticks = 60,
+        match_speed_to_activity = true,
+        sound = {
+            filename = "__maraxsis__/sounds/submarine.ogg",
+            category = "game-effect",
+        }
+    }
+    entity.open_sound = table.deepcopy(data.raw.car.tank.open_sound)
+    entity.close_sound = table.deepcopy(data.raw.car.tank.close_sound)
 
     local factoriopedia_colors = {
         {r = 255, g = 195, b = 0},
@@ -234,8 +245,12 @@ for i = 1, 2 do
         tint = factoriopedia_colors[i],
         size = {64, 64}
     }
-    entity.working_sound = table.deepcopy(data.raw.car.car.working_sound)
-    entity.open_sound = nil
+    entity.selected_minimap_representation = {
+        filename = "__maraxsis__/graphics/entity/submarine/selected-submarine-map-tag.png",
+        flags = {"icon"},
+        size = {70, 70}
+    }
+    entity.quality_indicator_scale = 0
     entity.movement_energy_consumption = movement_energy_consumption[i] .. "kW"
     entity.weight = entity.weight / (i + 1) * 4 * movement_energy_consumption[i] / 800
     entity.energy_source = {
@@ -259,7 +274,6 @@ for i = 1, 2 do
         }
     }
     entity.guns = table.deepcopy(data.raw["spider-vehicle"]["spidertron"].guns)
-    entity.close_sound = nil
     entity.resistances = {
         {type = "fire",   percent = 100},
         {type = "impact", percent = 100},
@@ -389,7 +403,7 @@ for i = 1, 6 do
     launcher.name                                            = "maraxsis-torpedo-launch-silo-" .. i
     launcher.icon                                            = "__base__/graphics/icons/tank-cannon.png"
     launcher.icon_size                                       = 64
-    launcher.attack_parameters.ammo_category                 = "maraxsis-torpedoes"
+    launcher.attack_parameters.ammo_categories               = {"cannon-shell", "tesla"}
     launcher.attack_parameters.projectile_orientation_offset = 0
     launcher.attack_parameters.projectile_creation_distance  = 3
     launcher.attack_parameters.range                         = 96
@@ -412,3 +426,12 @@ data.raw["spider-vehicle"]["maraxsis-nuclear-submarine"].guns = {
     "maraxsis-torpedo-launch-silo-5",
     "maraxsis-torpedo-launch-silo-6",
 }
+
+data:extend {{
+    type = "sound",
+    name = "maraxsis-submerge",
+    category = "game-effect",
+    priority = 100,
+    filename = "__maraxsis__/sounds/submerge.ogg",
+    speed = 0.5
+}}

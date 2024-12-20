@@ -43,7 +43,6 @@ local prototypes_that_cant_be_placed_on_water = {
     "generator",
     "market",
     "reactor",
-    "tree",
     "simple-entity-with-force",
     "simple-entity-with-owner",
     "fusion-reactor",
@@ -73,6 +72,12 @@ local prototypes_that_cant_be_placed_in_a_dome = {
     data.raw.radar["maraxsis-sonar"],
     data.raw["electric-energy-interface"]["wind-turbine-2"],
     "mining-drill",
+    data.raw["assembling-machine"]["rsc-silo-stage1"],
+    data.raw["assembling-machine"]["rsc-silo-stage2"],
+    data.raw["assembling-machine"]["rsc-silo-stage3"],
+    data.raw["assembling-machine"]["rsc-silo-stage4"],
+    data.raw["assembling-machine"]["rsc-silo-stage5"],
+    data.raw["assembling-machine"]["rsc-silo-stage6"],
 }
 
 local prototypes_that_cant_be_placed_in_a_dome_or_on_water = {
@@ -104,6 +109,12 @@ local prototypes_that_cannot_be_placed_in_the_trench = {
     "elevated-half-diagonal-rail",
     "elevated-straight-rail",
     data.raw["electric-energy-interface"]["wind-turbine-2"],
+    data.raw["assembling-machine"]["rsc-silo-stage1"],
+    data.raw["assembling-machine"]["rsc-silo-stage2"],
+    data.raw["assembling-machine"]["rsc-silo-stage3"],
+    data.raw["assembling-machine"]["rsc-silo-stage4"],
+    data.raw["assembling-machine"]["rsc-silo-stage5"],
+    data.raw["assembling-machine"]["rsc-silo-stage6"],
 }
 
 local prototypes_that_can_be_placed_whereever = {
@@ -122,11 +133,9 @@ local prototypes_that_can_be_placed_whereever = {
     data.raw["spider-leg"]["maraxsis-submarine-leg"],
     data.raw["spider-vehicle"]["maraxsis-diesel-submarine"],
     data.raw["spider-vehicle"]["spidertron-enhancements-dummy-maraxsis-diesel-submarine"],
-    data.raw["spider-vehicle"]["constructron"],
-    data.raw["spider-vehicle"]["spidertron-enhancements-dummy-constructron"],
     data.raw["spider-vehicle"]["maraxsis-nuclear-submarine"],
     data.raw["spider-vehicle"]["spidertron-enhancements-dummy-maraxsis-nuclear-submarine"],
-    data.raw.roboport.service_station,
+    data.raw.roboport["maraxsis-regulator"],
     data.raw.roboport["maraxsis-pressure-dome"],
     data.raw.furnace["maraxsis-salt-reactor"],
     data.raw.beacon["maraxsis-conduit"],
@@ -144,7 +153,7 @@ local function block_placement(prototype, layer)
     processed_prototypes[prototype.name] = true
 
     prototype.collision_mask = collision_mask_util.get_mask(prototype)
-    if not next(prototype.collision_mask) then goto continue end -- skip if no collision mask to save UPS
+    if not prototype.collision_mask.layers.object then goto continue end -- skip if no collision mask to save UPS
     prototype.collision_mask.layers[layer] = true
     ::continue::
 end
@@ -231,7 +240,9 @@ for _, ramp in pairs(data.raw["rail-ramp"]) do
     if ramp.hidden then goto continue end
     for _, rule in pairs(ramp.tile_buildability_rules or {}) do
         if rule.required_tiles and rule.required_tiles.layers and rule.required_tiles.layers.ground_tile then
-            rule.required_tiles.layers[maraxsis_dome_collision_mask] = true
+            if table_size(rule.required_tiles.layers) ~= 0 then
+                rule.required_tiles.layers[maraxsis_dome_collision_mask] = true
+            end
         end
     end
     ::continue::

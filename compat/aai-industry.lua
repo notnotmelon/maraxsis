@@ -13,7 +13,10 @@ data:extend {{
     results = {
         {type = "item", name = "sand", amount = 2}
     },
-    localised_name = {"item-name.sand"}
+    localised_name = {"item-name.sand"},
+    allow_productivity = true,
+    allow_decomposition = false,
+    auto_recycle = false,
 }}
 
 table.insert(data.raw.technology["sand-processing"].effects, {

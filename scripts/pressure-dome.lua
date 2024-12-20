@@ -120,16 +120,45 @@ local FLOODED_STATUS = {
 local DOME_DISABLEABLE_TYPES = maraxsis.DOME_DISABLEABLE_TYPES
 local DOME_EXCLUDED_FROM_DISABLE = maraxsis.DOME_EXCLUDED_FROM_DISABLE
 local function disable_due_to_dome_low_pressure(entity, powered_and_has_fluid)
-    if not entity.valid or not DOME_DISABLEABLE_TYPES[entity.type] or DOME_EXCLUDED_FROM_DISABLE[entity.name] then return end
+    if not entity.valid or not entity.is_updatable then return end
+    if not DOME_DISABLEABLE_TYPES[entity.type] or DOME_EXCLUDED_FROM_DISABLE[entity.name] then return end
 
-    entity.active = not not powered_and_has_fluid
+    local should_be_active = not not powered_and_has_fluid
+    if entity.active == should_be_active then return end
+    entity.active = should_be_active
 
-    if powered_and_has_fluid then
+    storage.flooded_warning_info_icons = storage.flooded_warning_info_icons or {}
+    local warning = storage.flooded_warning_info_icons[entity.unit_number]
+
+    if should_be_active then
         entity.custom_status = nil
+        if warning then
+            warning.destroy()
+            storage.flooded_warning_info_icons[entity.unit_number] = nil
+        end
     else
         entity.custom_status = FLOODED_STATUS
+        if not warning then
+            warning = rendering.draw_sprite {
+                sprite = "maraxsis-flooded-warning",
+                target = entity,
+                surface = entity.surface_index,
+                target_offset = {0, -1.5},
+            }
+            storage.flooded_warning_info_icons[entity.unit_number] = warning
+        end
     end
 end
+
+maraxsis.on_nth_tick(66667, function()
+    local new_warning_icons = {}
+    for k, warning_icon in pairs(storage.flooded_warning_info_icons or {}) do
+        if warning_icon.valid then
+            new_warning_icons[k] = warning_icon
+        end
+    end
+    storage.flooded_warning_info_icons = new_warning_icons
+end)
 
 local function create_dome_light(pressure_dome_data)
     local surface = pressure_dome_data.surface
@@ -143,7 +172,7 @@ local function create_dome_light(pressure_dome_data)
         create_build_effect_smoke = false,
     }
 
-    light.minable = false
+    light.minable_flag = false
     light.destructible = false
 
     local control_behavior = light.get_or_create_control_behavior()
@@ -166,7 +195,7 @@ local function create_dome_combinator(pressure_dome_data)
         create_build_effect_smoke = false,
     }
 
-    combinator.minable = false
+    combinator.minable_flag = false
     combinator.destructible = false
     combinator.operable = false
 
@@ -264,7 +293,7 @@ maraxsis.on_event(maraxsis.events.on_built(), function(event)
         elseif points_in_dome == 4 then
             for _, collision_box in pairs(pressure_dome_data.collision_boxes) do
                 if collision_box.valid then
-                    collision_box.minable = false
+                    collision_box.minable_flag = false
                 end
             end
             disable_due_to_dome_low_pressure(entity, pressure_dome_data.powered_and_has_fluid)
@@ -408,7 +437,7 @@ local function check_can_build_dome(surface, position)
             {x - size, y - size},
             {x + size, y + size},
         },
-        collision_mask = {["object"] = true},
+        collision_mask = {["object"] = true, [maraxsis_trench_entrance_collision_mask] = true},
     }
 
     for _, e in pairs(entities_inside_square) do
@@ -438,7 +467,7 @@ local function check_can_build_dome(surface, position)
             local tile_collision = tile.collides_with("object")
                 or tile.collides_with(maraxsis_lava_collision_mask)
                 or tile.collides_with(maraxsis_trench_entrance_collision_mask)
-                
+
             if tile_collision and is_point_in_polygon(xx - x + 0.5, yy - y) then
                 return false, colliding_entities, {"cant-build-reason.entity-in-the-way", tile.prototype.localised_name}, true
             end
@@ -464,7 +493,7 @@ local function place_regulator(pressure_dome_data)
     if not regulator or not regulator.valid then
         storage.script_placing_the_regulator = true
         regulator = surface.create_entity {
-            name = "service_station",
+            name = "maraxsis-regulator",
             position = {x, y},
             quality = quality,
             force = force,
@@ -474,7 +503,7 @@ local function place_regulator(pressure_dome_data)
         storage.script_placing_the_regulator = false
     end
 
-    regulator.minable = false
+    regulator.minable_flag = false
     regulator.destructible = false
     regulator.operable = true
 
@@ -483,19 +512,69 @@ local function place_regulator(pressure_dome_data)
     local regulator_fluidbox = pressure_dome_data.regulator_fluidbox
     if not regulator_fluidbox or not regulator_fluidbox.valid then
         regulator_fluidbox = surface.create_entity {
-            name = "maraxsis-regulator-fluidbox",
+            name = "maraxsis-regulator-fluidbox-" .. quality.name,
             position = {x, y},
             force = force,
-            --quality = quality, https://github.com/notnotmelon/maraxsis/issues/50
             create_build_effect_smoke = false,
         }
     end
 
-    regulator_fluidbox.minable = false
+    regulator_fluidbox.minable_flag = false
     regulator_fluidbox.destructible = false
     regulator_fluidbox.operable = false
 
     pressure_dome_data.regulator_fluidbox = regulator_fluidbox
+end
+
+-- ensure regulators always have the correct temperature of atmosphere (25 deg C)
+maraxsis.on_nth_tick(631, function()
+    for _, pressure_dome_data in pairs(storage.pressure_domes) do
+        local regulator_fluidbox = pressure_dome_data.regulator_fluidbox
+        if not regulator_fluidbox or not regulator_fluidbox.valid then
+            place_regulator(pressure_dome_data)
+        end
+
+        local fluid = regulator_fluidbox.fluidbox[1]
+        if fluid and fluid.temperature ~= 25 then
+            fluid.temperature = 25
+            regulator_fluidbox.fluidbox[1] = fluid
+        end
+    end
+end)
+
+--- sorts all domes by y position and re-draws.
+--- this prevents Z-fighting.
+--- https://github.com/notnotmelon/maraxsis/issues/174
+local function rerender_all_domes()
+    local sorted_by_y_position = {}
+    for _, pressure_dome_data in pairs(storage.pressure_domes) do
+        table.insert(sorted_by_y_position, pressure_dome_data)
+    end
+    table.sort(sorted_by_y_position, function(a, b)
+        return a.position.y < b.position.y
+    end)
+    
+    storage.pressure_domes = {}
+    for _, pressure_dome_data in pairs(sorted_by_y_position) do
+        local surface = pressure_dome_data.surface
+        if surface.valid then
+            pressure_dome_data.entity.destroy()
+            pressure_dome_data.opacity = pressure_dome_data.opacity or 255
+            local opacity = pressure_dome_data.opacity
+            local entity = rendering.draw_sprite {
+                sprite = "maraxsis-pressure-dome-sprite",
+                render_layer = "higher-object-above",
+                target = pressure_dome_data.position,
+                surface = pressure_dome_data.surface,
+            }
+            entity.color = {opacity, opacity, opacity, opacity}
+            pressure_dome_data.entity = entity
+            pressure_dome_data.unit_number = entity.id
+            storage.pressure_domes[entity.id] = pressure_dome_data
+        else
+            storage.pressure_domes[pressure_dome_data.unit_number] = pressure_dome_data
+        end
+    end
 end
 
 maraxsis.on_event(maraxsis.events.on_built(), function(event)
@@ -581,11 +660,12 @@ maraxsis.on_event(maraxsis.events.on_built(), function(event)
 
     if table_size(contained_entities) ~= 0 then
         for _, e in pairs(pressure_dome_data.collision_boxes) do
-            e.minable = false
+            e.minable_flag = false
         end
     end
 
     storage.pressure_domes[entity.id] = pressure_dome_data
+    rerender_all_domes()
 end)
 
 local function delete_invalid_entities_from_contained_entities_list(pressure_dome_data, additional_entity_to_delete)
@@ -607,7 +687,7 @@ local function delete_invalid_entities_from_contained_entities_list(pressure_dom
     if table_size(pressure_dome_data.contained_entities) == 0 then
         for _, collision_box in pairs(pressure_dome_data.collision_boxes) do
             if collision_box.valid then
-                collision_box.minable = true
+                collision_box.minable_flag = true
             end
         end
     end
@@ -872,7 +952,7 @@ maraxsis.on_event(maraxsis.events.on_built(), function(event)
     local is_ghost = entity.name == "entity-ghost" -- this would only be false in the editor mode.
 
     local name = is_ghost and entity.ghost_name or entity.name
-    if name ~= "service_station" then return end
+    if name ~= "maraxsis-regulator" then return end
     local quality = entity.quality
     local position = entity.position
     local surface = entity.surface
@@ -926,4 +1006,37 @@ maraxsis.on_event(maraxsis.events.on_mined_tile(), function(event)
     if not dome_tiles_to_rebuild[1] then return end
     local surface = game.get_surface(event.surface_index)
     surface.set_tiles(dome_tiles_to_rebuild, true, false, false, false)
+end)
+
+maraxsis.on_nth_tick(5, function(event)
+    for _, pressure_dome_data in pairs(storage.pressure_domes) do
+        local entity = pressure_dome_data.entity
+        local surface = pressure_dome_data.surface
+        if not entity.valid or not surface.valid then goto continue end
+
+        local opacity = pressure_dome_data.opacity or 255
+        local dome_position = pressure_dome_data.position
+        local x, y = dome_position.x, dome_position.y
+
+        local any_player_inside = false
+        for _, player in pairs(game.connected_players) do
+            local player_position = player.position
+            if player.surface == surface and is_point_in_polygon(player_position.x - x, player_position.y - y) then
+                any_player_inside = true
+                break
+            end
+        end
+
+        if any_player_inside then
+            opacity = math.max(opacity - 16, 60)
+        else
+            opacity = math.min(opacity + 16, 255)
+        end
+
+        if opacity ~= pressure_dome_data.opacity then
+            entity.color = {opacity, opacity, opacity, opacity}
+            pressure_dome_data.opacity = opacity
+        end
+        ::continue::
+    end
 end)

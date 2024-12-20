@@ -1,4 +1,470 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.24.21
+Date: 2024-12-19
+  Graphics:
+    - Added the "for you if" splash image to the git.
+    - Updated the icon for saline water.
+  Locale:
+    - Updated the technology description for deepsea research to explain that biolabs are placable anywhere.
+  Changes:
+    - Removed torpedos.
+---------------------------------------------------------------------------------------------------
+Version: 1.24.20
+Date: 2024-12-19
+  Graphics:
+    - Fixed some (not all) cases of Z-fighting for pressure domes. Resolves https://github.com/notnotmelon/maraxsis/issues/174
+---------------------------------------------------------------------------------------------------
+Version: 1.24.19
+Date: 2024-12-19
+  Bugfixes:
+    - Fixed pressure domes not colliding with trench walls.
+---------------------------------------------------------------------------------------------------
+Version: 1.24.18
+Date: 2024-12-19
+  Bugfixes:
+    - Fixed shift clicking away your armor does not remove light cone from abyssal diving gear. Resolves https://github.com/notnotmelon/maraxsis/issues/173
+---------------------------------------------------------------------------------------------------
+Version: 1.24.17
+Date: 2024-12-19
+  Optimizations:
+    - Short circuit the dome opacity check when not on maraxsis.
+---------------------------------------------------------------------------------------------------
+Version: 1.24.16
+Date: 2024-12-19
+  Graphics:
+    - Domes now fade to transparent whenever a player is inside or viewing in remote view. Resolves https://github.com/notnotmelon/maraxsis/issues/110
+---------------------------------------------------------------------------------------------------
+Version: 1.24.15
+Date: 2024-12-19
+  Compatibility:
+    - Added a custom event for whenever submarines or players submerge between surfaces.
+---------------------------------------------------------------------------------------------------
+Version: 1.24.14
+Date: 2024-12-19
+  Bugfixes:
+    - Fixed crash related to certain modded vehicles missing a fuel category.
+---------------------------------------------------------------------------------------------------
+Version: 1.24.13
+Date: 2024-12-19
+  Optimizations:
+    - Fixed a memory leak involving improper cleanup of dome flooded warning icons.
+  Bugfixes:
+    - Fixed the pressure dome breaking "randomly" when supplying wrong temperature atmosphere through editor mode infinity pipes.
+---------------------------------------------------------------------------------------------------
+Version: 1.24.12
+Date: 2024-12-19
+  Compatibility:
+    - Added compatiblity with the "quality seeds" mod.
+    - Added compatiblity with the "rocket silo construction" mod.
+---------------------------------------------------------------------------------------------------
+Version: 1.24.11
+Date: 2024-12-18
+  Sounds:
+    - Added sound effects to the salt reactor. Resolves https://github.com/notnotmelon/maraxsis/issues/142
+---------------------------------------------------------------------------------------------------
+Version: 1.24.10
+Date: 2024-12-18
+  Balancing:
+    - Trench "lava biomes" are now 2x smaller but also 2x more frequent.
+  Bugfixes:
+    - Fixed wyrm specimens not accepting productivity modules.
+  Sounds:
+    - Improved the sound effects for sonar.
+---------------------------------------------------------------------------------------------------
+Version: 1.24.9
+Date: 2024-12-18
+  Bugfixes:
+    - Fixed preventing use of rocket fuel in certain vechicle mods. Resolves https://github.com/notnotmelon/maraxsis/issues/170
+  Locale:
+    - Greatly improved the salt reactor locale to explain how it works.
+    - Improved the localised description for sonar to explain that it can be placed on land.
+---------------------------------------------------------------------------------------------------
+Version: 1.24.8
+Date: 2024-12-18
+  Balancing:
+    - Greatly increased the effect of quality on the abyssal diving gear light cone radius.
+  Bugfixes:
+    - Fixed the trench being too bright in remote view. Resolves https://github.com/notnotmelon/maraxsis/issues/171
+  Changes:
+    - Allowed submerging with the abyssal diving gear by pressing CTRL+enter. Resolves https://github.com/notnotmelon/maraxsis/issues/162
+---------------------------------------------------------------------------------------------------
+Version: 1.24.7
+Date: 2024-12-18
+  Compatibility:
+    - Added a dependancy on >= 2.0.26 for the base mod.
+---------------------------------------------------------------------------------------------------
+Version: 1.24.6
+Date: 2024-12-18
+  Balancing:
+    - Nerfed the rocket stack size of super sealant substance from 50 -> 3.
+    - Removed surface restrictions for the super sealant substance recipe.
+---------------------------------------------------------------------------------------------------
+Version: 1.24.5
+Date: 2024-12-18
+  Balancing:
+    - Added piercing-rounds-magazine to the fish rendering recipe.
+  Graphics:
+    - Added a flooded warning icon whenever a dome runs out of atmosphere.
+  Changes:
+    - Added compatibility with factorio versions >= 2.0.26
+---------------------------------------------------------------------------------------------------
+Version: 1.24.4
+Date: 2024-12-18
+  Graphics:
+    - Added emmissions and working animations to the salt reactor.
+    - New salt reactor tech icon.
+---------------------------------------------------------------------------------------------------
+Version: 1.24.3
+Date: 2024-12-17
+  Balancing:
+    - Salination recipes now return salt with a 80% chance.
+---------------------------------------------------------------------------------------------------
+Version: 1.24.2
+Date: 2024-12-17
+  Sounds:
+    - Removed annoying ping sound when riding a submarine. Resolves https://github.com/notnotmelon/maraxsis/issues/148
+    - Replaced ambient gleba wind sounds in the trench with spooky maraxsis trench noises.
+    - Replaced ambient gleba wind sounds on maraxsis with bubbly maraxsis ambient noises.
+  Locale:
+    - Removed various legacy locale keys related to Spidertron Automation.
+  Changes:
+    - Removed the "easy mode" mod setting. This setting is now superceded by the ability to perform the salt chain inside chemical plants.
+---------------------------------------------------------------------------------------------------
+Version: 1.24.1
+Date: 2024-12-17
+  Changes:
+    - Bump version number. Resolves [#150](https://github.com/notnotmelon/maraxsis/issues/150) Resolves [#164](https://github.com/notnotmelon/maraxsis/issues/164) Resolves [#165](https://github.com/notnotmelon/maraxsis/issues/165) Resolves [#115](https://github.com/notnotmelon/maraxsis/issues/115)
+---------------------------------------------------------------------------------------------------
+Version: 1.24.0
+Date: 2024-12-17
+  Features:
+    - Constructron-Continued is no longer a required dependacy. Rationale: Was too confusing for users to learn two seperate submarine logistics systems that do not interact. Construction of ghosts anywhere on the map can already be performed in remote view via the vanilla spidertron remote. Fixes [#152](https://github.com/notnotmelon/maraxsis/issues/152) [#150](https://github.com/notnotmelon/maraxsis/issues/150) [#164](https://github.com/notnotmelon/maraxsis/issues/164) [#165](https://github.com/notnotmelon/maraxsis/issues/165) [#115](https://github.com/notnotmelon/maraxsis/issues/115)
+  Balancing:
+    - The trench is now 2x wider (roughly).
+  Compatibility:
+    - Added an incompatibility flag on factorio ver 2.0.26 until all API deprecation issues are resolved.
+  Bugfixes:
+    - Fixed lava tiles sometimes generating in incorrect locations inside the trench.
+    - Fixed swimming freely in the trench not colliding with out of map tiles. Resolves https://github.com/notnotmelon/maraxsis/issues/167
+  Graphics:
+    - Removed "quality pips" from submarines.
+  Locale:
+    - Updated the locale of salt reactor to explain that it has 2.5GJ internal buffer.
+---------------------------------------------------------------------------------------------------
+Version: 1.23.53
+Date: 2024-12-16
+  Bugfixes:
+    - Fixed non-diminishing returns after use of 100 conduits.
+  Graphics:
+    - Fixed ugly alt mode module icon draw specfications for the trench hydro plant.
+  Locale:
+    - Added instructions for how to send items to the trench onto the spidertron automation technology description.
+  Changes:
+    - Hydro plant pipe connections are now pass-thru.
+---------------------------------------------------------------------------------------------------
+Version: 1.23.52
+Date: 2024-12-16
+  Balancing:
+    - Buffed the hydro plant. Number of module slots in the trench (or space) increased from 6 -> 8. This change allows infinite cycling of carbon fiber in the trench without legendary productivity 3 modules. Legendary prod 2s now suffice.
+---------------------------------------------------------------------------------------------------
+Version: 1.23.51
+Date: 2024-12-16
+  Bugfixes:
+    - Fixed that inserters could not automatically interact with the regulator for purposes of automated bot insertion.
+---------------------------------------------------------------------------------------------------
+Version: 1.23.50
+Date: 2024-12-16
+  Compatibility:
+    - With tenebris installed, no longer deletes the maraxsis-fulgora space route.
+---------------------------------------------------------------------------------------------------
+Version: 1.23.49
+Date: 2024-12-15
+  Locale:
+    - Added a (Trench) tag for the duplicate hydro plants in the upgrade planner. Resolves https://github.com/notnotmelon/maraxsis/issues/160
+---------------------------------------------------------------------------------------------------
+Version: 1.23.48
+Date: 2024-12-15
+  Bugfixes:
+    - Allowed fast-replace of quality hydro plants from withiin the trench. Resolves https://github.com/notnotmelon/maraxsis/issues/157
+---------------------------------------------------------------------------------------------------
+Version: 1.23.47
+Date: 2024-12-15
+  Graphics:
+    - Post-processing of techs and icons (snouz) ([#149](https://github.com/notnotmelon/maraxsis/issues/149))
+---------------------------------------------------------------------------------------------------
+Version: 1.23.46
+Date: 2024-12-15
+  Bugfixes:
+    - Added a tips and tricks simulation for trench exploration. Resolves https://github.com/notnotmelon/maraxsis/issues/87
+---------------------------------------------------------------------------------------------------
+Version: 1.23.45
+Date: 2024-12-15
+  Bugfixes:
+    - Fixed being able to span undergrounds over maraxsis lava.
+---------------------------------------------------------------------------------------------------
+Version: 1.23.44
+Date: 2024-12-15
+  Bugfixes:
+    - Fixed maraxsis cliffs generating out of bounds on ribbon worlds. Resolves https://github.com/notnotmelon/maraxsis/issues/130
+---------------------------------------------------------------------------------------------------
+Version: 1.23.43
+Date: 2024-12-15
+  Bugfixes:
+    - Fixed maraxsis editing some collision masks its not supposed to. Resolves https://github.com/notnotmelon/maraxsis/issues/35
+---------------------------------------------------------------------------------------------------
+Version: 1.23.42
+Date: 2024-12-15
+  Graphics:
+    - Added a new map tag for whenever a submarine is selected by a submarine remote.
+    - Deleted some unused graphics in the submarine.
+---------------------------------------------------------------------------------------------------
+Version: 1.23.41
+Date: 2024-12-15
+  Bugfixes:
+    - Fix crash when new chunks are generated with new coral graphics.
+---------------------------------------------------------------------------------------------------
+Version: 1.23.40
+Date: 2024-12-15
+  Graphics:
+    - New new coral graphics.
+---------------------------------------------------------------------------------------------------
+Version: 1.23.39
+Date: 2024-12-15
+  Sounds:
+    - Steal music from gleba and vulcanus. Resolves https://github.com/notnotmelon/maraxsis/issues/15
+---------------------------------------------------------------------------------------------------
+Version: 1.23.38
+Date: 2024-12-14
+  Compatibility:
+    - Added compat with mods "foundry-expanded" and "electromagnetic-plant-expanded"
+---------------------------------------------------------------------------------------------------
+Version: 1.23.37
+Date: 2024-12-14
+  Balancing:
+    - The sublimation recipe is now effected by productivity modules.
+---------------------------------------------------------------------------------------------------
+Version: 1.23.36
+Date: 2024-12-14
+  Balancing:
+    - Added a vehicle acceleration and top speed multiplier to all barreled submarine fuels.
+    - Added a vehicle acceleration and top speed multiplier to uranium fuel cells.
+    - Increased the fuel value of all barrels by 10x
+    - Increased the movement energy consumption of the diesel and construction subs by 10x.
+    - Increased the movement energy consumption of the nuclear subs by 2x.
+    - Reduced the size of abyssal diving gear from 3x3 to 2x2. Resolves https://github.com/notnotmelon/maraxsis/issues/140
+    - Sublimation can now be additionally performed in the chemical plant. Resolves https://github.com/notnotmelon/maraxsis/issues/144
+    - Submarines can now consume rocket fuel. Nuclear submarines can now consume nuclear fuel.
+    - The entire salt filter chain can now be alternatively performed in the chemical plant. This greatly smooths the difficulty curve in the beginning.
+  Compatibility:
+    - Added compatiblity with "5dim more modules". Resolves https://github.com/notnotmelon/maraxsis/issues/143
+  Bugfixes:
+    - Fixed adding maraxsis collision masks to collisionless entities. Resolves https://github.com/notnotmelon/maraxsis/issues/146
+    - Fixed that the conduit could be flooded inside a pressure dome.
+  Sounds:
+    - Decreased the volume for the regulator.
+---------------------------------------------------------------------------------------------------
+Version: 1.23.35
+Date: 2024-12-14
+  Graphics:
+    - New icons for glass.
+---------------------------------------------------------------------------------------------------
+Version: 1.23.34
+Date: 2024-12-14
+  Bugfixes:
+    - Fixed missing item subgroup for the mollusk-husk in factoriopedia.
+    - The "maraxsis-nuclear-artillery-projectile" entity is now hidden in factoriopedia.
+  Locale:
+    - Edited the locale for the salt reactor.
+---------------------------------------------------------------------------------------------------
+Version: 1.23.33
+Date: 2024-12-14
+  Balancing:
+    - Reduced the atmosphere consumption in the chemical science alt recipe from 100 -> 50.
+  Changes:
+    - The pressure dome atmosphere consumption now scales with quality.
+    - Tweaked the glass recycling manual recipe override to better mimic how the game generates recycling recipes.
+---------------------------------------------------------------------------------------------------
+Version: 1.23.32
+Date: 2024-12-14
+  Bugfixes:
+    - Fixed a crash when moving between surfaces in remote view with a spidertron remote held and that remote refrences now mined submarines.
+---------------------------------------------------------------------------------------------------
+Version: 1.23.31
+Date: 2024-12-14
+  Bugfixes:
+    - The mount remote selection data is now preserved when switching surfaces or when the submarine submerges. Resolves https://github.com/notnotmelon/maraxsis/issues/122
+---------------------------------------------------------------------------------------------------
+Version: 1.23.30
+Date: 2024-12-14
+  Sounds:
+    - Changed the item sound for sonar.
+  Locale:
+    - Fixed missing localised name for one of the maraxsis coral tiles.
+  Changes:
+    - Increased the size of coral reefs by roughly 80% with default map gen settings.
+---------------------------------------------------------------------------------------------------
+Version: 1.23.29
+Date: 2024-12-13
+  Bugfixes:
+    - Fixed missing rocket weight for fat man (now 10).
+  Sounds:
+    - Added item sounds to all maraxsis items. Resolves https://github.com/notnotmelon/maraxsis/issues/16
+  Locale:
+    - Updated the locale for conduits to explain how the distribution effectivity curve works. Resolves https://github.com/notnotmelon/maraxsis/issues/139
+---------------------------------------------------------------------------------------------------
+Version: 1.23.28
+Date: 2024-12-13
+  Balancing:
+    - The salt filter cleaning recipe no longer accepts productivity modules.
+---------------------------------------------------------------------------------------------------
+Version: 1.23.27
+Date: 2024-12-13
+  Sounds:
+    - Added sound effects to the hydro plant.
+---------------------------------------------------------------------------------------------------
+Version: 1.23.26
+Date: 2024-12-13
+  Bugfixes:
+    - Placing a mining drill on a coral patch no longer randomly places a coral drill instead.
+    - Richness, frequency, and size sliders now actually do things.
+---------------------------------------------------------------------------------------------------
+Version: 1.23.25
+Date: 2024-12-13
+  Graphics:
+    - Changed the mining particle for coral.
+  Sounds:
+    - Added mining sounds for coral.
+    - Decreased the volume of the regulator.
+---------------------------------------------------------------------------------------------------
+Version: 1.23.24
+Date: 2024-12-13
+  Sounds:
+    - New sounds for the regulator.
+---------------------------------------------------------------------------------------------------
+Version: 1.23.23
+Date: 2024-12-13
+  Changes:
+    - Replaced the "electric boiler" recipe with sublimation (direct ice to steam). Removed the space requirement.
+---------------------------------------------------------------------------------------------------
+Version: 1.23.22
+Date: 2024-12-13
+  Bugfixes:
+    - Fixed duplicate "submerge" conditions when playing in German, French, Russian, or Chinese
+---------------------------------------------------------------------------------------------------
+Version: 1.23.21
+Date: 2024-12-13
+  Compatibility:
+    - Added compat with the "subsurface" mod.
+---------------------------------------------------------------------------------------------------
+Version: 1.23.20
+Date: 2024-12-13
+  Compatibility:
+    - The factorissimo buildings now count as maraxsis surfaces by the mod.
+---------------------------------------------------------------------------------------------------
+Version: 1.23.19
+Date: 2024-12-12
+  Bugfixes:
+    - Fixed items would spill and equipment energy would be reset when switching out of swimming state. Resolves https://github.com/notnotmelon/maraxsis/issues/138
+---------------------------------------------------------------------------------------------------
+Version: 1.23.18
+Date: 2024-12-12
+  Balancing:
+    - Fixed wrong steam -> water ratio in the electric boiler recipe. Flipped from 10:1 to 1:10
+---------------------------------------------------------------------------------------------------
+Version: 1.23.17
+Date: 2024-12-12
+  Balancing:
+    - Sped up electric boiler 5x
+---------------------------------------------------------------------------------------------------
+Version: 1.23.16
+Date: 2024-12-12
+  Changes:
+    - Added "electric boiler" recipe for obtaining steam in space without a nuclear reactor.
+---------------------------------------------------------------------------------------------------
+Version: 1.23.15
+Date: 2024-12-12
+  Sounds:
+    - Added sounds for the submarine. Resolves https://github.com/notnotmelon/maraxsis/issues/96
+---------------------------------------------------------------------------------------------------
+Version: 1.23.14
+Date: 2024-12-12
+  Balancing:
+    - The salt electrolysis recipe can now either be crafted in a chemplant or hydro plant.
+---------------------------------------------------------------------------------------------------
+Version: 1.23.13
+Date: 2024-12-12
+  Locale:
+    - Deleted some now incorrect information in the submarine entity tooltip.
+---------------------------------------------------------------------------------------------------
+Version: 1.23.12
+Date: 2024-12-12
+  Balancing:
+    - Glass can now be recycled.
+---------------------------------------------------------------------------------------------------
+Version: 1.23.11
+Date: 2024-12-12
+  Bugfixes:
+    - Fixed being able to generate sealant by recycling rocket parts.
+---------------------------------------------------------------------------------------------------
+Version: 1.23.10
+Date: 2024-12-12
+  Balancing:
+    - Removed surface restrictions on the submarine dock. Can now be placed anywhere!
+  Compatibility:
+    - The AAI sand dictionary conversion recipe now accepts productivity modules.
+    - The trench is no longer displayed in the background when using the "Visible Planets in Space" mod.
+  Graphics:
+    - Compress coral reef graphics and reduce the bundle size.
+---------------------------------------------------------------------------------------------------
+Version: 1.23.9
+Date: 2024-12-12
+  Bugfixes:
+    - Fixed being able to build sand extractors outside of nauvis.
+---------------------------------------------------------------------------------------------------
+Version: 1.23.8
+Date: 2024-12-12
+  Changes:
+    - Tropical fishes now spawn around the fishing tower.
+---------------------------------------------------------------------------------------------------
+Version: 1.23.7
+Date: 2024-12-12
+  Bugfixes:
+    - Fixed that fish food entity could not be manually mined.
+  Graphics:
+    - Added additional tile transitions between coral reef and sand.
+    - Added polycephalum-slime decorative to help integrate corals into the floor.
+    - Fixed missing sprite for the fish food when placed as an entity.
+---------------------------------------------------------------------------------------------------
+Version: 1.23.6
+Date: 2024-12-12
+  Bugfixes:
+    - Fix crash when loading the game in RU locale.
+---------------------------------------------------------------------------------------------------
+Version: 1.23.5
+Date: 2024-12-12
+  Locale:
+    - HOTFIX ru locale.cfg ([#132](https://github.com/notnotmelon/maraxsis/issues/132))
+    - Remove most Spidertron Enhancements/Patrols locale overrides ([#134](https://github.com/notnotmelon/maraxsis/issues/134))
+---------------------------------------------------------------------------------------------------
+Version: 1.23.4
+Date: 2024-12-11
+  Graphics:
+    - Added polylplast decorative.
+---------------------------------------------------------------------------------------------------
+Version: 1.23.3
+Date: 2024-12-11
+  Locale:
+    - Update RU locale ([#128](https://github.com/notnotmelon/maraxsis/issues/128))
+---------------------------------------------------------------------------------------------------
+Version: 1.23.2
+Date: 2024-12-11
+  Bugfixes:
+    - Fixed infinite oil duplication bug in easy mode.
+  Graphics:
+    - Added graphics for the coral reef.
+  Locale:
+    - Fixed typo in the abysal diving gear description. https://github.com/notnotmelon/maraxsis/pull/129
+---------------------------------------------------------------------------------------------------
 Version: 1.23.1
 Date: 2024-12-11
   Balancing:
@@ -65,7 +531,7 @@ Date: 2024-12-10
     - Added lamps and mining drills to the "underwater machines" tips and tricks page. Resolves https://github.com/notnotmelon/maraxsis/issues/84. Resolves https://github.com/notnotmelon/maraxsis/issues/83
     - Improved the description of the trench duct to tell players how to place this entity.
     - Provide the names of the required entities and fluids in the flooded entity status.
-    - Replaced the "Disabled by script" tag on machines with "Flooded. Provide [fluid=maraxsis-atmosphere] to the [entity=service_station]." Resolves https://github.com/notnotmelon/maraxsis/issues/101
+    - Replaced the "Disabled by script" tag on machines with "Flooded. Provide [fluid=maraxsis-atmosphere] to the [entity=maraxsis-regulator]." Resolves https://github.com/notnotmelon/maraxsis/issues/101
     - Updated German translation.
     - Updated RU locale.
     - Updated the description for the regulator to better explain how it works.
