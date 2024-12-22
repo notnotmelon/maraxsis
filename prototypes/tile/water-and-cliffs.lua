@@ -17,6 +17,7 @@ local water = {
     render_layer = "light-effect",
     icon = "__maraxsis__/graphics/tile/water/water-combined.png",
     icon_size = 32,
+    hidden = true,
 }
 
 local frame_sequence = {}
