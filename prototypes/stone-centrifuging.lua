@@ -17,7 +17,9 @@ data:extend {{
     allow_decomposition = false,
     allow_productivity = true,
     localised_name = {"technology-name.maraxsis-stone-centrifuging"},
-    localised_description = {"technology-description.maraxsis-stone-centrifuging"}
+    localised_description = {"technology-description.maraxsis-stone-centrifuging"},
+    subgroup = "uranium-processing",
+    order = "b[uranium-products]-e[stone-centrifuging]"
 }}
 
 data:extend {{
