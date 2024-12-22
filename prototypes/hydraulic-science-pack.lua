@@ -46,7 +46,7 @@ data:extend {{
         {type = "fluid", name = "maraxsis-saline-water",  amount = 300},
     },
     results = {
-        {type = "item", name = "hydraulic-science-pack", amount = 3},
+        {type = "item", name = "hydraulic-science-pack", amount = 1},
     },
     allow_productivity = true,
     category = "maraxsis-hydro-plant",
