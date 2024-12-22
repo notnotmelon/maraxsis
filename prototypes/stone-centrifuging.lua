@@ -33,7 +33,7 @@ data:extend {{
     },
     prerequisites = {"kovarex-enrichment-process", "maraxsis-project-seadragon"},
     unit = {
-        count = 1000,
+        count = 5000,
         ingredients = {
             {"metallurgic-science-pack", 1},
             {"hydraulic-science-pack", 1},
