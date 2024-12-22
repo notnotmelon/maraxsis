@@ -34,6 +34,7 @@ require "prototypes.tips-and-tricks.tips-and-tricks"
 require "prototypes.offshore-pump"
 require "prototypes.planet.space-location"
 require "prototypes.conduit"
+require "prototypes.stone-centrifuging"
 
 --- custom event for submarine submerged
 --- also triggers on character submerged with abyssal diving gear
