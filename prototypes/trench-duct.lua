@@ -13,7 +13,7 @@ data:extend {{
     icon = "__maraxsis__/graphics/icons/trench-duct.png",
     stack_size = 5,
     place_result = "maraxsis-trench-duct",
-    subgroup = "energy-pipe-distribution",
+    subgroup = "ducts",
     order = "d[pipe]-x[trench-duct]"
 }}
 
