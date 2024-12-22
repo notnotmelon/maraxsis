@@ -5,12 +5,12 @@ data:extend {{
 
 data:extend {{
     type = "recipe",
-    name = "maraxsis-sand",
+    name = "maraxsis-sand-extraction",
     category = "maraxsis-sand-extraction",
     energy_required = 10,
     ingredients = {},
     results = {
-        {type = "item", name = "maraxsis-sand", amount = 1}
+        {type = "item", name = "sand", amount = 1}
     },
     enabled = false,
     show_amount_in_title = false,
@@ -21,16 +21,19 @@ data:extend {{
         min = 200000,
         max = 200000,
     }},
-    maximum_productivity = 9999999
+    maximum_productivity = 9999999,
+    main_product = "sand",
+    localised_name = {"item-name.sand"},
+    localised_description = {"item-description.sand"},
 }}
 
-for i = 1, 10 do
+for i = 1, 50 do
     local mining_productivity = data.raw["technology"]["mining-productivity-" .. i]
     if not mining_productivity then break end
 
     table.insert(mining_productivity.effects, {
         type = "change-recipe-productivity",
-        recipe = "maraxsis-sand",
+        recipe = "maraxsis-sand-extraction",
         change = 0.1,
         hidden = true
     })
@@ -45,7 +48,7 @@ for extractor in pairs(maraxsis.MARAXSIS_SAND_EXTRACTORS) do
     extractor.localised_name = extractor.localised_name or {"entity-name." .. extractor.name}
     extractor.localised_description = extractor.localised_description or {"?", {"entity-description." .. extractor.name}, ""}
     extractor.hidden_in_factoriopedia = false
-    extractor.fixed_recipe = "maraxsis-sand"
+    extractor.fixed_recipe = "maraxsis-sand-extraction"
     extractor.fixed_quality = "normal"
     extractor.crafting_speed = extractor.mining_speed
     extractor.mining_speed = nil

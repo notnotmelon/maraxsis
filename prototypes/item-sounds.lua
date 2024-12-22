@@ -27,7 +27,7 @@ add_sound_item("maraxsis-sonar", item_sounds.metal_large_inventory_move, item_so
 add_sound_item("maraxsis-pressure-dome", item_sounds.metal_large_inventory_move, item_sounds.metal_large_inventory_pickup, item_sounds.metal_large_inventory_move)
 add_sound_item("maraxsis-coral", space_age_item_sounds.agriculture_inventory_move, space_age_item_sounds.agriculture_inventory_pickup, space_age_item_sounds.agriculture_inventory_move)
 add_sound_item("maraxsis-limestone", item_sounds.resource_inventory_move, item_sounds.resource_inventory_pickup, item_sounds.resource_inventory_move)
-add_sound_item("maraxsis-sand", item_sounds.resource_inventory_move, item_sounds.resource_inventory_pickup, item_sounds.resource_inventory_move)
+add_sound_item("sand", item_sounds.resource_inventory_move, item_sounds.resource_inventory_pickup, item_sounds.resource_inventory_move)
 add_sound_item("maraxsis-glass-panes", item_sounds.metal_small_inventory_move, item_sounds.metal_small_inventory_pickup, item_sounds.metal_small_inventory_move)
 add_sound_item("maraxsis-fish-food", space_age_item_sounds.agriculture_inventory_move, space_age_item_sounds.agriculture_inventory_pickup, space_age_item_sounds.agriculture_inventory_move)
 add_sound_item("maraxsis-tropical-fish", item_sounds.raw_fish_inventory_move, item_sounds.raw_fish_inventory_pickup, item_sounds.raw_fish_inventory_move)

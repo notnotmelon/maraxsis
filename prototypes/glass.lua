@@ -6,7 +6,7 @@ data:extend {{
     effects = {
         {
             type = "unlock-recipe",
-            recipe = "maraxsis-sand",
+            recipe = "maraxsis-sand-extraction",
         },
         {
             type = "unlock-recipe",
@@ -59,7 +59,7 @@ data:extend {{
     enabled = false,
     energy_required = 5,
     ingredients = {
-        {type = "item", name = "maraxsis-sand",      amount = 3},
+        {type = "item", name = "sand",      amount = 3},
         {type = "item", name = "maraxsis-limestone", amount = 1},
         {type = "item", name = "maraxsis-salt",      amount = 1},
     },
@@ -104,7 +104,7 @@ end
 
 data:extend {{
     type = "item",
-    name = "maraxsis-sand",
+    name = "sand",
     icon = "__maraxsis__/graphics/icons/sand-3.png",
     pictures = sand_variants,
     icon_size = 64,
