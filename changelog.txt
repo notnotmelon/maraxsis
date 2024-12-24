@@ -1,4 +1,9 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.25.3
+Date: 2024-12-24
+  Compatibility:
+    - Added min version requirement for fluid must flow. Resolves https://github.com/notnotmelon/maraxsis/issues/185
+---------------------------------------------------------------------------------------------------
 Version: 1.25.2
 Date: 2024-12-22
   Balancing:
