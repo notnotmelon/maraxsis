@@ -78,6 +78,8 @@ for i = 1, 2 do
     local name = i == 1 and "maraxsis-diesel-submarine" or "maraxsis-nuclear-submarine"
     local icon = "__maraxsis__/graphics/icons/" .. (i == 1 and "diesel" or "nuclear") .. "-submarine.png"
 
+    if aai_vehicle_exclusions then table.insert(aai_vehicle_exclusions, name) end
+
     local grid = table.deepcopy(data.raw["equipment-grid"]["spidertron-equipment-grid"])
     grid.height = 3 + 3 * i
     grid.name = name .. "-equipment-grid"
