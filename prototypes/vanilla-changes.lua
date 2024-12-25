@@ -25,20 +25,6 @@ add_hydraulic_pack("promethium-science-pack", false)
 table.insert(data.raw["technology"]["promethium-science-pack"].prerequisites, "maraxsis-deepsea-research")
 add_hydraulic_pack("research-productivity", false)
 
-for _, machine_type in pairs {"assembling-machine", "rocket-silo", "furnace", "character"} do
-    for _, machine in pairs(data.raw[machine_type] or {}) do
-        if machine.crafting_categories then
-            for _, category in pairs(machine.crafting_categories) do
-                if category == "crafting" then
-                    table.insert(machine.crafting_categories, "maraxsis-hydro-plant-or-assembling")
-                elseif category == "advanced-crafting" then
-                    table.insert(machine.crafting_categories, "maraxsis-hydro-plant-or-advanced-crafting")
-                end
-            end
-        end
-    end
-end
-
 data.raw.recipe["thruster"].category = "maraxsis-hydro-plant-or-assembling"
 data.raw.recipe["pumpjack"].category = "maraxsis-hydro-plant-or-assembling"
 data.raw.recipe["chemical-plant"].category = "maraxsis-hydro-plant-or-assembling"
@@ -74,12 +60,6 @@ table.insert(data.raw.recipe["rocket-part"].surface_conditions, {
     property = "pressure",
     max = 50000,
 })
-
-table.insert(data.raw.furnace["electric-furnace"].crafting_categories, "maraxsis-smelting-or-biochamber")
-table.insert(data.raw["assembling-machine"]["biochamber"].crafting_categories, "maraxsis-smelting-or-biochamber")
-table.insert(data.raw["assembling-machine"]["biochamber"].crafting_categories, "maraxsis-hydro-plant-or-biochamber")
-table.insert(data.raw["assembling-machine"]["chemical-plant"].crafting_categories, "maraxsis-hydro-plant-or-chemistry")
-table.insert(data.raw["assembling-machine"]["foundry"].crafting_categories, "maraxsis-hydro-plant-or-foundry")
 
 if data.raw.technology["rocket-part-productivity"] then
     table.insert(data.raw.technology["rocket-part-productivity"].effects, {
