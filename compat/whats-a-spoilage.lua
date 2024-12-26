@@ -1,6 +1,6 @@
 local electricity = data.raw.item["maraxsis-electricity"]
 
-electricity.spoil_ticks = (0.5 * 60) * 1.35 + 10, -- items start to spoil when the recipe starts.
+electricity.spoil_ticks = (0.5 * 60) * 1.35 + 10 -- items start to spoil when the recipe starts.
 electricity.spoil_to_trigger_result = {
     trigger = {
         type = "direct",
