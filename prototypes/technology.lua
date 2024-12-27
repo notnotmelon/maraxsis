@@ -81,38 +81,3 @@ data:extend {{
     max_level = "infinite",
     order = "ex[maraxsis]",
 }}
-
-data:extend {{
-    type = "technology",
-    name = "maraxsis-engine-unit-productivity",
-    icons = util.technology_icon_constant_recipe_productivity("__base__/graphics/technology/engine.png"),
-    icon_size = 256,
-    effects = {
-        {
-            type = "change-recipe-productivity",
-            recipe = "engine-unit",
-            change = 0.1
-        },
-        {
-            type = "change-recipe-productivity",
-            recipe = "electric-engine-unit",
-            change = 0.1
-        },
-    },
-    prerequisites = {"maraxsis-project-seadragon"},
-    unit = {
-        count_formula = "1.5^L*1000",
-        ingredients = {
-            {"automation-science-pack",  1},
-            {"logistic-science-pack",    1},
-            {"chemical-science-pack",    1},
-            {"production-science-pack",  1},
-            {"utility-science-pack",     1},
-            {"metallurgic-science-pack", 1},
-            {"hydraulic-science-pack",   1},
-        },
-        time = 60
-    },
-    max_level = "infinite",
-    upgrade = true
-}}

@@ -112,6 +112,36 @@ data:extend {{
 }}
 
 data:extend {{
+    type = "technology",
+    name = "maraxsis-glass-productivity",
+    icons = util.technology_icon_constant_recipe_productivity("__maraxsis__/graphics/technology/glass-productivity.png"),
+    icon_size = 256,
+    effects = {
+        {
+            type = "change-recipe-productivity",
+            recipe = "maraxsis-glass-panes",
+            change = 0.1
+        },
+    },
+    prerequisites = {"maraxsis-project-seadragon"},
+    unit = {
+        count_formula = "1.5^L*1000",
+        ingredients = {
+            {"automation-science-pack",  1},
+            {"logistic-science-pack",    1},
+            {"chemical-science-pack",    1},
+            {"production-science-pack",  1},
+            {"utility-science-pack",     1},
+            {"metallurgic-science-pack", 1},
+            {"hydraulic-science-pack",   1},
+        },
+        time = 60
+    },
+    max_level = "infinite",
+    upgrade = true
+}}
+
+data:extend {{
     type = "recipe",
     name = "maraxsis-limestone-processing",
     enabled = false,
