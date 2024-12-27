@@ -61,7 +61,7 @@ data:extend {{
     ingredients = {
         {type = "item", name = "sand",      amount = 3},
         {type = "item", name = "maraxsis-limestone", amount = 1},
-        {type = "item", name = "maraxsis-salt",      amount = 1},
+        {type = "item", name = "maraxsis-salt",      amount = 2},
     },
     results = {
         {type = "item", name = "maraxsis-glass-panes", amount = 1},
