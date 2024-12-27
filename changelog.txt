@@ -1,4 +1,9 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.27.0
+Date: 2024-12-27
+  Features:
+    - Removed glass productivity. Added engine unit productivity. MIGRATION NOTE: Your researched levels of glass prod will be converted to levels of engine prod.
+---------------------------------------------------------------------------------------------------
 Version: 1.26.1
 Date: 2024-12-27
   Bugfixes:
