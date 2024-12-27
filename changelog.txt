@@ -8,12 +8,6 @@ Version: 1.26.0
 Date: 2024-12-26
   Features:
     - Increased the version number.
-  Compatibility:
-    - Added compatibility with "whats a spoilage" mod.
-    - Fixed compatibility with "whats a spoilage" mod.
-  Bugfixes:
-    - Fix maraxsis crafting categories not applying to certain modded entities. Resolves https://github.com/notnotmelon/maraxsis/issues/184
-    - Fixed crash with AAI programmable vechicles. Resolves https://github.com/notnotmelon/maraxsis/issues/183
 ---------------------------------------------------------------------------------------------------
 Version: 1.25.5
 Date: 2024-12-26
