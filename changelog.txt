@@ -1,4 +1,13 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.27.1
+Date: 2024-12-27
+  Locale:
+    - Fix various bugs in german translation.
+    - Update dome locale to explain how its mined.
+  Changes:
+    - Added a migration to convert engine productivity back to glass productivity.
+    - Reverted "Removed glass productivity. Added engine unit productivity."
+---------------------------------------------------------------------------------------------------
 Version: 1.27.0
 Date: 2024-12-27
   Features:
