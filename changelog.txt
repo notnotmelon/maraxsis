@@ -1,4 +1,11 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.27.5
+Date: 2024-12-28
+  Graphics:
+    - Removed "maraxsis-hd" from the mod files.
+  Changes:
+    - The maraxsis trench no longer appears in the starmap.
+---------------------------------------------------------------------------------------------------
 Version: 1.27.4
 Date: 2024-12-28
   Bugfixes:
