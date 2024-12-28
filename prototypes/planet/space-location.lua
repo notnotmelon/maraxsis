@@ -29,11 +29,6 @@ data:extend {maraxsis.merge(data.raw.planet.gleba, {
     flying_robot_energy_usage_multiplier = 1.5, -- todo: this doesnt work
 })}
 
-if mods["hd_planets"] then
-    data.raw["planet"]["maraxsis"].starmap_icon = "__maraxsis__/graphics/planets/maraxsis-hd.png"
-    data.raw["planet"]["maraxsis"].starmap_icon_size = 4072
-end
-
 data:extend {maraxsis.merge(data.raw.planet.gleba, {
     name = "maraxsis-trench",
     starting_area = 1,
