@@ -1,4 +1,9 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.27.8
+Date: 2024-12-29
+  Locale:
+    - Add factoriopedia description for trench entrance tiles to explain how to find the trench.
+---------------------------------------------------------------------------------------------------
 Version: 1.27.7
 Date: 2024-12-29
   Compatibility:
