@@ -7,6 +7,7 @@ require "prototypes.item-sounds"
 require "prototypes.regulator-fluidbox"
 require "compat.aai-industry"
 require "compat.transport-ring-teleporter"
+require "compat.quality-seeds"
 
 local function add_fuel_value(fluid, value)
     fluid = data.raw.fluid[fluid]
