@@ -1,4 +1,9 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.27.6
+Date: 2024-12-29
+  Compatibility:
+    - Fixed crash when installing both "quality seeds" "maraxsis" and "all recipes prod techs" all at the same time.
+---------------------------------------------------------------------------------------------------
 Version: 1.27.5
 Date: 2024-12-28
   Graphics:
