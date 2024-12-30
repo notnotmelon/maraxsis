@@ -64,6 +64,8 @@ Maraxsis is available at the same time as Aquilo. The mod does not change any va
 
 The mod leans heavily into the puzzle genre requiring creative setups to solve difficult challenges. Do you have what it takes to craft the hydraulic science pack?
 
+There is also the [Maraxsis Start](https://mods.factorio.com/mod/maraxsis-start) mod to invert the tech tree and spawn you on Maraxsis.
+
 Here's a sample of some of the technologies available on Maraxsis:
 
 ![](https://files.catbox.moe/yeqogf.png)
