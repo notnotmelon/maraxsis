@@ -336,7 +336,7 @@ maraxsis.on_nth_tick(277, function()
         end
 
         local fuel_inventory = submarine.get_fuel_inventory()
-        if fuel_inventory.is_empty() then
+        if fuel_inventory and fuel_inventory.is_empty() then
             for _, player in pairs(submarine.force.players) do
                 player.add_alert(submarine, defines.alert_type.train_out_of_fuel)
             end
