@@ -350,3 +350,41 @@ maraxsis.on_nth_tick(277, function()
         end
     end
 end)
+
+--- to prevent softlocks, once the player dies find a submarine and teleport to the respawn location
+maraxsis.on_event(defines.events.on_player_respawned, function(event)
+    local player = game.get_player(event.player_index)
+    if not player or not player.valid then return end
+    if not maraxsis.MARAXSIS_SURFACES[player.surface.name] then return end
+    local force_index = player.force_index
+
+    local submarine_names = {}
+    for submarine_name in pairs(maraxsis.SUBMARINES) do
+        table.insert(submarine_names, submarine_name)
+    end
+
+    local submarine_to_teleport
+    for surface_name in pairs(maraxsis.MARAXSIS_SURFACES) do
+        local surface = game.get_surface(surface_name)
+        if not surface then goto continue end
+        for _, submarine in pairs(surface.find_entities_filtered{
+            name = submarine_names,
+            type = "spider-vehicle",
+            force = force_index
+        }) do
+            local patrol_data = remote.call("SpidertronPatrols", "get_waypoints", submarine)
+            if not patrol_data then
+                submarine_to_teleport = submarine
+                goto found_submarine
+            end
+        end
+        ::continue::
+    end
+    ::found_submarine::
+
+    if not submarine_to_teleport then return end
+
+    local position = player.position
+    local position = {x = position.x + 7, y = position.y - 4}
+    submarine_to_teleport.teleport(position, player.surface_index, true, false)
+end)
