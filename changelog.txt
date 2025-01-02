@@ -1,4 +1,11 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.27.13
+Date: 2025-01-02
+  Sounds:
+    - No longer overrwitting item sounds for the vechicle dock.
+  Locale:
+    - No longer overwritting corpse locale for submarine corpses. Resolves https://github.com/notnotmelon/maraxsis/issues/194
+---------------------------------------------------------------------------------------------------
 Version: 1.27.12
 Date: 2025-01-02
   Locale:
