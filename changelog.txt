@@ -1,4 +1,11 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.27.14
+Date: 2025-01-02
+  Bugfixes:
+    - Fishing tower no longer generates spores.
+  Changes:
+    - Changed recipe and item subgroups for factoriopedia. Resolves https://github.com/notnotmelon/maraxsis/issues/197
+---------------------------------------------------------------------------------------------------
 Version: 1.27.13
 Date: 2025-01-02
   Sounds:
