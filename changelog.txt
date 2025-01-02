@@ -1,4 +1,10 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.27.11
+Date: 2025-01-02
+  Locale:
+    - Update Spanish locale.cfg ([#195](https://github.com/notnotmelon/maraxsis/issues/195))
+    - Update zh-CN locale.cfg ([#192](https://github.com/notnotmelon/maraxsis/issues/192))
+---------------------------------------------------------------------------------------------------
 Version: 1.27.10
 Date: 2024-12-31
   Bugfixes:
