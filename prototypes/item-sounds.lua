@@ -19,7 +19,6 @@ end
 
 add_sound_item("maraxsis-fishing-tower", item_sounds.fluid_inventory_move, item_sounds.fluid_inventory_pickup, item_sounds.fluid_inventory_move)
 add_sound_item("maraxsis-big-cliff-explosives", item_sounds.atomic_bomb_inventory_move, item_sounds.atomic_bomb_inventory_pickup, item_sounds.atomic_bomb_inventory_move)
-add_sound_item("sp-spidertron-dock", item_sounds.spidertron_inventory_move, item_sounds.spidertron_inventory_pickup, item_sounds.spidertron_inventory_move)
 add_sound_item("maraxsis-diesel-submarine", item_sounds.mechanical_large_inventory_move, item_sounds.mechanical_large_inventory_pickup, item_sounds.mechanical_large_inventory_move)
 add_sound_item("maraxsis-nuclear-submarine", item_sounds.mechanical_large_inventory_move, item_sounds.mechanical_large_inventory_pickup, item_sounds.mechanical_large_inventory_move)
 add_sound_item("maraxsis-hydro-plant", item_sounds.fluid_inventory_move, item_sounds.fluid_inventory_pickup, item_sounds.fluid_inventory_move)
