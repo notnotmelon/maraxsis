@@ -1,24 +1,25 @@
 {
-  "name": "maraxsis",
-  "title": "Maraxsis",
-  "description": "Dive into the uncharted waters of Maraxsis, a world where the sea covers everything. Utilize submarines to explore, craft advanced fluids inside the hydro plant, build pressure domes, and master the challenges of deep-sea logistics.",
-  "author": "notnotmelon",
-  "homepage": "https://github.com/notnotmelon/maraxsis",
-  "version": "1.27.14",
-  "factorio_version": "2.0",
-  "dependencies": [
-    "base >= 2.0.26",
-    "space-age >= 2.0.26",
-    "SpidertronPatrols >= 2.5.5",
-    "FluidMustFlow >= 1.4.2",
-    "(?) tenebris",
-    "(?) SchallTransportGroup",
-    "! Land-Pump"
-  ],
-  "quality_required": true,
-  "space_travel_required": true,
-  "spoiling_required": true,
-  "freezing_required": true,
-  "segmented_units_required": true,
-  "expansion_shaders_required": true
+    "name": "maraxsis",
+    "title": "Maraxsis",
+    "description": "Dive into the uncharted waters of Maraxsis, a world where the sea covers everything. Utilize submarines to explore, craft advanced fluids inside the hydro plant, build pressure domes, and master the challenges of deep-sea logistics.",
+    "author": "notnotmelon",
+    "homepage": "https://github.com/notnotmelon/maraxsis",
+    "version": "1.27.14",
+    "factorio_version": "2.0",
+    "dependencies": [
+        "base >= 2.0.26",
+        "space-age >= 2.0.26",
+        "SpidertronPatrols >= 2.5.5",
+        "FluidMustFlow >= 1.4.2",
+        "PlanetsLib >= 1.1.11",
+        "(?) tenebris",
+        "(?) SchallTransportGroup",
+        "! Land-Pump"
+    ],
+    "quality_required": true,
+    "space_travel_required": true,
+    "spoiling_required": true,
+    "freezing_required": true,
+    "segmented_units_required": true,
+    "expansion_shaders_required": true
 }
