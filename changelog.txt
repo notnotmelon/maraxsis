@@ -1,4 +1,9 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.27.16
+Date: 2025-01-10
+  Graphics:
+    - Another pass over all item icons and tech icon improvements. Huge thanks to [@snouz](https://github.com/snouz) for the update! https://github.com/notnotmelon/maraxsis/pull/205
+---------------------------------------------------------------------------------------------------
 Version: 1.27.15
 Date: 2025-01-05
   Locale:
