@@ -1,4 +1,11 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.28.0
+Date: 2025-01-13
+  Features:
+    - Added achievements.
+  Bugfixes:
+    - Fixed a crash. Resolves https://github.com/notnotmelon/maraxsis/issues/202
+---------------------------------------------------------------------------------------------------
 Version: 1.27.16
 Date: 2025-01-10
   Graphics:
