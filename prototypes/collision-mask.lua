@@ -1,7 +1,7 @@
 local collision_mask_util = require "__core__/lualib/collision-mask-util"
 
 data:extend {{
-    name = maraxsis_collision_mask,
+    name = maraxsis_underwater_collision_mask,
     type = "collision-layer",
 }}
 
@@ -16,7 +16,7 @@ data:extend {{
 }}
 
 data:extend {{
-    name = maraxsis_fishing_tower_collision_mask,
+    name = maraxsis_coral_collision_mask,
     type = "collision-layer",
 }}
 
@@ -29,7 +29,7 @@ local cant_be_placed_on_water = {water = false, dome = true, coral = false, tren
 local cant_be_placed_in_a_dome = {water = true, dome = false, coral = true, trench = true, trench_entrance = false, trench_lava = false}
 local cant_be_placed_anywhere = {water = false, dome = false, coral = false, trench = false, trench_entrance = false, trench_lava = false}
 
-local default_maraxsis_tile_restrictions = {
+local default_maraxsis_buildability_rules = {
     ["accumulator"] = cant_be_placed_on_water,
     ["lab"] = cant_be_placed_on_water,
     ["assembling-machine"] = cant_be_placed_on_water,
@@ -104,13 +104,13 @@ end
 
 local function blacklist_via_tile_buildability_rule(entity, required_tile)
     if entity.tile_buildability_rules and table_size(entity.tile_buildability_rules) > 0 then
+        local found_maraxsis_rule = false
         for _, rule in pairs(entity.tile_buildability_rules) do
-            if rule.is_maraxsis_rule then
-                rule.colliding_tiles = rule.colliding_tiles or {layers = {}}
-                rule.colliding_tiles.layers[required_tile] = true
-                return
-            end
+            rule.colliding_tiles = rule.colliding_tiles or {layers = {}}
+            rule.colliding_tiles.layers[required_tile] = true
+            if rule.is_maraxsis_rule then found_maraxsis_rule = true end
         end
+        if found_maraxsis_rule then return end
     end
 
     entity.tile_buildability_rules = entity.tile_buildability_rules or {}
@@ -118,7 +118,7 @@ local function blacklist_via_tile_buildability_rule(entity, required_tile)
     table.insert(entity.tile_buildability_rules, {
         is_maraxsis_rule = true,
         area = entity.collision_box,
-        --required_tiles = {layers = {object = true, ground_tile = true, water_tile = true}},
+        required_tiles = {layers = {object = true, player = true, ground_tile = true, water_tile = true}},
         colliding_tiles = {layers = {[required_tile] = true}}
     })
 end
@@ -127,10 +127,14 @@ for prototype in pairs(defines.prototypes.entity) do
     for _, entity in pairs(data.raw[prototype] or {}) do
         if entity.hidden or not entity.collision_box then goto continue end
 
-        local rules = entity.maraxsis_buildability_rules or default_maraxsis_tile_restrictions[entity.type]
+        local rules = entity.maraxsis_buildability_rules or default_maraxsis_buildability_rules[entity.type]
         if not rules then goto continue end
 
         assert(table_size(rules) == 6, "ERROR: Entity " .. entity.name .. " has incorrect definitions for maraxsis_buildability_rules. Requires 6 rule entries, instead had " .. serpent.line(rules))
+
+        if rules.water == false and rules.coral == true then
+            error("ERROR: Entity " .. entity.name .. " has nonsensical maraxsis_buildability_rules. Requires water == false and coral == true, instead had " .. serpent.line(rules))
+        end
 
         if rules.water == false and rules.dome == false and rules.coral == false and rules.trench_entrance == false then
             blacklist_via_surface_condition(entity, 50000)
@@ -140,7 +144,7 @@ for prototype in pairs(defines.prototypes.entity) do
         end
 
         if rules.water == false then
-            blacklist_via_tile_buildability_rule(entity, maraxsis_collision_mask)
+            blacklist_via_tile_buildability_rule(entity, maraxsis_underwater_collision_mask)
         end
 
         if rules.dome == false then
@@ -148,7 +152,7 @@ for prototype in pairs(defines.prototypes.entity) do
         end
 
         if rules.coral == false then
-            blacklist_via_tile_buildability_rule(entity, maraxsis_fishing_tower_collision_mask)
+            blacklist_via_tile_buildability_rule(entity, maraxsis_coral_collision_mask)
         end
 
         if rules.trench_entrance == false then
@@ -161,4 +165,31 @@ for prototype in pairs(defines.prototypes.entity) do
 
         ::continue::
     end
+end
+
+data:extend {{
+    type = "collision-layer",
+    name = "decal",
+}}
+
+-- add decal layer to decals
+for _, decorative in pairs {
+    "crater-large",
+    "light-mud-decal",
+    "vulcanus-dune-decal",
+    "pink-lichen-decal",
+} do
+    decorative = data.raw["optimized-decorative"][decorative]
+    if not decorative then error("decorative not found " .. decorative) end
+    decorative.collision_mask.layers["decal"] = true
+end
+
+-- add doodad layer to doodads
+for _, decorative in pairs {
+    "crater-small",
+    "urchin-cactus",
+} do
+    decorative = data.raw["optimized-decorative"][decorative]
+    if not decorative then error("decorative not found " .. decorative) end
+    decorative.collision_mask.layers["decal"] = true
 end

@@ -10,11 +10,3 @@ for _, planet in pairs {"maraxsis", "maraxsis-trench"} do
         end
     end
 end
-
-if not mods["alien-biomes"] then return end
-
-for _, tile in pairs(data.raw.tile) do
-    if tile.name:find("%-underwater") and tile.collision_mask.layers[maraxsis_collision_mask] then
-        tile.collision_mask.layers.item = nil
-    end
-end

@@ -264,7 +264,7 @@ local tile = maraxsis.merge(data.raw.tile["space-platform-foundation"], {
         mining_time = 2 ^ 63 - 1, -- weird hack needed to make this a "top" tile. top tiles require minable properties however these dome tiles actually should not be minable
         results = {},
     },
-    collision_mask = {layers = {[maraxsis_dome_collision_mask] = true, [maraxsis_fishing_tower_collision_mask] = true}},
+    collision_mask = {layers = {[maraxsis_dome_collision_mask] = true, ground_tile = true}},
     map_color = {r = 0.5, g = 0.5, b = 0.75},
     can_be_part_of_blueprint = false,
     layer_group = "ground-artificial"
@@ -300,7 +300,7 @@ data:extend {{
         ["water_tile"] = true,
         ["object"] = true,
         ["item"] = true,
-        [maraxsis_collision_mask] = true,
+        [maraxsis_underwater_collision_mask] = true,
         [maraxsis_dome_collision_mask] = true
     }},
     squeak_behaviour = false,

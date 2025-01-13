@@ -61,9 +61,9 @@ data:extend {{
     fast_replaceable_group = "ducts",
     collision_box = {{-0.99, -0.99}, {0.79, 0.79}},
     selection_box = {{-1, -1}, {1, 1}},
-    collision_mask = {layers = {object = true, [maraxsis_collision_mask] = true, train = true, is_object = true, is_lower_object = true}},
+    collision_mask = {layers = {object = true, [maraxsis_underwater_collision_mask] = true, train = true, is_object = true, is_lower_object = true}},
     tile_buildability_rules = {
-        {area = {{-1, -2}, {1, -1.5}}, required_tiles = {layers = {maraxsis_collision_mask = true}}, colliding_tiles = {layers = {}}},
+        {area = {{-1, -2}, {1, -1.5}}, required_tiles = {layers = {maraxsis_underwater_collision_mask = true}}, colliding_tiles = {layers = {}}},
     },
     integration_patch_render_layer = "under-tiles",
     integration_patch = {
