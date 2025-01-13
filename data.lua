@@ -37,6 +37,10 @@ require "prototypes.conduit"
 require "prototypes.stone-centrifuging"
 require "prototypes.achievements"
 
+data.raw["mining-drill"]["burner-mining-drill"].maraxsis_buildability_rules = {water = false, dome = false, coral = false, trench = false, trench_entrance = false, trench_lava = false}
+data.raw["assembling-machine"]["chemical-plant"].maraxsis_buildability_rules = {water = true, dome = true, coral = true, trench = true, trench_entrance = false, trench_lava = false}
+data.raw["electric-energy-interface"]["electric-energy-interface"].maraxsis_buildability_rules = {water = true, dome = true, coral = true, trench = true, trench_entrance = false, trench_lava = false}
+
 --- custom event for submarine submerged
 --- also triggers on character submerged with abyssal diving gear
 --- event table: {entity, old_surface_index, old_position}

@@ -5,7 +5,10 @@ require "prototypes.default-import-location"
 require "prototypes.fluid-void"
 require "prototypes.item-sounds"
 require "prototypes.regulator-fluidbox"
+
 require "compat.aai-industry"
+require "compat.aai-signal-transmission"
+require "compat.editor-extensions"
 require "compat.transport-ring-teleporter"
 require "compat.quality-seeds"
 

@@ -68,6 +68,7 @@ data:extend {{
     radar_range = data.raw.roboport["maraxsis-regulator"].radar_range,
     logistics_radius = data.raw.roboport["maraxsis-regulator"].logistics_radius,
     construction_radius = data.raw.roboport["maraxsis-regulator"].construction_radius,
+    maraxsis_buildability_rules = {water = true, dome = true, coral = true, trench = true, trench_entrance = true, trench_lava = true},
     energy_source = {type = "void"},
     energy_usage = "0W",
     recharge_minimum = "0W",

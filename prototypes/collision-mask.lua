@@ -25,177 +25,72 @@ data:extend {{
     type = "collision-layer",
 }}
 
-local processed_prototypes = table.deepcopy(defines.prototypes.entity)
-for prototype, _ in pairs(processed_prototypes) do
-    processed_prototypes[prototype] = false
-end
+local cant_be_placed_on_water = {water = false, dome = true, coral = false, trench = true, trench_entrance = false, trench_lava = false}
+local cant_be_placed_in_a_dome = {water = true, dome = false, coral = true, trench = true, trench_entrance = false, trench_lava = false}
+local cant_be_placed_anywhere = {water = false, dome = false, coral = false, trench = false, trench_entrance = false, trench_lava = false}
 
-local prototypes_that_cant_be_placed_on_water = {
-    "accumulator",
-    "lab",
-    "assembling-machine",
-    "boiler",
-    "burner-generator",
-    "electric-energy-interface",
-    "fire",
-    "furnace",
-    "beacon",
-    "generator",
-    "market",
-    "reactor",
-    "simple-entity-with-force",
-    "simple-entity-with-owner",
-    "fusion-reactor",
-    "fusion-generator",
-    "curved-rail-a",
-    "curved-rail-b",
-    "legacy-curved-rail",
-    "legacy-straight-rail",
-    "half-diagonal-rail",
-    "rail-ramp",
-    "rail-support",
-    "heat-pipe",
-    "straight-rail",
-    data.raw.roboport["aai-signal-sender"],
-    data.raw.roboport["aai-signal-receiver"],
+local default_maraxsis_tile_restrictions = {
+    ["accumulator"] = cant_be_placed_on_water,
+    ["lab"] = cant_be_placed_on_water,
+    ["assembling-machine"] = cant_be_placed_on_water,
+    ["boiler"] = cant_be_placed_on_water,
+    ["burner-generator"] = cant_be_placed_on_water,
+    ["fire"] = cant_be_placed_on_water,
+    ["furnace"] = cant_be_placed_on_water,
+    ["beacon"] = cant_be_placed_on_water,
+    ["generator"] = cant_be_placed_on_water,
+    ["market"] = cant_be_placed_on_water,
+    ["reactor"] = cant_be_placed_on_water,
+    ["simple-entity-with-force"] = cant_be_placed_on_water,
+    ["simple-entity-with-owner"] = cant_be_placed_on_water,
+    ["fusion-reactor"] = cant_be_placed_on_water,
+    ["fusion-generator"] = cant_be_placed_on_water,
+    ["heat-pipe"] = cant_be_placed_on_water,
+
+    ["turret"] = cant_be_placed_in_a_dome,
+    ["ammo-turret"] = cant_be_placed_in_a_dome,
+    ["electric-turret"] = cant_be_placed_in_a_dome,
+    ["land-mine"] = cant_be_placed_in_a_dome,
+    ["agricultural-tower"] = cant_be_placed_in_a_dome,
+    ["mining-drill"] = cant_be_placed_in_a_dome,
+
+    ["rocket-silo"] = {water = true, dome = false, coral = true, trench = false, trench_entrance = false, trench_lava = false},
+    ["cargo-landing-pad"] = {water = true, dome = false, coral = true, trench = false, trench_entrance = false, trench_lava = false},
+    ["cargo-bay"] = {water = true, dome = false, coral = true, trench = false, trench_entrance = false, trench_lava = false},
+    ["electric-energy-interface"] = {water = true, dome = false, coral = true, trench = false, trench_entrance = false, trench_lava = false}, -- chances are this is a wind turbine
+
+    ["artillery-turret"] = cant_be_placed_anywhere,
+    ["artillery-wagon"] = cant_be_placed_anywhere,
+    ["car"] = cant_be_placed_anywhere,
+    ["fluid-turret"] = cant_be_placed_anywhere,
+    ["spider-leg"] = cant_be_placed_anywhere,
+    ["spider-vehicle"] = cant_be_placed_anywhere,
+    ["roboport"] = cant_be_placed_anywhere,
+    ["radar"] = cant_be_placed_anywhere,
+
+    ["straight-rail"] = {water = false, dome = true, coral = false, trench = false, trench_entrance = false, trench_lava = false},
+    ["curved-rail-a"] = {water = false, dome = true, coral = false, trench = false, trench_entrance = false, trench_lava = false},
+    ["curved-rail-b"] = {water = false, dome = true, coral = false, trench = false, trench_entrance = false, trench_lava = false},
+    ["half-diagonal-rail"] = {water = false, dome = true, coral = false, trench = false, trench_entrance = false, trench_lava = false},
+    ["legacy-curved-rail"] = {water = false, dome = true, coral = false, trench = false, trench_entrance = false, trench_lava = false},
+    ["legacy-straight-rail"] = {water = false, dome = true, coral = false, trench = false, trench_entrance = false, trench_lava = false},
+
+    ["rail-ramp"] = {water = true, dome = true, coral = true, trench = false, trench_entrance = false, trench_lava = false},
+    ["rail-support"] = {water = true, dome = true, coral = true, trench = false, trench_entrance = false, trench_lava = false},
+    ["elevated-straight-rail"] = {water = true, dome = true, coral = true, trench = false, trench_entrance = false, trench_lava = false},
+    ["elevated-curved-rail-a"] = {water = true, dome = true, coral = true, trench = false, trench_entrance = false, trench_lava = false},
+    ["elevated-curved-rail-b"] = {water = true, dome = true, coral = true, trench = false, trench_entrance = false, trench_lava = false},
+    ["elevated-half-diagonal-rail"] = {water = true, dome = true, coral = true, trench = false, trench_entrance = false, trench_lava = false},
 }
-
-local prototypes_that_cant_be_placed_in_a_dome = {
-    "rocket-silo",
-    "turret",
-    "ammo-turret",
-    "electric-turret",
-    "land-mine",
-    "cargo-landing-pad",
-    "cargo-bay",
-    "agricultural-tower",
-    data.raw.radar["maraxsis-sonar"],
-    data.raw["electric-energy-interface"]["wind-turbine-2"],
-    "mining-drill",
-    data.raw["assembling-machine"]["rsc-silo-stage1"],
-    data.raw["assembling-machine"]["rsc-silo-stage2"],
-    data.raw["assembling-machine"]["rsc-silo-stage3"],
-    data.raw["assembling-machine"]["rsc-silo-stage4"],
-    data.raw["assembling-machine"]["rsc-silo-stage5"],
-    data.raw["assembling-machine"]["rsc-silo-stage6"],
-}
-
-local prototypes_that_cant_be_placed_in_a_dome_or_on_water = {
-    "artillery-turret",
-    "artillery-wagon",
-    "car",
-    "fluid-turret",
-    "spider-leg",
-    "spider-vehicle",
-    "roboport",
-    data.raw.radar.radar,
-    data.raw["mining-drill"]["burner-mining-drill"]
-}
-
-local prototypes_that_cannot_be_placed_in_the_trench = {
-    "rocket-silo",
-    "cargo-landing-pad",
-    "cargo-bay",
-    "curved-rail-a",
-    "curved-rail-b",
-    "legacy-curved-rail",
-    "legacy-straight-rail",
-    "half-diagonal-rail",
-    "rail-ramp",
-    "rail-support",
-    "straight-rail",
-    "elevated-curved-rail-a",
-    "elevated-curved-rail-b",
-    "elevated-half-diagonal-rail",
-    "elevated-straight-rail",
-    data.raw["electric-energy-interface"]["wind-turbine-2"],
-    data.raw["assembling-machine"]["rsc-silo-stage1"],
-    data.raw["assembling-machine"]["rsc-silo-stage2"],
-    data.raw["assembling-machine"]["rsc-silo-stage3"],
-    data.raw["assembling-machine"]["rsc-silo-stage4"],
-    data.raw["assembling-machine"]["rsc-silo-stage5"],
-    data.raw["assembling-machine"]["rsc-silo-stage6"],
-}
-
-local prototypes_that_can_be_placed_whereever = {
-    data.raw.container["sp-spidertron-dock"],
-    data.raw["assembling-machine"]["maraxsis-hydro-plant"],
-    data.raw["assembling-machine"]["maraxsis-hydro-plant-extra-module-slots"],
-    data.raw["assembling-machine"]["chemical-plant"],
-    data.raw["electric-energy-interface"]["electric-energy-interface"],
-    data.raw["electric-energy-interface"]["ee-infinity-accumulator-primary-output"],
-    data.raw["electric-energy-interface"]["ee-infinity-accumulator-secondary-output"],
-    data.raw["electric-energy-interface"]["ee-infinity-accumulator-tertiary-output"],
-    data.raw["electric-energy-interface"]["ee-infinity-accumulator-primary-input"],
-    data.raw["electric-energy-interface"]["ee-infinity-accumulator-secondary-input"],
-    data.raw["electric-energy-interface"]["ee-infinity-accumulator-tertiary-input"],
-    data.raw["electric-energy-interface"]["ee-infinity-accumulator-tertiary-buffer"],
-    data.raw["spider-leg"]["maraxsis-submarine-leg"],
-    data.raw["spider-vehicle"]["maraxsis-diesel-submarine"],
-    data.raw["spider-vehicle"]["spidertron-enhancements-dummy-maraxsis-diesel-submarine"],
-    data.raw["spider-vehicle"]["maraxsis-nuclear-submarine"],
-    data.raw["spider-vehicle"]["spidertron-enhancements-dummy-maraxsis-nuclear-submarine"],
-    data.raw.roboport["maraxsis-regulator"],
-    data.raw.roboport["maraxsis-pressure-dome"],
-    data.raw.furnace["maraxsis-salt-reactor"],
-    data.raw.beacon["maraxsis-conduit"],
-}
-
-for _, anywhere in pairs(prototypes_that_can_be_placed_whereever) do
-    processed_prototypes[anywhere.name] = true
-end
-
-local function block_placement(prototype, layer)
-    if prototype.hidden then return end
-    if prototype.allow_maraxsis_water_placement then return end -- this check is not used by maraxsis however it may be useful for 3rd party mods doing compatibility
-
-    if processed_prototypes[prototype.name] then return end
-    processed_prototypes[prototype.name] = true
-
-    prototype.collision_mask = collision_mask_util.get_mask(prototype)
-    if not prototype.collision_mask.layers.object then goto continue end -- skip if no collision mask to save UPS
-    prototype.collision_mask.layers[layer] = true
-    ::continue::
-end
-
-local function add_collision_layer_to_prototypes(prototypes, layer)
-    for _, blacklisted in pairs(prototypes) do
-        if type(blacklisted) == "table" then
-            block_placement(blacklisted, layer)
-        else
-            for _, prototype in pairs(data.raw[blacklisted]) do
-                block_placement(prototype, layer)
-            end
-        end
-    end
-end
-
-local function remove_collision_layer_to_prototypes(prototypes, layer)
-    for _, blacklisted in pairs(prototypes) do
-        if type(blacklisted) == "table" then
-            blacklisted.collision_mask = collision_mask_util.get_mask(blacklisted)
-            blacklisted.collision_mask.layers[layer] = nil
-        else
-            for _, prototype in pairs(data.raw[blacklisted]) do
-                if prototype.hidden then goto continue end
-                prototype.collision_mask = collision_mask_util.get_mask(prototype)
-                prototype.collision_mask.layers[layer] = nil
-                ::continue::
-            end
-        end
-    end
-end
 
 local function blacklist_via_surface_condition(entity, max_pressure)
     if entity.hidden then return end
-    if processed_prototypes[entity.name] then return end
-    processed_prototypes[entity.name] = true
 
     entity.surface_conditions = table.deepcopy(entity.surface_conditions or {})
 
     for _, surface_condition in pairs(entity.surface_conditions) do
         if surface_condition.property == "pressure" then
-            assert((surface_condition.min or 0) < max_pressure, "An error occurred while blacklisting " .. entity.name .. " from being placed in a dome or on water.")
+            if (surface_condition.min or 0) < max_pressure then return end -- this entity already has the property we are adding, skip
             surface_condition.max = math.min(max_pressure, surface_condition.max or max_pressure)
             return
         end
@@ -207,45 +102,63 @@ local function blacklist_via_surface_condition(entity, max_pressure)
     })
 end
 
-add_collision_layer_to_prototypes(prototypes_that_cant_be_placed_on_water, maraxsis_collision_mask)
-remove_collision_layer_to_prototypes(prototypes_that_cant_be_placed_on_water, maraxsis_dome_collision_mask)
-add_collision_layer_to_prototypes(prototypes_that_cant_be_placed_in_a_dome, maraxsis_dome_collision_mask)
-remove_collision_layer_to_prototypes(prototypes_that_cant_be_placed_in_a_dome, maraxsis_collision_mask)
-
-for _, blacklisted in pairs(prototypes_that_cant_be_placed_in_a_dome_or_on_water) do
-    if type(blacklisted) == "table" then
-        blacklist_via_surface_condition(blacklisted, 50000)
-    else
-        for _, prototype in pairs(data.raw[blacklisted]) do
-            if prototype.hidden then goto continue end
-            blacklist_via_surface_condition(prototype, 50000)
-            ::continue::
-        end
-    end
-end
-
-for _, blacklisted in pairs(prototypes_that_cannot_be_placed_in_the_trench) do
-    if type(blacklisted) == "table" then
-        processed_prototypes[blacklisted.name] = false
-        blacklist_via_surface_condition(blacklisted, 300000)
-    else
-        for _, prototype in pairs(data.raw[blacklisted]) do
-            processed_prototypes[prototype.name] = false
-            blacklist_via_surface_condition(prototype, 300000)
-        end
-    end
-end
-
-for _, ramp in pairs(data.raw["rail-ramp"]) do
-    if ramp.hidden then goto continue end
-    for _, rule in pairs(ramp.tile_buildability_rules or {}) do
-        if rule.required_tiles and rule.required_tiles.layers and rule.required_tiles.layers.ground_tile then
-            if table_size(rule.required_tiles.layers) ~= 0 then
-                rule.required_tiles.layers[maraxsis_dome_collision_mask] = true
+local function blacklist_via_tile_buildability_rule(entity, required_tile)
+    if entity.tile_buildability_rules and table_size(entity.tile_buildability_rules) > 0 then
+        for _, rule in pairs(entity.tile_buildability_rules) do
+            if rule.is_maraxsis_rule then
+                rule.colliding_tiles = rule.colliding_tiles or {layers = {}}
+                rule.colliding_tiles.layers[required_tile] = true
+                return
             end
         end
     end
-    ::continue::
+
+    entity.tile_buildability_rules = entity.tile_buildability_rules or {}
+
+    table.insert(entity.tile_buildability_rules, {
+        is_maraxsis_rule = true,
+        area = entity.collision_box,
+        --required_tiles = {layers = {object = true, ground_tile = true, water_tile = true}},
+        colliding_tiles = {layers = {[required_tile] = true}}
+    })
 end
 
-require "compat.ks-power"
+for prototype in pairs(defines.prototypes.entity) do
+    for _, entity in pairs(data.raw[prototype] or {}) do
+        if entity.hidden or not entity.collision_box then goto continue end
+
+        local rules = entity.maraxsis_buildability_rules or default_maraxsis_tile_restrictions[entity.type]
+        if not rules then goto continue end
+
+        assert(table_size(rules) == 6, "ERROR: Entity " .. entity.name .. " has incorrect definitions for maraxsis_buildability_rules. Requires 6 rule entries, instead had " .. serpent.line(rules))
+
+        if rules.water == false and rules.dome == false and rules.coral == false and rules.trench_entrance == false then
+            blacklist_via_surface_condition(entity, 50000)
+            goto continue
+        elseif rules.trench == false then
+            blacklist_via_surface_condition(entity, 300000)
+        end
+
+        if rules.water == false then
+            blacklist_via_tile_buildability_rule(entity, maraxsis_collision_mask)
+        end
+
+        if rules.dome == false then
+            blacklist_via_tile_buildability_rule(entity, maraxsis_dome_collision_mask)
+        end
+
+        if rules.coral == false then
+            blacklist_via_tile_buildability_rule(entity, maraxsis_fishing_tower_collision_mask)
+        end
+
+        if rules.trench_entrance == false then
+            blacklist_via_tile_buildability_rule(entity, maraxsis_trench_entrance_collision_mask)
+        end
+
+        if rules.trench_lava == false then
+            blacklist_via_tile_buildability_rule(entity, maraxsis_lava_collision_mask)
+        end
+
+        ::continue::
+    end
+end

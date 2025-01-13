@@ -105,6 +105,7 @@ data:extend {{
     type = "assembling-machine",
     name = "maraxsis-hydro-plant",
     icon = "__maraxsis__/graphics/icons/hydro-plant.png",
+    maraxsis_buildability_rules = {water = true, dome = true, coral = true, trench = true, trench_entrance = false, trench_lava = false},
     icon_size = 64,
     open_sound = table.deepcopy(data.raw["assembling-machine"]["chemical-plant"].open_sound),
     close_sound = table.deepcopy(data.raw["assembling-machine"]["chemical-plant"].close_sound),

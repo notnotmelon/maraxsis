@@ -1,6 +1,7 @@
 local regulator = table.deepcopy(data.raw.roboport.roboport)
 
 regulator.name = "maraxsis-regulator"
+regulator.maraxsis_buildability_rules = {water = true, dome = true, coral = true, trench = true, trench_entrance = false, trench_lava = false}
 regulator.logistics_connection_distance = 90
 regulator.radar_range = 2
 regulator.logistics_radius = 30

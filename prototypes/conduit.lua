@@ -60,6 +60,7 @@ end
 data:extend {maraxsis.merge(data.raw.beacon.beacon, {
     name = "maraxsis-conduit",
     minable = {mining_time = 0.3, result = "maraxsis-conduit"},
+    maraxsis_buildability_rules = {water = true, dome = true, coral = true, trench = true, trench_entrance = false, trench_lava = false},
     graphics_set = {
         draw_animation_when_idle = false,
         draw_light_when_idle = false,
