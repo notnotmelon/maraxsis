@@ -1040,3 +1040,35 @@ maraxsis.on_nth_tick(5, function(event)
         ::continue::
     end
 end)
+
+maraxsis.on_event("mine", function(event)
+    local player = game.get_player(event.player_index)
+    local entity = player.selected
+    if not entity then return end
+    if entity.name ~= "maraxsis-pressure-dome-collision" then return end
+    local pressure_dome_data
+
+    for _, dome_data in pairs(storage.pressure_domes) do
+        for _, collision_box in pairs(dome_data.collision_boxes) do
+            if collision_box.valid and collision_box == entity then
+                pressure_dome_data = dome_data
+                goto parent_dome_found
+            end
+        end
+    end
+    ::parent_dome_found::
+
+    if not pressure_dome_data then return end
+
+    local contained_entities = pressure_dome_data.contained_entities
+    if table_size(contained_entities) == 0 then return end
+    for _, e in pairs(contained_entities) do
+        if e.valid then
+            player.create_local_flying_text {
+                text = {"maraxsis.cannot-mine-dome", e.name, e.quality.name, e.localised_name},
+                position = entity.position
+            }
+            return
+        end
+    end
+end)

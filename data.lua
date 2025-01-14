@@ -52,3 +52,10 @@ data:extend {{
     type = "custom-event",
     name = "maraxsis-on-submerged",
 }}
+
+data:extend {{
+    type = "custom-input",
+    key_sequence = "",
+    linked_game_control = "mine",
+    name = "mine"
+}}
