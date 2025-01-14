@@ -24,6 +24,7 @@ local function waterifiy(tile, collision_layers)
     tile.absorptions_per_second = table.deepcopy(data.raw.tile["water"].absorptions_per_second)
     tile.draw_in_water_layer = true
     tile.walking_speed_modifier = 0.2
+    tile.allows_being_covered = false
     water_tile_type_names[#water_tile_type_names + 1] = tile.name
 
     for _, layer in pairs(collision_layers) do
@@ -124,7 +125,8 @@ local tile = maraxsis.merge(data.raw.tile["space-platform-foundation"], {
     collision_mask = {layers = {[maraxsis_dome_collision_mask] = true, ground_tile = true}},
     map_color = {r = 0.5, g = 0.5, b = 0.75},
     can_be_part_of_blueprint = false,
-    layer_group = "ground-artificial"
+    layer_group = "ground-artificial",
+    allows_being_covered = false,
 })
 tile.variants.transition = table.deepcopy(data.raw.tile["concrete"].variants.transition)
 data:extend {tile}
