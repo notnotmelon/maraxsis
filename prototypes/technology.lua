@@ -25,6 +25,7 @@ data:extend {{
         "advanced-asteroid-processing",
         "rocket-turret",
         "cliff-explosives",
+        "electromagnetic-science-pack",
     },
     unit = {
         count = 3000,
