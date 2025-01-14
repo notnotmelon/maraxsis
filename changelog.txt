@@ -1,4 +1,9 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.28.1
+Date: 2025-01-14
+  Bugfixes:
+    - Added "Electromagnetic science pack" to prerequisites of "Planet discovery Maraxsis." ([#206](https://github.com/notnotmelon/maraxsis/issues/206))
+---------------------------------------------------------------------------------------------------
 Version: 1.28.0
 Date: 2025-01-13
   Features:
