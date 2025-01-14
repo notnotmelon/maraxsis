@@ -1,4 +1,10 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.28.4
+Date: 2025-01-14
+  Compatibility:
+    - Renamed maraxsis glass to "Reinforced glass" if aai is present. Resolves https://github.com/notnotmelon/maraxsis/issues/201
+    - The glass productivity tech now boost AAI glass by 10% per tier if that mod is present.
+---------------------------------------------------------------------------------------------------
 Version: 1.28.3
 Date: 2025-01-14
   Changes:
