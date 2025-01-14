@@ -72,6 +72,7 @@ data:extend {{
     type = "furnace",
     name = "maraxsis-salt-reactor",
     icon = "__maraxsis__/graphics/icons/salt-reactor.png",
+    maraxsis_buildability_rules = {water = true, dome = true, coral = true, trench = true, trench_entrance = false, trench_lava = false},
     icon_size = 64,
     flags = {"placeable-neutral", "placeable-player", "player-creation"},
     minable = {mining_time = 0.5, result = "maraxsis-salt-reactor"},

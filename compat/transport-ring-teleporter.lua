@@ -11,11 +11,6 @@ for _, name in pairs {
 } do
     local ring_teleporter = data.raw["accumulator"][name] or data.raw["simple-entity-with-force"][name]
     if ring_teleporter then
-        ring_teleporter.surface_conditions = ring_teleporter.surface_conditions or {}
-        table.insert(ring_teleporter.surface_conditions, {
-            property = "pressure",
-            max = 50000,
-            min = 0
-        })
+        ring_teleporter.maraxsis_buildability_rules = {water = false, dome = false, coral = false, trench = false, trench_entrance = false, trench_lava = false}
     end
 end

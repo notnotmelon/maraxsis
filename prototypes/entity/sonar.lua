@@ -80,6 +80,7 @@ data:extend {maraxsis.merge(data.raw.radar.radar, {
     collision_box = {{-2.8, -2.3}, {2.8, 2.3}},
     selection_box = {{-3, -2.5}, {3, 2.5}},
     energy_per_sector = "40MJ",
+    maraxsis_buildability_rules = {water = true, dome = true, coral = true, trench = true, trench_entrance = false, trench_lava = false},
     max_distance_of_sector_revealed = 36,
     max_distance_of_nearby_sector_revealed = 6,
     energy_source = {

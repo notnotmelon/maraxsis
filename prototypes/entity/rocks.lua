@@ -1,4 +1,5 @@
---trench indestructible wall
+-- trench indestructible wall
+
 local trench_wall = maraxsis.merge(data.raw["simple-entity"]["huge-rock"], {
     name = "maraxsis-trench-wall",
     minable = "nil",
@@ -114,3 +115,10 @@ data:extend {{
     },
     map_color                  = {149, 145, 108}
 }}
+
+-- sandstone
+
+local sandstone = table.deepcopy(data.raw["simple-entity"]["big-sand-rock"])
+sandstone.name = "big-sand-rock-underwater"
+sandstone.map_color = maraxsis.color_combine(sandstone.map_color or data.raw.tile["water"].map_color, data.raw.tile["deepwater"].map_color, 0.3)
+data:extend {sandstone}

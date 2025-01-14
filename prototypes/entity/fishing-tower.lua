@@ -117,7 +117,15 @@ data:extend {{
     max_health = 200,
     icon = data.raw.capsule["maraxsis-tropical-fish"].icon,
     icon_size = data.raw.capsule["maraxsis-tropical-fish"].icon_size,
-    collision_mask = {layers = {[maraxsis_fishing_tower_collision_mask] = true}},
+    collision_mask = {
+        layers = {
+            object = true,
+            [maraxsis_dome_collision_mask] = true,
+            [maraxsis_underwater_collision_mask] = true,
+            [maraxsis_lava_collision_mask] = true,
+            [maraxsis_trench_entrance_collision_mask] = true
+        }
+    },
     collision_box = {{-0.8, -0.8}, {0.8, 0.8}},
     selection_box = {{-1, -1}, {1, 1}},
     selection_priority = 51,
