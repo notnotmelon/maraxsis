@@ -1,4 +1,9 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.28.3
+Date: 2025-01-14
+  Changes:
+    - Added a warning when mining a dome with machines inside. Resolves https://github.com/notnotmelon/maraxsis/issues/189
+---------------------------------------------------------------------------------------------------
 Version: 1.28.2
 Date: 2025-01-14
   Compatibility:
