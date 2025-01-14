@@ -1,4 +1,9 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.28.2
+Date: 2025-01-14
+  Compatibility:
+    - Deleted code to handle collision masks. Replaced with tile buildability restrictions. Resolves https://github.com/notnotmelon/maraxsis/issues/203 Resolves https://github.com/notnotmelon/maraxsis/issues/204
+---------------------------------------------------------------------------------------------------
 Version: 1.28.1
 Date: 2025-01-14
   Bugfixes:
