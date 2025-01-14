@@ -17,7 +17,6 @@ local function waterifiy(tile, collision_layers)
     assert(data.raw.tile[tile], "tile not found " .. tile)
     tile = table.deepcopy(data.raw.tile[tile])
     tile.name = tile.name .. "-underwater"
-    if collision_layers then tile.collision_mask = {layers = collision_layers} end
     tile.layer = math.min(layer, 255)
     layer = layer + 1
     tile.fluid = tile.fluid or "maraxsis-saline-water"
@@ -26,57 +25,30 @@ local function waterifiy(tile, collision_layers)
     tile.draw_in_water_layer = true
     tile.walking_speed_modifier = 0.2
     water_tile_type_names[#water_tile_type_names + 1] = tile.name
+
+    for _, layer in pairs(collision_layers) do
+        tile.collision_mask.layers[layer] = true
+    end
+
     data:extend {tile}
     return tile
 end
 
-waterifiy("lava-hot", {
-    [maraxsis_lava_collision_mask] = true,
-    player = true,
-    lava_tile = true,
-    decal = true,
-    doodad = true,
-    ground_tile = true,
-    item = true,
-})
+waterifiy("lava-hot", {maraxsis_lava_collision_mask})
 data.raw.tile["lava-hot-underwater"].map_color = maraxsis.color_combine(data.raw.tile["lava-hot"].map_color, data.raw.tile["deepwater"].map_color, 0.6)
-
--- orange glow on the trench lava is created by lamp entities on a 4x4 tile grid.
-data:extend {{
-    name = "maraxsis-lava-lamp",
-    type = "simple-entity",
-    localised_name = {"", {"tile-name.lava"}, " (lamp)"},
-    hidden = true,
-    icon = data.raw.lamp["small-lamp"].icon,
-    collision_mask = {layers = {}},
-    icon_size = data.raw.lamp["small-lamp"].icon_size,
-    picture = {
-        filename = "__core__/graphics/light-medium.png",
-        scale = 1.4,
-        width = 300,
-        height = 300,
-        tint = {1, 0.3, 0},
-        intensity = 0.5,
-        draw_as_light = true,
-    }
-}}
-
-waterifiy("volcanic-cracks-hot")
-waterifiy("volcanic-cracks-warm")
-waterifiy("volcanic-folds")
-waterifiy("dirt-5")
-waterifiy("sand-3")
-waterifiy("sand-2")
-waterifiy("sand-1")
-waterifiy("lowland-cream-red")
-waterifiy("lowland-red-vein-2")
+waterifiy("volcanic-cracks-hot", {maraxsis_underwater_collision_mask})
+waterifiy("volcanic-cracks-warm", {maraxsis_underwater_collision_mask})
+waterifiy("volcanic-folds", {maraxsis_underwater_collision_mask})
+waterifiy("dirt-5", {maraxsis_underwater_collision_mask})
+waterifiy("sand-3", {maraxsis_underwater_collision_mask})
+waterifiy("sand-2", {maraxsis_underwater_collision_mask})
+waterifiy("sand-1", {maraxsis_underwater_collision_mask})
+waterifiy("lowland-cream-red", {maraxsis_coral_collision_mask})
+waterifiy("lowland-red-vein-2", {maraxsis_coral_collision_mask})
 
 data.raw.tile["lowland-cream-red-underwater"].map_color = defines.color.orange
 data.raw.tile["lowland-cream-red-underwater"].searchable = true
-data.raw.tile["lowland-cream-red-underwater"].collision_mask.layers[maraxsis_coral_collision_mask] = true
-
 data.raw.tile["lowland-red-vein-2-underwater"].map_color = defines.color.firebrick
-data.raw.tile["lowland-red-vein-2-underwater"].collision_mask.layers[maraxsis_coral_collision_mask] = true
 data.raw.tile["lowland-red-vein-2-underwater"].localised_name = {"tile-name.lowland-cream-red-underwater"}
 
 data:extend {maraxsis.merge(data.raw.tile["out-of-map"], {
@@ -120,3 +92,39 @@ data:extend {{
         nebula_brightness = 0.5
     }
 }}
+
+-- orange glow on the trench lava is created by lamp entities on a 4x4 tile grid.
+data:extend {{
+    name = "maraxsis-lava-lamp",
+    type = "simple-entity",
+    localised_name = {"", {"tile-name.lava"}, " (lamp)"},
+    hidden = true,
+    icon = data.raw.lamp["small-lamp"].icon,
+    collision_mask = {layers = {}},
+    icon_size = data.raw.lamp["small-lamp"].icon_size,
+    picture = {
+        filename = "__core__/graphics/light-medium.png",
+        scale = 1.4,
+        width = 300,
+        height = 300,
+        tint = {1, 0.3, 0},
+        intensity = 0.5,
+        draw_as_light = true,
+    }
+}}
+
+local tile = maraxsis.merge(data.raw.tile["space-platform-foundation"], {
+    name = "maraxsis-pressure-dome-tile",
+    is_foundation = true,
+    minable = {
+        -- https://github.com/notnotmelon/maraxsis/issues/34
+        mining_time = 2 ^ 63 - 1, -- weird hack needed to make this a "top" tile. top tiles require minable properties however these dome tiles actually should not be minable
+        results = {},
+    },
+    collision_mask = {layers = {[maraxsis_dome_collision_mask] = true, ground_tile = true}},
+    map_color = {r = 0.5, g = 0.5, b = 0.75},
+    can_be_part_of_blueprint = false,
+    layer_group = "ground-artificial"
+})
+tile.variants.transition = table.deepcopy(data.raw.tile["concrete"].variants.transition)
+data:extend {tile}

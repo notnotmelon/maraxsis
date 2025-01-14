@@ -67,6 +67,7 @@ local default_maraxsis_buildability_rules = {
     ["spider-vehicle"] = cant_be_placed_anywhere,
     ["roboport"] = cant_be_placed_anywhere,
     ["radar"] = cant_be_placed_anywhere,
+    ["plant"] = cant_be_placed_anywhere,
 
     ["straight-rail"] = {water = false, dome = true, coral = false, trench = false, trench_entrance = false, trench_lava = false},
     ["curved-rail-a"] = {water = false, dome = true, coral = false, trench = false, trench_entrance = false, trench_lava = false},
@@ -104,13 +105,13 @@ end
 
 local function blacklist_via_tile_buildability_rule(entity, required_tile)
     if entity.tile_buildability_rules and table_size(entity.tile_buildability_rules) > 0 then
-        local found_maraxsis_rule = false
         for _, rule in pairs(entity.tile_buildability_rules) do
-            rule.colliding_tiles = rule.colliding_tiles or {layers = {}}
-            rule.colliding_tiles.layers[required_tile] = true
-            if rule.is_maraxsis_rule then found_maraxsis_rule = true end
+            if rule.is_maraxsis_rule then
+                rule.colliding_tiles = rule.colliding_tiles or {layers = {}}
+                rule.colliding_tiles.layers[required_tile] = true
+                return
+            end
         end
-        if found_maraxsis_rule then return end
     end
 
     entity.tile_buildability_rules = entity.tile_buildability_rules or {}
@@ -118,7 +119,20 @@ local function blacklist_via_tile_buildability_rule(entity, required_tile)
     table.insert(entity.tile_buildability_rules, {
         is_maraxsis_rule = true,
         area = entity.collision_box,
-        required_tiles = {layers = {object = true, player = true, ground_tile = true, water_tile = true}},
+        required_tiles = {
+            -- there's no way to disable the "required_tiles" property. just throw all the layers and hope something collides
+            layers = {
+                object = true,
+                player = true,
+                ground_tile = true,
+                water_tile = true,
+                [maraxsis_coral_collision_mask] = true,
+                [maraxsis_dome_collision_mask] = true,
+                [maraxsis_lava_collision_mask] = true,
+                [maraxsis_trench_entrance_collision_mask] = true,
+                [maraxsis_underwater_collision_mask] = true,
+            }
+        },
         colliding_tiles = {layers = {[required_tile] = true}}
     })
 end
@@ -126,15 +140,12 @@ end
 for prototype in pairs(defines.prototypes.entity) do
     for _, entity in pairs(data.raw[prototype] or {}) do
         if entity.hidden or not entity.collision_box then goto continue end
+        if entity.collision_mask and table_size(entity.collision_mask.layers or {}) == 0 then goto continue end
 
         local rules = entity.maraxsis_buildability_rules or default_maraxsis_buildability_rules[entity.type]
         if not rules then goto continue end
 
         assert(table_size(rules) == 6, "ERROR: Entity " .. entity.name .. " has incorrect definitions for maraxsis_buildability_rules. Requires 6 rule entries, instead had " .. serpent.line(rules))
-
-        if rules.water == false and rules.coral == true then
-            error("ERROR: Entity " .. entity.name .. " has nonsensical maraxsis_buildability_rules. Requires water == false and coral == true, instead had " .. serpent.line(rules))
-        end
 
         if rules.water == false and rules.dome == false and rules.coral == false and rules.trench_entrance == false then
             blacklist_via_surface_condition(entity, 50000)

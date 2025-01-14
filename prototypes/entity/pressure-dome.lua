@@ -256,31 +256,6 @@ data:extend {{
     cyclic = true
 }}
 
-local tile = maraxsis.merge(data.raw.tile["space-platform-foundation"], {
-    name = "maraxsis-pressure-dome-tile",
-    is_foundation = true,
-    minable = {
-        -- https://github.com/notnotmelon/maraxsis/issues/34
-        mining_time = 2 ^ 63 - 1, -- weird hack needed to make this a "top" tile. top tiles require minable properties however these dome tiles actually should not be minable
-        results = {},
-    },
-    collision_mask = {layers = {[maraxsis_dome_collision_mask] = true, ground_tile = true}},
-    map_color = {r = 0.5, g = 0.5, b = 0.75},
-    can_be_part_of_blueprint = false,
-    layer_group = "ground-artificial"
-})
-tile.variants.transition = table.deepcopy(data.raw.tile["concrete"].variants.transition),
-data:extend {tile}
-
-local blank_animation = {
-    filename = "__core__/graphics/empty.png",
-    line_length = 1,
-    width = 1,
-    height = 1,
-    frame_count = 1,
-    direction_count = 1,
-}
-
 data:extend {{
     type = "simple-entity-with-owner",
     name = "maraxsis-pressure-dome-collision",

@@ -44,14 +44,6 @@ end
 
 ducts["maraxsis-trench-duct"] = true
 
--- fix collision masks for the trench entrance
-for _, entity in pairs(collision_mask_util.collect_prototypes_with_layer("object")) do
-    if entity.type ~= "tile" and not ducts[entity.name] then
-        entity.collision_mask = collision_mask_util.get_mask(entity)
-        entity.collision_mask.layers[maraxsis_trench_entrance_collision_mask] = true
-    end
-end
-
 -- allow rocket fuel and nuclear fuel to be used in submarines
 local fuel_category = table.deepcopy(data.raw["fuel-category"]["chemical"])
 fuel_category.name = "rocket-fuel"
