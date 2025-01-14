@@ -8,7 +8,7 @@ require "compat.alien-biomes"
 require "compat.combat-mechanics-overhaul"
 require "compat.visible-planets-in-space"
 require "compat.rocket-silo-construction"
-require "compat.quality-seeds"
+require "compat.whats-a-spoilage"
 
 for extractor in pairs(maraxsis.MARAXSIS_SAND_EXTRACTORS) do
     local mask = collision_mask_util.get_mask(data.raw["mining-drill"][extractor])
@@ -81,3 +81,30 @@ for entity_type in pairs(defines.prototypes.entity) do
         ::continue::
     end
 end
+
+-- add maraxsis crafting categories to existing crafting machines
+local function add_crafting_category_if_other_category_exists(category_to_find, category_to_add)
+    for _, assembling_machine_type in pairs {
+        "assembling-machine",
+        "rocket-silo",
+        "furnace",
+        "character",
+    } do
+        for _, assembling_machine in pairs(data.raw[assembling_machine_type] or {}) do
+            for _, category in pairs(assembling_machine.crafting_categories or {}) do
+                if category == category_to_find then
+                    table.insert(assembling_machine.crafting_categories, category_to_add)
+                    break
+                end
+            end
+        end
+    end
+end
+
+add_crafting_category_if_other_category_exists("chemistry", "maraxsis-hydro-plant-or-chemistry")
+add_crafting_category_if_other_category_exists("smelting", "maraxsis-smelting-or-biochamber")
+add_crafting_category_if_other_category_exists("metallurgy", "maraxsis-hydro-plant-or-foundry")
+add_crafting_category_if_other_category_exists("organic", "maraxsis-smelting-or-biochamber")
+add_crafting_category_if_other_category_exists("organic", "maraxsis-hydro-plant-or-biochamber")
+add_crafting_category_if_other_category_exists("crafting", "maraxsis-hydro-plant-or-assembling")
+add_crafting_category_if_other_category_exists("advanced-crafting", "maraxsis-hydro-plant-or-advanced-crafting")

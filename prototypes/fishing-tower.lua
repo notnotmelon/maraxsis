@@ -14,7 +14,7 @@ data:extend {{
     energy_required = 3,
     ingredients = {
         {type = "item", name = "maraxsis-tropical-fish", amount = 1},
-        {type = "item", name = "maraxsis-sand",          amount = 1},
+        {type = "item", name = "sand",          amount = 1},
         {type = "item", name = "maraxsis-coral",         amount = 3},
         {type = "item", name = "plastic-bar",            amount = 1},
     },
@@ -80,7 +80,7 @@ fishing_tower.name = "maraxsis-fishing-tower"
 fishing_tower.minable = {mining_time = 0.5, result = "maraxsis-fishing-tower"}
 fishing_tower.icon = "__maraxsis__/graphics/icons/fishing-tower.png"
 fishing_tower.icon_size = 64
-fishing_tower.max_health = 300
+fishing_tower.max_health = 500
 fishing_tower.surface_conditions = {{
     property = "pressure",
     min = 200000,
@@ -94,6 +94,8 @@ scale_sprite_recursive(fishing_tower.graphics_set)
 scale_sprite_recursive(fishing_tower.crane.parts)
 fishing_tower.collision_box = {{-1.9, -1.9}, {1.9, 1.9}}
 fishing_tower.selection_box = {{-2, -2}, {2, 2}}
+fishing_tower.emissions_per_second = nil
+fishing_tower.energy_source.emissions_per_minute = nil
 fishing_tower.radius_visualisation_picture = {
     filename = "__maraxsis__/graphics/entity/fishing-tower/radius-visualization.png",
     width = 6,

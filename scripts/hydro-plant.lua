@@ -41,6 +41,7 @@ maraxsis.on_event(maraxsis.events.on_built(), function(event)
         raise_built = true,
         player = player,
     }
+    if not new_entity or not new_entity.valid then return end
     new_entity.mirroring = entity.mirroring
     new_entity.copy_settings(entity)
 

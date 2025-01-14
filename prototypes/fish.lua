@@ -64,6 +64,7 @@ for i, v in pairs(fish) do
         collision_mask = {layers = {}},
         autoplace = {
             probability_expression = "maraxsis_tropical_fish_" .. i,
+            default_enabled = false
         },
         vision_distance = 0,
         movement_speed = data.raw.unit["small-biter"].movement_speed * 2,

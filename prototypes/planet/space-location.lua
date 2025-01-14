@@ -29,11 +29,6 @@ data:extend {maraxsis.merge(data.raw.planet.gleba, {
     flying_robot_energy_usage_multiplier = 1.5, -- todo: this doesnt work
 })}
 
-if mods["hd_planets"] then
-    data.raw["planet"]["maraxsis"].starmap_icon = "__maraxsis__/graphics/planets/maraxsis-hd.png"
-    data.raw["planet"]["maraxsis"].starmap_icon_size = 4072
-end
-
 data:extend {maraxsis.merge(data.raw.planet.gleba, {
     name = "maraxsis-trench",
     starting_area = 1,
@@ -44,8 +39,7 @@ data:extend {maraxsis.merge(data.raw.planet.gleba, {
         pressure = 400000,
         gravity = 20,
     },
-    starmap_icon = "__maraxsis__/graphics/planets/maraxsis-trench.png",
-    starmap_icon_size = 512,
+    hidden = true,
     icon = "__maraxsis__/graphics/technology/maraxsis-trench.png",
     icon_size = 256,
     order = "ce[maraxsis]-[trench]",
@@ -62,8 +56,6 @@ data:extend {maraxsis.merge(data.raw.planet.gleba, {
     asteroid_spawn_definitions = "nil",
     flying_robot_energy_usage_multiplier = 1.5, -- todo: this doesnt work
 })}
-
--- error(serpent.block(data.raw.planet["maraxsis-trench"].persistent_ambient_sounds))
 
 data.raw.planet["maraxsis-trench"].persistent_ambient_sounds.wind = {
     sound = {

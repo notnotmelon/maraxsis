@@ -7,6 +7,7 @@ require "prototypes.item-sounds"
 require "prototypes.regulator-fluidbox"
 require "compat.aai-industry"
 require "compat.transport-ring-teleporter"
+require "compat.quality-seeds"
 
 local function add_fuel_value(fluid, value)
     fluid = data.raw.fluid[fluid]
@@ -65,16 +66,6 @@ for _, nightvision in pairs(data.raw["night-vision-equipment"]) do
 end
 data:extend(nightvision_to_extend)
 
--- add torpedoes to stronger explosives tech
-for _, tech in pairs(data.raw.technology) do
-    if tech.name:find("stronger%-explosives%-%d") then
-        local level = tonumber(tech.name:match("%d$"))
-        if level >= 4 then
-            table.insert(tech.effects, {type = "ammo-damage", infer_icon = true, use_icon_overlay_constant = true, ammo_category = "maraxsis-torpedoes", modifier = 0.2 + (level / 10)})
-        end
-    end
-end
-
 data:extend {{
     type = "item-subgroup",
     name = "maraxsis-atmosphere-barreling",
@@ -103,7 +94,7 @@ if mods["assembler-pipe-passthrough"] then
 end
 
 data.raw.recipe["maraxsis-glass-panes-recycling"].results = {
-    {type = "item", name = "maraxsis-sand",      amount = 1, probability = 0.75},
+    {type = "item", name = "sand",      amount = 1, probability = 0.75},
     {type = "item", name = "maraxsis-salt",      amount = 1, probability = 0.25},
     {type = "item", name = "maraxsis-limestone", amount = 1, probability = 0.25},
 }

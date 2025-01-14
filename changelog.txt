@@ -1,4 +1,179 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.28.0
+Date: 2025-01-13
+  Features:
+    - Added achievements.
+  Bugfixes:
+    - Fixed a crash. Resolves https://github.com/notnotmelon/maraxsis/issues/202
+---------------------------------------------------------------------------------------------------
+Version: 1.27.16
+Date: 2025-01-10
+  Graphics:
+    - Another pass over all item icons and tech icon improvements. Huge thanks to [@snouz](https://github.com/snouz) for the update! https://github.com/notnotmelon/maraxsis/pull/205
+---------------------------------------------------------------------------------------------------
+Version: 1.27.15
+Date: 2025-01-05
+  Locale:
+    - Added Korean translation.
+---------------------------------------------------------------------------------------------------
+Version: 1.27.14
+Date: 2025-01-02
+  Bugfixes:
+    - Fishing tower no longer generates spores.
+  Changes:
+    - Changed recipe and item subgroups for factoriopedia. Resolves https://github.com/notnotmelon/maraxsis/issues/197
+---------------------------------------------------------------------------------------------------
+Version: 1.27.13
+Date: 2025-01-02
+  Sounds:
+    - No longer overrwitting item sounds for the vechicle dock.
+  Locale:
+    - No longer overwritting corpse locale for submarine corpses. Resolves https://github.com/notnotmelon/maraxsis/issues/194
+---------------------------------------------------------------------------------------------------
+Version: 1.27.12
+Date: 2025-01-02
+  Locale:
+    - Update RU locale.
+---------------------------------------------------------------------------------------------------
+Version: 1.27.11
+Date: 2025-01-02
+  Locale:
+    - Update Spanish locale.cfg ([#195](https://github.com/notnotmelon/maraxsis/issues/195))
+    - Update zh-CN locale.cfg ([#192](https://github.com/notnotmelon/maraxsis/issues/192))
+---------------------------------------------------------------------------------------------------
+Version: 1.27.10
+Date: 2024-12-31
+  Bugfixes:
+    - Fixed crash when other mods remove submarine fuel inventory.
+  Changes:
+    - To prevent softlocks, a submarine will now teleport to your position on death.
+---------------------------------------------------------------------------------------------------
+Version: 1.27.9
+Date: 2024-12-31
+  Bugfixes:
+    - Fixed migrating nauvis constructions to submarines.
+---------------------------------------------------------------------------------------------------
+Version: 1.27.8
+Date: 2024-12-29
+  Locale:
+    - Add factoriopedia description for trench entrance tiles to explain how to find the trench.
+---------------------------------------------------------------------------------------------------
+Version: 1.27.7
+Date: 2024-12-29
+  Compatibility:
+    - Added compat with the "maraxsis start" mod
+---------------------------------------------------------------------------------------------------
+Version: 1.27.6
+Date: 2024-12-29
+  Compatibility:
+    - Fixed crash when installing both "quality seeds" "maraxsis" and "all recipes prod techs" all at the same time.
+---------------------------------------------------------------------------------------------------
+Version: 1.27.5
+Date: 2024-12-28
+  Graphics:
+    - Removed "maraxsis-hd" from the mod files.
+  Changes:
+    - The maraxsis trench no longer appears in the starmap.
+---------------------------------------------------------------------------------------------------
+Version: 1.27.4
+Date: 2024-12-28
+  Bugfixes:
+    - Fixed out of map tiles getting migrated to trench tiles when maraxsis is installed.
+---------------------------------------------------------------------------------------------------
+Version: 1.27.3
+Date: 2024-12-28
+  Locale:
+    - RU locale update for v1.27.2 ([#190](https://github.com/notnotmelon/maraxsis/issues/190))
+---------------------------------------------------------------------------------------------------
+Version: 1.27.2
+Date: 2024-12-27
+  Balancing:
+    - Increase the salt cost in glass panes from 1 -> 2.
+---------------------------------------------------------------------------------------------------
+Version: 1.27.1
+Date: 2024-12-27
+  Locale:
+    - Fix various bugs in german translation.
+    - Update dome locale to explain how its mined.
+  Changes:
+    - Added a migration to convert engine productivity back to glass productivity.
+    - Reverted "Removed glass productivity. Added engine unit productivity."
+---------------------------------------------------------------------------------------------------
+Version: 1.27.0
+Date: 2024-12-27
+  Features:
+    - Removed glass productivity. Added engine unit productivity. MIGRATION NOTE: Your researched levels of glass prod will be converted to levels of engine prod.
+---------------------------------------------------------------------------------------------------
+Version: 1.26.1
+Date: 2024-12-27
+  Bugfixes:
+    - Fixed crash with fruit mod. Resolves https://github.com/notnotmelon/maraxsis/issues/187
+---------------------------------------------------------------------------------------------------
+Version: 1.26.0
+Date: 2024-12-26
+  Features:
+    - Increased the version number.
+---------------------------------------------------------------------------------------------------
+Version: 1.25.5
+Date: 2024-12-26
+  Compatibility:
+    - Added compatibility with "whats a spoilage" mod.
+    - Fixed compatibility with "whats a spoilage" mod.
+  Bugfixes:
+    - Fix maraxsis crafting categories not applying to certain modded entities. Resolves https://github.com/notnotmelon/maraxsis/issues/184
+    - Fixed crash with AAI programmable vechicles. Resolves https://github.com/notnotmelon/maraxsis/issues/183
+---------------------------------------------------------------------------------------------------
+Version: 1.25.4
+Date: 2024-12-25
+  Locale:
+    - RU locale polish and update for v1.25.3 ([#186](https://github.com/notnotmelon/maraxsis/issues/186))
+---------------------------------------------------------------------------------------------------
+Version: 1.25.3
+Date: 2024-12-24
+  Compatibility:
+    - Added min version requirement for fluid must flow. Resolves https://github.com/notnotmelon/maraxsis/issues/185
+---------------------------------------------------------------------------------------------------
+Version: 1.25.2
+Date: 2024-12-22
+  Balancing:
+    - The hydraulic-science-pack recipe now gives 1 science pack instead of three.
+---------------------------------------------------------------------------------------------------
+Version: 1.25.1
+Date: 2024-12-22
+  Bugfixes:
+    - Fixed wrong item subgroup for the stone centrifuging recipe.
+---------------------------------------------------------------------------------------------------
+Version: 1.25.0
+Date: 2024-12-22
+  Features:
+    - Added a new technology which grants a uranium source on maraxsis.
+  Balancing:
+    - Increased the science pack cost for liquid atmopshere, effect transmission 2, stone centrifuging, and preservatives from 1000 -> 5000.
+    - The conduit technology now only requires fulgora and maraxsis science packs.
+  Compatibility:
+    - AAI industries sand and maraxsis sand are now the same item.
+    - Fixed fish spawning in the "subsurface" mod. Resolves https://github.com/notnotmelon/maraxsis/issues/163
+  Bugfixes:
+    - Fixed wrong item subgroup for the trench duct. Resolves https://github.com/notnotmelon/maraxsis/issues/182
+    - The maraxsis water shader no longer shows up in selection lists. Resolves https://github.com/notnotmelon/maraxsis/issues/181
+  Graphics:
+    - Added tile transitions for dome tiles to maraxsis sand and maraxsis trench volcanic folds. Resolves https://github.com/notnotmelon/maraxsis/issues/110
+---------------------------------------------------------------------------------------------------
+Version: 1.24.22
+Date: 2024-12-20
+  Locale:
+    - RU local update ([#180](https://github.com/notnotmelon/maraxsis/issues/180))
+---------------------------------------------------------------------------------------------------
+Version: 1.24.21
+Date: 2024-12-19
+  Graphics:
+    - Added the "for you if" splash image to the git.
+    - Updated the icon for saline water.
+  Locale:
+    - Updated the technology description for deepsea research to explain that biolabs are placable anywhere.
+  Changes:
+    - Removed torpedos.
+---------------------------------------------------------------------------------------------------
 Version: 1.24.20
 Date: 2024-12-19
   Graphics:

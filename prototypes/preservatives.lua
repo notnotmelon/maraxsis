@@ -23,7 +23,7 @@ data:extend {{
     },
     prerequisites = {"maraxsis-project-seadragon"},
     unit = {
-        count = 1000,
+        count = 5000,
         ingredients = {
             {"agricultural-science-pack", 1},
             {"hydraulic-science-pack",    1},

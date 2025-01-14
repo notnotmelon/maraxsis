@@ -268,6 +268,7 @@ local tile = maraxsis.merge(data.raw.tile["space-platform-foundation"], {
     can_be_part_of_blueprint = false,
     layer_group = "ground-artificial"
 })
+tile.variants.transition = table.deepcopy(data.raw.tile["concrete"].variants.transition),
 data:extend {tile}
 
 local blank_animation = {

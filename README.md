@@ -1,6 +1,6 @@
 [![](https://img.shields.io/badge/dynamic/json?color=orange&label=Factorio&query=downloads_count&suffix=%20downloads&url=https%3A%2F%2Fmods.factorio.com%2Fapi%2Fmods%2Fmaraxsis&style=for-the-badge)](https://mods.factorio.com/mod/maraxsis) [![](https://img.shields.io/badge/Discord-Community-blue?style=for-the-badge)](https://discord.gg/xRYEZYz5WR) [![](https://img.shields.io/github/issues/notnotmelon/maraxsis?label=Bug%20Reports&style=for-the-badge)](https://github.com/notnotmelon/maraxsis/issues) [![](https://img.shields.io/github/issues-pr/notnotmelon/maraxsis?label=Pull%20Requests&style=for-the-badge)](https://github.com/notnotmelon/maraxsis/pulls) [![Ko-Fi](https://img.shields.io/badge/Ko--fi-support%20me-ff5e5b?logo=kofi&logoColor=white&style=for-the-badge)](https://ko-fi.com/notnotmelon)
 
-![](https://assets-mod.factorio.com/assets/f81718541d725932c77e5efeb5d76c06dc71b5d9.png)
+![](https://assets-mod.factorio.com/assets/3fe1f0f687b4d734c9d03546d0f15ce8005729cb.png)
 
 ---
 
@@ -8,11 +8,11 @@
 
 Let me introduce this pristine, submerged world. Far away from the sun, this planet paradoxically maintains a comfortable temperature through a runaway greenhouse effect. 
 
-Preliminary surface scans show an average temperature of 101°F. It's not too hot and not too cold, the perfect Goldilocks zone for liquid water. Maybe even too perfect...
+Preliminary surface scans show an average temperature of 101°F. It's not too hot and not too cold, the perfect Goldilocks zone for liquid water.
 
 ![](https://files.catbox.moe/wwq54g.png)
 
-Maraxsis is 100% covered by deep ocean. There is no land on the entire planet meaning you'll have to invest in aquatic technologies such as submarines, torpedos, hydro plants, and submerged pressure domes. In terms of progression, Maraxsis is unlocked at the same point as Aquilo. This means the mod can be seamlessly added to a finished Space Age save.
+Maraxsis is 100% covered by deep ocean. There is no land on the entire planet meaning you'll have to invest in aquatic technologies such as submarines, hydro plants, and submerged pressure domes. In terms of progression, Maraxsis is unlocked at the same point as Aquilo. This means the mod can be seamlessly added to a finished Space Age save.
 
 Maraxsis is designed to take approximately fifteen hours to complete. There is also huge megabasing potential for those who would rather stay for longer.
 
@@ -25,8 +25,6 @@ Your armor is designed to protect against attacks from various creatures, but it
 ![](https://files.catbox.moe/qlbluo.mp4)
 
 This deep sea vessel is capable of submerging to any depth, and can be automated with a schedule to follow underwater channels.
-
-With further technologies, construct the nuclear submarine and atomic torpedoes.
 
 Be careful, swimming outside the submarine will quickly result in death by extreme pressure, drowning, or both.
 
@@ -45,8 +43,6 @@ Your submarine descends for what feels like hours. Light levels slowly drop unti
 While exploring the trench, you come across a geothermal vent. The magma appears to have similar composition as that found on Vulcanus. Perhaps it can be processed into basic metals?
 
 ![](https://files.catbox.moe/3zva7p.png)
-
-As you are leaving, your sonar systems sense some underwater movement in the distance. But the equipment must be faulty, it's impossible for anything to live down here. Right?
 
 ---
 
@@ -67,6 +63,8 @@ Domes can be connected to the circuit network to change their color and read the
 Maraxsis is available at the same time as Aquilo. The mod does not change any vanilla recipes meaning the mod can be seamlessly added to any existing Space Age save, even if the save is completed. 
 
 The mod leans heavily into the puzzle genre requiring creative setups to solve difficult challenges. Do you have what it takes to craft the hydraulic science pack?
+
+There is also the [Maraxsis Start](https://mods.factorio.com/mod/maraxsis-start) mod to invert the tech tree and spawn you on Maraxsis.
 
 Here's a sample of some of the technologies available on Maraxsis:
 
@@ -90,10 +88,7 @@ This mod makes a few changes to Factorio: Space Age in order for Maraxsis to fit
 
 ### Etymology
 
-The name "Maraxsis" draws inspiration from Frank Herbert's Arrakis. The two worlds can be considered "equal but opposite".
-
- - Both lack essential resources—land on Maraxsis, water on Arrakis—making survival difficult.
- - Both are dominated by colossal, worm-like apex predators that terrorize their respective environments.
+The name "Maraxsis" draws inspiration from Frank Herbert's Arrakis. The two worlds can be considered "equal but opposite". Both lack essential resources; land on Maraxsis, water on Arrakis; making survival difficult.
 
 This connection is mirrored in their names. The shared suffixes “-kis” or “-sis” evoke a harsh, guttural sound, hinting at the hostility in these landscapes.
 

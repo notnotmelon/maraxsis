@@ -52,6 +52,7 @@ local DOME_EXCLUDED_FROM_DISABLE = {
     ["maraxsis-hydro-plant-extra-module-slots"] = true,
     ["maraxsis-salt-reactor"] = true,
     ["maraxsis-conduit"] = true,
+    ["maraxsis-a-breath-of-fresh-air"] = true,
 }
 
 local TROPICAL_FISH_NAMES = {}
