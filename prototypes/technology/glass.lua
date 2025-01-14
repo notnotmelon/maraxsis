@@ -141,6 +141,14 @@ data:extend {{
     upgrade = true
 }}
 
+if data.raw.recipe["glass"] or mods["aai-industry"] then
+    table.insert(data.raw.technology["maraxsis-glass-productivity"].effects, 1, {
+        type = "change-recipe-productivity",
+        recipe = "glass",
+        change = 0.1
+    })
+end
+
 data:extend {{
     type = "recipe",
     name = "maraxsis-limestone-processing",
