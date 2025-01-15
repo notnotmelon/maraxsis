@@ -52,14 +52,14 @@ end
 update_recipe_icon(automation_science, "maraxsis-saline-water")
 update_recipe_icon(logistic_science, "maraxsis-brackish-water")
 update_recipe_icon(military_science, "lava")
-update_recipe_icon(chemical_science, "maraxsis-atmosphere")
+update_recipe_icon(chemical_science, "water")
 update_recipe_icon(production_science, "maraxsis-oxygen")
 update_recipe_icon(utility_science, "maraxsis-hydrogen")
 
 table.insert(automation_science.ingredients, {type = "fluid", name = "maraxsis-saline-water", amount = 50})
 table.insert(logistic_science.ingredients, {type = "fluid", name = "maraxsis-brackish-water", amount = 50})
 table.insert(military_science.ingredients, {type = "fluid", name = "lava", amount = 100})
-table.insert(chemical_science.ingredients, {type = "fluid", name = "maraxsis-atmosphere", amount = 50})
+table.insert(chemical_science.ingredients, {type = "fluid", name = "water", amount = 100})
 table.insert(production_science.ingredients, {type = "fluid", name = "maraxsis-oxygen", amount = 100})
 table.insert(utility_science.ingredients, {type = "fluid", name = "maraxsis-hydrogen", amount = 200})
 
