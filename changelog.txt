@@ -1,4 +1,10 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.28.6
+Date: 2025-01-15
+  Balancing:
+    - Deepsea research chemical science now consumes water instead of atmosphere.
+    - Reduced the power consumption of maraxsis pressure domes lights from 2mw to 20kw.
+---------------------------------------------------------------------------------------------------
 Version: 1.28.5
 Date: 2025-01-15
   Bugfixes:
