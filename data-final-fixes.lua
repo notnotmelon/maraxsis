@@ -11,6 +11,7 @@ require "compat.whats-a-spoilage"
 
 for extractor in pairs(maraxsis.MARAXSIS_SAND_EXTRACTORS) do
     local mask = collision_mask_util.get_mask(data.raw["mining-drill"][extractor])
+    mask.layers[maraxsis_dome_collision_mask] = true
     data.raw["assembling-machine"][extractor .. "-sand-extractor"].collision_mask = mask
 end
 
