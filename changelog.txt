@@ -1,4 +1,9 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.28.7
+Date: 2025-01-20
+  Compatibility:
+    - Added compatibility with modules-t4, replacing quality 4 module recipe with one designed around Maraxsis. ([#213](https://github.com/notnotmelon/maraxsis/issues/213))
+---------------------------------------------------------------------------------------------------
 Version: 1.28.6
 Date: 2025-01-15
   Balancing:
