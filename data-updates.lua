@@ -11,6 +11,7 @@ require "compat.aai-signal-transmission"
 require "compat.editor-extensions"
 require "compat.transport-ring-teleporter"
 require "compat.quality-seeds"
+require "compat.modules-t4"
 
 local function add_fuel_value(fluid, value)
     fluid = data.raw.fluid[fluid]
