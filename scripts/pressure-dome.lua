@@ -284,7 +284,7 @@ maraxsis.on_event(maraxsis.events.on_built(), function(event)
     local surface = entity.surface
 
     for _, pressure_dome_data in pairs(storage.pressure_domes) do
-        local dome = pressure_dome_data.render_object
+        local dome = pressure_dome_data.entity
         if not dome.valid or dome.surface ~= surface then goto continue end
 
         local points_in_dome = count_points_in_dome(pressure_dome_data, entity)
@@ -558,20 +558,20 @@ local function rerender_all_domes()
     for _, pressure_dome_data in pairs(sorted_by_y_position) do
         local surface = pressure_dome_data.surface
         if surface.valid then
-            pressure_dome_data.render_object.destroy()
+            pressure_dome_data.entity.destroy()
             pressure_dome_data.opacity = pressure_dome_data.opacity or 255
             local opacity = pressure_dome_data.opacity
-            local render_object = rendering.draw_sprite {
+            local entity = rendering.draw_sprite {
                 sprite = "maraxsis-pressure-dome-sprite",
                 render_layer = "higher-object-above",
                 target = pressure_dome_data.position,
                 surface = pressure_dome_data.surface,
             }
-            render_object.color = {opacity, opacity, opacity, opacity}
-            pressure_dome_data.render_object = render_object
-            storage.pressure_domes[render_object.id] = pressure_dome_data
+            entity.color = {opacity, opacity, opacity, opacity}
+            pressure_dome_data.entity = entity
+            storage.pressure_domes[entity.id] = pressure_dome_data
         else
-            storage.pressure_domes[pressure_dome_data.render_object.id] = pressure_dome_data
+            storage.pressure_domes[pressure_dome_data.entity.id] = pressure_dome_data
         end
     end
 end
@@ -633,7 +633,7 @@ maraxsis.on_event(maraxsis.events.on_built(), function(event)
 
     local health = entity.health
     entity.destroy()
-    local render_object = rendering.draw_sprite {
+    local entity = rendering.draw_sprite {
         sprite = "maraxsis-pressure-dome-sprite",
         render_layer = "higher-object-above",
         target = position,
@@ -641,7 +641,7 @@ maraxsis.on_event(maraxsis.events.on_built(), function(event)
     }
 
     local pressure_dome_data = {
-        render_object = render_object,
+        entity = entity,
         position = position,
         surface = surface,
         quality = quality,
@@ -778,7 +778,7 @@ maraxsis.on_event(maraxsis.events.on_destroyed(), function(event)
 
     if entity.name == "maraxsis-pressure-dome-collision" then
         for _, pressure_dome_data in pairs(storage.pressure_domes) do
-            local dome = pressure_dome_data.render_object
+            local dome = pressure_dome_data.entity
             if dome.valid then
                 for _, collision_box in pairs(pressure_dome_data.collision_boxes) do
                     if collision_box.valid and collision_box == entity then
@@ -813,7 +813,7 @@ maraxsis.on_event(maraxsis.events.on_destroyed(), function(event)
     end
 
     for key, pressure_dome_data in pairs(storage.pressure_domes) do
-        local dome = pressure_dome_data.render_object
+        local dome = pressure_dome_data.entity
 
         if dome.valid then
             delete_invalid_entities_from_contained_entities_list(pressure_dome_data, entity)
@@ -896,7 +896,7 @@ maraxsis.on_event(maraxsis.events.on_entity_clicked(), function(event)
     if not pressure_dome_data then return end
     local light = pressure_dome_data.light
     if not light or not light.valid then
-        local dome = pressure_dome_data.render_object
+        local dome = pressure_dome_data.entity
         if not dome.valid then return end
         pressure_dome_data.light = create_dome_light(pressure_dome_data)
         light = pressure_dome_data.light
@@ -995,7 +995,7 @@ end)
 
 maraxsis.on_nth_tick(5, function(event)
     for _, pressure_dome_data in pairs(storage.pressure_domes) do
-        local dome_sprite = pressure_dome_data.render_object
+        local dome_sprite = pressure_dome_data.entity
         local surface = pressure_dome_data.surface
         if not dome_sprite.valid or not surface.valid then goto continue end
 
