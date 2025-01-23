@@ -774,7 +774,7 @@ end
 maraxsis.on_event(maraxsis.events.on_destroyed(), function(event)
     local entity = event.entity
     if not entity.valid then return end
-    local object_id = entity.id
+    local render_object_id
 
     if entity.name == "maraxsis-pressure-dome-collision" then
         for _, pressure_dome_data in pairs(storage.pressure_domes) do
@@ -783,7 +783,7 @@ maraxsis.on_event(maraxsis.events.on_destroyed(), function(event)
                 for _, collision_box in pairs(pressure_dome_data.collision_boxes) do
                     if collision_box.valid and collision_box == entity then
                         entity = dome
-                        object_id = dome.id
+                        render_object_id = dome.id
                         goto parent_dome_found
                     end
                 end
@@ -792,9 +792,9 @@ maraxsis.on_event(maraxsis.events.on_destroyed(), function(event)
     end
     ::parent_dome_found::
 
-    local pressure_dome_data = storage.pressure_domes[object_id]
+    local pressure_dome_data = storage.pressure_domes[render_object_id]
     if pressure_dome_data then
-        storage.pressure_domes[object_id] = nil
+        storage.pressure_domes[render_object_id] = nil
         unplace_tiles(pressure_dome_data)
         destroy_collision_boxes(pressure_dome_data)
         local light = pressure_dome_data.light
