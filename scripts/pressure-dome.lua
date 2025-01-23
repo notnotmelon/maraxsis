@@ -812,26 +812,14 @@ maraxsis.on_event(maraxsis.events.on_destroyed(), function(event)
         return
     end
 
-    local new_pressure_domes = nil
-
-    for _, pressure_dome_data in pairs(storage.pressure_domes) do
+    for key, pressure_dome_data in pairs(storage.pressure_domes) do
         local dome = pressure_dome_data.render_object
 
         if dome.valid then
             delete_invalid_entities_from_contained_entities_list(pressure_dome_data, entity)
-        elseif not new_pressure_domes then
-            new_pressure_domes = {}
-            for _, pressure_dome_data in pairs(storage.pressure_domes) do
-                local dome = pressure_dome_data.render_object
-                if dome.valid then
-                    new_pressure_domes[dome.id] = pressure_dome_data
-                end
-            end
+        else
+            storage.pressure_domes[key] = nil
         end
-    end
-
-    if new_pressure_domes then
-        storage.pressure_domes = new_pressure_domes
     end
 end)
 
