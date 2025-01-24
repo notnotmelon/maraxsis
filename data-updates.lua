@@ -12,6 +12,7 @@ require "compat.editor-extensions"
 require "compat.transport-ring-teleporter"
 require "compat.quality-seeds"
 require "compat.modules-t4"
+require "compat.5-dim-automation"
 
 local function add_fuel_value(fluid, value)
     fluid = data.raw.fluid[fluid]
