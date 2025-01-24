@@ -570,8 +570,8 @@ local function rerender_all_domes()
             entity.color = {opacity, opacity, opacity, opacity}
             pressure_dome_data.entity = entity
             storage.pressure_domes[entity.id] = pressure_dome_data
-        else
-            storage.pressure_domes[pressure_dome_data.entity.id] = pressure_dome_data
+        elseif pressure_dome_data.entity.valid then
+            storage.pressure_domes[pressure_dome_data.entity.id] = nil
         end
     end
 end
