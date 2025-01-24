@@ -792,8 +792,8 @@ maraxsis.on_event(maraxsis.events.on_destroyed(), function(event)
     end
     ::parent_dome_found::
 
-    local pressure_dome_data = storage.pressure_domes[render_object_id]
-    if pressure_dome_data then
+    if render_object_id and storage.pressure_domes[render_object_id] then
+        local pressure_dome_data = storage.pressure_domes[render_object_id]
         storage.pressure_domes[render_object_id] = nil
         unplace_tiles(pressure_dome_data)
         destroy_collision_boxes(pressure_dome_data)
