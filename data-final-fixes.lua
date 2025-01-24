@@ -8,6 +8,7 @@ require "compat.alien-biomes"
 require "compat.visible-planets-in-space"
 require "compat.rocket-silo-construction"
 require "compat.whats-a-spoilage"
+require "compat.combat-mechanics-overhaul"
 
 for extractor in pairs(maraxsis.MARAXSIS_SAND_EXTRACTORS) do
     local mask = collision_mask_util.get_mask(data.raw["mining-drill"][extractor])
@@ -100,3 +101,14 @@ add_crafting_category_if_other_category_exists("organic", "maraxsis-smelting-or-
 add_crafting_category_if_other_category_exists("organic", "maraxsis-hydro-plant-or-biochamber")
 add_crafting_category_if_other_category_exists("crafting", "maraxsis-hydro-plant-or-assembling")
 add_crafting_category_if_other_category_exists("advanced-crafting", "maraxsis-hydro-plant-or-advanced-crafting")
+
+local sand_mask = collision_mask_util.get_mask(data.raw.tile["sand-1-underwater"])
+local hydro_plant_mask = collision_mask_util.get_mask(data.raw["assembling-machine"]["maraxsis-hydro-plant"])
+if collision_mask_util.masks_collide(sand_mask, hydro_plant_mask) then
+    error(
+        "Hydro plant cannot be built on maraxsis. Is there a mod conflict? Sand mask: "
+        .. serpent.line(sand_mask)
+        .. " Hydro plant mask: "
+        .. serpent.line(hydro_plant_mask)
+    )
+end
