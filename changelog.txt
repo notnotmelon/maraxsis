@@ -1,4 +1,12 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.28.9
+Date: 2025-01-24
+  Compatibility:
+    - Added compatibility with 5 dim automation. Resolves https://github.com/notnotmelon/maraxsis/issues/211
+    - Enabled early unlock of the vechicle dock if spidertron patrols is installed. Resolves https://github.com/notnotmelon/maraxsis/issues/212
+  Bugfixes:
+    - Fixed could not built any entity with the combat mechanics overhaul mod installed. Resolves https://github.com/notnotmelon/maraxsis/issues/209 Resolves https://github.com/notnotmelon/maraxsis/issues/216
+---------------------------------------------------------------------------------------------------
 Version: 1.28.8
 Date: 2025-01-24
   Bugfixes:
