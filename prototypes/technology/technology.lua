@@ -25,6 +25,8 @@ data:extend {{
         "advanced-asteroid-processing",
         "rocket-turret",
         "cliff-explosives",
+        "electromagnetic-science-pack",
+        settings.startup["sp-enable-spiderling"].value and "sp-spidertron-automation" or nil
     },
     unit = {
         count = 3000,

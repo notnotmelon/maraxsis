@@ -49,6 +49,7 @@ for extractor in pairs(maraxsis.MARAXSIS_SAND_EXTRACTORS) do
     extractor.localised_description = extractor.localised_description or {"?", {"entity-description." .. extractor.name}, ""}
     extractor.hidden_in_factoriopedia = false
     extractor.fixed_recipe = "maraxsis-sand-extraction"
+    extractor.maraxsis_buildability_rules = {water = true, dome = false, coral = true, trench = false, trench_entrance = false, trench_lava = false}
     extractor.fixed_quality = "normal"
     extractor.crafting_speed = extractor.mining_speed
     extractor.mining_speed = nil
@@ -57,11 +58,6 @@ for extractor in pairs(maraxsis.MARAXSIS_SAND_EXTRACTORS) do
     extractor.allowed_effects = {"productivity", "consumption", "speed", "pollution", "quality"}
     extractor.resource_drain_rate_percent = nil
     extractor.name = extractor.name .. "-sand-extractor"
-    extractor.surface_conditions = {{
-        property = "pressure",
-        min = 200000,
-        max = 200000,
-    }}
     data:extend {extractor}
 end
 

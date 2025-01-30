@@ -1,7 +1,7 @@
-if not mods["combat-mechanics-overhaul"] then return end
+-- https://github.com/notnotmelon/maraxsis/issues/209
 
 for _, tile in pairs(data.raw.tile) do
-    if not tile.name:find("%-underwater") then goto continue end
-    tile.collision_mask.layers.item = nil
-    ::continue::
+    if tile.collision_mask and tile.collision_mask.layers and tile.fluid == "maraxsis-saline-water" then
+        tile.collision_mask.layers.item = nil
+    end
 end

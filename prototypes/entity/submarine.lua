@@ -208,6 +208,7 @@ for i = 1, 2 do
     entity.name = name
     entity.icon = icon
     entity.equipment_grid = grid.name
+    entity.maraxsis_buildability_rules = {water = true, dome = true, coral = true, trench = true, trench_entrance = true, trench_lava = true}
     entity.icon_size = 64
     entity.height = 0
     entity.flags = {"placeable-player", "player-creation", "placeable-off-grid", "no-automated-item-removal", "no-automated-item-insertion"}
@@ -383,6 +384,7 @@ data:extend {{
 
 local vehicle_leg = table.deepcopy(data.raw["spider-leg"]["spidertron-leg-1"])
 vehicle_leg.name = "maraxsis-submarine-leg"
+vehicle_leg.maraxsis_buildability_rules = {water = true, dome = true, coral = true, trench = true, trench_entrance = true, trench_lava = true}
 vehicle_leg.graphics_set = {}
 vehicle_leg.collision_mask = collision_mask
 vehicle_leg.target_position_randomisation_distance = 0

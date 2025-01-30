@@ -2,12 +2,17 @@ require "prototypes.vanilla-changes"
 require "prototypes.spidertron-patrols"
 require "prototypes.item-weight"
 require "prototypes.default-import-location"
-require "prototypes.fluid-void"
 require "prototypes.item-sounds"
-require "prototypes.regulator-fluidbox"
+require "prototypes.fluid-void"
+require "prototypes.entity.regulator-fluidbox"
+
 require "compat.aai-industry"
+require "compat.aai-signal-transmission"
+require "compat.editor-extensions"
 require "compat.transport-ring-teleporter"
 require "compat.quality-seeds"
+require "compat.modules-t4"
+require "compat.5-dim-automation"
 
 local function add_fuel_value(fluid, value)
     fluid = data.raw.fluid[fluid]
@@ -96,7 +101,7 @@ end
 data.raw.recipe["maraxsis-glass-panes-recycling"].results = {
     {type = "item", name = "sand",      amount = 1, probability = 0.75},
     {type = "item", name = "maraxsis-salt",      amount = 1, probability = 0.25},
-    {type = "item", name = "maraxsis-limestone", amount = 1, probability = 0.25},
+    {type = "item", name = "maraxsis-limestone", amount = 1, probability = 0.5},
 }
 
 -- salt reactor localised description

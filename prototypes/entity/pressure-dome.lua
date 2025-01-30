@@ -68,6 +68,7 @@ data:extend {{
     radar_range = data.raw.roboport["maraxsis-regulator"].radar_range,
     logistics_radius = data.raw.roboport["maraxsis-regulator"].logistics_radius,
     construction_radius = data.raw.roboport["maraxsis-regulator"].construction_radius,
+    maraxsis_buildability_rules = {water = true, dome = true, coral = true, trench = true, trench_entrance = true, trench_lava = true},
     energy_source = {type = "void"},
     energy_usage = "0W",
     recharge_minimum = "0W",
@@ -137,7 +138,7 @@ data:extend {maraxsis.merge(data.raw["lamp"]["small-lamp"], {
     picture_on = maraxsis.empty_image(),
     picture_off = maraxsis.empty_image(),
     circuit_wire_max_distance = 16,
-    energy_usage_per_tick = "2MW",
+    energy_usage_per_tick = "20kW",
     glow_size = 60,
     light = {
         size = 80,
@@ -255,31 +256,6 @@ data:extend {{
     cyclic = true
 }}
 
-local tile = maraxsis.merge(data.raw.tile["space-platform-foundation"], {
-    name = "maraxsis-pressure-dome-tile",
-    is_foundation = true,
-    minable = {
-        -- https://github.com/notnotmelon/maraxsis/issues/34
-        mining_time = 2 ^ 63 - 1, -- weird hack needed to make this a "top" tile. top tiles require minable properties however these dome tiles actually should not be minable
-        results = {},
-    },
-    collision_mask = {layers = {[maraxsis_dome_collision_mask] = true, [maraxsis_fishing_tower_collision_mask] = true}},
-    map_color = {r = 0.5, g = 0.5, b = 0.75},
-    can_be_part_of_blueprint = false,
-    layer_group = "ground-artificial"
-})
-tile.variants.transition = table.deepcopy(data.raw.tile["concrete"].variants.transition),
-data:extend {tile}
-
-local blank_animation = {
-    filename = "__core__/graphics/empty.png",
-    line_length = 1,
-    width = 1,
-    height = 1,
-    frame_count = 1,
-    direction_count = 1,
-}
-
 data:extend {{
     type = "simple-entity-with-owner",
     name = "maraxsis-pressure-dome-collision",
@@ -299,7 +275,7 @@ data:extend {{
         ["water_tile"] = true,
         ["object"] = true,
         ["item"] = true,
-        [maraxsis_collision_mask] = true,
+        [maraxsis_underwater_collision_mask] = true,
         [maraxsis_dome_collision_mask] = true
     }},
     squeak_behaviour = false,

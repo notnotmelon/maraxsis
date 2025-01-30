@@ -110,8 +110,8 @@ for _, projectile in pairs(data.raw.projectile) do
     for _, effect in pairs(target_effects) do
         if type(effect) == "table" and effect.type == "set-tile" then
             effect.tile_collision_mask = effect.tile_collision_mask or {layers = {}}
-            effect.tile_collision_mask.layers[maraxsis_collision_mask] = true
-            effect.tile_collision_mask.layers[maraxsis_fishing_tower_collision_mask] = true
+            effect.tile_collision_mask.layers[maraxsis_underwater_collision_mask] = true
+            effect.tile_collision_mask.layers[maraxsis_coral_collision_mask] = true
             effect.tile_collision_mask.layers[maraxsis_lava_collision_mask] = true
             effect.tile_collision_mask.layers[maraxsis_dome_collision_mask] = true
         end

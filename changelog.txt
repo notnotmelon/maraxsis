@@ -1,4 +1,84 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.28.12
+Date: 2025-01-30
+  Compatibility:
+    - Added an incompatibility flag on "no-more-gambling". Resolves https://github.com/notnotmelon/maraxsis/issues/220
+    - Fixed crash with the "castra" mod.
+  Bugfixes:
+    - Fixed wrong recycling recipe for glass. Resolves https://github.com/notnotmelon/maraxsis/issues/223
+---------------------------------------------------------------------------------------------------
+Version: 1.28.11
+Date: 2025-01-26
+  Locale:
+    - RU locale update to v1.28.10 ([#219](https://github.com/notnotmelon/maraxsis/issues/219))
+---------------------------------------------------------------------------------------------------
+Version: 1.28.10
+Date: 2025-01-24
+  Bugfixes:
+    - Prevented polylplasts from spawning above trench entrances.
+---------------------------------------------------------------------------------------------------
+Version: 1.28.9
+Date: 2025-01-24
+  Compatibility:
+    - Added compatibility with 5 dim automation. Resolves https://github.com/notnotmelon/maraxsis/issues/211
+    - Enabled early unlock of the vechicle dock if spidertron patrols is installed. Resolves https://github.com/notnotmelon/maraxsis/issues/212
+  Bugfixes:
+    - Fixed could not built any entity with the combat mechanics overhaul mod installed. Resolves https://github.com/notnotmelon/maraxsis/issues/209 Resolves https://github.com/notnotmelon/maraxsis/issues/216
+---------------------------------------------------------------------------------------------------
+Version: 1.28.8
+Date: 2025-01-24
+  Bugfixes:
+    - Makes maraxsis object death listener no longer look at unit_number, as the unit_number field in domes actually contained the LuaRenderObject id. ([#217](https://github.com/notnotmelon/maraxsis/issues/217))
+---------------------------------------------------------------------------------------------------
+Version: 1.28.7
+Date: 2025-01-20
+  Compatibility:
+    - Added compatibility with modules-t4, replacing quality 4 module recipe with one designed around Maraxsis. ([#213](https://github.com/notnotmelon/maraxsis/issues/213))
+---------------------------------------------------------------------------------------------------
+Version: 1.28.6
+Date: 2025-01-15
+  Balancing:
+    - Deepsea research chemical science now consumes water instead of atmosphere.
+    - Reduced the power consumption of maraxsis pressure domes lights from 2mw to 20kw.
+---------------------------------------------------------------------------------------------------
+Version: 1.28.5
+Date: 2025-01-15
+  Bugfixes:
+    - Fixed missing maraxsis_buildability_rules for sand extractors.
+---------------------------------------------------------------------------------------------------
+Version: 1.28.4
+Date: 2025-01-14
+  Compatibility:
+    - Renamed maraxsis glass to "Reinforced glass" if aai is present. Resolves https://github.com/notnotmelon/maraxsis/issues/201
+    - The glass productivity tech now boost AAI glass by 10% per tier if that mod is present.
+---------------------------------------------------------------------------------------------------
+Version: 1.28.3
+Date: 2025-01-14
+  Changes:
+    - Added a warning when mining a dome with machines inside. Resolves https://github.com/notnotmelon/maraxsis/issues/189
+---------------------------------------------------------------------------------------------------
+Version: 1.28.2
+Date: 2025-01-14
+  Compatibility:
+    - Deleted code to handle collision masks. Replaced with tile buildability restrictions. Resolves https://github.com/notnotmelon/maraxsis/issues/203 Resolves https://github.com/notnotmelon/maraxsis/issues/204
+---------------------------------------------------------------------------------------------------
+Version: 1.28.1
+Date: 2025-01-14
+  Bugfixes:
+    - Added "Electromagnetic science pack" to prerequisites of "Planet discovery Maraxsis." ([#206](https://github.com/notnotmelon/maraxsis/issues/206))
+---------------------------------------------------------------------------------------------------
+Version: 1.28.0
+Date: 2025-01-13
+  Features:
+    - Added achievements.
+  Bugfixes:
+    - Fixed a crash. Resolves https://github.com/notnotmelon/maraxsis/issues/202
+---------------------------------------------------------------------------------------------------
+Version: 1.27.16
+Date: 2025-01-10
+  Graphics:
+    - Another pass over all item icons and tech icon improvements. Huge thanks to [@snouz](https://github.com/snouz) for the update! https://github.com/notnotmelon/maraxsis/pull/205
+---------------------------------------------------------------------------------------------------
 Version: 1.27.15
 Date: 2025-01-05
   Locale:

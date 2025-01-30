@@ -1,5 +1,4 @@
 if not mods["Rocket-Silo-Construction"] then return end
-local collision_mask_util = require "__core__/lualib/collision-mask-util"
 
 for _, silo in pairs {
     data.raw["assembling-machine"]["rsc-silo-stage1"],
@@ -9,6 +8,5 @@ for _, silo in pairs {
     data.raw["assembling-machine"]["rsc-silo-stage5"],
     data.raw["assembling-machine"]["rsc-silo-stage6"],
 } do
-    silo.collision_mask = collision_mask_util.get_mask(silo)
-    silo.collision_mask.layers[maraxsis_dome_collision_mask] = true
+    silo.maraxsis_buildability_rules = {water = true, dome = false, coral = true, trench = false, trench_entrance = false, trench_lava = false}
 end

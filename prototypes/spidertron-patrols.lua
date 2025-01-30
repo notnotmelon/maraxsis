@@ -1,6 +1,9 @@
 local submarine_automation = data.raw["technology"]["sp-spidertron-automation"]
 
 submarine_automation.icon = "__maraxsis__/graphics/technology/submarine-automation.png"
+
+if settings.startup["sp-enable-spiderling"].value then return end -- https://github.com/notnotmelon/maraxsis/issues/212
+
 submarine_automation.unit = nil
 submarine_automation.research_trigger = {
     type = "build-entity",
