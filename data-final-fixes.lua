@@ -9,6 +9,7 @@ require "compat.visible-planets-in-space"
 require "compat.rocket-silo-construction"
 require "compat.whats-a-spoilage"
 require "compat.combat-mechanics-overhaul"
+require "compat.castra"
 
 for extractor in pairs(maraxsis.MARAXSIS_SAND_EXTRACTORS) do
     local mask = collision_mask_util.get_mask(data.raw["mining-drill"][extractor])
