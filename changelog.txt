@@ -1,4 +1,9 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.28.13
+Date: 2025-01-30
+  Bugfixes:
+    - Fixed wrong recycling recipe for glass. Resolves https://github.com/notnotmelon/maraxsis/issues/223
+---------------------------------------------------------------------------------------------------
 Version: 1.28.12
 Date: 2025-01-30
   Compatibility:
