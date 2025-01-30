@@ -100,8 +100,8 @@ end
 
 data.raw.recipe["maraxsis-glass-panes-recycling"].results = {
     {type = "item", name = "sand",      amount = 1, probability = 0.75},
-    {type = "item", name = "maraxsis-salt",      amount = 1, probability = 0.25},
-    {type = "item", name = "maraxsis-limestone", amount = 1, probability = 0.5},
+    {type = "item", name = "maraxsis-salt",      amount = 1, probability = 0.5},
+    {type = "item", name = "maraxsis-limestone", amount = 1, probability = 0.25},
 }
 
 -- salt reactor localised description
