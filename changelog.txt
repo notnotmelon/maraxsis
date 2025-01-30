@@ -1,4 +1,12 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.28.12
+Date: 2025-01-30
+  Compatibility:
+    - Added an incompatibility flag on "no-more-gambling". Resolves https://github.com/notnotmelon/maraxsis/issues/220
+    - Fixed crash with the "castra" mod.
+  Bugfixes:
+    - Fixed wrong recycling recipe for glass. Resolves https://github.com/notnotmelon/maraxsis/issues/223
+---------------------------------------------------------------------------------------------------
 Version: 1.28.11
 Date: 2025-01-26
   Locale:
