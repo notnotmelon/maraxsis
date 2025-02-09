@@ -12,6 +12,7 @@
     "SpidertronPatrols >= 2.5.5",
     "FluidMustFlow >= 1.4.2",
     "(?) tenebris",
+    "(?) tenebris-prime",
     "(?) SchallTransportGroup",
     "! Land-Pump",
     "! no-more-gambling",

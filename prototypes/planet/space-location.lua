@@ -94,7 +94,7 @@ data:extend {{
     asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.gleba_aquilo)
 }}
 
-if mods.tenebris then
+if data.raw["planet"]["tenebris"] then
     data:extend {{
         type = "space-connection",
         name = "maraxsis-tenebris",
@@ -106,3 +106,4 @@ if mods.tenebris then
         asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.gleba_aquilo)
     }}
 end
+
