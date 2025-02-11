@@ -1,4 +1,9 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.28.14
+Date: 2025-02-11
+  Compatibility:
+    - Added compatibility with Tenebris-prime and other forks of Tenebris. ([#237](https://github.com/notnotmelon/maraxsis/issues/237))
+---------------------------------------------------------------------------------------------------
 Version: 1.28.13
 Date: 2025-01-30
   Bugfixes:
