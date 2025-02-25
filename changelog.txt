@@ -1,4 +1,9 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.28.19
+Date: 2025-02-25
+  Bugfixes:
+    - FIxed that you could not place rails on the east side of pressure domes. Resolves https://github.com/notnotmelon/maraxsis/issues/239
+---------------------------------------------------------------------------------------------------
 Version: 1.28.18
 Date: 2025-02-25
   Compatibility:
