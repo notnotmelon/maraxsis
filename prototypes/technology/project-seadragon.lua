@@ -38,7 +38,6 @@ data:extend {{
 local maraxsis_rocket_part = table.deepcopy(data.raw["recipe"]["rocket-part"])
 maraxsis_rocket_part.name = "maraxsis-rocket-part"
 maraxsis_rocket_part.localised_name = maraxsis_rocket_part.localised_name or {"item-name.rocket-part"}
-table.insert(maraxsis_rocket_part.ingredients, {type = "item", name = "maraxsis-super-sealant-substance", amount = 1})
 maraxsis_rocket_part.enabled = false
 maraxsis_rocket_part.surface_conditions = {
     {property = "pressure", min = 200000, max = 200000},
