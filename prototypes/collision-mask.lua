@@ -91,7 +91,7 @@ local function blacklist_via_surface_condition(entity, max_pressure)
 
     for _, surface_condition in pairs(entity.surface_conditions) do
         if surface_condition.property == "pressure" then
-            if (surface_condition.min or 0) < max_pressure then return end -- this entity already has the property we are adding, skip
+            if (surface_condition.min or 0) > max_pressure then return end -- this entity already has the property we are adding, skip
             surface_condition.max = math.min(max_pressure, surface_condition.max or max_pressure)
             return
         end
