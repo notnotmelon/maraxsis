@@ -1,4 +1,11 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.28.16
+Date: 2025-02-25
+  Bugfixes:
+    - Fixed crash when an equipment grid gets resized during a migration and equipment starts to overlap.
+    - Fixed that the rocket silo could be built on the trench.
+    - The submarine docking station default import location is now vulcanus instead of maraxsis. Resolves https://github.com/notnotmelon/maraxsis/issues/238
+---------------------------------------------------------------------------------------------------
 Version: 1.28.15
 Date: 2025-02-11
   Locale:
