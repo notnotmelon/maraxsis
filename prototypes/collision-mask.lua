@@ -103,6 +103,24 @@ local function blacklist_via_surface_condition(entity, max_pressure)
     })
 end
 
+local function slightly_shrink_collision_box(collision_box)
+    local left_top = collision_box.left_top or collision_box[1]
+    local x1, y1 = left_top.x or left_top[1], left_top.y or left_top[2]
+    local right_bottom = collision_box.right_bottom or collision_box[2]
+    local x2, y2 = right_bottom.x or right_bottom[1], right_bottom.y or right_bottom[2]
+
+    local function slightly_shrink(val)
+        local nearest_half_tile = math.ceil(val * 2) / 2
+        val = math.min(val, nearest_half_tile - 0.1)
+        return math.max(0, val)
+    end
+
+    return {
+        {slightly_shrink(x1), slightly_shrink(y1)},
+        {slightly_shrink(x2), slightly_shrink(y2)},
+    }
+end
+
 local function blacklist_via_tile_buildability_rule(entity, required_tile)
     if entity.tile_buildability_rules and table_size(entity.tile_buildability_rules) > 0 then
         for _, rule in pairs(entity.tile_buildability_rules) do
@@ -118,7 +136,7 @@ local function blacklist_via_tile_buildability_rule(entity, required_tile)
 
     table.insert(entity.tile_buildability_rules, {
         is_maraxsis_rule = true,
-        area = entity.collision_box,
+        area = slightly_shrink_collision_box(entity.collision_box),
         required_tiles = {
             -- there's no way to disable the "required_tiles" property. just throw all the layers and hope something collides
             layers = {
