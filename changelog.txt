@@ -1,4 +1,9 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.28.18
+Date: 2025-02-25
+  Compatibility:
+    - Fixed a crash with the castra mod. Resolves https://github.com/notnotmelon/maraxsis/issues/228
+---------------------------------------------------------------------------------------------------
 Version: 1.28.17
 Date: 2025-02-25
   Compatibility:
