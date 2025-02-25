@@ -1,4 +1,12 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.28.17
+Date: 2025-02-25
+  Compatibility:
+    - Added compatibility with "RCU restored". Resolves https://github.com/notnotmelon/maraxsis/issues/235
+    - Fixed crash with solar system++. Resolves https://github.com/notnotmelon/maraxsis/issues/231
+  Bugfixes:
+    - Fixed "submarine out of fuel" warning displaying when the sub actually did have fuel in some cases. Resolves https://github.com/notnotmelon/maraxsis/issues/241
+---------------------------------------------------------------------------------------------------
 Version: 1.28.16
 Date: 2025-02-25
   Bugfixes:
