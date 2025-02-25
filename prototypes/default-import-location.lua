@@ -11,7 +11,7 @@ local function set_default_import_location(item, planet)
 end
 
 set_default_import_location("maraxsis-big-cliff-explosives", "nauvis")
-set_default_import_location("sp-spidertron-dock", "maraxsis")
+set_default_import_location("sp-spidertron-dock", "vulcanus")
 set_default_import_location("maraxsis-diesel-submarine", "maraxsis")
 set_default_import_location("maraxsis-nuclear-submarine", "maraxsis")
 set_default_import_location("maraxsis-hydro-plant", "maraxsis")
