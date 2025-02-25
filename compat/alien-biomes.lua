@@ -1,5 +1,7 @@
-for _, planet in pairs {"maraxsis", "maraxsis-trench"} do
-    planet = data.raw.planet[planet]
+local function fix_decorative_autoplace(planet_name)
+    local planet = data.raw.planet[planet_name]
+    if not planet.map_gen_settings then return end
+
     local decoratives = planet.map_gen_settings.autoplace_settings.decorative.settings
     for name in pairs(decoratives) do
         local decorative = data.raw["optimized-decorative"][name]
@@ -10,3 +12,6 @@ for _, planet in pairs {"maraxsis", "maraxsis-trench"} do
         end
     end
 end
+
+fix_decorative_autoplace("maraxsis")
+fix_decorative_autoplace("maraxsis-trench")
