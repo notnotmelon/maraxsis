@@ -14,10 +14,12 @@ local function transfer_equipment_grid(old_armor, new_armor)
             ghost = is_ghost, -- vanilla bug: this just deletes the ghosts if true
             by_player = player,
         }
+        if not new_equipment then goto continue end
         new_equipment.energy = equipment.energy
         if equipment.type == "energy-shield-equipment" then
             new_equipment.shield = equipment.shield
         end
+        ::continue::
     end
 end
 
