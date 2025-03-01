@@ -103,7 +103,7 @@ data:extend {{
         volume = 0
     },
     created_smoke = {
-        type = "create-trival-smoke",
+        type = "create-trivial-smoke",
         smoke_name = "maraxsis-invisible-smoke",
     },
 }}
