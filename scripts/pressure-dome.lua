@@ -532,6 +532,7 @@ maraxsis.on_nth_tick(631, function()
         local regulator_fluidbox = pressure_dome_data.regulator_fluidbox
         if not regulator_fluidbox or not regulator_fluidbox.valid then
             place_regulator(pressure_dome_data)
+            regulator_fluidbox = pressure_dome_data.regulator_fluidbox
         end
 
         local fluid = regulator_fluidbox.fluidbox[1]
