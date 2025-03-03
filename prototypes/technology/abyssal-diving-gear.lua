@@ -78,7 +78,7 @@ data:extend {{
     energy_consumption = "400kW",
     movement_bonus = 0.35,
     sprite = {
-        filename = "__maraxsis__/graphics/technology/abyssal-diving-gear.png",
+        filename = "__maraxsis__/graphics/equipment/abyssal-diving-gear.png",
         width = 256,
         height = 256,
         priority = "medium"
