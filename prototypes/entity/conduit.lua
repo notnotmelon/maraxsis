@@ -115,7 +115,7 @@ data:extend {maraxsis.merge(data.raw.beacon.beacon, {
     base_picture = "nil",
     allowed_effects = {"consumption", "speed", "pollution", "quality"},
     beacon_counter = "same_type",
-    energy_usage = "8MW",
+    energy_usage = "6MW",
     module_slots = 4,
     icons_positioning = {{inventory_index = defines.inventory.beacon_modules, max_icons_per_row = 2, shift = {0, 0.5}}},
     profile = profile,
