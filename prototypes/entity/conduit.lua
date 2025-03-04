@@ -54,7 +54,7 @@ local total = 0
 local profile = {}
 for i = 1, 5000 do
     total = total + (2 ^ (-i + 1))
-    profile[i] = total / i
+    profile[i] = total / i * 2 / 3
 end
 
 data:extend {maraxsis.merge(data.raw.beacon.beacon, {
