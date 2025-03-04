@@ -177,4 +177,6 @@ for _, science_pack_name in pairs(data.raw.lab.biolab.inputs) do
     pressurize(science_pack_name)
 end
 
-data.raw.item["maraxsis-spoilage-research-vessel"].order = data.raw.item["maraxsis-agricultural-science-pack-research-vessel"].order .. "z"
+if data.raw.item["maraxsis-spoilage-research-vessel"] and data.raw.item["maraxsis-agricultural-science-pack-research-vessel"] then
+    data.raw.item["maraxsis-spoilage-research-vessel"].order = data.raw.item["maraxsis-agricultural-science-pack-research-vessel"].order .. "z"
+end
