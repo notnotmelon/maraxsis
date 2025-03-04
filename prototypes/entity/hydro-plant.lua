@@ -143,7 +143,7 @@ data:extend {{
     water_reflection = require("__space-age__.prototypes.entity.electromagnetic-plant-pictures").water_reflection,
     collision_box = {{-1.9, -1.9}, {1.9, 1.9}},
     selection_box = {{-2, -2}, {2, 2}},
-    effect_receiver = (not mods["no-quality"]) and {base_effect = {quality = 5}} or nil,
+    effect_receiver = (not mods["no-quality"]) and {base_effect = {quality = 3}} or nil,
     drawing_box_vertical_extension = 1,
     damaged_trigger_effect = hit_effects.entity(),
     fluid_boxes = {
