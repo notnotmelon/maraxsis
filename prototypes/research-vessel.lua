@@ -80,7 +80,7 @@ local function pressurize(science_pack_name)
                 icon_size = 64,
             }
         },
-        stack_size = 10,
+        stack_size = 20,
         localised_name = {"item-name.maraxsis-full-research-vessel", science_pack.localised_name or {"item-name." .. science_pack_name}},
         spoil_result = spoil_result,
         spoil_ticks = science_pack.spoil_ticks,

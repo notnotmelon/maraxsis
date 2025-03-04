@@ -26,7 +26,7 @@ data:extend {{
     name = "maraxsis-empty-research-vessel",
     icon = "__maraxsis__/graphics/icons/research-vessel-tipped.png",
     icon_size = 64,
-    stack_size = 10,
+    stack_size = 20,
     weight = 1000000 / 20,
 }}
 
