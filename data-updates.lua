@@ -5,6 +5,7 @@ require "prototypes.default-import-location"
 require "prototypes.item-sounds"
 require "prototypes.fluid-void"
 require "prototypes.entity.regulator-fluidbox"
+require "prototypes.research-vessel"
 
 require "compat.aai-industry"
 require "compat.aai-signal-transmission"

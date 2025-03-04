@@ -33,6 +33,7 @@ require "prototypes.technology.project-seadragon"
 require "prototypes.technology.deepsea-research"
 require "prototypes.technology.promethium-productivity"
 require "prototypes.technology.stone-centrifuging"
+require "prototypes.technology.research-vessel"
 
 require "prototypes.circuit-connector-definitions"
 require "prototypes.tiles"

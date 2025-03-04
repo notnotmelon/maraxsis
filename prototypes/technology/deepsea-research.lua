@@ -6,7 +6,12 @@ data:extend {{
     icon = "__maraxsis__/graphics/technology/deepsea-research.png",
     icon_size = 256,
     effects = effects,
-    prerequisites = {"maraxsis-project-seadragon"},
+    prerequisites = {
+        "maraxsis-research-vessel",
+        "maraxsis-stone-centrifuging",
+        "maraxsis-liquid-atmosphere",
+        "maraxsis-effect-transmission-2",
+    },
     unit = {
         count = 2000,
         ingredients = {

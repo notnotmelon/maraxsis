@@ -52,6 +52,7 @@ make_subgroup("maraxsis-machines", "fh", "logistics", {
     data.raw.item["maraxsis-pressure-dome"],
     data.raw.lamp["maraxsis-pressure-dome-lamp"],
     data.raw["constant-combinator"]["maraxsis-pressure-dome-combinator"],
+    data.raw.item["maraxsis-empty-research-vessel"],
     data.raw["simple-entity"]["maraxsis-water-shader-32-1-1"],
 })
 
