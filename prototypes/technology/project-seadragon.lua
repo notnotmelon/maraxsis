@@ -19,10 +19,6 @@ data:extend {{
             type = "unlock-recipe",
             recipe = "maraxsis-super-sealant-substance"
         },
-        {
-            type = "unlock-recipe",
-            recipe = "maraxsis-petroleum-gas-cracking"
-        },
     },
     prerequisites = {"hydraulic-science-pack", "coal-liquefaction"},
     unit = {
