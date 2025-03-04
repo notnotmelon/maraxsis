@@ -67,7 +67,7 @@ data:extend {{
     enabled = false,
     energy_required = 5,
     ingredients = {
-        {type = "item",  name = "sulfur",    amount = 1},
+        {type = "item",  name = "sulfur",    amount = 3},
         {type = "fluid", name = "heavy-oil", amount = 100},
         {type = "fluid", name = "maraxsis-hydrogen",     amount = 100},
     },
