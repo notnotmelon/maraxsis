@@ -98,7 +98,7 @@ local localised_description
 if easy_mode then
     localised_description = {"entity-description.maraxsis-hydro-plant"}
 else
-    localised_description = {"", {"entity-description.maraxsis-hydro-plant"}, "\n", {"description.base-quality", tostring(50)}}
+    localised_description = {"", {"entity-description.maraxsis-hydro-plant"}, "\n", {"description.base-quality", tostring(30)}}
 end
 
 data:extend {{
