@@ -1,4 +1,11 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.29.2
+Date: 2025-03-04
+  Balancing:
+    - Increased the sulfur requirement of super sealant substance from 1 -> 3.
+    - Removed technology super sealant substance productivity.
+    - Swapped steam for hydrogen in the super sealant substance recipe.
+---------------------------------------------------------------------------------------------------
 Version: 1.29.1
 Date: 2025-03-04
   Balancing:
