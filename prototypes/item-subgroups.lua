@@ -46,10 +46,6 @@ make_subgroup("maraxsis-salt", "gf", "intermediate-products", {
     data.raw.item["maraxsis-saturated-salt-filter"],
     data.raw.recipe["maraxsis-saturated-salt-filter"],
     data.raw.recipe["maraxsis-hydrolox-rocket-fuel"],
-    data.raw.capsule["maraxsis-salted-fish"],
-    data.raw.capsule["maraxsis-salted-tropical-fish"],
-    data.raw.capsule["maraxsis-defluxed-bioflux"],
-    data.raw.tool["maraxsis-salted-science"],
 })
 
 make_subgroup("maraxsis-machines", "fh", "logistics", {

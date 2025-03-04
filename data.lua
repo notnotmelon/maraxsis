@@ -31,7 +31,6 @@ require "prototypes.technology.atmosphere"
 require "prototypes.technology.hydraulic-science-pack"
 require "prototypes.technology.project-seadragon"
 require "prototypes.technology.deepsea-research"
-require "prototypes.technology.preservatives"
 require "prototypes.technology.promethium-productivity"
 require "prototypes.technology.stone-centrifuging"
 
