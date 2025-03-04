@@ -38,14 +38,27 @@ for _, silo in pairs(data.raw["rocket-silo"]) do
     end
 end
 
-local rocket_part = data.raw.recipe["rocket-part"]
-rocket_part.surface_conditions = rocket_part.surface_conditions or {}
-table.insert(rocket_part.surface_conditions, {
+local function add_surface_condition(recipe, condition)
+    recipe.surface_conditions = recipe.surface_conditions or {}
+    table.insert(recipe.surface_conditions, condition)
+end
+
+add_surface_condition(data.raw.recipe["rocket-part"], {
     property = "gravity",
     min = 0.5,
 })
 
-table.insert(data.raw.recipe["rocket-part"].surface_conditions, {
+add_surface_condition(data.raw.recipe["rocket-part"], {
+    property = "pressure",
+    max = 50000,
+})
+
+add_surface_condition(data.raw.recipe["plastic-bar"], {
+    property = "pressure",
+    max = 50000,
+})
+
+add_surface_condition(data.raw.recipe["rocket-fuel"], {
     property = "pressure",
     max = 50000,
 })
