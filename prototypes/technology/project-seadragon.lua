@@ -69,7 +69,7 @@ data:extend {{
     ingredients = {
         {type = "item",  name = "sulfur",    amount = 1},
         {type = "fluid", name = "heavy-oil", amount = 100},
-        {type = "fluid", name = "steam",     amount = 100},
+        {type = "fluid", name = "maraxsis-hydrogen",     amount = 100},
     },
     results = {
         {type = "item", name = "maraxsis-super-sealant-substance", amount = 1},
