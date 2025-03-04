@@ -1,4 +1,17 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.29.0
+Date: 2025-03-04
+  Features:
+    - Added a new technology "research vessel". This allows efficent stacking and crating of science packs. Replaces the previous preservatives technology.
+  Balancing:
+    - Reduced the hydro plant quality bonus from 50% -> 30%.
+    - Removed change to biolabs allowing them on any surface.
+    - Removed ice sublimation recipe.
+    - Removed petroleum gas cracking into heavy oil.
+    - Removed preservatives technology.
+    - Removed various recipes from the hydro plant. Resolves https://github.com/notnotmelon/maraxsis/issues/251
+    - Salt reactor and fishing tower must now be crafted on maraxsis.
+---------------------------------------------------------------------------------------------------
 Version: 1.28.21
 Date: 2025-03-03
   Graphics:
