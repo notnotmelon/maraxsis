@@ -25,21 +25,10 @@ add_hydraulic_pack("promethium-science-pack", false)
 table.insert(data.raw["technology"]["promethium-science-pack"].prerequisites, "maraxsis-deepsea-research")
 add_hydraulic_pack("research-productivity", false)
 
-data.raw.recipe["thruster"].category = "maraxsis-hydro-plant-or-assembling"
-data.raw.recipe["pumpjack"].category = "maraxsis-hydro-plant-or-assembling"
-data.raw.recipe["chemical-plant"].category = "maraxsis-hydro-plant-or-assembling"
-data.raw.recipe["offshore-pump"].category = "maraxsis-hydro-plant-or-assembling"
 data.raw.recipe["pump"].category = "maraxsis-hydro-plant-or-assembling"
 data.raw.recipe["pipe"].category = "maraxsis-hydro-plant-or-assembling"
 data.raw.recipe["pipe-to-ground"].category = "maraxsis-hydro-plant-or-assembling"
 data.raw.recipe["storage-tank"].category = "maraxsis-hydro-plant-or-assembling"
-data.raw.recipe["fluid-wagon"].category = "maraxsis-hydro-plant-or-assembling"
-data.raw.recipe["recycler"].category = "maraxsis-hydro-plant-or-assembling"
-data.raw.recipe["heating-tower"].category = "maraxsis-hydro-plant-or-assembling"
-data.raw.recipe["boiler"].category = "maraxsis-hydro-plant-or-assembling"
-data.raw.recipe["heat-exchanger"].category = "maraxsis-hydro-plant-or-assembling"
-data.raw.recipe["nuclear-reactor"].category = "maraxsis-hydro-plant-or-assembling"
-data.raw.recipe["steam-turbine"].category = "maraxsis-hydro-plant-or-assembling"
 data.raw.recipe["coal-synthesis"].category = "maraxsis-hydro-plant-or-chemistry"
 
 for _, silo in pairs(data.raw["rocket-silo"]) do
