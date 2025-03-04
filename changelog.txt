@@ -1,4 +1,10 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.29.1
+Date: 2025-03-04
+  Balancing:
+    - Decreased the energy consumption of conduits from 8MW -> 6MW.
+    - Reduced the effectivity of conduits by 33%. Resolves https://github.com/notnotmelon/maraxsis/issues/252
+---------------------------------------------------------------------------------------------------
 Version: 1.29.0
 Date: 2025-03-04
   Features:
