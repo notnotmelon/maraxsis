@@ -161,6 +161,7 @@ data:extend {{
         {type = "item", name = "maraxsis-salt-reactor", amount = 1},
     },
     category = "maraxsis-hydro-plant",
+    surface_conditions = maraxsis.surface_conditions(),
 }}
 
 data:extend {{

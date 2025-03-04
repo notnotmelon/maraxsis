@@ -50,7 +50,8 @@ data:extend {{
     },
     allow_productivity = false,
     main_product = "maraxsis-fishing-tower",
-    category = "maraxsis-hydro-plant"
+    category = "maraxsis-hydro-plant",
+    surface_conditions = maraxsis.surface_conditions(),
 }}
 
 local function scale_sprite_recursive(graphics)
