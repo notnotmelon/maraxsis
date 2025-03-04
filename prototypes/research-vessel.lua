@@ -88,7 +88,7 @@ local function pressurize(science_pack_name)
         spoil_level = science_pack.spoil_level,
         hidden_in_factoriopedia = true,
         default_import_location = science_pack.default_import_location,
-        weight = 1000000 / 20,
+        weight = 1000000 / 100,
         order = science_pack.order,
         inventory_move_sound = item_sounds.metal_large_inventory_move,
         pick_sound = item_sounds.metal_large_inventory_pickup,
