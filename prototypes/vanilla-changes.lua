@@ -87,11 +87,6 @@ data.raw.recipe["ice-melting"].category = "maraxsis-hydro-plant-or-chemistry"
 data.raw.recipe["advanced-thruster-fuel"].category = "maraxsis-hydro-plant-or-chemistry"
 data.raw.recipe["advanced-thruster-oxidizer"].category = "maraxsis-hydro-plant-or-chemistry"
 
-data.raw.lab["biolab"].surface_conditions = {{
-    property = "pressure",
-    max = 300000,
-}}
-
 -- https://github.com/notnotmelon/maraxsis/issues/23
 for _, projectile in pairs(data.raw.projectile) do
     local _, target_effects = pcall(function() return projectile.action.action_delivery.target_effects end)

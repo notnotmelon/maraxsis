@@ -77,15 +77,6 @@ Here's a sample of some of the technologies available on Maraxsis:
 
 ---
 
-### Vanilla Changes
-
-This mod makes a few changes to Factorio: Space Age in order for Maraxsis to fit seamlessly into the tech tree.
-
-  - The research productivity technology now requires hydraulic science packs.
-  - Removed surface restrictions for the biolab.
-
----
-
 ### Etymology
 
 The name "Maraxsis" draws inspiration from Frank Herbert's Arrakis. The two worlds can be considered "equal but opposite". Both lack essential resources; land on Maraxsis, water on Arrakis; making survival difficult.
@@ -114,8 +105,3 @@ Maraxsis would not be possible without the help of these amazing, fantastic, inc
  - Tech & item icon postprocessing - [snouz](https://github.com/snouz)
 
 [More details in Credits.md](https://github.com/notnotmelon/maraxsis/blob/main/Credits.md)
-
-#### Translation
-
-Want to help translate this mod?
-Visit our [Crowdin](https://crowdin.com/project/factorio-mods-localization) page.
