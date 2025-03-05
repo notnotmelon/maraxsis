@@ -1,4 +1,12 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.29.11
+Date: 2025-03-05
+  Compatibility:
+    - Marked call a plumber and modules t4 as hidden optional dependancies.
+  Bugfixes:
+    - Fixed a crash with pressure domes and editor extensions. Resolves https://github.com/notnotmelon/maraxsis/issues/249
+    - Fixed mining a dome would void any robots inside the regulator. Resolves https://github.com/notnotmelon/maraxsis/issues/243
+---------------------------------------------------------------------------------------------------
 Version: 1.29.10
 Date: 2025-03-05
   Compatibility:
