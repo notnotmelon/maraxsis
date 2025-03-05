@@ -14,10 +14,10 @@
     "(?) tenebris",
     "(?) tenebris-prime",
     "(?) SchallTransportGroup",
+    "(?) modules-t4",
+    "(?) call-plumber >= 1.0.0",
     "! Land-Pump",
-    "! no-more-gambling",
-    "? modules-t4",
-    "? call-plumber >= 1.0.0"
+    "! no-more-gambling"
   ],
   "quality_required": true,
   "space_travel_required": true,
