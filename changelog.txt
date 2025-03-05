@@ -1,4 +1,14 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.29.9
+Date: 2025-03-05
+  Balancing:
+    - Added a new recipe for grenades on maraxsis.
+    - Reduced heavy oil requirement in super sealant substance from 100 to 25.
+    - Reduced the crafting time of fish->carbon from 16 seconds -> 4 seconds.
+    - Reduced the nutrients yield in the fish->nutrients recipe from 10->6.
+    - Reduced the yield of burnt fish from 32 -> 8.
+    - Reverted the bans on vanilla rocket fuel and plastic recipes to maraxsis.
+---------------------------------------------------------------------------------------------------
 Version: 1.29.8
 Date: 2025-03-04
   Balancing:
