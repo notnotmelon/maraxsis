@@ -185,6 +185,7 @@ local function create_dome_combinator(pressure_dome_data)
     local light = pressure_dome_data.light
     if not light or not light.valid then
         create_dome_light(pressure_dome_data)
+        light = pressure_dome_data.light
     end
 
     local combinator = light.surface.create_entity {
@@ -211,13 +212,13 @@ local function create_dome_combinator(pressure_dome_data)
     assert(green_success, "Failed to connect green wire to the dome light. Please report this!")
 
     pressure_dome_data.combinator = combinator
-    return combinator
 end
 
 local function update_combinator(pressure_dome_data)
     local combinator = pressure_dome_data.combinator
     if not combinator or not combinator.valid then
-        combinator = create_dome_combinator(pressure_dome_data)
+        create_dome_combinator(pressure_dome_data)
+        combinator = pressure_dome_data.combinator
     end
 
     local all_machines_inside = {}
@@ -692,7 +693,9 @@ local function delete_invalid_entities_from_contained_entities_list(pressure_dom
     end
 end
 
-local function destroy_collision_boxes(pressure_dome_data)
+local function cleanup_dome_for_deletion(pressure_dome_data)
+    unplace_tiles(pressure_dome_data)
+
     for _, collision_box in pairs(pressure_dome_data.collision_boxes) do
         collision_box.destroy()
     end
@@ -707,6 +710,12 @@ local function destroy_collision_boxes(pressure_dome_data)
         pressure_dome_data.regulator_fluidbox.destroy()
         pressure_dome_data.regulator_fluidbox = nil
     end
+
+    local light = pressure_dome_data.light
+    if light then light.destroy() end
+
+    local combinator = pressure_dome_data.combinator
+    if combinator then combinator.destroy() end
 end
 
 local function bigass_explosion(surface, x, y) -- this looks really stupid. too bad!
@@ -795,11 +804,8 @@ maraxsis.on_event(maraxsis.events.on_destroyed(), function(event)
 
     if render_object_id and storage.pressure_domes[render_object_id] then
         local pressure_dome_data = storage.pressure_domes[render_object_id]
+        cleanup_dome_for_deletion(pressure_dome_data)
         storage.pressure_domes[render_object_id] = nil
-        unplace_tiles(pressure_dome_data)
-        destroy_collision_boxes(pressure_dome_data)
-        local light = pressure_dome_data.light
-        if light then light.destroy() end
         if event.name == defines.events.on_entity_died then
             on_dome_died(event, pressure_dome_data)
         end
@@ -899,7 +905,7 @@ maraxsis.on_event(maraxsis.events.on_entity_clicked(), function(event)
     if not light or not light.valid then
         local dome = pressure_dome_data.entity
         if not dome.valid then return end
-        pressure_dome_data.light = create_dome_light(pressure_dome_data)
+        create_dome_light(pressure_dome_data)
         light = pressure_dome_data.light
     end
 
