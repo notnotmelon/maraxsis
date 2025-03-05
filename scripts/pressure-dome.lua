@@ -693,7 +693,7 @@ local function delete_invalid_entities_from_contained_entities_list(pressure_dom
     end
 end
 
-local function cleanup_dome_for_deletion(pressure_dome_data)
+local function cleanup_dome_for_deletion(pressure_dome_data, buffer)
     unplace_tiles(pressure_dome_data)
 
     for _, collision_box in pairs(pressure_dome_data.collision_boxes) do
@@ -701,10 +701,33 @@ local function cleanup_dome_for_deletion(pressure_dome_data)
     end
     pressure_dome_data.collision_boxes = {}
 
-    if pressure_dome_data.regulator then
+    local regulator = pressure_dome_data.regulator
+    if regulator and regulator.valid then
+        -- Drop stored robots onto the floor or buffer inventory.
+        -- https://github.com/notnotmelon/maraxsis/issues/243
+        local surface = pressure_dome_data.surface
+        for i = 1, regulator.get_max_inventory_index() do
+            local inventory = regulator.get_inventory(i)
+            for k = 1, #inventory do
+                local stack = inventory[k]
+                if buffer and surface.valid then
+                    buffer.insert(stack)
+                elseif surface.valid then
+                    surface.spill_item_stack{
+                        position = pressure_dome_data.position,
+                        stack = stack,
+                        enable_looted = true,
+                        force = regulator.force_index,
+                        allow_belts = false,
+                        use_start_position_on_failure = true,
+                    }
+                end
+            end
+        end
+
         pressure_dome_data.regulator.destroy()
-        pressure_dome_data.regulator = nil
     end
+    pressure_dome_data.regulator = nil
 
     if pressure_dome_data.regulator_fluidbox then
         pressure_dome_data.regulator_fluidbox.destroy()
@@ -804,7 +827,7 @@ maraxsis.on_event(maraxsis.events.on_destroyed(), function(event)
 
     if render_object_id and storage.pressure_domes[render_object_id] then
         local pressure_dome_data = storage.pressure_domes[render_object_id]
-        cleanup_dome_for_deletion(pressure_dome_data)
+        cleanup_dome_for_deletion(pressure_dome_data, event.buffer)
         storage.pressure_domes[render_object_id] = nil
         if event.name == defines.events.on_entity_died then
             on_dome_died(event, pressure_dome_data)
