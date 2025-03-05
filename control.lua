@@ -18,5 +18,6 @@ require "scripts.trench-duct"
 require "scripts.abyssal-diving-gear"
 require "scripts.remote"
 require "scripts.fishing-tower"
+require "scripts.mod-compatibility"
 
 maraxsis.finalize_events()
