@@ -16,7 +16,8 @@
     "(?) SchallTransportGroup",
     "! Land-Pump",
     "! no-more-gambling",
-    "? modules-t4"
+    "? modules-t4",
+    "? call-plumber >= 1.0.0"
   ],
   "quality_required": true,
   "space_travel_required": true,
