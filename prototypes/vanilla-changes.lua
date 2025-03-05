@@ -53,16 +53,6 @@ add_surface_condition(data.raw.recipe["rocket-part"], {
     max = 50000,
 })
 
-add_surface_condition(data.raw.recipe["plastic-bar"], {
-    property = "pressure",
-    max = 50000,
-})
-
-add_surface_condition(data.raw.recipe["rocket-fuel"], {
-    property = "pressure",
-    max = 50000,
-})
-
 if data.raw.technology["rocket-part-productivity"] then
     table.insert(data.raw.technology["rocket-part-productivity"].effects, {
         type = "change-recipe-productivity",
