@@ -12,6 +12,10 @@ data:extend {{
             type = "unlock-recipe",
             recipe = "maraxsis-fat-man",
         },
+        {
+            type = "unlock-recipe",
+            recipe = "maraxsis-pipe-bomb"
+        }
     },
     prerequisites = {"cliff-explosives", "maraxsis-nuclear-submarine", "atomic-bomb"},
     unit = {
@@ -49,6 +53,20 @@ data:extend {{
         {type = "item", name = "maraxsis-big-cliff-explosives", amount = 1},
     },
     category = "maraxsis-hydro-plant",
+}}
+
+data:extend {{
+    type = "recipe",
+    name = "maraxsis-pipe-bomb",
+    energy_required = data.raw.recipe["grenade"].energy_required,
+    category = "maraxsis-hydro-plant",
+    enabled = false,
+    results = table.deepcopy(data.raw.recipe["grenade"].results),
+    ingredients = {
+        {type = "item", name = "explosives", amount = 5},
+        {type = "item", name = "pipe",       amount = 5},
+    },
+    auto_recycle = false,
 }}
 
 data:extend {{
