@@ -144,7 +144,7 @@ data:extend {{
         {type = "item", name = "maraxsis-tropical-fish", amount = 1},
     },
     results = {
-        {type = "item", name = "carbon", amount = 32},
+        {type = "item", name = "carbon", amount = 8},
     },
     category = "maraxsis-smelting-or-biochamber",
     allow_productivity = true,
