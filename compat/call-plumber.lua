@@ -1,5 +1,7 @@
 
-if script.active_mods["call-plumber"] then
+-- This file runs in the control stage
+
+if not script.active_mods["call-plumber"] then return end
 
 maraxsis.on_event(maraxsis.events.on_init(), function()
     -- Most fluids are compatible with normal pipes
@@ -17,4 +19,3 @@ maraxsis.on_event(maraxsis.events.on_init(), function()
     )
 end)
 
-end  -- call-plumber
