@@ -139,7 +139,7 @@ data:extend {{
     type = "recipe",
     name = "maraxsis-carbon",
     enabled = false,
-    energy_required = 16,
+    energy_required = 4,
     ingredients = {
         {type = "item", name = "maraxsis-tropical-fish", amount = 1},
     },
