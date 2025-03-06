@@ -33,7 +33,7 @@ data:extend {{
             recipe = "maraxsis-stone-centrifuging"
         }
     },
-    prerequisites = {"kovarex-enrichment-process", "maraxsis-project-seadragon"},
+    prerequisites = {"kovarex-enrichment-process", "maraxsis-project-seadragon", "metallurgic-science-pack"},
     unit = {
         count = 5000,
         ingredients = {

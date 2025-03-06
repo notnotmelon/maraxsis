@@ -38,7 +38,7 @@ data:extend {{
             recipe = "maraxsis-conduit",
         },
     },
-    prerequisites = {"effect-transmission", "maraxsis-project-seadragon"},
+    prerequisites = {"effect-transmission", "maraxsis-project-seadragon", "electromagnetic-science-pack"},
     unit = {
         count = 5000,
         ingredients = {

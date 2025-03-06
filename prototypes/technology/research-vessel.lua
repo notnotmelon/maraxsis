@@ -10,7 +10,7 @@ data:extend {{
         }
     },
     order = "es[maraxsis-research-vessel]",
-    prerequisites = {"maraxsis-project-seadragon"},
+    prerequisites = {"maraxsis-project-seadragon", "agricultural-science-pack"},
     unit = {
         count = 5000,
         ingredients = {
