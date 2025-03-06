@@ -1,4 +1,11 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.29.12
+Date: 2025-03-06
+  Balancing:
+    - The fishing tower now generates 5 fish per operation instead of 15.
+  Changes:
+    - All maraxsis fishes now have fun names instead of all just being called "fish".
+---------------------------------------------------------------------------------------------------
 Version: 1.29.11
 Date: 2025-03-05
   Compatibility:
