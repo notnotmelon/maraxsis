@@ -47,7 +47,6 @@ for i, v in pairs(fish) do
     v.layers[2].shift.x = v.layers[2].shift.x + 3
     v.layers[2].shift.y = v.layers[2].shift.y + 3.5
     data:extend {{
-        localised_name = {"entity-name.fish"},
         type = "unit",
         name = name,
         render_layer = "air-entity-info-icon",
