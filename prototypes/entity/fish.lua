@@ -262,7 +262,7 @@ data:extend {{
     enabled = false,
     energy_required = data.raw.recipe["iron-plate"].energy_required,
     ingredients = {
-        {type = "item", name = "maraxsis-microplastics", amount = 3},
+        {type = "item", name = "maraxsis-microplastics", amount = 2},
     },
     results = {
         {type = "item", name = "plastic-bar", amount = 1},
