@@ -16,7 +16,7 @@ data:extend {{
         {type = "item", name = "beacon",                           amount = 1},
         {type = "item", name = "maraxsis-glass-panes",             amount = 25},
         {type = "item", name = "processing-unit",                  amount = 25},
-        {type = "item", name = "maraxsis-super-sealant-substance", amount = 5},
+        {type = "item", name = "maraxsis-super-sealant-substance", amount = 15},
     },
     results = {
         {type = "item", name = "maraxsis-conduit", amount = 1},
