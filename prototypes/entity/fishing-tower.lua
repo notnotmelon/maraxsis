@@ -132,7 +132,7 @@ data:extend {{
     selection_priority = 51,
     minable = {
         mining_time = 0.5,
-        results = {{type = "item", name = "maraxsis-tropical-fish", amount = 15}},
+        results = {{type = "item", name = "maraxsis-tropical-fish", amount = 5}},
     },
     mining_sound = sound_variations("__space-age__/sound/mining/axe-mining-jellystem", 5, 0.4),
     mined_sound = sound_variations("__space-age__/sound/mining/mined-jellystem", 6, 0.35),
