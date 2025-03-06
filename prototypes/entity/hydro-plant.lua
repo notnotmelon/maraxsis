@@ -237,7 +237,7 @@ data:extend {{
     icon = "__maraxsis__/graphics/icons/hydro-plant.png",
     icon_size = 64,
     place_result = "maraxsis-hydro-plant",
-    stack_size = 50,
+    stack_size = 20,
     scale = 0.5,
 }}
 
