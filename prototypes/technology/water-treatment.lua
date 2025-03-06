@@ -178,6 +178,7 @@ data:extend {{
     },
     category = "maraxsis-hydro-plant-or-assembling",
     allow_productivity = true,
+    auto_recycle = false,
 }}
 add_to_tech("maraxsis-salt-filter")
 
