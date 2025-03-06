@@ -1,4 +1,12 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.29.13
+Date: 2025-03-06
+  Balancing:
+    - Added 1 jelly to the fish food recipe.
+    - Buffed microplastics smelting to only require 2 microplastics instead of 3.
+  Bugfixes:
+    - Fixed some missing technology prerequesites.
+---------------------------------------------------------------------------------------------------
 Version: 1.29.12
 Date: 2025-03-06
   Balancing:
