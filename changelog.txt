@@ -1,4 +1,12 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.29.14
+Date: 2025-03-06
+  Balancing:
+    - Added a new recipe to craft holmium inside a hydro plant.
+    - Increased the sealant consumption for conduits from 5 -> 15.
+    - Reduced the stack size of hydro plants from 50->20.
+    - Salt filters are now a self-recycle item.
+---------------------------------------------------------------------------------------------------
 Version: 1.29.13
 Date: 2025-03-06
   Balancing:
