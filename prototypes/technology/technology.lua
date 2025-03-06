@@ -65,7 +65,7 @@ data:extend {{
     },
     prerequisites = {"maraxsis-project-seadragon"},
     unit = {
-        count_formula = "2^(L-1)*3000",
+        count_formula = "5^(L-1)*5000",
         ingredients = {
             {"automation-science-pack",      1},
             {"logistic-science-pack",        1},
