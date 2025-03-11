@@ -8,8 +8,8 @@ local TRENCH_MOVEMENT_FACTOR = 1
 local TRENCH_ENTRANCE_ELEVATION = 0.08
 
 local SUBMARINES = {
-    ["maraxsis-diesel-submarine"] = {r = 0.8, g = 0.6, b = 0, a = 0.5},
-    ["maraxsis-nuclear-submarine"] = {r = 0.2, g = 0.7, b = 0.2, a = 0.5},
+    ["maraxsis-diesel-submarine"] = true,
+    ["maraxsis-nuclear-submarine"] = true,
 }
 
 local TRENCH_SURFACE_NAME = "maraxsis-trench"

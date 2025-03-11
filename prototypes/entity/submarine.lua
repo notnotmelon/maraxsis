@@ -34,7 +34,6 @@ data:extend {{
 local collision_mask = {
     layers = {
         ["water_tile"] = true,
-        ["rail"] = true,
     },
     colliding_with_tiles_only = true,
 }
@@ -106,103 +105,55 @@ for i = 1, 2 do
     }
 
     local lamp_layer = {
-        direction_count = 64,
+        direction_count = 60,
         frame_count = 1,
-        repeat_count = 2,
+        ["line_length"] = 7,
+        ["lines_per_file"] = 9,
         draw_as_glow = true,
-        shift = {x = 0 / 32, y = 45.5 / 32},
-        scale = 1,
-        stripes = {},
-        height = 101,
-        width = 248,
-        flags = {"no-scale"},
+        ["shift"] = {x = 0 / 64, y = -26 / 64},
+        scale = 0.5,
+        filename = "__maraxsis__/graphics/entity/submarine/lamp.png",
+        height = 282,
+        width = 366,
     }
 
     local mask_layer = {
-        direction_count = 64,
+        direction_count = 60,
         frame_count = 1,
-        repeat_count = 2,
-        ["line_length"] = 11,
-        ["lines_per_file"] = 36,
-        shift = {x = 8 / 32, y = 15.5 / 32},
-        scale = 1,
+        ["line_length"] = 8,
+        ["lines_per_file"] = 8,
+        ["shift"] = {x = 0 / 64, y = -25.5 / 64},
+        scale = 0.5,
         filename = "__maraxsis__/graphics/entity/submarine/mask.png",
-        height = 225,
-        width = 240,
+        ["height"] = 333,
+        ["width"] = 372,
         apply_runtime_tint = true,
         tint = {0.6, 0.6, 0.6},
-        flags = {"no-scale"},
     }
 
     local full_body_layer = {
-        direction_count = 64,
-        ["line_length"] = 11,
-        ["lines_per_file"] = 38,
-        frame_count = 2,
-        shift = {x = 0 / 32, y = 0 / 32},
-        scale = 1,
+        direction_count = 60,
+        ["line_length"] = 8,
+        ["lines_per_file"] = 8,
+        shift = {x = 0 / 64, y = -25.5 / 64},
+        scale = 0.5,
         filename = "__maraxsis__/graphics/entity/submarine/full-body.png",
-        height = 212,
-        width = 250,
-        flags = {"no-scale"},
+        height = 333,
+        width = 372,
     }
 
     local shadow_layer = {
-        direction_count = 64,
+        direction_count = 60,
         frame_count = 1,
         ["line_length"] = 8,
-        ["lines_per_file"] = 32,
-        repeat_count = 2,
+        ["lines_per_file"] = 8,
         draw_as_shadow = true,
-        scale = 1,
+        scale = 0.9,
         filename = "__maraxsis__/graphics/entity/submarine/shadow.png",
         height = 256,
         width = 256,
         shift = {x = 6, y = 45.5 / 32 + 6},
-        flags = {"no-scale"},
     }
-
-    local lamp_x = 0
-    local lamp_y = 0
-
-    for direction = 1, 64 do
-        direction = (direction - 17) % 64 + 1
-        if direction >= 34 and direction <= 64 then
-            table.insert(lamp_layer.stripes, {
-                filename = "__maraxsis__/graphics/empty.png",
-                width_in_frames = 1,
-                height_in_frames = 1,
-            })
-        else
-            table.insert(lamp_layer.stripes, {
-                filename = "__maraxsis__/graphics/entity/submarine/light.png",
-                width_in_frames = 1,
-                height_in_frames = 1,
-                x = lamp_x * 248,
-                y = lamp_y * 101,
-            })
-            lamp_x = lamp_x + 1
-            if lamp_x == 6 then
-                lamp_x = 0
-                lamp_y = lamp_y + 1
-            end
-        end
-    end
-
-    local translucent_mask_layer = table.deepcopy(mask_layer)
-    translucent_mask_layer.tint = {0.6, 0.6, 0.6, 0.6}
-
-    local translucent_body_layer = table.deepcopy(full_body_layer)
-    translucent_body_layer.tint = {1, 1, 1, 0.6}
-
-    local mask_body_layer = table.deepcopy(mask_layer)
-    mask_body_layer.tint = colors[i]
-    mask_body_layer.apply_runtime_tint = false
-
-    for _, layer in pairs {lamp_layer, mask_layer, shadow_layer, full_body_layer, translucent_body_layer, translucent_mask_layer, mask_body_layer} do
-        layer.animation_speed = 1 / 4
-        layer.max_advance = 1
-    end
 
     local entity = table.deepcopy(data.raw["spider-vehicle"]["spidertron"])
     entity.name = name
@@ -216,8 +167,8 @@ for i = 1, 2 do
     entity.minable.result = name
     entity.surface_conditions = maraxsis.surface_conditions()
     entity.max_health = 3000 * 2 ^ (i - 1)
-    entity.collision_box = {{-1.4, -1.4}, {1.4, 1.4}}
-    entity.selection_box = {{-1.4, -1.4}, {1.4, 1.4}}
+    entity.collision_box = {{-1.1, -1.1}, {1.1, 1.1}}
+    entity.selection_box = {{-1.1, -1.1}, {1.1, 1.1}}
     entity.drawing_box = {{-2.8, -2.8}, {2.8, 2.8}}
     entity.light_animation = nil
     entity.tank_driving = true
@@ -237,15 +188,15 @@ for i = 1, 2 do
     entity.open_sound = table.deepcopy(data.raw.car.tank.open_sound)
     entity.close_sound = table.deepcopy(data.raw.car.tank.close_sound)
 
-    local factoriopedia_colors = {
-        {r = 255, g = 195, b = 0},
-        {r = 0.3, g = 0.8, b = 0.3},
+    local submarine_colors = {
+        {r = 1, g = 1, b = 1,  a = 0.5},
+        {r = 0.2, g = 0.7, b = 0.2, a = 0.5},
     }
 
     entity.minimap_representation = {
         filename = "__maraxsis__/graphics/entity/submarine/submarine-map-tag.png",
         flags = {"icon"},
-        tint = factoriopedia_colors[i],
+        tint = submarine_colors[i],
         size = {64, 64}
     }
     entity.selected_minimap_representation = {
@@ -296,7 +247,7 @@ for i = 1, 2 do
             end
             game.simulation.camera_zoom = 1.3
             game.simulation.camera_position = {0, 0}
-            game.surfaces[1].create_entity{name = "]] .. name .. [[", position = {0, 0}}.color = ]] .. serpent.line(factoriopedia_colors[i]) .. [[
+            game.surfaces[1].create_entity{name = "]] .. name .. [[", position = {0, 0}}.color = ]] .. serpent.line(submarine_colors[i]) .. [[
             game.surfaces[1].create_entity {
                 name = "maraxsis-water-shader",
                 position = {0, 0},
@@ -312,6 +263,18 @@ for i = 1, 2 do
     entity.rotation_speed = 0.025 * 0.2 * (i / 2 + 0.5)
     entity.spider_engine.walking_group_overlap = 1
     entity.spider_engine.legs = {leg = "maraxsis-submarine-leg", mount_position = {0, 0.5}, ground_position = {0, 0}, blocking_legs = {}, walking_group = 1}
+
+    local light_cone = {
+        filename = "__core__/graphics/light-cone.png",
+        flags = {
+            "light"
+        },
+        height = 200,
+        priority = "extra-high",
+        scale = 2,
+        width = 200
+    }
+
     entity.graphics_set.light = {
         {
             color = {
@@ -323,34 +286,55 @@ for i = 1, 2 do
             size = 25
         },
         {
-            color = {
-                b = 1,
-                g = 1,
-                r = 1
-            },
-            picture = {
-                filename = "__core__/graphics/light-cone.png",
-                flags = {
-                    "light"
-                },
-                height = 200,
-                priority = "extra-high",
-                scale = 2,
-                width = 200
-            },
+            color = {1, 1, 1},
+            picture = light_cone,
             shift = {0, -15.4 * 1.5},
             size = 3,
             intensity = 0.8,
             type = "oriented"
-        }
+        },
+        {
+            color = {1, 1, 1},
+            picture = light_cone,
+            shift = {0, -8.4 * 1.5},
+            size = 1.5,
+            intensity = 0.3,
+            type = "oriented",
+            source_orientation_offset = 0.11,
+        },
+        {
+            color = {1, 1, 1},
+            picture = light_cone,
+            shift = {0, -8.4 * 1.5},
+            size = 1.5,
+            intensity = 0.3,
+            type = "oriented",
+            source_orientation_offset = -0.11,
+        },
+        {
+            color = {1, 1, 1},
+            picture = light_cone,
+            shift = {0, -7.4 * 1.5},
+            size = 1.5,
+            intensity = 0.3,
+            type = "oriented",
+            source_orientation_offset = 0.5+0.15,
+        },
+        {
+            color = {1, 1, 1},
+            picture = light_cone,
+            shift = {0, -7.4 * 1.5},
+            size = 1.5,
+            intensity = 0.3,
+            type = "oriented",
+            source_orientation_offset = 0.5-0.15,
+        },
     }
     entity.graphics_set.animation = {
-        direction_count = 64,
+        direction_count = 60,
         layers = {
             lamp_layer,
             full_body_layer,
-            mask_body_layer,
-            translucent_mask_layer,
             mask_layer,
             shadow_layer,
         }
@@ -360,6 +344,7 @@ for i = 1, 2 do
     entity.graphics_set.shadow_animation = nil
     entity.graphics_set.eye_light = nil
     entity.graphics_set.light_positions = nil
+    entity.graphics_set.default_color = submarine_colors[i]
 
     data:extend {item, recipe, entity}
 end

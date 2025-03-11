@@ -11,12 +11,6 @@ maraxsis.on_event(maraxsis.events.on_built(), function(event)
     if not entity.valid then return end
     if not SUBMARINES[entity.name] then return end
 
-    local color = entity.color
-    local is_default = serpent.line(color) == "{a = 0.5, b = 0, g = 0.5, r = 1}"
-    if is_default then
-        entity.color = SUBMARINES[entity.name]
-    end
-
     storage.submarines[entity.unit_number] = entity
 end)
 
