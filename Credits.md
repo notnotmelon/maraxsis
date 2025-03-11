@@ -22,10 +22,10 @@
 
 #### Submarine & Nuclear Submarine
 
-- **Creators**: [Archezekiel](https://github.com/Archezekiel)
-- **Source**: Commissioned. Created in Blender.
-- **License**: Public domain.
-- **Changes**: Yes. Compressed for Factorio with [Spritter](https://github.com/fgardt/factorio-spritter)
+- **Creators**: [keptin](https://www.turbosquid.com/Search/Artists/keptin)
+- **Source**: [Turbosquid](https://www.turbosquid.com/3d-models/odyssey-submarine-1799692)
+- **License**: [TurboSquid 3D Model License](https://blog.turbosquid.com/turbosquid-3d-model-license/)
+- **Changes**: Yes. Edited mesh. Added textures and animations. Compressed for Factorio with [Spritter](https://github.com/fgardt/factorio-spritter)
 
 #### Pressure Dome
 
