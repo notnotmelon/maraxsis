@@ -2,7 +2,9 @@ for _, lab in pairs(data.raw.lab) do
     for _, input in pairs(lab.inputs or {}) do
         if input == "cryogenic-science-pack" then
             lab.inputs = lab.inputs or {}
-            table.insert(lab.inputs, "hydraulic-science-pack")
+            if not table.find(lab.inputs, "hydraulic-science-pack") then
+                table.insert(lab.inputs, "hydraulic-science-pack")
+            end
             table.sort(lab.inputs, function(a, b)
                 local order_1 = (data.raw.tool[a] and data.raw.tool[a].order) or a
                 local order_2 = (data.raw.tool[b] and data.raw.tool[b].order) or b
