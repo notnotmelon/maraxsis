@@ -36,7 +36,7 @@ local function waterifiy(tile, collision_layers)
 end
 
 waterifiy("lava-hot", {maraxsis_lava_collision_mask})
-data.raw.tile["lava-hot-underwater"].collision_mask.layers.water_tile = nil
+data.raw.tile["lava-hot-underwater"].collision_mask.layers.rail = nil
 data.raw.tile["lava-hot-underwater"].map_color = maraxsis.color_combine(data.raw.tile["lava-hot"].map_color, data.raw.tile["deepwater"].map_color, 0.6)
 waterifiy("volcanic-cracks-hot", {maraxsis_underwater_collision_mask})
 waterifiy("volcanic-cracks-warm", {maraxsis_underwater_collision_mask})
@@ -83,6 +83,7 @@ table.insert(out_of_map_tile_type_names, "maraxsis-trench-out-of-map")
 
 -- https://github.com/notnotmelon/maraxsis/issues/167
 data.raw.tile["maraxsis-trench-out-of-map"].collision_mask.layers.trigger_target = true
+data.raw.tile["maraxsis-trench-out-of-map"].collision_mask.layers.rail = true
 
 data:extend {{
     type = "tile-effect",

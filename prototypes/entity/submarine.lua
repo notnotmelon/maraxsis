@@ -33,7 +33,7 @@ data:extend {{
 
 local collision_mask = {
     layers = {
-        ["water_tile"] = true,
+        ["rail"] = true,
     },
     colliding_with_tiles_only = true,
 }
