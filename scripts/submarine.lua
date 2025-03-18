@@ -154,7 +154,7 @@ maraxsis.register_delayed_function("play_submerge_sound", play_submerge_sound)
 ---transfers a submarine between surfaces
 ---@param submarine LuaEntity
 ---@return boolean true if the submarine was successfully transferred
-local function decend_or_ascend(submarine)
+local function descend_or_ascend(submarine)
     local target_surface, target_position = determine_submerge_direction(submarine)
     if not target_surface then return false end
     if not target_position then return false end
@@ -223,7 +223,7 @@ end
 ---transfers a character between trench and maraxsis surfaces when standing over trench entrance tiles
 ---@param character LuaEntity
 ---@return boolean true if the character was successfully transferred
-local function decend_or_ascend_character(character)
+local function descend_or_ascend_character(character)
     local target_surface, target_position = determine_submerge_direction(character)
     if not target_surface then return false end
     if not target_position then return false end
@@ -285,9 +285,9 @@ maraxsis.on_event("maraxsis-trench-submerge", function(event)
     local submarine = player.vehicle
 
     if submarine and SUBMARINES[submarine.name] then
-        decend_or_ascend(submarine)
+        descend_or_ascend(submarine)
     elseif maraxsis.is_wearing_abyssal_diving_gear(player) then
-        decend_or_ascend_character(player.character)
+        descend_or_ascend_character(player.character)
     end
 end)
 
@@ -317,7 +317,7 @@ maraxsis.on_event("on_spidertron_patrol_waypoint_reached", function(event)
     if not submarine or not submarine.valid then return end
     if not maraxsis.SUBMARINES[submarine.name] then return end
 
-    if not decend_or_ascend(submarine) then
+    if not descend_or_ascend(submarine) then
         submarine.force.print {"maraxsis.submarine-failed-to-submerge", submarine.gps_tag}
     end
 end)
