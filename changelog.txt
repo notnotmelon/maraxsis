@@ -1,4 +1,9 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.29.22
+Date: 2025-03-24
+  Compatibility:
+    - Removed the ability to place aircraft from Aircraft-space-age on Maraxsis. ([#262](https://github.com/notnotmelon/maraxsis/issues/262))
+---------------------------------------------------------------------------------------------------
 Version: 1.29.21
 Date: 2025-03-18
   Locale:
