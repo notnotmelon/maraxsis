@@ -25,7 +25,7 @@ end
 
 add_fuel_value("crude-oil", "1500kJ")
 add_fuel_value("petroleum-gas", "2000kJ")
-add_fuel_value("maraxsis-hydrogen", "2250kJ")
+add_fuel_value("hydrogen", "2250kJ")
 add_fuel_value("heavy-oil", "2500kJ")
 add_fuel_value("light-oil", "3000kJ")
 
