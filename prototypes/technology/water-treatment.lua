@@ -69,14 +69,14 @@ end
 
 data:extend {{
     type = "recipe",
-    name = "maraxsis-salt",
+    name = "salt",
     enabled = false,
     energy_required = 5,
     ingredients = {
         {type = "fluid", name = "maraxsis-brackish-water", amount = 300},
     },
     results = {
-        {type = "item",  name = "maraxsis-salt",     amount = 3},
+        {type = "item",  name = "salt",     amount = 3},
         {type = "fluid", name = "oxygen",   amount = 100},
         {type = "fluid", name = "hydrogen", amount = 200},
     },
@@ -85,10 +85,10 @@ data:extend {{
     icon_size = 64,
     auto_recycle = false,
     allow_productivity = true,
-    main_product = "maraxsis-salt",
-    localised_name = {"recipe-name.maraxsis-salt"},
+    main_product = "salt",
+    localised_name = {"recipe-name.salt"},
 }}
-add_to_tech("maraxsis-salt")
+add_to_tech("salt")
 
 data:extend {{
     type = "recipe",
@@ -151,7 +151,7 @@ end
 
 data:extend {{
     type = "item",
-    name = "maraxsis-salt",
+    name = "salt",
     icon = "__maraxsis__/graphics/icons/salt-2.png",
     pictures = salt_variants,
     icon_size = 64,

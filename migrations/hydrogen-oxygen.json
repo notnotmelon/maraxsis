@@ -21,12 +21,12 @@
     ],
     "recipe": [
         [
-            "fill-maraxsis-hydrogen-barrel",
-            "fill-hydrogen-barrel"
+            "maraxsis-hydrogen-barrel",
+            "hydrogen-barrel"
         ],
         [
-            "fill-maraxsis-oxygen-barrel",
-            "fill-oxygen-barrel"
+            "maraxsis-oxygen-barrel",
+            "oxygen-barrel"
         ],
         [
             "empty-maraxsis-hydrogen-barrel",

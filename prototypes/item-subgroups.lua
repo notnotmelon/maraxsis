@@ -20,7 +20,7 @@ end
 
 make_subgroup("maraxsis-intermediants", "ge", "intermediate-products", {
     data.raw.item["maraxsis-coral"],
-    data.raw.item["maraxsis-limestone"],
+    data.raw.item["limestone"],
     data.raw.item["sand"],
     data.raw.item["maraxsis-glass-panes"],
     data.raw.item["maraxsis-fish-food"],
@@ -36,9 +36,9 @@ make_subgroup("maraxsis-intermediants", "ge", "intermediate-products", {
     data.raw.recipe["maraxsis-liquid-atmosphere"],
 })
 
-make_subgroup("maraxsis-salt", "gf", "intermediate-products", {
-    data.raw.item["maraxsis-salt"],
-    data.raw.recipe["maraxsis-salt"],
+make_subgroup("salt", "gf", "intermediate-products", {
+    data.raw.item["salt"],
+    data.raw.recipe["salt"],
     data.raw.recipe["maraxsis-brackish-water"],
     data.raw.recipe["maraxsis-water"],
     data.raw.item["maraxsis-salt-filter"],

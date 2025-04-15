@@ -2,7 +2,7 @@
     "recipe": [
         [
             "maraxsis-saline-electrolysis",
-            "maraxsis-salt"
+            "salt"
         ]
     ]
 }
