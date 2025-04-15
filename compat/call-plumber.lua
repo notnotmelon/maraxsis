@@ -8,7 +8,7 @@ maraxsis.on_event(maraxsis.events.on_init(), function()
     for _, fluid_name in ipairs({
           "maraxsis-atmosphere",
           "maraxsis-saline-water", "maraxsis-brackish-water",
-          "maraxsis-oxygen", "maraxsis-hydrogen"}) do
+          "oxygen", "hydrogen"}) do
         remote.call("call-plumber", "register_fluid", {fluid=fluid_name, category="inert"})
     end
 

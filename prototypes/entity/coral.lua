@@ -27,7 +27,7 @@ data:extend {{
     icon_size = 64,
     pictures = coral_variants,
     stack_size = 200,
-    spoil_result = "maraxsis-limestone",
+    spoil_result = "limestone",
     spoil_ticks = 60 * 60 * 10,
 }}
 

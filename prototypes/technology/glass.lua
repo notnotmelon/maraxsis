@@ -46,7 +46,7 @@ end
 
 data:extend {{
     type = "item",
-    name = "maraxsis-limestone",
+    name = "limestone",
     icon = "__maraxsis__/graphics/icons/limestone-1.png",
     icon_size = 64,
     pictures = limestone_variants,
@@ -60,8 +60,8 @@ data:extend {{
     energy_required = 5,
     ingredients = {
         {type = "item", name = "sand",      amount = 3},
-        {type = "item", name = "maraxsis-limestone", amount = 1},
-        {type = "item", name = "maraxsis-salt",      amount = 2},
+        {type = "item", name = "limestone", amount = 1},
+        {type = "item", name = "salt",      amount = 2},
     },
     results = {
         {type = "item", name = "maraxsis-glass-panes", amount = 1},
@@ -155,7 +155,7 @@ data:extend {{
     enabled = false,
     energy_required = 5,
     ingredients = {
-        {type = "item", name = "maraxsis-limestone", amount = 1},
+        {type = "item", name = "limestone", amount = 1},
     },
     results = {
         {type = "item", name = "calcite", amount = 1},

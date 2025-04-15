@@ -191,7 +191,7 @@ data:extend {{
     prerequisites = {"nuclear-power", "maraxsis-hydro-plant"},
     research_trigger = {
         type = "craft-item",
-        item = "maraxsis-salt",
+        item = "salt",
         count = 100
     },
     order = "d-e",
@@ -203,7 +203,7 @@ data:extend {{
     enabled = false,
     energy_required = 0.5,
     ingredients = {
-        {type = "item", name = "maraxsis-salt", amount = 1},
+        {type = "item", name = "salt", amount = 1},
     },
     results = {
         {type = "item", name = "maraxsis-electricity", amount = 1},

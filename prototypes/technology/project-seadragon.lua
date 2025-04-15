@@ -52,8 +52,8 @@ data:extend {{
     enabled = false,
     energy_required = 10,
     ingredients = {
-        {type = "fluid", name = "maraxsis-oxygen",   amount = 200},
-        {type = "fluid", name = "maraxsis-hydrogen", amount = 200},
+        {type = "fluid", name = "oxygen",   amount = 200},
+        {type = "fluid", name = "hydrogen", amount = 200},
     },
     results = {
         {type = "item", name = "rocket-fuel", amount = 1},
@@ -73,7 +73,7 @@ data:extend {{
     ingredients = {
         {type = "item",  name = "sulfur",    amount = 3},
         {type = "fluid", name = "heavy-oil", amount = 25},
-        {type = "fluid", name = "maraxsis-hydrogen",     amount = 100},
+        {type = "fluid", name = "hydrogen",     amount = 100},
     },
     results = {
         {type = "item", name = "maraxsis-super-sealant-substance", amount = 1},

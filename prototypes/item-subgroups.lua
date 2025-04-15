@@ -20,7 +20,7 @@ end
 
 make_subgroup("maraxsis-intermediants", "ge", "intermediate-products", {
     data.raw.item["maraxsis-coral"],
-    data.raw.item["maraxsis-limestone"],
+    data.raw.item["limestone"],
     data.raw.item["sand"],
     data.raw.item["maraxsis-glass-panes"],
     data.raw.item["maraxsis-fish-food"],
@@ -36,9 +36,9 @@ make_subgroup("maraxsis-intermediants", "ge", "intermediate-products", {
     data.raw.recipe["maraxsis-liquid-atmosphere"],
 })
 
-make_subgroup("maraxsis-salt", "gf", "intermediate-products", {
-    data.raw.item["maraxsis-salt"],
-    data.raw.recipe["maraxsis-salt"],
+make_subgroup("salt", "gf", "intermediate-products", {
+    data.raw.item["salt"],
+    data.raw.recipe["salt"],
     data.raw.recipe["maraxsis-brackish-water"],
     data.raw.recipe["maraxsis-water"],
     data.raw.item["maraxsis-salt-filter"],
@@ -76,8 +76,8 @@ order_subgroup("item", "maraxsis-electricity", "h[salt-reactor]-b[electricity]",
 
 order_subgroup("fluid", "maraxsis-saline-water", "f[maraxsis-fluids]-a[saline-water]", "fluid")
 order_subgroup("fluid", "maraxsis-brackish-water", "f[maraxsis-fluids]-b[brackish-water]", "fluid")
-order_subgroup("fluid", "maraxsis-oxygen", "f[maraxsis-fluids]-c[oxygen]", "fluid")
-order_subgroup("fluid", "maraxsis-hydrogen", "f[maraxsis-fluids]-d[hydrogen]", "fluid")
+order_subgroup("fluid", "oxygen", "f[maraxsis-fluids]-c[oxygen]", "fluid")
+order_subgroup("fluid", "hydrogen", "f[maraxsis-fluids]-d[hydrogen]", "fluid")
 order_subgroup("fluid", "maraxsis-atmosphere", "f[maraxsis-fluids]-f[atmosphere]", "fluid")
 order_subgroup("fluid", "maraxsis-liquid-atmosphere", "f[maraxsis-fluids]-f[liquid-atmosphere]", "fluid")
 order_subgroup("capsule", "maraxsis-big-cliff-explosives", "e[big-cliff-explosives]", data.raw.capsule["cliff-explosives"].subgroup)

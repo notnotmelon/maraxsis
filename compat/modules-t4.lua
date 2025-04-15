@@ -6,7 +6,7 @@ if mods["modules-t4"] then
     {"hydraulic-science-pack",1}
     )
     data.raw["recipe"]["quality-module-4"].ingredients = {
-        {type = "item", name = "maraxsis-salt", amount = 1},
+        {type = "item", name = "salt", amount = 1},
         {type = "item", name = "quantum-processor", amount = 5},
         {type = "item", name = "quality-module-3", amount = 5},
     }
