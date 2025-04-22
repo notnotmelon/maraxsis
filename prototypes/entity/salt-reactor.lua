@@ -213,7 +213,7 @@ data:extend {{
     ingredients = {
         {type = "item",  name = "maraxsis-glass-panes",    amount = 10},
         {type = "item",  name = "uranium-238",          amount = 1},
-        {type = "fluid", name = "molten-salt", amount = 350},
+        {type = "fluid", name = "molten-salt", amount = 500},
     },
     results = {
         {type = "item", name = "msr-fuel-cell", amount = 1},
