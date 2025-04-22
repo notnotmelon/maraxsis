@@ -7,7 +7,7 @@ data:extend {{
     icon = "__maraxsis__/graphics/icons/oversized-steam-turbine.png",
     icon_size = 64,
     place_result = "maraxsis-oversized-steam-turbine",
-    stack_size = 10,
+    stack_size = 5,
 }}
 
 data:extend {{

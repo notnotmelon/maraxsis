@@ -247,7 +247,7 @@ data:extend {{
     icon = "__maraxsis__/graphics/icons/salt-reactor.png",
     icon_size = 64,
     place_result = "maraxsis-salt-reactor",
-    stack_size = 10,
+    stack_size = 1,
 }}
 
 data:extend {{
