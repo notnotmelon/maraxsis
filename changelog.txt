@@ -1,4 +1,13 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.30.0
+Date: 2025-04-22
+  Features:
+    - Reworked salt reactors and added oversized steam turbines.
+  Bugfixes:
+    - Fix crash when trying to parse modded science packs with the icons field.
+  Changes:
+    - Removed yellow "no power" warning icons on regulators.
+---------------------------------------------------------------------------------------------------
 Version: 1.29.26
 Date: 2025-04-21
   Locale:
