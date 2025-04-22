@@ -54,7 +54,20 @@ maraxsis.on_nth_tick(597, function()
                             fluidbox.flush(1, "maraxsis-supercritical-steam")
                         end
                     end
+
+                    local position = neighbour.position
+                    local force = neighbour.force_index
+                    local name = neighbour.name
+                    local type = neighbour.type
                     neighbour.die()
+                    for _, ghost in pairs(duct_exhaust.surface.find_entities_filtered{
+                        position = position,
+                        ghost_type = type,
+                        ghost_name = name,
+                        force = force
+                    }) do
+                        ghost.destroy()
+                    end
                 end
             end
         end
