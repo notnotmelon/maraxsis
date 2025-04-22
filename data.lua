@@ -18,6 +18,7 @@ require "prototypes.entity.bubbles"
 require "prototypes.entity.coral"
 require "prototypes.entity.offshore-pump"
 require "prototypes.entity.conduit"
+require "prototypes.entity.oversized-steam-turbine"
 
 require "prototypes.technology.abyssal-diving-gear"
 require "prototypes.technology.technology"

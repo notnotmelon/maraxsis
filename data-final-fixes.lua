@@ -7,7 +7,6 @@ require "compat.5-dim"
 require "compat.alien-biomes"
 require "compat.visible-planets-in-space"
 require "compat.rocket-silo-construction"
-require "compat.whats-a-spoilage"
 require "compat.combat-mechanics-overhaul"
 require "compat.castra"
 

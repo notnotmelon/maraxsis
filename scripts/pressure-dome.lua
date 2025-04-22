@@ -141,9 +141,13 @@ local function disable_due_to_dome_low_pressure(entity, powered_and_has_fluid)
         if not warning then
             warning = rendering.draw_sprite {
                 sprite = "maraxsis-flooded-warning",
-                target = entity,
+                target = {
+                    entity = entity,
+                    offset = entity.prototype.alert_icon_shift
+                },
                 surface = entity.surface_index,
-                target_offset = {0, -1.5},
+                x_scale = 1.04,
+                y_scale = 1.04,
             }
             storage.flooded_warning_info_icons[entity.unit_number] = warning
         end

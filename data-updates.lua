@@ -116,9 +116,9 @@ for _, quality in pairs(data.raw.quality) do
 
     local quality_level = quality.level
     if quality_level >= 5 and not mods["infinite-quality-tiers"] then quality_level = quality_level - 1 end
-    local mj = 10 * (2 ^ quality_level)
+    local fluid_amount = 500 * (2 ^ quality_level)
 
-    table.insert(electricity_description, {"recipe-description.maraxsis-electricity-quality-description", quality.name, quality_name, tostring(mj)})
+    table.insert(electricity_description, {"recipe-description.maraxsis-molten-salt-quality-description", quality.name, quality_name, tostring(fluid_amount)})
     table.insert(electricity_description, "\n")
     ::continue::
 end
@@ -126,18 +126,8 @@ electricity_description[#electricity_description] = nil
 
 electricity_description = maraxsis.shorten_localised_string(electricity_description)
 
-data.raw.recipe["maraxsis-electricity"].localised_description = {
-    "recipe-description.maraxsis-electricity",
-    electricity_description
-}
-
-data.raw.furnace["maraxsis-salt-reactor"].localised_description = {
-    "entity-description.maraxsis-salt-reactor",
-    electricity_description
-}
-
-data.raw["electric-energy-interface"]["maraxsis-salt-reactor-energy-interface"].localised_description = {
-    "entity-description.maraxsis-salt-reactor",
+data.raw.recipe["molten-salt"].localised_description = {
+    "recipe-description.molten-salt",
     electricity_description
 }
 

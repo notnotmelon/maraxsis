@@ -41,7 +41,6 @@ add_sound_item("maraxsis-abyssal-diving-gear", item_sounds.metal_large_inventory
 add_sound_item("maraxsis-trench-duct", item_sounds.metal_large_inventory_move, item_sounds.metal_large_inventory_pickup, item_sounds.metal_large_inventory_move)
 add_sound_item("maraxsis-empty-research-vessel", item_sounds.metal_large_inventory_move, item_sounds.metal_large_inventory_pickup, item_sounds.metal_large_inventory_move)
 add_sound_item("maraxsis-salt-reactor", item_sounds.reactor_inventory_move, item_sounds.reactor_inventory_pickup, item_sounds.reactor_inventory_move)
-add_sound_item("maraxsis-electricity", item_sounds.electric_large_inventory_move, item_sounds.electric_large_inventory_pickup, item_sounds.electric_large_inventory_move)
 add_sound_item("hydraulic-science-pack", item_sounds.science_inventory_move, item_sounds.science_inventory_pickup, item_sounds.science_inventory_move)
 add_sound_item("maraxsis-conduit", item_sounds.mechanical_inventory_move, item_sounds.mechanical_inventory_pickup, item_sounds.mechanical_inventory_move)
 add_sound_item("maraxsis-fat-man", item_sounds.atomic_bomb_inventory_move, item_sounds.atomic_bomb_inventory_pickup, item_sounds.atomic_bomb_inventory_move)
