@@ -132,7 +132,7 @@ data:extend {{
     input_fluid_box = table.deepcopy(data.raw["fusion-reactor"]["fusion-reactor"].input_fluid_box),
     output_fluid_box = table.deepcopy(data.raw["fusion-reactor"]["fusion-reactor"].output_fluid_box),
     energy_source = table.deepcopy(data.raw["fusion-reactor"]["fusion-reactor"].energy_source),
-    max_fluid_usage = 600 / second, -- at normal quality,
+    max_fluid_usage = 300 / second, -- at normal quality,
     source_inventory_size = 1,
     crafting_speed = 1,
     crafting_categories = {"maraxsis-salt-reactor"},
