@@ -45,8 +45,9 @@ for _, effect in pairs(data.raw.technology["ducts"].effects) do
                 ingredient.name = "tungsten-plate"
                 ingredient.amount = ingredient.amount / 4
                 break
-            elseif ingredient.name == "silicon-nitride" then -- https://github.com/notnotmelon/maraxsis/issues/271
+            elseif not data.raw.item[ingredient.name] and not data.raw.fluid[ingredient.name] then -- https://github.com/notnotmelon/maraxsis/issues/271
                 ingredient.name = "iron-gear-wheel"
+                ingredient.type = "item"
             end
         end
         local item = data.raw.item[effect.recipe]
