@@ -1,4 +1,9 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.30.5
+Date: 2025-04-23
+  Changes:
+    - Shift+clicking the trench now opens the trench in remote view. Resolves https://github.com/notnotmelon/maraxsis/issues/255
+---------------------------------------------------------------------------------------------------
 Version: 1.30.4
 Date: 2025-04-23
   Compatibility:
