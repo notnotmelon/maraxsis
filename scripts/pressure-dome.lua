@@ -1061,7 +1061,6 @@ maraxsis.on_nth_tick(5, function(event)
 end)
 
 maraxsis.on_event("mine", function(event)
-    game.print('v')
     local player = game.get_player(event.player_index)
     local entity = player.selected
     if not entity then return end
