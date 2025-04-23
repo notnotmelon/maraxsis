@@ -153,10 +153,17 @@ end
 -- add vehicle acceleration to uranium fuel cells
 
 local uranium_fuel_cell = data.raw.item["uranium-fuel-cell"]
+local msr_fuel_cell = data.raw.item["msr-fuel-cell"]
 local nuclear_fuel = data.raw.item["nuclear-fuel"]
 uranium_fuel_cell.fuel_acceleration_multiplier = nuclear_fuel.fuel_acceleration_multiplier
+msr_fuel_cell.fuel_acceleration_multiplier = nuclear_fuel.fuel_acceleration_multiplier + 0.5
 uranium_fuel_cell.fuel_top_speed_multiplier = nuclear_fuel.fuel_top_speed_multiplier
+msr_fuel_cell.fuel_top_speed_multiplier = nuclear_fuel.fuel_top_speed_multiplier + 0.25
 uranium_fuel_cell.fuel_emissions_multiplier = nuclear_fuel.fuel_emissions_multiplier
+msr_fuel_cell.fuel_emissions_multiplier = (nuclear_fuel.fuel_emissions_multiplier or 1) * 0.9
 uranium_fuel_cell.fuel_glow_color = nuclear_fuel.fuel_glow_color
-uranium_fuel_cell.fuel_glow_color = nuclear_fuel.fuel_acceleration_multiplier_quality_bonus
-uranium_fuel_cell.fuel_glow_color = nuclear_fuel.fuel_top_speed_multiplier_quality_bonus
+msr_fuel_cell.fuel_glow_color = {128, 0, 128}
+uranium_fuel_cell.fuel_acceleration_multiplier_quality_bonus = nuclear_fuel.fuel_acceleration_multiplier_quality_bonus
+msr_fuel_cell.fuel_acceleration_multiplier_quality_bonus = nuclear_fuel.fuel_acceleration_multiplier_quality_bonus
+uranium_fuel_cell.fuel_top_speed_multiplier_quality_bonus = nuclear_fuel.fuel_top_speed_multiplier_quality_bonus
+msr_fuel_cell.fuel_top_speed_multiplier_quality_bonus = nuclear_fuel.fuel_top_speed_multiplier_quality_bonus
