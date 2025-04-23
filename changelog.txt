@@ -1,4 +1,10 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.30.8
+Date: 2025-04-23
+  Balancing:
+    - Increased the volume of salt reactor fluidboxes from 10 -> 1000.
+    - Nerfed the crafting speed of the molten salt reactor in half from 600/s to 300/s.
+---------------------------------------------------------------------------------------------------
 Version: 1.30.7
 Date: 2025-04-23
   Compatibility:
