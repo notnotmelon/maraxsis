@@ -1,4 +1,11 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.30.7
+Date: 2025-04-23
+  Compatibility:
+    - Fixed crash when combined with bobs metals chemicals and intermediants. Resolves https://github.com/notnotmelon/maraxsis/issues/271
+  Bugfixes:
+    - Fixed constant "V" being printed to console. Resolves https://github.com/notnotmelon/maraxsis/issues/276
+---------------------------------------------------------------------------------------------------
 Version: 1.30.6
 Date: 2025-04-23
   Balancing:
