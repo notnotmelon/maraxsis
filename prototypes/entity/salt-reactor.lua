@@ -127,7 +127,7 @@ data:extend {{
     },
     two_direction_only = true,
     power_input = "2MW",
-    neighbour_bonus = data.raw["fusion-reactor"]["fusion-reactor"].neighbour_bonus,
+    neighbour_bonus = 1.50,
     neighbour_connectable = table.deepcopy(data.raw["fusion-reactor"]["fusion-reactor"].neighbour_connectable),
     input_fluid_box = table.deepcopy(data.raw["fusion-reactor"]["fusion-reactor"].input_fluid_box),
     output_fluid_box = table.deepcopy(data.raw["fusion-reactor"]["fusion-reactor"].output_fluid_box),
