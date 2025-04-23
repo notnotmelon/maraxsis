@@ -3,7 +3,6 @@ require "lib.lib"
 
 require "scripts.map-gen.maraxsis"
 require "scripts.map-gen.maraxsis-trench"
-require "scripts.map-gen.map-gen-migration"
 require "scripts.submarine"
 require "scripts.drowning"
 require "scripts.nightvision"
