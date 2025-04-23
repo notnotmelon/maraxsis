@@ -45,6 +45,8 @@ for _, effect in pairs(data.raw.technology["ducts"].effects) do
                 ingredient.name = "tungsten-plate"
                 ingredient.amount = ingredient.amount / 4
                 break
+            elseif ingredient.name == "silicon-nitride" then
+                ingredient.name = "iron-gear-wheel"
             end
         end
         local item = data.raw.item[effect.recipe]
