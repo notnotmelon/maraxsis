@@ -1,4 +1,11 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.30.3
+Date: 2025-04-23
+  Bugfixes:
+    - Allowed salt reactors and oversized steam turbines to freeze on aquilo.
+  Graphics:
+    - Update icons for molten salt.
+---------------------------------------------------------------------------------------------------
 Version: 1.30.2
 Date: 2025-04-22
   Bugfixes:
