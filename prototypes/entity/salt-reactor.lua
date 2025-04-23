@@ -134,13 +134,14 @@ data:extend {{
     energy_source = table.deepcopy(data.raw["fusion-reactor"]["fusion-reactor"].energy_source),
     max_fluid_usage = 300 / second, -- at normal quality,
     source_inventory_size = 1,
-    crafting_speed = 1,
     crafting_categories = {"maraxsis-salt-reactor"},
 }}
+data.raw["fusion-reactor"]["maraxsis-salt-reactor"].input_fluid_box.volume = 1000
 data.raw["fusion-reactor"]["maraxsis-salt-reactor"].input_fluid_box.filter = "water"
 data.raw["fusion-reactor"]["maraxsis-salt-reactor"].input_fluid_box.pipe_picture = require("__space-age__.prototypes.entity.electromagnetic-plant-pictures").pipe_pictures
 data.raw["fusion-reactor"]["maraxsis-salt-reactor"].input_fluid_box.pipe_picture_frozen = require("__space-age__.prototypes.entity.electromagnetic-plant-pictures").pipe_pictures_frozen
 data.raw["fusion-reactor"]["maraxsis-salt-reactor"].input_fluid_box.pipe_covers = pipecoverspictures()
+data.raw["fusion-reactor"]["maraxsis-salt-reactor"].output_fluid_box.volume = 1000
 data.raw["fusion-reactor"]["maraxsis-salt-reactor"].output_fluid_box.filter = "maraxsis-supercritical-steam"
 data.raw["fusion-reactor"]["maraxsis-salt-reactor"].output_fluid_box.pipe_picture = require("__space-age__.prototypes.entity.electromagnetic-plant-pictures").pipe_pictures
 data.raw["fusion-reactor"]["maraxsis-salt-reactor"].output_fluid_box.pipe_picture_frozen = require("__space-age__.prototypes.entity.electromagnetic-plant-pictures").pipe_pictures_frozen
