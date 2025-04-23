@@ -125,3 +125,25 @@ maraxsis.on_event(defines.events.on_player_cursor_stack_changed, function(event)
     local target_stack_name = cursor_stack_name:gsub("%-maraxsis%-swimming", "")
     transfer_armor_item(player, cursor_stack, target_stack_name)
 end)
+
+-- https://github.com/notnotmelon/maraxsis/issues/255
+maraxsis.on_event("factory-open-outside-surface-to-remote-view", function(event)
+    local player = game.get_player(event.player_index)
+    if player.selected then return end
+    local surface = player.surface
+    if surface.name ~= "maraxsis" then return end
+    
+    local cursor_position = event.cursor_position
+    local tile = surface.get_tile(cursor_position)
+
+    if tile.name ~= "maraxsis-trench-entrance" then return end
+
+    local trench = game.planets["maraxsis-trench"].surface
+    if not trench then return end
+    
+    player.set_controller {
+        position = cursor_position,
+        surface = trench,
+        type = defines.controllers.remote,
+    }
+end)

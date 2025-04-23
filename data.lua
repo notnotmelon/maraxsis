@@ -60,3 +60,11 @@ data:extend {{
     linked_game_control = "mine",
     name = "mine"
 }}
+
+-- https://github.com/notnotmelon/maraxsis/issues/255
+data:extend {{
+    type = "custom-input",
+    name = "factory-open-outside-surface-to-remote-view",
+    key_sequence = "SHIFT + mouse-button-2",
+    controller_key_sequence = "controller-leftstick"
+}}
