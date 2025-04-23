@@ -1,4 +1,10 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.30.4
+Date: 2025-04-23
+  Compatibility:
+    - Added incompatibility flag with "quality-better-roboports". Resolves https://github.com/notnotmelon/maraxsis/issues/266
+    - Fixed crash when combined with bobs metals chemicals and intermediants. Resolves https://github.com/notnotmelon/maraxsis/issues/271
+---------------------------------------------------------------------------------------------------
 Version: 1.30.3
 Date: 2025-04-23
   Bugfixes:
