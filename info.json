@@ -18,7 +18,8 @@
     "(?) modules-t4",
     "(?) call-plumber >= 1.0.0",
     "! Land-Pump",
-    "! no-more-gambling"
+    "! no-more-gambling",
+    "! quality-better-roboports"
   ],
   "quality_required": true,
   "space_travel_required": true,
