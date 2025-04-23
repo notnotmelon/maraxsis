@@ -53,6 +53,7 @@ data:extend {{
     name = "maraxsis-salt-reactor",
     icon = "__maraxsis__/graphics/icons/salt-reactor.png",
     maraxsis_buildability_rules = {water = false, dome = true, coral = false, trench = true, trench_entrance = false, trench_lava = false},
+    heating_energy = data.raw["generator"]["steam-turbine"].heating_energy,
     icon_size = 64,
     flags = {"placeable-neutral", "placeable-player", "player-creation"},
     minable = {mining_time = 0.5, result = "maraxsis-salt-reactor"},

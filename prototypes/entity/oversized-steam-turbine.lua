@@ -166,6 +166,60 @@ local horizontal_animation = {
     }
 }
 
+--[[
+local horizontal_frozen_patch = {
+    layers = {
+        {
+            filename = "__space-age__/graphics/entity/frozen/steam-turbine/steam-turbine-H.png",
+            width = 320,
+            height = 245,
+            shift = util.by_pixel(0, -2.75 - offset),
+            scale = 0.5
+        },
+        {
+            filename = "__space-age__/graphics/entity/frozen/steam-turbine/steam-turbine-H.png",
+            width = 320,
+            height = 245,
+            shift = util.by_pixel(0, -2.75),
+            scale = 0.5
+        },
+        {
+            filename = "__space-age__/graphics/entity/frozen/steam-turbine/steam-turbine-H.png",
+            width = 320,
+            height = 245,
+            shift = util.by_pixel(0, -2.75 + offset),
+            scale = 0.5
+        },
+    }
+}
+
+local vertical_frozen_patch = {
+    {
+        {
+            filename = "__space-age__/graphics/entity/frozen/steam-turbine/steam-turbine-V.png",
+            width = 217,
+            height = 347,
+            shift = util.by_pixel(4.75 + offset, 6.75),
+            scale = 0.5
+        },
+        {
+            filename = "__space-age__/graphics/entity/frozen/steam-turbine/steam-turbine-V.png",
+            width = 217,
+            height = 347,
+            shift = util.by_pixel(4.75, 6.75),
+            scale = 0.5
+        },
+        {
+            filename = "__space-age__/graphics/entity/frozen/steam-turbine/steam-turbine-V.png",
+            width = 217,
+            height = 347,
+            shift = util.by_pixel(4.75 - offset, 6.75),
+            scale = 0.5
+        },
+    }
+}
+--]]
+
 data:extend {{
     type = "fluid",
     name = "maraxsis-supercritical-steam",
@@ -281,6 +335,7 @@ data:extend {{
 data:extend {{
     type = "fusion-generator",
     name = "maraxsis-oversized-steam-turbine",
+    heating_energy = data.raw["generator"]["steam-turbine"].heating_energy,
     icon = "__maraxsis__/graphics/icons/oversized-steam-turbine.png",
     maraxsis_buildability_rules = {water = false, dome = true, coral = false, trench = true, trench_entrance = false, trench_lava = false},
     flags = {"placeable-neutral", "player-creation"},
