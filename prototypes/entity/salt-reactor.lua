@@ -182,7 +182,6 @@ data:extend {{
     energy_required = 32,
     ingredients = {
         {type = "item",  name = "salt",    amount = 50},
-        {type = "item",  name = "calcite",    amount = 1},
     },
     results = {
         {type = "fluid", name = "molten-salt", amount = 500},
