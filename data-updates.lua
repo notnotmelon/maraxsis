@@ -115,8 +115,7 @@ for _, quality in pairs(data.raw.quality) do
     local quality_name = quality.localised_name or {"quality-name." .. quality.name}
 
     local quality_level = quality.level
-    if quality_level >= 5 and not mods["infinite-quality-tiers"] then quality_level = quality_level - 1 end
-    local fluid_amount = 500 * (2 ^ quality_level)
+    local fluid_amount = 500 * quality_level * quality_level + 500
 
     table.insert(electricity_description, {"recipe-description.maraxsis-molten-salt-quality-description", quality.name, quality_name, tostring(fluid_amount)})
     table.insert(electricity_description, "\n")
