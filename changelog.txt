@@ -1,4 +1,9 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.30.9
+Date: 2025-04-24
+  Changes:
+    - You can now deconstruct domes with no restriction if the dome only contains hydro plants, chemical plants, or conduits. Resolves https://github.com/notnotmelon/maraxsis/issues/188
+---------------------------------------------------------------------------------------------------
 Version: 1.30.8
 Date: 2025-04-23
   Balancing:
