@@ -1,4 +1,10 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.30.10
+Date: 2025-04-24
+  Balancing:
+    - Adjusted molten salt quality formula. Resolves https://github.com/notnotmelon/maraxsis/issues/278
+    - Removed calcite from molten salt recipe.
+---------------------------------------------------------------------------------------------------
 Version: 1.30.9
 Date: 2025-04-24
   Changes:
