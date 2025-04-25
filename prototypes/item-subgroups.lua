@@ -60,9 +60,12 @@ make_subgroup("maraxsis-machines", "fh", "logistics", {
 
 local function order_subgroup(prototype, name, order, subgroup)
     local prototype = data.raw[prototype][name]
-    if not prototype then error("no such prototype: " .. type .. "." .. name) end
-    prototype.order = order
-    prototype.subgroup = subgroup
+    if prototype then
+        prototype.order = order
+        prototype.subgroup = subgroup
+    elseif not mods.pystellarexpedition then
+        error("no such prototype: " .. prototype .. "." .. name)
+    end
 end
 
 order_subgroup("item-with-entity-data", "maraxsis-diesel-submarine", "b[personal-transport]-c[spidertron]-b[diesel-submarine]", "transport")

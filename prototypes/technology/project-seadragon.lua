@@ -19,10 +19,10 @@ data:extend {{
             type = "unlock-recipe",
             recipe = "maraxsis-super-sealant-substance"
         },
-        {
+        (not mods.pystellarexpedition) and {
             type = "unlock-recipe",
             recipe = "maraxsis-petroleum-gas-cracking"
-        },
+        } or nil,
     },
     prerequisites = {"hydraulic-science-pack", "coal-liquefaction"},
     unit = {
@@ -45,25 +45,6 @@ maraxsis_rocket_part.surface_conditions = {
 maraxsis_rocket_part.auto_recycle = false
 maraxsis_rocket_part.order = data.raw.item["rocket-part"].order .. "-a[maraxsis]"
 data:extend {maraxsis_rocket_part}
-
-data:extend {{
-    type = "recipe",
-    name = "maraxsis-hydrolox-rocket-fuel",
-    enabled = false,
-    energy_required = 10,
-    ingredients = {
-        {type = "fluid", name = "oxygen",   amount = 200},
-        {type = "fluid", name = "hydrogen", amount = 200},
-    },
-    results = {
-        {type = "item", name = "rocket-fuel", amount = 1},
-    },
-    icon = "__maraxsis__/graphics/icons/hydrolox-rocket-fuel.png",
-    icon_size = 64,
-    allow_productivity = true,
-    category = "maraxsis-hydro-plant",
-    main_product = "rocket-fuel",
-}}
 
 data:extend {{
     type = "recipe",

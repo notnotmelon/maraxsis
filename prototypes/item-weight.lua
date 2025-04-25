@@ -10,7 +10,7 @@ local function i_want_to_fit_this_many_per_rocket(item, count)
             return
         end
     end
-    error("Could not find item " .. item)
+    if not mods.pystellarexpedition then error("Could not find item " .. item) end
 end
 
 i_want_to_fit_this_many_per_rocket("maraxsis-fishing-tower", 20)

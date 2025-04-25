@@ -3,42 +3,42 @@ require "lib.lib"
 
 require "prototypes.entity.water-shader"
 require "prototypes.entity.submarine"
-require "prototypes.entity.salt-reactor"
+if not mods.pystellarexpedition then require "prototypes.entity.salt-reactor" end
 require "prototypes.entity.rocks"
 require "prototypes.entity.trench-duct"
 require "prototypes.entity.fish"
 require "prototypes.entity.cliffs"
-require "prototypes.entity.hydro-plant"
+if not mods.pystellarexpedition then require "prototypes.entity.hydro-plant" end
 require "prototypes.entity.regulator"
 require "prototypes.entity.pressure-dome"
 require "prototypes.entity.sonar"
 require "prototypes.entity.fishing-tower"
-require "prototypes.entity.sand-extractor"
+if not mods.pystellarexpedition then require "prototypes.entity.sand-extractor" end
 require "prototypes.entity.bubbles"
 require "prototypes.entity.coral"
 require "prototypes.entity.offshore-pump"
-require "prototypes.entity.conduit"
-require "prototypes.entity.oversized-steam-turbine"
+if not mods.pystellarexpedition then require "prototypes.entity.conduit" end
+if not mods.pystellarexpedition then require "prototypes.entity.oversized-steam-turbine" end
 
 require "prototypes.technology.abyssal-diving-gear"
 require "prototypes.technology.technology"
-require "prototypes.technology.glass"
-require "prototypes.technology.wyrm"
-require "prototypes.technology.recipes"
+if not mods.pystellarexpedition then require "prototypes.technology.glass" end
+if not mods.pystellarexpedition then require "prototypes.technology.wyrm" end
+if not mods.pystellarexpedition then require "prototypes.technology.recipes" end
 require "prototypes.technology.fat-man"
-require "prototypes.technology.water-treatment"
+if not mods.pystellarexpedition then require "prototypes.technology.water-treatment" end
 require "prototypes.technology.depth-charges"
 require "prototypes.technology.atmosphere"
-require "prototypes.technology.hydraulic-science-pack"
+if not mods.pystellarexpedition then require "prototypes.technology.hydraulic-science-pack" end
 require "prototypes.technology.project-seadragon"
-require "prototypes.technology.deepsea-research"
-require "prototypes.technology.promethium-productivity"
-require "prototypes.technology.stone-centrifuging"
-require "prototypes.technology.research-vessel"
+if not mods.pystellarexpedition then require "prototypes.technology.deepsea-research" end
+if not mods.pystellarexpedition then require "prototypes.technology.promethium-productivity" end
+if not mods.pystellarexpedition then require "prototypes.technology.stone-centrifuging" end
+if not mods.pystellarexpedition then require "prototypes.technology.research-vessel" end
 
 require "prototypes.circuit-connector-definitions"
 require "prototypes.tiles"
-require "prototypes.tips-and-tricks"
+if not mods.pystellarexpedition then require "prototypes.tips-and-tricks" end
 require "prototypes.planet.space-location"
 require "prototypes.achievements"
 

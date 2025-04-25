@@ -3,9 +3,9 @@ require "prototypes.spidertron-patrols"
 require "prototypes.item-weight"
 require "prototypes.default-import-location"
 require "prototypes.item-sounds"
-require "prototypes.fluid-void"
+if not mods.pystellarexpedition then require "prototypes.fluid-void" end
 require "prototypes.entity.regulator-fluidbox"
-require "prototypes.research-vessel"
+if not mods.pystellarexpedition then require "prototypes.research-vessel" end
 
 require "compat.aai-industry"
 require "compat.aai-signal-transmission"
@@ -101,34 +101,38 @@ if mods["assembler-pipe-passthrough"] then
     appmod.blacklist["maraxsis-hydro-plant-extra-module-slots"] = true
 end
 
-data.raw.recipe["maraxsis-glass-panes-recycling"].results = {
-    {type = "item", name = "sand",      amount = 1, probability = 0.75},
-    {type = "item", name = "salt",      amount = 1, probability = 0.5},
-    {type = "item", name = "limestone", amount = 1, probability = 0.25},
-}
+if not mods.pystellarexpedition then
+    data.raw.recipe["maraxsis-glass-panes-recycling"].results = {
+        {type = "item", name = "sand",      amount = 1, probability = 0.75},
+        {type = "item", name = "salt",      amount = 1, probability = 0.5},
+        {type = "item", name = "limestone", amount = 1, probability = 0.25},
+    }
+end
 
 -- salt reactor localised description
-local electricity_description = {""}
+if not mods.pystellarexpedition then
+    local electricity_description = {""}
 
-for _, quality in pairs(data.raw.quality) do
-    if quality.hidden then goto continue end
-    local quality_name = quality.localised_name or {"quality-name." .. quality.name}
+    for _, quality in pairs(data.raw.quality) do
+        if quality.hidden then goto continue end
+        local quality_name = quality.localised_name or {"quality-name." .. quality.name}
 
-    local quality_level = quality.level
-    local fluid_amount = 500 * quality_level * quality_level + 500
+        local quality_level = quality.level
+        local fluid_amount = 500 * quality_level * quality_level + 500
 
-    table.insert(electricity_description, {"recipe-description.maraxsis-molten-salt-quality-description", quality.name, quality_name, tostring(fluid_amount)})
-    table.insert(electricity_description, "\n")
-    ::continue::
+        table.insert(electricity_description, {"recipe-description.maraxsis-molten-salt-quality-description", quality.name, quality_name, tostring(fluid_amount)})
+        table.insert(electricity_description, "\n")
+        ::continue::
+    end
+    electricity_description[#electricity_description] = nil
+
+    electricity_description = maraxsis.shorten_localised_string(electricity_description)
+
+    data.raw.recipe["molten-salt"].localised_description = {
+        "recipe-description.molten-salt",
+        electricity_description
+    }
 end
-electricity_description[#electricity_description] = nil
-
-electricity_description = maraxsis.shorten_localised_string(electricity_description)
-
-data.raw.recipe["molten-salt"].localised_description = {
-    "recipe-description.molten-salt",
-    electricity_description
-}
 
 -- regulator factoriopedia description
 

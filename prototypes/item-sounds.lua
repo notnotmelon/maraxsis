@@ -14,7 +14,7 @@ local function add_sound_item(name, move_sound, pick_sound, drop_sound)
             return
         end
     end
-    error("Could not find item " .. name)
+    if not mods.pystellarexpedition then error("Could not find item " .. name) end
 end
 
 add_sound_item("maraxsis-fishing-tower", item_sounds.fluid_inventory_move, item_sounds.fluid_inventory_pickup, item_sounds.fluid_inventory_move)
