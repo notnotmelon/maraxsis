@@ -7,7 +7,7 @@ require "scripts.submarine"
 if not script.active_mods.pystellarexpedition then require "scripts.drowning" end
 require "scripts.nightvision"
 require "scripts.pressure-dome"
-require "scripts.composite-entity"
+if not script.active_mods.pystellarexpedition then require "scripts.sonar" end
 if not script.active_mods.pystellarexpedition then require "scripts.sand-extractor" end
 if not script.active_mods.pystellarexpedition then require "scripts.hydro-plant" end
 require "scripts.project-seadragon"

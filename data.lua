@@ -11,7 +11,7 @@ require "prototypes.entity.cliffs"
 if not mods.pystellarexpedition then require "prototypes.entity.hydro-plant" end
 require "prototypes.entity.regulator"
 require "prototypes.entity.pressure-dome"
-require "prototypes.entity.sonar"
+if not mods.pystellarexpedition then require "prototypes.entity.sonar" end
 require "prototypes.entity.fishing-tower"
 if not mods.pystellarexpedition then require "prototypes.entity.sand-extractor" end
 require "prototypes.entity.bubbles"
