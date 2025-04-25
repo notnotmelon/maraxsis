@@ -285,7 +285,7 @@ local mobile_entities = {
 local function update_dome_minable_flag(pressure_dome_data)
     local minable_flag = true
     for _, entity in pairs(pressure_dome_data.contained_entities) do
-        if not DOME_EXCLUDED_FROM_DISABLE[entity.name] then
+        if entity.valid and not DOME_EXCLUDED_FROM_DISABLE[entity.name] then
             minable_flag = false
             break
         end
