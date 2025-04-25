@@ -1,4 +1,11 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.30.11
+Date: 2025-04-25
+  Compatibility:
+    - Pyanodons stellar expedition compatibility.
+  Bugfixes:
+    - Fixed a crash with pressure domes. Resolves https://github.com/notnotmelon/maraxsis/issues/279
+---------------------------------------------------------------------------------------------------
 Version: 1.30.10
 Date: 2025-04-24
   Balancing:
