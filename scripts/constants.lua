@@ -29,7 +29,7 @@ local MARAXSIS_SAND_EXTRACTORS = {
 
 local SUBMARINE_FUEL_SOURCES = {
     ["maraxsis-diesel-submarine"] = {"maraxsis-diesel", "rocket-fuel"},
-    ["maraxsis-nuclear-submarine"] = mods.pystellarexpedition and {"nuclear", "nuclear-fuel"} or {"nuclear", "nuclear-fuel", "maraxsis-salt-reactor"},
+    ["maraxsis-nuclear-submarine"] = {"nuclear", "nuclear-fuel", "maraxsis-salt-reactor"},
 }
 
 local DOME_DISABLEABLE_TYPES = {
