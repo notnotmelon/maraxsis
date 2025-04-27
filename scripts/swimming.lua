@@ -139,6 +139,7 @@ maraxsis.on_event("factory-open-outside-surface-to-remote-view", function(event)
     local cursor_position = event.cursor_position
     local tile = surface.get_tile(cursor_position)
 
+    if not tile.valid then return end
     if tile.name ~= "maraxsis-trench-entrance" then return end
 
     local trench = game.planets["maraxsis-trench"].surface
