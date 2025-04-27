@@ -1,4 +1,9 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.30.14
+Date: 2025-04-27
+  Compatibility:
+    - Added compat with "zoom based exoskeleton speed". Resolves https://github.com/notnotmelon/maraxsis/issues/283
+---------------------------------------------------------------------------------------------------
 Version: 1.30.13
 Date: 2025-04-27
   Bugfixes:
