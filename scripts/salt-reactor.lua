@@ -28,6 +28,8 @@ local SUPERCRITICAL_STEAM_ALLOW_LIST = table.invert {
     "duct-cross",
     "duct-intake",
     "duct-exhaust",
+    "duct-underground",
+    "maraxsis-trench-duct",
     "maraxsis-trench-duct-lower",
     "maraxsis-oversized-steam-turbine",
     "maraxsis-salt-reactor",
