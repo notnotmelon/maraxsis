@@ -21,6 +21,8 @@ local function transfer_equipment_grid(old_armor, new_armor)
         end
         ::continue::
     end
+
+    new_armor_grid.inhibit_movement_bonus = old_armor_grid.inhibit_movement_bonus
 end
 
 local function reset_inventory_slots_bonus(force)
@@ -54,6 +56,7 @@ local function transfer_armor_item(player, armor, target_armor_name)
 end
 maraxsis.register_delayed_function("transfer_armor_item", transfer_armor_item)
 
+-- in order for the swimming animation to work, we must swap the players armor to an identical armor prototype but with mech suit flight
 local function update_armor(player)
     local armor_inventory
     if player.controller_type == defines.controllers.editor then
