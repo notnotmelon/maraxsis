@@ -19,7 +19,8 @@
     "(?) call-plumber >= 1.0.0",
     "! Land-Pump",
     "! no-more-gambling",
-    "! quality-better-roboports"
+    "! quality-better-roboports",
+    "! edible-spoilage"
   ],
   "quality_required": true,
   "space_travel_required": true,
