@@ -51,14 +51,12 @@ local function get_abyssal_light_size(player)
     local grid = character.grid
     if not grid then return light_size end
 
-    log("size before gear = " .. light_size)
     for _, equipment in pairs(grid.get_contents()) do
         if equipment.name == "maraxsis-abyssal-diving-gear" then
             local quality = prototypes.quality[equipment.quality]
             light_size = light_size + (equipment.count * get_quality_buff(quality.level))
         end
     end
-    log("size after gear = " .. light_size)
     return light_size
 end
 
