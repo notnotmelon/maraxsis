@@ -90,6 +90,7 @@ local function update_abyssal_light_cone(player)
     if light_size == 0 then return end
 
     local character = player.character
+    if not character then return end
     storage.abyssal_light_cones[player.index] = rendering.draw_light {
         sprite = "utility/light_medium",
         scale = light_size * 0.6 + 5.5,
