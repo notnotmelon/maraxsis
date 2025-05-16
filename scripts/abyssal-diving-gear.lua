@@ -1,5 +1,9 @@
 --note: much of this code is duplicated from the nightvision script.
 
+local external_modifiers = {light_radius = {}, swim_speed = {}}
+local base_character_values = {light_radius = 0, swim_speed = 0} --TODO: Melon, I could not find a good in for swimming speed
+
+
 local is_abyssal_diving_gear = {
     ["maraxsis-abyssal-diving-gear"] = true,
     ["maraxsis-abyssal-diving-gear-disabled"] = true,
@@ -12,18 +16,17 @@ end
 
 local function get_abyssal_light_size(player)
     local character = player.character
-    if not character then return 0 end
+    local light_size = base_character_values["light_radius"]
+    if not character then return light_size end
     local grid = character.grid
-    if not grid then return 0 end
+    if not grid then return light_size end
 
-    local light_size = 0
     for _, equipment in pairs(grid.get_contents()) do
         if equipment.name == "maraxsis-abyssal-diving-gear" then
             local quality = prototypes.quality[equipment.quality]
             light_size = light_size + (equipment.count * get_quality_buff(quality.level))
         end
     end
-
     return light_size
 end
 
@@ -57,6 +60,7 @@ local function update_abyssal_light_cone(player)
     if light_size == 0 then return end
 
     local character = player.character
+    if not character then return end
     storage.abyssal_light_cones[player.index] = rendering.draw_light {
         sprite = "utility/light_medium",
         scale = light_size * 0.6 + 5.5,
@@ -136,3 +140,40 @@ maraxsis.on_event({defines.events.on_equipment_removed, defines.events.on_player
         update_abyssal_light_cone(player)
     end
 end)
+
+
+
+--#region Maraxsis remote interfaces
+---The given source will add the given value to light radius or other maraxsis modifiers.
+---@param source_key string A unique string to allow overwriting the previous source of a modifier.
+---@param modifier_type string string tied to the type of parameter to control. See relevant dic
+---@param modifier double The actual bonus value to be added
+local function set_modifier(source_key, modifier_type, modifier)
+    local modifier_list = external_modifiers[modifier_type]
+    assert(modifier_list, "Invalid modifier type for Maraxsis: " .. modifier_type)
+
+    if modifier and modifier ~= 0 then modifier_list[source_key] = modifier --Told to have a modifier
+    else modifier_list[source_key] = nil --Told to remove modifier
+    end
+
+    --Update the base value from scratch
+    local base_value = 0
+    for _, entry in pairs(modifier_list) do
+        base_value = base_value + entry
+    end
+
+    --In case anyone gets spicey with negatives. >:(
+    if base_value < 0 then base_value = 0 end
+
+    base_character_values[modifier_type] = base_value
+    for _, player in pairs(game.players) do
+        update_abyssal_light_cone(player)
+    end
+end
+
+--Define the interface to modify underwater parameters
+remote.add_interface("maraxsis-character-modifier",{
+    set_light_radius_modifier = function(source_key, modifier) set_modifier(source_key, "light_radius", modifier) end,
+    set_swim_speed_modifier =   function(source_key, modifier) set_modifier(source_key, "swim_speed", modifier) end,
+})
+--#endregion
