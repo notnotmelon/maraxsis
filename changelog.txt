@@ -1,4 +1,9 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.30.17
+Date: 2025-05-16
+  Compatibility:
+    - Added new remote interface for custom abyssal diving gear parameters. ([#293](https://github.com/notnotmelon/maraxsis/issues/293))
+---------------------------------------------------------------------------------------------------
 Version: 1.30.16
 Date: 2025-04-29
   Compatibility:
