@@ -1,5 +1,10 @@
 ---------------------------------------------------------------------------------------------------
 Version: 1.30.18
+Date: 2025-05-31
+  Locale:
+    - Update Chinese (traditional) localization ([#295](https://github.com/notnotmelon/maraxsis/issues/295))
+---------------------------------------------------------------------------------------------------
+Version: 1.30.18
 Date: 2025-05-19
   Locale:
     - Update zh-TW translation.
