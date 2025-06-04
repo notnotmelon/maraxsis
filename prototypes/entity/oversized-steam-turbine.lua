@@ -35,7 +35,7 @@ local vertical_animation = {
         {
             filename = "__base__/graphics/entity/steam-turbine/steam-turbine-V.png",
             width = 217,
-            height = 347,
+            height = 374,
             frame_count = 8,
             line_length = 4,
             shift = util.by_pixel(4.75, 6.75 - offset),
@@ -56,7 +56,7 @@ local vertical_animation = {
         {
             filename = "__base__/graphics/entity/steam-turbine/steam-turbine-V.png",
             width = 217,
-            height = 347,
+            height = 374,
             frame_count = 8,
             line_length = 4,
             shift = util.by_pixel(4.75, 6.75),
@@ -77,7 +77,7 @@ local vertical_animation = {
         {
             filename = "__base__/graphics/entity/steam-turbine/steam-turbine-V.png",
             width = 217,
-            height = 347,
+            height = 374,
             frame_count = 8,
             line_length = 4,
             shift = util.by_pixel(4.75, 6.75 + offset),
