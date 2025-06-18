@@ -1,78 +1,59 @@
+local hit_effects = require("__base__.prototypes.entity.hit-effects")
+local item_sounds = require("__base__.prototypes.item_sounds")
+
 data:extend {{
-    type = "item",
-    name = "maraxsis-electricity",
-    icon = "__maraxsis__/graphics/icons/electricity.png",
-    icon_size = 64,
-    hidden = true,
-    stack_size = 100,
-    spoil_to_trigger_result = nil, -- defined in whats-a-spoilage.lua
-    flags = {"only-in-cursor", "ignore-spoil-time-modifier"},
-    spoil_ticks = nil,             -- defined in whats-a-spoilage.lua
+    type = "animation",
+    name = "maraxsis-salt-reactor-animation",
+    filename = "__maraxsis__/graphics/entity/salt-reactor/salt-reactor.png",
+    priority = "high",
+    width = 4000 / 10,
+    height = 3840 / 8,
+    shift = util.by_pixel(0, -16),
+    frame_count = 80,
+    line_length = 10,
+    animation_speed = 1,
+    scale = 0.5,
 }}
 
 data:extend {{
-    type = "simple-entity-with-owner",
-    name = "maraxsis-electricity",
-    flags = {"not-on-map", "placeable-off-grid"},
-    collision_mask = {layers = {}},
-    hidden = true,
-    icon = "__maraxsis__/graphics/icons/electricity.png",
-    icon_size = 64,
-    localised_name = {"item-name.maraxsis-electricity"},
-    factoriopedia_alternative = "maraxsis-salt-reactor",
-}}
-
-local working_visualisations = {
-    {
-        always_draw = true,
-        animation = {
-            filename = "__maraxsis__/graphics/entity/salt-reactor/salt-reactor.png",
-            priority = "high",
-            width = 3200 / 8,
-            height = 3200 / 8,
-            shift = util.by_pixel(0, -16),
-            frame_count = 60,
-            line_length = 8,
-            animation_speed = 1,
-            scale = 0.5,
-        },
-    },
-    {
-        always_draw = true,
-        animation = {
-            filename = "__maraxsis__/graphics/entity/salt-reactor/salt-reactor-sh.png",
-            priority = "high",
-            width = 800,
-            height = 600,
-            scale = 0.5,
-            frame_count = 1,
-            shift = {0, -0.2},
-            draw_as_shadow = true,
-        },
-    },
-    {
-        fadeout = true,
-        animation = {
+    type = "animation",
+    name = "maraxsis-salt-reactor-animation-glow",
+    layers = {
+        {
             filename = "__maraxsis__/graphics/entity/salt-reactor/salt-reactor-emission.png",
             priority = "high",
-            width = 3200 / 8,
-            height = 3200 / 8,
+            width = 4000 / 10,
+            height = 3840 / 8,
             shift = util.by_pixel(0, -16),
-            frame_count = 60,
-            line_length = 8,
+            frame_count = 80,
+            line_length = 10,
             animation_speed = 1,
             scale = 0.5,
             draw_as_glow = true,
             blend_mode = "additive",
         },
-    },
-}
+        {
+            filename = "__maraxsis__/graphics/entity/salt-reactor/salt-reactor-emission-2.png",
+            priority = "high",
+            width = 4000 / 10,
+            height = 3840 / 8,
+            shift = util.by_pixel(0, -16),
+            frame_count = 80,
+            line_length = 10,
+            animation_speed = 1,
+            scale = 0.5,
+            draw_as_glow = true,
+            blend_mode = "additive",
+        },
+    }
+}}
 
 data:extend {{
-    type = "furnace",
+    type = "fusion-reactor",
     name = "maraxsis-salt-reactor",
     icon = "__maraxsis__/graphics/icons/salt-reactor.png",
-    maraxsis_buildability_rules = {water = true, dome = true, coral = true, trench = true, trench_entrance = false, trench_lava = false},
+    maraxsis_buildability_rules = {water = false, dome = true, coral = false, trench = true, trench_entrance = false, trench_lava = false},
+    heating_energy = data.raw["generator"]["steam-turbine"].heating_energy,
     icon_size = 64,
     flags = {"placeable-neutral", "placeable-player", "player-creation"},
     minable = {mining_time = 0.5, result = "maraxsis-salt-reactor"},
@@ -98,35 +79,45 @@ data:extend {{
     },
     collision_box = {{-2.9, -2.9}, {2.9, 2.9}},
     selection_box = {{-3, -3}, {3, 3}},
-    module_slots = 6,
-    allowed_effects = {"consumption", "speed", "productivity", "pollution", "quality"},
-    allowed_module_categories = {"efficiency", "quality"},
-    effect_receiver = {
-        uses_module_effects = true,
-        uses_beacon_effects = false,
-        uses_surface_effects = false,
-    },
+    damaged_trigger_effect = hit_effects.entity(),
     icon_draw_specification = {shift = {0, -0.5}, scale = 1.5},
     icons_positioning = {{
         inventory_index = defines.inventory.furnace_modules, shift = {0, 0.9}, max_icons_per_row = 3
     }},
     graphics_set = {
-        working_visualisations = working_visualisations,
+        structure = {
+            layers = {
+                {
+                    filename = "__maraxsis__/graphics/entity/salt-reactor/salt-reactor.png",
+                    priority = "high",
+                    width = 4000 / 10,
+                    height = 3840 / 8,
+                    shift = util.by_pixel(0, -16),
+                    frame_count = 60,
+                    line_length = 10,
+                    animation_speed = 1,
+                    scale = 0.5,
+                },
+                {
+                    filename = "__maraxsis__/graphics/entity/salt-reactor/salt-reactor-sh.png",
+                    priority = "high",
+                    width = 900,
+                    height = 500,
+                    scale = 0.5,
+                    frame_count = 1,
+                    shift = {0, -0.2},
+                    draw_as_shadow = true,
+                },
+            },
+        },
+        plasma_category = "maraxsis-salt-reactor"
     },
-    energy_source = {
+    burner = {
         type = "burner",
-        fuel_categories = {"nuclear"},
+        fuel_categories = {"maraxsis-salt-reactor"},
         effectivity = 1,
         fuel_inventory_size = 1,
         burnt_inventory_size = 1,
-        smoke = {
-            {
-                name = "maraxsis-swimming-bubbles",
-                frequency = 50,
-                position = {2.2, -0.5},
-                starting_vertical_speed = 0.03
-            }
-        },
         light_flicker = {
             color = defines.color.limegreen,
             minimum_intensity = 0.2,
@@ -134,16 +125,103 @@ data:extend {{
             minimum_light_size = 2.5
         }
     },
-    energy_usage = "80MW",
+    two_direction_only = true,
+    power_input = "2MW",
+    neighbour_bonus = 1.50,
+    neighbour_connectable = table.deepcopy(data.raw["fusion-reactor"]["fusion-reactor"].neighbour_connectable),
+    input_fluid_box = table.deepcopy(data.raw["fusion-reactor"]["fusion-reactor"].input_fluid_box),
+    output_fluid_box = table.deepcopy(data.raw["fusion-reactor"]["fusion-reactor"].output_fluid_box),
+    energy_source = table.deepcopy(data.raw["fusion-reactor"]["fusion-reactor"].energy_source),
+    max_fluid_usage = 300 / second, -- at normal quality,
     source_inventory_size = 1,
-    result_inventory_size = 1,
-    crafting_speed = 1,
     crafting_categories = {"maraxsis-salt-reactor"},
 }}
+data.raw["fusion-reactor"]["maraxsis-salt-reactor"].input_fluid_box.volume = 1000
+data.raw["fusion-reactor"]["maraxsis-salt-reactor"].input_fluid_box.filter = "water"
+data.raw["fusion-reactor"]["maraxsis-salt-reactor"].input_fluid_box.pipe_picture = require("__space-age__.prototypes.entity.electromagnetic-plant-pictures").pipe_pictures
+data.raw["fusion-reactor"]["maraxsis-salt-reactor"].input_fluid_box.pipe_picture_frozen = require("__space-age__.prototypes.entity.electromagnetic-plant-pictures").pipe_pictures_frozen
+data.raw["fusion-reactor"]["maraxsis-salt-reactor"].input_fluid_box.pipe_covers = pipecoverspictures()
+data.raw["fusion-reactor"]["maraxsis-salt-reactor"].output_fluid_box.volume = 1000
+data.raw["fusion-reactor"]["maraxsis-salt-reactor"].output_fluid_box.filter = "maraxsis-supercritical-steam"
+data.raw["fusion-reactor"]["maraxsis-salt-reactor"].output_fluid_box.pipe_picture = require("__space-age__.prototypes.entity.electromagnetic-plant-pictures").pipe_pictures
+data.raw["fusion-reactor"]["maraxsis-salt-reactor"].output_fluid_box.pipe_picture_frozen = require("__space-age__.prototypes.entity.electromagnetic-plant-pictures").pipe_pictures_frozen
+data.raw["fusion-reactor"]["maraxsis-salt-reactor"].output_fluid_box.pipe_covers = pipecoverspictures()
+for _, pipe_connection in pairs(data.raw["fusion-reactor"]["maraxsis-salt-reactor"].output_fluid_box.pipe_connections) do
+    pipe_connection.connection_category = "maraxsis-salt-reactor"
+end
 
 data:extend {{
     type = "recipe-category",
     name = "maraxsis-salt-reactor"
+}}
+
+data:extend {{
+    type = "fuel-category",
+    name = "maraxsis-salt-reactor"
+}}
+
+data:extend {{
+    type = "fluid",
+    name = "molten-salt",
+    icon = "__maraxsis__/graphics/icons/molten-salt.png",
+    icon_size = 64,
+    default_temperature = 800,
+    max_temperature = 1500,
+    heat_capacity = "10kJ",
+    base_flow_rate = data.raw.fluid.steam.base_flow_rate,
+    base_color = {1, 1, 0.5},
+    flow_color = {1, 1, 0.75},
+    gas_temperature = 1465,
+    auto_barrel = false,
+}}
+
+data:extend {{
+    type = "recipe",
+    name = "molten-salt",
+    enabled = false,
+    energy_required = 32,
+    ingredients = {
+        {type = "item",  name = "salt",    amount = 50},
+    },
+    results = {
+        {type = "fluid", name = "molten-salt", amount = 500},
+    },
+    allow_productivity = true,
+    category = "metallurgy",
+    auto_recycle = false,
+}}
+
+
+data:extend {{
+    type = "item",
+    name = "msr-fuel-cell",
+    icon = "__maraxsis__/graphics/icons/msr-fuel-cell.png",
+    inventory_move_sound = item_sounds.reactor_inventory_move,
+    pick_sound = item_sounds.reactor_inventory_pickup,
+    drop_sound = item_sounds.reactor_inventory_move,
+    fuel_value = "40GJ",
+    fuel_category = "maraxsis-salt-reactor",
+    stack_size = 50,
+    default_import_location = "maraxsis",
+    weight = 20*kg
+}}
+
+data:extend {{
+    type = "recipe",
+    name = "msr-fuel-cell",
+    enabled = false,
+    energy_required = 10,
+    ingredients = {
+        {type = "item",  name = "maraxsis-glass-panes",    amount = 10},
+        {type = "item",  name = "uranium-238",          amount = 1},
+        {type = "fluid", name = "molten-salt", amount = 500},
+    },
+    results = {
+        {type = "item", name = "msr-fuel-cell", amount = 1},
+    },
+    category = "crafting-with-fluid",
+    allow_productivity = true,
+    auto_recycle = false,
 }}
 
 data:extend {{
@@ -152,10 +230,10 @@ data:extend {{
     enabled = false,
     energy_required = 10,
     ingredients = {
-        {type = "item",  name = "maraxsis-glass-panes",    amount = 100},
-        {type = "item",  name = "tungsten-plate",          amount = 100},
+        {type = "item",  name = "maraxsis-glass-panes",    amount = 200},
+        {type = "item",  name = "tungsten-plate",          amount = 200},
         {type = "item",  name = "processing-unit",         amount = 100},
-        {type = "fluid", name = "maraxsis-brackish-water", amount = 300},
+        {type = "item", name = "nuclear-reactor", amount = 1},
     },
     results = {
         {type = "item", name = "maraxsis-salt-reactor", amount = 1},
@@ -170,7 +248,7 @@ data:extend {{
     icon = "__maraxsis__/graphics/icons/salt-reactor.png",
     icon_size = 64,
     place_result = "maraxsis-salt-reactor",
-    stack_size = 10,
+    stack_size = 1,
 }}
 
 data:extend {{
@@ -185,8 +263,16 @@ data:extend {{
         },
         {
             type = "unlock-recipe",
-            recipe = "maraxsis-electricity"
-        }
+            recipe = "maraxsis-oversized-steam-turbine"
+        },
+        {
+            type = "unlock-recipe",
+            recipe = "msr-fuel-cell"
+        },
+        {
+            type = "unlock-recipe",
+            recipe = "molten-salt"
+        },
     },
     prerequisites = {"nuclear-power", "maraxsis-hydro-plant"},
     research_trigger = {
@@ -195,44 +281,4 @@ data:extend {{
         count = 100
     },
     order = "d-e",
-}}
-
-data:extend {{
-    type = "recipe",
-    name = "maraxsis-electricity",
-    enabled = false,
-    energy_required = 0.5,
-    ingredients = {
-        {type = "item", name = "salt", amount = 1},
-    },
-    results = {
-        {type = "item", name = "maraxsis-electricity", amount = 1},
-    },
-    category = "maraxsis-salt-reactor",
-    auto_recycle = false,
-    allow_decomposition = false,
-}}
-
-data:extend {{
-    type = "electric-energy-interface",
-    name = "maraxsis-salt-reactor-energy-interface",
-    icon = "__maraxsis__/graphics/icons/salt-reactor.png",
-    icon_size = 64,
-    localised_name = {"entity-name.maraxsis-salt-reactor"},
-    localised_description = {"entity-description.maraxsis-salt-reactor"},
-    gui_mode = "none",
-    quality_indicator_scale = 0,
-    flags = {},
-    selectable_in_game = false,
-    hidden = true,
-    collision_mask = {layers = {}},
-    factoriopedia_alternative = "maraxsis-salt-reactor",
-    energy_source = {
-        type = "electric",
-        usage_priority = "secondary-output",
-        output_flow_limit = "350MW",
-        render_no_power_icon = false
-    },
-    collision_box = {{-2.9, -2.9}, {2.9, 2.9}},
-    selection_box = {{-3, -3}, {3, 3}},
 }}

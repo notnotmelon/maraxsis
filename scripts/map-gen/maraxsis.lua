@@ -1,4 +1,9 @@
 maraxsis.on_event(maraxsis.events.on_init(), function()
+    game.planets["maraxsis"].reset_map_gen_settings()
+    game.planets["maraxsis-trench"].reset_map_gen_settings()
+end)
+
+maraxsis.on_event(maraxsis.events.on_init(), function()
 	storage.coral_animations = storage.coral_animations or {}
 end)
 

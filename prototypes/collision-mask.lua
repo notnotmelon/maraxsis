@@ -44,6 +44,8 @@ local default_maraxsis_buildability_rules = {
     ["simple-entity-with-force"] = cant_be_placed_on_water,
     ["simple-entity-with-owner"] = cant_be_placed_on_water,
     ["heat-pipe"] = cant_be_placed_on_water,
+    ["fusion-reactor"] = cant_be_placed_on_water,
+    ["fusion-generator"] = cant_be_placed_on_water,
 
     ["turret"] = cant_be_placed_in_a_dome,
     ["ammo-turret"] = cant_be_placed_in_a_dome,
@@ -73,8 +75,6 @@ local default_maraxsis_buildability_rules = {
     ["half-diagonal-rail"] = {water = false, dome = true, coral = false, trench = false, trench_entrance = false, trench_lava = false},
     ["legacy-curved-rail"] = {water = false, dome = true, coral = false, trench = false, trench_entrance = false, trench_lava = false},
     ["legacy-straight-rail"] = {water = false, dome = true, coral = false, trench = false, trench_entrance = false, trench_lava = false},
-    ["fusion-reactor"] = {water = false, dome = true, coral = false, trench = false, trench_entrance = false, trench_lava = false},
-    ["fusion-generator"] = {water = false, dome = true, coral = false, trench = false, trench_entrance = false, trench_lava = false},
 
     ["rail-ramp"] = {water = true, dome = true, coral = true, trench = false, trench_entrance = false, trench_lava = false},
     ["rail-support"] = {water = true, dome = true, coral = true, trench = false, trench_entrance = false, trench_lava = false},

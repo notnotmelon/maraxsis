@@ -44,7 +44,12 @@ local function generate_recipe_icons(icons, science_pack, icon_shift)
             }
         )
     elseif science_pack.icons then
-        icons = util.combine_icons(icons, fluid.icons, {scale = 0.5, shift = icon_shift}, fluid.icon_size)
+        icons = util.combine_icons(
+            icons,
+            science_pack.icons,
+            {scale = 0.5, shift = icon_shift},
+            science_pack.icon_size or defines.default_icon_size
+        )
     end
 
     return icons

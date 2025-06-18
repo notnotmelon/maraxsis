@@ -12,10 +12,10 @@ data:extend {{
             type = "unlock-recipe",
             recipe = "maraxsis-fat-man",
         },
-        {
+        (not mods.pystellarexpedition) and {
             type = "unlock-recipe",
             recipe = "maraxsis-pipe-bomb"
-        }
+        } or nil
     },
     prerequisites = {"cliff-explosives", "maraxsis-nuclear-submarine", "atomic-bomb"},
     unit = {
@@ -55,19 +55,21 @@ data:extend {{
     category = "maraxsis-hydro-plant",
 }}
 
-data:extend {{
-    type = "recipe",
-    name = "maraxsis-pipe-bomb",
-    energy_required = data.raw.recipe["grenade"].energy_required,
-    category = "maraxsis-hydro-plant",
-    enabled = false,
-    results = table.deepcopy(data.raw.recipe["grenade"].results),
-    ingredients = {
-        {type = "item", name = "explosives", amount = 5},
-        {type = "item", name = "pipe",       amount = 5},
-    },
-    auto_recycle = false,
-}}
+if not mods.pystellarexpedition then
+    data:extend {{
+        type = "recipe",
+        name = "maraxsis-pipe-bomb",
+        energy_required = data.raw.recipe["grenade"].energy_required,
+        category = "maraxsis-hydro-plant",
+        enabled = false,
+        results = table.deepcopy(data.raw.recipe["grenade"].results),
+        ingredients = {
+            {type = "item", name = "explosives", amount = 5},
+            {type = "item", name = "pipe",       amount = 5},
+        },
+        auto_recycle = false,
+    }}
+end
 
 data:extend {{
     type = "capsule",

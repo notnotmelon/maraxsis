@@ -16,6 +16,9 @@ Maraxsis is 100% covered by deep ocean. There is no land on the entire planet me
 
 Maraxsis is designed to take approximately fifteen hours to complete. There is also huge megabasing potential for those who would rather stay for longer.
 
+Stuck? Check out one of the guides.
+[![](https://markdown-videos-api.jorgenkh.no/youtube/ME5XDVWyzvc)](https://youtu.be/ME5XDVWyzvc) [![](https://markdown-videos-api.jorgenkh.no/youtube/JdgN3vet57E)](https://youtu.be/JdgN3vet57E)
+
 ---
 
 ### Submarines

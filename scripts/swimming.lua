@@ -21,6 +21,8 @@ local function transfer_equipment_grid(old_armor, new_armor)
         end
         ::continue::
     end
+
+    new_armor_grid.inhibit_movement_bonus = old_armor_grid.inhibit_movement_bonus
 end
 
 local function reset_inventory_slots_bonus(force)
@@ -54,6 +56,7 @@ local function transfer_armor_item(player, armor, target_armor_name)
 end
 maraxsis.register_delayed_function("transfer_armor_item", transfer_armor_item)
 
+-- in order for the swimming animation to work, we must swap the players armor to an identical armor prototype but with mech suit flight
 local function update_armor(player)
     local armor_inventory
     if player.controller_type == defines.controllers.editor then
@@ -124,4 +127,27 @@ maraxsis.on_event(defines.events.on_player_cursor_stack_changed, function(event)
 
     local target_stack_name = cursor_stack_name:gsub("%-maraxsis%-swimming", "")
     transfer_armor_item(player, cursor_stack, target_stack_name)
+end)
+
+-- https://github.com/notnotmelon/maraxsis/issues/255
+maraxsis.on_event("factory-open-outside-surface-to-remote-view", function(event)
+    local player = game.get_player(event.player_index)
+    if player.selected then return end
+    local surface = player.surface
+    if surface.name ~= "maraxsis" then return end
+    
+    local cursor_position = event.cursor_position
+    local tile = surface.get_tile(cursor_position)
+
+    if not tile.valid then return end
+    if tile.name ~= "maraxsis-trench-entrance" then return end
+
+    local trench = game.planets["maraxsis-trench"].surface
+    if not trench then return end
+    
+    player.set_controller {
+        position = cursor_position,
+        surface = trench,
+        type = defines.controllers.remote,
+    }
 end)

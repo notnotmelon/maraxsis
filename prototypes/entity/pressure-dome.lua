@@ -159,6 +159,8 @@ data:extend {maraxsis.merge(data.raw["lamp"]["small-lamp"], {
         size = 55,
     },
 })}
+data.raw.lamp["maraxsis-pressure-dome-lamp"].energy_source.render_no_network_icon = false
+data.raw.lamp["maraxsis-pressure-dome-lamp"].energy_source.render_no_power_icon = false
 
 data:extend {maraxsis.merge(data.raw["constant-combinator"]["constant-combinator"], {
     type = "constant-combinator",

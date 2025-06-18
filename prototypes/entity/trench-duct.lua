@@ -39,12 +39,15 @@ table.insert(data.raw.technology["ducts"].effects, {
 for _, effect in pairs(data.raw.technology["ducts"].effects) do
     if effect.type == "unlock-recipe" then
         local recipe = data.raw.recipe[effect.recipe]
-        recipe.category = "maraxsis-hydro-plant-or-assembling"
+        recipe.category = mods.pystellarexpedition and "advanced-crafting" or "maraxsis-hydro-plant-or-assembling"
         for _, ingredient in pairs(recipe.ingredients) do
             if ingredient.name == "iron-plate" then
                 ingredient.name = "tungsten-plate"
                 ingredient.amount = ingredient.amount / 4
                 break
+            elseif not data.raw.item[ingredient.name] and not data.raw.fluid[ingredient.name] then -- https://github.com/notnotmelon/maraxsis/issues/271
+                ingredient.name = "iron-gear-wheel"
+                ingredient.type = "item"
             end
         end
         local item = data.raw.item[effect.recipe]

@@ -10,7 +10,7 @@ local function i_want_to_fit_this_many_per_rocket(item, count)
             return
         end
     end
-    error("Could not find item " .. item)
+    if not mods.pystellarexpedition then error("Could not find item " .. item) end
 end
 
 i_want_to_fit_this_many_per_rocket("maraxsis-fishing-tower", 20)
@@ -37,6 +37,7 @@ i_want_to_fit_this_many_per_rocket("maraxsis-saturated-salt-filter", 50)
 i_want_to_fit_this_many_per_rocket("maraxsis-abyssal-diving-gear", 1)
 i_want_to_fit_this_many_per_rocket("maraxsis-trench-duct", 1)
 i_want_to_fit_this_many_per_rocket("maraxsis-salt-reactor", 1)
-i_want_to_fit_this_many_per_rocket("maraxsis-electricity", 0)
+i_want_to_fit_this_many_per_rocket("maraxsis-oversized-steam-turbine", 1)
 i_want_to_fit_this_many_per_rocket("maraxsis-conduit", 20)
 i_want_to_fit_this_many_per_rocket("maraxsis-fat-man", 10)
+i_want_to_fit_this_many_per_rocket("msr-fuel-cell", 50)

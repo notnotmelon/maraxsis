@@ -1,4 +1,130 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.30.19
+Date: 2025-06-04
+  Graphics:
+    - Fixed animation for vertical oversized steam turbine.
+---------------------------------------------------------------------------------------------------
+Version: 1.30.18
+Date: 2025-05-31
+  Locale:
+    - Update Chinese (traditional) localization ([#295](https://github.com/notnotmelon/maraxsis/issues/295))
+---------------------------------------------------------------------------------------------------
+Version: 1.30.18
+Date: 2025-05-19
+  Locale:
+    - Update zh-TW translation.
+---------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------
+Version: 1.30.17
+Date: 2025-05-16
+  Compatibility:
+    - Added new remote interface for custom abyssal diving gear parameters. ([#293](https://github.com/notnotmelon/maraxsis/issues/293))
+---------------------------------------------------------------------------------------------------
+Version: 1.30.16
+Date: 2025-04-29
+  Compatibility:
+    - Added incompatibility with "edible-spoilage" mod.
+---------------------------------------------------------------------------------------------------
+Version: 1.30.15
+Date: 2025-04-27
+  Bugfixes:
+    - Fixed a crash. Resolves https://github.com/notnotmelon/maraxsis/issues/282
+---------------------------------------------------------------------------------------------------
+Version: 1.30.14
+Date: 2025-04-27
+  Compatibility:
+    - Added compat with "zoom based exoskeleton speed". Resolves https://github.com/notnotmelon/maraxsis/issues/283
+---------------------------------------------------------------------------------------------------
+Version: 1.30.13
+Date: 2025-04-27
+  Bugfixes:
+    - Fixed duct to ground and trench duct exploding in some cases with supercritical steam.
+---------------------------------------------------------------------------------------------------
+Version: 1.30.12
+Date: 2025-04-25
+  Bugfixes:
+    - Fix dumb
+---------------------------------------------------------------------------------------------------
+Version: 1.30.11
+Date: 2025-04-25
+  Compatibility:
+    - Pyanodons stellar expedition compatibility.
+  Bugfixes:
+    - Fixed a crash with pressure domes. Resolves https://github.com/notnotmelon/maraxsis/issues/279
+---------------------------------------------------------------------------------------------------
+Version: 1.30.10
+Date: 2025-04-24
+  Balancing:
+    - Adjusted molten salt quality formula. Resolves https://github.com/notnotmelon/maraxsis/issues/278
+    - Removed calcite from molten salt recipe.
+---------------------------------------------------------------------------------------------------
+Version: 1.30.9
+Date: 2025-04-24
+  Changes:
+    - You can now deconstruct domes with no restriction if the dome only contains hydro plants, chemical plants, or conduits. Resolves https://github.com/notnotmelon/maraxsis/issues/188
+---------------------------------------------------------------------------------------------------
+Version: 1.30.8
+Date: 2025-04-23
+  Balancing:
+    - Increased the volume of salt reactor fluidboxes from 10 -> 1000.
+    - Nerfed the crafting speed of the molten salt reactor in half from 600/s to 300/s.
+---------------------------------------------------------------------------------------------------
+Version: 1.30.7
+Date: 2025-04-23
+  Compatibility:
+    - Fixed crash when combined with bobs metals chemicals and intermediants. Resolves https://github.com/notnotmelon/maraxsis/issues/271
+  Bugfixes:
+    - Fixed constant "V" being printed to console. Resolves https://github.com/notnotmelon/maraxsis/issues/276
+---------------------------------------------------------------------------------------------------
+Version: 1.30.6
+Date: 2025-04-23
+  Balancing:
+    - Nuclear subs now accept MSR fuel cells.
+---------------------------------------------------------------------------------------------------
+Version: 1.30.5
+Date: 2025-04-23
+  Changes:
+    - Shift+clicking the trench now opens the trench in remote view. Resolves https://github.com/notnotmelon/maraxsis/issues/255
+---------------------------------------------------------------------------------------------------
+Version: 1.30.4
+Date: 2025-04-23
+  Compatibility:
+    - Added incompatibility flag with "quality-better-roboports". Resolves https://github.com/notnotmelon/maraxsis/issues/266
+    - Fixed crash when combined with bobs metals chemicals and intermediants. Resolves https://github.com/notnotmelon/maraxsis/issues/271
+---------------------------------------------------------------------------------------------------
+Version: 1.30.3
+Date: 2025-04-23
+  Bugfixes:
+    - Allowed salt reactors and oversized steam turbines to freeze on aquilo.
+  Graphics:
+    - Update icons for molten salt.
+---------------------------------------------------------------------------------------------------
+Version: 1.30.2
+Date: 2025-04-22
+  Bugfixes:
+    - Fixed exploit allowing superheated steam in vanilla pipes.
+---------------------------------------------------------------------------------------------------
+Version: 1.30.1
+Date: 2025-04-22
+  Balancing:
+    - Adjusted stack sizes and rocket capacity for salt reactor and oversized steam turbines.
+  Locale:
+    - Updated locale for chimmney vents and salt reactors.
+---------------------------------------------------------------------------------------------------
+Version: 1.30.0
+Date: 2025-04-22
+  Features:
+    - Reworked salt reactors and added oversized steam turbines.
+  Bugfixes:
+    - Fix crash when trying to parse modded science packs with the icons field.
+  Changes:
+    - Removed yellow "no power" warning icons on regulators.
+---------------------------------------------------------------------------------------------------
+Version: 1.29.26
+Date: 2025-04-21
+  Locale:
+    - fix zh-CN locale ([#274](https://github.com/notnotmelon/maraxsis/issues/274))
+---------------------------------------------------------------------------------------------------
 Version: 1.29.25
 Date: 2025-04-15
   Compatibility:

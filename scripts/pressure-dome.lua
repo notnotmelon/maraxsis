@@ -141,9 +141,13 @@ local function disable_due_to_dome_low_pressure(entity, powered_and_has_fluid)
         if not warning then
             warning = rendering.draw_sprite {
                 sprite = "maraxsis-flooded-warning",
-                target = entity,
+                target = {
+                    entity = entity,
+                    offset = entity.prototype.alert_icon_shift
+                },
                 surface = entity.surface_index,
-                target_offset = {0, -1.5},
+                x_scale = 1.04,
+                y_scale = 1.04,
             }
             storage.flooded_warning_info_icons[entity.unit_number] = warning
         end
@@ -278,6 +282,22 @@ local mobile_entities = {
     ["elevated-straight-rail"] = true,
 }
 
+local function update_dome_minable_flag(pressure_dome_data)
+    local minable_flag = true
+    for _, entity in pairs(pressure_dome_data.contained_entities) do
+        if entity.valid and not DOME_EXCLUDED_FROM_DISABLE[entity.name] then
+            minable_flag = false
+            break
+        end
+    end
+
+    for _, collision_box in pairs(pressure_dome_data.collision_boxes) do
+        if collision_box.valid then
+            collision_box.minable_flag = minable_flag
+        end
+    end
+end
+
 maraxsis.on_event(maraxsis.events.on_built(), function(event)
     local entity = event.entity or event.created_entity
     if not entity.valid or entity.name == "maraxsis-pressure-dome" then return end
@@ -292,14 +312,10 @@ maraxsis.on_event(maraxsis.events.on_built(), function(event)
         if points_in_dome == 0 then
             goto continue
         elseif points_in_dome == 4 then
-            for _, collision_box in pairs(pressure_dome_data.collision_boxes) do
-                if collision_box.valid then
-                    collision_box.minable_flag = false
-                end
-            end
             disable_due_to_dome_low_pressure(entity, pressure_dome_data.powered_and_has_fluid)
             table.insert(pressure_dome_data.contained_entities, entity)
             update_combinator(pressure_dome_data)
+            update_dome_minable_flag(pressure_dome_data)
         else
             maraxsis.cancel_creation(entity, event.player_index, {"cant-build-reason.entity-in-the-way", prototypes.entity["maraxsis-pressure-dome"].localised_name})
         end
@@ -657,12 +673,7 @@ maraxsis.on_event(maraxsis.events.on_built(), function(event)
     place_collision_boxes(pressure_dome_data, health, player)
     place_tiles(pressure_dome_data)
     place_regulator(pressure_dome_data)
-
-    if table_size(contained_entities) ~= 0 then
-        for _, e in pairs(pressure_dome_data.collision_boxes) do
-            e.minable_flag = false
-        end
-    end
+    update_dome_minable_flag(pressure_dome_data)
 
     storage.pressure_domes[entity.id] = pressure_dome_data
     rerender_all_domes()
@@ -684,13 +695,7 @@ local function delete_invalid_entities_from_contained_entities_list(pressure_dom
         end
     end
 
-    if table_size(pressure_dome_data.contained_entities) == 0 then
-        for _, collision_box in pairs(pressure_dome_data.collision_boxes) do
-            if collision_box.valid then
-                collision_box.minable_flag = true
-            end
-        end
-    end
+    update_dome_minable_flag(pressure_dome_data)
 end
 
 local function cleanup_dome_for_deletion(pressure_dome_data, buffer)
@@ -1078,7 +1083,7 @@ maraxsis.on_event("mine", function(event)
     local contained_entities = pressure_dome_data.contained_entities
     if table_size(contained_entities) == 0 then return end
     for _, e in pairs(contained_entities) do
-        if e.valid then
+        if e.valid and not DOME_EXCLUDED_FROM_DISABLE[e.name] then
             player.create_local_flying_text {
                 text = {"maraxsis.cannot-mine-dome", e.name, e.quality.name, e.localised_name},
                 position = entity.position

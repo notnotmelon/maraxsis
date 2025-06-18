@@ -132,7 +132,7 @@ local function add_to_tech(recipe)
 end
 
 add_to_tech("maraxsis-fishing-tower")
-add_to_tech("maraxsis-fish-food")
+if not mods.pystellarexpedition then add_to_tech("maraxsis-fish-food") end
 
 data:extend {{
     type = "recipe",

@@ -1,31 +1,33 @@
-data:extend {{
-    type = "item",
-    name = "maraxsis-fish-food",
-    icon = "__maraxsis__/graphics/icons/fish-food.png",
-    icon_size = 64,
-    stack_size = 100,
-    plant_result = "maraxsis-fishing-plant",
-}}
+if not mods.pystellarexpedition then 
+    data:extend {{
+        type = "item",
+        name = "maraxsis-fish-food",
+        icon = "__maraxsis__/graphics/icons/fish-food.png",
+        icon_size = 64,
+        stack_size = 100,
+        plant_result = "maraxsis-fishing-plant",
+    }}
 
-data:extend {{
-    type = "recipe",
-    name = "maraxsis-fish-food",
-    enabled = false,
-    energy_required = 3,
-    ingredients = {
-        {type = "item", name = "maraxsis-tropical-fish", amount = 1},
-        {type = "item", name = "sand",                   amount = 1},
-        {type = "item", name = "jelly",                  amount = 1},
-        {type = "item", name = "maraxsis-coral",         amount = 3},
-        {type = "item", name = "plastic-bar",            amount = 1},
-    },
-    results = {
-        {type = "item", name = "maraxsis-fish-food", amount = 3}
-    },
-    allow_productivity = true,
-    main_product = "maraxsis-fish-food",
-    category = "maraxsis-hydro-plant-or-biochamber"
-}}
+    data:extend {{
+        type = "recipe",
+        name = "maraxsis-fish-food",
+        enabled = false,
+        energy_required = 3,
+        ingredients = {
+            {type = "item", name = "maraxsis-tropical-fish", amount = 1},
+            {type = "item", name = "sand",                   amount = 1},
+            {type = "item", name = "jelly",                  amount = 1},
+            {type = "item", name = "maraxsis-coral",         amount = 3},
+            {type = "item", name = "plastic-bar",            amount = 1},
+        },
+        results = {
+            {type = "item", name = "maraxsis-fish-food", amount = 3}
+        },
+        allow_productivity = true,
+        main_product = "maraxsis-fish-food",
+        category = "maraxsis-hydro-plant-or-biochamber"
+    }}
+end
 
 data:extend {{
     type = "item",

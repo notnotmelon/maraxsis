@@ -19,10 +19,44 @@ end
 table.filter = function(tbl, f, ...)
     local result = {}
     local is_array = #tbl > 0
+    local is_function = type(f) == "function"
     if is_array then
-        for i, v in pairs(tbl) do if f(v, i, ...) then result[#result + 1] = v end end
+        if is_function then
+            for i, v in pairs(tbl) do if f(v, i, ...) then result[#result + 1] = v end end
+        else
+            for i, v in pairs(tbl) do if f == v then result[#result + 1] = v end end
+        end
     else
-        for k, v in pairs(tbl) do if f(v, k, ...) then result[k] = v end end
+        if is_function then
+            for k, v in pairs(tbl) do if f(v, k, ...) then result[k] = v end end
+        else
+            for k, v in pairs(tbl) do if f == v then result[k] = v end end
+        end
+    end
+    return result
+end
+
+---Inverse of table.filter. Returns a new array with all elements that pass the test deleted by the provided function.
+---@param tbl table
+---@param f fun(v: any, k: any, ...: any): boolean
+---@param ... any
+---@return table
+table.delete_if = function(tbl, f, ...)
+    local result = {}
+    local is_array = #tbl > 0
+    local is_function = type(f) == "function"
+    if is_array then
+        if is_function then
+            for i, v in pairs(tbl) do if not f(v, i, ...) then result[#result + 1] = v end end
+        else
+            for i, v in pairs(tbl) do if f ~= v then result[#result + 1] = v end end
+        end
+    else
+        if is_function then
+            for k, v in pairs(tbl) do if not f(v, k, ...) then result[k] = v end end
+        else
+            for k, v in pairs(tbl) do if f ~= v then result[k] = v end end        
+        end
     end
     return result
 end

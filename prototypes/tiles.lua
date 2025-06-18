@@ -19,7 +19,7 @@ local function waterifiy(tile, collision_layers)
     tile.name = tile.name .. "-underwater"
     tile.layer = math.min(layer, 255)
     layer = layer + 1
-    tile.fluid = tile.fluid or "maraxsis-saline-water"
+    tile.fluid = tile.fluid or (mods.pystellarexpedition and "water-saline" or "maraxsis-saline-water")
     tile.map_color = maraxsis.color_combine(tile.map_color or data.raw.tile["water"].map_color, data.raw.tile["deepwater"].map_color, 0.25)
     tile.absorptions_per_second = table.deepcopy(data.raw.tile["water"].absorptions_per_second)
     tile.draw_in_water_layer = true
