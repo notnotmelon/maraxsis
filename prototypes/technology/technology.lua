@@ -26,6 +26,7 @@ data:extend {{
         "rocket-turret",
         "cliff-explosives",
         "electromagnetic-science-pack",
+        "quality-module",
         settings.startup["sp-enable-spiderling"].value and "sp-spidertron-automation" or nil
     },
     unit = {
