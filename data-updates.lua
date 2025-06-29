@@ -48,7 +48,7 @@ for _, fluid in pairs(data.raw.fluid) do -- todo: check fluid fuel category
     barrel.fuel_glow_color = data.raw.item["rocket-fuel"].fuel_acceleration_multiplier_quality_bonus
     barrel.fuel_glow_color = data.raw.item["rocket-fuel"].fuel_top_speed_multiplier_quality_bonus
 
-    maraxsis.SUBMARINE_FUEL_SOURCES["maraxsis-diesel-submarine"][1] = barrel.fuel_category
+    maraxsis_constants.SUBMARINE_FUEL_SOURCES["maraxsis-diesel-submarine"][1] = barrel.fuel_category
     barrel.burnt_result = "barrel"
     ::continue::
 end

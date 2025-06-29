@@ -1,5 +1,5 @@
-local TRENCH_MOVEMENT_FACTOR = maraxsis.TRENCH_MOVEMENT_FACTOR
-local SUBMARINES = maraxsis.SUBMARINES
+local TRENCH_MOVEMENT_FACTOR = maraxsis_constants.TRENCH_MOVEMENT_FACTOR
+local SUBMARINES = maraxsis_constants.SUBMARINES
 
 maraxsis.on_event(maraxsis.events.on_init(), function()
     storage.submarines = storage.submarines or {}
@@ -77,8 +77,8 @@ end
 maraxsis.register_delayed_function("enter_submarine", enter_submarine)
 
 local OPPOSITE_SURFACE = {
-    [maraxsis.TRENCH_SURFACE_NAME] = maraxsis.MARAXSIS_SURFACE_NAME,
-    [maraxsis.MARAXSIS_SURFACE_NAME] = maraxsis.TRENCH_SURFACE_NAME,
+    [maraxsis_constants.TRENCH_SURFACE_NAME] = maraxsis_constants.MARAXSIS_SURFACE_NAME,
+    [maraxsis_constants.MARAXSIS_SURFACE_NAME] = maraxsis_constants.TRENCH_SURFACE_NAME,
 }
 
 ---determines if the submarine should rise to the surface or sink to the bottom. returns nil if surface transfer is impossible
@@ -93,7 +93,7 @@ local function determine_submerge_direction(submarine)
     if not opposite_surface_name then return end
     local target_surface = game.planets[opposite_surface_name].create_surface()
 
-    if surface_name == maraxsis.MARAXSIS_SURFACE_NAME then
+    if surface_name == maraxsis_constants.MARAXSIS_SURFACE_NAME then
         local tile_at_surface = surface.get_tile(position)
         if not tile_at_surface.valid or tile_at_surface.name ~= "maraxsis-trench-entrance" then
             for _, player in pairs(game.connected_players) do
@@ -116,7 +116,7 @@ local function determine_submerge_direction(submarine)
         target_position = target_surface.find_non_colliding_position(submarine.name, target_position, 40, 0.5, false)
         if not target_position then return nil end
         return target_surface, target_position
-    elseif surface_name == maraxsis.TRENCH_SURFACE_NAME then
+    elseif surface_name == maraxsis_constants.TRENCH_SURFACE_NAME then
         local target_position = {x = position.x / TRENCH_MOVEMENT_FACTOR, y = position.y / TRENCH_MOVEMENT_FACTOR}
         target_surface.request_to_generate_chunks(target_position, 1)
         target_surface.force_generate_chunk_requests()
@@ -315,7 +315,7 @@ maraxsis.on_event("on_spidertron_patrol_waypoint_reached", function(event)
     if event.waypoint.type ~= "submerge" then return end
     local submarine = event.spidertron
     if not submarine or not submarine.valid then return end
-    if not maraxsis.SUBMARINES[submarine.name] then return end
+    if not maraxsis_constants.SUBMARINES[submarine.name] then return end
 
     if not descend_or_ascend(submarine) then
         submarine.force.print {"maraxsis.submarine-failed-to-submerge", submarine.gps_tag}
@@ -349,16 +349,16 @@ end)
 maraxsis.on_event(defines.events.on_player_respawned, function(event)
     local player = game.get_player(event.player_index)
     if not player or not player.valid then return end
-    if not maraxsis.MARAXSIS_SURFACES[player.surface.name] then return end
+    if not maraxsis_constants.MARAXSIS_SURFACES[player.surface.name] then return end
     local force_index = player.force_index
 
     local submarine_names = {}
-    for submarine_name in pairs(maraxsis.SUBMARINES) do
+    for submarine_name in pairs(maraxsis_constants.SUBMARINES) do
         table.insert(submarine_names, submarine_name)
     end
 
     local submarine_to_teleport
-    for surface_name in pairs(maraxsis.MARAXSIS_SURFACES) do
+    for surface_name in pairs(maraxsis_constants.MARAXSIS_SURFACES) do
         local surface = game.get_surface(surface_name)
         if not surface then goto continue end
         for _, submarine in pairs(surface.find_entities_filtered{

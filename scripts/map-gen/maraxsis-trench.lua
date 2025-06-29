@@ -1,8 +1,8 @@
 maraxsis.on_event(defines.events.on_surface_created, function(event)
 	local surface = game.get_surface(event.surface_index)
 	if not surface or not surface.valid then return end
-	if surface.name ~= maraxsis.TRENCH_SURFACE_NAME then return end
-	local parent_surface = game.planets[maraxsis.MARAXSIS_SURFACE_NAME].create_surface()
+	if surface.name ~= maraxsis_constants.TRENCH_SURFACE_NAME then return end
+	local parent_surface = game.planets[maraxsis_constants.MARAXSIS_SURFACE_NAME].create_surface()
 
 	surface.daytime = 0.5
 	surface.freeze_daytime = true
@@ -36,7 +36,7 @@ maraxsis.on_event(defines.events.on_space_platform_changed_state, function(event
 	local platform = event.platform
 	local space_location = platform.space_location
 	if not space_location then return end
-	if space_location.name ~= maraxsis.TRENCH_SURFACE_NAME then return end
+	if space_location.name ~= maraxsis_constants.TRENCH_SURFACE_NAME then return end
 	game.print {"maraxsis.invalid-space-platform", platform.name}
 	platform.destroy(0)
 end)

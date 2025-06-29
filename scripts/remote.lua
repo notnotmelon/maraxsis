@@ -1,5 +1,5 @@
 local function get_submarine_list()
-    return maraxsis.SUBMARINES
+    return maraxsis_constants.SUBMARINES
 end
 
 remote.add_interface("maraxsis", {
