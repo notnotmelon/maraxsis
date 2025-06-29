@@ -1,5 +1,10 @@
 _G.maraxsis = require "scripts.constants"
+require "prototypes.mod-data.control-constants"
+require "scripts.constants"
+_G.maraxsis = {}
+_G.maraxsis_constants = data.raw["mod-data"]["maraxsis-constants"].data
 require "lib.lib"
+
 
 require "prototypes.entity.water-shader"
 require "prototypes.entity.submarine"
