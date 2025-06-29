@@ -1,4 +1,3 @@
-_G.maraxsis = require "scripts.constants"
 require "prototypes.mod-data.control-constants"
 require "scripts.constants"
 _G.maraxsis = {}
