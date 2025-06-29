@@ -1,5 +1,5 @@
-local TRENCH_MOVEMENT_FACTOR = maraxsis.TRENCH_MOVEMENT_FACTOR
-local TRENCH_ENTRANCE_ELEVATION = maraxsis.TRENCH_ENTRANCE_ELEVATION
+local TRENCH_MOVEMENT_FACTOR = maraxsis_constants.TRENCH_MOVEMENT_FACTOR
+local TRENCH_ENTRANCE_ELEVATION = maraxsis_constants.TRENCH_ENTRANCE_ELEVATION
 
 data:extend {{
     type = "noise-expression",

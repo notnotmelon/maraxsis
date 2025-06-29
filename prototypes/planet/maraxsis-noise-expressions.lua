@@ -1,4 +1,4 @@
-local TRENCH_ENTRANCE_ELEVATION = maraxsis.TRENCH_ENTRANCE_ELEVATION
+local TRENCH_ENTRANCE_ELEVATION = maraxsis_constants.TRENCH_ENTRANCE_ELEVATION
 
 data:extend {{
     type = "noise-expression",
@@ -198,7 +198,7 @@ data:extend {{
     }
 }}
 
-for i = 1, table_size(maraxsis.TROPICAL_FISH_NAMES) do
+for i = 1, table_size(maraxsis_constants.TROPICAL_FISH_NAMES) do
     data:extend {{
         type = "noise-expression",
         name = "maraxsis_tropical_fish_" .. i,

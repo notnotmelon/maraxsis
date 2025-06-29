@@ -7,7 +7,7 @@ local function swap_nightvision(grid, surface, equipment)
     local position = equipment.position
     local quality = equipment.quality.name
     local target
-    if surface.name == maraxsis.TRENCH_SURFACE_NAME then
+    if surface.name == maraxsis_constants.TRENCH_SURFACE_NAME then
         if equipment_name:match("%-disabled$") then return end
         target = equipment_name .. "-disabled"
     else

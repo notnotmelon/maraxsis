@@ -19,7 +19,7 @@ maraxsis.on_event(maraxsis.events.on_built(), function(event)
     local name = is_ghost and entity.ghost_name or entity.name
 
     local is_space = not not surface.platform
-    local is_trench_or_space = is_space or surface.name == maraxsis.TRENCH_SURFACE_NAME
+    local is_trench_or_space = is_space or surface.name == maraxsis_constants.TRENCH_SURFACE_NAME
     if is_trench_or_space and name == "maraxsis-hydro-plant-extra-module-slots" then
         return
     elseif not is_trench_or_space and name == "maraxsis-hydro-plant" then

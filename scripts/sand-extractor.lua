@@ -19,11 +19,11 @@ local function construct_sand_extractor(event)
         quality = cursor_ghost.quality
     end
 
-    if not maraxsis.MARAXSIS_SAND_EXTRACTORS[name] then return end
+    if not maraxsis_constants.MARAXSIS_SAND_EXTRACTORS[name] then return end
     name = name .. "-sand-extractor"
 
     local surface = player.surface
-    if surface.name ~= maraxsis.MARAXSIS_SURFACE_NAME then return end
+    if surface.name ~= maraxsis_constants.MARAXSIS_SURFACE_NAME then return end
     local position = event.cursor_position
 
     if surface.entity_prototype_collides(name, position, false) then return end

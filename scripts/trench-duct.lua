@@ -11,12 +11,12 @@ maraxsis.on_event(maraxsis.events.on_built(), function(event)
     if not surface_duct or not surface_duct.valid then return end
     if surface_duct.name ~= "maraxsis-trench-duct" then return end
 
-    if surface_duct.surface.name ~= maraxsis.MARAXSIS_SURFACE_NAME then
+    if surface_duct.surface.name ~= maraxsis_constants.MARAXSIS_SURFACE_NAME then
         maraxsis.cancel_creation(surface_duct, event.player_index, {"maraxsis.invalid-trench-duct-placement"})
         return
     end
 
-    local trench_planet = game.planets[maraxsis.TRENCH_SURFACE_NAME]
+    local trench_planet = game.planets[maraxsis_constants.TRENCH_SURFACE_NAME]
     local trench = trench_planet.create_surface()
 
     local trench_duct = trench.create_entity {

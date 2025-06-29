@@ -46,7 +46,7 @@ maraxsis.is_wearing_abyssal_diving_gear = function(player)
 end
 
 local function update_abyssal_light_cone(player)
-    local is_on_maraxsis = not not maraxsis.MARAXSIS_SURFACES[player.physical_surface.name]
+    local is_on_maraxsis = not not maraxsis_constants.MARAXSIS_SURFACES[player.physical_surface.name]
     storage.abyssal_light_cones = storage.abyssal_light_cones or {}
 
     local cone = storage.abyssal_light_cones[player.index]
@@ -79,7 +79,7 @@ local function swap_diving_gear(grid, player, equipment)
     local position = equipment.position
     local quality = equipment.quality.name
     local target
-    if not maraxsis.MARAXSIS_SURFACES[player.physical_surface.name] then
+    if not maraxsis_constants.MARAXSIS_SURFACES[player.physical_surface.name] then
         if equipment_name:match("%-disabled$") then return end
         target = equipment_name .. "-disabled"
     else

@@ -39,7 +39,7 @@ for i = 1, 50 do
     })
 end
 
-for extractor in pairs(maraxsis.MARAXSIS_SAND_EXTRACTORS) do
+for extractor in pairs(maraxsis_constants.MARAXSIS_SAND_EXTRACTORS) do
     if not data.raw["mining-drill"][extractor] then error("Invalid sand extractor: " .. extractor) end
     local extractor = table.deepcopy(data.raw["mining-drill"][extractor])
     extractor.type = "assembling-machine"
