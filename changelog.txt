@@ -1,4 +1,10 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.30.20
+Date: 2025-07-15
+  Locale:
+    - Update RU locale ([#302](https://github.com/notnotmelon/maraxsis/issues/302))
+    - zh-CN update ([#306](https://github.com/notnotmelon/maraxsis/issues/306))
+---------------------------------------------------------------------------------------------------
 Version: 1.30.19
 Date: 2025-06-04
   Graphics:
