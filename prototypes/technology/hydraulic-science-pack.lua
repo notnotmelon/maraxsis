@@ -35,6 +35,12 @@ data:extend {{
     order = "eg[hydraulic-science-pack]",
 }}
 
+if mods["Krastorio2-spaced-out"] or mods["Krastorio2"] then
+    data.raw.tool["hydraulic-science-pack"].icon = "__maraxsis__/graphics/icons/hydraulic-tech-card.png"
+    data.raw.tool["hydraulic-science-pack"].localised_name = {"item-name.hydraulic-tech-card"}
+    data.raw.technology["hydraulic-science-pack"].localised_name = {"item-name.hydraulic-tech-card"}
+end
+
 data:extend {{
     type = "recipe",
     name = "hydraulic-science-pack",

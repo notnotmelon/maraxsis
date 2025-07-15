@@ -35,7 +35,6 @@ require "prototypes.technology.depth-charges"
 require "prototypes.technology.atmosphere"
 if not mods.pystellarexpedition then require "prototypes.technology.hydraulic-science-pack" end
 require "prototypes.technology.project-seadragon"
-if not mods.pystellarexpedition then require "prototypes.technology.deepsea-research" end
 if not mods.pystellarexpedition then require "prototypes.technology.promethium-productivity" end
 if not mods.pystellarexpedition then require "prototypes.technology.stone-centrifuging" end
 if not mods.pystellarexpedition then require "prototypes.technology.research-vessel" end
