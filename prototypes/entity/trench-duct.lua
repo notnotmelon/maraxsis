@@ -210,8 +210,6 @@ data:extend {{
     }},
     window_bounding_box = {{0, 0}, {0, 0}},
     flow_length_in_ticks = 360,
-    circuit_connector = circuit_connector,
-    circuit_wire_max_distance = default_circuit_wire_max_distance,
 }}
 
 data:extend {{
@@ -336,8 +334,6 @@ data:extend {{
     placeable_by = {item = "maraxsis-trench-duct", count = 1},
     window_bounding_box = {{0, 0}, {0, 0}},
     flow_length_in_ticks = 360,
-    circuit_connector = circuit_connector,
-    circuit_wire_max_distance = default_circuit_wire_max_distance,
 }}
 
 data.raw.recipe["duct-intake"].ingredients = {
