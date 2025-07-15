@@ -5,7 +5,6 @@ require "prototypes.default-import-location"
 require "prototypes.item-sounds"
 if not mods.pystellarexpedition then require "prototypes.fluid-void" end
 require "prototypes.entity.regulator-fluidbox"
-if not mods.pystellarexpedition then require "prototypes.research-vessel" end
 if not mods.pystellarexpedition then require "prototypes.technology.deepsea-research" end
 
 require "compat.aai-industry"

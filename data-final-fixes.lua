@@ -1,5 +1,7 @@
 local collision_mask_util = require("collision-mask-util")
 
+if not mods.pystellarexpedition then require "prototypes.research-vessel" end
+
 require "prototypes.collision-mask"
 require "prototypes.swimming"
 
