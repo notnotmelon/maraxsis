@@ -1,4 +1,9 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.30.21
+Date: 2025-07-15
+  Compatibility:
+    - Fixed crash with compat roboports mod. Resolves https://github.com/notnotmelon/maraxsis/issues/297
+---------------------------------------------------------------------------------------------------
 Version: 1.30.20
 Date: 2025-07-15
   Locale:
