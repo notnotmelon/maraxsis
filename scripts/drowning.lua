@@ -20,7 +20,7 @@ maraxsis.on_nth_tick(UPDATE_RATE, function()
         local surface_name = surface.name
         local player_surface_index = surface.index
 
-        if not maraxsis.MARAXSIS_SURFACES[surface_name] then
+        if not maraxsis_constants.MARAXSIS_SURFACES[surface_name] then
             goto continue
         end
 
@@ -58,7 +58,7 @@ maraxsis.on_nth_tick(UPDATE_RATE, function()
 
         local breath = storage.breath[player.index] or FULL_BREATH_NUM_TICKS
         local breath_loss = UPDATE_RATE
-        local is_trench = surface_name == maraxsis.TRENCH_SURFACE_NAME
+        local is_trench = surface_name == maraxsis_constants.TRENCH_SURFACE_NAME
         if is_trench then breath_loss = breath_loss * 30 end
         breath = math.max(0, breath - breath_loss)
         storage.breath[player.index] = breath
@@ -97,7 +97,7 @@ end)
 maraxsis.on_event(defines.events.on_player_died, function(event)
     local player = game.get_player(event.player_index)
     if not player or not player.valid then return end
-    if player.physical_surface.name ~= maraxsis.TRENCH_SURFACE_NAME then return end
+    if player.physical_surface.name ~= maraxsis_constants.TRENCH_SURFACE_NAME then return end
 
     local character = player.character
     if not character then return end

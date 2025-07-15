@@ -10,7 +10,7 @@ end)
 maraxsis.on_event(defines.events.on_chunk_generated, function(event)
 	local surface = event.surface
 	local surface_name = surface.name
-	if not maraxsis.MARAXSIS_SURFACES[surface_name] then return end
+	if not maraxsis_constants.MARAXSIS_SURFACES[surface_name] then return end
 
 	local chunkpos = event.position
 	local x = chunkpos.x * 32 + 16

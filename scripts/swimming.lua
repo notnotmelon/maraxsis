@@ -72,7 +72,7 @@ local function update_armor(player)
     local armor_name = armor.name
     local target_armor_name
     local physical_surface = player.physical_surface
-    local started_swimming = not not maraxsis.MARAXSIS_SURFACES[physical_surface.name]
+    local started_swimming = not not maraxsis_constants.MARAXSIS_SURFACES[physical_surface.name]
     if started_swimming then
         target_armor_name = armor_name .. "-maraxsis-swimming"
     else

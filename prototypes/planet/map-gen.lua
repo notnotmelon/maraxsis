@@ -5,7 +5,7 @@ local entity_spawn_settings = {
     ["maraxsis-polylplast"] = {},
 }
 
-for _, tropical_fish in pairs(maraxsis.TROPICAL_FISH_NAMES) do
+for _, tropical_fish in pairs(maraxsis_constants.TROPICAL_FISH_NAMES) do
     entity_spawn_settings[tropical_fish] = {}
 end
 
@@ -25,7 +25,7 @@ planet_map_gen["maraxsis"] = function()
         },
         cliff_settings = {
             name = "cliff-maraxsis-collisionless",
-            cliff_elevation_0 = maraxsis.TRENCH_ENTRANCE_ELEVATION,
+            cliff_elevation_0 = maraxsis_constants.TRENCH_ENTRANCE_ELEVATION,
             cliff_elevation_interval = 0.1,
             cliff_smoothing = 0, -- This is critical for correct cliff placement on the trench entrance.
             richness = 0.98

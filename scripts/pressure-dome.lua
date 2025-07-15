@@ -117,8 +117,8 @@ local FLOODED_STATUS = {
     diode = defines.entity_status_diode.red,
     label = {"entity-status.flooded"},
 }
-local DOME_DISABLEABLE_TYPES = maraxsis.DOME_DISABLEABLE_TYPES
-local DOME_EXCLUDED_FROM_DISABLE = maraxsis.DOME_EXCLUDED_FROM_DISABLE
+local DOME_DISABLEABLE_TYPES = maraxsis_constants.DOME_DISABLEABLE_TYPES
+local DOME_EXCLUDED_FROM_DISABLE = maraxsis_constants.DOME_EXCLUDED_FROM_DISABLE
 local function disable_due_to_dome_low_pressure(entity, powered_and_has_fluid)
     if not entity.valid or not entity.is_updatable then return end
     if not DOME_DISABLEABLE_TYPES[entity.type] or DOME_EXCLUDED_FROM_DISABLE[entity.name] then return end
@@ -843,7 +843,7 @@ maraxsis.on_event(maraxsis.events.on_destroyed(), function(event)
 
     local surface = entity.surface
     local surface_name = surface.name
-    if not maraxsis.MARAXSIS_SURFACES[surface_name] then
+    if not maraxsis_constants.MARAXSIS_SURFACES[surface_name] then
         return
     end
 
