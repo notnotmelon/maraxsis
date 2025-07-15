@@ -17,19 +17,21 @@ if not mods.pystellarexpedition then
     end
 end
 
-local function add_hydraulic_pack(tech_name, direct_prereq)
-    local tech = data.raw.technology[tech_name]
-    if not tech then return end
+if settings.startup["maraxsis-add-hydraulic-science"].value then
+    local function add_hydraulic_pack(tech_name, direct_prereq)
+        local tech = data.raw.technology[tech_name]
+        if not tech then return end
 
-    if not mods.pystellarexpedition then
-        if tech.unit and tech.unit.ingredients then table.insert(tech.unit.ingredients, {"hydraulic-science-pack", 1}) end
+        if not mods.pystellarexpedition then
+            if tech.unit and tech.unit.ingredients then table.insert(tech.unit.ingredients, {"hydraulic-science-pack", 1}) end
+        end
+        if direct_prereq and tech.prerequisites then table.insert(tech.prerequisites, "maraxsis-project-seadragon") end
     end
-    if direct_prereq and tech.prerequisites then table.insert(tech.prerequisites, "maraxsis-project-seadragon") end
-end
 
-add_hydraulic_pack("promethium-science-pack", false)
-table.insert(data.raw["technology"]["promethium-science-pack"].prerequisites, "maraxsis-deepsea-research")
-add_hydraulic_pack("research-productivity", false)
+    add_hydraulic_pack("promethium-science-pack", false)
+    table.insert(data.raw["technology"]["promethium-science-pack"].prerequisites, "maraxsis-deepsea-research")
+    add_hydraulic_pack("research-productivity", false)
+end
 
 if not mods.pystellarexpedition then
     data.raw.recipe["pump"].category = "maraxsis-hydro-plant-or-assembling"
