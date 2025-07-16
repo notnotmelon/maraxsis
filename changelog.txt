@@ -1,4 +1,9 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.30.27
+Date: 2025-07-16
+  Compatibility:
+    - Fixed crash with space age galore. Resolves https://github.com/notnotmelon/maraxsis/issues/315
+---------------------------------------------------------------------------------------------------
 Version: 1.30.26
 Date: 2025-07-16
   Compatibility:
