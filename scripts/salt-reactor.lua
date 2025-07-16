@@ -169,6 +169,7 @@ maraxsis.on_event(maraxsis.events.on_built(), function(event)
             surface = entity.surface_index,
             animation_speed = 0.5,
         }
+        glow.color = {0, 0, 0, 0}
         storage.not_fully_active_reactors[entity.unit_number] = {
             entity,
             animation,

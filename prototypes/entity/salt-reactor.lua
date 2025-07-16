@@ -6,11 +6,11 @@ data:extend {{
     name = "maraxsis-salt-reactor-animation",
     filename = "__maraxsis__/graphics/entity/salt-reactor/salt-reactor.png",
     priority = "high",
-    width = 4000 / 10,
-    height = 3840 / 8,
-    shift = util.by_pixel(0, -16),
-    frame_count = 80,
-    line_length = 10,
+    width = 3200 / 8,
+    height = 3200 / 8,
+    shift = util.by_pixel(0, 0),
+    frame_count = 60,
+    line_length = 8,
     animation_speed = 1,
     scale = 0.5,
 }}
@@ -18,34 +18,17 @@ data:extend {{
 data:extend {{
     type = "animation",
     name = "maraxsis-salt-reactor-animation-glow",
-    layers = {
-        {
-            filename = "__maraxsis__/graphics/entity/salt-reactor/salt-reactor-emission.png",
-            priority = "high",
-            width = 4000 / 10,
-            height = 3840 / 8,
-            shift = util.by_pixel(0, -16),
-            frame_count = 80,
-            line_length = 10,
-            animation_speed = 1,
-            scale = 0.5,
-            draw_as_glow = true,
-            blend_mode = "additive",
-        },
-        {
-            filename = "__maraxsis__/graphics/entity/salt-reactor/salt-reactor-emission-2.png",
-            priority = "high",
-            width = 4000 / 10,
-            height = 3840 / 8,
-            shift = util.by_pixel(0, -16),
-            frame_count = 80,
-            line_length = 10,
-            animation_speed = 1,
-            scale = 0.5,
-            draw_as_glow = true,
-            blend_mode = "additive",
-        },
-    }
+    filename = "__maraxsis__/graphics/entity/salt-reactor/salt-reactor-emission.png",
+    priority = "high",
+    width = 3200 / 8,
+    height = 3200 / 8,
+    shift = util.by_pixel(0, 0),
+    frame_count = 60,
+    line_length = 8,
+    animation_speed = 1,
+    scale = 0.5,
+    draw_as_glow = true,
+    blend_mode = "additive",
 }}
 
 data:extend {{
@@ -90,22 +73,22 @@ data:extend {{
                 {
                     filename = "__maraxsis__/graphics/entity/salt-reactor/salt-reactor.png",
                     priority = "high",
-                    width = 4000 / 10,
-                    height = 3840 / 8,
-                    shift = util.by_pixel(0, -16),
+                    width = 3200 / 8,
+                    height = 3200 / 8,
+                    shift = util.by_pixel(0, 0),
                     frame_count = 60,
-                    line_length = 10,
+                    line_length = 8,
                     animation_speed = 1,
                     scale = 0.5,
                 },
                 {
                     filename = "__maraxsis__/graphics/entity/salt-reactor/salt-reactor-sh.png",
                     priority = "high",
-                    width = 900,
-                    height = 500,
+                    width = 800,
+                    height = 600,
                     scale = 0.5,
                     frame_count = 1,
-                    shift = {0, -0.2},
+                    shift = util.by_pixel(0, 0),
                     draw_as_shadow = true,
                 },
             },
@@ -136,15 +119,32 @@ data:extend {{
     source_inventory_size = 1,
     crafting_categories = {"maraxsis-salt-reactor"},
 }}
+
+local em_plant_pictures = require("__space-age__.prototypes.entity.electromagnetic-plant-pictures").pipe_pictures
+for _, fluid_box in pairs{
+    data.raw["fusion-reactor"]["maraxsis-salt-reactor"].input_fluid_box.pipe_connections,
+    data.raw["fusion-reactor"]["maraxsis-salt-reactor"].output_fluid_box.pipe_connections
+} do
+    for _, pipe_connection in pairs(fluid_box) do
+        local direction = table.invert(defines.direction)[pipe_connection.direction]
+        for _, em_pipe_picture in pairs(em_plant_pictures[direction].layers) do
+            em_pipe_picture = table.deepcopy(em_pipe_picture)
+            em_pipe_picture.shift[1] = em_pipe_picture.shift[1] + pipe_connection.position[1]
+            em_pipe_picture.shift[2] = em_pipe_picture.shift[2] + pipe_connection.position[2]
+            if pipe_connection.position[1] == 2.5 then em_pipe_picture.shift[1] = em_pipe_picture.shift[1] + 1 end
+            if pipe_connection.position[1] == -2.5 then em_pipe_picture.shift[1] = em_pipe_picture.shift[1] - 1 end
+            if pipe_connection.position[2] == 2.5 then em_pipe_picture.shift[2] = em_pipe_picture.shift[2] + 1 end
+            if pipe_connection.position[2] == -2.5 then em_pipe_picture.shift[2] = em_pipe_picture.shift[2] - 1 end
+            table.insert(data.raw["fusion-reactor"]["maraxsis-salt-reactor"].graphics_set.structure.layers, 1, em_pipe_picture)
+        end
+    end
+end
+
 data.raw["fusion-reactor"]["maraxsis-salt-reactor"].input_fluid_box.volume = 1000
 data.raw["fusion-reactor"]["maraxsis-salt-reactor"].input_fluid_box.filter = "water"
-data.raw["fusion-reactor"]["maraxsis-salt-reactor"].input_fluid_box.pipe_picture = require("__space-age__.prototypes.entity.electromagnetic-plant-pictures").pipe_pictures
-data.raw["fusion-reactor"]["maraxsis-salt-reactor"].input_fluid_box.pipe_picture_frozen = require("__space-age__.prototypes.entity.electromagnetic-plant-pictures").pipe_pictures_frozen
 data.raw["fusion-reactor"]["maraxsis-salt-reactor"].input_fluid_box.pipe_covers = pipecoverspictures()
 data.raw["fusion-reactor"]["maraxsis-salt-reactor"].output_fluid_box.volume = 1000
 data.raw["fusion-reactor"]["maraxsis-salt-reactor"].output_fluid_box.filter = "maraxsis-supercritical-steam"
-data.raw["fusion-reactor"]["maraxsis-salt-reactor"].output_fluid_box.pipe_picture = require("__space-age__.prototypes.entity.electromagnetic-plant-pictures").pipe_pictures
-data.raw["fusion-reactor"]["maraxsis-salt-reactor"].output_fluid_box.pipe_picture_frozen = require("__space-age__.prototypes.entity.electromagnetic-plant-pictures").pipe_pictures_frozen
 data.raw["fusion-reactor"]["maraxsis-salt-reactor"].output_fluid_box.pipe_covers = pipecoverspictures()
 for _, pipe_connection in pairs(data.raw["fusion-reactor"]["maraxsis-salt-reactor"].output_fluid_box.pipe_connections) do
     pipe_connection.connection_category = "maraxsis-salt-reactor"
