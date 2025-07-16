@@ -1,4 +1,4 @@
-local effects = data.raw.technology["maraxsis-deepsea-research"]
+local effects = data.raw.technology["maraxsis-deepsea-research"].effects
 
 data:extend {{
     type = "item-subgroup",
