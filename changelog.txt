@@ -1,4 +1,9 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.30.28
+Date: 2025-07-16
+  Compatibility:
+    - Improve K2 compat by adding hydraulic tech cards and hydraulic research data.
+---------------------------------------------------------------------------------------------------
 Version: 1.30.27
 Date: 2025-07-16
   Compatibility:
