@@ -119,7 +119,7 @@ if not mods.pystellarexpedition then
         local quality_name = quality.localised_name or {"quality-name." .. quality.name}
 
         local quality_level = quality.level
-        local fluid_amount = 500 * quality_level * quality_level + 500
+        local fluid_amount = 50 * quality_level * quality_level + 50
 
         table.insert(electricity_description, {"recipe-description.maraxsis-molten-salt-quality-description", quality.name, quality_name, tostring(fluid_amount)})
         table.insert(electricity_description, "\n")

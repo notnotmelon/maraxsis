@@ -184,7 +184,7 @@ data:extend {{
         {type = "item",  name = "salt",    amount = 50},
     },
     results = {
-        {type = "fluid", name = "molten-salt", amount = 500},
+        {type = "fluid", name = "molten-salt", amount = 50},
     },
     allow_productivity = true,
     category = "metallurgy",
