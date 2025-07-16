@@ -38,6 +38,7 @@ require "prototypes.technology.project-seadragon"
 if not mods.pystellarexpedition then require "prototypes.technology.promethium-productivity" end
 if not mods.pystellarexpedition then require "prototypes.technology.stone-centrifuging" end
 if not mods.pystellarexpedition then require "prototypes.technology.research-vessel" end
+if not mods.pystellarexpedition then require "prototypes.technology.deepsea-research" end
 
 require "prototypes.circuit-connector-definitions"
 require "prototypes.tiles"
