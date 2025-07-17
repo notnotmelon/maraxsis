@@ -10,7 +10,7 @@ data:extend {{
     energy_required = 10,
     ingredients = {},
     results = {
-        {type = "item", name = "sand", amount = 1}
+        {type = "item", name = maraxsis_constants.SAND_ITEM_NAME, amount = 1}
     },
     enabled = false,
     show_amount_in_title = false,
@@ -22,7 +22,7 @@ data:extend {{
         max = 200000,
     }},
     maximum_productivity = 9999999,
-    main_product = "sand",
+    main_product = maraxsis_constants.SAND_ITEM_NAME,
     localised_name = {"item-name.sand"},
     localised_description = {"item-description.sand"},
 }}

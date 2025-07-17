@@ -276,7 +276,7 @@ data.raw["simple-entity"]["big-sand-rock-underwater"].autoplace = {
 }
 
 data.raw["simple-entity"]["big-sand-rock-underwater"].minable.results = {
-    {type = "item", name = "sand", amount_min = 11, amount_max = 15},
+    {type = "item", name = maraxsis_constants.SAND_ITEM_NAME, amount_min = 11, amount_max = 15},
     {type = "item", name = "stone",         amount_min = 11, amount_max = 15}
 }
 

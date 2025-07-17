@@ -54,19 +54,21 @@ local DOME_EXCLUDED_FROM_DISABLE = {
     ["maraxsis-a-breath-of-fresh-air"] = true,
 }
 
+local SAND_ITEM_NAME = "sand"
+if mods["Krastorio2-spaced-out"] or mods["Krastorio2"] then SAND_ITEM_NAME = "kr-sand" end
+
 local TROPICAL_FISH_NAMES = {}
 for i = 1, 15 do
     local name = "maraxsis-tropical-fish-" .. i
     TROPICAL_FISH_NAMES[i] = name
 end
 
-data:extend{ 
-    {
+data:extend {{
     type = "mod-data",
     name = "maraxsis-constants", --Data that was previously defined in a control-level script, now defined in data, allowing other mods to configure these constants.
     data_type = "table",
-    data = --This data is called in scripts.constants.
-        { 
+    data = { 
+        -- This data is called in scripts.constants.
         TRENCH_MOVEMENT_FACTOR = TRENCH_MOVEMENT_FACTOR,
         SUBMARINES = SUBMARINES,
         TRENCH_SURFACE_NAME = TRENCH_SURFACE_NAME,
@@ -78,6 +80,6 @@ data:extend{
         DOME_EXCLUDED_FROM_DISABLE = DOME_EXCLUDED_FROM_DISABLE,
         TRENCH_ENTRANCE_ELEVATION = TRENCH_ENTRANCE_ELEVATION,
         TROPICAL_FISH_NAMES = TROPICAL_FISH_NAMES,
-        }
+        SAND_ITEM_NAME = SAND_ITEM_NAME,
     }
-}
+}}

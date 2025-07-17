@@ -59,7 +59,7 @@ data:extend {{
     enabled = false,
     energy_required = 5,
     ingredients = {
-        {type = "item", name = "sand",      amount = 3},
+        {type = "item", name = maraxsis_constants.SAND_ITEM_NAME,      amount = 3},
         {type = "item", name = "limestone", amount = 1},
         {type = "item", name = "salt",      amount = 2},
     },
@@ -104,11 +104,13 @@ end
 
 data:extend {{
     type = "item",
-    name = "sand",
+    name = maraxsis_constants.SAND_ITEM_NAME,
     icon = "__maraxsis__/graphics/icons/sand-3.png",
     pictures = sand_variants,
     icon_size = 64,
     stack_size = 100,
+    localised_name = {"item-name.sand"},
+    localised_description = {"item-description.sand"},
 }}
 
 data:extend {{
