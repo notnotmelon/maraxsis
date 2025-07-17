@@ -1,4 +1,9 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.30.37
+Date: 2025-07-17
+  Bugfixes:
+    - Fixed submerge contols sometimes being unresponsive. Resolves https://github.com/notnotmelon/maraxsis/issues/292
+---------------------------------------------------------------------------------------------------
 Version: 1.30.36
 Date: 2025-07-17
   Compatibility:
