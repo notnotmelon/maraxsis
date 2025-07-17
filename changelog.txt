@@ -1,4 +1,9 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.30.35
+Date: 2025-07-17
+  Bugfixes:
+    - Fixed placing hydro plants in fulgora's oil ocean. Resolves https://github.com/notnotmelon/maraxsis/issues/290
+---------------------------------------------------------------------------------------------------
 Version: 1.30.34
 Date: 2025-07-17
   Locale:
