@@ -39,6 +39,7 @@ for _, fluid in pairs(data.raw.fluid) do
         allow_as_intermediate = false,
         always_show_made_in = true,
         show_amount_in_title = false,
+        hide_from_signal_gui = false,
         localised_name = {"recipe-name.maraxsis-fluid-void", fluid.localised_name or {"fluid-name." .. fluid.name}},
         allowed_module_categories = {"speed", "efficiency"},
     }}
