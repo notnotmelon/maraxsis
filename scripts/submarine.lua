@@ -113,7 +113,7 @@ local function determine_submerge_direction(submarine)
         local target_position = {x = position.x * TRENCH_MOVEMENT_FACTOR, y = position.y * TRENCH_MOVEMENT_FACTOR}
         target_surface.request_to_generate_chunks(target_position, 1)
         target_surface.force_generate_chunk_requests()
-        target_position = target_surface.find_non_colliding_position(submarine.name, target_position, 40, 0.5, false)
+        target_position = target_surface.find_non_colliding_position(submarine.name, target_position, 40, 0.5, false) or target_position
         if not target_position then return nil end
         return target_surface, target_position
     elseif surface_name == maraxsis_constants.TRENCH_SURFACE_NAME then
