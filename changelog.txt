@@ -1,4 +1,9 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.30.32
+Date: 2025-07-17
+  Bugfixes:
+    - Fixed fluid void recipes not showing as circuit signals. Resolves https://github.com/notnotmelon/maraxsis/issues/310
+---------------------------------------------------------------------------------------------------
 Version: 1.30.31
 Date: 2025-07-17
   Compatibility:
