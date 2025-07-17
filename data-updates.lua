@@ -17,6 +17,7 @@ require "compat.5-dim-automation"
 require "compat.rcu-restored"
 require "compat.aircraft-space-age"
 require "compat.corrundum"
+require "compat.no-quality"
 
 local function add_fuel_value(fluid, value)
     fluid = data.raw.fluid[fluid]

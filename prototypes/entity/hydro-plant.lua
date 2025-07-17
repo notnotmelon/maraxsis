@@ -1,5 +1,3 @@
-local easy_mode = not not mods["no-quality"]
-
 local hit_effects = require("__base__/prototypes/entity/hit-effects")
 local sounds = require("__base__/prototypes/entity/sounds")
 
@@ -205,12 +203,6 @@ data:extend {{
     energy_usage = "2MW",
     collision_mask = {layers = {item = true, object = true, player = true, water_tile = true}},
 }}
-
-if easy_mode then
-    data.raw["assembling-machine"]["maraxsis-hydro-plant"].effect_receiver = {
-        base_effect = {productivity = 0.50},
-    }
-end
 
 local extra_module_slots = table.deepcopy(data.raw["assembling-machine"]["maraxsis-hydro-plant"])
 extra_module_slots.name = "maraxsis-hydro-plant-extra-module-slots"
