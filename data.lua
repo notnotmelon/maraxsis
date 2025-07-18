@@ -39,6 +39,10 @@ if not mods.pystellarexpedition then require "prototypes.technology.stone-centri
 if not mods.pystellarexpedition then require "prototypes.technology.research-vessel" end
 if not mods.pystellarexpedition then require "prototypes.technology.deepsea-research" end
 
+if not mods.pystellarexpedition and mods.space_age_galore then
+    require "prototypes.recipe.deepsea-research"
+end
+
 require "prototypes.circuit-connector-definitions"
 require "prototypes.tiles"
 require "prototypes.planet.space-location"
