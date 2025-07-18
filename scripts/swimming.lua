@@ -7,43 +7,39 @@ local function transfer_equipment_grid(old_armor, new_armor)
 
     for _, equipment in pairs(old_armor_grid.equipment) do
         local is_ghost = equipment.type == "equipment-ghost"
-        new_armor_grid.put {
+        local new_equipment = new_armor_grid.put {
             name = is_ghost and equipment.ghost_name or equipment.name,
             position = equipment.position,
             quality = equipment.quality,
             ghost = is_ghost, -- vanilla bug: this just deletes the ghosts if true
             by_player = player,
         }
-    end
-end
-
-local function restore_walking_speed(character_unit_number)
-    if not character_unit_number then return end
-    local previous_character_running_speed_modifier = storage.previous_character_running_speed_modifier
-    if not previous_character_running_speed_modifier then return end
-    previous_character_running_speed_modifier = previous_character_running_speed_modifier[character_unit_number]
-    if not previous_character_running_speed_modifier then return end
-
-    local character
-    for _, player in pairs(game.players) do
-        if player.character and player.character.unit_number == character_unit_number then
-            character = player.character
-            break
+        if not new_equipment then goto continue end
+        new_equipment.energy = equipment.energy
+        if equipment.type == "energy-shield-equipment" then
+            new_equipment.shield = equipment.shield
         end
+        ::continue::
     end
 
-    if not character then return end
-    character.character_running_speed_modifier = previous_character_running_speed_modifier
-    storage.previous_character_running_speed_modifier[character_unit_number] = nil
+    new_armor_grid.inhibit_movement_bonus = old_armor_grid.inhibit_movement_bonus
 end
 
-local function transfer_armor_item(armor, target_armor_name, character_unit_number)
-    restore_walking_speed(character_unit_number)
+local function reset_inventory_slots_bonus(force)
+    if not force.valid then return end
+    force.character_inventory_slots_bonus = math.max(10, force.character_inventory_slots_bonus - 5000)
+end
+maraxsis.register_delayed_function("reset_inventory_slots_bonus", reset_inventory_slots_bonus)
 
+local function transfer_armor_item(player, armor, target_armor_name)
+    if not player.valid then return end
     if not armor.valid or not armor.valid_for_read then return end
     if not prototypes.item[target_armor_name] then return end
+
+    local force = player.force
     local temp_inventory = game.create_inventory(1)
     local stack = temp_inventory[1]
+
     stack.set_stack {
         name = target_armor_name,
         count = 1,
@@ -53,11 +49,14 @@ local function transfer_armor_item(armor, target_armor_name, character_unit_numb
     }
 
     transfer_equipment_grid(armor, stack)
+    force.character_inventory_slots_bonus = force.character_inventory_slots_bonus + 5000
     armor.set_stack(stack)
     temp_inventory.destroy()
+    maraxsis.execute_later("reset_inventory_slots_bonus", 1, force)
 end
 maraxsis.register_delayed_function("transfer_armor_item", transfer_armor_item)
 
+-- in order for the swimming animation to work, we must swap the players armor to an identical armor prototype but with mech suit flight
 local function update_armor(player)
     local armor_inventory
     if player.controller_type == defines.controllers.editor then
@@ -73,7 +72,7 @@ local function update_armor(player)
     local armor_name = armor.name
     local target_armor_name
     local physical_surface = player.physical_surface
-    local started_swimming = not not maraxsis.MARAXSIS_SURFACES[physical_surface.name]
+    local started_swimming = not not maraxsis_constants.MARAXSIS_SURFACES[physical_surface.name]
     if started_swimming then
         target_armor_name = armor_name .. "-maraxsis-swimming"
     else
@@ -90,17 +89,14 @@ local function update_armor(player)
         if currently_collides then
             local safe_location = character.surface.find_non_colliding_position(character.name, character.position, 32, 0.5)
             if safe_location then
-                storage.previous_character_running_speed_modifier = storage.previous_character_running_speed_modifier or {}
-                storage.previous_character_running_speed_modifier[character.unit_number] = character.character_running_speed_modifier
-                character.character_running_speed_modifier = -1
                 character.teleport(safe_location)
-                maraxsis.execute_later("transfer_armor_item", 30, armor, target_armor_name, character.unit_number)
+                maraxsis.execute_later("transfer_armor_item", 30, player, armor, target_armor_name)
                 return
             end
         end
     end
 
-    transfer_armor_item(armor, target_armor_name)
+    transfer_armor_item(player, armor, target_armor_name)
 end
 
 maraxsis.on_event({
@@ -130,5 +126,28 @@ maraxsis.on_event(defines.events.on_player_cursor_stack_changed, function(event)
     if not cursor_stack_name:find("-maraxsis-swimming", 1, true) then return end
 
     local target_stack_name = cursor_stack_name:gsub("%-maraxsis%-swimming", "")
-    transfer_armor_item(cursor_stack, target_stack_name)
+    transfer_armor_item(player, cursor_stack, target_stack_name)
+end)
+
+-- https://github.com/notnotmelon/maraxsis/issues/255
+maraxsis.on_event("factory-open-outside-surface-to-remote-view", function(event)
+    local player = game.get_player(event.player_index)
+    if player.selected then return end
+    local surface = player.surface
+    if surface.name ~= "maraxsis" then return end
+    
+    local cursor_position = event.cursor_position
+    local tile = surface.get_tile(cursor_position)
+
+    if not tile.valid then return end
+    if tile.name ~= "maraxsis-trench-entrance" then return end
+
+    local trench = game.planets["maraxsis-trench"].surface
+    if not trench then return end
+    
+    player.set_controller {
+        position = cursor_position,
+        surface = trench,
+        type = defines.controllers.remote,
+    }
 end)

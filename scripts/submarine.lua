@@ -1,21 +1,17 @@
-local TRENCH_MOVEMENT_FACTOR = maraxsis.TRENCH_MOVEMENT_FACTOR
-local SUBMARINES = maraxsis.SUBMARINES
+local TRENCH_MOVEMENT_FACTOR = maraxsis_constants.TRENCH_MOVEMENT_FACTOR
+local SUBMARINES = maraxsis_constants.SUBMARINES
 
-local default_colors = {
-    {r = 255, g = 195, b = 0,   a = 0.5},
-    {r = 0.3, g = 0.8, b = 0.3, a = 0.5},
-}
+maraxsis.on_event(maraxsis.events.on_init(), function()
+    storage.submarines = storage.submarines or {}
+    storage.previous_spidertron_remote_selection = storage.previous_spidertron_remote_selection or {}
+end)
 
 maraxsis.on_event(maraxsis.events.on_built(), function(event)
     local entity = event.entity
     if not entity.valid then return end
     if not SUBMARINES[entity.name] then return end
 
-    local color = entity.color
-    local is_default = serpent.line(color) == "{a = 0.5, b = 0, g = 0.5, r = 1}"
-    if is_default then
-        entity.color = SUBMARINES[entity.name]
-    end
+    storage.submarines[entity.unit_number] = entity
 end)
 
 local function exit_submarine(event)
@@ -80,6 +76,11 @@ local function enter_submarine(player, submarine)
 end
 maraxsis.register_delayed_function("enter_submarine", enter_submarine)
 
+local OPPOSITE_SURFACE = {
+    [maraxsis_constants.TRENCH_SURFACE_NAME] = maraxsis_constants.MARAXSIS_SURFACE_NAME,
+    [maraxsis_constants.MARAXSIS_SURFACE_NAME] = maraxsis_constants.TRENCH_SURFACE_NAME,
+}
+
 ---determines if the submarine should rise to the surface or sink to the bottom. returns nil if surface transfer is impossible
 ---@param submarine LuaEntity
 ---@return LuaSurface?, MapPosition?
@@ -87,22 +88,35 @@ local function determine_submerge_direction(submarine)
     local position = submarine.position
     local surface = submarine.surface
     local surface_name = surface.name
-    local prototype = maraxsis.prototypes[surface_name]
-    if not prototype then error("no prototype for surface " .. surface_name) end
 
-    local opposite_surface_name = maraxsis.MARAXSIS_GET_OPPOSITE_SURFACE[surface_name]
-    local target_surface = maraxsis.prototypes[opposite_surface_name].get_surface()
+    local opposite_surface_name = OPPOSITE_SURFACE[surface_name]
+    if not opposite_surface_name then return end
+    local target_surface = game.planets[opposite_surface_name].create_surface()
 
-    if surface_name == maraxsis.MARAXSIS_SURFACE_NAME then
+    if surface_name == maraxsis_constants.MARAXSIS_SURFACE_NAME then
         local tile_at_surface = surface.get_tile(position)
-        if not tile_at_surface.valid or tile_at_surface.name ~= "maraxsis-trench-entrance" then return nil end
+        if not tile_at_surface.valid or tile_at_surface.name ~= "maraxsis-trench-entrance" then
+            for _, player in pairs(game.connected_players) do
+                player.create_local_flying_text {
+                    text = {"maraxsis.cannot-submerge"},
+                    position = position,
+                    create_at_cursor = false
+                }
+            end
+            surface.play_sound {
+                path = "utility/cannot_build",
+                position = position,
+                volume_modifier = 1
+            }
+            return nil
+        end
         local target_position = {x = position.x * TRENCH_MOVEMENT_FACTOR, y = position.y * TRENCH_MOVEMENT_FACTOR}
         target_surface.request_to_generate_chunks(target_position, 1)
         target_surface.force_generate_chunk_requests()
-        target_position = target_surface.find_non_colliding_position(submarine.name, target_position, 40, 0.5, false)
+        target_position = target_surface.find_non_colliding_position(submarine.name, target_position, 40, 0.5, false) or target_position
         if not target_position then return nil end
         return target_surface, target_position
-    elseif surface_name == maraxsis.TRENCH_SURFACE_NAME then
+    elseif surface_name == maraxsis_constants.TRENCH_SURFACE_NAME then
         local target_position = {x = position.x / TRENCH_MOVEMENT_FACTOR, y = position.y / TRENCH_MOVEMENT_FACTOR}
         target_surface.request_to_generate_chunks(target_position, 1)
         target_surface.force_generate_chunk_requests()
@@ -115,6 +129,11 @@ local function determine_submerge_direction(submarine)
                     create_at_cursor = false
                 }
             end
+            surface.play_sound {
+                path = "utility/cannot_build",
+                position = position,
+                volume_modifier = 1
+            }
             return nil
         end
         return target_surface, target_position
@@ -123,10 +142,19 @@ local function determine_submerge_direction(submarine)
     return nil
 end
 
+local function play_submerge_sound(target, position)
+    target.play_sound {
+        path = "maraxsis-submerge",
+        position = position,
+        volume_modifier = 1
+    }
+end
+maraxsis.register_delayed_function("play_submerge_sound", play_submerge_sound)
+
 ---transfers a submarine between surfaces
 ---@param submarine LuaEntity
 ---@return boolean true if the submarine was successfully transferred
-local function decend_or_ascend(submarine)
+local function descend_or_ascend(submarine)
     local target_surface, target_position = determine_submerge_direction(submarine)
     if not target_surface then return false end
     if not target_position then return false end
@@ -141,14 +169,26 @@ local function decend_or_ascend(submarine)
         driver = driver.player
     end
 
+    local old_surface = submarine.surface
+    local old_position = submarine.position
+    maraxsis.execute_later("play_submerge_sound", 1, old_surface, old_position)
+    maraxsis.execute_later("play_submerge_sound", 1, target_surface, target_position)
+
     local players_to_open_gui = {}
+    local players_to_preserve_spidertron_remote_selection = {}
     for _, player in pairs(game.players) do
-        if player.opened == submarine and player.surface ~= target_surface then table.insert(players_to_open_gui, player) end
+        if player.opened == submarine and player.surface ~= target_surface then
+            table.insert(players_to_open_gui, player)
+        elseif player.spidertron_remote_selection then
+            players_to_preserve_spidertron_remote_selection[player] = player.spidertron_remote_selection
+        end
     end
+
     submarine.teleport(target_position, target_surface, true)
+
     for _, player in pairs(players_to_open_gui) do
         if player.surface ~= target_surface then
-            player.set_controller{
+            player.set_controller {
                 type = defines.controllers.remote,
                 position = target_position,
                 surface = target_surface
@@ -157,75 +197,188 @@ local function decend_or_ascend(submarine)
         player.opened = submarine
     end
 
-    if passenger then
+    for player, spidertron_remote_selection in pairs(players_to_preserve_spidertron_remote_selection) do
+        player.spidertron_remote_selection = spidertron_remote_selection
+    end
+
+    if passenger and passenger.physical_vehicle == submarine then
         passenger.teleport(target_position, target_surface, true)
         maraxsis.execute_later("enter_submarine", 1, passenger, submarine)
     end
 
-    if driver then
+    if driver and driver.physical_vehicle == submarine then
         driver.teleport(target_position, target_surface, true)
         maraxsis.execute_later("enter_submarine", 1, driver, submarine)
     end
 
+    script.raise_event("maraxsis-on-submerged", {
+        entity = submarine,
+        old_surface_index = old_surface.index,
+        old_position = old_position
+    })
+
     return true
 end
 
+---transfers a character between trench and maraxsis surfaces when standing over trench entrance tiles
+---@param character LuaEntity
+---@return boolean true if the character was successfully transferred
+local function descend_or_ascend_character(character)
+    local target_surface, target_position = determine_submerge_direction(character)
+    if not target_surface then return false end
+    if not target_position then return false end
+
+    local old_surface = character.surface
+    local old_position = character.position
+    maraxsis.execute_later("play_submerge_sound", 1, old_surface, old_position)
+    maraxsis.execute_later("play_submerge_sound", 1, target_surface, target_position)
+
+    character.teleport(target_position, target_surface, true)
+
+    script.raise_event("maraxsis-on-submerged", {
+        entity = character,
+        old_surface_index = old_surface.index,
+        old_position = old_position
+    })
+        
+    return true
+end
+
+local function clean_array_of_invalid_luaobjects(array)
+    local new_table = {}
+    for k, v in pairs(array) do
+        if v.valid then table.insert(new_table, v) end
+    end
+    return new_table
+end
+
+maraxsis.on_event(defines.events.on_player_changed_surface, function(event)
+    local spidertrons = storage.previous_spidertron_remote_selection[event.player_index]
+    if not spidertrons then return end
+    spidertrons = clean_array_of_invalid_luaobjects(spidertrons)
+    local player = game.get_player(event.player_index)
+    local cursor_stack = player.cursor_stack
+    if not cursor_stack or not cursor_stack.valid_for_read then return end
+    if cursor_stack.type ~= "spidertron-remote" then return end
+    player.spidertron_remote_selection = player.spidertron_remote_selection or spidertrons
+end)
+
+maraxsis.on_event(
+    {
+        defines.events.on_player_selected_area,
+        defines.events.on_player_alt_selected_area,
+        defines.events.on_player_alt_reverse_selected_area,
+        defines.events.on_player_reverse_selected_area,
+        defines.events.on_player_cursor_stack_changed
+    },
+    function(event)
+        storage.previous_spidertron_remote_selection = storage.previous_spidertron_remote_selection or {}
+        local player = game.get_player(event.player_index)
+        local spidertrons = player.spidertron_remote_selection or storage.previous_spidertron_remote_selection[player.index]
+        storage.previous_spidertron_remote_selection[player.index] = spidertrons
+    end
+)
+
+maraxsis.on_event("maraxsis-trench-submerge", function(event)
+    local player = game.get_player(event.player_index)
+    if not player then return end
+    local submarine = player.vehicle
+
+    if submarine and SUBMARINES[submarine.name] then
+        descend_or_ascend(submarine)
+    elseif maraxsis.is_wearing_abyssal_diving_gear(player) then
+        descend_or_ascend_character(player.character)
+    end
+end)
+
+-- override the default toggle driving control so that submarines can be entered from further distances.
 maraxsis.on_event("toggle-driving", function(event)
     local player = game.get_player(event.player_index)
     if not player then return end
     local selected = player.selected
     local selected_submarine = selected and selected.valid and SUBMARINES[selected.name]
-    local submarine = player.vehicle
-    local surface = player.surface
+    local submarine = player.physical_vehicle
+    local surface = player.physical_surface
 
-    -- case 1: player is hovering the sub and trying to exit. if they are in a trench we need to block them from leaving the sub
-    if submarine and SUBMARINES[submarine.name] and selected and selected.valid and selected == submarine then
-        if not decend_or_ascend(submarine) then
-            if surface.name == maraxsis.TRENCH_SURFACE_NAME then
-                maraxsis.execute_later("enter_submarine", 1, player, submarine)
-            end
-        end
-        -- case 2: player is not hovering the sub but trying to exit.
-        -- if they are in a trench we need to block them from leaving the sub otherwise search nearby tiles for a safe exit point
-    elseif submarine and SUBMARINES[submarine.name] and not selected_submarine then
-        if not decend_or_ascend(submarine) then
-            if surface.name == maraxsis.TRENCH_SURFACE_NAME then
-                maraxsis.execute_later("enter_submarine", 1, player, submarine)
-            else
-                maraxsis.execute_later("exit_submarine", 1, event)
-            end
-        end
-        -- case 3: player is hovering the sub and trying to enter. the vanilla vechicle enter range is too low for water vehicles so we artificially increase it
+    if player.physical_surface ~= player.surface then return end
+
+    -- case 1: player is not hovering the sub but trying to exit.
+    if submarine and SUBMARINES[submarine.name] and not selected_submarine then
+        maraxsis.execute_later("exit_submarine", 1, event)
+        -- case 2: player is hovering the sub and trying to enter. the vanilla vechicle enter range is too low for water vehicles so we artificially increase it
     elseif can_enter_submarine(player, selected) then
-        enter_submarine(player, selected)
+        maraxsis.execute_later("enter_submarine", 1, player, selected)
     end
 end)
 
--- hijack the remote api for spidertron patrols and allow submarines to submerge
-local function automated_submerge(event)
-    local submarine = event.vehicle
+maraxsis.on_event("on_spidertron_patrol_waypoint_reached", function(event)
+    if event.waypoint.type ~= "submerge" then return end
+    local submarine = event.spidertron
     if not submarine or not submarine.valid then return end
-    if not maraxsis.SUBMARINES[submarine.name] then return end
+    if not maraxsis_constants.SUBMARINES[submarine.name] then return end
 
-    local schedule = remote.call("SpidertronPatrols", "get_waypoints", submarine)
-    if not schedule.on_patrol then return end
-
-    local waypoints = schedule.waypoints
-    if not waypoints or table_size(waypoints) == 1 then return end
-
-    local current_index = schedule.current_index - 1
-    if current_index == 0 then current_index = table_size(waypoints) end
-    local current = waypoints[current_index]
-    if not current then return end
-
-    if current.type ~= "passenger-not-present" then return end -- this event has been renamed to "submerge" in the gui
-
-    if not decend_or_ascend(submarine) then
+    if not descend_or_ascend(submarine) then
         submarine.force.print {"maraxsis.submarine-failed-to-submerge", submarine.gps_tag}
     end
-end
-maraxsis.register_delayed_function("automated_submerge", automated_submerge)
+end)
 
-maraxsis.on_event(defines.events.on_spider_command_completed, function(event)
-    maraxsis.execute_later("automated_submerge", 10, event)
+maraxsis.on_nth_tick(277, function()
+    for k, submarine in pairs(storage.submarines) do
+        if not submarine.valid then
+            storage.submarines[k] = nil
+            return
+        end
+
+        local fuel_inventory = submarine.get_fuel_inventory()
+        if fuel_inventory and fuel_inventory.is_empty() and submarine.energy < 1 then
+            for _, player in pairs(submarine.force.players) do
+                player.add_alert(submarine, defines.alert_type.train_out_of_fuel)
+            end
+        else
+            for _, player in pairs(submarine.force.players) do
+                player.remove_alert {
+                    entity = submarine,
+                    type = defines.alert_type.train_out_of_fuel
+                }
+            end
+        end
+    end
+end)
+
+--- to prevent softlocks, once the player dies find a submarine and teleport to the respawn location
+maraxsis.on_event(defines.events.on_player_respawned, function(event)
+    local player = game.get_player(event.player_index)
+    if not player or not player.valid then return end
+    if not maraxsis_constants.MARAXSIS_SURFACES[player.surface.name] then return end
+    local force_index = player.force_index
+
+    local submarine_names = {}
+    for submarine_name in pairs(maraxsis_constants.SUBMARINES) do
+        table.insert(submarine_names, submarine_name)
+    end
+
+    local submarine_to_teleport
+    for surface_name in pairs(maraxsis_constants.MARAXSIS_SURFACES) do
+        local surface = game.get_surface(surface_name)
+        if not surface then goto continue end
+        for _, submarine in pairs(surface.find_entities_filtered{
+            name = submarine_names,
+            type = "spider-vehicle",
+            force = force_index
+        }) do
+            local patrol_data = remote.call("SpidertronPatrols", "get_waypoints", submarine)
+            if not patrol_data then
+                submarine_to_teleport = submarine
+                goto found_submarine
+            end
+        end
+        ::continue::
+    end
+    ::found_submarine::
+
+    if not submarine_to_teleport then return end
+
+    local position = player.position
+    local position = {x = position.x + 7, y = position.y - 4}
+    submarine_to_teleport.teleport(position, player.surface_index, true, false)
 end)

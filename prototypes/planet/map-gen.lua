@@ -1,20 +1,17 @@
-require "maraxsis-noise-expressions"
-require "trench-noise-expressions"
-
-local asteroid_util = require("__space-age__.prototypes.planet.asteroid-spawn-definitions")
-
 local entity_spawn_settings = {
     ["maraxsis-coral"] = {},
-    ["big-sand-rock-underwater"] = {}
+    ["big-sand-rock-underwater"] = {},
+    ["maraxsis-mollusk-husk"] = {},
+    ["maraxsis-polylplast"] = {},
 }
 
-for _, tropical_fish in pairs(maraxsis.tropical_fish_names) do
+for _, tropical_fish in pairs(maraxsis_constants.TROPICAL_FISH_NAMES) do
     entity_spawn_settings[tropical_fish] = {}
 end
 
 local planet_map_gen = {}
 
-planet_map_gen.maraxsis = function()
+planet_map_gen["maraxsis"] = function()
     return {
         terrain_segmentation = 1,
         water = 0,
@@ -28,7 +25,7 @@ planet_map_gen.maraxsis = function()
         },
         cliff_settings = {
             name = "cliff-maraxsis-collisionless",
-            cliff_elevation_0 = 0.03,
+            cliff_elevation_0 = maraxsis_constants.TRENCH_ENTRANCE_ELEVATION,
             cliff_elevation_interval = 0.1,
             cliff_smoothing = 0, -- This is critical for correct cliff placement on the trench entrance.
             richness = 0.98
@@ -45,6 +42,7 @@ planet_map_gen.maraxsis = function()
                     ["sand-3-underwater"] = {},
                     ["dirt-5-underwater"] = {},
                     ["lowland-cream-red-underwater"] = {},
+                    ["lowland-red-vein-2-underwater"] = {},
                 }
             },
             ["decorative"] = {
@@ -123,7 +121,7 @@ planet_map_gen.maraxsis = function()
     }
 end
 
-planet_map_gen.maraxsis_trench = function()
+planet_map_gen["maraxsis-trench"] = function()
     return {
         terrain_segmentation = 1,
         water = 0,
@@ -144,7 +142,7 @@ planet_map_gen.maraxsis_trench = function()
                     ["volcanic-cracks-hot-underwater"] = {},
                     ["volcanic-cracks-warm-underwater"] = {},
                     ["volcanic-folds-underwater"] = {},
-                    ["out-of-map"] = {},
+                    ["maraxsis-trench-out-of-map"] = {},
                 }
             },
             ["decorative"] = {
@@ -228,7 +226,7 @@ planet_map_gen.maraxsis_trench = function()
                     ["maraxsis-trench-wall-collisionless"] = {},
                     ["vulcanus-chimney-short"] = {},
                     ["vulcanus-chimney-truncated"] = {},
-                    ["vulcanus-chimney"] = {},
+                    ["maraxsis-chimney"] = {},
                     ["vulcanus-chimney-cold"] = {},
                     ["vulcanus-chimney-faded"] = {},
                 },
@@ -237,95 +235,4 @@ planet_map_gen.maraxsis_trench = function()
     }
 end
 
-data:extend {maraxsis.merge(data.raw.planet.gleba, {
-    name = "maraxsis",
-    starting_area = 1,
-    surface_properties = {
-        ["day-night-cycle"] = 5 * minute,
-        ["magnetic-field"] = 25,
-        ["solar-power"] = 100,
-        pressure = 200000,
-        gravity = 20,
-    },
-    starmap_icon = "__maraxsis__/graphics/planets/maraxsis-starmap-icon.png",
-    starmap_icon_size = 512,
-    icon = "__maraxsis__/graphics/planets/maraxsis.png",
-    icon_size = 256,
-    order = "ce[maraxsis]",
-    pollutant_type = "nil",
-    solar_power_in_space = 150,
-    map_gen_settings = planet_map_gen.maraxsis(),
-    distance = 15,
-    draw_orbit = false,
-    orientation = 0.515,
-    flying_robot_energy_usage_multiplier = 1.5, -- todo: this doesnt work
-})}
-
-if mods["hd_planets"] then
-    data.raw["planet"]["maraxsis"].starmap_icon = "__maraxsis__/graphics/planets/maraxsis-hd.png"
-    data.raw["planet"]["maraxsis"].starmap_icon_size = 4072
-end
-
-data:extend {maraxsis.merge(data.raw.planet.gleba, {
-    name = "maraxsis-trench",
-    starting_area = 1,
-    surface_properties = {
-        ["day-night-cycle"] = 5 * minute,
-        ["magnetic-field"] = 25,
-        ["solar-power"] = 0,
-        pressure = 400000,
-        gravity = 20,
-    },
-    starmap_icon = "__maraxsis__/graphics/planets/maraxsis-trench.png",
-    starmap_icon_size = 512,
-    icon = "__maraxsis__/graphics/technology/maraxsis-trench.png",
-    icon_size = 256,
-    order = "ce[maraxsis]-[trench]",
-    pollutant_type = "nil",
-    draw_orbit = false,
-    solar_power_in_space = 150,
-    map_gen_settings = planet_map_gen.maraxsis_trench(),
-    distance = 15.6,
-    label_orientation = 0.3,
-    magnitude = 0.65,
-    player_effects = "nil",
-    orientation = 0.5,
-    auto_save_on_first_trip = false,
-    asteroid_spawn_definitions = "nil",
-    flying_robot_energy_usage_multiplier = 1.5, -- todo: this doesnt work
-})}
-
-data:extend {{
-    type = "space-connection",
-    name = "vulcanus-maraxsis",
-    subgroup = "planet-connections",
-    from = "vulcanus",
-    to = "maraxsis",
-    order = "f",
-    length = 30000,
-    asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.gleba_aquilo)
-}}
-
-if mods.tenebris then
-    data:extend {{
-        type = "space-connection",
-        name = "maraxsis-tenebris",
-        subgroup = "planet-connections",
-        from = "maraxsis",
-        to = "tenebris",
-        order = "g",
-        length = 30000,
-        asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.gleba_aquilo)
-    }}
-else
-    data:extend {{
-        type = "space-connection",
-        name = "fulgora-maraxsis",
-        subgroup = "planet-connections",
-        from = "fulgora",
-        to = "maraxsis",
-        order = "f",
-        length = 30000,
-        asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.gleba_aquilo)
-    }}
-end
+return planet_map_gen

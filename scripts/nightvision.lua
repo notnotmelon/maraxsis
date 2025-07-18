@@ -5,8 +5,9 @@
 local function swap_nightvision(grid, surface, equipment)
     local equipment_name = equipment.name
     local position = equipment.position
+    local quality = equipment.quality.name
     local target
-    if surface.name == maraxsis.TRENCH_SURFACE_NAME then
+    if surface.name == maraxsis_constants.TRENCH_SURFACE_NAME then
         if equipment_name:match("%-disabled$") then return end
         target = equipment_name .. "-disabled"
     else
@@ -19,7 +20,7 @@ local function swap_nightvision(grid, surface, equipment)
 
     local energy = equipment.energy
     grid.take {equipment = equipment}
-    local new_equipment = grid.put {name = target, position = position}
+    local new_equipment = grid.put {name = target, position = position, quality = quality}
     new_equipment.energy = energy
 end
 
@@ -39,22 +40,10 @@ maraxsis.on_event({
     defines.events.on_player_armor_inventory_changed,
     defines.events.on_player_created,
 }, function(event)
-    if storage.stop_infinite_nightvision_recursion_loop then return end
-
     local player = game.get_player(event.player_index)
-    if not player then return end
-    local armor = player.get_inventory(defines.inventory.character_armor)
-    if not armor then return end
-
-    for i = 1, #armor do
-        local stack = armor[i]
-        if stack.valid_for_read and stack.is_armor then
-            local grid = stack.grid
-            if grid then
-                swap_nightvision_to_correct_prototype(grid, player.surface)
-            end
-        end
-    end
+    local character = player.character
+    if not character or not character.grid then return end
+    swap_nightvision_to_correct_prototype(character.grid, player.surface)
 end)
 
 maraxsis.on_event(defines.events.on_equipment_inserted, function(event)
@@ -69,7 +58,7 @@ maraxsis.on_event(defines.events.on_equipment_inserted, function(event)
         for i = 1, #armor do
             local stack = armor[i]
             if stack.valid_for_read and stack.is_armor and stack.grid == grid then
-                swap_nightvision(grid, player.surface, equipment)
+                swap_nightvision(grid, player.physical_surface, equipment)
             end
         end
         ::continue::

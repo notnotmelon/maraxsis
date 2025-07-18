@@ -1,19 +1,26 @@
-_G.maraxsis = require "scripts.constants"
+require "scripts.constants"
+_G.maraxsis = {}
+_G.maraxsis_constants = prototypes.mod_data["maraxsis-constants"].data
 require "lib.lib"
 
-maraxsis.prototypes = {
-    [maraxsis.MARAXSIS_SURFACE_NAME] = require "scripts.map-gen.surfaces.maraxsis",
-    [maraxsis.TRENCH_SURFACE_NAME] = require "scripts.map-gen.surfaces.maraxsis-trench",
-}
-
+require "scripts.map-gen.maraxsis"
+require "scripts.map-gen.maraxsis-trench"
 require "scripts.submarine"
-require "scripts.drowning"
 require "scripts.nightvision"
 require "scripts.pressure-dome"
-require "scripts.composite-entity"
-require "scripts.sand-extractor"
-require "scripts.hydro-plant"
 require "scripts.project-seadragon"
 require "scripts.swimming"
+require "scripts.trench-duct"
+require "scripts.abyssal-diving-gear"
+require "scripts.remote"
+require "scripts.fishing-tower"
+
+if not script.active_mods.pystellarexpedition then require "scripts.drowning" end
+if not script.active_mods.pystellarexpedition then require "scripts.sonar" end
+if not script.active_mods.pystellarexpedition then require "scripts.sand-extractor" end
+if not script.active_mods.pystellarexpedition then require "scripts.hydro-plant" end
+if not script.active_mods.pystellarexpedition then require "scripts.salt-reactor" end
+
+require "compat.call-plumber"
 
 maraxsis.finalize_events()

@@ -1,3 +1,5 @@
+local TRENCH_ENTRANCE_ELEVATION = maraxsis_constants.TRENCH_ENTRANCE_ELEVATION
+
 data:extend {{
     type = "noise-expression",
     name = "maraxsis_starting_area",
@@ -105,7 +107,7 @@ data:extend {{
     type = "noise-function",
     name = "maraxsis_elevation",
     expression = [[
-        1 - (1 - min(1, elevation) + 0.03) ^ 3 + elevation/3
+        1 - (1 - min(1, elevation) + ]] .. TRENCH_ENTRANCE_ELEVATION .. [[) ^ 3 + elevation/3
     ]],
     local_expressions = {
         xx = "xxx - 38",
@@ -130,13 +132,13 @@ data:extend {{
 data:extend {{
     type = "noise-expression",
     name = "maraxsis_trench_entrance",
-    expression = "maraxsis_surface_elevation < 0.03"
+    expression = "maraxsis_surface_elevation < " .. TRENCH_ENTRANCE_ELEVATION
 }}
 
 data:extend {{
     type = "noise-function",
     name = "maraxsis_coral_reef",
-    expression = "(maraxsis_elevation(xx, yy) > 0.8) * (maraxsis_elevation(xx, yy) < 1.1) * (coral_zones > 0.5) * (coral_beds > 0.8)",
+    expression = "(maraxsis_elevation(xx, yy) > 0.8) * (maraxsis_elevation(xx, yy) < 1.1) * (coral_zones > 0.5) * coral_beds",
     local_expressions = {
         coral_beds = [[
             multioctave_noise{
@@ -147,7 +149,7 @@ data:extend {{
                 seed1 = 1542,
                 octaves = 2,
                 input_scale = 0.03,
-                output_scale = 1
+                output_scale = max(0.65, var("control:maraxsis-coral:size"))
             }
         ]],
         coral_zones = [[
@@ -160,7 +162,17 @@ data:extend {{
                 octaves = 2,
                 input_scale = 0.01,
                 output_scale = 1
-            }
+            } + final_frequency
+        ]],
+        frequency = [[
+            var("control:maraxsis-coral:frequency")
+        ]],
+        final_frequency = [[
+            if (
+                frequency > 1,
+                (frequency - 1) / 5,
+                (frequency - 1) / 2
+            )
         ]],
     },
     parameters = {"xx", "yy"}
@@ -169,7 +181,7 @@ data:extend {{
 data:extend {{
     type = "noise-expression",
     name = "maraxsis_coral_ore",
-    expression = "(maraxsis_coral_reef(x, y) * coral_spots) > 0.8",
+    expression = "((maraxsis_coral_reef(x, y) > 0.65) * coral_spots) > 0.8",
     local_expressions = {
         coral_spots = [[
             multioctave_noise{
@@ -186,7 +198,7 @@ data:extend {{
     }
 }}
 
-for i = 1, table_size(maraxsis.tropical_fish_names) do
+for i = 1, table_size(maraxsis_constants.TROPICAL_FISH_NAMES) do
     data:extend {{
         type = "noise-expression",
         name = "maraxsis_tropical_fish_" .. i,
@@ -202,28 +214,35 @@ end
 
 data.raw.tile["lowland-cream-red-underwater"].autoplace = {
     probability_expression = [[
-        (maraxsis_coral_reef(x - 1, y) + maraxsis_coral_reef(x + 1, y) + maraxsis_coral_reef(x, y - 1) + maraxsis_coral_reef(x, y + 1)) >= 1
+        maraxsis_coral_reef(x, y) >= 0.65
     ]],
     order = "a[coral]-a[maraxsis]"
 }
 
+data.raw.tile["lowland-red-vein-2-underwater"].autoplace = {
+    probability_expression = [[
+        maraxsis_coral_reef(x, y) >= 0.45
+    ]],
+    order = "a[coral]-b[maraxsis]"
+}
+
 data.raw.tile["sand-3-underwater"].autoplace = {
     probability_expression = [[
-        maraxsis_surface_elevation > 0.93
+        maraxsis_surface_elevation > (0.9 + ]] .. TRENCH_ENTRANCE_ELEVATION .. [[)
     ]],
     order = "b[sand]-a[maraxsis]"
 }
 
 data.raw.tile["sand-2-underwater"].autoplace = {
     probability_expression = [[
-        maraxsis_surface_elevation > 0.73
+        maraxsis_surface_elevation > (0.7 + ]] .. TRENCH_ENTRANCE_ELEVATION .. [[)
     ]],
     order = "b[sand]-b[maraxsis]"
 }
 
 data.raw.tile["sand-1-underwater"].autoplace = {
     probability_expression = [[
-        maraxsis_surface_elevation > 0.33
+        maraxsis_surface_elevation > (0.3 + ]] .. TRENCH_ENTRANCE_ELEVATION .. [[)
     ]],
     order = "b[sand]-c[maraxsis]"
 }
@@ -253,10 +272,54 @@ data.raw["simple-entity"]["big-sand-rock-underwater"].autoplace = {
             } > 0.9
         ]]
     },
-    order = "c[rocks]-a[maraxsis]"
+    order = "c[rocks]-a[big-sand-rock-underwater]"
 }
 
 data.raw["simple-entity"]["big-sand-rock-underwater"].minable.results = {
-    {type = "item", name = "maraxsis-sand", amount_min = 11, amount_max = 15},
-    {type = "item", name = "stone", amount_min = 11, amount_max = 15}
+    {type = "item", name = maraxsis_constants.SAND_ITEM_NAME, amount_min = 11, amount_max = 15},
+    {type = "item", name = "stone",         amount_min = 11, amount_max = 15}
+}
+
+data.raw["simple-entity"]["maraxsis-mollusk-husk"].autoplace = {
+    probability_expression = [[
+        (maraxsis_elevation(x, y) > 1.1) * master_noise * noise * (random_penalty{x = x, y = y, seed = map_seed, source = 1, amplitude = 1} > 0.9)
+    ]],
+    local_expressions = {
+        noise = [[
+            multioctave_noise {
+                x = x,
+                y = y,
+                persistence = 0.15,
+                seed0 = map_seed,
+                seed1 = 31359,
+                octaves = 2,
+                input_scale = 1 / 20,
+                output_scale = 1
+            } > 0.95
+        ]],
+        -- force these to spawn in the starting area as they are used in a trigger technology
+        master_noise = [[
+            (multioctave_noise {
+                x = x,
+                y = y,
+                persistence = 0.5,
+                seed0 = map_seed,
+                seed1 = 31359,
+                octaves = 4,
+                input_scale = 1 / 100,
+                output_scale = 1
+            } > 0.2) + (distance_from_0_0(x, y) < 30)
+        ]],
+    },
+    order = "c[rocks]-b[mollusk-husk]"
+}
+
+data.raw.tree["maraxsis-polylplast"].autoplace = {
+    probability_expression = [[
+        (maraxsis_coral_reef(x, y) * random_1) + random_2
+    ]],
+    local_expressions = {
+        random_1 = "random_penalty{x = x, y = y, seed = map_seed, source = 1, amplitude = 1} > 0.96",
+        random_2 = "random_penalty{x = x, y = y, seed = map_seed, source = 1, amplitude = 1} > 0.9996",
+    }
 }
