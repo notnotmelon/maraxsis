@@ -71,3 +71,11 @@ data.raw["furnace"]["kr-air-purifier"].maraxsis_buildability_rules = {water = fa
 
 data.raw.planet["maraxsis"].map_gen_settings.autoplace_settings.entity.settings["kr-rare-metal-ore"] = {}
 data.raw.planet["maraxsis"].map_gen_settings.autoplace_controls["kr-rare-metal-ore"] = {size = 10}
+
+data.raw.recipe["maraxsis-conduit"].ingredients = {
+    {type = "item", name = "beacon",                           amount = 1},
+    {type = "item", name = "maraxsis-glass-panes",             amount = 25},
+    {type = "item", name = "kr-rare-metals",                  amount = 50},
+    {type = "item", name = "maraxsis-super-sealant-substance", amount = 15},
+    {type = "item", name = "kr-energy-control-unit", amount = 5},
+}
