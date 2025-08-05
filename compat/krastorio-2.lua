@@ -146,3 +146,8 @@ data.raw["assembling-machine"]["kr-quantum-computer"].surface_conditions = {{
     min = 400000,
     max = 400000,
 }}
+
+data.raw.recipe["maraxsis-microplastics"].ingredients = {
+    {type = "item", name = "maraxsis-tropical-fish",   amount = 1},
+    {type = "item", name = "shotgun-shell", amount = 1},
+}
