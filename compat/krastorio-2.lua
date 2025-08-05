@@ -75,9 +75,9 @@ data.raw.planet["maraxsis"].map_gen_settings.autoplace_controls["kr-rare-metal-o
 data.raw.recipe["maraxsis-conduit"].ingredients = {
     {type = "item", name = "beacon",                           amount = 1},
     {type = "item", name = "maraxsis-glass-panes",             amount = 25},
-    {type = "item", name = "kr-rare-metals",                  amount = 50},
+    {type = "item", name = "kr-rare-metals",                   amount = 50},
     {type = "item", name = "maraxsis-super-sealant-substance", amount = 15},
-    {type = "item", name = "kr-energy-control-unit", amount = 5},
+    {type = "item", name = "kr-energy-control-unit",           amount = 5},
 }
 
 table.insert(data.raw.technology["maraxsis-effect-transmission-2"].prerequisites, "kr-energy-control-unit")
@@ -93,19 +93,8 @@ data.raw.item["maraxsis-glass-panes"].localised_name = {"item-name.maraxsis-rein
 data.raw.technology["maraxsis-glass-productivity"].unit.ingredients = {
     {"production-science-pack",  1},
     {"utility-science-pack",     1},
-    {"space-science-pack",     1},
-    {"metallurgic-science-pack", 1},
-    {"hydraulic-science-pack",   1},
-}
-
-data.raw.technology["maraxsis-deepsea-research"].unit.ingredients = {
-    {"production-science-pack",  1},
-    {"utility-science-pack",     1},
     {"space-science-pack",       1},
     {"metallurgic-science-pack", 1},
-    {"agricultural-science-pack", 1},
-    {"electromagnetic-science-pack", 1},
-    {"kr-singularity-tech-card", 1},
     {"hydraulic-science-pack",   1},
 }
 
@@ -117,3 +106,43 @@ table.insert(data.raw.recipe["maraxsis-oversized-steam-turbine"].ingredients, {t
 table.insert(data.raw.recipe["maraxsis-hydro-plant"].ingredients, {type = "item", name = "kr-rare-metals", amount = 10})
 table.insert(data.raw.recipe["maraxsis-diesel-submarine"].ingredients, {type = "item", name = "kr-rare-metals", amount = 10})
 table.insert(data.raw.recipe["maraxsis-wyrm-confinement-cell"].ingredients, {type = "item", name = "kr-rare-metals", amount = 1})
+
+data.raw.technology["kr-quantum-computer"].prerequisites = {
+    "kr-ai-core",
+    "quantum-processor",
+    "maraxsis-project-seadragon",
+    "kr-singularity-tech-card",
+}
+
+data.raw.technology["kr-quantum-computer"].unit.ingredients = {
+    {"production-science-pack",      1},
+    {"utility-science-pack",         1},
+    {"space-science-pack",           1},
+    {"kr-singularity-tech-card",     1},
+    {"metallurgic-science-pack",     1},
+    {"agricultural-science-pack",    1},
+    {"electromagnetic-science-pack", 1},
+    {"hydraulic-science-pack",       1},
+    {"cryogenic-science-pack",       1},
+}
+
+if not mods["no-quality"] then
+    data.raw["assembling-machine"]["kr-quantum-computer"].effect_receiver.base_effect.quality = 5
+end
+
+data.raw.recipe["kr-quantum-computer"].category = "maraxsis-hydro-plant"
+
+data.raw.recipe["kr-quantum-computer"].ingredients = {
+    {type = "item", name = "kr-research-server",   amount = 3},
+    {type = "item", name = "tungsten-plate",       amount = 100},
+    {type = "item", name = "kr-rare-metals",       amount = 50},
+    {type = "item", name = "kr-ai-core",           amount = 50},
+    {type = "item", name = "quantum-processor",    amount = 100},
+    {type = "item", name = "maraxsis-glass-panes", amount = 200},
+}
+
+data.raw["assembling-machine"]["kr-quantum-computer"].surface_conditions = {{
+    property = "pressure",
+    min = 400000,
+    max = 400000,
+}}

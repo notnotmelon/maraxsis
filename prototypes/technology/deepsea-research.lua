@@ -1,3 +1,5 @@
+if mods["Krastorio2-spaced-out"] or mods["Krastorio2"] then return end
+
 data:extend {{
     type = "technology",
     name = "maraxsis-deepsea-research",

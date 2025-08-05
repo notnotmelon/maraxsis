@@ -29,7 +29,11 @@ if settings.startup["maraxsis-add-hydraulic-science"].value then
     end
 
     add_hydraulic_pack("promethium-science-pack", false)
-    table.insert(data.raw["technology"]["promethium-science-pack"].prerequisites, "maraxsis-deepsea-research")
+    if mods["Krastorio2-spaced-out"] or mods["Krastorio2"] then
+        table.insert(data.raw["technology"]["promethium-science-pack"].prerequisites, "kr-quantum-computer")
+    else
+        table.insert(data.raw["technology"]["promethium-science-pack"].prerequisites, "maraxsis-deepsea-research")
+    end
     add_hydraulic_pack("research-productivity", false)
 end
 
