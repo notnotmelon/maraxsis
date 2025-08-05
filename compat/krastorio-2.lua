@@ -80,7 +80,7 @@ data.raw.recipe["maraxsis-conduit"].ingredients = {
     {type = "item", name = "kr-energy-control-unit", amount = 5},
 }
 
-table.insert(data.raw.technology["maraxsis-conduit"].prerequisites, "kr-energy-control-unit")
+table.insert(data.raw.technology["maraxsis-effect-transmission-2"].prerequisites, "kr-energy-control-unit")
 
 table.insert(data.raw.technology["maraxsis-glass-productivity"].effects, {
     type = "change-recipe-productivity",
@@ -89,3 +89,22 @@ table.insert(data.raw.technology["maraxsis-glass-productivity"].effects, {
 })
 
 data.raw.item["maraxsis-glass-panes"].localised_name = {"item-name.maraxsis-reinforced-glass"}
+
+data.raw.technology["maraxsis-glass-productivity"].unit.ingredients = {
+    {"production-science-pack",  1},
+    {"utility-science-pack",     1},
+    {"space-science-pack",     1},
+    {"metallurgic-science-pack", 1},
+    {"hydraulic-science-pack",   1},
+}
+
+data.raw.technology["maraxsis-deepsea-research"].unit.ingredients = {
+    {"production-science-pack",  1},
+    {"utility-science-pack",     1},
+    {"space-science-pack",       1},
+    {"metallurgic-science-pack", 1},
+    {"agricultural-science-pack", 1},
+    {"electromagnetic-science-pack", 1},
+    {"kr-singularity-tech-card", 1},
+    {"hydraulic-science-pack",   1},
+}
