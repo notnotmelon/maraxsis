@@ -52,3 +52,14 @@ data.raw.recipe["kr-hydrogen"].icon_size = nil
 data.raw.recipe["kr-oxygen"].localised_name = {"fluid-name.oxygen"}
 data.raw.recipe["kr-oxygen"].icon = nil
 data.raw.recipe["kr-oxygen"].icon_size = nil
+
+local new_ingredients = {}
+for _, ingredient in pairs(data.raw.recipe["promethium-science-pack"].ingredients) do
+    if ingredient.name == "biter-egg" then
+        ingredient.amount = ingredient.amount * 2
+        table.insert(data.raw.recipe["kr-promethium-research-data"].ingredients, ingredient)
+    else
+        table.insert(new_ingredients, ingredient)
+    end
+end
+data.raw.recipe["promethium-science-pack"].ingredients = new_ingredients
