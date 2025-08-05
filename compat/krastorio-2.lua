@@ -85,3 +85,5 @@ table.insert(data.raw.technology["maraxsis-glass-productivity"].effects, {
     recipe = "kr-glass",
     change = 0.1
 })
+
+data.raw.item["maraxsis-glass-panes"].localised_name = {"item-name.maraxsis-reinforced-glass"}
