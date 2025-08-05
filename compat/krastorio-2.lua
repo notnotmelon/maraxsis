@@ -108,3 +108,11 @@ data.raw.technology["maraxsis-deepsea-research"].unit.ingredients = {
     {"kr-singularity-tech-card", 1},
     {"hydraulic-science-pack",   1},
 }
+
+table.insert(data.raw.recipe["maraxsis-abyssal-diving-gear"].ingredients, {type = "item", name = "kr-rare-metals", amount = 50})
+table.insert(data.raw.recipe["maraxsis-nuclear-submarine"].ingredients, {type = "item", name = "kr-rare-metals", amount = 200})
+table.insert(data.raw.recipe["maraxsis-sonar"].ingredients, {type = "item", name = "kr-rare-metals", amount = 30})
+table.insert(data.raw.recipe["maraxsis-salt-reactor"].ingredients, {type = "item", name = "kr-rare-metals", amount = 100})
+table.insert(data.raw.recipe["maraxsis-oversized-steam-turbine"].ingredients, {type = "item", name = "kr-rare-metals", amount = 100})
+table.insert(data.raw.recipe["maraxsis-hydro-plant"].ingredients, {type = "item", name = "kr-rare-metals", amount = 10})
+table.insert(data.raw.recipe["maraxsis-diesel-submarine"].ingredients, {type = "item", name = "kr-rare-metals", amount = 10})
