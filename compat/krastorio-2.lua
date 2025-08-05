@@ -64,3 +64,4 @@ table.insert(data.raw.recipe["maraxsis-hydrolox-rocket-fuel"].ingredients, {
     amount = 1,
     type = "item"
 })
+data.raw.recipe["maraxsis-hydrolox-rocket-fuel"].surface_conditions = maraxsis.surface_conditions()
