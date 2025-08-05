@@ -1,4 +1,9 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.30.46
+Date: 2025-08-05
+  Locale:
+    - Removed "can void any fluid" from the hydro plant description while either cerys or k2 are installed.
+---------------------------------------------------------------------------------------------------
 Version: 1.30.45
 Date: 2025-08-05
   Compatibility:
