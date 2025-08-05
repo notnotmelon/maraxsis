@@ -1,4 +1,5 @@
 if mods["Krastorio2-spaced-out"] or mods["Krastorio2"] then return end
+if mods["Flare Stack"] then return end
 
 data:extend {{
     type = "item-subgroup",
