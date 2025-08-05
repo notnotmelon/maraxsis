@@ -1,6 +1,12 @@
-if mods["Krastorio2-spaced-out"] or mods["Krastorio2"] then return end
+if mods["Krastorio2-spaced-out"] or mods["Krastorio2"] then
+    data.raw["assembling-machine"]["maraxsis-hydro-plant"].localised_description = {"entity-description.maraxsis-hydro-plant-cerys"}
+    data.raw["assembling-machine"]["maraxsis-hydro-plant-extra-module-slots"].localised_description = {"entity-description.maraxsis-hydro-plant-cerys"}
+    return
+end
 
 if mods["Flare Stack"] then
+    data.raw["assembling-machine"]["maraxsis-hydro-plant"].localised_description = {"entity-description.maraxsis-hydro-plant-cerys"}
+    data.raw["assembling-machine"]["maraxsis-hydro-plant-extra-module-slots"].localised_description = {"entity-description.maraxsis-hydro-plant-cerys"}
     data.raw.furnace["flare-stack"].module_slots = 1
     data.raw.furnace["flare-stack"].allowed_effects = {"consumption", "speed", "pollution", "quality"}
     return
