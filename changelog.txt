@@ -1,4 +1,9 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.30.42
+Date: 2025-08-05
+  Compatibility:
+    - Swapped armor piercing rounds with shotgun shells in fish rendering recipe if k2 is installed.
+---------------------------------------------------------------------------------------------------
 Version: 1.30.41
 Date: 2025-08-05
   Compatibility:
