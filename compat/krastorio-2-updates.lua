@@ -63,3 +63,5 @@ for _, ingredient in pairs(data.raw.recipe["promethium-science-pack"].ingredient
     end
 end
 data.raw.recipe["promethium-science-pack"].ingredients = new_ingredients
+
+data.raw["assembling-machine"]["kr-quantum-computer"].energy_usage = "50MW"
