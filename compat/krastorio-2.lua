@@ -1,9 +1,11 @@
 if not mods["Krastorio2-spaced-out"] and not mods["Krastorio2"] then return end
 
-data.raw.tool["hydraulic-science-pack"].icon = "__maraxsis__/graphics/icons/hydraulic-tech-card.png"
-data.raw.tool["hydraulic-science-pack"].localised_name = {"item-name.hydraulic-tech-card"}
-data.raw.technology["hydraulic-science-pack"].icon = "__maraxsis__/graphics/technology/hydraulic-tech-card.png"
-data.raw.technology["hydraulic-science-pack"].localised_name = {"item-name.hydraulic-tech-card"}
+if not mods["Tech_Cards_For_Modded_Planets"] then
+    data.raw.tool["hydraulic-science-pack"].icon = "__maraxsis__/graphics/icons/hydraulic-tech-card.png"
+    data.raw.tool["hydraulic-science-pack"].localised_name = {"item-name.hydraulic-tech-card"}
+    data.raw.technology["hydraulic-science-pack"].icon = "__maraxsis__/graphics/technology/hydraulic-tech-card.png"
+    data.raw.technology["hydraulic-science-pack"].localised_name = {"item-name.hydraulic-tech-card"}
+end
 
 data:extend {{
     type = "item",
@@ -45,8 +47,8 @@ data:extend {{
     enabled = false,
     energy_required = 20,
     ingredients = {
-        {type = "item",  name = "hydraulic-research-data", amount = 5},
-        {type = "item",  name = "kr-blank-tech-card",                   amount = 5},
+        {type = "item", name = "hydraulic-research-data", amount = 5},
+        {type = "item", name = "kr-blank-tech-card",      amount = 5},
     },
     results = {
         {type = "item", name = "hydraulic-science-pack", amount = 5},
