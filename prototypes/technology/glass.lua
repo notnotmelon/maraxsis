@@ -125,7 +125,7 @@ data:extend {{
             change = 0.1
         },
     },
-    prerequisites = {"maraxsis-project-seadragon"},
+    prerequisites = {"maraxsis-project-seadragon", "production-science-pack", "utility-science-pack", "metallurgic-science-pack"},
     unit = {
         count_formula = "1.5^L*1000",
         ingredients = {

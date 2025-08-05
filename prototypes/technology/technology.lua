@@ -64,7 +64,7 @@ data:extend {{
             }
         }
     },
-    prerequisites = {"maraxsis-project-seadragon"},
+    prerequisites = {"maraxsis-project-seadragon", "space-science-pack", "production-science-pack", "utility-science-pack", "metallurgic-science-pack", "electromagnetic-science-pack", "agricultural-science-pack"},
     unit = {
         count_formula = "5^(L-1)*5000",
         ingredients = {
