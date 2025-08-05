@@ -1,5 +1,10 @@
 if mods["Krastorio2-spaced-out"] or mods["Krastorio2"] then return end
-if mods["Flare Stack"] then return end
+
+if mods["Flare Stack"] then
+    data.raw.furnace["flare-stack"].module_slots = 1
+    data.raw.furnace["flare-stack"].allowed_effects = {"consumption", "speed", "pollution", "quality"}
+    return
+end
 
 data:extend {{
     type = "item-subgroup",
