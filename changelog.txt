@@ -1,4 +1,26 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.30.41
+Date: 2025-08-05
+  Compatibility:
+    - Added 1 iron plate to hydrolox rocket fuel when k2 is installed.
+    - Added 1 rare metal to the wyrm confinement cell recipe.
+    - Added rare metals to most maraxsis building recipes.
+    - Banned the k2 atmospheric collector and air purifier from placement on maraxsis.
+    - Glass productivity and deepsea research no longer require red, green, and blue sciences while k2 is installed.
+    - Hydro plant fluid void recipes are now disabled if flare stack/cerys are installed.
+    - Hydro plant fluid void recipes are now disabled if k2 is installed.
+    - Hydrolox rocket fuel is now restricted to maraxsis while k2 is installed.
+    - K2 oxygen/hydrogen and maraxsis oxygen/hydrogen are now the same fluid.
+    - Maraxsis now spawns rare metal ore from k2. Triple patch size compared to nauvis!
+    - Renamed maraxsis glass to "Reinforced glass" if k2 is present.
+    - The "glass producitvity" technology now also boosts k2 glass smelting when k2 is installed.
+    - The conduit now requires energy control units and rare metals when k2 is installed.
+    - The K2 quantum computer is now a maraxsis unlock and can only be built in the trench. Added +50% base quality. Replaces "deepsea research".
+    - With K2 installed, increased the energy consumption of the deepsea research station from 5MW to 50MW.
+    - With k2 installed, moved the 5 biter eggs from promethium tech card recipe to the promethium research data recipe.
+  Locale:
+    - Updated description for fishing tower.
+---------------------------------------------------------------------------------------------------
 Version: 1.30.40
 Date: 2025-07-18
   Locale:
