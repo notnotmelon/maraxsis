@@ -58,3 +58,9 @@ data:extend {{
     auto_recycle = false,
     surface_conditions = maraxsis.surface_conditions(),
 }}
+
+table.insert(data.raw.recipe["maraxsis-hydrolox-rocket-fuel"].ingredients, {
+    name = "iron-plate",
+    amount = 1,
+    type = "item"
+})
