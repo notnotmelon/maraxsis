@@ -1,4 +1,9 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.30.45
+Date: 2025-08-05
+  Compatibility:
+    - With cerys installed, the flare stack is now boostable with beacons and has 1 module slot.
+---------------------------------------------------------------------------------------------------
 Version: 1.30.44
 Date: 2025-08-05
   Bugfixes:
