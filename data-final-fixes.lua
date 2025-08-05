@@ -11,6 +11,7 @@ require "compat.visible-planets-in-space"
 require "compat.rocket-silo-construction"
 require "compat.combat-mechanics-overhaul"
 require "compat.castra"
+require "compat.krastorio-2-final-fixes"
 
 if not mods.pystellarexpedition then
     for extractor in pairs(maraxsis_constants.MARAXSIS_SAND_EXTRACTORS) do

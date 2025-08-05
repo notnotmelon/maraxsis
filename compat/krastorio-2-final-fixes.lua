@@ -24,7 +24,7 @@ for _, recipe in pairs(data.raw.recipe) do
 end
 
 for fluid in pairs(fluid_replacements) do
-    data.raw.fluid[fluid] = nil
+    data.raw.fluid[fluid].hidden = true
 end
 
 local fluid_void_recipes_to_delete = table.invert {

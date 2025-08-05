@@ -21,7 +21,6 @@ require "compat.rcu-restored"
 require "compat.aircraft-space-age"
 require "compat.corrundum"
 require "compat.no-quality"
-require "compat.krastorio-2-updates"
 
 local function add_fuel_value(fluid, value)
     fluid = data.raw.fluid[fluid]
