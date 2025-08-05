@@ -80,6 +80,8 @@ data.raw.recipe["maraxsis-conduit"].ingredients = {
     {type = "item", name = "kr-energy-control-unit", amount = 5},
 }
 
+table.insert(data.raw.technology["maraxsis-conduit"].prerequisites, "kr-energy-control-unit")
+
 table.insert(data.raw.technology["maraxsis-glass-productivity"].effects, {
     type = "change-recipe-productivity",
     recipe = "kr-glass",
