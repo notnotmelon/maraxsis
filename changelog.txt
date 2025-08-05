@@ -1,4 +1,9 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.30.44
+Date: 2025-08-05
+  Bugfixes:
+    - Fixed glass productivity and cargo landing pad productivity not having all their science packs as tech prereqs in maraxsis start.
+---------------------------------------------------------------------------------------------------
 Version: 1.30.43
 Date: 2025-08-05
   Bugfixes:
