@@ -79,3 +79,9 @@ data.raw.recipe["maraxsis-conduit"].ingredients = {
     {type = "item", name = "maraxsis-super-sealant-substance", amount = 15},
     {type = "item", name = "kr-energy-control-unit", amount = 5},
 }
+
+table.insert(data.raw.technology["maraxsis-glass-productivity"].effects, {
+    type = "change-recipe-productivity",
+    recipe = "kr-glass",
+    change = 0.1
+})
