@@ -1,4 +1,9 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.30.49
+Date: 2025-08-06
+  Compatibility:
+    - AAI Programmable scanners and controllers can now be built on Maraxsis. Resolves https://github.com/notnotmelon/maraxsis/issues/285
+---------------------------------------------------------------------------------------------------
 Version: 1.30.48
 Date: 2025-08-06
   Changes:
