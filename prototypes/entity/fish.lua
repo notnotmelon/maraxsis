@@ -245,6 +245,7 @@ data:extend {{
     main_product = "maraxsis-microplastics",
     allow_productivity = true,
     auto_recycle = false,
+    always_show_made_in = true,
     surface_conditions = maraxsis.surface_conditions(),
 }}
 add_to_tech("maraxsis-microplastics")
