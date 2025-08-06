@@ -1,4 +1,9 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.30.47
+Date: 2025-08-06
+  Changes:
+    - Fish rendering now always displays the "made-in" section. Resolves https://github.com/notnotmelon/maraxsis/issues/321
+---------------------------------------------------------------------------------------------------
 Version: 1.30.46
 Date: 2025-08-05
   Locale:
