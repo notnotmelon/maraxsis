@@ -50,21 +50,13 @@ make_subgroup("salt", "gf", "intermediate-products", {
     data.raw.recipe["msr-fuel-cell"],
 })
 
-make_subgroup("maraxsis-machines", "fh", "logistics", {
-    data.raw.item["maraxsis-pressure-dome"],
-    data.raw.lamp["maraxsis-pressure-dome-lamp"],
-    data.raw["constant-combinator"]["maraxsis-pressure-dome-combinator"],
-    data.raw.item["maraxsis-empty-research-vessel"],
-    data.raw["simple-entity"]["maraxsis-water-shader-32-1-1"],
-})
-
-local function order_subgroup(prototype, name, order, subgroup)
-    local prototype = data.raw[prototype][name]
+local function order_subgroup(prototype_type, name, order, subgroup)
+    local prototype = data.raw[prototype_type][name]
     if prototype then
         prototype.order = order
         prototype.subgroup = subgroup
     elseif not mods.pystellarexpedition then
-        error("no such prototype: " .. prototype .. "." .. name)
+        error("no such prototype: " .. prototype_type .. "." .. name)
     end
 end
 
@@ -78,7 +70,12 @@ order_subgroup("lamp", "maraxsis-sonar-light-1", "d[radar]-b[sonar]-b[sonar-ligh
 order_subgroup("lamp", "maraxsis-sonar-light-2", "d[radar]-b[sonar]-c[sonar-light-2]", data.raw.item.radar.subgroup)
 order_subgroup("item", "maraxsis-salt-reactor", "h[salt-reactor]-a[reactor]", "energy")
 order_subgroup("item", "maraxsis-oversized-steam-turbine", "h[salt-reactor]-b[oversized-steam-turbine]", "energy")
+order_subgroup("item", "maraxsis-empty-research-vessel", "a[basic-intermediates]-d-b[empty-research-vessel]", "intermediate-product")
 order_subgroup("recipe", "molten-salt", "a[melting]-d[molten-salt]", "vulcanus-processes")
+order_subgroup("item", "maraxsis-pressure-dome", "z-d-a[pressure-dome]", "environmental-protection")
+order_subgroup("lamp", "maraxsis-pressure-dome-lamp", "z-d-b[pressure-dome-lamp]", "environmental-protection")
+order_subgroup("constant-combinator", "maraxsis-pressure-dome-combinator", "z-d-c[pressure-dome-lamp]", "environmental-protection")
+order_subgroup("simple-entity", "maraxsis-water-shader", "z", "grass")
 
 order_subgroup("fluid", "maraxsis-saline-water", "f[maraxsis-fluids]-a[saline-water]", "fluid")
 order_subgroup("fluid", "maraxsis-brackish-water", "f[maraxsis-fluids]-b[brackish-water]", "fluid")
