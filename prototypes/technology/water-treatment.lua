@@ -65,9 +65,14 @@ data:extend {{
     flow_to_energy_ratio = data.raw.fluid["water"].flow_to_energy_ratio,
 }}
 
+local electrolysis_recipe_name = "salt"
+if mods.shchierbin then
+    electrolysis_recipe_name = "maraxsis-salt"
+end
+
 data:extend {{
     type = "recipe",
-    name = "salt",
+    name = electrolysis_recipe_name,
     enabled = false,
     energy_required = 5,
     ingredients = {
@@ -86,7 +91,7 @@ data:extend {{
     main_product = "salt",
     localised_name = {"recipe-name.salt"},
 }}
-add_to_tech("salt")
+add_to_tech(electrolysis_recipe_name)
 
 data:extend {{
     type = "recipe",
