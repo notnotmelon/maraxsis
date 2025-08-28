@@ -51,34 +51,44 @@ end
 
 ducts["maraxsis-trench-duct"] = true
 
--- allow rocket fuel and nuclear fuel to be used in submarines
-local fuel_category = table.deepcopy(data.raw["fuel-category"]["chemical"])
-fuel_category.name = "rocket-fuel"
-fuel_category.localised_name = {"fuel-category-name.chemical"}
-data:extend {fuel_category}
-local fuel_category = table.deepcopy(data.raw["fuel-category"]["chemical"])
-fuel_category.name = "nuclear-fuel"
-fuel_category.localised_name = {"fuel-category-name.chemical"}
-data:extend {fuel_category}
+if mods.pystellarexpedition then
+    data.raw["spider-vehicle"]["maraxsis-nuclear-submarine"].energy_source.fuel_categories = {"fuelrod"}
+    data.raw["spider-vehicle"]["spidertron-enhancements-dummy-maraxsis-nuclear-submarine"].energy_source.fuel_categories = {"fuelrod"}
+    goto dont_run_fuel_category_changes
+end
 
-data.raw.item["rocket-fuel"].fuel_category = "rocket-fuel"
-data.raw.item["nuclear-fuel"].fuel_category = "nuclear-fuel"
+do
+    -- allow rocket fuel and nuclear fuel to be used in submarines
+    local fuel_category = table.deepcopy(data.raw["fuel-category"]["chemical"])
+    fuel_category.name = "rocket-fuel"
+    fuel_category.localised_name = {"fuel-category-name.chemical"}
+    data:extend {fuel_category}
+    local fuel_category = table.deepcopy(data.raw["fuel-category"]["chemical"])
+    fuel_category.name = "nuclear-fuel"
+    fuel_category.localised_name = {"fuel-category-name.chemical"}
+    data:extend {fuel_category}
 
-for entity_type in pairs(defines.prototypes.entity) do
-    for _, entity in pairs(data.raw[entity_type] or {}) do
-        local burner = entity.burner or entity.energy_source
-        if not burner then goto continue end
-        if burner.type ~= "burner" then goto continue end
+    data.raw.item["rocket-fuel"].fuel_category = "rocket-fuel"
+    data.raw.item["nuclear-fuel"].fuel_category = "nuclear-fuel"
 
-        burner.fuel_categories = burner.fuel_categories or {"chemical"}
-        if table.find(burner.fuel_categories, "chemical") then
-            table.insert(burner.fuel_categories, "rocket-fuel")
-            table.insert(burner.fuel_categories, "nuclear-fuel")
+    for entity_type in pairs(defines.prototypes.entity) do
+        for _, entity in pairs(data.raw[entity_type] or {}) do
+            local burner = entity.burner or entity.energy_source
+            if not burner then goto continue end
+            if burner.type ~= "burner" then goto continue end
+
+            burner.fuel_categories = burner.fuel_categories or {"chemical"}
+            if table.find(burner.fuel_categories, "chemical") then
+                table.insert(burner.fuel_categories, "rocket-fuel")
+                table.insert(burner.fuel_categories, "nuclear-fuel")
+            end
+
+            ::continue::
         end
-
-        ::continue::
     end
 end
+
+::dont_run_fuel_category_changes::
 
 -- add maraxsis crafting categories to existing crafting machines
 local function add_crafting_category_if_other_category_exists(category_to_find, category_to_add)
