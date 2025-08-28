@@ -1,5 +1,4 @@
 function maraxsis.atmosphere_consumption(quality)
-    if quality.hidden then error("hidden quality") end
     local quality_level = quality.level + 1
     if quality.name == "legendary" then quality_level = 5 end
     local consumption_per_second
@@ -12,7 +11,7 @@ function maraxsis.atmosphere_consumption(quality)
 end
 
 for _, quality in pairs(data.raw.quality) do
-    if quality.hidden then goto continue end
+    if quality.hidden and quality.name ~= "normal" then goto continue end
 
     local _, energy_consumption = maraxsis.atmosphere_consumption(quality)
 
