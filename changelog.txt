@@ -1,4 +1,10 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.30.52
+Date: 2025-08-28
+  Compatibility:
+    - Fixed crash when placing pressure dome with "no quality" mod.
+    - Use fuel rods for nuclear submarine if pystellarexpedition is installed.
+---------------------------------------------------------------------------------------------------
 Version: 1.30.51
 Date: 2025-08-26
   Locale:
