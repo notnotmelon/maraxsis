@@ -99,6 +99,7 @@ scale_sprite_recursive(fishing_tower.crane.parts)
 fishing_tower.collision_box = {{-1.9, -1.9}, {1.9, 1.9}}
 fishing_tower.selection_box = {{-2, -2}, {2, 2}}
 fishing_tower.emissions_per_second = nil
+fishing_tower.accepted_seeds = {"maraxsis-fish-food"}
 fishing_tower.energy_source.emissions_per_minute = nil
 fishing_tower.radius_visualisation_picture = {
     filename = "__maraxsis__/graphics/entity/fishing-tower/radius-visualization.png",
