@@ -1,4 +1,9 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.30.53
+Date: 2025-09-05
+  Changes:
+    - Fishing tower now only accepts maraxsis-fish-food ([#329](https://github.com/notnotmelon/maraxsis/issues/329))
+---------------------------------------------------------------------------------------------------
 Version: 1.30.52
 Date: 2025-08-28
   Compatibility:
