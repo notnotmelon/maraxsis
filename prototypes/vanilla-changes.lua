@@ -17,14 +17,12 @@ if not mods.pystellarexpedition then
     end
 end
 
-if settings.startup["maraxsis-add-hydraulic-science"].value then
+if settings.startup["maraxsis-add-hydraulic-science"].value and not mods.pystellarexpedition then
     local function add_hydraulic_pack(tech_name, direct_prereq)
         local tech = data.raw.technology[tech_name]
         if not tech then return end
 
-        if not mods.pystellarexpedition then
-            if tech.unit and tech.unit.ingredients then table.insert(tech.unit.ingredients, {"hydraulic-science-pack", 1}) end
-        end
+        if tech.unit and tech.unit.ingredients then table.insert(tech.unit.ingredients, {"hydraulic-science-pack", 1}) end
         if direct_prereq and tech.prerequisites then table.insert(tech.prerequisites, "maraxsis-project-seadragon") end
     end
 
