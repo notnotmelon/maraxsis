@@ -151,6 +151,3 @@ data.raw.recipe["maraxsis-microplastics"].ingredients = {
     {type = "item", name = "maraxsis-tropical-fish",   amount = 1},
     {type = "item", name = "shotgun-shell", amount = 1},
 }
-
-data.raw.fluid["kr-hydrogen"].auto_barrel = false
-data.raw.fluid["kr-oxygen"].auto_barrel = false
