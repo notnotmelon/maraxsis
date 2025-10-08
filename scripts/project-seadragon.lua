@@ -11,8 +11,5 @@ maraxsis.on_event(maraxsis.events.on_built(), function(event)
     if entity.surface.name == "maraxsis" then
         entity.set_recipe("maraxsis-rocket-part")
         entity.recipe_locked = true
-    else
-        entity.set_recipe("rocket-part")
-        entity.recipe_locked = true
     end
 end)
