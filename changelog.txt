@@ -1,4 +1,9 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.30.58
+Date: 2025-10-10
+  Compatibility:
+    - More intelligently overrite project seadraon recipe on the rocket silo if PlanetsLib is installed.
+---------------------------------------------------------------------------------------------------
 Version: 1.30.57
 Date: 2025-10-10
   Locale:
