@@ -1,4 +1,10 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.30.59
+Date: 2026-01-04
+  Locale:
+    - locale czech ([#355](https://github.com/notnotmelon/maraxsis/issues/355))
+    - Update Japanese locale ([#360](https://github.com/notnotmelon/maraxsis/issues/360))
+---------------------------------------------------------------------------------------------------
 Version: 1.30.58
 Date: 2025-10-10
   Compatibility:
