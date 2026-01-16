@@ -4,7 +4,7 @@ if mods["Krastorio2-spaced-out"] or mods["Krastorio2"] then
     return
 end
 
-if mods["Flare Stack"] then
+if mods["Flare Stack"] and settings.startup["maraxsis-flare-stack-compat"].value == "true" then
     data.raw["assembling-machine"]["maraxsis-hydro-plant"].localised_description = {"entity-description.maraxsis-hydro-plant-cerys"}
     data.raw["assembling-machine"]["maraxsis-hydro-plant-extra-module-slots"].localised_description = {"entity-description.maraxsis-hydro-plant-cerys"}
     data.raw.furnace["flare-stack"].module_slots = 1
