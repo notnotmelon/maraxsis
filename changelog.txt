@@ -1,4 +1,9 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.30.66
+Date: 2026-01-18
+  Compatibility:
+    - Fixed crash with Shchierbin. Resolves https://github.com/notnotmelon/maraxsis/issues/353
+---------------------------------------------------------------------------------------------------
 Version: 1.30.65
 Date: 2026-01-18
   Compatibility:
