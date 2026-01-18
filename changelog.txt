@@ -1,4 +1,9 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.30.69
+Date: 2026-01-18
+  Bugfixes:
+    - Fixed being able to stack infinite dome ghosts in the same spot. Resolves https://github.com/notnotmelon/maraxsis/issues/359
+---------------------------------------------------------------------------------------------------
 Version: 1.30.68
 Date: 2026-01-18
   Bugfixes:
