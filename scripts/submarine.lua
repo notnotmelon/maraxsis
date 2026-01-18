@@ -1,9 +1,20 @@
 local TRENCH_MOVEMENT_FACTOR = maraxsis_constants.TRENCH_MOVEMENT_FACTOR
 local SUBMARINES = maraxsis_constants.SUBMARINES
 
+local function trench_generation_sanity_check()
+    local trench = game.surfaces["maraxsis-trench"]
+    local maraxsis = game.surfaces["maraxsis"]
+    if trench and maraxsis then
+        local mgs = trench.map_gen_settings
+        mgs.seed = maraxsis.map_gen_settings.seed
+        trench.map_gen_settings = mgs
+    end
+end
+
 maraxsis.on_event(maraxsis.events.on_init(), function()
     storage.submarines = storage.submarines or {}
     storage.previous_spidertron_remote_selection = storage.previous_spidertron_remote_selection or {}
+    trench_generation_sanity_check()
 end)
 
 maraxsis.on_event(maraxsis.events.on_built(), function(event)
@@ -28,6 +39,7 @@ local function exit_submarine(event)
     player.vehicle.set_driver(nil)
     player.driving = false
     if not safe_position then return end
+    trench_generation_sanity_check()
     player.teleport(safe_position)
 end
 maraxsis.register_delayed_function("exit_submarine", exit_submarine)
@@ -184,6 +196,7 @@ local function descend_or_ascend(submarine)
         end
     end
 
+    trench_generation_sanity_check()
     submarine.teleport(target_position, target_surface, true)
 
     for _, player in pairs(players_to_open_gui) do
@@ -202,11 +215,13 @@ local function descend_or_ascend(submarine)
     end
 
     if passenger and passenger.physical_vehicle == submarine then
+        trench_generation_sanity_check()
         passenger.teleport(target_position, target_surface, true)
         maraxsis.execute_later("enter_submarine", 1, passenger, submarine)
     end
 
     if driver and driver.physical_vehicle == submarine then
+        trench_generation_sanity_check()
         driver.teleport(target_position, target_surface, true)
         maraxsis.execute_later("enter_submarine", 1, driver, submarine)
     end
@@ -233,6 +248,7 @@ local function descend_or_ascend_character(character)
     maraxsis.execute_later("play_submerge_sound", 1, old_surface, old_position)
     maraxsis.execute_later("play_submerge_sound", 1, target_surface, target_position)
 
+    trench_generation_sanity_check()
     character.teleport(target_position, target_surface, true)
 
     script.raise_event("maraxsis-on-submerged", {
@@ -380,5 +396,6 @@ maraxsis.on_event(defines.events.on_player_respawned, function(event)
 
     local position = player.position
     local position = {x = position.x + 7, y = position.y - 4}
+    trench_generation_sanity_check()
     submarine_to_teleport.teleport(position, player.surface_index, true, false)
 end)
