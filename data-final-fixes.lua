@@ -19,6 +19,21 @@ if not mods.pystellarexpedition then
         local mask = collision_mask_util.get_mask(data.raw["mining-drill"][extractor])
         mask.layers[maraxsis_dome_collision_mask] = true
         data.raw["assembling-machine"][extractor .. "-sand-extractor"].collision_mask = mask
+
+        -- https://github.com/notnotmelon/maraxsis/issues/342
+        local seen = {extractor}
+        local function update_next_upgrade_masks(mining_drill)
+            if type(mining_drill) ~= "string" then return end
+            for _, v in pairs(seen) do
+                if v == mining_drill then return end
+            end
+            seen[#seen+1] = mining_drill
+            mining_drill = data.raw["mining-drill"][mining_drill]
+            if not mining_drill then return end
+            mining_drill.collision_mask = mask
+            update_next_upgrade_masks(mining_drill.next_upgrade)
+        end
+        update_next_upgrade_masks(data.raw["mining-drill"][extractor].next_upgrade)
     end
 end
 
