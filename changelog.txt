@@ -1,4 +1,12 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.30.65
+Date: 2026-01-18
+  Compatibility:
+    - Fixed crash when combined with Water-refining. Resolves https://github.com/notnotmelon/maraxsis/issues/352
+  Bugfixes:
+    - Fixed crash with krastorio 2 compatiblity. Resolves https://github.com/notnotmelon/maraxsis/issues/345
+    - Fixed toolbelt equipment inventory bonus would be lost when a submarine submerges. Resolves https://github.com/notnotmelon/maraxsis/issues/341
+---------------------------------------------------------------------------------------------------
 Version: 1.30.64
 Date: 2026-01-18
   Bugfixes:
