@@ -1,9 +1,11 @@
 --note: much of this code is duplicated from the nightvision script.
 
-maraxsis.on_event(maraxsis.events.on_init(), function()
+local function init()
     storage.external_modifiers = storage.external_modifiers or {light_radius = {}, swim_speed = {}}
     storage.base_character_values = storage.base_character_values or {light_radius = 0, swim_speed = 0}
-end)
+end
+
+maraxsis.on_event(maraxsis.events.on_init(), init)
 
 local is_abyssal_diving_gear = {
     ["maraxsis-abyssal-diving-gear"] = true,
@@ -16,6 +18,7 @@ local function get_quality_buff(quality_level)
 end
 
 local function get_abyssal_light_size(player)
+    init()
     local character = player.character
     local light_size = storage.base_character_values["light_radius"]
     if not character then return light_size end
@@ -47,6 +50,7 @@ maraxsis.is_wearing_abyssal_diving_gear = function(player)
 end
 
 local function update_abyssal_light_cone(player)
+    init()
     local is_on_maraxsis = not not maraxsis_constants.MARAXSIS_SURFACES[player.physical_surface.name]
     storage.abyssal_light_cones = storage.abyssal_light_cones or {}
 
@@ -150,6 +154,7 @@ end)
 ---@param modifier_type string string tied to the type of parameter to control. See relevant dic
 ---@param modifier double The actual bonus value to be added
 local function set_modifier(source_key, modifier_type, modifier)
+    init()
     local modifier_list = storage.external_modifiers[modifier_type]
     assert(modifier_list, "Invalid modifier type for Maraxsis: " .. modifier_type)
 
