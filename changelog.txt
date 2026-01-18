@@ -1,4 +1,9 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.30.70
+Date: 2026-01-18
+  Bugfixes:
+    - Fixed can't connect pressure dome wire to a combinator output side (only input side). Resolves https://github.com/notnotmelon/maraxsis/issues/340
+---------------------------------------------------------------------------------------------------
 Version: 1.30.69
 Date: 2026-01-18
   Bugfixes:
