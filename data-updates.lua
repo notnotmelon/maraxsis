@@ -1,5 +1,4 @@
 require "prototypes.vanilla-changes"
-require "prototypes.spidertron-patrols"
 require "prototypes.item-weight"
 require "prototypes.default-import-location"
 require "prototypes.item-sounds"

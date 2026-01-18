@@ -4,6 +4,7 @@ _G.maraxsis = {}
 _G.maraxsis_constants = data.raw["mod-data"]["maraxsis-constants"].data
 require "lib.lib"
 
+require "prototypes.spidertron-patrols"
 require "prototypes.entity.water-shader"
 require "prototypes.entity.submarine"
 require "prototypes.entity.rocks"
