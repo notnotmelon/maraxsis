@@ -424,3 +424,12 @@ data:extend {{
     filename = "__maraxsis__/sounds/submerge.ogg",
     speed = 0.5
 }}
+
+-- https://github.com/notnotmelon/maraxsis/issues/341
+local toolbelt_equipment = table.deepcopy(data.raw["inventory-bonus-equipment"]["toolbelt-equipment"])
+toolbelt_equipment.name = "maraxsis-toolbelt-equipment"
+toolbelt_equipment.shape = {width = 0, height = 0, type = "full"}
+toolbelt_equipment.hidden = true
+toolbelt_equipment.take_result = "toolbelt-equipment"
+toolbelt_equipment.inventory_size_bonus = 1
+data:extend{toolbelt_equipment}

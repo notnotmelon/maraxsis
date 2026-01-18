@@ -165,6 +165,57 @@ local function play_submerge_sound(target, position)
 end
 maraxsis.register_delayed_function("play_submerge_sound", play_submerge_sound)
 
+-- https://github.com/notnotmelon/maraxsis/issues/341
+maraxsis.register_delayed_function("post_sub_teleport_inventory_restoration", function(submarine, toolbelt, lua_inventory, inventory_indicies)
+    if not submarine.valid then
+        if lua_inventory.valid then
+            lua_inventory.destroy()
+        end
+        return
+    end
+
+    local function remove_hidden_toolbelt_equipment()
+        local grid = submarine.grid
+        if not grid then return end
+        if not toolbelt.valid then return end
+        assert(grid.take{equipment = toolbelt})
+    end
+
+    local function transfer_inventory_back_to_submarine()
+        if not lua_inventory.valid then return end
+        local inventory = submarine.get_inventory(defines.inventory.spider_trunk)
+        for _, i in pairs(inventory_indicies) do
+            lua_inventory[i].swap_stack(inventory[i])
+        end
+        lua_inventory.destroy()
+    end
+
+    remove_hidden_toolbelt_equipment()
+    transfer_inventory_back_to_submarine()
+end)
+local function teleport_submarine(submarine, target_position, target_surface)
+    local grid = submarine.grid
+    if not grid or grid.inventory_bonus == 0 then
+        submarine.teleport(target_position, target_surface, true, false)
+        return
+    end
+    local inventory = submarine.get_inventory(defines.inventory.spider_trunk)
+    local lua_inventory = game.create_inventory(#inventory)
+    local inventory_indicies = {}
+    for i = 1, #inventory do
+        local stack = inventory[i]
+        if stack and stack.valid_for_read then
+            lua_inventory[i].swap_stack(stack)
+            inventory_indicies[#inventory_indicies+1] = i
+        end
+    end
+    inventory.clear()
+    submarine.teleport(target_position, target_surface, true, false)
+    local toolbelt = grid.put{position = {0, 0}, name = "maraxsis-toolbelt-equipment"}
+    assert(toolbelt)
+    maraxsis.execute_later("post_sub_teleport_inventory_restoration", 1, submarine, toolbelt, lua_inventory, inventory_indicies)
+end
+
 ---transfers a submarine between surfaces
 ---@param submarine LuaEntity
 ---@return boolean true if the submarine was successfully transferred
@@ -199,7 +250,7 @@ local function descend_or_ascend(submarine)
     end
 
     trench_generation_sanity_check()
-    submarine.teleport(target_position, target_surface, true)
+    teleport_submarine(submarine, target_position, target_surface)
 
     for _, player in pairs(players_to_open_gui) do
         if player.surface ~= target_surface then
@@ -399,5 +450,5 @@ maraxsis.on_event(defines.events.on_player_respawned, function(event)
     local position = player.position
     local position = {x = position.x + 7, y = position.y - 4}
     trench_generation_sanity_check()
-    submarine_to_teleport.teleport(position, player.surface_index, true, false)
+    teleport_submarine(submarine_to_teleport, position, player.surface_index)
 end)
