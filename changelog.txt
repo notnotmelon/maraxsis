@@ -1,4 +1,9 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.30.63
+Date: 2026-01-18
+  Compatibility:
+    - The hydro plant can once again void any fluid, regardless if cerys is installed or not.
+---------------------------------------------------------------------------------------------------
 Version: 1.30.62
 Date: 2026-01-18
   Bugfixes:
