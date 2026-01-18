@@ -6,7 +6,6 @@ local function set_default_import_location(item, planet)
             return
         end
     end
-    if not mods.pystellarexpedition then error("Item not found: " .. item, 2) end
 end
 
 set_default_import_location("maraxsis-big-cliff-explosives", "nauvis")
