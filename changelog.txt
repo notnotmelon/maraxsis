@@ -1,4 +1,9 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.30.68
+Date: 2026-01-18
+  Bugfixes:
+    - Fixed maraxsis mining drill collision mask changes not respecting the `next_upgrade` field. Resolves https://github.com/notnotmelon/maraxsis/issues/342
+---------------------------------------------------------------------------------------------------
 Version: 1.30.67
 Date: 2026-01-18
   Bugfixes:
