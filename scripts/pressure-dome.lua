@@ -982,7 +982,19 @@ maraxsis.on_event(maraxsis.events.on_built(), function(event)
 
     entity.destroy()
 
-    local new_dome_ghost = surface.create_entity {
+    -- https://github.com/notnotmelon/maraxsis/issues/359
+    local existing = surface.find_entities_filtered{
+        position = position,
+        name = "entity-ghost",
+        inner_name = "maraxsis-pressure-dome"
+    }
+    for _, existing in pairs(existing) do
+        if existing.position.x == position.x and existing.position.y == position.y then
+            return
+        end
+    end
+
+    surface.create_entity {
         name = is_ghost and "entity-ghost" or "maraxsis-pressure-dome",
         inner_name = is_ghost and "maraxsis-pressure-dome" or nil,
         tags = tags,
