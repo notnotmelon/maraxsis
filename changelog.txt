@@ -1,4 +1,9 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.30.67
+Date: 2026-01-18
+  Bugfixes:
+    - Fixed incorrect recycling recipe for vechicle docks. Resolves https://github.com/notnotmelon/maraxsis/issues/351
+---------------------------------------------------------------------------------------------------
 Version: 1.30.66
 Date: 2026-01-18
   Compatibility:
