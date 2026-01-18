@@ -948,7 +948,7 @@ maraxsis.on_event(maraxsis.events.on_entity_clicked(), function(event)
     if drag_target then
         local entity = player.drag_target.target_entity
         if distance(entity, light) < 24 then
-            local wire = entity.get_wire_connector(wire_type, true)
+            local wire = entity.get_wire_connector(drag_target.wire_connector_id, true)
             local light_wire = light.get_wire_connector(wire_type, false)
             local success = wire.connect_to(light_wire, false)
             if not success then
