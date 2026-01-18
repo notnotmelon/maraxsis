@@ -1,4 +1,9 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.30.62
+Date: 2026-01-18
+  Bugfixes:
+    - Fixed trench generation getting corrupted in some cases. Resolves https://github.com/notnotmelon/maraxsis/issues/314
+---------------------------------------------------------------------------------------------------
 Version: 1.30.61
 Date: 2026-01-18
   Bugfixes:
