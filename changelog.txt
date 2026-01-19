@@ -1,4 +1,9 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.30.73
+Date: 2026-01-19
+  Compatibility:
+    - The pressure dome is now ignored by mouse over construction. Resolves https://github.com/notnotmelon/maraxsis/issues/312
+---------------------------------------------------------------------------------------------------
 Version: 1.30.72
 Date: 2026-01-19
   Bugfixes:
