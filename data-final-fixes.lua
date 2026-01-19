@@ -18,6 +18,7 @@ if not mods.pystellarexpedition then
     for extractor in pairs(maraxsis_constants.MARAXSIS_SAND_EXTRACTORS) do
         local mask = collision_mask_util.get_mask(data.raw["mining-drill"][extractor])
         mask.layers[maraxsis_dome_collision_mask] = true
+        data.raw["mining-drill"][extractor].collision_mask = mask
         data.raw["assembling-machine"][extractor .. "-sand-extractor"].collision_mask = mask
 
         -- https://github.com/notnotmelon/maraxsis/issues/342
