@@ -57,21 +57,6 @@ data:extend {maraxsis.merge(data.raw.planet.gleba, {
     flying_robot_energy_usage_multiplier = 1.5, -- todo: this doesnt work
 })}
 
-data.raw.planet["maraxsis-trench"].persistent_ambient_sounds.wind = {
-    sound = {
-        filename = "__maraxsis__/sounds/trench-ambiance.ogg",
-        volume = 0.8
-    },
-}
-
-data.raw.planet["maraxsis"].persistent_ambient_sounds.wind = {
-    sound = {
-        filename = "__maraxsis__/sounds/maraxsis-ambiance.ogg",
-        volume = 0.8,
-        speed = 0.5
-    },
-}
-
 data:extend {{
     type = "space-connection",
     name = "vulcanus-maraxsis",

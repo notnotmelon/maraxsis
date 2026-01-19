@@ -49,6 +49,7 @@ require "prototypes.tiles"
 require "prototypes.planet.space-location"
 require "prototypes.achievements"
 require "prototypes.custom-input"
+require "prototypes.music"
 if not mods.pystellarexpedition then require "prototypes.tips-and-tricks" end
 
 require "compat.krastorio-2"

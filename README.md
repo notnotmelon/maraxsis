@@ -80,6 +80,15 @@ Here's a sample of some of the technologies available on Maraxsis:
 
 ---
 
+### Music
+
+Maraxsis features a custom soundtrack, composed by the incredible [fluidnatalie](https://mods.factorio.com/user/FluidNatalie)!
+There are nine tracks in total,.5 for the seabed, 3 for the trench, and one hero track.
+
+Full discography: https://github.com/notnotmelon/maraxsis/tree/main/sounds/music
+
+---
+
 ### Etymology
 
 The name "Maraxsis" draws inspiration from Frank Herbert's Arrakis. The two worlds can be considered "equal but opposite". Both lack essential resources; land on Maraxsis, water on Arrakis; making survival difficult.
@@ -93,8 +102,9 @@ This connection is mirrored in their names. The shared suffixes “-kis” or �
 
 ### Credits
 
-Maraxsis would not be possible without the help of these amazing, fantastic, incredible open source projects.
+Maraxsis would not be possible without the help of these amazing, fantastic, incredible people.
 
+ - Music - [fluidnatalie](https://mods.factorio.com/user/FluidNatalie)
  - Unused Renders - [malcolmriley](https://github.com/malcolmriley)
  - Tropical Fish Pack - [ZivixLLC](https://github.com/ZivixLLC)
  - Hydro Plant, Regulator, Salt Reactor, & Conduit - [Hurricane](https://mods.factorio.com/user/Hurricane046)
