@@ -85,7 +85,7 @@ Here's a sample of some of the technologies available on Maraxsis:
 Maraxsis features a custom soundtrack, composed by the incredible [fluidnatalie](https://mods.factorio.com/user/FluidNatalie)!
 There are nine tracks in total, 5 for the seabed, 3 for the trench, and one hero track.
 
-Full discography: https://github.com/notnotmelon/maraxsis/tree/main/sounds/music
+Full discography: https://anagramofme.bandcamp.com/album/ost-maraxsis
 
 ---
 
