@@ -12,12 +12,26 @@ local function transfer_equipment_grid(old_armor, new_armor)
             position = equipment.position,
             quality = equipment.quality,
             ghost = is_ghost, -- vanilla bug: this just deletes the ghosts if true
-            by_player = player,
         }
         if not new_equipment then goto continue end
         new_equipment.energy = equipment.energy
         if equipment.type == "energy-shield-equipment" then
             new_equipment.shield = equipment.shield
+        elseif equipment.type == "generator-equipment" and equipment.burner then
+            new_equipment.burner.heat = equipment.burner.heat
+            new_equipment.burner.currently_burning = equipment.burner.currently_burning
+            new_equipment.burner.remaining_burning_fuel = equipment.burner.remaining_burning_fuel
+            for target_inventory, source_inventory in pairs{
+                [new_equipment.burner.inventory] = equipment.burner.inventory,
+                [new_equipment.burner.burnt_result_inventory] = equipment.burner.burnt_result_inventory,
+            } do
+                for i = 1, #source_inventory do
+                    local stack = source_inventory[i]
+                    if stack and stack.valid_for_read then
+                        stack.swap_stack(target_inventory[i])
+                    end
+                end
+            end
         end
         ::continue::
     end
