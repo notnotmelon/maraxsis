@@ -90,6 +90,7 @@ data:extend {{
     drawing_box = collision_box(),
     collision_mask = {colliding_with_tiles_only = true, layers = {["empty_space"] = true}},
     render_layer = "higher-object-above",
+    moc_ignore = true,
     base = {
         layers = table.array_combine({
             cage_shadow,
