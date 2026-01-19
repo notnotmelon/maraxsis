@@ -59,7 +59,6 @@ data:extend {{
     results = {
         {type = "item", name = "maraxsis-super-sealant-substance", amount = 1},
     },
-    enabled = false,
     category = "chemistry-or-cryogenics",
     allow_productivity = true,
     auto_recycle = false,
@@ -85,3 +84,45 @@ data:extend {{
     weight = data.raw.item["rocket-fuel"].weight,
     pictures = super_sealant_substance_variants,
 }}
+
+-- Adapted from Rubia & Alternative Rocket Sprite Extension.
+local rocket = util.table.deepcopy(data.raw["rocket-silo-rocket"]["rocket-silo-rocket"])
+rocket.name = "maraxsis-rocket-silo-rocket"
+rocket.localised_name = {"entity-name.rocket-silo-rocket"}
+rocket.localised_description = {"entity-description.rocket-silo-rocket"}
+rocket.hidden = true
+rocket.hidden_in_factoriopedia = true
+rocket.rocket_sprite = {
+    filename = "__maraxsis__/graphics/entity/rocket-silo/rocket.png",
+    height = 290,
+    width = 290,
+    scale = 1.2,
+    shift = {0, 6}
+}
+rocket.rocket_rise_offset = {0, -7}
+rocket.rocket_smoke_bottom1_animation.scale = 0.01
+rocket.rocket_smoke_bottom1_animation.hr_version = nil
+rocket.rocket_smoke_bottom2_animation.scale = 0.01
+rocket.rocket_smoke_bottom2_animation.hr_version = nil
+rocket.rocket_smoke_top1_animation.scale = 0.01
+rocket.rocket_smoke_top1_animation.hr_version = nil
+rocket.rocket_smoke_top2_animation.scale = 0.01
+rocket.rocket_smoke_top2_animation.hr_version = nil
+rocket.rocket_smoke_top3_animation.scale = 0.01
+rocket.rocket_smoke_top3_animation.hr_version = nil
+
+local silo = util.table.deepcopy(data.raw["rocket-silo"]["rocket-silo"])
+silo.name = "maraxsis-rocket-silo"
+silo.localised_name = {"entity-name.rocket-silo"}
+silo.localised_description = {"entity-description.rocket-silo"}
+silo.rocket_entity = "maraxsis-rocket-silo-rocket"
+silo.fixed_recipe = "maraxsis-rocket-part"
+silo.hidden_in_factoriopedia = true
+silo.disabled_when_recipe_not_researched = true
+silo.placeable_by = {{item = "rocket-silo", count = 1}}
+silo.flags = {"placeable-player", "player-creation", "not-in-made-in"}
+silo.logistic_trash_inventory_size = 1
+silo.hidden = true
+silo.hidden_in_factoriopedia = true
+
+data:extend { rocket, silo }

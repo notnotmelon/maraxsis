@@ -50,13 +50,6 @@ if not mods.pystellarexpedition then
     end
 end
 
-for _, silo in pairs(data.raw["rocket-silo"]) do
-    if silo.fixed_recipe == "rocket-part" then
-        silo.fixed_recipe = nil
-        silo.disabled_when_recipe_not_researched = true
-    end
-end
-
 local function add_surface_condition(recipe, condition)
     recipe.surface_conditions = recipe.surface_conditions or {}
     table.insert(recipe.surface_conditions, condition)
