@@ -26,11 +26,11 @@ data:extend {{
     },
     research_trigger = {
         type = "craft-item",
-        item = "maraxsis-wyrm-specimen",
+        item = "maraxsis-goozma-specimen",
         amount = 1,
     },
     prerequisites = {
-        "maraxsis-wyrm-confinement",
+        "maraxsis-goozma-confinement",
     },
     order = "eg[hydraulic-science-pack]",
 }}
@@ -41,7 +41,7 @@ data:extend {{
     enabled = false,
     energy_required = 30,
     ingredients = {
-        {type = "item",  name = "maraxsis-wyrm-specimen", amount = 1},
+        {type = "item",  name = "maraxsis-goozma-specimen", amount = 1},
         {type = "item",  name = "salt",                   amount = 1},
         {type = "fluid", name = "maraxsis-saline-water",  amount = 300},
     },

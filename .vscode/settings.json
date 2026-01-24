@@ -22,5 +22,15 @@
     "Lua.diagnostics.disable": [
         "lowercase-global"
     ],
-    "Lua.runtime.version": "Lua 5.2"
+    "Lua.runtime.version": "Lua 5.2",
+    "Lua.format.defaultConfig": {
+        "call_arg_parentheses": "remove_table_only",
+        "max_line_length": "999999",
+        "space_around_table_field_list": "false",
+        "indent_style": "space",
+        "indent_size": "4",
+        "space_around_table_append_operator": "false",
+        "space_inside_square_brackets": "false",
+        "quote_style": "double"
+    }
 }

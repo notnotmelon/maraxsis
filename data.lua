@@ -17,6 +17,7 @@ require "prototypes.entity.fishing-tower"
 require "prototypes.entity.bubbles"
 require "prototypes.entity.coral"
 require "prototypes.entity.offshore-pump"
+require "prototypes.entity.goozma"
 if not mods.pystellarexpedition then require "prototypes.entity.salt-reactor" end
 if not mods.pystellarexpedition then require "prototypes.entity.hydro-plant" end
 if not mods.pystellarexpedition then require "prototypes.entity.sonar" end
@@ -31,7 +32,7 @@ require "prototypes.technology.depth-charges"
 require "prototypes.technology.atmosphere"
 require "prototypes.technology.project-seadragon"
 if not mods.pystellarexpedition then require "prototypes.technology.glass" end
-if not mods.pystellarexpedition then require "prototypes.technology.wyrm" end
+if not mods.pystellarexpedition then require "prototypes.technology.goozma" end
 if not mods.pystellarexpedition then require "prototypes.technology.recipes" end
 if not mods.pystellarexpedition then require "prototypes.technology.water-treatment" end
 if not mods.pystellarexpedition then require "prototypes.technology.hydraulic-science-pack" end

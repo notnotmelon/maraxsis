@@ -183,7 +183,7 @@ Version: 1.30.41
 Date: 2025-08-05
   Compatibility:
     - Added 1 iron plate to hydrolox rocket fuel when k2 is installed.
-    - Added 1 rare metal to the wyrm confinement cell recipe.
+    - Added 1 rare metal to the goozma confinement cell recipe.
     - Added rare metals to most maraxsis building recipes.
     - Banned the k2 atmospheric collector and air purifier from placement on maraxsis.
     - Glass productivity and deepsea research no longer require red, green, and blue sciences while k2 is installed.
@@ -940,7 +940,7 @@ Date: 2024-12-18
   Balancing:
     - Trench "lava biomes" are now 2x smaller but also 2x more frequent.
   Bugfixes:
-    - Fixed wyrm specimens not accepting productivity modules.
+    - Fixed goozma specimens not accepting productivity modules.
   Sounds:
     - Improved the sound effects for sonar.
 ---------------------------------------------------------------------------------------------------
@@ -1467,7 +1467,7 @@ Date: 2024-12-08
 Version: 1.21.1
 Date: 2024-12-08
   Balancing:
-    - Decreased the craft time for wyrm confinement cells from 10 seconds to 5 seconds.
+    - Decreased the craft time for goozma confinement cells from 10 seconds to 5 seconds.
     - Decreased the tungsten plate requirement in the trench duct from 600 -> 200.
     - Removed heat exchangers from the nuclear submarine recipe. Swapped nuclear reactors for salt reactors.
     - Removed lamps from the pressure dome recipe.
@@ -1694,7 +1694,7 @@ Date: 2024-12-06
     - Reduced the cost of the pressure dome.
     - Reduced the cost of the sonar.
     - Reduced the cost of the submarine and nuclear submarine.
-    - Reduced the cost of the wyrm specimen.
+    - Reduced the cost of the goozma specimen.
 ---------------------------------------------------------------------------------------------------
 Version: 1.19.29
 Date: 2024-12-06
@@ -2287,7 +2287,7 @@ Date: 2024-12-01
 Version: 1.10.13
 Date: 2024-12-01
   Bugfixes:
-    - Fix wyrm specimen being craftable on any surface
+    - Fix goozma specimen being craftable on any surface
 ---------------------------------------------------------------------------------------------------
 Version: 1.10.12
 Date: 2024-12-01

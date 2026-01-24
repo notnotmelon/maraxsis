@@ -14,6 +14,7 @@ require "scripts.trench-duct"
 require "scripts.abyssal-diving-gear"
 require "scripts.remote"
 require "scripts.fishing-tower"
+require "scripts.goozma"
 
 if not script.active_mods.pystellarexpedition then require "scripts.drowning" end
 if not script.active_mods.pystellarexpedition then require "scripts.sonar" end
