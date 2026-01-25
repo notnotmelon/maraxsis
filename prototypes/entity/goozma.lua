@@ -234,6 +234,17 @@ local function make_goozma_segment(base_name, scale, damage_multiplier, health, 
         render_layer = render_layer,
         working_sound = sounds.segment_working_sound,
         created_effect = created_effect,
+        integration_patch = {
+            filename = "__base__/graphics/entity/small-lamp/lamp-light.png",
+            priority = "high",
+            width = 90,
+            height = 78,
+            shift = util.by_pixel(0, -7),
+            scale = 12.5 * scale,
+            tint = {0.1, 0.1, 0.1, 0.1},
+            draw_as_light = true
+        },
+        integration_patch_render_layer = "under-elevated"
         --corpse = base_name .. "-corpse"
     }
 end

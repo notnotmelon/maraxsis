@@ -8,6 +8,7 @@ local function draw_bioluminescese(segment)
         target = segment,
         surface = segment.surface_index,
         time_to_live = 5,
+        color = {0.5, 0.5, 0.5}
     }
     maraxsis.execute_later("draw_bioluminescese", 60, segment)
 end
@@ -30,22 +31,6 @@ maraxsis.on_event(defines.events.on_script_trigger_effect, function(event)
 	local effect_id = event.effect_id
 	if effect_id == "maraxsis-goozma-segment-created" then
 	    local segment = event.target_entity
-		rendering.draw_light {
-            sprite = "utility/light_medium",
-            scale = segment.prototype.collision_box.left_top.x * 2,
-            intensity = 0.02,
-            oriented = true,
-            target = segment,
-            surface = segment.surface_index,
-        }
-        rendering.draw_light {
-            sprite = "utility/light_medium",
-            scale = segment.prototype.collision_box.left_top.x * 0.3,
-            intensity = 0.5,
-            oriented = true,
-            target = segment,
-            surface = segment.surface_index,
-        }
         maraxsis.execute_later("schedule_bioluminescese", 1, segment)
 	end
 end)
