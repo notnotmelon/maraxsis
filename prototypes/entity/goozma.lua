@@ -24,9 +24,13 @@ local function goozma_spritesheet(file_name, is_shadow, is_glow, scale, alpha)
             middle_orientation = 1,
         }
     )
-    if file_name == "goozma-glow" then
-        sprite.filename = "__maraxsis__/graphics/entity/goozma/goozma-glow.png"
-    else
+    if file_name == "goozma-body-glow" then
+        sprite.filename = "__maraxsis__/graphics/entity/goozma/goozma-body-glow.png"
+    elseif file_name == "goozma-head-glow" then
+        sprite.filename = "__maraxsis__/graphics/entity/goozma/goozma-body-glow.png"
+    elseif file_name == "goozma-head" or file_name == "goozma-head-shadow" then
+        sprite.filename = "__maraxsis__/graphics/entity/goozma/goozma-head.png"
+    elseif file_name == "goozma-body"or file_name == "goozma-body-shadow" then
         sprite.filename = "__maraxsis__/graphics/entity/goozma/goozma-body.png"
     end
     return sprite
@@ -188,13 +192,13 @@ local function make_goozma_head(
         },
         animation = {
             layers = {
-                goozma_spritesheet("goozma-body", false, false, 0.5 * scale, 0.7),
-                goozma_spritesheet("goozma-body", false, true, 0.5 * scale, 1),
-                goozma_spritesheet("goozma-shadow", true, false, 0.5 * scale, 1.0),
-                goozma_spritesheet("goozma-glow", false, true, 0.5 * scale, 1.0),
+                goozma_spritesheet("goozma-head", false, false, 0.5 * scale * 0.7, 0.7),
+                goozma_spritesheet("goozma-head", false, true, 0.5 * scale * 0.7, 1),
+                goozma_spritesheet("goozma-head-shadow", true, false, 0.5 * scale * 0.7, 1.0),
+                --goozma_spritesheet("goozma-head-glow", false, true, 0.5 * scale * 0.7, 1.0),
             },
         },
-        render_layer = render_layer,
+        render_layer = "elevated-rail-metal",
         segment_engine = {
             segments = make_goozma_segment_specifications(base_name, segment_scales, scale)
         },
@@ -220,13 +224,13 @@ local function make_goozma_segment(base_name, scale, damage_multiplier, health, 
             layers = {
                 goozma_spritesheet("goozma-body", false, false, 0.5 * scale, 0.7),
                 goozma_spritesheet("goozma-body", false, true, 0.5 * scale, 1),
-                goozma_spritesheet("goozma-shadow", true, false, 0.5 * scale, 1.0),
-                goozma_spritesheet("goozma-glow", false, true, 0.5 * scale, 1.0),
+                goozma_spritesheet("goozma-body-shadow", true, false, 0.5 * scale, 1.0),
+                goozma_spritesheet("goozma-body-glow", false, true, 0.5 * scale, 1.0),
             },
         },
         backward_overlap = 4,
-        forward_padding = -3 * scale, -- tiles
-        backward_padding = 0 * scale, -- tiles
+        forward_padding = -1 * scale, -- tiles
+        backward_padding = -4 * scale, -- tiles
         render_layer = render_layer,
         working_sound = sounds.segment_working_sound,
         created_effect = created_effect,
