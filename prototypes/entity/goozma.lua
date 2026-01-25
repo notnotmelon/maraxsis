@@ -177,9 +177,17 @@ local function make_goozma_head(
         turn_radius = 26 * scale, -- tiles
         patrolling_turn_radius = 26 * scale, -- tiles
         turn_smoothing = 0.75, -- fraction of the total turning range (based on turning radius)
-        roar = sounds.roar,
+        roar = {
+            filename = "__maraxsis__/sounds/goozma-roar.ogg",
+            category = "enemy",
+            priority = 127,
+        },
         roar_probability = sounds.roar_probability,
-        hurt_roar = sounds.hurt_roar,
+        hurt_roar = {
+            filename = "__maraxsis__/sounds/goozma-roar.ogg",
+            category = "enemy",
+            priority = 127,
+        },
         hurt_thresholds = sounds.hurt_thresholds,
         working_sound = {
             sound = {
@@ -232,7 +240,22 @@ local function make_goozma_segment(base_name, scale, damage_multiplier, health, 
         forward_padding = -1 * scale, -- tiles
         backward_padding = -4 * scale, -- tiles
         render_layer = render_layer,
-        working_sound = sounds.segment_working_sound,
+        working_sound = {
+            main_sounds = {
+                sound = {
+                    filename = "__maraxsis__/sounds/YOU ARE BEING HYPNOTIZED.ogg",
+                    category = "enemy",
+                    priority = 127,
+                    volume = 0.5
+                },
+                fade_in_ticks = 4,
+                fade_out_ticks = 20,
+                probability = 1,
+            },
+            use_doppler_shift = true,
+            persistent = false,
+            max_sounds_per_prototype = 4,
+        },
         created_effect = created_effect,
         integration_patch = {
             filename = "__base__/graphics/entity/small-lamp/lamp-light.png",
