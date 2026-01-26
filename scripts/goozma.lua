@@ -1,4 +1,12 @@
-local bioluminescese_flash_parameters = {
+
+maraxsis.on_event(maraxsis.events.on_init(), function()
+    storage.ai_state_cache = storage.ai_state_cache or {}
+    storage.spawn_locations = storage.spawn_locations or {}
+end)
+
+local WANDER_DISTANCE = 20
+
+local BIOLUMINESCENCE_PARAMETERS = {
     [defines.segmented_unit_ai_state.patrolling] = {
         color = {0.5, 0.5, 0.5},
         delay = 240,
@@ -31,10 +39,60 @@ local bioluminescese_flash_parameters = {
     }
 }
 
-local function get_flash_parameters(segment)
-    local state = segment.segmented_unit.get_ai_state()
-    return bioluminescese_flash_parameters[state.type]
+local function save_spawn_location(segmented_unit)
+    local head = segmented_unit.segments[1]
+    storage.spawn_locations[segmented_unit.unit_number] = head.position
 end
+
+
+maraxsis.register_delayed_function("save_spawn_location", function(segment)
+    if not segment.valid then return end
+    if not storage.spawn_locations[segment.segmented_unit.unit_number] then
+        save_spawn_location(segment.segmented_unit)
+    end
+end)
+
+local function go_investigate_spawn_location(segmented_unit)
+    local spawn_location = storage.spawn_locations[segmented_unit.unit_number]
+    if not spawn_location then
+        save_spawn_location(segmented_unit)
+        spawn_location = storage.spawn_locations[segmented_unit.unit_number]
+    end
+
+    local offset_x = math.random(-WANDER_DISTANCE, WANDER_DISTANCE)
+    local offset_y = math.random(-WANDER_DISTANCE, WANDER_DISTANCE)
+
+
+    segmented_unit.set_ai_state{
+        type = defines.segmented_unit_ai_state.investigating,
+        destination = {
+            offset_x + spawn_location.x,
+            offset_y + spawn_location.y,
+        }
+    }
+end
+
+local function get_ai_state(segment)
+    local unit_number = segment.segmented_unit.unit_number
+    local state = storage.ai_state_cache[unit_number]
+    if not state then
+        local segmented_unit = segment.segmented_unit
+        state = segmented_unit.get_ai_state().type
+        if state == defines.segmented_unit_ai_state.patrolling then
+            go_investigate_spawn_location(segmented_unit)
+        end
+        storage.ai_state_cache[unit_number] = state
+    end
+    return state
+end
+
+local function get_flash_parameters(segment)
+    return BIOLUMINESCENCE_PARAMETERS[get_ai_state(segment)]
+end
+
+maraxsis.on_nth_tick(60, function()
+    storage.ai_state_cache = {}
+end)
 
 local function get_segment_index(segment)
     for i, s in pairs(segment.segmented_unit.segments) do
@@ -66,11 +124,13 @@ end
 maraxsis.register_delayed_function("draw_bioluminescese", draw_bioluminescese)
 
 maraxsis.on_event(defines.events.on_script_trigger_effect, function(event)
-	local effect_id = event.effect_id
-	if effect_id == "maraxsis-goozma-segment-created" then
-	    local segment = event.target_entity
-        local flash_parameters = get_flash_parameters(segment)
-        local delay = get_segment_glow_delay(segment, flash_parameters)
-        maraxsis.execute_later("draw_bioluminescese", delay, segment)
-	end
+	if event.effect_id ~= "maraxsis-goozma-segment-created" then
+        return
+    end
+
+    local segment = event.target_entity
+    local flash_parameters = get_flash_parameters(segment)
+    local delay = get_segment_glow_delay(segment, flash_parameters)
+    maraxsis.execute_later("save_spawn_location", 1, segment)
+    maraxsis.execute_later("draw_bioluminescese", delay, segment)
 end)
