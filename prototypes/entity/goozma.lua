@@ -168,12 +168,12 @@ local function make_goozma_head(
         is_military_target = true,
         vision_distance = 64 * scale,
         territory_radius = 4,
-        enraged_duration = 30 * 60, -- 30 seconds
+        enraged_duration = 100 * 60, -- 100 seconds
         patrolling_speed = 2.0 * speed_multiplier / 60, -- 1.5 tiles per second
         investigating_speed = 4.0 * speed_multiplier / 60, -- 2.25 tiles per second
-        attacking_speed = 7.0 * speed_multiplier / 60, -- 3.0 tiles per second
-        enraged_speed = 10.0 * speed_multiplier / 60, -- 4.0 tiles per second
-        acceleration_rate = 1 * speed_multiplier / 60 / 60, -- 1 tile per second per second
+        attacking_speed = 13.0 * speed_multiplier / 60,
+        enraged_speed = 13.0 * speed_multiplier / 60,
+        acceleration_rate = 1.3 * speed_multiplier / 60 / 60, -- 1 tile per second per second
         turn_radius = 26 * scale, -- tiles
         patrolling_turn_radius = 26 * scale, -- tiles
         turn_smoothing = 0.75, -- fraction of the total turning range (based on turning radius)
