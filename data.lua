@@ -17,7 +17,7 @@ require "prototypes.entity.fishing-tower"
 require "prototypes.entity.bubbles"
 require "prototypes.entity.coral"
 require "prototypes.entity.offshore-pump"
-require "prototypes.entity.goozma"
+require "prototypes.entity.goozma.goozma"
 if not mods.pystellarexpedition then require "prototypes.entity.salt-reactor" end
 if not mods.pystellarexpedition then require "prototypes.entity.hydro-plant" end
 if not mods.pystellarexpedition then require "prototypes.entity.sonar" end

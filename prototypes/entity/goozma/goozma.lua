@@ -1,9 +1,10 @@
--- BLENDER POST PROCESSING STEPS IN
+-- BLENDER POST PROCESSING STEPS
 -- 1. ./spritter spritesheet -m 16 -w 8 -a 10 -l --lossy . .
--- 2. Inner glow. Blending mode normal.
+-- 2. Inner glow. Blending mode normal. Alpha 0.75
 -- 3. Saturation 2
 
-local space_age_sounds = require("__space-age__.prototypes.entity.sounds")
+local particle_effects = require "particle-effects"
+local space_age_sounds = require "__space-age__.prototypes.entity.sounds"
 
 local function goozma_spritesheet(file_name, is_shadow, is_glow, scale, alpha)
     scale = scale * 2
@@ -30,7 +31,7 @@ local function goozma_spritesheet(file_name, is_shadow, is_glow, scale, alpha)
         sprite.filename = "__maraxsis__/graphics/entity/goozma/goozma-body-glow.png"
     elseif file_name == "goozma-head" or file_name == "goozma-head-shadow" then
         sprite.filename = "__maraxsis__/graphics/entity/goozma/goozma-head.png"
-    elseif file_name == "goozma-body"or file_name == "goozma-body-shadow" then
+    elseif file_name == "goozma-body" or file_name == "goozma-body-shadow" then
         sprite.filename = "__maraxsis__/graphics/entity/goozma/goozma-body.png"
     end
     return sprite
@@ -119,9 +120,9 @@ local resistances = {
 local function make_goozma_segment_specifications(base_name, segment_scales, scale)
     local specifications = {}
     local num_segments = #segment_scales
-    for i = 1,num_segments do
+    for i = 1, num_segments do
         local segment_scale = segment_scales[i] * scale
-        specifications[i] = { segment = make_segment_name(base_name.."-segment", segment_scale) }
+        specifications[i] = {segment = make_segment_name(base_name .. "-segment", segment_scale)}
     end
     return specifications
 end
@@ -168,15 +169,15 @@ local function make_goozma_head(
         is_military_target = true,
         vision_distance = 64 * scale,
         territory_radius = 4,
-        enraged_duration = 100 * 60, -- 100 seconds
-        patrolling_speed = 2.0 * speed_multiplier / 60, -- 1.5 tiles per second
+        enraged_duration = 100 * 60,                       -- 100 seconds
+        patrolling_speed = 2.0 * speed_multiplier / 60,    -- 1.5 tiles per second
         investigating_speed = 4.0 * speed_multiplier / 60, -- 2.25 tiles per second
-        attacking_speed = 13.0 * speed_multiplier / 60,
-        enraged_speed = 13.0 * speed_multiplier / 60,
+        attacking_speed = 9.0 * speed_multiplier / 60,
+        enraged_speed = 9.0 * speed_multiplier / 60,
         acceleration_rate = 1.3 * speed_multiplier / 60 / 60, -- 1 tile per second per second
-        turn_radius = 26 * scale, -- tiles
-        patrolling_turn_radius = 26 * scale, -- tiles
-        turn_smoothing = 0.75, -- fraction of the total turning range (based on turning radius)
+        turn_radius = 26 * scale,                             -- tiles
+        patrolling_turn_radius = 26 * scale,                  -- tiles
+        turn_smoothing = 0.75,                                -- fraction of the total turning range (based on turning radius)
         roar = {
             filename = "__maraxsis__/sounds/goozma-roar.ogg",
             category = "enemy",
@@ -211,6 +212,9 @@ local function make_goozma_head(
             segments = make_goozma_segment_specifications(base_name, segment_scales, scale)
         },
         created_effect = created_effect,
+        update_effects_while_enraged = {
+            particle_effects.make_hypno_cloud_effect(base_name)
+        },
     }
 end
 
@@ -237,7 +241,7 @@ local function make_goozma_segment(base_name, scale, damage_multiplier, health, 
             },
         },
         backward_overlap = 4,
-        forward_padding = -1 * scale, -- tiles
+        forward_padding = -1 * scale,  -- tiles
         backward_padding = -4 * scale, -- tiles
         render_layer = render_layer,
         working_sound = {
@@ -297,25 +301,25 @@ local function make_goozma(
     factoriopedia_simulation,
     sounds,
     render_layer)
-    data:extend(
-        {
-            make_goozma_head(
-                base_name,
-                order,
-                scale,
-                damage_multiplier,
-                health,
-                regen,
-                speed_multiplier,
-                factoriopedia_simulation,
-                sounds,
-                render_layer
-            )
-        }
-    )
+    data:extend
+    {
+        make_goozma_head(
+            base_name,
+            order,
+            scale,
+            damage_multiplier,
+            health,
+            regen,
+            speed_multiplier,
+            factoriopedia_simulation,
+            sounds,
+            render_layer
+        )
+    }
+
     data:extend(make_goozma_segments(base_name, segment_scales, scale, damage_multiplier, health, sounds, render_layer))
     --data:extend(make_goozma_corpse(base_name, order, scale))
-    --data:extend(make_goozma_effects(base_name, order, scale, damage_multiplier))
+    data:extend(particle_effects.make_particle_effects(base_name, order, scale, damage_multiplier))
 end
 
 make_goozma(

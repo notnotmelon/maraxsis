@@ -32,5 +32,6 @@
         "space_around_table_append_operator": "false",
         "space_inside_square_brackets": "false",
         "quote_style": "double"
-    }
+    },
+    "editor.formatOnSave": true
 }
