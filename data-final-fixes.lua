@@ -24,12 +24,11 @@ if not mods.pystellarexpedition then
     for extractor in pairs(maraxsis_constants.MARAXSIS_SAND_EXTRACTORS) do
         local mask = collision_mask_util.get_mask(data.raw["mining-drill"][extractor])
         mask.layers[maraxsis_dome_collision_mask] = true
-        data.raw["mining-drill"][extractor].collision_mask = mask
-        data.raw["assembling-machine"][extractor .. "-sand-extractor"].collision_mask = mask
 
         -- https://github.com/notnotmelon/maraxsis/issues/342
+        -- https://github.com/notnotmelon/maraxsis/issues/368
         local seen = {extractor}
-        local function update_next_upgrade_masks(mining_drill)
+        local function update_collision_masks(mining_drill)
             if type(mining_drill) ~= "string" then return end
             for _, v in pairs(seen) do
                 if v == mining_drill then return end
@@ -38,9 +37,16 @@ if not mods.pystellarexpedition then
             mining_drill = data.raw["mining-drill"][mining_drill]
             if not mining_drill then return end
             mining_drill.collision_mask = mask
-            update_next_upgrade_masks(mining_drill.next_upgrade)
+            update_collision_masks(mining_drill.next_upgrade)
+            for _, drill in pairs(data.raw.mining_drill) do
+                if drill.next_upgrade == mining_drill then
+                    update_collision_masks(drill.name)
+                end
+            end
         end
-        update_next_upgrade_masks(data.raw["mining-drill"][extractor].next_upgrade)
+
+        update_collision_masks(extractor)
+        update_collision_masks(extractor .. "-sand-extractor")
     end
 end
 
