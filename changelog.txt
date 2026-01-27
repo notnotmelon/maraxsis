@@ -1,4 +1,9 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.31.4
+Date: 2026-01-27
+  Bugfixes:
+    - Fixed  startup crash with angel/bobs mods. Resolves https://github.com/notnotmelon/maraxsis/issues/368
+---------------------------------------------------------------------------------------------------
 Version: 1.31.3
 Date: 2026-01-27
   Locale:
