@@ -32,3 +32,7 @@ Add any other context about the problem here.
 
 **Save file & log**
 Attach your save file and `factorio-current.log` file.
+
+**Help wanted?**
+- [ ] I am familiar with programming and will submit a pull request to resolve this issue. (Note: Please do not use AI coding tools.)
+- [X] I need someone else to solve this issue please.
