@@ -96,20 +96,20 @@ local function ensnare(segmented_unit)
     local nodes = segmented_unit.get_body_nodes()
     local head = nodes[1]
     local tail = nodes[#nodes]
-    head.x = head.x + math.random(-0.01, 0.01)
-    head.y = head.y + math.random(-0.01, 0.01)
-    tail.x = tail.x + math.random(-0.01, 0.01)
-    tail.y = tail.y + math.random(-0.01, 0.01)
-    storage.v = storage.v or nodes[math.floor(#nodes * 0.33)]
-    storage.x = storage.x or nodes[math.floor(#nodes * 0.66)]
+    --head.x = head.x + math.random(-0.01, 0.01)
+    --head.y = head.y + math.random(-0.01, 0.01)
+    --tail.x = tail.x + math.random(-0.01, 0.01)
+    --tail.y = tail.y + math.random(-0.01, 0.01)
+    storage.v = nodes[math.floor(#nodes * 0.33)]
+    storage.x = nodes[math.floor(#nodes * 0.66)]
     local control_points = {head, storage.v, storage.x, tail}
     local spline = spline.CubicSpline2D.new(control_points)
     segmented_unit.set_body_nodes(spline:convert_to_points(#nodes))
-    segmented_unit.speed = 0
+    --segmented_unit.speed = 0
     --segmented_unit.activity_mode = defines.segmented_unit_activity_mode.asleep
 end
 
-maraxsis.on_nth_tick(1, function()
+maraxsis.on_nth_tick(120, function()
     storage.ai_state_cache = {}
     ensnare(game.get_surface("maraxsis-trench").get_segmented_units()[1])
 end)

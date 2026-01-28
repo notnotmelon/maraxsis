@@ -72,12 +72,11 @@ end
 
 function CubicSpline1D:eval(timestamp)
     assert(0 <= timestamp and timestamp <= 1)
-    timestamp = timestamp * (self.n - 2)
-    local lo, hi = 1, self.n
-    while lo + 1 < hi do
-        local mid = math.floor((lo + hi) / 2)
-        if timestamp < mid - 1 then hi = mid else lo = mid end
+    local timestamp = timestamp * (self.n - 1)
+    if timestamp >= self.n - 1 then
+        timestamp = self.n - 1 - 1e-12
     end
+    local lo = math.floor(timestamp) + 1
     local c = self.coef[lo]
     local t = timestamp - lo + 1
     return c.A + c.B * t + c.C * t * t + c.D * t * t * t
@@ -107,7 +106,7 @@ end
 function CubicSpline2D:convert_to_points(num_points)
     local out = {}
     for i = 0, num_points - 1 do
-        out[i] = self:eval(i / (num_points - 1))
+        out[i + 1] = self:eval(i / (num_points - 1))
     end
     return out
 end
