@@ -1,4 +1,4 @@
-local spline = require "spline"
+local CubicSpline2D = (require "spline").CubicSpline2D
 
 maraxsis.on_event(maraxsis.events.on_init(), function()
     storage.ai_state_cache = storage.ai_state_cache or {}
@@ -103,9 +103,11 @@ local function ensnare(segmented_unit)
     storage.v = nodes[math.floor(#nodes * 0.33)]
     storage.x = nodes[math.floor(#nodes * 0.66)]
     local control_points = {head, storage.v, storage.x, tail}
-    local spline = spline.CubicSpline2D.new(control_points)
-    segmented_unit.set_body_nodes(spline:convert_to_points(#nodes))
-    --segmented_unit.speed = 0
+    local spline = CubicSpline2D.new(control_points)
+    local points = spline:convert_to_points(#nodes)
+    segmented_unit.set_body_nodes(points)
+    segmented_unit.speed = 0
+    CubicSpline2D.draw(segmented_unit.surface, points, control_points)
     --segmented_unit.activity_mode = defines.segmented_unit_activity_mode.asleep
 end
 

@@ -111,6 +111,29 @@ function CubicSpline2D:convert_to_points(num_points)
     return out
 end
 
+function CubicSpline2D.draw(surface, points, control_points)
+    for _, point in pairs(control_points) do
+        rendering.draw_circle {
+            target = point,
+            color = {0, 1, 0},
+            surface = surface,
+            filled = true,
+            radius = 2,
+            time_to_live = 120
+        }
+    end
+    for _, point in pairs(points) do
+        rendering.draw_circle {
+            target = point,
+            color = {1, 0, 0},
+            surface = surface,
+            filled = true,
+            radius = 1,
+            time_to_live = 120
+        }
+    end
+end
+
 return {
     CubicSpline1D = CubicSpline1D,
     CubicSpline2D = CubicSpline2D
