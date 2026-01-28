@@ -1,3 +1,4 @@
+local spline = require "spline"
 
 maraxsis.on_event(maraxsis.events.on_init(), function()
     storage.ai_state_cache = storage.ai_state_cache or {}
@@ -63,7 +64,7 @@ local function go_investigate_spawn_location(segmented_unit)
     local offset_y = math.random(-WANDER_DISTANCE, WANDER_DISTANCE)
 
 
-    segmented_unit.set_ai_state{
+    segmented_unit.set_ai_state {
         type = defines.segmented_unit_ai_state.investigating,
         destination = {
             offset_x + spawn_location.x,
@@ -90,8 +91,27 @@ local function get_flash_parameters(segment)
     return BIOLUMINESCENCE_PARAMETERS[get_ai_state(segment)]
 end
 
-maraxsis.on_nth_tick(60, function()
+local function ensnare(segmented_unit)
+    if not segmented_unit then return end
+    local nodes = segmented_unit.get_body_nodes()
+    local head = nodes[1]
+    local tail = nodes[#nodes]
+    head.x = head.x + math.random(-0.01, 0.01)
+    head.y = head.y + math.random(-0.01, 0.01)
+    tail.x = tail.x + math.random(-0.01, 0.01)
+    tail.y = tail.y + math.random(-0.01, 0.01)
+    storage.v = storage.v or nodes[math.floor(#nodes * 0.33)]
+    storage.x = storage.x or nodes[math.floor(#nodes * 0.66)]
+    local control_points = {head, storage.v, storage.x, tail}
+    local spline = spline.CubicSpline2D.new(control_points)
+    segmented_unit.set_body_nodes(spline:convert_to_points(#nodes))
+    segmented_unit.speed = 0
+    --segmented_unit.activity_mode = defines.segmented_unit_activity_mode.asleep
+end
+
+maraxsis.on_nth_tick(1, function()
     storage.ai_state_cache = {}
+    ensnare(game.get_surface("maraxsis-trench").get_segmented_units()[1])
 end)
 
 local function get_segment_index(segment)
@@ -124,13 +144,11 @@ end
 maraxsis.register_delayed_function("draw_bioluminescese", draw_bioluminescese)
 
 maraxsis.on_event(defines.events.on_script_trigger_effect, function(event)
-	if event.effect_id ~= "maraxsis-goozma-segment-created" then
+    if event.effect_id ~= "maraxsis-goozma-segment-created" then
         return
     end
 
     local segment = event.target_entity
-    local flash_parameters = get_flash_parameters(segment)
-    local delay = get_segment_glow_delay(segment, flash_parameters)
     maraxsis.execute_later("save_spawn_location", 1, segment)
-    maraxsis.execute_later("draw_bioluminescese", delay, segment)
+    maraxsis.execute_later("draw_bioluminescese", 1, segment)
 end)
