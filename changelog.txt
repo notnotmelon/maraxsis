@@ -1,4 +1,9 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.31.6
+Date: 2026-02-07
+  Compatibility:
+    - Added optional dependancy on Krastorio2-spaced-out. Resolves https://github.com/notnotmelon/maraxsis/issues/371
+---------------------------------------------------------------------------------------------------
 Version: 1.31.5
 Date: 2026-02-01
   Locale:
