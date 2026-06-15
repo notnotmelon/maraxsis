@@ -193,7 +193,14 @@ maraxsis.on_event(maraxsis.events.on_built(), function(event)
     elseif entity.name == "duct-exhaust" then
         storage.duct_exhausts[entity.unit_number] = entity
     end
-end)
+end,
+    {
+        {filter = "name", name = "maraxsis-salt-reactor"},
+        {filter = "name", name = "maraxsis-oversized-steam-turbine"},
+        {filter = "name", name = "duct-exhaust"},
+    }
+
+)
 
 maraxsis.on_event(defines.events.on_player_rotated_entity, function(event)
     local entity = event.entity

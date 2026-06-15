@@ -297,7 +297,25 @@ local function update_dome_minable_flag(pressure_dome_data)
         end
     end
 end
+local flooded_event_filter = {
+     {filter = "name", name = "maraxsis-pressure-dome",invert = true},
+}
 
+for entity_type,name in pairs(mobile_entities) do
+    table.insert(flooded_event_filter,{filter = "type",type = entity_type,mode = "and", invert = true,})
+end
+--if not DOME_DISABLEABLE_TYPES[entity.type] or DOME_EXCLUDED_FROM_DISABLE[entity.name] then return end
+for entity_type,name in pairs(DOME_DISABLEABLE_TYPES) do
+    table.insert(flooded_event_filter,{filter = "type",type = entity_type,mode = "or", invert = true,})
+end
+
+for entity_name,name in pairs(DOME_EXCLUDED_FROM_DISABLE) do
+    table.insert(flooded_event_filter,{filter = "name",name = entity_name,mode = "or", invert = false,})
+end
+
+
+
+--This function alone is likely responsible for the majority of Maraxsis' performance problems.
 maraxsis.on_event(maraxsis.events.on_built(), function(event)
     local entity = event.entity or event.created_entity
     if not entity.valid or entity.name == "maraxsis-pressure-dome" then return end
@@ -323,7 +341,9 @@ maraxsis.on_event(maraxsis.events.on_built(), function(event)
         do return end
         ::continue::
     end
-end)
+end,
+    flooded_event_filter
+)
 
 local function place_tiles(pressure_dome_data)
     local surface = pressure_dome_data.surface
@@ -677,7 +697,12 @@ maraxsis.on_event(maraxsis.events.on_built(), function(event)
 
     storage.pressure_domes[entity.id] = pressure_dome_data
     rerender_all_domes()
-end)
+end,
+    {
+            {filter = "name", name = "maraxsis-pressure-dome"},
+    }
+
+)
 
 local function delete_invalid_entities_from_contained_entities_list(pressure_dome_data, additional_entity_to_delete)
     local contained_entities = pressure_dome_data.contained_entities
@@ -1004,7 +1029,12 @@ maraxsis.on_event(maraxsis.events.on_built(), function(event)
         quality = quality,
         raise_built = true,
     }
-end)
+end,
+    {
+        {filter = "name", name = "maraxsis-regulator"},
+        {filter = "ghost_name", name = "maraxsis-regulator"},
+    }
+)
 
 maraxsis.on_nth_tick(73, function()
     for _, dome_data in pairs(storage.pressure_domes) do

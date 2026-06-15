@@ -37,7 +37,7 @@ maraxsis.on_event(maraxsis.events.on_built(), function(event)
 
     storage.trench_ducts[surface_duct.unit_number] = trench_duct_data
     storage.trench_ducts[trench_duct.unit_number] = trench_duct_data
-end)
+end,{{filter = "name",name = "maraxsis-trench-duct"}})
 
 local function get_trench_duct_data(entity)
     if not entity or not entity.valid then return end

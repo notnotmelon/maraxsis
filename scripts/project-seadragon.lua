@@ -50,4 +50,13 @@ maraxsis.on_event(maraxsis.events.on_built(), function(event)
     end
 
     entity.destroy()
-end)
+end,
+
+    {
+        {filter = "name", name = "rocket-silo"},
+        {filter = "name", name = "maraxsis-rocket-silo"},
+        {filter = "ghost_name", name = "rocket-silo"},
+        {filter = "ghost_name", name = "maraxsis-rocket-silo"},
+    }
+
+)

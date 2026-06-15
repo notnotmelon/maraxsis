@@ -33,7 +33,7 @@ maraxsis.on_event(maraxsis.events.on_built(), function(event)
 
     local registration_number = script.register_on_object_destroyed(entity)
     storage.fishing_tower_spawners[registration_number] = fish_spawner
-end)
+end,{{filter = "name", name = "maraxsis-fishing-tower"}})
 
 maraxsis.on_event(defines.events.on_object_destroyed, function(event)
     local spawner = storage.fishing_tower_spawners[event.registration_number]

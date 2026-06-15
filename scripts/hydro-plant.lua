@@ -63,4 +63,11 @@ maraxsis.on_event(maraxsis.events.on_built(), function(event)
     end
 
     entity.destroy()
-end)
+end,
+    {
+        {filter = "name", name = "maraxsis-hydro-plant"},
+        {filter = "name", name = "maraxsis-hydro-plant-extra-module-slots"},
+        {filter = "ghost_name", name = "maraxsis-hydro-plant"},
+        {filter = "ghost_name", name = "maraxsis-hydro-plant-extra-module-slots"},
+    }
+)
