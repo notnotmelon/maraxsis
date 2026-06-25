@@ -3,7 +3,7 @@ local constants = require "__FluidMustFlow__.prototypes.constants"
 data.raw.technology["ducts"].unit = nil
 data.raw.technology["ducts"].research_trigger = {
     type = "mine-entity",
-    entity = "maraxsis-chimney"
+    entities = {"maraxsis-chimney"}
 }
 data.raw.technology["ducts"].prerequisites = {"sp-spidertron-automation", "planet-discovery-maraxsis"}
 
@@ -39,7 +39,7 @@ table.insert(data.raw.technology["ducts"].effects, {
 for _, effect in pairs(data.raw.technology["ducts"].effects) do
     if effect.type == "unlock-recipe" then
         local recipe = data.raw.recipe[effect.recipe]
-        recipe.category = mods.pystellarexpedition and "advanced-crafting" or "maraxsis-hydro-plant-or-assembling"
+        recipe.categories = {mods.pystellarexpedition and "advanced-crafting" or "maraxsis-hydro-plant-or-assembling"}
         for _, ingredient in pairs(recipe.ingredients) do
             if ingredient.name == "iron-plate" then
                 ingredient.name = "tungsten-plate"

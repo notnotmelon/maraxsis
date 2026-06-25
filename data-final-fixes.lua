@@ -55,7 +55,7 @@ if data.raw["technology"]["maraxsis-promethium-productivity"] then
 end
 
 for _, recipe in pairs(data.raw.recipe) do
-    if recipe.category == "maraxsis-hydro-plant-or-assembling" then
+    if recipe.categories and table.find(recipe.categories, "maraxsis-hydro-plant-or-assembling") then
         recipe.always_show_made_in = true
     end
 end

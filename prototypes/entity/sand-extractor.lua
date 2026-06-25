@@ -6,7 +6,7 @@ data:extend {{
 data:extend {{
     type = "recipe",
     name = "maraxsis-sand-extraction",
-    category = "maraxsis-sand-extraction",
+    categories = {"maraxsis-sand-extraction"},
     energy_required = 10,
     ingredients = {},
     results = {

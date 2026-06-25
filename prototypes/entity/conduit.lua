@@ -22,7 +22,7 @@ data:extend {{
         {type = "item", name = "maraxsis-conduit", amount = 1},
     },
     allow_productivity = false,
-    category = "maraxsis-hydro-plant",
+    categories = {"maraxsis-hydro-plant"},
     auto_recycle = true,
     surface_conditions = maraxsis.surface_conditions(),
 }}

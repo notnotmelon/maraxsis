@@ -35,7 +35,7 @@ data:extend {{
     name = "maraxsis-abyssal-diving-gear",
     enabled = false,
     energy_required = 10,
-    category = "maraxsis-hydro-plant",
+    categories = {"maraxsis-hydro-plant"},
     ingredients = {
         {type = "item", name = "low-density-structure",            amount = 10},
         {type = "item", name = "quantum-processor",                amount = 20},
