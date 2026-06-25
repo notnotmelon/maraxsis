@@ -17,7 +17,7 @@ local production_science = table.deepcopy(data.raw.recipe["production-science-pa
 local utility_science = table.deepcopy(data.raw.recipe["utility-science-pack"])
 
 local function update_recipe_icon(recipe, fluid)
-    local science_pack = data.raw.tool[recipe.name]
+    local science_pack = data.raw.item[recipe.name]
     if not (recipe.icon or science_pack.icon) then return end
     fluid = data.raw.fluid[fluid]
     recipe.icons = {

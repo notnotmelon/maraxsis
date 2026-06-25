@@ -7,8 +7,8 @@ if not mods.pystellarexpedition then
                     table.insert(lab.inputs, "hydraulic-science-pack")
                 end
                 table.sort(lab.inputs, function(a, b)
-                    local order_1 = (data.raw.tool[a] and data.raw.tool[a].order) or a
-                    local order_2 = (data.raw.tool[b] and data.raw.tool[b].order) or b
+                    local order_1 = (data.raw.item[a] and data.raw.item[a].order) or a
+                    local order_2 = (data.raw.item[b] and data.raw.item[b].order) or b
                     return order_1 < order_2
                 end)
                 break

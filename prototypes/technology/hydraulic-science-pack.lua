@@ -1,15 +1,12 @@
 data:extend {{
-    type = "tool",
+    type = "item",
     name = "hydraulic-science-pack",
     icon = "__maraxsis__/graphics/icons/hydraulic-science-pack.png",
     icon_size = 64,
     subgroup = "science-pack",
     order = "j[hydraulic-science-pack]",
-    stack_size = data.raw.tool["automation-science-pack"].stack_size,
-    durability = data.raw.tool["automation-science-pack"].durability,
-    durability_description_key = data.raw.tool["automation-science-pack"].durability_description_key,
-    durability_description_value = data.raw.tool["automation-science-pack"].durability_description_value,
-    weight = data.raw.tool["automation-science-pack"].weight,
+    stack_size = data.raw.item["automation-science-pack"].stack_size,
+    weight = data.raw.item["automation-science-pack"].weight,
 }}
 
 data:extend {{

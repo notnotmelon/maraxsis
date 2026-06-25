@@ -56,7 +56,7 @@ local function generate_recipe_icons(icons, science_pack, icon_shift)
 end
 
 local function pressurize(science_pack_name)
-    local science_pack = data.raw.tool[science_pack_name] or data.raw.item[science_pack_name]
+    local science_pack = (data.raw.tool and data.raw.tool[science_pack_name]) or data.raw.item[science_pack_name]
     if not science_pack then return end
 
     if science_pack.spoil_result and science_pack.spoil_result ~= "spoilage" then
