@@ -52,7 +52,7 @@ for _, recipe in pairs {
 } do
     recipe.localised_name = {"item-name." .. recipe.name}
     recipe.name = "maraxsis-deepsea-research-" .. recipe.name
-    recipe.category = "maraxsis-hydro-plant"
+    recipe.categories = {"maraxsis-hydro-plant"}
     recipe.subgroup = "maraxsis-deepsea-research"
     recipe.enabled = false
     recipe.auto_recycle = false

@@ -15,7 +15,7 @@ data:extend {{
 data:extend {{
     type = "recipe",
     name = "maraxsis-atmosphere",
-    category = "chemistry",
+    categories = {"chemistry"},
     energy_required = 10,
     ingredients = {},
     results = {
@@ -83,7 +83,7 @@ data:extend {{
 data:extend {{
     type = "recipe",
     name = "maraxsis-liquid-atmosphere",
-    category = "cryogenics",
+    categories = {"cryogenics"},
     energy_required = 10,
     ingredients = {
         {type = "fluid", name = "maraxsis-atmosphere", amount = 100},
@@ -108,7 +108,7 @@ data:extend {{
 data:extend {{
     type = "recipe",
     name = "maraxsis-liquid-atmosphere-decompression",
-    category = "maraxsis-hydro-plant",
+    categories = {"maraxsis-hydro-plant"},
     energy_required = 9,
     ingredients = {
         {type = "fluid", name = "maraxsis-liquid-atmosphere", amount = 1}

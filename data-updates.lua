@@ -94,7 +94,7 @@ for recipe, category in pairs {
 } do
     local recipe = data.raw.recipe[recipe]
     recipe.hidden_in_factoriopedia = false
-    recipe.category = category
+    recipe.categories = {category}
     recipe.subgroup = "maraxsis-atmosphere-barreling"
 end
 data.raw.recipe["empty-maraxsis-atmosphere-barrel"].results[1].temperature = 25

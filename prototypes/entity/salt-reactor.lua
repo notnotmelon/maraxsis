@@ -187,7 +187,7 @@ data:extend {{
         {type = "fluid", name = "molten-salt", amount = 50},
     },
     allow_productivity = true,
-    category = "metallurgy",
+    categories = {"metallurgy"},
     auto_recycle = false,
 }}
 
@@ -219,7 +219,7 @@ data:extend {{
     results = {
         {type = "item", name = "msr-fuel-cell", amount = 1},
     },
-    category = "crafting-with-fluid",
+    categories = {"crafting-with-fluid"},
     allow_productivity = true,
     auto_recycle = false,
 }}
@@ -238,7 +238,7 @@ data:extend {{
     results = {
         {type = "item", name = "maraxsis-salt-reactor", amount = 1},
     },
-    category = "maraxsis-hydro-plant",
+    categories = {"maraxsis-hydro-plant"},
     surface_conditions = maraxsis.surface_conditions(),
 }}
 

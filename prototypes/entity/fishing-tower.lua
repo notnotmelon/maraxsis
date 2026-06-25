@@ -25,7 +25,7 @@ if not mods.pystellarexpedition then
         },
         allow_productivity = true,
         main_product = "maraxsis-fish-food",
-        category = "maraxsis-hydro-plant-or-biochamber"
+        categories = {"maraxsis-hydro-plant-or-biochamber"}
     }}
 end
 
@@ -53,7 +53,7 @@ data:extend {{
     },
     allow_productivity = false,
     main_product = "maraxsis-fishing-tower",
-    category = "maraxsis-hydro-plant",
+    categories = {"maraxsis-hydro-plant"},
     surface_conditions = maraxsis.surface_conditions(),
 }}
 

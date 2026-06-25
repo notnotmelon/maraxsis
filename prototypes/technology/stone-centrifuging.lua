@@ -1,7 +1,7 @@
 data:extend {{
     type = "recipe",
     name = "maraxsis-stone-centrifuging",
-    category = "centrifuging",
+    categories = {"centrifuging"},
     enabled = false,
     energy_required = 2,
     ingredients = {

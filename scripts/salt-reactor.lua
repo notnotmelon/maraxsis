@@ -15,8 +15,8 @@ local function is_salt_reactor_active(reactor)
         return false
     end
 
-    local fluidbox = reactor.fluidbox[1]
-    return fluidbox and fluidbox.name == "water" and fluidbox.amount > 1
+    local fluid = reactor.get_fluid(1)
+    return fluid and fluid.name == "water" and fluid.amount > 1
 end
 
 local SUPERCRITICAL_STEAM_ALLOW_LIST = table.invert {
@@ -47,15 +47,10 @@ maraxsis.on_nth_tick(597, function()
             goto continue
         end
 
-        for _, neighbours in pairs(duct_exhaust.neighbours) do
+        for _, neighbours in pairs(duct_exhaust.fluidbox_neighbours) do
             for _, neighbour in pairs(neighbours) do
                 if not SUPERCRITICAL_STEAM_ALLOW_LIST[neighbour.name] then
-                    local fluidbox = neighbour.fluidbox
-                    if fluidbox then
-                        for i = 1, #fluidbox do
-                            fluidbox.flush(1, "maraxsis-supercritical-steam")
-                        end
-                    end
+                    neighbour.clear_fluids()
 
                     local position = neighbour.position
                     local force = neighbour.force_index
@@ -187,8 +182,8 @@ maraxsis.on_event(maraxsis.events.on_built(), function(event)
         assembler.destructible = false
         assembler.operable = false
         assembler.minable_flag = false
-        assembler.fluidbox.add_linked_connection(0, entity, 0)
-        assembler.fluidbox.add_linked_connection(1, entity, 1)
+        assembler.add_fluid_box_linked_connection(0, entity, 0)
+        assembler.add_fluid_box_linked_connection(1, entity, 1)
         storage.oversized_steam_turbines[entity.unit_number] = assembler
     elseif entity.name == "duct-exhaust" then
         storage.duct_exhausts[entity.unit_number] = entity

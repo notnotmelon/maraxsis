@@ -115,7 +115,7 @@ local function pressurize(science_pack_name)
         },
         allow_productivity = false,
         allow_quality = false,
-        category = "chemistry",
+        categories = {"chemistry"},
         auto_recycle = false,
         hide_from_signal_gui = false,
         allow_decomposition = false,
@@ -150,7 +150,7 @@ local function pressurize(science_pack_name)
         },
         allow_productivity = false,
         allow_quality = false,
-        category = "chemistry",
+        categories = {"chemistry"},
         auto_recycle = false,
         unlock_results = false,
         icons = generate_recipe_icons({

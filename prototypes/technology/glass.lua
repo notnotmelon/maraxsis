@@ -67,7 +67,7 @@ data:extend {{
         {type = "item", name = "maraxsis-glass-panes", amount = 1},
     },
     allow_productivity = true,
-    category = "metallurgy",
+    categories = {"metallurgy"},
     auto_recycle = true
 }}
 
@@ -166,7 +166,7 @@ data:extend {{
     icon = "__maraxsis__/graphics/icons/limestone-processing.png",
     icon_size = 64,
     allow_productivity = true,
-    category = "maraxsis-hydro-plant-or-foundry",
+    categories = {"maraxsis-hydro-plant-or-foundry"},
     allow_decomposition = false,
     main_product = "calcite",
     auto_recycle = false,

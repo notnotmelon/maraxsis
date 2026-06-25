@@ -5,10 +5,10 @@
   "author": "notnotmelon",
   "homepage": "https://github.com/notnotmelon/maraxsis",
   "version": "1.31.8",
-  "factorio_version": "2.0",
+  "factorio_version": "2.1",
   "dependencies": [
-    "base >= 2.0.58",
-    "space-age >= 2.0.58",
+    "base >= 2.1.0",
+    "space-age >= 2.1.0",
     "SpidertronPatrols >= 2.5.5",
     "FluidMustFlow >= 1.4.2",
     "(?) pyalternativeenergy",

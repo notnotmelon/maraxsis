@@ -552,10 +552,10 @@ maraxsis.on_nth_tick(631, function()
             regulator_fluidbox = pressure_dome_data.regulator_fluidbox
         end
 
-        local fluid = regulator_fluidbox.fluidbox[1]
+        local fluid = regulator_fluidbox.get_fluid(1)
         if fluid and fluid.temperature ~= 25 then
             fluid.temperature = 25
-            regulator_fluidbox.fluidbox[1] = fluid
+            regulator_fluidbox.set_fluid(1, fluid)
         end
     end
 end)

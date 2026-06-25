@@ -128,7 +128,7 @@ data:extend {{
     heating_energy = "2000kW",
     module_slots = 4,
     icons_positioning = {
-        {inventory_index = defines.inventory.furnace_modules, shift = {0, 1}}
+        {inventory_index = defines.inventory.crafter_modules, shift = {0, 1}}
     },
     allowed_effects = {"consumption", "speed", "productivity", "pollution", "quality"},
     water_reflection = require("__space-age__.prototypes.entity.electromagnetic-plant-pictures").water_reflection,
@@ -208,7 +208,7 @@ local extra_module_slots = table.deepcopy(data.raw["assembling-machine"]["maraxs
 extra_module_slots.name = "maraxsis-hydro-plant-extra-module-slots"
 extra_module_slots.module_slots = extra_module_slots.module_slots + 4
 extra_module_slots.icons_positioning = {{
-    inventory_index = defines.inventory.assembling_machine_modules, shift = {0, 0.9}, max_icons_per_row = 4
+    inventory_index = defines.inventory.crafter_modules, shift = {0, 0.9}, max_icons_per_row = 4
 }}
 extra_module_slots.hidden_in_factoriopedia = true
 extra_module_slots.factoriopedia_alternative = "maraxsis-hydro-plant"
@@ -240,7 +240,7 @@ data:extend {{
     results = {
         {type = "item", name = "maraxsis-hydro-plant", amount = 1},
     },
-    category = "maraxsis-hydro-plant-or-chemistry",
+    categories = {"maraxsis-hydro-plant-or-chemistry"},
     surface_conditions = maraxsis.surface_conditions(),
 }}
 
@@ -255,7 +255,7 @@ data:extend {{
         {type = "item", name = "holmium-plate", amount = 5},
     },
     energy_required = data.raw.recipe["holmium-plate"].energy_required * 5,
-    category = "maraxsis-hydro-plant",
+    categories = {"maraxsis-hydro-plant"},
     enabled = false,
     auto_recycle = false,
     icons = {

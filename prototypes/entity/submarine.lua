@@ -101,7 +101,7 @@ for i = 1, 2 do
         results = {{type = "item", name = name, amount = 1}},
         enabled = false,
         energy_required = 10,
-        category = i == 1 and "maraxsis-hydro-plant-or-assembling" or "maraxsis-hydro-plant",
+        categories = {i == 1 and "maraxsis-hydro-plant-or-assembling" or "maraxsis-hydro-plant"},
     }
 
     local lamp_layer = {
