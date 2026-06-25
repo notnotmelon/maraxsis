@@ -418,7 +418,6 @@ local function place_collision_boxes(pressure_dome_data, health, player)
             player = player -- setup the undo queue
         }
         collision_box.health = health
-        collision_box.active = false
         collision_box.operable = false -- vanilla bug: operable does nothing on cars
         table.insert(pressure_dome_data.collision_boxes, collision_box)
 
