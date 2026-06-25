@@ -65,7 +65,7 @@ data:extend {{
     damaged_trigger_effect = hit_effects.entity(),
     icon_draw_specification = {shift = {0, -0.5}, scale = 1.5},
     icons_positioning = {{
-        inventory_index = defines.inventory.furnace_modules, shift = {0, 0.9}, max_icons_per_row = 3
+        inventory_index = defines.inventory.crafter_modules, shift = {0, 0.9}, max_icons_per_row = 3
     }},
     graphics_set = {
         structure = {
