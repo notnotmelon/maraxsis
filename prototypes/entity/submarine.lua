@@ -358,7 +358,7 @@ data:extend {{
 
 data:extend {{
     type = "custom-input",
-    key_sequence = "CONTROL + ENTER",
+    key_sequence = "CONTROL + RETURN",
     name = "maraxsis-trench-submerge",
     consuming = "game-only",
     alternative_key_sequence = "",
