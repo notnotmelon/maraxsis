@@ -146,7 +146,7 @@ local function pressurize(science_pack_name)
         },
         results = {
             {type = "item", name = science_pack_name,                amount = 100, ignored_by_stats = 100, ignored_by_productivity = 100},
-            {type = "item", name = "maraxsis-empty-research-vessel", amount = 1,   ignored_by_stats = 1,   ignored_by_productivity = 1,  probability = 0.99},
+            {type = "item", name = "maraxsis-empty-research-vessel", amount = 1,   ignored_by_stats = 1,   ignored_by_productivity = 1,  independent_probability = 0.99},
         },
         allow_productivity = false,
         allow_quality = false,

@@ -8,7 +8,7 @@ data:extend {{
         {type = "item", name = "stone", amount = 10}
     },
     results = {
-        {type = "item", name = "uranium-ore", amount = 1, probability = 0.01},
+        {type = "item", name = "uranium-ore", amount = 1, independent_probability = 0.01},
     },
     icon = "__maraxsis__/graphics/icons/stone-centrifuging.png",
     icon_size = 64,
