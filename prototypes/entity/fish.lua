@@ -240,7 +240,7 @@ data:extend {{
         {type = "item", name = "maraxsis-microplastics", amount = 10},
         {type = "item", name = "jelly",                  amount = 10},
     },
-    categories = {"organic-or-assembling"},
+    categories = {"organic", "crafting"},
     localised_name = {"recipe-name.maraxsis-microplastics"},
     main_product = "maraxsis-microplastics",
     allow_productivity = true,
