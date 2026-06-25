@@ -3,7 +3,7 @@ local constants = require "__FluidMustFlow__.prototypes.constants"
 data.raw.technology["ducts"].unit = nil
 data.raw.technology["ducts"].research_trigger = {
     type = "mine-entity",
-    entity = "maraxsis-chimney"
+    entities = {"maraxsis-chimney"}
 }
 data.raw.technology["ducts"].prerequisites = {"sp-spidertron-automation", "planet-discovery-maraxsis"}
 

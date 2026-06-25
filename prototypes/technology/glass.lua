@@ -28,7 +28,7 @@ data:extend {{
     prerequisites = {"planet-discovery-maraxsis"},
     research_trigger = {
         type = "mine-entity",
-        entity = "maraxsis-mollusk-husk"
+        entities = {"maraxsis-mollusk-husk"}
     },
     order = "eb[glassworking]",
 }}

@@ -15,7 +15,7 @@ data:extend {{
     prerequisites = {"planet-discovery-maraxsis"},
     research_trigger = {
         type = "mine-entity",
-        entity = "big-sand-rock-underwater"
+        entities = {"big-sand-rock-underwater"}
     },
     order = "ea[hydro-plant]",
 }}
