@@ -38,8 +38,8 @@ local function generate_recipe_icons(icons, science_pack, icon_shift)
         table.insert(icons,
             {
                 icon = science_pack.icon,
-                icon_size = (science_pack.icon_size or defines.default_icon_size),
-                scale = 16.0 / (science_pack.icon_size or defines.default_icon_size), -- scale = 0.5 * 32 / icon_size simplified
+                icon_size = (science_pack.icon_size or 64),
+                scale = 16.0 / (science_pack.icon_size or 64), -- scale = 0.5 * 32 / icon_size simplified
                 shift = icon_shift
             }
         )
@@ -48,7 +48,7 @@ local function generate_recipe_icons(icons, science_pack, icon_shift)
             icons,
             science_pack.icons,
             {scale = 0.5, shift = icon_shift},
-            science_pack.icon_size or defines.default_icon_size
+            science_pack.icon_size or 64
         )
     end
 
