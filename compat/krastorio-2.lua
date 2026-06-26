@@ -130,7 +130,7 @@ data.raw.technology["kr-quantum-computer"].unit.ingredients = {
 }
 
 if not mods["no-quality"] then
-    data.raw["assembling-machine"]["kr-quantum-computer"].effect_receiver.base_effect.quality = 5
+    data.raw["assembling-machine"]["kr-quantum-computer"].effect_receiver.base_effect.quality = 0.5
 end
 
 data.raw.recipe["kr-quantum-computer"].categories = {"maraxsis-hydro-plant"}
