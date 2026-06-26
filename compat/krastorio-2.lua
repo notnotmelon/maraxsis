@@ -1,8 +1,9 @@
 if not mods["Krastorio2-spaced-out"] and not mods["Krastorio2"] then return end
 
 if not mods["Tech_Cards_For_Modded_Planets"] then
-    data.raw.tool["hydraulic-science-pack"].icon = "__maraxsis__/graphics/icons/hydraulic-tech-card.png"
-    data.raw.tool["hydraulic-science-pack"].localised_name = {"item-name.hydraulic-tech-card"}
+    local hydraulic_pack = (data.raw.tool and data.raw.tool["hydraulic-science-pack"]) or data.raw.item["hydraulic-science-pack"]
+    hydraulic_pack.icon = "__maraxsis__/graphics/icons/hydraulic-tech-card.png"
+    hydraulic_pack.localised_name = {"item-name.hydraulic-tech-card"}
     data.raw.technology["hydraulic-science-pack"].icon = "__maraxsis__/graphics/technology/hydraulic-tech-card.png"
     data.raw.technology["hydraulic-science-pack"].localised_name = {"item-name.hydraulic-tech-card"}
 end
@@ -32,7 +33,7 @@ data:extend {{
         {type = "item", name = "hydraulic-research-data", amount = 1},
     },
     allow_productivity = true,
-    category = "maraxsis-hydro-plant",
+    categories = {"maraxsis-hydro-plant"},
     auto_recycle = false,
     surface_conditions = maraxsis.surface_conditions(),
 }}
@@ -54,7 +55,7 @@ data:extend {{
         {type = "item", name = "hydraulic-science-pack", amount = 5},
     },
     allow_productivity = true,
-    category = "kr-tech-cards",
+    categories = {"kr-tech-cards"},
     auto_recycle = false,
     surface_conditions = maraxsis.surface_conditions(),
 }}
@@ -129,10 +130,10 @@ data.raw.technology["kr-quantum-computer"].unit.ingredients = {
 }
 
 if not mods["no-quality"] then
-    data.raw["assembling-machine"]["kr-quantum-computer"].effect_receiver.base_effect.quality = 5
+    data.raw["assembling-machine"]["kr-quantum-computer"].effect_receiver.base_effect.quality = 0.5
 end
 
-data.raw.recipe["kr-quantum-computer"].category = "maraxsis-hydro-plant"
+data.raw.recipe["kr-quantum-computer"].categories = {"maraxsis-hydro-plant"}
 
 data.raw.recipe["kr-quantum-computer"].ingredients = {
     {type = "item", name = "kr-research-server",   amount = 3},

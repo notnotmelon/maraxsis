@@ -145,7 +145,7 @@ data:extend {{
     results = {
         {type = "item", name = "carbon", amount = 8},
     },
-    category = "maraxsis-smelting-or-biochamber",
+    categories = {"maraxsis-smelting-or-biochamber"},
     allow_productivity = true,
     main_product = "carbon",
     icon = "__maraxsis__/graphics/icons/burnt-fish.png",
@@ -196,7 +196,7 @@ data:extend {{
     auto_recycle = false,
     allow_decomposition = false,
     allow_productivity = true,
-    category = "organic",
+    categories = {"organic"},
     subgroup = "nauvis-agriculture",
     order = "g[maraxsis]"
 }}
@@ -240,7 +240,7 @@ data:extend {{
         {type = "item", name = "maraxsis-microplastics", amount = 10},
         {type = "item", name = "jelly",                  amount = 10},
     },
-    category = "organic-or-assembling",
+    categories = {"organic", "crafting"},
     localised_name = {"recipe-name.maraxsis-microplastics"},
     main_product = "maraxsis-microplastics",
     allow_productivity = true,
@@ -268,7 +268,7 @@ data:extend {{
     results = {
         {type = "item", name = "plastic-bar", amount = 1},
     },
-    category = "smelting",
+    categories = {"smelting"},
     allow_productivity = true,
     main_product = "plastic-bar",
     emissions_multiplier = 3,

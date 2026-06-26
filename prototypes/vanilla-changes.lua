@@ -6,10 +6,12 @@ if not mods.pystellarexpedition then
                 if not table.find(lab.inputs, "hydraulic-science-pack") then
                     table.insert(lab.inputs, "hydraulic-science-pack")
                 end
+                local function pack_order(name)
+                    local proto = (data.raw.tool and data.raw.tool[name]) or data.raw.item[name]
+                    return (proto and proto.order) or name
+                end
                 table.sort(lab.inputs, function(a, b)
-                    local order_1 = (data.raw.tool[a] and data.raw.tool[a].order) or a
-                    local order_2 = (data.raw.tool[b] and data.raw.tool[b].order) or b
-                    return order_1 < order_2
+                    return pack_order(a) < pack_order(b)
                 end)
                 break
             end
@@ -36,17 +38,17 @@ if settings.startup["maraxsis-add-hydraulic-science"].value and not mods.pystell
 end
 
 if not mods.pystellarexpedition then
-    data.raw.recipe["pump"].category = "maraxsis-hydro-plant-or-assembling"
-    data.raw.recipe["pipe"].category = "maraxsis-hydro-plant-or-assembling"
-    data.raw.recipe["pipe-to-ground"].category = "maraxsis-hydro-plant-or-assembling"
-    data.raw.recipe["storage-tank"].category = "maraxsis-hydro-plant-or-assembling"
-    data.raw.recipe["coal-synthesis"].category = "maraxsis-hydro-plant-or-chemistry"
+    data.raw.recipe["pump"].categories = {"maraxsis-hydro-plant-or-assembling"}
+    data.raw.recipe["pipe"].categories = {"maraxsis-hydro-plant-or-assembling"}
+    data.raw.recipe["pipe-to-ground"].categories = {"maraxsis-hydro-plant-or-assembling"}
+    data.raw.recipe["storage-tank"].categories = {"maraxsis-hydro-plant-or-assembling"}
+    data.raw.recipe["coal-synthesis"].categories = {"maraxsis-hydro-plant-or-chemistry"}
 
     if not mods["foundry-expanded"] then
-        data.raw.recipe["engine-unit"].category = "maraxsis-hydro-plant-or-advanced-crafting"
+        data.raw.recipe["engine-unit"].categories = {"maraxsis-hydro-plant-or-advanced-crafting"}
     end
     if not mods["electromagnetic-plant-expanded"] then
-        data.raw.recipe["electric-engine-unit"].category = "maraxsis-hydro-plant-or-advanced-crafting"
+        data.raw.recipe["electric-engine-unit"].categories = {"maraxsis-hydro-plant-or-advanced-crafting"}
     end
 end
 
@@ -99,9 +101,9 @@ end
 data.raw.technology["spidertron"].effects = new_spidertron_effects
 
 if not mods.pystellarexpedition then
-    data.raw.recipe["ice-melting"].category = "maraxsis-hydro-plant-or-chemistry"
-    data.raw.recipe["advanced-thruster-fuel"].category = "maraxsis-hydro-plant-or-chemistry"
-    data.raw.recipe["advanced-thruster-oxidizer"].category = "maraxsis-hydro-plant-or-chemistry"
+    data.raw.recipe["ice-melting"].categories = {"maraxsis-hydro-plant-or-chemistry"}
+    data.raw.recipe["advanced-thruster-fuel"].categories = {"maraxsis-hydro-plant-or-chemistry"}
+    data.raw.recipe["advanced-thruster-oxidizer"].categories = {"maraxsis-hydro-plant-or-chemistry"}
 end
 
 -- https://github.com/notnotmelon/maraxsis/issues/23

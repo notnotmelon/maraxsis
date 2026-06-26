@@ -43,7 +43,6 @@ data:extend {{
         {type = "item", name = "maraxsis-empty-research-vessel", amount = 1},
     },
     allow_productivity = false,
-    category = "crafting",
     auto_recycle = true,
 }}
 
