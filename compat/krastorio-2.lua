@@ -129,7 +129,12 @@ data.raw.technology["kr-quantum-computer"].unit.ingredients = {
 }
 
 if not mods["no-quality"] then
-    data.raw["assembling-machine"]["kr-quantum-computer"].effect_receiver.base_effect.quality = 5
+    local qc = data.raw["assembling-machine"]["kr-quantum-computer"]
+    -- https://codeberg.org/raiguard/Krastorio2/src/branch/trunk/prototypes/buildings/quantum-computer.lua
+    -- Soft-type the property to avoid errors if effect_receiver and/or base_effect is not present which soft-defaults to nil thus game-engine defaults.
+    if qc and qc.effect_receiver and qc.effect_receiver.base_effect then
+        qc.effect_receiver.base_effect.quality = 5
+    end
 end
 
 data.raw.recipe["kr-quantum-computer"].category = "maraxsis-hydro-plant"
