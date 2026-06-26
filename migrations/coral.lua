@@ -17,7 +17,6 @@ local function coral_created(event)
             force = force_index,
             create_build_effect_smoke = false
         }
-        new_coral.active = false
         new_coral.destructible = false
         new_coral.minable_flag = false
         coral_animation[i] = new_coral
