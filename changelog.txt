@@ -1,4 +1,9 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.31.9
+Date: 2026-06-28
+  Compatibility:
+    - Krastorio 2.0/Spaced Out - Soft-type the property to avoid errors if effect_receiver and/or base_effect is not present which soft-defaults to nil thus game-engine defaults. ([#386](https://github.com/notnotmelon/maraxsis/issues/386))
+---------------------------------------------------------------------------------------------------
 Version: 1.31.8
 Date: 2026-04-13
   Locale:
