@@ -35,19 +35,24 @@ if settings.startup["maraxsis-add-hydraulic-science"].value and not mods.pystell
     add_hydraulic_pack("research-productivity", false)
 end
 
-if not mods.pystellarexpedition then
-    data.raw.recipe["pump"].category = "maraxsis-hydro-plant-or-assembling"
-    data.raw.recipe["pipe"].category = "maraxsis-hydro-plant-or-assembling"
-    data.raw.recipe["pipe-to-ground"].category = "maraxsis-hydro-plant-or-assembling"
-    data.raw.recipe["storage-tank"].category = "maraxsis-hydro-plant-or-assembling"
-    data.raw.recipe["coal-synthesis"].category = "maraxsis-hydro-plant-or-chemistry"
+local function insert_hydro_plant(recipe)
+    if not recipe then
+        return
+    end
+    local categories = recipe.categories or {"crafting"}
+    table.insert(categories,"maraxsis-hydro-plant")
+    recipe.categories = categories
+end
 
-    if not mods["foundry-expanded"] then
-        data.raw.recipe["engine-unit"].category = "maraxsis-hydro-plant-or-advanced-crafting"
-    end
-    if not mods["electromagnetic-plant-expanded"] then
-        data.raw.recipe["electric-engine-unit"].category = "maraxsis-hydro-plant-or-advanced-crafting"
-    end
+if not mods.pystellarexpedition then
+    insert_hydro_plant(data.raw.recipe["pump"])
+    insert_hydro_plant(data.raw.recipe["pipe"])
+    insert_hydro_plant(data.raw.recipe["pipe-to-ground"])
+    insert_hydro_plant(data.raw.recipe["storage-tank"])
+    insert_hydro_plant(data.raw.recipe["coal-synthesis"])
+    
+    insert_hydro_plant(data.raw.recipe["engine-unit"])
+    insert_hydro_plant(data.raw.recipe["electric-engine-unit"])
 end
 
 local function add_surface_condition(recipe, condition)
@@ -99,9 +104,9 @@ end
 data.raw.technology["spidertron"].effects = new_spidertron_effects
 
 if not mods.pystellarexpedition then
-    data.raw.recipe["ice-melting"].category = "maraxsis-hydro-plant-or-chemistry"
-    data.raw.recipe["advanced-thruster-fuel"].category = "maraxsis-hydro-plant-or-chemistry"
-    data.raw.recipe["advanced-thruster-oxidizer"].category = "maraxsis-hydro-plant-or-chemistry"
+    insert_hydro_plant(data.raw.recipe["ice-melting"])
+    insert_hydro_plant(data.raw.recipe["advanced-thruster-fuel"])
+    insert_hydro_plant(data.raw.recipe["advanced-thruster-oxidizer"])
 end
 
 -- https://github.com/notnotmelon/maraxsis/issues/23

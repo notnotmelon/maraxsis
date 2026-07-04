@@ -59,7 +59,7 @@ data:extend {{
     results = {
         {type = "item", name = "maraxsis-super-sealant-substance", amount = 1},
     },
-    category = "chemistry-or-cryogenics",
+    categories = {"chemistry","cryogenics"},
     allow_productivity = true,
     auto_recycle = false,
 }}

@@ -15,7 +15,7 @@ local function is_salt_reactor_active(reactor)
         return false
     end
 
-    local fluidbox = reactor.fluidbox[1]
+    local fluidbox = reactor.fluidbox.get_fluid(1)
     return fluidbox and fluidbox.name == "water" and fluidbox.amount > 1
 end
 

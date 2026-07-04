@@ -1,15 +1,15 @@
 data:extend {{
-    type = "tool",
+    type = "item",
     name = "hydraulic-science-pack",
     icon = "__maraxsis__/graphics/icons/hydraulic-science-pack.png",
     icon_size = 64,
     subgroup = "science-pack",
     order = "j[hydraulic-science-pack]",
-    stack_size = data.raw.tool["automation-science-pack"].stack_size,
-    durability = data.raw.tool["automation-science-pack"].durability,
-    durability_description_key = data.raw.tool["automation-science-pack"].durability_description_key,
-    durability_description_value = data.raw.tool["automation-science-pack"].durability_description_value,
-    weight = data.raw.tool["automation-science-pack"].weight,
+    stack_size = data.raw.item["automation-science-pack"].stack_size,
+    durability = data.raw.item["automation-science-pack"].durability,
+    durability_description_key = data.raw.item["automation-science-pack"].durability_description_key,
+    durability_description_value = data.raw.item["automation-science-pack"].durability_description_value,
+    weight = data.raw.item["automation-science-pack"].weight,
 }}
 
 data:extend {{
@@ -49,7 +49,7 @@ data:extend {{
         {type = "item", name = "hydraulic-science-pack", amount = 1},
     },
     allow_productivity = true,
-    category = "maraxsis-hydro-plant",
+    categories = {"maraxsis-hydro-plant"},
     auto_recycle = false,
     surface_conditions = maraxsis.surface_conditions(),
 }}

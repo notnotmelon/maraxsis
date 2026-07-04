@@ -38,8 +38,8 @@ local function generate_recipe_icons(icons, science_pack, icon_shift)
         table.insert(icons,
             {
                 icon = science_pack.icon,
-                icon_size = (science_pack.icon_size or defines.default_icon_size),
-                scale = 16.0 / (science_pack.icon_size or defines.default_icon_size), -- scale = 0.5 * 32 / icon_size simplified
+                icon_size = (science_pack.icon_size or defines.constant.default_icon_size	),
+                scale = 16.0 / (science_pack.icon_size or defines.constant.default_icon_size	), -- scale = 0.5 * 32 / icon_size simplified
                 shift = icon_shift
             }
         )
@@ -48,7 +48,7 @@ local function generate_recipe_icons(icons, science_pack, icon_shift)
             icons,
             science_pack.icons,
             {scale = 0.5, shift = icon_shift},
-            science_pack.icon_size or defines.default_icon_size
+            science_pack.icon_size or defines.constant.default_icon_size	
         )
     end
 
@@ -115,7 +115,7 @@ local function pressurize(science_pack_name)
         },
         allow_productivity = false,
         allow_quality = false,
-        category = "chemistry",
+        categories = {"chemistry"},
         auto_recycle = false,
         hide_from_signal_gui = false,
         allow_decomposition = false,
@@ -146,11 +146,11 @@ local function pressurize(science_pack_name)
         },
         results = {
             {type = "item", name = science_pack_name,                amount = 100, ignored_by_stats = 100, ignored_by_productivity = 100},
-            {type = "item", name = "maraxsis-empty-research-vessel", amount = 1,   ignored_by_stats = 1,   ignored_by_productivity = 1,  probability = 0.99},
+            {type = "item", name = "maraxsis-empty-research-vessel", amount = 1,   ignored_by_stats = 1,   ignored_by_productivity = 1,  independent_probability = 0.99},
         },
         allow_productivity = false,
         allow_quality = false,
-        category = "chemistry",
+        categories = {"chemistry"},
         auto_recycle = false,
         unlock_results = false,
         icons = generate_recipe_icons({

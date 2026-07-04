@@ -52,7 +52,7 @@ data:extend {{
     results = {
         {type = "item", name = "maraxsis-big-cliff-explosives", amount = 1},
     },
-    category = "maraxsis-hydro-plant",
+    categories = {"maraxsis-hydro-plant" },
 }}
 
 if not mods.pystellarexpedition then
@@ -60,7 +60,7 @@ if not mods.pystellarexpedition then
         type = "recipe",
         name = "maraxsis-pipe-bomb",
         energy_required = data.raw.recipe["grenade"].energy_required,
-        category = "maraxsis-hydro-plant",
+        categories = {"maraxsis-hydro-plant"},
         enabled = false,
         results = table.deepcopy(data.raw.recipe["grenade"].results),
         ingredients = {

@@ -11,7 +11,7 @@ for _, entity in pairs(surface.find_entities_filtered {name = "maraxsis-fishing-
     }
 
     fish_spawner.destructible = false
-    fish_spawner.active = true
+    fish_spawner.disabled_by_script = false
     fish_spawner.operable = false
     fish_spawner.minable_flag = false
 

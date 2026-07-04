@@ -94,7 +94,7 @@ for recipe, category in pairs {
 } do
     local recipe = data.raw.recipe[recipe]
     recipe.hidden_in_factoriopedia = false
-    recipe.category = category
+    recipe.categories = {category}
     recipe.subgroup = "maraxsis-atmosphere-barreling"
 end
 data.raw.recipe["empty-maraxsis-atmosphere-barrel"].results[1].temperature = 25
@@ -108,9 +108,9 @@ end
 
 if not mods.pystellarexpedition then
     data.raw.recipe["maraxsis-glass-panes-recycling"].results = {
-        {type = "item", name = maraxsis_constants.SAND_ITEM_NAME,      amount = 1, probability = 0.75},
-        {type = "item", name = "salt",      amount = 1, probability = 0.5},
-        {type = "item", name = "limestone", amount = 1, probability = 0.25},
+        {type = "item", name = maraxsis_constants.SAND_ITEM_NAME,      amount = 1, independent_probability = 0.75},
+        {type = "item", name = "salt",      amount = 1,independent_probability = 0.5},
+        {type = "item", name = "limestone", amount = 1, independent_probability = 0.25},
     }
 end
 

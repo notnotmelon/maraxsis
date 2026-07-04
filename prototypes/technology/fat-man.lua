@@ -1,22 +1,22 @@
 local sounds = require("__base__.prototypes.entity.sounds")
 
-data:extend {{
+data:extend { {
     type = "recipe",
     name = "maraxsis-fat-man",
-    category = "maraxsis-hydro-plant",
+    categories = {"maraxsis-hydro-plant"},
     ingredients = {
-        {type = "item", name = "artillery-shell",                  amount = 1},
-        {type = "item", name = "maraxsis-super-sealant-substance", amount = 1},
-        {type = "item", name = "atomic-bomb",                      amount = 1},
-    },
+    { type = "item", name = "artillery-shell",                  amount = 1 },
+    { type = "item", name = "maraxsis-super-sealant-substance", amount = 1 },
+    { type = "item", name = "atomic-bomb",                      amount = 1 },
+},
     results = {
-        {type = "item", name = "maraxsis-fat-man", amount = 1}
+        { type = "item", name = "maraxsis-fat-man", amount = 1 }
     },
     energy_required = 10,
     enabled = false,
-}}
+} }
 
-data:extend {{
+data:extend { {
     type = "ammo",
     name = "maraxsis-fat-man",
     icon = "__maraxsis__/graphics/icons/fat-man.png",
@@ -43,15 +43,15 @@ data:extend {{
     subgroup = "ammo",
     order = "d[explosive-cannon-shell]-d[artillery]",
     stack_size = 1
-}}
+} }
 
-data:extend {{
+data:extend { {
     type = "artillery-projectile",
     name = "maraxsis-nuclear-artillery-projectile",
-    flags = {"not-on-map"},
+    flags = { "not-on-map" },
     reveal_map = true,
     hidden = true,
-    map_color = {r = 0.5, g = 1, b = 0.5},
+    map_color = { r = 0.5, g = 1, b = 0.5 },
     picture = {
         filename = "__base__/graphics/entity/artillery-projectile/shell.png",
         draw_as_glow = true,
@@ -67,7 +67,7 @@ data:extend {{
     },
     chart_picture = {
         filename = "__base__/graphics/entity/artillery-projectile/artillery-shoot-map-visualization.png",
-        flags = {"icon"},
+        flags = { "icon" },
         frame_count = 1,
         width = 64,
         height = 64,
@@ -84,7 +84,7 @@ data:extend {{
                     tile_name = "nuclear-ground",
                     radius = 12,
                     apply_projection = true,
-                    tile_collision_mask = {layers = {water_tile = true}}
+                    tile_collision_mask = { layers = { water_tile = true } }
                 },
                 {
                     type = "destroy-cliffs",
@@ -126,12 +126,12 @@ data:extend {{
                 },
                 {
                     type = "damage",
-                    damage = {amount = 400, type = "explosion"}
+                    damage = { amount = 400, type = "explosion" }
                 },
                 {
                     type = "create-entity",
                     entity_name = "huge-scorchmark",
-                    offsets = {{0, -0.5}},
+                    offsets = { { 0, -0.5 } },
                     check_buildability = true
                 },
                 {
@@ -275,7 +275,7 @@ data:extend {{
                                 {
                                     type = "create-entity",
                                     entity_name = "nuclear-smouldering-smoke-source",
-                                    tile_collision_mask = {layers = {water_tile = true}}
+                                    tile_collision_mask = { layers = { water_tile = true } }
                                 }
                             }
                         }
@@ -312,4 +312,4 @@ data:extend {{
         }
     },
     height_from_ground = 280 / 64
-}}
+} }
