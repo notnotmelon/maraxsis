@@ -32,7 +32,7 @@ data:extend {{
         {type = "item", name = "hydraulic-research-data", amount = 1},
     },
     allow_productivity = true,
-    category = "maraxsis-hydro-plant",
+    categories = { "maraxsis-hydro-plant"},
     auto_recycle = false,
     surface_conditions = maraxsis.surface_conditions(),
 }}
@@ -54,7 +54,7 @@ data:extend {{
         {type = "item", name = "hydraulic-science-pack", amount = 5},
     },
     allow_productivity = true,
-    category = "kr-tech-cards",
+    categories = { "kr-tech-cards"},
     auto_recycle = false,
     surface_conditions = maraxsis.surface_conditions(),
 }}

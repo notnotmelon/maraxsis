@@ -64,7 +64,7 @@ data:extend {{
     energy_required = 100,
     ingredients = {},
     results = {},
-    category = "maraxsis-regulator",
+    categories = {"maraxsis-regulator"},
     subgroup = "fluid",
     order = "a[fluid]-a[maraxsis-atmosphere]-a[regulator]",
     icon = "__maraxsis__/graphics/icons/atmosphere.png",

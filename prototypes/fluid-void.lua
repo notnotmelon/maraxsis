@@ -22,7 +22,7 @@ for _, fluid in pairs(data.raw.fluid) do
     data:extend {{
         type = "recipe",
         name = "maraxsis-fluid-void-" .. fluid.name,
-        category = "maraxsis-hydro-plant",
+        categories = {"maraxsis-hydro-plant"},
         subgroup = "maraxsis-fluid-void",
         order = fluid.order,
         icons = generate_void_icons(fluid),

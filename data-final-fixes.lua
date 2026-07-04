@@ -1,3 +1,15 @@
+function table_contains(tbl, x)
+    if not tbl then
+        return false
+    end
+    for _, v in pairs(tbl) do
+        if v == x then
+            return true
+        end
+    end
+    return false
+end
+
 local collision_mask_util = require("collision-mask-util")
 
 if not mods.pystellarexpedition then require "prototypes.research-vessel" end
@@ -55,7 +67,7 @@ if data.raw["technology"]["maraxsis-promethium-productivity"] then
 end
 
 for _, recipe in pairs(data.raw.recipe) do
-    if recipe.category == "maraxsis-hydro-plant-or-assembling" then
+    if table_contains(recipe.categories,"maraxsis-hydro-plant") then
         recipe.always_show_made_in = true
     end
 end
@@ -118,35 +130,6 @@ do
 end
 
 ::dont_run_fuel_category_changes::
-
--- add maraxsis crafting categories to existing crafting machines
-local function add_crafting_category_if_other_category_exists(category_to_find, category_to_add)
-    if mods.pystellarexpedition then return end
-
-    for _, assembling_machine_type in pairs {
-        "assembling-machine",
-        "rocket-silo",
-        "furnace",
-        "character",
-    } do
-        for _, assembling_machine in pairs(data.raw[assembling_machine_type] or {}) do
-            for _, category in pairs(assembling_machine.crafting_categories or {}) do
-                if category == category_to_find then
-                    table.insert(assembling_machine.crafting_categories, category_to_add)
-                    break
-                end
-            end
-        end
-    end
-end
-
-add_crafting_category_if_other_category_exists("chemistry", "maraxsis-hydro-plant-or-chemistry")
-add_crafting_category_if_other_category_exists("smelting", "maraxsis-smelting-or-biochamber")
-add_crafting_category_if_other_category_exists("metallurgy", "maraxsis-hydro-plant-or-foundry")
-add_crafting_category_if_other_category_exists("organic", "maraxsis-smelting-or-biochamber")
-add_crafting_category_if_other_category_exists("organic", "maraxsis-hydro-plant-or-biochamber")
-add_crafting_category_if_other_category_exists("crafting", "maraxsis-hydro-plant-or-assembling")
-add_crafting_category_if_other_category_exists("advanced-crafting", "maraxsis-hydro-plant-or-advanced-crafting")
 
 if not mods.pystellarexpedition then
     local sand_mask = collision_mask_util.get_mask(data.raw.tile["sand-1-underwater"])

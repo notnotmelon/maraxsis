@@ -21,7 +21,7 @@ maraxsis.on_event(defines.events.on_chunk_generated, function(event)
 		position = {x, y},
 		create_build_effect_smoke = false
 	}
-	fancy_water.active = false
+	fancy_water.disabled_by_script = true
 	fancy_water.destructible = false
 	fancy_water.minable_flag = false
 end)
@@ -61,7 +61,7 @@ local function coral_created(event)
 			force = force_index,
 			create_build_effect_smoke = false
 		}
-		new_coral.active = false
+		new_coral.disabled_by_script = true
 		new_coral.destructible = false
 		new_coral.minable_flag = false
 		coral_animation[i] = new_coral

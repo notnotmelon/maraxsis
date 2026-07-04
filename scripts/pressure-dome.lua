@@ -125,7 +125,7 @@ local function disable_due_to_dome_low_pressure(entity, powered_and_has_fluid)
 
     local should_be_active = not not powered_and_has_fluid
     if entity.active == should_be_active then return end
-    entity.active = should_be_active
+    entity.disabled_by_script = not should_be_active
 
     storage.flooded_warning_info_icons = storage.flooded_warning_info_icons or {}
     local warning = storage.flooded_warning_info_icons[entity.unit_number]
@@ -418,7 +418,7 @@ local function place_collision_boxes(pressure_dome_data, health, player)
             player = player -- setup the undo queue
         }
         collision_box.health = health
-        collision_box.active = false
+        collision_box.disabled_by_script = true
         collision_box.operable = false -- vanilla bug: operable does nothing on cars
         table.insert(pressure_dome_data.collision_boxes, collision_box)
 
@@ -552,10 +552,10 @@ maraxsis.on_nth_tick(631, function()
             regulator_fluidbox = pressure_dome_data.regulator_fluidbox
         end
 
-        local fluid = regulator_fluidbox.fluidbox[1]
+        local fluid = regulator_fluidbox.get_fluid(1)
         if fluid and fluid.temperature ~= 25 then
             fluid.temperature = 25
-            regulator_fluidbox.fluidbox[1] = fluid
+            regulator_fluidbox.set_fluid(1,fluid)
         end
     end
 end)
