@@ -1,4 +1,20 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.32.0
+Date: 2026-07-05
+  Features:
+    - Updated to 2.1
+  Balancing:
+    - holmium-recrystalization is now crafted in the hydro plant. was previously either assembling machine 2 or assembling machine 3
+    - regulators now consume 5x as much energy. however, they can also charge robobots 5x faster.
+    - Robots now consume 5x energy on maraxsis. Was previously 0.01x
+    - the regulator can now charge 8 robots at once instead of 4
+  Compatibility:
+    - Added hard dependency on the quality mod.
+    - Removed optional dependency on py stellar expedition for now.
+  Locale:
+    - improved description for fishing tower
+    - Updated description for fishing tower to be a bit more clear how it works.
+---------------------------------------------------------------------------------------------------
 Version: 1.31.9
 Date: 2026-06-28
   Compatibility:
