@@ -1,4 +1,9 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.32.4
+Date: 2026-07-05
+  Bugfixes:
+    - Fixed pressure dome not properly disabling machines in some cases. Resolves https://github.com/notnotmelon/maraxsis/issues/392
+---------------------------------------------------------------------------------------------------
 Version: 1.32.3
 Date: 2026-07-05
   Bugfixes:
