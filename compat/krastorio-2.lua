@@ -137,7 +137,7 @@ if not mods["no-quality"] then
     end
 end
 
-data.raw.recipe["kr-quantum-computer"].category = "maraxsis-hydro-plant"
+data.raw.recipe["kr-quantum-computer"].categories = {"maraxsis-hydro-plant"}
 
 data.raw.recipe["kr-quantum-computer"].ingredients = {
     {type = "item", name = "kr-research-server",   amount = 3},
