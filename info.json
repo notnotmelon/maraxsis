@@ -9,6 +9,7 @@
   "dependencies": [
     "base >= 2.1.9",
     "space-age >= 2.1.9",
+    "quality >= 2.1.9",
     "SpidertronPatrols >= 2.7.0",
     "FluidMustFlow >= 1.5.0",
     "(?) tenebris",
