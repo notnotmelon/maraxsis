@@ -124,7 +124,7 @@ local function disable_due_to_dome_low_pressure(entity, powered_and_has_fluid)
     if not DOME_DISABLEABLE_TYPES[entity.type] or DOME_EXCLUDED_FROM_DISABLE[entity.name] then return end
 
     local should_be_active = not not powered_and_has_fluid
-    if entity.active == should_be_active then return end
+    if entity.disabled_by_script == should_be_active then return end
     entity.disabled_by_script = not should_be_active
 
     storage.flooded_warning_info_icons = storage.flooded_warning_info_icons or {}
