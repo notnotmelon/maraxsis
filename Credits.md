@@ -75,7 +75,3 @@
 - **Source**: [Pixabay](https://pixabay.com)
 - **License**: [Pixabay Content License](https://pixabay.com/service/license-summary/)
 - **Changes**: No
-
-#### 2.1 port
-
-- Jethro Larson, Frontrider

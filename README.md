@@ -116,5 +116,6 @@ Maraxsis would not be possible without the help of these amazing, fantastic, inc
  - Ducts - Krastor, [Linver](https://github.com/Linver), [iicyan](https://github.com/iicyan), [raiguard](https://github.com/raiguard)
  - Devops & CI - [fgardt](https://github.com/fgardt)
  - Tech & item icon postprocessing - [snouz](https://github.com/snouz)
+ - 2.1 port - [Jethro Larson](https://github.com/jethrolarson), [Frontrider](https://mods.factorio.com/user/Frontrider)
 
 [More details in Credits.md](https://github.com/notnotmelon/maraxsis/blob/main/Credits.md)
