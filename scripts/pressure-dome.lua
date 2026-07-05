@@ -509,7 +509,7 @@ local function place_regulator(pressure_dome_data)
     local regulator = pressure_dome_data.regulator
     if not regulator or not regulator.valid then
         storage.script_placing_the_regulator = true
-        regulator = surface.create_entity {
+        local regulator = surface.create_entity {
             name = "maraxsis-regulator",
             position = {x, y},
             quality = quality,
@@ -518,7 +518,9 @@ local function place_regulator(pressure_dome_data)
             raise_built = true,
         }
         storage.script_placing_the_regulator = false
+        pressure_dome_data.regulator = regulator
     end
+    local regulator = pressure_dome_data.regulator
 
     regulator.minable_flag = false
     regulator.destructible = false

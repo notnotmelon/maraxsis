@@ -102,10 +102,9 @@ data:extend { {
     },
     heating_energy = "2000kW",
     module_slots = 4,
-    icons_positioning = {
-        { inventory_index = defines.inventory.crafter_modules, shift = { 0, 1 }
-        }
-    },
+    icons_positioning = {{
+        inventory_index = defines.inventory.crafter_modules, shift = { 0, 1 }
+    }},
     allowed_effects = { "consumption", "speed", "productivity", "pollution", "quality" },
     water_reflection = require("__space-age__.prototypes.entity.electromagnetic-plant-pictures").water_reflection,
     collision_box = { { -1.9, -1.9 }, { 1.9, 1.9 } },
