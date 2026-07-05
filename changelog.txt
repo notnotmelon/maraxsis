@@ -1,4 +1,11 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.32.1
+Date: 2026-07-05
+  Compatibility:
+    - Fixed compatibility with aai industry.
+  Changes:
+    - Removed various redundant crafting categories for the hydro plant. Now only using 'maraxsis-hydro-plant'
+---------------------------------------------------------------------------------------------------
 Version: 1.32.0
 Date: 2026-07-05
   Features:
