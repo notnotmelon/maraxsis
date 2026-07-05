@@ -19,7 +19,7 @@ data:extend {{
             type = "unlock-recipe",
             recipe = "maraxsis-super-sealant-substance"
         },
-        (not mods.pystellarexpedition) and {
+        {
             type = "unlock-recipe",
             recipe = "maraxsis-petroleum-gas-cracking"
         } or nil,

@@ -12,7 +12,7 @@ data:extend {{
             type = "unlock-recipe",
             recipe = "maraxsis-fat-man",
         },
-        (not mods.pystellarexpedition) and {
+        {
             type = "unlock-recipe",
             recipe = "maraxsis-pipe-bomb"
         } or nil
@@ -55,21 +55,19 @@ data:extend {{
     categories = {"maraxsis-hydro-plant" },
 }}
 
-if not mods.pystellarexpedition then
-    data:extend {{
-        type = "recipe",
-        name = "maraxsis-pipe-bomb",
-        energy_required = data.raw.recipe["grenade"].energy_required,
-        categories = {"maraxsis-hydro-plant"},
-        enabled = false,
-        results = table.deepcopy(data.raw.recipe["grenade"].results),
-        ingredients = {
-            {type = "item", name = "explosives", amount = 5},
-            {type = "item", name = "pipe",       amount = 5},
-        },
-        auto_recycle = false,
-    }}
-end
+data:extend {{
+    type = "recipe",
+    name = "maraxsis-pipe-bomb",
+    energy_required = data.raw.recipe["grenade"].energy_required,
+    categories = {"maraxsis-hydro-plant"},
+    enabled = false,
+    results = table.deepcopy(data.raw.recipe["grenade"].results),
+    ingredients = {
+        {type = "item", name = "explosives", amount = 5},
+        {type = "item", name = "pipe",       amount = 5},
+    },
+    auto_recycle = false,
+}}
 
 data:extend {{
     type = "capsule",
