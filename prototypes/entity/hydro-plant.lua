@@ -249,7 +249,7 @@ data:extend { {
 data:extend { {
     type = "recipe",
     name = "maraxsis-holmium-recrystalization",
-    categories = { "maraxsis-hydro-plant", "crafting-with-fluid" },
+    categories = { "maraxsis-hydro-plant" },
     ingredients = {
         { type = "fluid", name = "holmium-solution", amount = 50 },
         { type = "item",  name = "holmium-ore",      amount = 1 },
