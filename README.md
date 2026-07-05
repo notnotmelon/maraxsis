@@ -89,17 +89,6 @@ Full discography: https://anagramofme.bandcamp.com/album/ost-maraxsis
 
 ---
 
-### Etymology
-
-The name "Maraxsis" draws inspiration from Frank Herbert's Arrakis. The two worlds can be considered "equal but opposite". Both lack essential resources; land on Maraxsis, water on Arrakis; making survival difficult.
-
-This connection is mirrored in their names. The shared suffixes “-kis” or “-sis” evoke a harsh, guttural sound, hinting at the hostility in these landscapes.
-
-  - Arid → Arrakis
-  - Marine → Maraxsis
-
----
-
 ### Credits
 
 Maraxsis would not be possible without the help of these amazing, fantastic, incredible people.
