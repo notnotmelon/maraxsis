@@ -133,7 +133,7 @@ if not mods["no-quality"] then
     -- https://codeberg.org/raiguard/Krastorio2/src/branch/trunk/prototypes/buildings/quantum-computer.lua
     -- Soft-type the property to avoid errors if effect_receiver and/or base_effect is not present which soft-defaults to nil thus game-engine defaults.
     if qc and qc.effect_receiver and qc.effect_receiver.base_effect then
-        qc.effect_receiver.base_effect.quality = 5
+        qc.effect_receiver.base_effect.quality = 0.5
     end
 end
 
