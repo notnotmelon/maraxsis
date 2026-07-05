@@ -24,7 +24,7 @@ data:extend {{
     },
     allow_productivity = true,
     main_product = "maraxsis-fish-food",
-    categories = {"maraxsis-hydro-plant","organic"},
+    categories = {"maraxsis-hydro-plant", "organic"},
 }}
 
 data:extend {{

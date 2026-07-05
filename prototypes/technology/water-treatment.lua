@@ -83,7 +83,7 @@ data:extend {{
         {type = "fluid", name = "oxygen",   amount = 100},
         {type = "fluid", name = "hydrogen", amount = 200},
     },
-    categories = {"maraxsis-hydro-plant","chemistry"},
+    categories = {"maraxsis-hydro-plant", "chemistry"},
     icon = "__maraxsis__/graphics/icons/saline-electrolysis.png",
     icon_size = 64,
     auto_recycle = false,
@@ -108,7 +108,7 @@ data:extend {{
         {type = "fluid", name = "water", amount = 300},
     },
     allow_productivity = true,
-    categories = {"chemistry","cryogenics"},
+    categories = {"chemistry", "cryogenics"},
     main_product = "water",
 }}
 add_to_tech("maraxsis-water")
@@ -134,7 +134,7 @@ data:extend {{
         {type = "fluid", name = "maraxsis-brackish-water",        amount = 100},
         {type = "item",  name = "maraxsis-saturated-salt-filter", amount = 1,  ignored_by_stats = 1, ignored_by_productivity = 1},
     },
-    categories = {"maraxsis-hydro-plant","chemistry"},
+    categories = {"maraxsis-hydro-plant", "chemistry"},
     auto_recycle = false,
     main_product = "maraxsis-brackish-water",
     allow_productivity = true,
@@ -181,7 +181,7 @@ data:extend {{
     results = {
         {type = "item", name = "maraxsis-salt-filter", amount = 1},
     },
-    categories = {"maraxsis-hydro-plant","crafting"},
+    categories = {"maraxsis-hydro-plant", "crafting"},
     allow_productivity = true,
     auto_recycle = false,
 }}
@@ -201,7 +201,7 @@ data:extend {{
         {type = "item",  name = "carbon-fiber",            amount = 1, independent_probability = 0.025},
         {type = "fluid", name = "maraxsis-brackish-water", amount = 20},
     },
-    categories = {"maraxsis-hydro-plant","chemistry"},
+    categories = {"maraxsis-hydro-plant", "chemistry"},
     main_product = "maraxsis-salt-filter",
     allow_productivity = false,
     icon = "__maraxsis__/graphics/icons/salt-filter-cleaning.png",

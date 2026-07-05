@@ -166,7 +166,7 @@ data:extend {{
     icon = "__maraxsis__/graphics/icons/limestone-processing.png",
     icon_size = 64,
     allow_productivity = true,
-    categories = {"maraxsis-hydro-plant","metallurgy"},
+    categories = {"maraxsis-hydro-plant", "metallurgy"},
     allow_decomposition = false,
     main_product = "calcite",
     auto_recycle = false,

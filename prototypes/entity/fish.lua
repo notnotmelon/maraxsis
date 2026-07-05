@@ -145,7 +145,7 @@ data:extend {{
     results = {
         {type = "item", name = "carbon", amount = 8},
     },
-    categories = {"organic","smelting"},
+    categories = {"organic", "smelting"},
     allow_productivity = true,
     main_product = "carbon",
     icon = "__maraxsis__/graphics/icons/burnt-fish.png",
@@ -240,7 +240,7 @@ data:extend {{
         {type = "item", name = "maraxsis-microplastics", amount = 10},
         {type = "item", name = "jelly",                  amount = 10},
     },
-    categories = {"organic","crafting"},
+    categories = {"organic", "crafting"},
     localised_name = {"recipe-name.maraxsis-microplastics"},
     main_product = "maraxsis-microplastics",
     allow_productivity = true,
