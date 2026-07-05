@@ -35,6 +35,31 @@ local SUPERCRITICAL_STEAM_ALLOW_LIST = table.invert {
     "maraxsis-salt-reactor",
 }
 
+local function get_connected_entities(entity)
+    local connected_entities = {}
+    local seen = {}
+
+    local ok, connections = pcall(entity.get_fluid_box_pipe_connections, entity, 1)
+    if not ok or not connections then
+        return connected_entities
+    end
+
+    for _, connection in pairs(connections) do
+        for _, neighbour in pairs(entity.surface.find_entities_filtered{
+            position = connection.target_position,
+            force = entity.force,
+        }) do
+            local unit_number = neighbour.unit_number
+            if unit_number and not seen[unit_number] then
+                seen[unit_number] = true
+                connected_entities[#connected_entities + 1] = neighbour
+            end
+        end
+    end
+
+    return connected_entities
+end
+
 maraxsis.on_nth_tick(597, function()
     for unit_number, duct_exhaust in pairs(storage.duct_exhausts) do
         if not duct_exhaust.valid then
@@ -47,28 +72,27 @@ maraxsis.on_nth_tick(597, function()
             goto continue
         end
 
-        for _, neighbours in pairs(duct_exhaust.neighbours) do
-            for _, neighbour in pairs(neighbours) do
-                if not SUPERCRITICAL_STEAM_ALLOW_LIST[neighbour.name] then
-                    for i = 1, neighbour.fluids_count do
-                        if neighbour.get_fluid(i).name == "maraxsis-supercritical-steam" then
-                            neighbour.clear_fluid(i, "maraxsis-supercritical-steam")
-                        end
+        for _, neighbour in pairs(get_connected_entities(duct_exhaust)) do
+            if not SUPERCRITICAL_STEAM_ALLOW_LIST[neighbour.name] then
+                for i = 1, neighbour.fluids_count do
+                    local neighbour_fluid = neighbour.get_fluid(i)
+                    if neighbour_fluid and neighbour_fluid.name == "maraxsis-supercritical-steam" then
+                        neighbour.clear_fluid(i, "maraxsis-supercritical-steam")
                     end
+                end
 
-                    local position = neighbour.position
-                    local force = neighbour.force_index
-                    local name = neighbour.name
-                    local type = neighbour.type
-                    neighbour.die()
-                    for _, ghost in pairs(duct_exhaust.surface.find_entities_filtered{
-                        position = position,
-                        ghost_type = type,
-                        ghost_name = name,
-                        force = force
-                    }) do
-                        ghost.destroy()
-                    end
+                local position = neighbour.position
+                local force = neighbour.force_index
+                local name = neighbour.name
+                local type = neighbour.type
+                neighbour.die()
+                for _, ghost in pairs(duct_exhaust.surface.find_entities_filtered{
+                    position = position,
+                    ghost_type = type,
+                    ghost_name = name,
+                    force = force
+                }) do
+                    ghost.destroy()
                 end
             end
         end
