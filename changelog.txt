@@ -1,4 +1,54 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.32.5
+Date: 2026-07-05
+  Compatibility:
+    - Added hard dependancy on the planetslib mod. Thanks roc!
+  Bugfixes:
+    - Fixed crash involving the salt reactor
+---------------------------------------------------------------------------------------------------
+Version: 1.32.4
+Date: 2026-07-05
+  Bugfixes:
+    - Fixed pressure dome not properly disabling machines in some cases. Resolves https://github.com/notnotmelon/maraxsis/issues/392
+---------------------------------------------------------------------------------------------------
+Version: 1.32.3
+Date: 2026-07-05
+  Bugfixes:
+    - [salt-reactor] replace invalid neighbours access with fluid-box connection lookup
+---------------------------------------------------------------------------------------------------
+Version: 1.32.2
+Date: 2026-07-05
+  Bugfixes:
+    - Fixed Crash when placing uncommon quality dome. Resolves https://github.com/notnotmelon/maraxsis/issues/382
+---------------------------------------------------------------------------------------------------
+Version: 1.32.1
+Date: 2026-07-05
+  Compatibility:
+    - Fixed compatibility with aai industry.
+  Changes:
+    - Removed various redundant crafting categories for the hydro plant. Now only using 'maraxsis-hydro-plant'
+---------------------------------------------------------------------------------------------------
+Version: 1.32.0
+Date: 2026-07-05
+  Features:
+    - Updated to 2.1
+  Balancing:
+    - holmium-recrystalization is now crafted in the hydro plant. was previously either assembling machine 2 or assembling machine 3
+    - regulators now consume 5x as much energy. however, they can also charge robobots 5x faster.
+    - Robots now consume 5x energy on maraxsis. Was previously 0.01x
+    - the regulator can now charge 8 robots at once instead of 4
+  Compatibility:
+    - Added hard dependency on the quality mod.
+    - Removed optional dependency on py stellar expedition for now.
+  Locale:
+    - improved description for fishing tower
+    - Updated description for fishing tower to be a bit more clear how it works.
+---------------------------------------------------------------------------------------------------
+Version: 1.31.9
+Date: 2026-06-28
+  Compatibility:
+    - Krastorio 2.0/Spaced Out - Soft-type the property to avoid errors if effect_receiver and/or base_effect is not present which soft-defaults to nil thus game-engine defaults. ([#386](https://github.com/notnotmelon/maraxsis/issues/386))
+---------------------------------------------------------------------------------------------------
 Version: 1.31.8
 Date: 2026-04-13
   Locale:

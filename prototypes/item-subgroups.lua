@@ -55,7 +55,7 @@ local function order_subgroup(prototype_type, name, order, subgroup)
     if prototype then
         prototype.order = order
         prototype.subgroup = subgroup
-    elseif not mods.pystellarexpedition then
+    else
         error("no such prototype: " .. prototype_type .. "." .. name)
     end
 end

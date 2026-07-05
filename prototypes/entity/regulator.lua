@@ -16,6 +16,16 @@ regulator.hidden = false
 regulator.energy_source.render_no_network_icon = false
 regulator.energy_source.render_no_power_icon = false
 regulator.drawing_box_vertical_extension = 0.75
+regulator.energy_source.input_flow_limit = "25MW"
+regulator.energy_usage = "2.5MW"
+regulator.charging_energy = "2.5MW"
+
+local sqrt_2 = 1.41421356237
+regulator.charging_offsets = {
+    {-1.5, -1}, {1.5, -1}, {1.5, 1}, {-1.5, 1},
+    {-sqrt_2 * 1.5, -sqrt_2}, {sqrt_2 * 1.5, -sqrt_2}, {sqrt_2 * 1.5, sqrt_2}, {-sqrt_2 * 1.5, sqrt_2}
+}
+
 regulator.integration_patch = {
     layers = {
         {
@@ -64,7 +74,7 @@ data:extend {{
     energy_required = 100,
     ingredients = {},
     results = {},
-    category = "maraxsis-regulator",
+    categories = {"maraxsis-regulator"},
     subgroup = "fluid",
     order = "a[fluid]-a[maraxsis-atmosphere]-a[regulator]",
     icon = "__maraxsis__/graphics/icons/atmosphere.png",

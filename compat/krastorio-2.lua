@@ -1,8 +1,8 @@
 if not mods["Krastorio2-spaced-out"] and not mods["Krastorio2"] then return end
 
 if not mods["Tech_Cards_For_Modded_Planets"] then
-    data.raw.tool["hydraulic-science-pack"].icon = "__maraxsis__/graphics/icons/hydraulic-tech-card.png"
-    data.raw.tool["hydraulic-science-pack"].localised_name = {"item-name.hydraulic-tech-card"}
+    data.raw.item["hydraulic-science-pack"].icon = "__maraxsis__/graphics/icons/hydraulic-tech-card.png"
+    data.raw.item["hydraulic-science-pack"].localised_name = {"item-name.hydraulic-tech-card"}
     data.raw.technology["hydraulic-science-pack"].icon = "__maraxsis__/graphics/technology/hydraulic-tech-card.png"
     data.raw.technology["hydraulic-science-pack"].localised_name = {"item-name.hydraulic-tech-card"}
 end
@@ -32,7 +32,7 @@ data:extend {{
         {type = "item", name = "hydraulic-research-data", amount = 1},
     },
     allow_productivity = true,
-    category = "maraxsis-hydro-plant",
+    categories = { "maraxsis-hydro-plant"},
     auto_recycle = false,
     surface_conditions = maraxsis.surface_conditions(),
 }}
@@ -54,7 +54,7 @@ data:extend {{
         {type = "item", name = "hydraulic-science-pack", amount = 5},
     },
     allow_productivity = true,
-    category = "kr-tech-cards",
+    categories = { "kr-tech-cards"},
     auto_recycle = false,
     surface_conditions = maraxsis.surface_conditions(),
 }}
@@ -129,10 +129,15 @@ data.raw.technology["kr-quantum-computer"].unit.ingredients = {
 }
 
 if not mods["no-quality"] then
-    data.raw["assembling-machine"]["kr-quantum-computer"].effect_receiver.base_effect.quality = 5
+    local qc = data.raw["assembling-machine"]["kr-quantum-computer"]
+    -- https://codeberg.org/raiguard/Krastorio2/src/branch/trunk/prototypes/buildings/quantum-computer.lua
+    -- Soft-type the property to avoid errors if effect_receiver and/or base_effect is not present which soft-defaults to nil thus game-engine defaults.
+    if qc and qc.effect_receiver and qc.effect_receiver.base_effect then
+        qc.effect_receiver.base_effect.quality = 0.5
+    end
 end
 
-data.raw.recipe["kr-quantum-computer"].category = "maraxsis-hydro-plant"
+data.raw.recipe["kr-quantum-computer"].categories = {"maraxsis-hydro-plant"}
 
 data.raw.recipe["kr-quantum-computer"].ingredients = {
     {type = "item", name = "kr-research-server",   amount = 3},

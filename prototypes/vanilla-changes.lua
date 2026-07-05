@@ -1,23 +1,21 @@
-if not mods.pystellarexpedition then
-    for _, lab in pairs(data.raw.lab) do
-        for _, input in pairs(lab.inputs or {}) do
-            if input == "cryogenic-science-pack" then
-                lab.inputs = lab.inputs or {}
-                if not table.find(lab.inputs, "hydraulic-science-pack") then
-                    table.insert(lab.inputs, "hydraulic-science-pack")
-                end
-                table.sort(lab.inputs, function(a, b)
-                    local order_1 = (data.raw.tool[a] and data.raw.tool[a].order) or a
-                    local order_2 = (data.raw.tool[b] and data.raw.tool[b].order) or b
-                    return order_1 < order_2
-                end)
-                break
+for _, lab in pairs(data.raw.lab) do
+    for _, input in pairs(lab.inputs or {}) do
+        if input == "cryogenic-science-pack" then
+            lab.inputs = lab.inputs or {}
+            if not table.find(lab.inputs, "hydraulic-science-pack") then
+                table.insert(lab.inputs, "hydraulic-science-pack")
             end
+            table.sort(lab.inputs, function(a, b)
+                local order_1 = (data.raw.item[a] and data.raw.item[a].order) or a
+                local order_2 = (data.raw.item[b] and data.raw.item[b].order) or b
+                return order_1 < order_2
+            end)
+            break
         end
     end
 end
 
-if settings.startup["maraxsis-add-hydraulic-science"].value and not mods.pystellarexpedition then
+if settings.startup["maraxsis-add-hydraulic-science"].value then
     local function add_hydraulic_pack(tech_name, direct_prereq)
         local tech = data.raw.technology[tech_name]
         if not tech then return end
@@ -35,20 +33,22 @@ if settings.startup["maraxsis-add-hydraulic-science"].value and not mods.pystell
     add_hydraulic_pack("research-productivity", false)
 end
 
-if not mods.pystellarexpedition then
-    data.raw.recipe["pump"].category = "maraxsis-hydro-plant-or-assembling"
-    data.raw.recipe["pipe"].category = "maraxsis-hydro-plant-or-assembling"
-    data.raw.recipe["pipe-to-ground"].category = "maraxsis-hydro-plant-or-assembling"
-    data.raw.recipe["storage-tank"].category = "maraxsis-hydro-plant-or-assembling"
-    data.raw.recipe["coal-synthesis"].category = "maraxsis-hydro-plant-or-chemistry"
-
-    if not mods["foundry-expanded"] then
-        data.raw.recipe["engine-unit"].category = "maraxsis-hydro-plant-or-advanced-crafting"
+local function insert_hydro_plant(recipe)
+    if not recipe then
+        return
     end
-    if not mods["electromagnetic-plant-expanded"] then
-        data.raw.recipe["electric-engine-unit"].category = "maraxsis-hydro-plant-or-advanced-crafting"
-    end
+    local categories = recipe.categories or {"crafting"}
+    table.insert(categories,"maraxsis-hydro-plant")
+    recipe.categories = categories
 end
+
+insert_hydro_plant(data.raw.recipe["pump"])
+insert_hydro_plant(data.raw.recipe["pipe"])
+insert_hydro_plant(data.raw.recipe["pipe-to-ground"])
+insert_hydro_plant(data.raw.recipe["storage-tank"])
+insert_hydro_plant(data.raw.recipe["coal-synthesis"])
+insert_hydro_plant(data.raw.recipe["engine-unit"])
+insert_hydro_plant(data.raw.recipe["electric-engine-unit"])
 
 local function add_surface_condition(recipe, condition)
     recipe.surface_conditions = recipe.surface_conditions or {}
@@ -74,7 +74,7 @@ if data.raw.technology["rocket-part-productivity"] then
     })
 end
 
-if data.raw.technology["rocket-fuel-productivity"] and not mods.pystellarexpedition then
+if data.raw.technology["rocket-fuel-productivity"] then
     table.insert(data.raw.technology["rocket-fuel-productivity"].effects, {
         type = "change-recipe-productivity",
         recipe = "maraxsis-hydrolox-rocket-fuel",
@@ -98,11 +98,9 @@ for _, effect in pairs(data.raw.technology["spidertron"].effects) do
 end
 data.raw.technology["spidertron"].effects = new_spidertron_effects
 
-if not mods.pystellarexpedition then
-    data.raw.recipe["ice-melting"].category = "maraxsis-hydro-plant-or-chemistry"
-    data.raw.recipe["advanced-thruster-fuel"].category = "maraxsis-hydro-plant-or-chemistry"
-    data.raw.recipe["advanced-thruster-oxidizer"].category = "maraxsis-hydro-plant-or-chemistry"
-end
+insert_hydro_plant(data.raw.recipe["ice-melting"])
+insert_hydro_plant(data.raw.recipe["advanced-thruster-fuel"])
+insert_hydro_plant(data.raw.recipe["advanced-thruster-oxidizer"])
 
 -- https://github.com/notnotmelon/maraxsis/issues/23
 for _, projectile in pairs(data.raw.projectile) do
@@ -156,21 +154,18 @@ for _, module in pairs(data.raw.module) do
 end
 
 -- add vehicle acceleration to uranium fuel cells
-
-if not mods.pystellarexpedition then
-    local uranium_fuel_cell = data.raw.item["uranium-fuel-cell"]
-    local msr_fuel_cell = data.raw.item["msr-fuel-cell"]
-    local nuclear_fuel = data.raw.item["nuclear-fuel"]
-    uranium_fuel_cell.fuel_acceleration_multiplier = nuclear_fuel.fuel_acceleration_multiplier
-    msr_fuel_cell.fuel_acceleration_multiplier = nuclear_fuel.fuel_acceleration_multiplier + 0.5
-    uranium_fuel_cell.fuel_top_speed_multiplier = nuclear_fuel.fuel_top_speed_multiplier
-    msr_fuel_cell.fuel_top_speed_multiplier = nuclear_fuel.fuel_top_speed_multiplier + 0.25
-    uranium_fuel_cell.fuel_emissions_multiplier = nuclear_fuel.fuel_emissions_multiplier
-    msr_fuel_cell.fuel_emissions_multiplier = (nuclear_fuel.fuel_emissions_multiplier or 1) * 0.9
-    uranium_fuel_cell.fuel_glow_color = nuclear_fuel.fuel_glow_color
-    msr_fuel_cell.fuel_glow_color = {128, 0, 128}
-    uranium_fuel_cell.fuel_acceleration_multiplier_quality_bonus = nuclear_fuel.fuel_acceleration_multiplier_quality_bonus
-    msr_fuel_cell.fuel_acceleration_multiplier_quality_bonus = nuclear_fuel.fuel_acceleration_multiplier_quality_bonus
-    uranium_fuel_cell.fuel_top_speed_multiplier_quality_bonus = nuclear_fuel.fuel_top_speed_multiplier_quality_bonus
-    msr_fuel_cell.fuel_top_speed_multiplier_quality_bonus = nuclear_fuel.fuel_top_speed_multiplier_quality_bonus
-end
+local uranium_fuel_cell = data.raw.item["uranium-fuel-cell"]
+local msr_fuel_cell = data.raw.item["msr-fuel-cell"]
+local nuclear_fuel = data.raw.item["nuclear-fuel"]
+uranium_fuel_cell.fuel_acceleration_multiplier = nuclear_fuel.fuel_acceleration_multiplier
+msr_fuel_cell.fuel_acceleration_multiplier = nuclear_fuel.fuel_acceleration_multiplier + 0.5
+uranium_fuel_cell.fuel_top_speed_multiplier = nuclear_fuel.fuel_top_speed_multiplier
+msr_fuel_cell.fuel_top_speed_multiplier = nuclear_fuel.fuel_top_speed_multiplier + 0.25
+uranium_fuel_cell.fuel_emissions_multiplier = nuclear_fuel.fuel_emissions_multiplier
+msr_fuel_cell.fuel_emissions_multiplier = (nuclear_fuel.fuel_emissions_multiplier or 1) * 0.9
+uranium_fuel_cell.fuel_glow_color = nuclear_fuel.fuel_glow_color
+msr_fuel_cell.fuel_glow_color = {128, 0, 128}
+uranium_fuel_cell.fuel_acceleration_multiplier_quality_bonus = nuclear_fuel.fuel_acceleration_multiplier_quality_bonus
+msr_fuel_cell.fuel_acceleration_multiplier_quality_bonus = nuclear_fuel.fuel_acceleration_multiplier_quality_bonus
+uranium_fuel_cell.fuel_top_speed_multiplier_quality_bonus = nuclear_fuel.fuel_top_speed_multiplier_quality_bonus
+msr_fuel_cell.fuel_top_speed_multiplier_quality_bonus = nuclear_fuel.fuel_top_speed_multiplier_quality_bonus

@@ -10,7 +10,7 @@ data:extend {{
     },
     energy_required = 2,
     enabled = false,
-    category = "maraxsis-hydro-plant",
+    categories = {"maraxsis-hydro-plant"},
     surface_conditions = {{
         property = "pressure",
         min = 400000,
@@ -32,7 +32,7 @@ data:extend {{
         {type = "fluid", name = "heavy-oil", amount = 10},
     },
     allow_productivity = true,
-    category = "maraxsis-hydro-plant",
+    categories = {"maraxsis-hydro-plant"},
     energy_required = 2,
     subgroup = "fluid-recipes",
     order = "b[fluid-chemistry]-c[petroleum-gas-cracking]",

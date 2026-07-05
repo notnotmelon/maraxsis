@@ -2,12 +2,12 @@ if mods["Krastorio2-spaced-out"] or mods["Krastorio2"] then return end
 
 local effects = data.raw.technology["maraxsis-deepsea-research"].effects
 
-data:extend {{
+data:extend { {
     type = "item-subgroup",
     name = "maraxsis-deepsea-research",
     order = "yy",
     group = "intermediate-products",
-}}
+} }
 
 local automation_science = table.deepcopy(data.raw.recipe["automation-science-pack"])
 local logistic_science = table.deepcopy(data.raw.recipe["logistic-science-pack"])
@@ -17,12 +17,12 @@ local production_science = table.deepcopy(data.raw.recipe["production-science-pa
 local utility_science = table.deepcopy(data.raw.recipe["utility-science-pack"])
 
 local function update_recipe_icon(recipe, fluid)
-    local science_pack = data.raw.tool[recipe.name]
+    local science_pack = data.raw.item[recipe.name]
     if not (recipe.icon or science_pack.icon) then return end
     fluid = data.raw.fluid[fluid]
     recipe.icons = {
-        {icon = recipe.icon or science_pack.icon, icon_size = recipe.icon_size or science_pack.icon_size},
-        {icon = fluid.icon,                       icon_size = fluid.icon_size,                           scale = 0.4, shift = {6, 6}},
+        { icon = recipe.icon or science_pack.icon, icon_size = recipe.icon_size or science_pack.icon_size },
+        { icon = fluid.icon,                       icon_size = fluid.icon_size,                           scale = 0.4, shift = { 6, 6 } },
     }
     recipe.icon = nil
     recipe.icon_size = nil
@@ -35,12 +35,12 @@ update_recipe_icon(chemical_science, "water")
 update_recipe_icon(production_science, "oxygen")
 update_recipe_icon(utility_science, "hydrogen")
 
-table.insert(automation_science.ingredients, {type = "fluid", name = "maraxsis-saline-water", amount = 50})
-table.insert(logistic_science.ingredients, {type = "fluid", name = "maraxsis-brackish-water", amount = 50})
-table.insert(military_science.ingredients, {type = "fluid", name = "lava", amount = 100})
-table.insert(chemical_science.ingredients, {type = "fluid", name = "water", amount = 100})
-table.insert(production_science.ingredients, {type = "fluid", name = "oxygen", amount = 100})
-table.insert(utility_science.ingredients, {type = "fluid", name = "hydrogen", amount = 200})
+table.insert(automation_science.ingredients, { type = "fluid", name = "maraxsis-saline-water", amount = 50 })
+table.insert(logistic_science.ingredients, { type = "fluid", name = "maraxsis-brackish-water", amount = 50 })
+table.insert(military_science.ingredients, { type = "fluid", name = "lava", amount = 100 })
+table.insert(chemical_science.ingredients, { type = "fluid", name = "water", amount = 100 })
+table.insert(production_science.ingredients, { type = "fluid", name = "oxygen", amount = 100 })
+table.insert(utility_science.ingredients, { type = "fluid", name = "hydrogen", amount = 200 })
 
 for _, recipe in pairs {
     automation_science,
@@ -50,19 +50,19 @@ for _, recipe in pairs {
     production_science,
     utility_science,
 } do
-    recipe.localised_name = {"item-name." .. recipe.name}
+    recipe.localised_name = { "item-name." .. recipe.name }
     recipe.name = "maraxsis-deepsea-research-" .. recipe.name
-    recipe.category = "maraxsis-hydro-plant"
+    recipe.categories = { "maraxsis-hydro-plant" }
     recipe.subgroup = "maraxsis-deepsea-research"
     recipe.enabled = false
     recipe.auto_recycle = false
-    recipe.surface_conditions = {{
+    recipe.surface_conditions = { {
         property = "pressure",
         min = 400000,
         max = 400000,
-    }}
+    } }
     recipe.results[1].amount = recipe.results[1].amount * 2
-    effects[#effects + 1] = {type = "unlock-recipe", recipe = recipe.name}
+    effects[#effects + 1] = { type = "unlock-recipe", recipe = recipe.name }
 end
 
-data:extend {automation_science, logistic_science, military_science, chemical_science, production_science, utility_science}
+data:extend { automation_science, logistic_science, military_science, chemical_science, production_science, utility_science }
