@@ -47,7 +47,7 @@ maraxsis.on_nth_tick(597, function()
             goto continue
         end
 
-        for _, neighbours in pairs(duct_exhaust.neighbours) do
+        for _, neighbours in pairs(duct_exhaust.fluidbox_neighbours) do
             for _, neighbour in pairs(neighbours) do
                 if not SUPERCRITICAL_STEAM_ALLOW_LIST[neighbour.name] then
                     for i = 1, neighbour.fluids_count do
