@@ -13,6 +13,7 @@ data:extend {
             ["day-night-cycle"] = 5 * minute,
             ["magnetic-field"] = 25,
             ["solar-power"] = 100,
+            ["robot-energy-usage"] = 5,
             pressure = 200000,
             gravity = 20,
         },
