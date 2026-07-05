@@ -26,7 +26,7 @@ maraxsis.on_event(maraxsis.events.on_built(), function(event)
         direction = opposite_direction(surface_duct.direction)
     }
 
-    surface_duct.fluidbox.add_linked_connection(0, trench_duct, 0)
+    surface_duct.add_fluid_box_linked_connection(0, trench_duct, 0)
 
     local trench_duct_data = {
         surface_duct = surface_duct,
