@@ -1,4 +1,11 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.32.5
+Date: 2026-07-05
+  Compatibility:
+    - Added hard dependancy on the planetslib mod. Thanks roc!
+  Bugfixes:
+    - Fixed crash involving the salt reactor
+---------------------------------------------------------------------------------------------------
 Version: 1.32.4
 Date: 2026-07-05
   Bugfixes:
