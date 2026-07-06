@@ -1,4 +1,9 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.32.9
+Date: 2026-07-06
+  Compatibility:
+    - fixed that singularity research data was uncraftable in the k2so quantum computer. resolves https://github.com/notnotmelon/maraxsis/issues/379
+---------------------------------------------------------------------------------------------------
 Version: 1.32.8
 Date: 2026-07-06
   Bugfixes:
