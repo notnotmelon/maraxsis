@@ -145,10 +145,13 @@ data.raw["fusion-reactor"]["maraxsis-salt-reactor"].input_fluid_box.filter = "wa
 data.raw["fusion-reactor"]["maraxsis-salt-reactor"].input_fluid_box.pipe_covers = pipecoverspictures()
 data.raw["fusion-reactor"]["maraxsis-salt-reactor"].output_fluid_box.volume = 1000
 data.raw["fusion-reactor"]["maraxsis-salt-reactor"].output_fluid_box.filter = "maraxsis-supercritical-steam"
-data.raw["fusion-reactor"]["maraxsis-salt-reactor"].output_fluid_box.pipe_covers = pipecoverspictures()
-for _, pipe_connection in pairs(data.raw["fusion-reactor"]["maraxsis-salt-reactor"].output_fluid_box.pipe_connections) do
-    pipe_connection.connection_category = "maraxsis-salt-reactor"
-end
+data.raw["fusion-reactor"]["maraxsis-salt-reactor"].output_fluid_box.pipe_covers = nil
+data.raw["fusion-reactor"]["maraxsis-salt-reactor"].output_fluid_box.pipe_picture = require("duct-pipe-pictures")
+data.raw["fusion-reactor"]["maraxsis-salt-reactor"].output_fluid_box.secondary_draw_orders = {north = -1, east = -1, west = -1}
+data.raw["fusion-reactor"]["maraxsis-salt-reactor"].output_fluid_box.pipe_connections = {
+    {flow_direction = "input-output", direction = defines.direction.south,  position = {0, 2.5}, connection_category = "ducts"},
+    {flow_direction = "input-output", direction = defines.direction.north,  position = {0, -2.5}, connection_category = "ducts"},
+}
 
 data:extend {{
     type = "recipe-category",

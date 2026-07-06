@@ -344,6 +344,7 @@ data:extend {{
     corpse = "steam-turbine-remnants",
     dying_explosion = "steam-turbine-explosion",
     alert_icon_shift = util.by_pixel(0, -12),
+    use_mirroring = true,
     resistances = {
         {
             type = "fire",
@@ -356,14 +357,12 @@ data:extend {{
     damaged_trigger_effect = hit_effects.entity(),
     input_fluid_box = {
         volume = 200,
-        pipe_picture = require("__space-age__.prototypes.entity.electromagnetic-plant-pictures").pipe_pictures,
-        pipe_picture_frozen = require("__space-age__.prototypes.entity.electromagnetic-plant-pictures").pipe_pictures_frozen,
-        pipe_covers = pipecoverspictures(),
+        pipe_picture = require("duct-pipe-pictures"),
+        pipe_covers = nil,
         secondary_draw_orders = {north = -1, east = -1, west = -1},
         pipe_connections = {
-            {flow_direction = "input-output", direction = defines.direction.south, position = {0, 4},   connection_category = "maraxsis-salt-reactor"},
-            {flow_direction = "input-output", direction = defines.direction.east,  position = {1, 2},   connection_category = "maraxsis-salt-reactor"},
-            {flow_direction = "input-output", direction = defines.direction.west,  position = {-1, -2}, connection_category = "maraxsis-salt-reactor"},
+            {flow_direction = "input-output", direction = defines.direction.east,  position = {1, 1.5},   connection_category = "ducts"},
+            {flow_direction = "input-output", direction = defines.direction.west,  position = {-1, -1.5}, connection_category = "ducts"},
             {flow_direction = "input-output", direction = defines.direction.south, position = {0, 0},   connection_type = "linked",                   linked_connection_id = 0},
         },
         production_type = "input",
@@ -377,6 +376,7 @@ data:extend {{
         secondary_draw_orders = {north = -1, east = -1, west = -1},
         pipe_connections = {
             {flow_direction = "input-output", direction = defines.direction.north, position = {0, -4}},
+            {flow_direction = "input-output", direction = defines.direction.south, position = {0, 4}},
             {flow_direction = "input-output", direction = defines.direction.east,  position = {1, -2}},
             {flow_direction = "input-output", direction = defines.direction.west,  position = {-1, 2}},
             {flow_direction = "input-output", direction = defines.direction.north, position = {0, 0}, connection_type = "linked", linked_connection_id = 1},
@@ -390,10 +390,10 @@ data:extend {{
         output_flow_limit = "50MW",
     },
     graphics_set = {
-        north_graphics_set = {animation = vertical_animation, fluid_input_graphics = {{}, {}, {}, {}}},
-        south_graphics_set = {animation = vertical_animation, fluid_input_graphics = {{}, {}, {}, {}}},
-        east_graphics_set = {animation = horizontal_animation, fluid_input_graphics = {{}, {}, {}, {}}},
-        west_graphics_set = {animation = horizontal_animation, fluid_input_graphics = {{}, {}, {}, {}}},
+        north_graphics_set = {animation = vertical_animation, fluid_input_graphics = {{}, {}, {}}},
+        south_graphics_set = {animation = vertical_animation, fluid_input_graphics = {{}, {}, {}}},
+        east_graphics_set = {animation = horizontal_animation, fluid_input_graphics = {{}, {}, {}}},
+        west_graphics_set = {animation = horizontal_animation, fluid_input_graphics = {{}, {}, {}}},
     },
     impact_category = "metal-large",
     open_sound = sounds.machine_open,
@@ -414,19 +414,3 @@ data:extend {{
     },
     perceived_performance = {minimum = 0.25, performance_to_activity_rate = 1.0},
 }}
-
-for _, pump in pairs{"duct-intake", "duct-exhaust"} do
-    pump = data.raw["pump"][pump]
-    pump.fluid_box.pipe_connections = table.deepcopy(pump.fluid_box.pipe_connections)
-    for _, pipe_connection in pairs(pump.fluid_box.pipe_connections) do
-        if pipe_connection.connection_category == nil then
-            pipe_connection.connection_category = {"default", "maraxsis-salt-reactor"}
-        elseif type(pipe_connection.connection_category) == "string" then
-            pipe_connection.connection_category = {pipe_connection.connection_category}
-        end
-        
-        if not table.find(pipe_connection.connection_category, "ducts") then
-            table.insert(pipe_connection.connection_category, "maraxsis-salt-reactor")
-        end
-    end
-end
