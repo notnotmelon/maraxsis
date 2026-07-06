@@ -132,9 +132,11 @@ maraxsis.on_nth_tick(UPDATE_RATE, function()
         end
 
         local vehicle = player.physical_vehicle
-        if vehicle then
-            change_breath_amount_by(player, BREATH_REGENERATION_FACTOR)
-            goto continue
+        if vehicle and maraxsis_constants.SUBMARINES[vehicle.name] then
+            if vehicle.energy > 0 or not vehicle.get_fuel_inventory().is_empty() then
+                change_breath_amount_by(player, BREATH_REGENERATION_FACTOR)
+                goto continue
+            end
         end
 
         for _, pressure_dome_data in pairs(storage.pressure_domes) do
