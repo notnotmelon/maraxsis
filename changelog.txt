@@ -1,4 +1,15 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.33.0
+Date: 2026-07-06
+  Features:
+    - Added an oxygen bar UI element while on maraxsis
+  Balancing:
+    - abyssal diving gear now only provides breath damage protection if the equipment is powered
+    - pressure domes now only restore your breath if the regulator has atmosphere
+    - submarines now only restore your breath if they have fuel
+  Changes:
+    - Breath restoring items now gradually restore breath rather than all at once
+---------------------------------------------------------------------------------------------------
 Version: 1.32.9
 Date: 2026-07-06
   Compatibility:
