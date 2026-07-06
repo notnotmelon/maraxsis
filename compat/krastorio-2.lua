@@ -128,15 +128,6 @@ data.raw.technology["kr-quantum-computer"].unit.ingredients = {
     {"cryogenic-science-pack",       1},
 }
 
-if not mods["no-quality"] then
-    local qc = data.raw["assembling-machine"]["kr-quantum-computer"]
-    -- https://codeberg.org/raiguard/Krastorio2/src/branch/trunk/prototypes/buildings/quantum-computer.lua
-    -- Soft-type the property to avoid errors if effect_receiver and/or base_effect is not present which soft-defaults to nil thus game-engine defaults.
-    if qc and qc.effect_receiver and qc.effect_receiver.base_effect then
-        qc.effect_receiver.base_effect.quality = 0.5
-    end
-end
-
 data.raw.recipe["kr-quantum-computer"].categories = {"maraxsis-hydro-plant"}
 
 data.raw.recipe["kr-quantum-computer"].ingredients = {
@@ -153,6 +144,55 @@ data.raw["assembling-machine"]["kr-quantum-computer"].surface_conditions = {{
     min = 400000,
     max = 400000,
 }}
+
+data:extend {{
+    type = "item",
+    name = "kr-singularity-research-data",
+    icon = "__Krastorio2Assets__/icons/cards/singularity-research-data.png",
+    subgroup = "science-pack",
+    order = "b11[singularity-research-data]",
+    stack_size = 200,
+}}
+
+data:extend {{
+    type = "recipe",
+    name = "kr-singularity-research-data",
+    enabled = false,
+    categories = { "kr-matter-deconversion" },
+    energy_required = 20,
+    ingredients = {
+      { type = "item", name = "kr-charged-matter-stabilizer", amount = 1 },
+      { type = "item", name = "metallic-asteroid-chunk", amount = 1 },
+      { type = "item", name = "carbonic-asteroid-chunk", amount = 1 },
+      { type = "item", name = "oxide-asteroid-chunk", amount = 1 },
+      { type = "fluid", name = "kr-matter", amount = 20 },
+    },
+    results = {
+      { type = "item", name = "kr-singularity-research-data", amount = 5 },
+      { type = "item", name = "kr-charged-matter-stabilizer", amount = 1, independent_probability = 0.9 },
+    },
+    main_product = "kr-singularity-research-data",
+    allow_productivity = true,
+    surface_conditions = {{
+        property = "pressure",
+        min = 0,
+        max = 0,
+    }}
+}}
+
+table.insert(data.raw.technology["kr-singularity-tech-card"].effects, {
+    type = "unlock-recipe",
+    recipe = "kr-singularity-research-data"
+})
+
+data.raw.recipe["kr-singularity-tech-card"].surface_conditions = nil
+data.raw.recipe["kr-singularity-tech-card"].ingredients = {
+    { type = "item", name = "kr-blank-tech-card", amount = 5 },
+    { type = "item", name = "kr-singularity-research-data", amount = 5 },
+}
+data.raw.recipe["kr-singularity-tech-card"].results = {
+    { type = "item", name = "kr-singularity-tech-card", amount = 5 },
+}
 
 data.raw.recipe["maraxsis-microplastics"].ingredients = {
     {type = "item", name = "maraxsis-tropical-fish",   amount = 1},
