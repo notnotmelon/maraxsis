@@ -22,6 +22,11 @@ local MARAXSIS_SURFACES = { -- all surfaces with water mechanics
     ["maraxsis-trench-factory-floor"] = true,
 }
 
+local MARAXSIS_TRENCH_SURFACES = { -- all surfaces with trench water mechanics
+    [TRENCH_SURFACE_NAME] = true,
+    ["maraxsis-trench-factory-floor"] = true,
+}
+
 local MARAXSIS_SAND_EXTRACTORS = {
     ["electric-mining-drill"] = true,
     ["big-mining-drill"] = true,
@@ -67,13 +72,14 @@ data:extend {{
     type = "mod-data",
     name = "maraxsis-constants", --Data that was previously defined in a control-level script, now defined in data, allowing other mods to configure these constants.
     data_type = "table",
-    data = { 
+    data = {
         -- This data is called in scripts.constants.
         TRENCH_MOVEMENT_FACTOR = TRENCH_MOVEMENT_FACTOR,
         SUBMARINES = SUBMARINES,
         TRENCH_SURFACE_NAME = TRENCH_SURFACE_NAME,
         MARAXSIS_SURFACE_NAME = MARAXSIS_SURFACE_NAME,
         MARAXSIS_SURFACES = MARAXSIS_SURFACES,
+        MARAXSIS_TRENCH_SURFACES = MARAXSIS_TRENCH_SURFACES,
         MARAXSIS_SAND_EXTRACTORS = MARAXSIS_SAND_EXTRACTORS,
         SUBMARINE_FUEL_SOURCES = SUBMARINE_FUEL_SOURCES,
         DOME_DISABLEABLE_TYPES = DOME_DISABLEABLE_TYPES,
