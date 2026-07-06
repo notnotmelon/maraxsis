@@ -137,16 +137,6 @@ maraxsis.on_nth_tick(UPDATE_RATE, function()
             goto continue
         end
 
-        local grid = character.grid
-        if grid then
-            for _, equipment in pairs(grid.get_contents()) do
-                if is_abyssal_diving_gear[equipment.name] then
-                    change_breath_amount_by(player, BREATH_REGENERATION_FACTOR)
-                    goto continue
-                end
-            end
-        end
-
         for _, pressure_dome_data in pairs(storage.pressure_domes) do
             local surface = pressure_dome_data.surface
             if not surface.valid then goto continue_2 end
@@ -161,6 +151,15 @@ maraxsis.on_nth_tick(UPDATE_RATE, function()
             end
 
             ::continue_2::
+        end
+
+        local grid = character.grid
+        if grid then
+            for _, equipment in pairs(grid.equipment) do
+                if is_abyssal_diving_gear[equipment.name] and equipment.energy >= 1 then
+                    change_breath_amount_by(player, BREATH_REGENERATION_FACTOR * equipment.energy / equipment.max_energy)
+                end
+            end
         end
 
         local is_trench = not not maraxsis_constants.MARAXSIS_TRENCH_SURFACES[surface_name]
