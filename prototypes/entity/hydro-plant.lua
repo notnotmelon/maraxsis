@@ -231,18 +231,16 @@ data:extend { {
             pipe_picture = duct_pipe_pictures(),
             pipe_covers = nil,
             volume = 100,
-            pipe_connections = { { direction = defines.direction.east, flow_direction = "input-output", position = { 1.5, -0 } } },
+            pipe_connections = { { connection_category = "ducts", direction = defines.direction.east, flow_direction = "input-output", position = { 1.5, -0 } } },
             secondary_draw_orders = {north = -1, west = -1, east = -1},
-            connection_category = "ducts"
         },
         {
             production_type = "output",
             pipe_picture = duct_pipe_pictures(),
             pipe_covers = nil,
             volume = 100,
-            pipe_connections = { { direction = defines.direction.west, flow_direction = "input-output", position = { -1.5, 0 } } },
+            pipe_connections = { { connection_category = "ducts", direction = defines.direction.west, flow_direction = "input-output", position = { -1.5, 0 } } },
             secondary_draw_orders = {north = -1, west = -1, east = -1},
-            connection_category = "ducts"
         },
     },
     perceived_performance = { minimum = 0.25, performance_to_activity_rate = 20.0, maximum = 5 },
