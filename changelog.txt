@@ -1,4 +1,13 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.33.1
+Date: 2026-07-06
+  Locale:
+    - removed some old locale strings
+  Changes:
+    - edited the fluidboxes for the hydro plant. replaced two of the standard pipe inputs with duct inputs. fwf pipes are now required for some recipes
+    - edited the fluidboxes of the regulator. two of the atmosphere inputs are now connectable directly to fmf ducts
+    - the salt reactor and oversized steam turbine now connect directly to ducts
+---------------------------------------------------------------------------------------------------
 Version: 1.33.0
 Date: 2026-07-06
   Features:
