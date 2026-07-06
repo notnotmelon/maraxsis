@@ -1,5 +1,6 @@
 local FULL_BREATH_NUM_TICKS = 10 * 60 * 60 -- ten minutes before you start drowning
 local TRENCH_LUNG_REDUCTION = 40 -- trench kills you 40x faster
+local BREATH_REGENERATION_FACTOR = 40 -- while in an air bubble, you regen air 40x faster than you would lose it
 local UPDATE_RATE = 20
 
 local function stringify_oxygen_stats(player)
@@ -102,6 +103,21 @@ local is_abyssal_diving_gear = {
     ["maraxsis-abyssal-diving-gear-disabled"] = true,
 }
 
+local function change_breath_amount_by(player, amount)
+    local breath = storage.breath[player.index]
+    local delta = UPDATE_RATE * amount
+
+    local new_breath = (breath or FULL_BREATH_NUM_TICKS) + delta
+    local new_breath = math.min(FULL_BREATH_NUM_TICKS, math.max(0, new_breath))
+    
+    if breath == new_breath then
+        return
+    end
+
+    storage.breath[player.index] = new_breath
+    update_gui(player)
+end
+
 maraxsis.on_nth_tick(UPDATE_RATE, function()
     for _, player in pairs(game.connected_players) do
         local character = player.character
@@ -117,8 +133,7 @@ maraxsis.on_nth_tick(UPDATE_RATE, function()
 
         local vehicle = player.physical_vehicle
         if vehicle then
-            storage.breath[player.index] = nil
-            update_gui(player)
+            change_breath_amount_by(player, BREATH_REGENERATION_FACTOR)
             goto continue
         end
 
@@ -126,8 +141,7 @@ maraxsis.on_nth_tick(UPDATE_RATE, function()
         if grid then
             for _, equipment in pairs(grid.get_contents()) do
                 if is_abyssal_diving_gear[equipment.name] then
-                    storage.breath[player.index] = nil
-                    update_gui(player)
+                    change_breath_amount_by(player, BREATH_REGENERATION_FACTOR)
                     goto continue
                 end
             end
@@ -142,31 +156,28 @@ maraxsis.on_nth_tick(UPDATE_RATE, function()
             local dome_position = pressure_dome_data.position
             local x, y = position.x - dome_position.x, position.y - dome_position.y
             if is_point_in_polygon(x, y) then
-                storage.breath[player.index] = nil
+                change_breath_amount_by(player, BREATH_REGENERATION_FACTOR)
                 goto continue
             end
 
             ::continue_2::
         end
 
-        local breath = storage.breath[player.index] or FULL_BREATH_NUM_TICKS
-        local breath_loss = UPDATE_RATE
         local is_trench = not not maraxsis_constants.MARAXSIS_TRENCH_SURFACES[surface_name]
-        if is_trench then breath_loss = breath_loss * TRENCH_LUNG_REDUCTION end
-        breath = math.max(0, breath - breath_loss)
-        storage.breath[player.index] = breath
-        
-        update_gui(player)
-
-        if breath > 0 then
-            goto continue
-        end
-
-        local true_damage = character.health - math.min(50, math.max(5, character.max_health * 0.05))
-        if true_damage <= 0 then
-            character.die("neutral")
+        if is_trench then
+            change_breath_amount_by(player, -TRENCH_LUNG_REDUCTION)
         else
-            character.health = true_damage
+            change_breath_amount_by(player, -1)
+        end
+        
+
+        if storage.breath[player.index] <= 0 then
+            local true_damage = character.health - math.min(50, math.max(5, character.max_health * 0.05))
+            if true_damage <= 0 then
+                character.die("neutral")
+            else
+                character.health = true_damage
+            end
         end
 
         ::continue::
