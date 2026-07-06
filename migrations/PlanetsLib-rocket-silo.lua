@@ -1,5 +1,5 @@
 local rocket_silo_lib = require("__PlanetsLib__.scripts.rocket-parts")
-if game.planets["maraxsis"] then
+if game.planets["maraxsis"] and game.planets["maraxsis"].surface then
     local maraxsis_rocket_silos = game.planets["maraxsis"].surface.find_entities_filtered{{filter_type = "name",name="rocket-silo"}}
     for _,silo in pairs(maraxsis_rocket_silos) do
         local fake_event = {
