@@ -1,4 +1,9 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.32.6
+Date: 2026-07-06
+  Compatibility:
+    - Replaced all rocket silo scripts and Maraxsis' exclusive rocket silo entity with PlanetsLib rocket part recipe assignment, whose code is itself forked from an older version of Maraxsis' rocket silo script.
+---------------------------------------------------------------------------------------------------
 Version: 1.32.5
 Date: 2026-07-05
   Compatibility:
