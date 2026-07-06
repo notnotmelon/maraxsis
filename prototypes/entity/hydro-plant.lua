@@ -67,6 +67,100 @@ data:extend { {
     name = "maraxsis-hydro-plant",
 } }
 
+local function duct_pipe_pictures()
+    local sprite_4_way = {}
+
+    sprite_4_way.west = {
+        layers = {
+            {
+                filename = "__FluidMustFlow__/graphics/buildings/duct-ground/duct-ground-left.png",
+                height = 256,
+                priority = "high",
+                scale = 0.5,
+                width = 256,
+                shift = {1.25, 0}
+            },
+            {
+                draw_as_shadow = true,
+                filename = "__FluidMustFlow__/graphics/buildings/duct-ground/duct-ground-left-shadow.png",
+                height = 256,
+                priority = "high",
+                scale = 0.5,
+                width = 256,
+                shift = {1.25, 0}
+            },
+        },
+    }
+
+    sprite_4_way.east = {
+        layers = {
+            {
+                filename = "__FluidMustFlow__/graphics/buildings/duct-ground/duct-ground-right.png",
+                height = 256,
+                priority = "high",
+                scale = 0.5,
+                width = 256,
+                shift = {-1.25, 0}
+            },
+            {
+                draw_as_shadow = true,
+                filename = "__FluidMustFlow__/graphics/buildings/duct-ground/duct-ground-right-shadow.png",
+                height = 256,
+                priority = "high",
+                scale = 0.5,
+                width = 256,
+                shift = {-1.25, 0}
+            },
+        },
+    }
+
+    sprite_4_way.south = {
+        layers = {
+            {
+                filename = "__maraxsis__/graphics/entity/hydro-plant/pipe-cover.png",
+                height = 128,
+                priority = "high",
+                scale = 0.5,
+                width = 128,
+                shift = {0, -0.55}
+            },
+            {
+                draw_as_shadow = true,
+                filename = "__FluidMustFlow__/graphics/buildings/duct-ground/duct-ground-down-shadow.png",
+                height = 256,
+                priority = "high",
+                scale = 0.5,
+                width = 256,
+                shift = {0, -1.5}
+            },
+        },
+    }
+
+    sprite_4_way.north = {
+        layers = {
+            {
+                filename = "__FluidMustFlow__/graphics/buildings/duct-ground/duct-ground-up.png",
+                height = 256,
+                priority = "high",
+                scale = 0.5,
+                width = 256,
+                shift = {0, 1.25}
+            },
+            {
+                draw_as_shadow = true,
+                filename = "__FluidMustFlow__/graphics/buildings/duct-ground/duct-ground-up-shadow.png",
+                height = 256,
+                priority = "high",
+                scale = 0.5,
+                width = 256,
+                shift = {0, 1.25}
+            },
+        },
+    }
+
+    return sprite_4_way
+end
+
 data:extend { {
     type = "assembling-machine",
     name = "maraxsis-hydro-plant",
@@ -120,8 +214,8 @@ data:extend { {
             pipe_picture_frozen = require("__space-age__.prototypes.entity.electromagnetic-plant-pictures").pipe_pictures_frozen,
             pipe_covers = pipecoverspictures(),
             volume = 100,
-            pipe_connections = { { direction = defines.direction.south, flow_direction = "input-output", position = { -0.5, 1.5 } } },
-            secondary_draw_orders = { north = -1 },
+            pipe_connections = { { direction = defines.direction.north, flow_direction = "input-output", position = { 0.5, -1.5 } } },
+            secondary_draw_orders = {north = -1, east = -1},
         },
         {
             production_type = "output",
@@ -129,26 +223,26 @@ data:extend { {
             pipe_picture_frozen = require("__space-age__.prototypes.entity.electromagnetic-plant-pictures").pipe_pictures_frozen,
             pipe_covers = pipecoverspictures(),
             volume = 100,
-            pipe_connections = { { direction = defines.direction.east, flow_direction = "input-output", position = { 1.5, -0.5 } } },
-            secondary_draw_orders = { north = -1 },
+            pipe_connections = { { direction = defines.direction.south, flow_direction = "input-output", position = { -0.5, 1.5 } } },
+            secondary_draw_orders = {north = -1, east = -1},
         },
         {
             production_type = "input",
-            pipe_picture = require("__space-age__.prototypes.entity.electromagnetic-plant-pictures").pipe_pictures,
-            pipe_picture_frozen = require("__space-age__.prototypes.entity.electromagnetic-plant-pictures").pipe_pictures_frozen,
-            pipe_covers = pipecoverspictures(),
+            pipe_picture = duct_pipe_pictures(),
+            pipe_covers = nil,
             volume = 100,
-            pipe_connections = { { direction = defines.direction.north, flow_direction = "input-output", position = { 0.5, -1.5 } } },
-            secondary_draw_orders = { north = -1 },
+            pipe_connections = { { direction = defines.direction.east, flow_direction = "input-output", position = { 1.5, -0 } } },
+            secondary_draw_orders = {north = -1, west = -1, east = -1},
+            connection_category = "ducts"
         },
         {
             production_type = "output",
-            pipe_picture = require("__space-age__.prototypes.entity.electromagnetic-plant-pictures").pipe_pictures,
-            pipe_picture_frozen = require("__space-age__.prototypes.entity.electromagnetic-plant-pictures").pipe_pictures_frozen,
-            pipe_covers = pipecoverspictures(),
+            pipe_picture = duct_pipe_pictures(),
+            pipe_covers = nil,
             volume = 100,
-            pipe_connections = { { direction = defines.direction.west, flow_direction = "input-output", position = { -1.5, 0.5 } } },
-            secondary_draw_orders = { north = -1 },
+            pipe_connections = { { direction = defines.direction.west, flow_direction = "input-output", position = { -1.5, 0 } } },
+            secondary_draw_orders = {north = -1, west = -1, east = -1},
+            connection_category = "ducts"
         },
     },
     perceived_performance = { minimum = 0.25, performance_to_activity_rate = 20.0, maximum = 5 },
