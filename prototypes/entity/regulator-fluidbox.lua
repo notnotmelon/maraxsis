@@ -11,12 +11,15 @@ function maraxsis.atmosphere_consumption(quality)
 end
 
 local function fixup_pipe_covers(sprite_4_way)
+    sprite_4_way = table.deepcopy(sprite_4_way)
     sprite_4_way.east = maraxsis.empty_image()
     sprite_4_way.west = maraxsis.empty_image()
     return sprite_4_way
 end
 
 local function fixup_pipe_picture(sprite_4_way)
+    sprite_4_way = table.deepcopy(sprite_4_way)
+    
     sprite_4_way.west = {
         layers = {
             {
