@@ -145,6 +145,11 @@ maraxsis.on_nth_tick(UPDATE_RATE, function()
             local surface_index = surface.index
             if surface_index ~= player_surface_index then goto continue_2 end
 
+            local regulator_fluidbox = pressure_dome_data.regulator_fluidbox
+            if not regulator_fluidbox or not regulator_fluidbox.valid then goto continue_2 end
+            local powered_and_has_fluid = (regulator_fluidbox.get_fluid_count("maraxsis-atmosphere") > 0) and regulator_fluidbox.is_crafting()
+            if not powered_and_has_fluid then goto continue_2 end
+
             local dome_position = pressure_dome_data.position
             local x, y = position.x - dome_position.x, position.y - dome_position.y
             if is_point_in_polygon(x, y) then
