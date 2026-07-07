@@ -173,17 +173,8 @@ data:extend { {
     collision_mask = { layers = { item = true, object = true, player = true, water_tile = true } },
 } }
 
-local extra_module_slots = table.deepcopy(data.raw["assembling-machine"]["maraxsis-hydro-plant"])
-extra_module_slots.name = "maraxsis-hydro-plant-extra-module-slots"
-extra_module_slots.module_slots = extra_module_slots.module_slots + 4
-extra_module_slots.icons_positioning = { {
-    inventory_index = defines.inventory.crafter_modules, shift = { 0, 0.9 }, max_icons_per_row = 4
-} }
-extra_module_slots.hidden_in_factoriopedia = true
-extra_module_slots.factoriopedia_alternative = "maraxsis-hydro-plant"
-extra_module_slots.placeable_by = { { item = "maraxsis-hydro-plant", count = 1 } }
-extra_module_slots.flags = { "placeable-player", "player-creation", "not-in-made-in" }
-data:extend { extra_module_slots }
+
+
 
 data:extend { {
     type = "item",
@@ -245,3 +236,21 @@ table.insert(data.raw.technology["holmium-processing"].effects, {
     type = "unlock-recipe",
     recipe = "maraxsis-holmium-recrystalization"
 })
+
+local extra_module_slots = table.deepcopy(data.raw["assembling-machine"]["maraxsis-hydro-plant"])
+extra_module_slots.name = "maraxsis-hydro-plant-extra-module-slots"
+extra_module_slots.module_slots = extra_module_slots.module_slots + 4
+extra_module_slots.icons_positioning = { {
+    inventory_index = defines.inventory.crafter_modules, shift = { 0, 0.9 }, max_icons_per_row = 4
+} }
+extra_module_slots.hidden_in_factoriopedia = true
+extra_module_slots.factoriopedia_alternative = "maraxsis-hydro-plant"
+extra_module_slots.placeable_by = { { item = "maraxsis-hydro-plant", count = 1 } }
+extra_module_slots.flags = { "placeable-player", "player-creation", "not-in-made-in" }
+
+data:extend { extra_module_slots }
+
+--Previously, Maraxsis had a script that replaced the Hydro Plant with its extra-module-slot variant in the trench and on space platforms. This feature has been rolled into PlanetsLib.
+for _,surface_name in pairs({"space-platform",maraxsis_constants.TRENCH_SURFACE_NAME}) do
+    PlanetsLib.assign_entity_replacement(surface_name,"maraxsis-hydro-plant",extra_module_slots.name,"maraxsis-runtime-entity-replacement")
+end

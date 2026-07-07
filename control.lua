@@ -16,7 +16,6 @@ require "scripts.fishing-tower"
 require "scripts.drowning"
 require "scripts.sonar"
 require "scripts.sand-extractor"
-require "scripts.hydro-plant"
 require "scripts.salt-reactor"
 
 require "compat.call-plumber"
