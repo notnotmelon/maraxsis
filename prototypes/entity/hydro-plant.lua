@@ -198,7 +198,6 @@ data:extend { {
 data:extend { {
     type = "recipe",
     name = "maraxsis-hydro-plant",
-    categories = { "maraxsis-hydro-plant", "crafting-with-fluid" },
     enabled = false,
     energy_required = 5,
     ingredients = {
@@ -210,14 +209,13 @@ data:extend { {
     results = {
         { type = "item", name = "maraxsis-hydro-plant", amount = 1 },
     },
-    caregories = { "maraxsis-hydro-plant", "chemistry" },
+    categories = { "maraxsis-hydro-plant", "chemistry" },
     surface_conditions = maraxsis.surface_conditions(),
 } }
 
 data:extend { {
     type = "recipe",
     name = "maraxsis-holmium-recrystalization",
-    categories = { "maraxsis-hydro-plant" },
     ingredients = {
         { type = "fluid", name = "holmium-solution", amount = 50 },
         { type = "item",  name = "holmium-ore",      amount = 1 },
@@ -226,7 +224,7 @@ data:extend { {
         { type = "item", name = "holmium-plate", amount = 5 },
     },
     energy_required = data.raw.recipe["holmium-plate"].energy_required * 5,
-    caregories = { "maraxsis-hydro-plant" },
+    categories = { "maraxsis-hydro-plant" },
     enabled = false,
     auto_recycle = false,
     icons = {
