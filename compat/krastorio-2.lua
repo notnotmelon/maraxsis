@@ -212,18 +212,25 @@ data.raw.technology["maraxsis-geothermal-energy"].localised_name = {"", {"techno
 
 data.raw["assembling-machine"]["kr-advanced-chemical-plant"].maraxsis_buildability_rules = {water = true, dome = true, coral = true, trench = true, trench_entrance = false, trench_lava = false}
 
-local function set_stack_size(proto, name, stack_size)
-    data.raw[proto][name].stack_size = stack_size
+local function set_stack_size(name, stack_size)
+    for proto in pairs(defines.prototypes.item) do
+        if data.raw[proto] and data.raw[proto][name] then
+            data.raw[proto][name].stack_size = stack_size
+            return
+        end
+    end
+    error(name)
 end
 
+-- https://mods.factorio.com/mod/nulls-k2so-tweaks
 local default_stack_size = 200
-set_stack_size("item", "maraxsis-big-cliff-explosives", default_stack_size)
-set_stack_size("item", "maraxsis-empty-research-vessel", default_stack_size)
-set_stack_size("item", "maraxsis-fish-food", default_stack_size)
-set_stack_size("item", "maraxsis-microplastics", default_stack_size)
-set_stack_size("item", "maraxsis-salt-filter", default_stack_size)
-set_stack_size("item", "maraxsis-saturated-salt-filter", default_stack_size)
-set_stack_size("item", "maraxsis-super-sealant-substance", default_stack_size)
-set_stack_size("item", "maraxsis-tropical-fish", default_stack_size)
-set_stack_size("item", "maraxsis-wyrm-confinement-cell", default_stack_size)
-set_stack_size("item", "maraxsis-wyrm-specimen", default_stack_size)
+set_stack_size("maraxsis-big-cliff-explosives", default_stack_size)
+set_stack_size("maraxsis-empty-research-vessel", default_stack_size)
+set_stack_size("maraxsis-fish-food", default_stack_size)
+set_stack_size("maraxsis-microplastics", default_stack_size)
+set_stack_size("maraxsis-salt-filter", default_stack_size)
+set_stack_size("maraxsis-saturated-salt-filter", default_stack_size)
+set_stack_size("maraxsis-super-sealant-substance", default_stack_size)
+set_stack_size("maraxsis-tropical-fish", default_stack_size)
+set_stack_size("maraxsis-wyrm-confinement-cell", default_stack_size)
+set_stack_size("maraxsis-wyrm-specimen", default_stack_size)
