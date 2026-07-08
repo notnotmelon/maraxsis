@@ -114,7 +114,7 @@ data:extend {{
         {type = "fluid", name = "maraxsis-liquid-atmosphere", amount = 1}
     },
     results = {
-        {type = "fluid", name = "maraxsis-atmosphere", amount = 90, temperature = 25}
+        {type = "fluid", name = "maraxsis-atmosphere", amount = 90, temperature = 25, ignored_by_stats = 90, ignored_by_productivity = 90}
     },
     enabled = false,
     main_product = "maraxsis-atmosphere",
