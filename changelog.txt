@@ -1,4 +1,16 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.33.6
+Date: 2026-07-08
+  Balancing:
+    - Salt electrolysis can no longer be performed in a chemical plant. It is instead moved to the EM plant.
+  Compatibility:
+    - All krastorio endgame techs now require hydraulic science pack.
+    - The k2 advanced chemical plant can now be built on the ocean floor.
+    - With k2 installed, the k2 geothermal energy tech is renamed to geothermal energy mk01 and is now a tech prerequsite to visit maraxsis.
+    - With krastorio, allow salt electrolysis in K2's electrolysis plant and Space Age's electromagnetic plant.
+  Changes:
+    - Edited maraxsis' orbit so that it no longer shares an orbit with nauvis.
+---------------------------------------------------------------------------------------------------
 Version: 1.33.5
 Date: 2026-07-08
   Compatibility:
