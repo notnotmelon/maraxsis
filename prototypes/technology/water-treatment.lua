@@ -83,7 +83,7 @@ data:extend {{
         {type = "fluid", name = "oxygen",   amount = 100},
         {type = "fluid", name = "hydrogen", amount = 200},
     },
-    categories = {"maraxsis-hydro-plant", "chemistry"},
+    categories = {"maraxsis-hydro-plant", mods.Krastorio2 and "kr-electrolysis" or "chemistry"},
     icon = "__maraxsis__/graphics/icons/saline-electrolysis.png",
     icon_size = 64,
     auto_recycle = false,
