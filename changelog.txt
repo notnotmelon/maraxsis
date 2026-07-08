@@ -1,4 +1,11 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.33.4
+Date: 2026-07-08
+  Balancing:
+    - Fusion reactors are now banned on maraxsis.
+  Compatibility:
+    - The "quality" mod is no longer required. Moved to an optional dependency.
+---------------------------------------------------------------------------------------------------
 Version: 1.33.3
 Date: 2026-07-08
   Compatibility:
