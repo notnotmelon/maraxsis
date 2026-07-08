@@ -1,4 +1,11 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.33.7
+Date: 2026-07-08
+  Compatibility:
+    - Removed line of code replacing maraxsis sand with krastorio sand. Apparently not needed anymore.
+  Bugfixes:
+    - Maraxsis liquid atmosphere decompression is no longer counted in the stats menu or effected by productivity.
+---------------------------------------------------------------------------------------------------
 Version: 1.33.6
 Date: 2026-07-08
   Balancing:
