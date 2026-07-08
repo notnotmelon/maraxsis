@@ -16,7 +16,7 @@ require "scripts.fishing-tower"
 require "scripts.drowning"
 require "scripts.sonar"
 require "scripts.sand-extractor"
-require "scripts.salt-reactor"
+require "scripts.oversized-steam-turbine"
 
 require "compat.call-plumber"
 

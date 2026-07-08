@@ -27,7 +27,6 @@ make_subgroup("maraxsis-intermediants", "ge", "intermediate-products", {
     data.raw.capsule["maraxsis-tropical-fish"],
     data.raw.item["maraxsis-microplastics"],
     data.raw.recipe["maraxsis-carbon"],
-    data.raw.recipe["maraxsis-geothermal-sulfur"],
     data.raw.item["maraxsis-wyrm-specimen"],
     data.raw.item["maraxsis-wyrm-confinement-cell"],
     data.raw.item["maraxsis-super-sealant-substance"],
@@ -46,8 +45,9 @@ make_subgroup("salt", "gf", "intermediate-products", {
     data.raw.item["maraxsis-saturated-salt-filter"],
     data.raw.recipe["maraxsis-saturated-salt-filter"],
     data.raw.recipe["maraxsis-hydrolox-rocket-fuel"],
-    data.raw.item["msr-fuel-cell"],
-    data.raw.recipe["msr-fuel-cell"],
+    data.raw.recipe["maraxsis-supercritical-steam"],
+    data.raw.recipe["maraxsis-supercritical-steam-cooling"],
+    data.raw.recipe["maraxsis-geothermal-sulfur"],
 })
 
 local function order_subgroup(prototype_type, name, order, subgroup)
@@ -68,10 +68,9 @@ order_subgroup("item", "maraxsis-fishing-tower", data.raw.item["agricultural-tow
 order_subgroup("item", "maraxsis-sonar", "d[radar]-b[sonar]-a[sonar]", data.raw.item.radar.subgroup)
 order_subgroup("lamp", "maraxsis-sonar-light-1", "d[radar]-b[sonar]-b[sonar-light-1]", data.raw.item.radar.subgroup)
 order_subgroup("lamp", "maraxsis-sonar-light-2", "d[radar]-b[sonar]-c[sonar-light-2]", data.raw.item.radar.subgroup)
-order_subgroup("item", "maraxsis-salt-reactor", "h[salt-reactor]-a[reactor]", "energy")
-order_subgroup("item", "maraxsis-oversized-steam-turbine", "h[salt-reactor]-b[oversized-steam-turbine]", "energy")
+order_subgroup("item", "maraxsis-geothermal-generator", "h[geothermal-generator]-a[geothermal-generator]", "energy")
+order_subgroup("item", "maraxsis-oversized-steam-turbine", "h[geothermal-generator]-b[oversized-steam-turbine]", "energy")
 order_subgroup("item", "maraxsis-empty-research-vessel", "a[basic-intermediates]-d-b[empty-research-vessel]", "intermediate-product")
-order_subgroup("recipe", "molten-salt", "a[melting]-d[molten-salt]", "vulcanus-processes")
 order_subgroup("item", "maraxsis-pressure-dome", "z-d-a[pressure-dome]", "environmental-protection")
 order_subgroup("lamp", "maraxsis-pressure-dome-lamp", "z-d-b[pressure-dome-lamp]", "environmental-protection")
 order_subgroup("constant-combinator", "maraxsis-pressure-dome-combinator", "z-d-c[pressure-dome-lamp]", "environmental-protection")
@@ -83,7 +82,6 @@ order_subgroup("fluid", "oxygen", "f[maraxsis-fluids]-c[oxygen]", "fluid")
 order_subgroup("fluid", "hydrogen", "f[maraxsis-fluids]-d[hydrogen]", "fluid")
 order_subgroup("fluid", "maraxsis-atmosphere", "f[maraxsis-fluids]-f[atmosphere]", "fluid")
 order_subgroup("fluid", "maraxsis-liquid-atmosphere", "f[maraxsis-fluids]-f[liquid-atmosphere]", "fluid")
-order_subgroup("fluid", "molten-salt", "b[new-fluid]-b[vulcanus]-c[molten-salt]", "fluid")
 order_subgroup("fluid", "maraxsis-supercritical-steam", "f[maraxsis-fluids]-h[maraxsis-supercritical-steam]", "fluid")
 order_subgroup("capsule", "maraxsis-big-cliff-explosives", "e[big-cliff-explosives]", data.raw.capsule["cliff-explosives"].subgroup)
 order_subgroup("ammo", "maraxsis-fat-man", "e[maraxsis-fat-man]", data.raw.ammo["artillery-shell"].subgroup)

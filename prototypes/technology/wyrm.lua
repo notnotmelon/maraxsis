@@ -11,16 +11,13 @@ data:extend {{
         {
             type = "unlock-recipe",
             recipe = "maraxsis-wyrm-specimen",
-        },
-        {
-            type = "unlock-recipe",
-            recipe = "maraxsis-geothermal-sulfur"
         }
     },
-    prerequisites = {"maraxsis-piscary", "ducts", "maraxsis-salt-reactor"},
+    prerequisites = {"maraxsis-piscary", "ducts", "maraxsis-geothermal-energy"},
     research_trigger = {
-        type = "build-entity",
-        entity = "maraxsis-trench-duct"
+        type = "craft-item",
+        item = "maraxsis-fish-food",
+        count = 20
     },
     order = "ee[wyrm-confinement]",
 }}

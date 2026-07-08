@@ -166,84 +166,14 @@ local horizontal_animation = {
     }
 }
 
---[[
-local horizontal_frozen_patch = {
-    layers = {
-        {
-            filename = "__space-age__/graphics/entity/frozen/steam-turbine/steam-turbine-H.png",
-            width = 320,
-            height = 245,
-            shift = util.by_pixel(0, -2.75 - offset),
-            scale = 0.5
-        },
-        {
-            filename = "__space-age__/graphics/entity/frozen/steam-turbine/steam-turbine-H.png",
-            width = 320,
-            height = 245,
-            shift = util.by_pixel(0, -2.75),
-            scale = 0.5
-        },
-        {
-            filename = "__space-age__/graphics/entity/frozen/steam-turbine/steam-turbine-H.png",
-            width = 320,
-            height = 245,
-            shift = util.by_pixel(0, -2.75 + offset),
-            scale = 0.5
-        },
-    }
-}
-
-local vertical_frozen_patch = {
-    {
-        {
-            filename = "__space-age__/graphics/entity/frozen/steam-turbine/steam-turbine-V.png",
-            width = 217,
-            height = 347,
-            shift = util.by_pixel(4.75 + offset, 6.75),
-            scale = 0.5
-        },
-        {
-            filename = "__space-age__/graphics/entity/frozen/steam-turbine/steam-turbine-V.png",
-            width = 217,
-            height = 347,
-            shift = util.by_pixel(4.75, 6.75),
-            scale = 0.5
-        },
-        {
-            filename = "__space-age__/graphics/entity/frozen/steam-turbine/steam-turbine-V.png",
-            width = 217,
-            height = 347,
-            shift = util.by_pixel(4.75 - offset, 6.75),
-            scale = 0.5
-        },
-    }
-}
---]]
-
-data:extend {{
-    type = "fluid",
-    name = "maraxsis-supercritical-steam",
-    icon = "__maraxsis__/graphics/icons/supercritical-steam.png",
-    icon_size = 64,
-    default_temperature = 2000,
-    max_temperature = 20000,
-    heat_capacity = ((3/2) * 50 / 900) .. "kJ",
-    base_flow_rate = data.raw.fluid.steam.base_flow_rate,
-    base_color = {1, 0.5, 0.5},
-    flow_color = {1, 0.5, 0.75},
-    gas_temperature = 365,
-    auto_barrel = false,
-    fuel_value = "1J"
-}}
-
 data:extend {{
     type = "recipe-category",
-    name = "maraxsis-supercritical-steam"
+    name = "maraxsis-oversized-steam-turbine"
 }}
 
 data:extend {{
     type = "recipe",
-    name = "maraxsis-supercritical-steam",
+    name = "maraxsis-oversized-steam-turbine-water-lossage",
     enabled = true,
     hidden = true,
     energy_required = 0.25,
@@ -251,14 +181,14 @@ data:extend {{
         {type = "fluid", name = "water", amount = 1}
     },
     results = {},
-    categories ={ "maraxsis-supercritical-steam"},
+    categories = { "maraxsis-oversized-steam-turbine"},
     icon = "__maraxsis__/graphics/icons/oversized-steam-turbine.png",
 }}
 
 data:extend {{
     type = "assembling-machine",
     name = "maraxsis-oversized-steam-turbine-hidden-assembling-machine",
-    fixed_recipe = "maraxsis-supercritical-steam",
+    fixed_recipe = "maraxsis-oversized-steam-turbine-water-lossage",
     alert_icon_shift = util.by_pixel(0, -12),
     energy_source = {
         type = "fluid",
@@ -297,7 +227,7 @@ data:extend {{
         fluid_box = {
             volume = 0.01,
             pipe_connections = {
-                {flow_direction = "input-output", direction = defines.direction.south, position = {0, 0}, connection_type = "linked", linked_connection_id = 0},
+                {flow_direction = "input-output", direction = defines.direction.south, position = {0, 0}, connection_type = "linked", linked_connection_id = 0, connection_category = "ducts"},
             },
             production_type = "input",
             filter = "maraxsis-supercritical-steam",
@@ -322,7 +252,7 @@ data:extend {{
     show_recipe_icon_on_map = false,
     match_animation_speed_to_activity = false,
     trash_inventory_size = 0,
-    crafting_categories = {"maraxsis-supercritical-steam"},
+    crafting_categories = {"maraxsis-oversized-steam-turbine"},
     selectable_in_game = false,
     collision_box = {{-1.25, -2.35 - 2}, {1.25, 2.35 + 2}},
     selection_box = {{-1.5, -2.5 - 2}, {1.5, 2.5 + 2}},
@@ -331,6 +261,8 @@ data:extend {{
     flags = {"not-on-map"},
     icon_draw_specification = {scale = 0}
 }}
+
+local fluid_input_graphics = {{}, {}, {}}
 
 data:extend {{
     type = "fusion-generator",
@@ -351,7 +283,7 @@ data:extend {{
             percent = 70
         }
     },
-    max_fluid_usage = 300 / second, -- at normal quality
+    max_fluid_usage = 725 / second, -- at normal quality
     collision_box = {{-1.25, -2.35 - 2}, {1.25, 2.35 + 2}},
     selection_box = {{-1.5, -2.5 - 2}, {1.5, 2.5 + 2}},
     damaged_trigger_effect = hit_effects.entity(),
@@ -363,7 +295,7 @@ data:extend {{
         pipe_connections = {
             {flow_direction = "input-output", direction = defines.direction.east,  position = {1, 1.5},   connection_category = "ducts"},
             {flow_direction = "input-output", direction = defines.direction.west,  position = {-1, -1.5}, connection_category = "ducts"},
-            {flow_direction = "input-output", direction = defines.direction.south, position = {0, 0},   connection_type = "linked",                   linked_connection_id = 0},
+            {flow_direction = "input-output", direction = defines.direction.south, position = {0, 0},   connection_type = "linked",                   linked_connection_id = 0, connection_category = "ducts"},
         },
         production_type = "input",
         filter = "maraxsis-supercritical-steam",
@@ -390,10 +322,10 @@ data:extend {{
         output_flow_limit = "50MW",
     },
     graphics_set = {
-        north_graphics_set = {animation = vertical_animation, fluid_input_graphics = {{}, {}, {}}},
-        south_graphics_set = {animation = vertical_animation, fluid_input_graphics = {{}, {}, {}}},
-        east_graphics_set = {animation = horizontal_animation, fluid_input_graphics = {{}, {}, {}}},
-        west_graphics_set = {animation = horizontal_animation, fluid_input_graphics = {{}, {}, {}}},
+        north_graphics_set = {animation = vertical_animation, fluid_input_graphics = fluid_input_graphics},
+        south_graphics_set = {animation = vertical_animation, fluid_input_graphics = fluid_input_graphics},
+        east_graphics_set = {animation = horizontal_animation, fluid_input_graphics = fluid_input_graphics},
+        west_graphics_set = {animation = horizontal_animation, fluid_input_graphics = fluid_input_graphics},
     },
     impact_category = "metal-large",
     open_sound = sounds.machine_open,
