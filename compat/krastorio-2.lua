@@ -123,6 +123,11 @@ data.raw.technology["kr-quantum-computer"].unit.ingredients = {
     {"cryogenic-science-pack",       1},
 }
 
+table.insert(data.raw.technology["kr-antimatter-reactor"].unit.ingredients, {"hydraulic-science-pack", 1})
+table.insert(data.raw.technology["kr-antimatter-reactor-equipment"].unit.ingredients, {"hydraulic-science-pack", 1})
+table.insert(data.raw.technology["kr-antimatter-ammo"].unit.ingredients, {"hydraulic-science-pack", 1})
+table.insert(data.raw.technology["kr-intergalactic-transceiver"].unit.ingredients, {"hydraulic-science-pack", 1})
+
 data.raw.recipe["kr-quantum-computer"].categories = {"maraxsis-hydro-plant"}
 
 data.raw.recipe["kr-quantum-computer"].ingredients = {
