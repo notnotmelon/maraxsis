@@ -1,6 +1,12 @@
 ---------------------------------------------------------------------------------------------------
 Version: 1.33.2
 Date: 2026-07-08
+  Features:
+    - Added geothermal generators.
+    - Removed salt reactors.
+    - Removed molten salt.
+  Changes:
+    - The oversized steam turbine now consumes 720 fluid/sec (was previously 300/sec). Actual power production unchanged.
   Bugfixes:
     - Fixed hydro plant recipe categories making bootstrap impossible
 ---------------------------------------------------------------------------------------------------
