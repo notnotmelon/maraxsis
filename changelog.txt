@@ -1,4 +1,11 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.33.11
+Date: 2026-07-08
+  Compatibility:
+    - Fixed k2 rare metal ore could generate onto the trench entrance.
+  Changes:
+    - Removed the "decal" collision layer. Resolves https://github.com/notnotmelon/maraxsis/issues/378
+---------------------------------------------------------------------------------------------------
 Version: 1.33.10
 Date: 2026-07-08
   Compatibility:
