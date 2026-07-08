@@ -267,6 +267,7 @@ local fluid_input_graphics = {{}, {}, {}}
 data:extend {{
     type = "fusion-generator",
     name = "maraxsis-oversized-steam-turbine",
+    surface_conditions = maraxsis.surface_conditions(),
     heating_energy = data.raw["generator"]["steam-turbine"].heating_energy,
     icon = "__maraxsis__/graphics/icons/oversized-steam-turbine.png",
     maraxsis_buildability_rules = {water = false, dome = true, coral = false, trench = true, trench_entrance = false, trench_lava = false},

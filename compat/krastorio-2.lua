@@ -66,11 +66,6 @@ table.insert(data.raw.recipe["maraxsis-hydrolox-rocket-fuel"].ingredients, {
 })
 data.raw.recipe["maraxsis-hydrolox-rocket-fuel"].surface_conditions = maraxsis.surface_conditions()
 
-if data.raw["assembling-machine"]["kr-atmospheric-condenser"] then
-    data.raw["assembling-machine"]["kr-atmospheric-condenser"].maraxsis_buildability_rules = {water = false, dome = false, coral = false, trench = false, trench_entrance = false, trench_lava = false}
-end
-data.raw["furnace"]["kr-air-purifier"].maraxsis_buildability_rules = {water = false, dome = false, coral = false, trench = false, trench_entrance = false, trench_lava = false}
-
 data.raw.planet["maraxsis"].map_gen_settings.autoplace_settings.entity.settings["kr-rare-metal-ore"] = {}
 data.raw.planet["maraxsis"].map_gen_settings.autoplace_controls["kr-rare-metal-ore"] = {size = 10}
 
@@ -198,3 +193,10 @@ data.raw.recipe["maraxsis-microplastics"].ingredients = {
     {type = "item", name = "maraxsis-tropical-fish",   amount = 1},
     {type = "item", name = "shotgun-shell", amount = 1},
 }
+
+if data.raw["assembling-machine"]["kr-atmospheric-condenser"] then
+    data.raw["assembling-machine"]["kr-atmospheric-condenser"].maraxsis_buildability_rules = {water = false, dome = false, coral = false, trench = false, trench_entrance = false, trench_lava = false}
+end
+data.raw["furnace"]["kr-air-purifier"].maraxsis_buildability_rules = {water = false, dome = false, coral = false, trench = false, trench_entrance = false, trench_lava = false}
+data.raw["generator"]["kr-advanced-steam-turbine"].maraxsis_buildability_rules = {water = false, dome = false, coral = false, trench = false, trench_entrance = false, trench_lava = false}
+data.raw["assembling-machine"]["kr-fusion-reactor"].maraxsis_buildability_rules = {water = false, dome = false, coral = false, trench = false, trench_entrance = false, trench_lava = false}
