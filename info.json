@@ -22,7 +22,8 @@
     "! Land-Pump",
     "! no-more-gambling",
     "! quality-better-roboports",
-    "! edible-spoilage"
+    "! edible-spoilage",
+    "! force-fmf-grid"
   ],
   "quality_required": false,
   "space_travel_required": true,
