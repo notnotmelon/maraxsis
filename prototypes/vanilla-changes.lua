@@ -50,21 +50,6 @@ insert_hydro_plant(data.raw.recipe["coal-synthesis"])
 insert_hydro_plant(data.raw.recipe["engine-unit"])
 insert_hydro_plant(data.raw.recipe["electric-engine-unit"])
 
-local function add_surface_condition(recipe, condition)
-    recipe.surface_conditions = recipe.surface_conditions or {}
-    table.insert(recipe.surface_conditions, condition)
-end
-
-add_surface_condition(data.raw.recipe["rocket-part"], {
-    property = "gravity",
-    min = 0.5,
-})
-
-add_surface_condition(data.raw.recipe["rocket-part"], {
-    property = "pressure",
-    max = 50000,
-})
-
 if data.raw.technology["rocket-part-productivity"] then
     table.insert(data.raw.technology["rocket-part-productivity"].effects, {
         type = "change-recipe-productivity",
