@@ -200,3 +200,7 @@ end
 data.raw["furnace"]["kr-air-purifier"].maraxsis_buildability_rules = {water = false, dome = false, coral = false, trench = false, trench_entrance = false, trench_lava = false}
 data.raw["generator"]["kr-advanced-steam-turbine"].maraxsis_buildability_rules = {water = false, dome = false, coral = false, trench = false, trench_entrance = false, trench_lava = false}
 data.raw["assembling-machine"]["kr-fusion-reactor"].maraxsis_buildability_rules = {water = false, dome = false, coral = false, trench = false, trench_entrance = false, trench_lava = false}
+
+table.insert(data.raw.technology["planet-discovery-maraxsis"].prerequisites, "kr-geothermal")
+data.raw.technology["kr-geothermal"].localised_name = {"", {"technology-name.kr-geothermal"}, " 1"}
+data.raw.technology["maraxsis-geothermal-energy"].localised_name = {"", {"technology-name.kr-geothermal"}, " 2"}
