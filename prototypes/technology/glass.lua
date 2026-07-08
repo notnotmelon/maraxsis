@@ -118,13 +118,7 @@ data:extend {{
     name = "maraxsis-glass-productivity",
     icons = util.technology_icon_constant_recipe_productivity("__maraxsis__/graphics/technology/glass-productivity.png"),
     icon_size = 256,
-    effects = {
-        {
-            type = "change-recipe-productivity",
-            recipe = "maraxsis-glass-panes",
-            change = 0.1
-        },
-    },
+    effects = {},
     prerequisites = {"maraxsis-project-seadragon", "production-science-pack", "utility-science-pack", "metallurgic-science-pack"},
     unit = {
         count_formula = "1.5^L*1000",
@@ -140,16 +134,27 @@ data:extend {{
         time = 60
     },
     max_level = "infinite",
-    upgrade = true
+    upgrade = true,
+    PlanetsLib_recipe_productivity_effects = {
+        effects = {
+            {
+                type = "item",
+                name = "maraxsis-glass-panes",
+                change = 0.1
+            },
+            {
+                type = "item",
+                name = "glass",
+                change = 0.1
+            },
+            {
+                type = "item",
+                name = "kr-glass",
+                change = 0.1
+            },
+        },
+    }
 }}
-
-if data.raw.recipe["glass"] or mods["aai-industry"] then
-    table.insert(data.raw.technology["maraxsis-glass-productivity"].effects, 1, {
-        type = "change-recipe-productivity",
-        recipe = "glass",
-        change = 0.1
-    })
-end
 
 data:extend {{
     type = "recipe",
