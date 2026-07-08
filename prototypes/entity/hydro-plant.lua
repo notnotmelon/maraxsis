@@ -175,9 +175,6 @@ data:extend { {
     collision_mask = { layers = { item = true, object = true, player = true, water_tile = true } },
 } }
 
-
-
-
 data:extend { {
     type = "item",
     name = "maraxsis-hydro-plant",
@@ -219,7 +216,21 @@ extra_module_slots.flags = { "placeable-player", "player-creation", "not-in-made
 
 data:extend { extra_module_slots }
 
---Previously, Maraxsis had a script that replaced the Hydro Plant with its extra-module-slot variant in the trench and on space platforms. This feature has been rolled into PlanetsLib.
-for _,surface_name in pairs({"space-platform",maraxsis_constants.TRENCH_SURFACE_NAME}) do
-    PlanetsLib.assign_entity_replacement(surface_name,"maraxsis-hydro-plant",extra_module_slots.name,"maraxsis-runtime-entity-replacement")
+-- previously, maraxsis had a script that replaced the
+-- hydro plant with its extra-module-slot variant in the
+-- trench and on space platforms. this feature has been rolled into PlanetsLib
+for surface_name in pairs(maraxsis_constants.MARAXSIS_TRENCH_SURFACES) do
+    PlanetsLib.assign_entity_replacement(
+        surface_name,
+        "maraxsis-hydro-plant",
+        extra_module_slots.name,
+        "maraxsis-runtime-entity-replacement"
+    )
 end
+
+PlanetsLib.assign_entity_replacement(
+    "space-platform",
+    "maraxsis-hydro-plant",
+    extra_module_slots.name,
+    "maraxsis-runtime-entity-replacement"
+)
