@@ -158,6 +158,7 @@ data:extend { {
     },
     crafting_categories = {
         "maraxsis-hydro-plant",
+        mods["Krastorio2"] and  "kr-fluid-filtration" or nil
     },
     scale_entity_info_icon = true,
     impact_category = data.raw["assembling-machine"]["electromagnetic-plant"].impact_category,

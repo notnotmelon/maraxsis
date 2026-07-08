@@ -21,3 +21,6 @@ if mods["quality"] then
 end
 
 data.raw["assembling-machine"]["kr-quantum-computer"].energy_usage = "50MW"
+
+data.raw["assembling-machine"]["kr-advanced-chemical-plant"].crafting_categories =
+    table.delete_if(data.raw["assembling-machine"]["kr-advanced-chemical-plant"].crafting_categories, "kr-fluid-filtration")
