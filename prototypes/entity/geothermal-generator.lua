@@ -299,7 +299,7 @@ data:extend {{
         {type = "fluid", name = "fluoroketone-cold", amount = 10},
     },
     results = {
-        {type = "fluid", name = "steam", amount = 500},
+        {type = "fluid", name = "steam", amount = 500, temperature = 500},
         {type = "fluid", name = "fluoroketone-hot", amount = 10, ignored_by_stats = 10, ignored_by_productivity = 10},
     },
     allow_productivity = false,
