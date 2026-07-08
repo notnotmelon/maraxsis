@@ -10,63 +10,6 @@ function maraxsis.atmosphere_consumption(quality)
     return consumption_per_second, tostring(consumption_per_second * 100) .. "kW"
 end
 
-local function fixup_pipe_covers(sprite_4_way)
-    sprite_4_way = table.deepcopy(sprite_4_way)
-    sprite_4_way.east = maraxsis.empty_image()
-    sprite_4_way.west = maraxsis.empty_image()
-    return sprite_4_way
-end
-
-local function fixup_pipe_picture(sprite_4_way)
-    sprite_4_way = table.deepcopy(sprite_4_way)
-    
-    sprite_4_way.west = {
-        layers = {
-            {
-                filename = "__FluidMustFlow__/graphics/buildings/duct-ground/duct-ground-left.png",
-                height = 256,
-                priority = "high",
-                scale = 0.5,
-                width = 256,
-                shift = {1.2, 0}
-            },
-            {
-                draw_as_shadow = true,
-                filename = "__FluidMustFlow__/graphics/buildings/duct-ground/duct-ground-left-shadow.png",
-                height = 256,
-                priority = "high",
-                scale = 0.5,
-                width = 256,
-                shift = {1.2, 0}
-            },
-        },
-    }
-
-    sprite_4_way.east = {
-        layers = {
-            {
-                filename = "__FluidMustFlow__/graphics/buildings/duct-ground/duct-ground-right.png",
-                height = 256,
-                priority = "high",
-                scale = 0.5,
-                width = 256,
-                shift = {-1.3, 0}
-            },
-            {
-                draw_as_shadow = true,
-                filename = "__FluidMustFlow__/graphics/buildings/duct-ground/duct-ground-right-shadow.png",
-                height = 256,
-                priority = "high",
-                scale = 0.5,
-                width = 256,
-                shift = {-1.3, 0}
-            },
-        },
-    }
-
-    return sprite_4_way
-end
-
 for _, quality in pairs(data.raw.quality) do
     if quality.hidden and quality.name ~= "normal" then goto continue end
 
@@ -115,18 +58,18 @@ for _, quality in pairs(data.raw.quality) do
             maximum_temperature = 0,
             fluid_box = {
                 production_type = "input",
-                pipe_picture = fixup_pipe_picture(require("__space-age__.prototypes.entity.electromagnetic-plant-pictures").pipe_pictures),
-                pipe_picture_frozen = fixup_pipe_picture(require("__space-age__.prototypes.entity.electromagnetic-plant-pictures").pipe_pictures_frozen),
-                pipe_covers = fixup_pipe_covers(pipecoverspictures()),
+                pipe_picture = require("__space-age__.prototypes.entity.electromagnetic-plant-pictures").pipe_pictures,
+                pipe_picture_frozen = require("__space-age__.prototypes.entity.electromagnetic-plant-pictures").pipe_pictures_frozen,
+                pipe_covers = pipecoverspictures(),
                 volume = 100,
                 pipe_connections = {
                     {position = {0.5, -1.5},  direction = defines.direction.north, flow_direction = "input-output"},
                     {position = {-0.5, 1.5},  direction = defines.direction.south, flow_direction = "input-output"},
-                    {position = {1.5, 0.0},   direction = defines.direction.east,  flow_direction = "input-output", connection_category = "ducts"},
-                    {position = {-1.5, -0.0}, direction = defines.direction.west,  flow_direction = "input-output", connection_category = "ducts"},
+                    {position = {1.5, 0.5},   direction = defines.direction.east,  flow_direction = "input-output"},
+                    {position = {-1.5, -0.5}, direction = defines.direction.west,  flow_direction = "input-output"},
                 },
                 filter = "maraxsis-atmosphere",
-                secondary_draw_orders = {north = -1, west = -1, east = -1},
+                secondary_draw_orders = {north = -1},
             },
             smoke = {
                 {
