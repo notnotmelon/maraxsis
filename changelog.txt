@@ -1,4 +1,9 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.33.10
+Date: 2026-07-08
+  Compatibility:
+    - Exposed the research vessel pressurize function. Resolves https://github.com/notnotmelon/maraxsis/issues/372
+---------------------------------------------------------------------------------------------------
 Version: 1.33.9
 Date: 2026-07-08
   Bugfixes:
