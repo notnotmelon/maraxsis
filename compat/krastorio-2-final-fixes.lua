@@ -11,7 +11,7 @@ for _, ingredient in pairs(data.raw.recipe["promethium-science-pack"].ingredient
 end
 data.raw.recipe["promethium-science-pack"].ingredients = new_ingredients
 
-if not mods["no-quality"] then
+if mods["quality"] then
     local qc = data.raw["assembling-machine"]["kr-quantum-computer"]
     if qc then
         qc.effect_receiver = qc.effect_receiver or {}

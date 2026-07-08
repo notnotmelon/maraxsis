@@ -26,8 +26,6 @@ data:extend {{
         "rocket-turret",
         "cliff-explosives",
         "electromagnetic-science-pack",
-        "quality-module",
-        settings.startup["sp-enable-spiderling"].value and "sp-spidertron-automation" or nil
     },
     unit = {
         count = 3000,
@@ -46,6 +44,14 @@ data:extend {{
     },
     order = "ea[maraxsis]",
 }}
+
+if data.raw.technology["quality-module"] then
+    table.insert(data.raw.technology["planet-discovery-maraxsis"].prerequisites, "quality-module")
+end
+
+if settings.startup["sp-enable-spiderling"].value then
+    table.insert(data.raw.technology["planet-discovery-maraxsis"].prerequisites, "sp-spidertron-automation")
+end
 
 data:extend {{
     type = "technology",
