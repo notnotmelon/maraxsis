@@ -196,12 +196,7 @@ for prototype in pairs(defines.prototypes.entity) do
     end
 end
 
-data:extend {{
-    type = "collision-layer",
-    name = "decal",
-}}
-
--- add decal layer to decals
+-- add doodad layer to decals
 for _, decorative in pairs {
     "crater-large",
     "light-mud-decal",
@@ -210,7 +205,7 @@ for _, decorative in pairs {
 } do
     decorative = data.raw["optimized-decorative"][decorative]
     if not decorative then error("decorative not found " .. decorative) end
-    decorative.collision_mask.layers["decal"] = true
+    decorative.collision_mask.layers["doodad"] = true
 end
 
 -- add doodad layer to doodads
@@ -220,5 +215,5 @@ for _, decorative in pairs {
 } do
     decorative = data.raw["optimized-decorative"][decorative]
     if not decorative then error("decorative not found " .. decorative) end
-    decorative.collision_mask.layers["decal"] = true
+    decorative.collision_mask.layers["doodad"] = true
 end
