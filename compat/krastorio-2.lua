@@ -209,3 +209,5 @@ data.raw["assembling-machine"]["kr-fusion-reactor"].maraxsis_buildability_rules 
 table.insert(data.raw.technology["planet-discovery-maraxsis"].prerequisites, "kr-geothermal")
 data.raw.technology["kr-geothermal"].localised_name = {"", {"technology-name.kr-geothermal"}, " 1"}
 data.raw.technology["maraxsis-geothermal-energy"].localised_name = {"", {"technology-name.kr-geothermal"}, " 2"}
+
+data.raw["assembling-machine"]["kr-advanced-chemical-plant"].maraxsis_buildability_rules = {water = true, dome = true, coral = true, trench = true, trench_entrance = false, trench_lava = false}
