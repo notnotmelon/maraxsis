@@ -60,7 +60,6 @@ local DOME_EXCLUDED_FROM_DISABLE = {
 }
 
 local SAND_ITEM_NAME = "sand"
-if mods["Krastorio2-spaced-out"] or mods["Krastorio2"] then SAND_ITEM_NAME = "kr-sand" end
 
 local TROPICAL_FISH_NAMES = {}
 for i = 1, 15 do
