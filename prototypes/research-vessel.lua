@@ -185,3 +185,5 @@ end
 if data.raw.item["maraxsis-spoilage-research-vessel"] and data.raw.item["maraxsis-agricultural-science-pack-research-vessel"] then
     data.raw.item["maraxsis-spoilage-research-vessel"].order = data.raw.item["maraxsis-agricultural-science-pack-research-vessel"].order .. "z"
 end
+
+return { pressurize = pressurize }
