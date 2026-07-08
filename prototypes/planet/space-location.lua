@@ -24,7 +24,7 @@ data:extend {
         order = "ce[maraxsis]",
         solar_power_in_space = 150,
         map_gen_settings = planet_map_gen.maraxsis(),
-        distance = 15,
+        distance = 17.5,
         draw_orbit = false,
         orientation = 0.515,
         persistent_ambient_sounds = {},
