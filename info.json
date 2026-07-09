@@ -13,7 +13,6 @@
     "PlanetsLib >= 1.20.3",
     "SpidertronPatrols >= 2.7.0",
     "FluidMustFlow >= 1.5.0",
-    "+AsteroidBelt >= 1.2.11",
     "(?) tenebris",
     "(?) tenebris-prime",
     "(?) SchallTransportGroup",
