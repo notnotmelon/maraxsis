@@ -90,7 +90,7 @@ data:extend {{
         {type = "fluid", name = "maraxsis-omega-3", amount = 10},
     },
     results = {
-        {type = "item", name = science_pack, amount = 1, ignored_by_stats = 1, ignored_by_productivity = 1, quality_min = "uncommon"},
+        {type = "item", name = science_pack, amount = 1, ignored_by_stats = 1, ignored_by_productivity = 1, quality_min = "uncommon", always_fresh = true},
         {type = "fluid", name = "water", amount = 20},
     },
     allow_productivity = false,

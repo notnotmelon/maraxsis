@@ -16,11 +16,11 @@ local function build_promethium_quality(i, prerequisites, count, q)
         categories = {"maraxsis-hydro-plant"},
         ingredients = {
             {type = "item", name = science_pack, amount = 1, quality_max = q.name, quality_min = q.name},
-            {type = "fluid", name = "maraxsis-omega-3", amount = 15},
+            {type = "fluid", name = "maraxsis-omega-3", amount = 10 + i * 5},
         },
         results = {
             {type = "item", name = science_pack, amount = 1, ignored_by_stats = 1, ignored_by_productivity = 1, quality_min = q.next},
-            {type = "fluid", name = "water", amount = 25},
+            {type = "fluid", name = "water", amount = 20 + i * 5},
         },
         icons = next.icon and {
             {
@@ -45,7 +45,7 @@ local function build_promethium_quality(i, prerequisites, count, q)
         name = "maraxsis-promethium-quality-" .. i,
         icons = {
             {
-                icon = "__maraxsis__/graphics/technology/promethium-quality.png",
+                icon = "__maraxsis__/graphics/technology/omega-3.png",
                 icon_size = 256,
             },
             next.icon and {
