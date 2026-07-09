@@ -17,7 +17,7 @@ data:extend {{
             recipe = "maraxsis-vitamin-infused-hydraulic-science",
         },
     },
-    prerequisites = {"maraxsis-project-seadragon", "agricultural-science-pack", "maraxsis-liquid-atmosphere"},
+    prerequisites = {"maraxsis-project-seadragon", "agricultural-science-pack", "maraxsis-liquid-atmosphere", "epic-quality"},
     unit = {
         count = 5000,
         ingredients = {
@@ -39,7 +39,7 @@ data:extend {{
             recipe = "maraxsis-vitamin-infused-promethium-science-1",
         },
     },
-    prerequisites = {"promethium-science-pack", "maraxsis-omega_3"},
+    prerequisites = {"promethium-science-pack", "maraxsis-omega_3", "legendary-quality"},
     unit = {
         count = 5000000,
         time = 120,

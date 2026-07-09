@@ -36,7 +36,7 @@ data:extend {{
     auto_recycle = false,
     surface_conditions = maraxsis.surface_conditions(),
 }}
-table.insert(data.raw.technology["hydraulic-science-pack"].effects, {
+table.insert(data.raw.technology["hydraulic-science-pack"].effects, 2, {
     type = "unlock-recipe",
     recipe = "hydraulic-research-data"
 })
@@ -51,7 +51,7 @@ data:extend {{
         {type = "item", name = "kr-blank-tech-card",      amount = 5},
     },
     results = {
-        {type = "item", name = "hydraulic-science-pack", amount = 5},
+        {type = "item", name = "hydraulic-science-pack", amount = 5, quality_change = -1},
     },
     allow_productivity = true,
     categories = { "kr-tech-cards"},
