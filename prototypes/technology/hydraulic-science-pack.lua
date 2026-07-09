@@ -12,6 +12,19 @@ data:extend {{
     weight = data.raw.item["automation-science-pack"].weight,
 }}
 
+if mods.Krastorio2 then
+    data:extend {{
+        type = "item",
+        name = "hydraulic-research-data",
+        stack_size = 200,
+        icon = "__maraxsis__/graphics/icons/hydraulic-research-data.png",
+        icon_size = 64,
+        subgroup = "science-pack",
+        weight = 1000,
+        order = "ao75[hydraulic-research-data]"
+    }}
+end
+
 data:extend {{
     type = "technology",
     name = "hydraulic-science-pack",
@@ -62,11 +75,11 @@ data:extend {{
     type = "item",
     name = "maraxsis-fish-oil",
     stack_size = data.raw.item["hydraulic-science-pack"].stack_size,
+    weight = data.raw.item["hydraulic-science-pack"].weight,
     icon = "__maraxsis__/graphics/icons/fish-oil.png",
     icon_size = 64,
     subgroup = "science-pack",
     order = "j-b[fish-oil]",
-    weight = data.raw.item["automation-science-pack"].weight,
 }}
 
 data:extend {{

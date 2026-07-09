@@ -8,17 +8,6 @@ if not mods["Tech_Cards_For_Modded_Planets"] then
 end
 
 data:extend {{
-    type = "item",
-    name = "hydraulic-research-data",
-    stack_size = 200,
-    icon = "__maraxsis__/graphics/icons/hydraulic-research-data.png",
-    icon_size = 64,
-    subgroup = "science-pack",
-    weight = 1000,
-    order = "ao75[hydraulic-research-data]"
-}}
-
-data:extend {{
     type = "recipe",
     name = "hydraulic-research-data",
     enabled = false,

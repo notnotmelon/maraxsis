@@ -9,6 +9,10 @@ if not mods.space_age_galore then
     require "prototypes.recipe.deepsea-research"
 end
 
+if mods.quality then
+    require "prototypes.technology.promethium-quality"
+end
+
 require "compat.aai-industry"
 require "compat.aai-signal-transmission"
 require "compat.editor-extensions"
