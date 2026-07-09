@@ -4,7 +4,7 @@ data:extend {{
     icon = "__maraxsis__/graphics/icons/hydraulic-science-pack.png",
     icon_size = 64,
     subgroup = "science-pack",
-    order = "j[hydraulic-science-pack]",
+    order = "j-a[hydraulic-science-pack]",
     stack_size = data.raw.item["automation-science-pack"].stack_size,
     durability = data.raw.item["automation-science-pack"].durability,
     durability_description_key = data.raw.item["automation-science-pack"].durability_description_key,
@@ -23,6 +23,10 @@ data:extend {{
             type = "unlock-recipe",
             recipe = "hydraulic-science-pack",
         },
+        {
+            type = "unlock-recipe",
+            recipe = "maraxsis-fish-oil-cracking"
+        }
     },
     research_trigger = {
         type = "craft-item",
@@ -32,7 +36,7 @@ data:extend {{
     prerequisites = {
         "maraxsis-wyrm-confinement",
     },
-    order = "eg[hydraulic-science-pack]",
+    order = "eg-a[hydraulic-science-pack]",
 }}
 
 data:extend {{
@@ -52,4 +56,32 @@ data:extend {{
     categories = {"maraxsis-hydro-plant"},
     auto_recycle = false,
     surface_conditions = maraxsis.surface_conditions(),
+}}
+
+data:extend {{
+    type = "item",
+    name = "maraxsis-fish-oil",
+    stack_size = data.raw.item["hydraulic-science-pack"].stack_size,
+    icon = "__maraxsis__/graphics/icons/fish-oil.png",
+    icon_size = 64,
+    subgroup = "science-pack",
+    order = "j-b[fish-oil]",
+    weight = data.raw.item["automation-science-pack"].weight,
+}}
+
+data:extend {{
+    type = "recipe",
+    name = "maraxsis-fish-oil-cracking",
+    categories = {"organic"},
+    ingredients = {
+        {type = "fluid", name = "steam", amount = 90},
+        {type = "item", name = "maraxsis-fish-oil", amount = 1},
+    },
+    results = {
+        {type = "fluid", name = "light-oil", amount = 80},
+        {type = "item", name = "maraxsis-glass-panes", amount = 1},
+    },
+    main_product = "light-oil",
+    allow_productivity = true,
+    energy_required = 5
 }}

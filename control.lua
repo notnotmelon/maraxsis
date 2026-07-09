@@ -17,6 +17,7 @@ require "scripts.drowning"
 require "scripts.sonar"
 require "scripts.sand-extractor"
 require "scripts.oversized-steam-turbine"
+require "scripts.hydraulic-science-pack"
 
 require "compat.call-plumber"
 
