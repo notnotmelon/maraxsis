@@ -59,8 +59,11 @@ for extractor in pairs(maraxsis_constants.MARAXSIS_SAND_EXTRACTORS) do
     update_collision_masks(extractor .. "-sand-extractor")
 end
 
-if data.raw["technology"]["maraxsis-promethium-productivity"] then
-    data.raw["technology"]["maraxsis-promethium-productivity"].unit.ingredients = table.deepcopy(data.raw["technology"]["research-productivity"].unit.ingredients)
+for i = 1, 4 do
+    local t = data.raw["technology"]["maraxsis-promethium-quality-" .. i]
+    if t then
+        t.unit.ingredients = table.deepcopy(data.raw["technology"]["research-productivity"].unit.ingredients)
+    end
 end
 
 for _, recipe in pairs(data.raw.recipe) do
