@@ -48,6 +48,13 @@ local function build_promethium_quality(i, prerequisites, count, q)
                 icon = "__maraxsis__/graphics/technology/omega-3.png",
                 icon_size = 256,
             },
+            --{
+            --    icon = data.raw["item"][science_pack].icon,
+            --    icon_size = data.raw["item"][science_pack].icon_size,
+            --    scale = 0.9,
+            --    shift = {-30, 36},
+            --    floating = true
+            --},
             next.icon and {
                 icon = next.icon,
                 icon_size = next.icon_size or 64,
