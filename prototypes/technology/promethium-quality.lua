@@ -6,7 +6,7 @@ if mods.Krastorio2 then
     science_pack = "kr-promethium-research-data"
 end
 
-local function build_promethium_quality(i, prerequisites, count, q)
+local function build_promethium_quality(i, prerequisites, count, q, previous)
     local next = data.raw.quality[q.next]
 
     data:extend {{
@@ -19,6 +19,7 @@ local function build_promethium_quality(i, prerequisites, count, q)
         ingredients = {
             {type = "item", name = science_pack, amount = 1, quality_max = q.name, quality_min = q.name},
             {type = "fluid", name = "maraxsis-omega-3", amount = 10 + i * 5},
+            previous and {type = "item", name = "nutrients", amount = 1, quality_min = previous.name} or nil,
         },
         results = {
             {type = "item", name = science_pack, amount = 1, ignored_by_stats = 1, ignored_by_productivity = 1, quality_min = q.next},
@@ -85,6 +86,7 @@ local seen = {}
 local i = 1
 local q = data.raw.quality.normal
 local count = 5000000
+local previous = nil
 local prerequisites = {"promethium-science-pack", "maraxsis-omega_3", "legendary-quality"}
 while true do
     if type(q.next) ~= "string" then
@@ -96,9 +98,10 @@ while true do
     end
     seen[q.name] = true
 
-    build_promethium_quality(i, prerequisites, count, q)
+    build_promethium_quality(i, prerequisites, count, q, previous)
     prerequisites = {"maraxsis-promethium-quality-" .. i}
     count = count * 10
     i = i + 1
+    previous = q
     q = data.raw.quality[q.next]
 end
