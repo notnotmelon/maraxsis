@@ -1,3 +1,5 @@
+if not mods.quality then return end
+
 data:extend {{
     type = "technology",
     name = "maraxsis-omega_3",
