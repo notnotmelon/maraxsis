@@ -1,4 +1,24 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.34.0
+Date: 2026-07-09
+  Features:
+    - Added omega-3 fatty acids. A new fluid that will help improve the quality and longevity of your science packs.
+    - Replaced promethium productivity with promethium quality.
+    - Reworked hydraulic science. Now loses 1 quality tier when launched as rocket payload. "spoils" into fish oil at -1 quality.
+  Balancing:
+    - The deepsea research technology no longer requires liquid atmosphere to be researched.
+  Compatibility:
+    - Added the "AsteroidBelt" mod as a recommended dependency.
+    - Fixed crashes when the quality mod is removed.
+    - removed recommended dependency on asteroid belt mod
+    - With k2 installed, the hydro plant can now run fluid filtration recipes.
+    - With krastorio 2, hydraulic science packs lose 1 tier of quality when crafting them from research data.
+  Graphics:
+    - Redid the graphics for the hydraulic tech card
+    - Removed one of the wyrm specimen item icon variants.
+  Changes:
+    - Removed research vessels.
+---------------------------------------------------------------------------------------------------
 Version: 1.33.12
 Date: 2026-07-08
   Compatibility:
