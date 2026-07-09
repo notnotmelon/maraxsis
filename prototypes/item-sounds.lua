@@ -39,7 +39,6 @@ add_sound_item("maraxsis-salt-filter", item_sounds.steam_inventory_move, item_so
 add_sound_item("maraxsis-saturated-salt-filter", item_sounds.steam_inventory_move, item_sounds.steam_inventory_pickup, item_sounds.steam_inventory_move)
 add_sound_item("maraxsis-abyssal-diving-gear", item_sounds.metal_large_inventory_move, item_sounds.metal_large_inventory_pickup, item_sounds.metal_large_inventory_move)
 add_sound_item("maraxsis-trench-duct", item_sounds.metal_large_inventory_move, item_sounds.metal_large_inventory_pickup, item_sounds.metal_large_inventory_move)
-add_sound_item("maraxsis-empty-research-vessel", item_sounds.metal_large_inventory_move, item_sounds.metal_large_inventory_pickup, item_sounds.metal_large_inventory_move)
 add_sound_item("maraxsis-geothermal-generator", item_sounds.steam_inventory_move, item_sounds.steam_inventory_pickup, item_sounds.steam_inventory_move)
 add_sound_item("maraxsis-oversized-steam-turbine", item_sounds.steam_inventory_move, item_sounds.steam_inventory_pickup, item_sounds.steam_inventory_move)
 add_sound_item("hydraulic-science-pack", item_sounds.science_inventory_move, item_sounds.science_inventory_pickup, item_sounds.science_inventory_move)

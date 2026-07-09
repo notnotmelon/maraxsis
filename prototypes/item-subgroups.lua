@@ -70,7 +70,6 @@ order_subgroup("lamp", "maraxsis-sonar-light-1", "d[radar]-b[sonar]-b[sonar-ligh
 order_subgroup("lamp", "maraxsis-sonar-light-2", "d[radar]-b[sonar]-c[sonar-light-2]", data.raw.item.radar.subgroup)
 order_subgroup("item", "maraxsis-geothermal-generator", "h[geothermal-generator]-a[geothermal-generator]", "energy")
 order_subgroup("item", "maraxsis-oversized-steam-turbine", "h[geothermal-generator]-b[oversized-steam-turbine]", "energy")
-order_subgroup("item", "maraxsis-empty-research-vessel", "a[basic-intermediates]-d-b[empty-research-vessel]", "intermediate-product")
 order_subgroup("item", "maraxsis-pressure-dome", "z-d-a[pressure-dome]", "environmental-protection")
 order_subgroup("lamp", "maraxsis-pressure-dome-lamp", "z-d-b[pressure-dome-lamp]", "environmental-protection")
 order_subgroup("constant-combinator", "maraxsis-pressure-dome-combinator", "z-d-c[pressure-dome-lamp]", "environmental-protection")

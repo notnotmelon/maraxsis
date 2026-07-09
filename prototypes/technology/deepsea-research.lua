@@ -7,7 +7,7 @@ data:extend {{
     icon_size = 256,
     effects = {},
     prerequisites = {
-        "maraxsis-research-vessel",
+        "maraxsis-omega_3",
         "maraxsis-stone-centrifuging",
         "maraxsis-liquid-atmosphere",
         "maraxsis-effect-transmission-2",

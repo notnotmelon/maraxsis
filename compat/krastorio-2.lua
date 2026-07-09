@@ -219,7 +219,6 @@ end
 -- https://mods.factorio.com/mod/nulls-k2so-tweaks
 local default_stack_size = 200
 set_stack_size("maraxsis-big-cliff-explosives", default_stack_size)
-set_stack_size("maraxsis-empty-research-vessel", default_stack_size)
 set_stack_size("maraxsis-fish-food", default_stack_size)
 set_stack_size("maraxsis-microplastics", default_stack_size)
 set_stack_size("maraxsis-salt-filter", default_stack_size)

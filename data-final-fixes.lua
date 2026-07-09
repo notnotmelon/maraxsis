@@ -12,7 +12,6 @@ end
 
 local collision_mask_util = require("collision-mask-util")
 
-require "prototypes.research-vessel"
 require "prototypes.collision-mask"
 require "prototypes.swimming"
 
