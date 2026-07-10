@@ -24,3 +24,5 @@ data.raw["assembling-machine"]["kr-quantum-computer"].energy_usage = "50MW"
 
 data.raw["assembling-machine"]["kr-advanced-chemical-plant"].crafting_categories =
     table.delete_if(data.raw["assembling-machine"]["kr-advanced-chemical-plant"].crafting_categories, "kr-fluid-filtration")
+
+data.raw.recipe["hydraulic-science-pack-cooling"].results[1].quality_change = -1
