@@ -62,6 +62,7 @@ for _, recipe in pairs {
         max = 400000,
     } }
     recipe.results[1].amount = recipe.results[1].amount * 2
+    recipe.results[1].quality_min = recipe.results[1].quality_min or "uncommon"
     effects[#effects + 1] = { type = "unlock-recipe", recipe = recipe.name }
 end
 
