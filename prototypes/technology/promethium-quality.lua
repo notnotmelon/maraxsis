@@ -17,7 +17,7 @@ local function build_promethium_quality(i, prerequisites, count, q, previous)
         ingredients = {
             {type = "item", name = science_pack, amount = 1, quality_max = q.name, quality_min = q.name},
             {type = "fluid", name = "maraxsis-omega-3", amount = 10 + i * 5},
-            previous and {type = "item", name = "nutrients", amount = 1, quality_min = previous.name} or nil,
+            previous and {type = "item", name = "nutrients", amount = 1, quality_min = previous.name, quality_max = previous.name} or nil,
         },
         results = {
             {type = "item", name = science_pack, amount = 1, ignored_by_stats = 1, ignored_by_productivity = 1, quality_min = q.next},
