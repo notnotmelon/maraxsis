@@ -25,7 +25,7 @@
     "! edible-spoilage",
     "! force-fmf-grid"
   ],
-  "quality_required": false,
+  "quality_required": true,
   "space_travel_required": true,
   "spoiling_required": true,
   "freezing_required": true,
