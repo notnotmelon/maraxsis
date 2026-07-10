@@ -197,8 +197,8 @@ data:extend {{
         {type = "fluid", name = "water",                          amount = 20},
     },
     results = {
-        {type = "item",  name = "maraxsis-salt-filter",    amount = 1, independent_probability = 0.95, ignored_by_stats = 1, quality_change = -1},
-        {type = "item",  name = "carbon-fiber",            amount = 1, independent_probability = 0.025, quality_change = 1},
+        {type = "item",  name = "maraxsis-salt-filter",    amount = 1, independent_probability = 0.95, ignored_by_productivity = 1, ignored_by_stats = 1, quality_change = 1},
+        {type = "item",  name = "carbon-fiber",            amount = 1, independent_probability = 0.025},
         {type = "fluid", name = "maraxsis-brackish-water", amount = 20},
     },
     categories = {"maraxsis-hydro-plant", "chemistry"},
