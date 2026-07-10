@@ -1,4 +1,4 @@
-if mods["Krastorio2-spaced-out"] or mods["Krastorio2"] then return end
+if mods["Krastorio2-spaced-out"] then return end
 
 local effects = data.raw.technology["maraxsis-deepsea-research"].effects
 

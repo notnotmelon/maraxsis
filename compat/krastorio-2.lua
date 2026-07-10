@@ -1,4 +1,4 @@
-if not mods["Krastorio2-spaced-out"] and not mods["Krastorio2"] then return end
+if not mods["Krastorio2-spaced-out"] then return end
 
 if not mods["Tech_Cards_For_Modded_Planets"] then
     data.raw.item["hydraulic-science-pack"].icon = "__maraxsis__/graphics/icons/hydraulic-tech-card.png"

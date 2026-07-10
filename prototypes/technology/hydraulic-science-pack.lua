@@ -13,7 +13,7 @@ data:extend {{
     weight = data.raw.item["automation-science-pack"].weight,
 }}
 
-if mods.Krastorio2 then
+if mods["Krastorio2-spaced-out"] then
     data:extend {{
         type = "item",
         name = "hydraulic-research-data",

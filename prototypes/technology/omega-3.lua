@@ -15,7 +15,7 @@ data:extend {{
             recipe = "maraxsis-vitamin-infused-hydraulic-science",
         },
     },
-    prerequisites = {"maraxsis-project-seadragon", "agricultural-science-pack", "maraxsis-liquid-atmosphere", "epic-quality", (not mods.Krastorio2) and "maraxsis-deepsea-research" or "kr-quantum-computer"},
+    prerequisites = {"maraxsis-project-seadragon", "agricultural-science-pack", "maraxsis-liquid-atmosphere", "epic-quality", mods["Krastorio2-spaced-out"] and "kr-quantum-computer" or "maraxsis-deepsea-research"},
     unit = {
         count = 5000,
         ingredients = {
@@ -74,7 +74,7 @@ data:extend {{
 
 local science_pack = "agricultural-science-pack"
 
-if mods.Krastorio2 then
+if mods["Krastorio2-spaced-out"] then
     science_pack = "kr-agricultural-research-data"
 end
 
@@ -113,7 +113,7 @@ data:extend {{
 
 local science_pack = "hydraulic-science-pack"
 
-if mods.Krastorio2 then
+if mods["Krastorio2-spaced-out"] then
     science_pack = "hydraulic-research-data"
 end
 

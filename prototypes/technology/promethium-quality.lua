@@ -1,6 +1,6 @@
 local science_pack = "promethium-science-pack"
 
-if mods.Krastorio2 then
+if mods["Krastorio2-spaced-out"] then
     science_pack = "kr-promethium-research-data"
 end
 
