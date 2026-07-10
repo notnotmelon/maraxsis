@@ -155,7 +155,7 @@ data:extend {{
     enabled = false,
     energy_required = 3,
     ingredients = {
-        {type = "item", name = maraxsis_constants.SAND_ITEM_NAME, amount = 1},
+        {type = "item", name = maraxsis_constants.SAND_ITEM_NAME, amount = 1, quality_min = "normal", quality_max = "normal"},
         {type = "item", name = "maraxsis-fish-food", amount = 1, quality_min = "uncommon"},
     },
     results = {
