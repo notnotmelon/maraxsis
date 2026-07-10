@@ -1,4 +1,9 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.34.3
+Date: 2026-07-10
+  Bugfixes:
+    - Fixed not being able to connect pipe networks with supercritical steam. Resolves https://github.com/notnotmelon/maraxsis/issues/407
+---------------------------------------------------------------------------------------------------
 Version: 1.34.2
 Date: 2026-07-10
   Bugfixes:
