@@ -23,7 +23,7 @@ data:extend {{
     allow_productivity = true,
     categories = { "maraxsis-hydro-plant"},
     auto_recycle = false,
-    surface_conditions = maraxsis.surface_conditions(),
+    surface_conditions = maraxsis.trench_surface_conditions(),
 }}
 table.insert(data.raw.technology["hydraulic-science-pack"].effects, 2, {
     type = "unlock-recipe",
@@ -45,7 +45,7 @@ data:extend {{
     allow_productivity = true,
     categories = { "kr-tech-cards"},
     auto_recycle = false,
-    surface_conditions = maraxsis.surface_conditions(),
+    surface_conditions = maraxsis.trench_surface_conditions(),
 }}
 
 table.insert(data.raw.recipe["maraxsis-hydrolox-rocket-fuel"].ingredients, {
@@ -122,11 +122,7 @@ data.raw.recipe["kr-quantum-computer"].ingredients = {
     {type = "item", name = "maraxsis-glass-panes", amount = 200},
 }
 
-data.raw["assembling-machine"]["kr-quantum-computer"].surface_conditions = {{
-    property = "pressure",
-    min = 400000,
-    max = 400000,
-}}
+data.raw["assembling-machine"]["kr-quantum-computer"].surface_conditions = maraxsis.trench_surface_conditions()
 
 data:extend {{
     type = "item",

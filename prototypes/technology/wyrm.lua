@@ -79,10 +79,6 @@ data:extend {{
     },
     auto_recycle = false,
     categories = {"maraxsis-hydro-plant"},
-    surface_conditions = {{
-        property = "pressure",
-        min = 400000,
-        max = 400000
-    }},
+    surface_conditions = maraxsis.trench_surface_conditions(),
     allow_productivity = true
 }}

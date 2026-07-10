@@ -56,11 +56,7 @@ for _, recipe in pairs {
     recipe.subgroup = "maraxsis-deepsea-research"
     recipe.enabled = false
     recipe.auto_recycle = false
-    recipe.surface_conditions = { {
-        property = "pressure",
-        min = 400000,
-        max = 400000,
-    } }
+    recipe.surface_conditions = maraxsis.trench_surface_conditions()
     recipe.results[1].amount = recipe.results[1].amount * 2
     recipe.results[1].quality_min = recipe.results[1].quality_min or "uncommon"
     effects[#effects + 1] = { type = "unlock-recipe", recipe = recipe.name }

@@ -224,11 +224,7 @@ data:extend {{
     fast_replaceable_group = "ducts",
     collision_box = {{-0.99, -0.99}, {0.79, 0.79}},
     selection_box = {{-1, -1}, {1, 1}},
-    surface_conditions = {{
-        property = "pressure",
-        min = 400000,
-        max = 400000,
-    }},
+    surface_conditions = maraxsis.trench_surface_conditions(),
     fluid_box = {
         volume = constants.volume * 2,
         pipe_covers = nil,
