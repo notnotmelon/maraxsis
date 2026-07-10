@@ -78,21 +78,3 @@ data:extend {{
     subgroup = "science-pack",
     order = "j-b[fish-oil]",
 }}
-
-data:extend {{
-    type = "recipe",
-    name = "maraxsis-fish-oil-cracking",
-    categories = {"organic"},
-    ingredients = {
-        {type = "fluid", name = "steam", amount = 90},
-        {type = "item", name = "maraxsis-fish-oil", amount = 1},
-    },
-    results = {
-        {type = "fluid", name = "light-oil", amount = 80},
-        {type = "item", name = "maraxsis-glass-panes", amount = 1},
-    },
-    main_product = "light-oil",
-    allow_productivity = true,
-    energy_required = 5,
-    enabled = false
-}}

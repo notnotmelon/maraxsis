@@ -44,6 +44,24 @@ data:extend {{
     maximum_productivity = 1.5,
 }}
 
+data:extend {{
+    type = "recipe",
+    name = "maraxsis-fish-oil-cracking",
+    categories = {"organic"},
+    ingredients = {
+        {type = "fluid", name = "steam", amount = 90},
+        {type = "item", name = "maraxsis-fish-oil", amount = 1},
+    },
+    results = {
+        {type = "fluid", name = "light-oil", amount = 120},
+        {type = "item", name = "maraxsis-glass-panes", amount = 1},
+    },
+    main_product = "light-oil",
+    allow_productivity = true,
+    energy_required = 5,
+    enabled = false
+}}
+
 data:extend { {
     type = "recipe",
     name = "maraxsis-holmium-recrystalization",
