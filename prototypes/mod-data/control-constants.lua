@@ -56,6 +56,7 @@ local DOME_EXCLUDED_FROM_DISABLE = {
     ["maraxsis-hydro-plant"] = true,
     ["maraxsis-hydro-plant-extra-module-slots"] = true,
     ["maraxsis-conduit"] = true,
+    ["maraxsis-oversized-steam-turbine"] = true,
     ["maraxsis-a-breath-of-fresh-air"] = true,
 }
 
