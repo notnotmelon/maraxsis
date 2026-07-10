@@ -1,7 +1,3 @@
-local letters = {
-    "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p"
-}
-
 local function make_subgroup(subgroup_name, subgroup_order, group, members)
     data:extend {{
         type = "item-subgroup",
@@ -11,8 +7,11 @@ local function make_subgroup(subgroup_name, subgroup_order, group, members)
     }}
 
     for i, prototype in pairs(members) do
-        local order_letter = letters[i] or error("not enough letters")
-        local order = order_letter .. "[" .. prototype.name .. "]"
+        local order_letter = tostring(i)
+        while #order_letter <= 5 do
+            order_letter = "0" .. order_letter
+        end
+        local order = order_letter .. "-[" .. prototype.name .. "]"
         prototype.order = order
         prototype.subgroup = subgroup_name
     end
