@@ -37,6 +37,10 @@ data:extend {{
             type = "unlock-recipe",
             recipe = "maraxsis-conduit",
         },
+        {
+            type = "unlock-recipe",
+            recipe = "maraxsis-holmium-recrystalization",
+        },
     },
     prerequisites = {"effect-transmission", "maraxsis-project-seadragon", "electromagnetic-science-pack"},
     unit = {

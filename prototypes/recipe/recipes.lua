@@ -86,8 +86,3 @@ data:extend { {
         },
     }
 } }
-
-table.insert(data.raw.technology["holmium-processing"].effects, {
-    type = "unlock-recipe",
-    recipe = "maraxsis-holmium-recrystalization"
-})
