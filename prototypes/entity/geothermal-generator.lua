@@ -7,7 +7,7 @@ data:extend {{
     icon = "__maraxsis__/graphics/entity/geothermal-generator/icon.png",
     icon_size = 64,
     place_result = "maraxsis-geothermal-generator",
-    stack_size = 1,
+    stack_size = 5,
 }}
 
 data:extend {{
