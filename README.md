@@ -98,7 +98,7 @@ Maraxsis would not be possible without the help of these amazing, fantastic, inc
  - Music - [fluidnatalie](https://mods.factorio.com/user/FluidNatalie)
  - Unused Renders - [malcolmriley](https://github.com/malcolmriley)
  - Tropical Fish Pack - [ZivixLLC](https://github.com/ZivixLLC)
- - Hydro Plant, Regulator, Salt Reactor, & Conduit - [Hurricane](https://mods.factorio.com/user/Hurricane046)
+ - Hydro Plant, Regulator, Geothermal Generator, & Conduit Graphics - [Hurricane](https://mods.factorio.com/user/Hurricane046)
  - Submarine & Nuclear Submarine - [keptin](https://www.turbosquid.com/Search/Artists/keptin)
  - Pressure Dome - [KaueNP](https://github.com/KaueNP)
  - Sonar - [fishbus](https://github.com/fishbus)
@@ -106,7 +106,7 @@ Maraxsis would not be possible without the help of these amazing, fantastic, inc
  - Submarine AI - [Xorimuth](https://github.com/Xorimuth), [ILLISIS](https://github.com/ILLISIS), [Apollo314](https://github.com/Apollo314), [fgardt](https://github.com/fgardt)
  - Ducts - Krastor, [Linver](https://github.com/Linver), [iicyan](https://github.com/iicyan), [raiguard](https://github.com/raiguard)
  - Devops & CI - [fgardt](https://github.com/fgardt)
- - Tech & item icon postprocessing - [snouz](https://github.com/snouz)
+ - Tech & item icons - [snouz](https://github.com/snouz)
  - 2.1 port - [Jethro Larson](https://github.com/jethrolarson), [Frontrider](https://mods.factorio.com/user/Frontrider), [danbopes](https://github.com/danbopes)
  - Fishing tower logic - [LordMiguel](https://mods.factorio.com/mod/quality-trees)
 
