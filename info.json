@@ -19,10 +19,6 @@
     "(?) modules-t4",
     "(?) call-plumber >= 1.0.0",
     "(?) Krastorio2-spaced-out",
-    "! Land-Pump",
-    "! no-more-gambling",
-    "! quality-better-roboports",
-    "! edible-spoilage",
     "! force-fmf-grid"
   ],
   "quality_required": true,
