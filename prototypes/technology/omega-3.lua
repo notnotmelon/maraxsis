@@ -17,7 +17,7 @@ data:extend {{
             recipe = "maraxsis-vitamin-infused-hydraulic-science",
         },
     },
-    prerequisites = {"maraxsis-project-seadragon", "agricultural-science-pack", "maraxsis-liquid-atmosphere", "epic-quality", "maraxsis-deepsea-research"},
+    prerequisites = {"maraxsis-project-seadragon", "agricultural-science-pack", "maraxsis-liquid-atmosphere", "epic-quality", (not mods.Krastorio2) and "maraxsis-deepsea-research" or "kr-quantum-computer"},
     unit = {
         count = 5000,
         ingredients = {
