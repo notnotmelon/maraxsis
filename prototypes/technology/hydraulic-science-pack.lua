@@ -36,6 +36,10 @@ data:extend {{
         {
             type = "unlock-recipe",
             recipe = "hydraulic-science-pack",
+        },
+        {
+            type = "unlock-recipe",
+            recipe = "maraxsis-fish-oil",
         }
     },
     research_trigger = {
@@ -77,4 +81,23 @@ data:extend {{
     icon_size = 64,
     subgroup = "science-pack",
     order = "j-b[fish-oil]",
+}}
+
+data:extend {{
+    type = "recipe",
+    name = "maraxsis-fish-oil",
+    enabled = false,
+    energy_required = 1,
+    ingredients = {
+        {type = "item", name = "hydraulic-science-pack", amount = 1, quality_min = "normal", quality_max = "normal"},
+    },
+    results = {
+        {type = "item", name = "maraxsis-fish-oil", amount = 1},
+    },
+    allow_productivity = false,
+    allow_quality = false,
+    auto_recycle = false,
+    categories = {"rocket-building"},
+    always_show_made_in = true,
+    hide_from_player_crafting = true,
 }}
