@@ -30,9 +30,7 @@ make_subgroup("maraxsis-intermediants", "ge", "intermediate-products", {
     data.raw.item["maraxsis-wyrm-specimen"],
     data.raw.item["maraxsis-wyrm-confinement-cell"],
     data.raw.item["maraxsis-super-sealant-substance"],
-    data.raw.recipe["maraxsis-atmosphere"],
-    data.raw.recipe["maraxsis-liquid-atmosphere-decompression"],
-    data.raw.recipe["maraxsis-liquid-atmosphere"],
+    data.raw.recipe["maraxsis-geothermal-sulfur"],
 })
 
 make_subgroup("salt", "gf", "intermediate-products", {
@@ -45,9 +43,16 @@ make_subgroup("salt", "gf", "intermediate-products", {
     data.raw.item["maraxsis-saturated-salt-filter"],
     data.raw.recipe["maraxsis-saturated-salt-filter"],
     data.raw.recipe["maraxsis-hydrolox-rocket-fuel"],
+})
+
+make_subgroup("advanced-fluids", "gg", "intermediate-products", {
+    data.raw.recipe["maraxsis-atmosphere"],
+    data.raw.recipe["maraxsis-liquid-atmosphere-decompression"],
+    data.raw.recipe["maraxsis-liquid-atmosphere"],
     data.raw.recipe["maraxsis-supercritical-steam"],
     data.raw.recipe["maraxsis-supercritical-steam-cooling"],
-    data.raw.recipe["maraxsis-geothermal-sulfur"],
+    data.raw.recipe["maraxsis-fish-oil-cracking"],
+    data.raw.recipe["maraxsis-omega-3"],
 })
 
 local function order_subgroup(prototype_type, name, order, subgroup)
@@ -82,6 +87,8 @@ order_subgroup("fluid", "hydrogen", "f[maraxsis-fluids]-d[hydrogen]", "fluid")
 order_subgroup("fluid", "maraxsis-atmosphere", "f[maraxsis-fluids]-f[atmosphere]", "fluid")
 order_subgroup("fluid", "maraxsis-liquid-atmosphere", "f[maraxsis-fluids]-f[liquid-atmosphere]", "fluid")
 order_subgroup("fluid", "maraxsis-supercritical-steam", "f[maraxsis-fluids]-h[maraxsis-supercritical-steam]", "fluid")
+order_subgroup("fluid", "maraxsis-omega-3", "f[maraxsis-fluids]-i[maraxsis-omega-3]", "fluid")
+
 order_subgroup("capsule", "maraxsis-big-cliff-explosives", "e[big-cliff-explosives]", data.raw.capsule["cliff-explosives"].subgroup)
 order_subgroup("ammo", "maraxsis-fat-man", "e[maraxsis-fat-man]", data.raw.ammo["artillery-shell"].subgroup)
 order_subgroup("resource", "maraxsis-coral", "x[maraxsis-coral]", "mineable-fluids")
