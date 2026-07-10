@@ -1,4 +1,10 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.34.15
+Date: 2026-07-10
+  Changes:
+    - Moved holmium recrystalization unlock from holmium processing to effect transmission 2.
+    - The conduit recipe no longer requires processing units. Switched to superconductors.
+---------------------------------------------------------------------------------------------------
 Version: 1.34.14
 Date: 2026-07-10
   Compatibility:
