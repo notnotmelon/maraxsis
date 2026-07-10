@@ -11,11 +11,6 @@ data:extend {{
     energy_required = 3,
     enabled = false,
     categories = {"maraxsis-geothermal-generator"},
-    surface_conditions = {{
-        property = "pressure",
-        min = 400000,
-        max = 400000,
-    }},
     icon = "__maraxsis__/graphics/icons/geothermal-sulfur.png",
     icon_size = 64,
     allow_productivity = true,

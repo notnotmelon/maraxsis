@@ -161,11 +161,6 @@ data:extend { {
         fade_in_ticks = 4,
         fade_out_ticks = 20
     },
-    surface_conditions = {{
-        property = "pressure",
-        min = 400000,
-        max = 400000,
-    }},
     flags = { "placeable-neutral", "placeable-player", "player-creation" },
     minable = { mining_time = 0.5, results = { { type = "item", name = "maraxsis-geothermal-generator", amount = 1 } } },
     max_health = 600,
@@ -281,11 +276,6 @@ data:extend {{
     allow_productivity = false,
     allow_quality = false,
     categories = { "maraxsis-geothermal-generator"},
-    surface_conditions = {{
-        property = "pressure",
-        min = 400000,
-        max = 400000,
-    }},
 }}
 
 data:extend {{
@@ -305,5 +295,4 @@ data:extend {{
     allow_productivity = false,
     allow_quality = false,
     categories = {"cryogenics"},
-    surface_conditions = maraxsis.surface_conditions()
 }}

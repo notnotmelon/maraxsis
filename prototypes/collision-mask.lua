@@ -151,10 +151,10 @@ for prototype in pairs(defines.prototypes.entity) do
 
         assert(table_size(rules) == 6, "ERROR: Entity " .. entity.name .. " has incorrect definitions for maraxsis_buildability_rules. Requires 6 rule entries, instead had " .. serpent.line(rules))
 
-        if rules.water == false and rules.dome == false and rules.coral == false and rules.trench_entrance == false then
+        if rules.water == false and rules.dome == false and rules.coral == false and rules.trench_entrance == false and rules.trench == false and rules.trench_lava == false then
             blacklist_via_surface_condition(entity, 50000)
             goto continue
-        elseif rules.trench == false then
+        elseif rules.trench == false and rules.trench_lava == false then
             blacklist_via_surface_condition(entity, 300000)
         end
 
