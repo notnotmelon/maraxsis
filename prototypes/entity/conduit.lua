@@ -15,7 +15,7 @@ data:extend {{
     ingredients = {
         {type = "item", name = "beacon",                           amount = 1},
         {type = "item", name = "maraxsis-glass-panes",             amount = 25},
-        {type = "item", name = "processing-unit",                  amount = 25},
+        {type = "item", name = "superconductor",                  amount = 25},
         {type = "item", name = "maraxsis-super-sealant-substance", amount = 15},
     },
     results = {
