@@ -23,6 +23,7 @@ require "compat.combat-mechanics-overhaul"
 require "compat.castra"
 require "compat.krastorio-2-final-fixes"
 require "compat.water-refining"
+require "compat.science-tab"
 
 if not data.raw["mining-drill"]["electric-mining-drill"].next_upgrade then
     if mods["SchallAlienTech"] and data.raw["mining-drill"]["Schall-uranium-mining-drill"] then
