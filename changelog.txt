@@ -1,4 +1,9 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.34.6
+Date: 2026-07-10
+  Compatibility:
+    - With k2, crafting hydraulic science packs from hydraulic research data will lose one tier of quality on the pack.
+---------------------------------------------------------------------------------------------------
 Version: 1.34.5
 Date: 2026-07-10
   Balancing:
