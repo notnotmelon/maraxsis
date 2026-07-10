@@ -118,7 +118,13 @@ data:extend {{
     name = "maraxsis-glass-productivity",
     icons = util.technology_icon_constant_recipe_productivity("__maraxsis__/graphics/technology/glass-productivity.png"),
     icon_size = 256,
-    effects = {},
+    effects = {
+        {
+            type = "change-recipe-productivity",
+            recipe = "maraxsis-pressure-dome",
+            change = 0.1
+        }
+    },
     prerequisites = {"maraxsis-project-seadragon", "production-science-pack", "utility-science-pack", "metallurgic-science-pack"},
     unit = {
         count_formula = "1.5^L*1000",
