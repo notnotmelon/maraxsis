@@ -1,4 +1,19 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.34.21
+Date: 2026-07-10
+  Balancing:
+    - Crafting reinforced glass now loses one tier of quality.
+    - Fusion reactors are now unbanned on maraxsis.
+    - Glass can now optionally be made inside a hydro plant.
+    - Quality module 3 is now a required resesearch prereq for maraxsis.
+    - The hydro plant now requires 1 quality module t3 to craft.
+  Compatibility:
+    - Switched to using the base game recycling recipe generation for glass recycling instead of my jank homerolled solution.
+  Locale:
+    - Improved the visuals of the tips and tricks.
+    - Updated the faq to mention needing to bring quality modules.
+    - Updated tips and tricks machine list to include a section on lava-placable machines.
+---------------------------------------------------------------------------------------------------
 Version: 1.34.20
 Date: 2026-07-10
   Compatibility:
