@@ -276,7 +276,7 @@ data:extend {{
         {type = "item", name = "pipe", amount = 1},
     },
     results = {
-        {type = "fluid", name = "maraxsis-supercritical-steam", amount = 80, temperature = 2000}
+        {type = "fluid", name = "maraxsis-supercritical-steam", amount = 80}
     },
     allow_productivity = false,
     allow_quality = false,
