@@ -42,8 +42,6 @@ Your first goal is to get a pressure dome up and running. You need to use a chem
 - An infinite tech that allows more cargo landing pads.
 - An infinite tech that gives productivity when crafting glass.
 - A way to recycle extra stone into uranium on Vulcanus.
-- A way to compress science packs for easier travel on spaceships.
-- An improved recipe for making atmosphere on Aquilo.
 - Better pipes.
 - Automate item deliveries with spidertron schedules and patrols.
 - An advanced beacon that accepts quality modules.
