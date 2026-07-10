@@ -51,9 +51,26 @@ make_subgroup("advanced-fluids", "gg", "intermediate-products", {
     data.raw.recipe["maraxsis-liquid-atmosphere"],
     data.raw.recipe["maraxsis-supercritical-steam"],
     data.raw.recipe["maraxsis-supercritical-steam-cooling"],
-    data.raw.recipe["maraxsis-fish-oil-cracking"],
-    data.raw.recipe["maraxsis-omega-3"],
 })
+
+do
+    local omega_3 = {
+        data.raw.item["maraxsis-fish-oil"],
+        data.raw.recipe["maraxsis-fish-oil-cracking"],
+        data.raw.recipe["maraxsis-omega-3"],
+        data.raw.recipe["maraxsis-vitamin-infused-agricultural-science"],
+        data.raw.recipe["maraxsis-vitamin-infused-hydraulic-science"],
+    }
+
+    local i = 1
+    while true do
+        local promethium = data.raw.recipe["maraxsis-vitamin-infused-promethium-science-" .. i]
+        if promethium then table.insert(omega_3, promethium) else break end
+        i = i + 1
+    end
+
+    make_subgroup("omega-3", "gh", "intermediate-products", omega_3)
+end
 
 local function order_subgroup(prototype_type, name, order, subgroup)
     local prototype = data.raw[prototype_type][name]
