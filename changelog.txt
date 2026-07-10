@@ -1,4 +1,17 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.34.10
+Date: 2026-07-10
+  Balancing:
+    - Buffed light oil output from fish oil cracking 80->120
+    - Quality fish food now yields quality tropical fish.
+    - The maraxsis salt filter cleaning recipe now always adds +1 (fixed) tier of quality to the resulting filter, even if ran inside a chemical plant. This means that eventually the entire chain will be legendary.
+  Graphics:
+    - Added an in-world quality icon for fishing "plants".
+  Locale:
+    - Added a localized description to fish food.
+  Changes:
+    - Fish oil cracking recipe unlock moved from "hydraulic science pack" to "project seadragon"
+---------------------------------------------------------------------------------------------------
 Version: 1.34.9
 Date: 2026-07-10
   Balancing:
