@@ -33,6 +33,7 @@ Your first goal is to get a pressure dome up and running. You need to use a chem
 - Belts
 - Power poles
 - Bulk inserters
+- Quality modules
 
 #### Q: What items should I not bring?
 - Trains
