@@ -25,7 +25,7 @@ data:extend {{
         },
         {
             type = "unlock-recipe",
-            recipe = "maraxsis-fish-oil-cracking"
+            recipe = "maraxsis-bio-oil"
         }
     },
     prerequisites = {"hydraulic-science-pack", "coal-liquefaction"},

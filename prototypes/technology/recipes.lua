@@ -46,15 +46,15 @@ data:extend {{
 
 data:extend {{
     type = "recipe",
-    name = "maraxsis-fish-oil-cracking",
+    name = "maraxsis-bio-oil",
     categories = {"organic"},
     ingredients = {
-        {type = "fluid", name = "steam", amount = 90},
+        {type = "fluid", name = "lubricant", amount = 30},
+        {type = "fluid", name = "water", amount = 170},
         {type = "item", name = "maraxsis-fish-oil", amount = 1},
     },
     results = {
-        {type = "fluid", name = "light-oil", amount = 120},
-        {type = "item", name = "maraxsis-glass-panes", amount = 1},
+        {type = "fluid", name = "light-oil", amount = 200},
     },
     main_product = "light-oil",
     allow_productivity = true,
