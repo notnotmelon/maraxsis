@@ -1,4 +1,18 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.34.12
+Date: 2026-07-10
+  Balancing:
+    - Relaxed surface conditions on all geothermal processes. Should be possible on any planet with lava.
+    - Sped up the recipe speed of supercritical steam cooling by 20x
+    - Swapped water for steam in bio oil recipe.
+  Graphics:
+    - Added a recipe icon for bio oil.
+    - Added a recipe icon for shrinkflation.
+    - Updated fluid icon for supercritical steam.
+    - Updated recipe icon for geothermal sulfur.
+  Changes:
+    - The oversized steam turbine no longer requires atmosphere to run (but must still be placed in a dome).
+---------------------------------------------------------------------------------------------------
 Version: 1.34.11
 Date: 2026-07-10
   Changes:
