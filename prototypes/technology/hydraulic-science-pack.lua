@@ -36,10 +36,6 @@ data:extend {{
         {
             type = "unlock-recipe",
             recipe = "hydraulic-science-pack",
-        },
-        {
-            type = "unlock-recipe",
-            recipe = "maraxsis-fish-oil-cracking"
         }
     },
     research_trigger = {

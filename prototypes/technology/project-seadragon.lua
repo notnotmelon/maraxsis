@@ -22,7 +22,11 @@ data:extend {{
         {
             type = "unlock-recipe",
             recipe = "maraxsis-petroleum-gas-cracking"
-        } or nil,
+        },
+        {
+            type = "unlock-recipe",
+            recipe = "maraxsis-fish-oil-cracking"
+        }
     },
     prerequisites = {"hydraulic-science-pack", "coal-liquefaction"},
     unit = {

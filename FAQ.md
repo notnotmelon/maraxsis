@@ -24,6 +24,7 @@ Your first goal is to get a pressure dome up and running. You need to use a chem
 - Mining drills
 - Diesel submarines
 - Lots of atmosphere barrels
+- Some heavy oil barrels
 - Pipes & Pumps
 - Solar panels
 - Offshore pumps
