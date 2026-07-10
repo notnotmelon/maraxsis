@@ -50,7 +50,7 @@ data:extend {{
     categories = {"organic"},
     ingredients = {
         {type = "fluid", name = "lubricant", amount = 30},
-        {type = "fluid", name = "water", amount = 170},
+        {type = "fluid", name = "steam", amount = 100},
         {type = "item", name = "maraxsis-fish-oil", amount = 1},
     },
     results = {
