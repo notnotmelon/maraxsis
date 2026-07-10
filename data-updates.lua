@@ -107,12 +107,6 @@ if mods["assembler-pipe-passthrough"] then
     appmod.blacklist["maraxsis-hydro-plant-extra-module-slots"] = true
 end
 
-data.raw.recipe["maraxsis-glass-panes-recycling"].results = {
-    {type = "item", name = maraxsis_constants.SAND_ITEM_NAME,      amount = 1, independent_probability = 0.75},
-    {type = "item", name = "salt",      amount = 1,independent_probability = 0.5},
-    {type = "item", name = "limestone", amount = 1, independent_probability = 0.25},
-}
-
 -- regulator factoriopedia description
 
 local function add_quality_factoriopedia_info(entity, factoriopedia_info)
