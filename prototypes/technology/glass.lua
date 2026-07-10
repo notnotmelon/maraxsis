@@ -67,7 +67,7 @@ data:extend {{
         {type = "item", name = "maraxsis-glass-panes", amount = 1, quality_change = -1},
     },
     allow_productivity = true,
-    categories = {"metallurgy"},
+    categories = {"metallurgy", "maraxsis-hydro-plant"},
     auto_recycle = true
 }}
 
