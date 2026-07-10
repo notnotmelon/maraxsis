@@ -1,4 +1,12 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.34.7
+Date: 2026-07-10
+  Balancing:
+    - Salt electrolysis now tiers up the resulting salt by 1 stage.
+    - Salt filter cleaning now tiers down the resulting salt filter by one stage, however it also tiers up the resulting carbon fiber by one stage.
+  Locale:
+    - Added back discord link to README.
+---------------------------------------------------------------------------------------------------
 Version: 1.34.6
 Date: 2026-07-10
   Compatibility:
