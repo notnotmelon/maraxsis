@@ -1,6 +1,17 @@
 local item_sounds = require("__base__.prototypes.item_sounds")
 local space_age_item_sounds = require("__space-age__.prototypes.item_sounds")
 
+local function item_sound(filename, volume)
+    return {
+        filename = "__maraxsis__/sounds/item/" .. filename,
+        volume = volume,
+        aggregation = {max_count = 1, remove = true},
+    }
+end
+
+local zombie_minecraft = item_sound("minecraft-zombie-death.ogg", 1.0)
+local zombie_pvz = item_sound("plants-vs-zombies-groan.ogg", 1.0)
+
 local function add_sound_item(name, move_sound, pick_sound, drop_sound)
     if not move_sound then error("Missing move_sound") end
     if not pick_sound then error("Missing pick_sound") end
@@ -44,3 +55,4 @@ add_sound_item("maraxsis-oversized-steam-turbine", item_sounds.steam_inventory_m
 add_sound_item("hydraulic-science-pack", item_sounds.science_inventory_move, item_sounds.science_inventory_pickup, item_sounds.science_inventory_move)
 add_sound_item("maraxsis-conduit", item_sounds.mechanical_inventory_move, item_sounds.mechanical_inventory_pickup, item_sounds.mechanical_inventory_move)
 add_sound_item("maraxsis-fat-man", item_sounds.atomic_bomb_inventory_move, item_sounds.atomic_bomb_inventory_pickup, item_sounds.atomic_bomb_inventory_move)
+add_sound_item("maraxsis-fish-oil", zombie_minecraft, zombie_pvz, zombie_minecraft)
