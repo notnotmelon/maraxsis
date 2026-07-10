@@ -60,6 +60,7 @@ data:extend {{
     allow_productivity = true,
     energy_required = 5,
     enabled = false,
+    icon = "__maraxsis__/graphics/icons/bio-oil.png"
 }}
 
 data:extend { {
