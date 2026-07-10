@@ -64,10 +64,10 @@ data:extend {{
         {type = "item", name = "maraxsis-fish-oil", amount = 1},
         {type = "item", name = "nutrients", amount = 1},
         {type = "fluid", name = "maraxsis-liquid-atmosphere", amount = 5},
-        {type = "fluid", name = "water", amount = 160},
+        {type = "fluid", name = "water", amount = 90},
     },
     results = {
-        {type = "fluid", name = "maraxsis-omega-3", amount = 80},
+        {type = "fluid", name = "maraxsis-omega-3", amount = 30},
     },
     categories = {"cryogenics", "maraxsis-hydro-plant"},
     allow_productivity = true,
