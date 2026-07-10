@@ -108,5 +108,6 @@ Maraxsis would not be possible without the help of these amazing, fantastic, inc
  - Devops & CI - [fgardt](https://github.com/fgardt)
  - Tech & item icon postprocessing - [snouz](https://github.com/snouz)
  - 2.1 port - [Jethro Larson](https://github.com/jethrolarson), [Frontrider](https://mods.factorio.com/user/Frontrider), [danbopes](https://github.com/danbopes)
+ - Fishing tower logic - [LordMiguel](https://mods.factorio.com/mod/quality-trees)
 
 [More details in Credits.md](https://github.com/notnotmelon/maraxsis/blob/main/Credits.md)
