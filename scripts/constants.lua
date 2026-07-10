@@ -4,4 +4,4 @@ _G.maraxsis_lava_collision_mask = "maraxsis_lava_collision_mask"
 _G.maraxsis_coral_collision_mask = "maraxsis_coral_collision_mask"
 _G.maraxsis_trench_entrance_collision_mask = "maraxsis_trench_entrance_collision_mask"
 
---Constants previously defined here are now defined in a mod-data prototype.
+-- constants previously defined here are now defined in a mod-data prototype.

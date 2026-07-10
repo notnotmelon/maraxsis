@@ -86,5 +86,6 @@ data:extend {{
         TRENCH_ENTRANCE_ELEVATION = TRENCH_ENTRANCE_ELEVATION,
         TROPICAL_FISH_NAMES = TROPICAL_FISH_NAMES,
         SAND_ITEM_NAME = SAND_ITEM_NAME,
+        DEGRADATION_ENABLED = true -- https://github.com/notnotmelon/maraxsis/issues/409
     }
 }}

@@ -1,4 +1,8 @@
 maraxsis.on_event(defines.events.on_cargo_pod_finished_descending, function(event)
+    if not maraxsis_constants.DEGRADATION_ENABLED then
+        return
+    end
+
     if not event.launched_by_rocket then return end
     local pod = event.cargo_pod
     local inventory = pod.get_inventory(defines.inventory.cargo_unit)

@@ -1,6 +1,7 @@
 data:extend {{
     type = "item",
     name = "hydraulic-science-pack",
+    localised_description = maraxsis_constants.DEGRADATION_ENABLED and {"", {"item-description.hydraulic-science-pack"}, "\n", {"description.degradation", "maraxsis-fish-oil"}} or {"item-description.hydraulic-science-pack"},
     icon = "__maraxsis__/graphics/icons/hydraulic-science-pack.png",
     icon_size = 64,
     subgroup = "science-pack",
