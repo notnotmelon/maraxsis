@@ -1,4 +1,19 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.34.5
+Date: 2026-07-10
+  Balancing:
+    - Nerfed the amount of omega 3 returned per craft from 80 -> 30. Adjusted water requirement 160 -> 90
+    - The glass productivity technology now also effects crafting of pressure domes.
+  Sounds:
+    - Added inventory move sound effects for fish oil.
+  Locale:
+    - Added a localized description for glass productivity tech.
+    - Added a tech description for stone centrifuging.
+    - Added description for liquid atmosphere fluid.
+  Changes:
+    - Added a new recipe subgroup for advanced maraxsis fluids.
+    - Added a new recipe subgroup for omega 3.
+---------------------------------------------------------------------------------------------------
 Version: 1.34.4
 Date: 2026-07-10
   Compatibility:
