@@ -59,12 +59,12 @@ data:extend {{
     enabled = false,
     energy_required = 5,
     ingredients = {
-        {type = "item", name = maraxsis_constants.SAND_ITEM_NAME,      amount = 3},
+        {type = "item", name = maraxsis_constants.SAND_ITEM_NAME, amount = 3},
         {type = "item", name = "limestone", amount = 1},
         {type = "item", name = "salt",      amount = 2},
     },
     results = {
-        {type = "item", name = "maraxsis-glass-panes", amount = 1},
+        {type = "item", name = "maraxsis-glass-panes", amount = 1, quality_change = -1},
     },
     allow_productivity = true,
     categories = {"metallurgy"},
