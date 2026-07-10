@@ -53,9 +53,17 @@ end
 local function register_plant(plant, quality)
     -- no need to store normal quality
     if quality and quality.level > 0 then
-
         local key = hash_string(plant.position.x, plant.position.y, plant.surface.name)
         storage.quality_plants[key] = quality
+
+        rendering.draw_sprite {
+            sprite = "quality." .. quality.name,
+            target = {entity = plant, offset = {-0.5, 0.5}},
+            surface = plant.surface,
+            x_scale = 0.5,
+            y_scale = 0.5,
+            render_layer = "light-effect"
+        }
     end
 end
 
