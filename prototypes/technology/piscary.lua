@@ -164,6 +164,7 @@ data:extend {{
     allow_productivity = false,
     allow_quality = false,
     main_product = "maraxsis-fish-food",
+    icon = "__maraxsis__/graphics/icons/shrinkflation.png"
 }}
 
 local function add_to_tech(recipe)
