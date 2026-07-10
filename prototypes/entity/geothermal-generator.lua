@@ -292,7 +292,7 @@ data:extend {{
     type = "recipe",
     name = "maraxsis-supercritical-steam-cooling",
     enabled = false,
-    energy_required = 20,
+    energy_required = 1,
     icon = "__maraxsis__/graphics/icons/supercritical-steam-cooling.png",
     ingredients = {
         {type = "fluid", name = "maraxsis-supercritical-steam", amount = 50},
