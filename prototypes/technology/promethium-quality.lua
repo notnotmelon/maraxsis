@@ -1,5 +1,3 @@
-if not mods.quality then return end
-
 local science_pack = "promethium-science-pack"
 
 if mods.Krastorio2 then
