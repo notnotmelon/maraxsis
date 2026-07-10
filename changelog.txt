@@ -1,4 +1,10 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.34.20
+Date: 2026-07-10
+  Compatibility:
+    - Added compat with the "science tab" mod. Resolves https://github.com/notnotmelon/maraxsis/issues/410
+    - Fixed crash when running k2 without k2so. Resolves https://github.com/notnotmelon/maraxsis/issues/410
+---------------------------------------------------------------------------------------------------
 Version: 1.34.19
 Date: 2026-07-10
   Compatibility:
