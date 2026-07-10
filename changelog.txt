@@ -1,4 +1,9 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.34.4
+Date: 2026-07-10
+  Compatibility:
+    - Added a startup constant for other mods to disable degredation mechanic. Resolves https://github.com/notnotmelon/maraxsis/issues/409
+---------------------------------------------------------------------------------------------------
 Version: 1.34.3
 Date: 2026-07-10
   Bugfixes:
