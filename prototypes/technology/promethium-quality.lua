@@ -39,7 +39,7 @@ local function build_promethium_quality(i, prerequisites, count, q, previous)
         allow_productivity = false,
         can_set_quality = false,
         main_product = science_pack,
-}}
+    }}
 
     data:extend {{
         type = "technology",
