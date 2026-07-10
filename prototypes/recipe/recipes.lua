@@ -59,7 +59,7 @@ data:extend {{
     main_product = "light-oil",
     allow_productivity = true,
     energy_required = 5,
-    enabled = false
+    enabled = false,
 }}
 
 data:extend { {
