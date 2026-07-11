@@ -44,7 +44,7 @@ data:extend {{
         {type = "item", name = "maraxsis-tropical-fish", amount = 1},
     },
     results = {
-        {type = "item", name = "nutrients", amount = 6},
+        {type = "item", name = "nutrients", amount = 6, quality_change = -1},
     },
     auto_recycle = false,
     allow_decomposition = false,
