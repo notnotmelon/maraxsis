@@ -1,4 +1,10 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.34.36
+Date: 2026-07-11
+  Balancing:
+    - Solar panels in maraxsis orbit now only function at 75% output. (was 150%)
+    - Solar panels on maraxsis surface now only function at 50% output. (was 100%)
+---------------------------------------------------------------------------------------------------
 Version: 1.34.35
 Date: 2026-07-11
   Bugfixes:
