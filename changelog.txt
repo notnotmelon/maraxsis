@@ -1,4 +1,11 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.34.23
+Date: 2026-07-11
+  Balancing:
+    - Crafting omega 3 fatty acids now requires legendary nutrients.
+  Compatibility:
+    - If extra quality tiers are installled, limit the scaling factor of omega 3 techs to 2x rather than 10x. Fixes having like 10T sciences packs or whatever.
+---------------------------------------------------------------------------------------------------
 Version: 1.34.22
 Date: 2026-07-11
   Balancing:
