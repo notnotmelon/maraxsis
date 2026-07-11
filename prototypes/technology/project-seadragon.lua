@@ -89,4 +89,53 @@ data:extend {{
     pictures = super_sealant_substance_variants,
 }}
 
-PlanetsLib.assign_rocket_part_recipe(maraxsis_constants.MARAXSIS_SURFACE_NAME,maraxsis_rocket_part.name )
+-- Adapted from Rubia & Alternative Rocket Sprite Extension.
+local rocket = util.table.deepcopy(data.raw["rocket-silo-rocket"]["rocket-silo-rocket"])
+rocket.name = "maraxsis-rocket-silo-rocket"
+rocket.localised_name = {"entity-name.rocket-silo-rocket"}
+rocket.localised_description = {"entity-description.rocket-silo-rocket"}
+rocket.hidden = true
+rocket.hidden_in_factoriopedia = true
+rocket.rocket_sprite = {
+    filename = "__maraxsis__/graphics/entity/rocket-silo/rocket.png",
+    height = 290,
+    width = 290,
+    scale = 1.2,
+    shift = {0, 6}
+}
+rocket.rocket_rise_offset = {0, 7}
+rocket.rocket_smoke_bottom1_animation.scale = 0.01
+rocket.rocket_smoke_bottom1_animation.hr_version = nil
+rocket.rocket_smoke_bottom2_animation.scale = 0.01
+rocket.rocket_smoke_bottom2_animation.hr_version = nil
+rocket.rocket_smoke_top1_animation.scale = 0.01
+rocket.rocket_smoke_top1_animation.hr_version = nil
+rocket.rocket_smoke_top2_animation.scale = 0.01
+rocket.rocket_smoke_top2_animation.hr_version = nil
+rocket.rocket_smoke_top3_animation.scale = 0.01
+rocket.rocket_smoke_top3_animation.hr_version = nil
+rocket.icon_draw_specification.shift = {0, -7}
+
+data:extend { rocket }
+
+for surface in pairs(maraxsis_constants.MARAXSIS_SURFACES) do
+    PlanetsLib.create_planet_entity_variant(
+        surface,
+        data.raw["rocket-silo"]["rocket-silo"],
+        {
+            name = "maraxsis-rocket-silo",
+            localised_name = {"entity-name.rocket-silo"},
+            localised_description = {"entity-description.rocket-silo"},
+            rocket_entity = "maraxsis-rocket-silo-rocket",
+            fixed_recipe = "maraxsis-rocket-part",
+            disabled_when_recipe_not_researched = true,
+            placeable_by = {{item = "rocket-silo", count = 1}},
+            flags = {"placeable-player", "player-creation", "not-in-made-in"},
+            logistic_trash_inventory_size = 1,
+            hidden = true,
+            hidden_in_factoriopedia = true,
+        },
+        "maraxsis-runtime-entity-replacement",
+        "rocket-silo"
+    )
+end
