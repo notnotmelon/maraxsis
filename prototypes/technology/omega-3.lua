@@ -60,7 +60,7 @@ data:extend {{
     energy_required = 20,
     ingredients = {
         {type = "item", name = "maraxsis-fish-oil", amount = 1},
-        {type = "item", name = "nutrients", amount = 1},
+        {type = "item", name = "nutrients", amount = 1, quality_min = "legendary", quality_max = "legendary"},
         {type = "fluid", name = "maraxsis-liquid-atmosphere", amount = 5},
         {type = "fluid", name = "water", amount = 90},
     },
