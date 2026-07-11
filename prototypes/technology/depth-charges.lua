@@ -50,10 +50,23 @@ data:extend {{
         {type = "item", name = "maraxsis-super-sealant-substance", amount = 1},
     },
     results = {
-        {type = "item", name = "maraxsis-big-cliff-explosives", amount = 1},
+        {type = "item", name = "maraxsis-big-cliff-explosives", amount = 1, quality_min = "legendary"},
     },
-    auto_recycle = true,
+    auto_recycle = false,
     categories = {"maraxsis-hydro-plant" },
+    icons = {
+        {
+            icon = "__maraxsis__/graphics/icons/big-cliff-explosives.png",
+            icon_size = 64,
+        },
+        {
+            icon = data.raw.quality.legendary.icon,
+            icon_size = data.raw.quality.legendary.icon_size,
+            scale = 0.25,
+            shift = {-8, 8},
+            floating = true
+        },
+    },
 }}
 
 data:extend {{

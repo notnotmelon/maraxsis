@@ -32,7 +32,7 @@ local function build_promethium_quality(i, prerequisites, count, q, previous)
                 icon = next.icon,
                 icon_size = next.icon_size or 64,
                 scale = 0.25,
-                shift = {-10, 10},
+                shift = {-8, 8},
                 floating = true
             },
         } or nil,
