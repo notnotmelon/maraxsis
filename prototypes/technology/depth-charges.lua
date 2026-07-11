@@ -15,7 +15,7 @@ data:extend {{
         {
             type = "unlock-recipe",
             recipe = "maraxsis-pipe-bomb"
-        } or nil
+        }
     },
     prerequisites = {"cliff-explosives", "maraxsis-nuclear-submarine", "atomic-bomb"},
     unit = {
@@ -62,7 +62,9 @@ data:extend {{
     energy_required = data.raw.recipe["grenade"].energy_required,
     categories = {"maraxsis-hydro-plant"},
     enabled = false,
-    results = table.deepcopy(data.raw.recipe["grenade"].results),
+    results = {
+        {type = "item", name = "grenade", amount = 2, quality_change = 1},
+    },
     ingredients = {
         {type = "item", name = "explosives", amount = 5},
         {type = "item", name = "pipe",       amount = 5},
