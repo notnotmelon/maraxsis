@@ -1,4 +1,13 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.34.28
+Date: 2026-07-11
+  Balancing:
+    - Crafting nutrients from tropical fish will now decrease the quality of those nutrients by 1 tier.
+    - Promethium quality recipes now require bioflux instead of nutrients.
+  Bugfixes:
+    - Fixed incorrect factoriopedia sorting for the maraxsis planet icon. Resolves https://github.com/notnotmelon/maraxsis/issues/414
+    - The omega 3 technology now depends on legendary quality rather than epic quality.
+---------------------------------------------------------------------------------------------------
 Version: 1.34.27
 Date: 2026-07-11
   Translation:
