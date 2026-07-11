@@ -52,8 +52,7 @@ PlanetsLib:extend{
             light_radius = 8.9,
             light_intensity_contrast = 0.3,
             radius = 600,
-            planet_surface =
-            {
+            planet_surface = {
                 filename = "__maraxsis__/graphics/planets/maraxsis-surface.png",
                 width = 1,
                 height = 1,
@@ -61,36 +60,31 @@ PlanetsLib:extend{
                 y = 0
 
             },
-            planet_normal =
-            {
+            planet_normal = {
                 filename = "__maraxsis__/graphics/planets/maraxsis-surface.png",
                 width = 1,
                 height = 1,
                 x = 1,
                 y = 0
             },
-            planet_reflectivity =
-            {
+            planet_reflectivity = {
                 filename = "__maraxsis__/graphics/planets/maraxsis-surface.png",
                 width = 1,
                 height = 1,
                 x = 2,
                 y = 0
-            }, --]]
-            global_cloud =
-            {
+            },
+            global_cloud = {
                 filename = "__space-age__/graphics/space/nauvis-cloud.png",
                 width = 2048,
                 height = 1024
             },
-            global_cloud_normal =
-            {
+            global_cloud_normal = {
                 filename = "__space-age__/graphics/space/nauvis-cloud-normal.png",
                 width = 2048,
                 height = 1024
             },
-            global_cloud_flow =
-            {
+            global_cloud_flow = {
                 filename = "__space-age__/graphics/space/nauvis-cloud-flow.png",
                 width = 2048,
                 height = 1024
