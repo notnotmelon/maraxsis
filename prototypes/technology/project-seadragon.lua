@@ -103,7 +103,7 @@ rocket.rocket_sprite = {
     scale = 1.2,
     shift = {0, 6}
 }
-rocket.rocket_rise_offset = {0, 7}
+rocket.rocket_rise_offset = {0, -7}
 rocket.rocket_smoke_bottom1_animation.scale = 0.01
 rocket.rocket_smoke_bottom1_animation.hr_version = nil
 rocket.rocket_smoke_bottom2_animation.scale = 0.01
@@ -114,7 +114,6 @@ rocket.rocket_smoke_top2_animation.scale = 0.01
 rocket.rocket_smoke_top2_animation.hr_version = nil
 rocket.rocket_smoke_top3_animation.scale = 0.01
 rocket.rocket_smoke_top3_animation.hr_version = nil
-rocket.icon_draw_specification.shift = {0, -7}
 
 data:extend { rocket }
 
