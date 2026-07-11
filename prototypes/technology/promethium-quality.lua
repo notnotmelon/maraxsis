@@ -79,7 +79,7 @@ local i = 1
 local q = data.raw.quality.normal
 local count = 5000000
 local previous = nil
-local prerequisites = {"promethium-science-pack", "maraxsis-omega_3", "legendary-quality"}
+local prerequisites = {"promethium-science-pack", "maraxsis-omega_3"}
 while true do
     if type(q.next) ~= "string" then
         break
