@@ -4,14 +4,14 @@ if mods["Krastorio2-spaced-out"] then
     science_pack = "kr-promethium-research-data"
 end
 
-local function build_promethium_quality(i, prerequisites, count, q)
+local function build_promethium_quality(i, prerequisites, count, q, energy_required)
     local next = data.raw.quality[q.next]
 
     data:extend {{
         type = "recipe",
         name = "maraxsis-vitamin-infused-promethium-science-" .. i,
         localised_name = {"recipe-name.maraxsis-vitamin-infused-promethium-science", q.name, q.next},
-        energy_required = 4 + i * 2,
+        energy_required = energy_required,
         enabled = false,
         categories = {"maraxsis-hydro-plant"},
         ingredients = {
@@ -78,13 +78,14 @@ local seen = {}
 local i = 1
 local q = data.raw.quality.normal
 local count = 5000000
+local energy_required = 8
 local prerequisites = {"promethium-science-pack", "maraxsis-omega_3"}
 while true do
     if type(q.next) ~= "string" then
         break
     end
 
-    build_promethium_quality(i, prerequisites, count, q)
+    build_promethium_quality(i, prerequisites, count, q, energy_required)
     prerequisites = {"maraxsis-promethium-quality-" .. i}
 
     if seen[q.name] then
@@ -97,6 +98,7 @@ while true do
     else
         count = count * 10
     end
+    energy_required = energy_required * 2
 
     i = i + 1
     q = data.raw.quality[q.next]
