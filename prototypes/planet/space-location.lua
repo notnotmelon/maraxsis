@@ -30,6 +30,8 @@ PlanetsLib:extend{
     solar_power_in_space = 150,
     map_gen_settings = planet_map_gen.maraxsis(),
     draw_orbit = false,
+    subgroup = "planets",
+    order = "e-z[maraxsis]",
     persistent_ambient_sounds = {},
     flying_robot_energy_usage_multiplier = 1.5, -- todo: this doesnt work
     platform_surface_render_parameters = {
