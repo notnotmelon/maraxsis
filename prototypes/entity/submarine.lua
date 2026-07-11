@@ -100,6 +100,7 @@ for i = 1, 2 do
         ingredients = recipes[name],
         results = {{type = "item", name = name, amount = 1}},
         enabled = false,
+        auto_recycle = true,
         energy_required = 10,
         categories = i == 1 and {"maraxsis-hydro-plant", "crafting"} or {"maraxsis-hydro-plant"},
     }

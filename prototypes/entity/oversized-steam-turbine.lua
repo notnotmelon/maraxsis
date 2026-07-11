@@ -24,6 +24,7 @@ data:extend {{
     results = {
         {type = "item", name = "maraxsis-oversized-steam-turbine", amount = 1},
     },
+    auto_recycle = true,
     categories ={ "maraxsis-hydro-plant"},
     surface_conditions = maraxsis.surface_conditions(),
 }}
@@ -181,6 +182,7 @@ data:extend {{
         {type = "fluid", name = "water", amount = 1}
     },
     results = {},
+    auto_recycle = false,
     categories = { "maraxsis-oversized-steam-turbine"},
     icon = "__maraxsis__/graphics/icons/oversized-steam-turbine.png",
 }}

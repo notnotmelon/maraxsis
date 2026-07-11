@@ -53,6 +53,7 @@ data:extend {{
     },
     main_product = "light-oil",
     allow_productivity = true,
+    auto_recycle = false,
     energy_required = 5,
     enabled = false,
     icon = "__maraxsis__/graphics/icons/bio-oil.png"

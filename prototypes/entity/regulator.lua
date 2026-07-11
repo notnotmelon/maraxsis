@@ -79,6 +79,7 @@ data:extend {{
     order = "a[fluid]-a[maraxsis-atmosphere]-a[regulator]",
     icon = "__maraxsis__/graphics/icons/atmosphere.png",
     icon_size = 64,
+    auto_recycle = false,
     localised_name = {"entity-name.maraxsis-regulator"},
 }}
 

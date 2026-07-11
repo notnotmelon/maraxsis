@@ -52,6 +52,7 @@ data:extend {{
     results = {
         {type = "item", name = "maraxsis-big-cliff-explosives", amount = 1},
     },
+    auto_recycle = true,
     categories = {"maraxsis-hydro-plant" },
 }}
 

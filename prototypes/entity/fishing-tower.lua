@@ -21,6 +21,7 @@ data:extend {{
         {type = "item", name = "maraxsis-fishing-tower", amount = 1}
     },
     allow_productivity = false,
+    auto_recycle = true,
     main_product = "maraxsis-fishing-tower",
     categories = {"maraxsis-hydro-plant"},
     surface_conditions = maraxsis.surface_conditions(),

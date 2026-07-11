@@ -201,6 +201,7 @@ data:extend { {
     results = {
         { type = "item", name = "maraxsis-hydro-plant", amount = 1 },
     },
+    auto_recycle = true,
     categories = { "maraxsis-hydro-plant", "chemistry" },
     surface_conditions = maraxsis.surface_conditions(),
 } }

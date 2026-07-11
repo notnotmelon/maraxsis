@@ -24,6 +24,7 @@ data:extend {{
     results = {
         {type = "item", name = "maraxsis-geothermal-generator", amount = 1},
     },
+    auto_recycle = true,
     categories = { "maraxsis-hydro-plant" },
     surface_conditions = maraxsis.surface_conditions(),
 }}
@@ -275,6 +276,7 @@ data:extend {{
     },
     allow_productivity = false,
     allow_quality = false,
+    auto_recycle = false,
     categories = { "maraxsis-geothermal-generator"},
 }}
 
@@ -294,5 +296,6 @@ data:extend {{
     },
     allow_productivity = false,
     allow_quality = false,
+    auto_recycle = false,
     categories = {"cryogenics"},
 }}

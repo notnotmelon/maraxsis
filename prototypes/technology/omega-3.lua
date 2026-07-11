@@ -70,6 +70,7 @@ data:extend {{
     categories = {"cryogenics", "maraxsis-hydro-plant"},
     allow_productivity = true,
     allow_quality = false,
+    auto_recycle = false,
 }}
 
 local science_pack = "agricultural-science-pack"
@@ -95,6 +96,7 @@ data:extend {{
     },
     allow_productivity = false,
     can_set_quality = false,
+    auto_recycle = false,
     main_product = science_pack,
     icons = {
         {
@@ -134,6 +136,7 @@ data:extend {{
     },
     allow_productivity = false,
     can_set_quality = false,
+    auto_recycle = false,
     main_product = science_pack,
     icons = {
         {

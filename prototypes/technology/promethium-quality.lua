@@ -38,6 +38,7 @@ local function build_promethium_quality(i, prerequisites, count, q, previous)
         } or nil,
         allow_productivity = false,
         can_set_quality = false,
+        auto_recycle = false,
         main_product = science_pack,
     }}
 

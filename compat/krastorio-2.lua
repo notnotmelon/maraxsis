@@ -152,6 +152,7 @@ data:extend {{
     },
     main_product = "kr-singularity-research-data",
     allow_productivity = true,
+    auto_recycle = false,
     surface_conditions = {{
         property = "pressure",
         min = 0,

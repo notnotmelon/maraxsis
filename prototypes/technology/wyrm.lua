@@ -62,6 +62,7 @@ data:extend {{
     results = {
         {type = "item", name = "maraxsis-wyrm-confinement-cell", amount = 1},
     },
+    auto_recycle = true,
     allow_productivity = true
 }}
 

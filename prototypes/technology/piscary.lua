@@ -145,6 +145,7 @@ data:extend {{
         {type = "item", name = "maraxsis-fish-food", amount = 3}
     },
     allow_productivity = true,
+    auto_recycle = true,
     main_product = "maraxsis-fish-food",
     categories = {"maraxsis-hydro-plant", "organic"},
 }}
@@ -163,6 +164,7 @@ data:extend {{
     },
     allow_productivity = false,
     allow_quality = false,
+    auto_recycle = false,
     main_product = "maraxsis-fish-food",
     icon = "__maraxsis__/graphics/icons/shrinkflation.png"
 }}

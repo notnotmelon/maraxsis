@@ -108,6 +108,7 @@ data:extend {{
         {type = "fluid", name = "water", amount = 300},
     },
     allow_productivity = true,
+    auto_recycle = false,
     categories = {"chemistry", "cryogenics"},
     main_product = "water",
 }}
@@ -228,6 +229,7 @@ data:extend {{
     allow_productivity = true,
     categories = {"maraxsis-hydro-plant"},
     main_product = "rocket-fuel",
+    auto_recycle = false,
 }}
 add_to_tech("maraxsis-hydrolox-rocket-fuel")
 

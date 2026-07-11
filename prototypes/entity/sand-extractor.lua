@@ -16,6 +16,7 @@ data:extend {{
     show_amount_in_title = false,
     allow_decomposition = false,
     allow_productivity = true,
+    auto_recycle = false,
     surface_conditions = {{
         property = "pressure",
         min = 200000,

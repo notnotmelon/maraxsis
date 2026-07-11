@@ -57,6 +57,7 @@ data:extend {{
         {type = "item", name = "maraxsis-pressure-dome", amount = 1},
     },
     energy_required = 10,
+    auto_recycle = true,
     categories = {"maraxsis-hydro-plant" },
 }}
 
