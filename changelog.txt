@@ -1,4 +1,14 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.34.22
+Date: 2026-07-11
+  Balancing:
+    - Hydraulic science must now be crafted in the trench.
+  Bugfixes:
+    - Fixed crash "not enough letters"
+    - When using mods that add additional quality tiers, fixed that the generated omega 3 techs would require no science packs.
+  Locale:
+    - Updated credits.
+---------------------------------------------------------------------------------------------------
 Version: 1.34.21
 Date: 2026-07-10
   Balancing:
