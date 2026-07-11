@@ -67,7 +67,7 @@ data:extend {{
     results = {
         {type = "fluid", name = "maraxsis-omega-3", amount = 30},
     },
-    categories = {"cryogenics", "maraxsis-hydro-plant"},
+    categories = {"maraxsis-hydro-plant"},
     allow_productivity = true,
     allow_quality = false,
     auto_recycle = false,
