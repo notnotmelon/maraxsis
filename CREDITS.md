@@ -1,4 +1,11 @@
 ### Credits
+#### Maraxsis Soundtrack
+
+- **Creators**: [fluidnatalie](https://mods.factorio.com/user/FluidNatalie)
+- **Source**: [Bandcamp](https://anagramofme.bandcamp.com/album/ost-maraxsis)
+- **License**: [MIT](https://opensource.org/license/MIT) (Commissioned)
+- **Changes**: No.
+
 #### Unused Renders
 
 - **Creators**: [malcolmriley](https://github.com/malcolmriley)
@@ -13,12 +20,12 @@
 - **License**: [TurboSquid 3D Model License](https://blog.turbosquid.com/turbosquid-3d-model-license/)
 - **Changes**: Yes. Added animations. Added light effects. Converted to .PNG via Blender.
 
-#### Hydro Plant, Regulator, Salt Reactor, & Conduit
+#### Hydro Plant, Regulator, Geothermal Generator, & Conduit
 
 - **Creators**: [Hurricane](https://mods.factorio.com/user/Hurricane046)
 - **Source**: [Figma](https://shorturl.at/AFcDm)
 - **License**: [CC BY](https://creativecommons.org/licenses/by/4.0/)
-- **Changes**: Yes. Technology icon added. Renamed to "Hydro Plant". Renamed to "Regulator". Renamed to "Salt Reactor".
+- **Changes**: Yes. Technology icon added. Renamed to "Hydro Plant". Renamed to "Regulator". Renamed to "Geothermal Generator". Pipes added.
 
 #### Submarine & Nuclear Submarine
 
@@ -74,4 +81,11 @@
 - **Creators**: Pixabay Community
 - **Source**: [Pixabay](https://pixabay.com)
 - **License**: [Pixabay Content License](https://pixabay.com/service/license-summary/)
-- **Changes**: No
+- **Changes**: No.
+
+#### Fishing Tower Logic
+
+- **Creators**: LordMiguel
+- **Source**: [Quality Trees](https://mods.factorio.com/mod/quality-trees)
+- **License**: [MIT](https://opensource.org/license/MIT)
+- **Changes**: Yes. Adapted for use in the fishing tower.
