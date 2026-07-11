@@ -87,6 +87,7 @@ data:extend {{
     enabled = false,
     categories = {"maraxsis-hydro-plant"},
     ingredients = {
+        {type = "item", name = "nutrients", amount = 1, quality_min = "uncommon", quality_max = "uncommon"},
         {type = "item", name = science_pack, amount = 1, quality_max = "normal"},
         {type = "fluid", name = "maraxsis-omega-3", amount = 10},
     },
@@ -107,7 +108,7 @@ data:extend {{
             icon = data.raw.quality.uncommon.icon,
             icon_size = data.raw.quality.uncommon.icon_size,
             scale = 0.25,
-            shift = {-10, 10},
+            shift = {-8, 8},
             floating = true
         },
     },
@@ -127,6 +128,7 @@ data:extend {{
     enabled = false,
     categories = {"maraxsis-hydro-plant"},
     ingredients = {
+        {type = "item", name = "nutrients", amount = 1, quality_min = "epic", quality_max = "epic"},
         {type = "item", name = science_pack, amount = 1, quality_max = "rare", quality_min = "rare"},
         {type = "fluid", name = "maraxsis-omega-3", amount = 10},
     },
@@ -147,7 +149,7 @@ data:extend {{
             icon = data.raw.quality.epic.icon,
             icon_size = data.raw.quality.epic.icon_size,
             scale = 0.25,
-            shift = {-10, 10},
+            shift = {-8, 8},
             floating = true
         },
     },
