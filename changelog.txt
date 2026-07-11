@@ -1,4 +1,11 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.34.26
+Date: 2026-07-11
+  Balancing:
+    - Vitamin infused agricultural and hydraulic science now requires uncommon and epic nutrients respectively.
+  Changes:
+    - Big cliff explosives are now always crafted at legendary quality, however they can no longer be recycled.
+---------------------------------------------------------------------------------------------------
 Version: 1.34.25
 Date: 2026-07-11
   Balancing:
