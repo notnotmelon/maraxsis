@@ -11,7 +11,7 @@ PlanetsLib:extend{
     surface_properties = {
         ["day-night-cycle"] = 5 * minute,
         ["magnetic-field"] = 25,
-        ["solar-power"] = 100,
+        ["solar-power"] = 50,
         ["robot-energy-usage"] = 5,
         pressure = 200000,
         gravity = 20,
