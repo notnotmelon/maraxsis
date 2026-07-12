@@ -20,6 +20,36 @@ local SUPERCRITICAL_STEAM_ALLOW_LIST = table.invert {
     "maraxsis-hydro-plant-extra-module-slots",
 }
 
+local function explode(entity)
+    if SUPERCRITICAL_STEAM_ALLOW_LIST[entity.name] then
+        return false
+    end
+
+    if entity.get_fluid_count("maraxsis-supercritical-steam") == 0 then
+        return false
+    end
+
+    local position = entity.position
+    local force = entity.force_index
+    local name = entity.name
+    local type = entity.type
+    local surface = entity.surface
+    entity.die()
+
+    for _, ghost in pairs(
+        surface.find_entities_filtered {
+            position = position,
+            ghost_type = type,
+            ghost_name = name,
+            force = force
+        }
+    ) do
+        ghost.destroy()
+    end
+
+    return true
+end
+
 maraxsis.on_nth_tick(597, function()
     for unit_number, duct_exhaust in pairs(storage.duct_exhausts) do
         if not duct_exhaust.valid then
@@ -31,32 +61,25 @@ maraxsis.on_nth_tick(597, function()
             goto continue
         end
 
+        local found = false
         for _, neighbours in pairs(duct_exhaust.fluidbox_neighbours) do
             for _, neighbour in pairs(neighbours) do
-                if not SUPERCRITICAL_STEAM_ALLOW_LIST[neighbour.name] then
-                    for i = 1, neighbour.fluids_count do
-                        if neighbour.get_fluid(i).name == "maraxsis-supercritical-steam" then
-                            neighbour.clear_fluid(i)
-                        end
-                    end
-
-                    local position = neighbour.position
-                    local force = neighbour.force_index
-                    local name = neighbour.name
-                    local type = neighbour.type
-                    neighbour.die()
-                    for _, ghost in pairs(
-                        duct_exhaust.surface.find_entities_filtered {
-                            position = position,
-                            ghost_type = type,
-                            ghost_name = name,
-                            force = force
-                        }
-                    ) do
-                        ghost.destroy()
-                    end
+                if explode(neighbour) then
+                    found = true
                 end
             end
+        end
+
+        assert(duct_exhaust.valid)
+
+        if found then
+            for _, neighbour in pairs(duct_exhaust.surface.find_entities_filtered {
+                type = {"pipe", "pump", "storage-tank", "pipe-to-ground", "assembling-machine", "furnace", "generator", "boiler"},
+                force = duct_exhaust.force_index
+            }) do
+                explode(neighbour)
+            end
+            return
         end
 
         ::continue::
