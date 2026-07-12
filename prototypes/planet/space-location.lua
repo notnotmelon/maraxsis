@@ -35,59 +35,64 @@ PlanetsLib:extend{
     flying_robot_energy_usage_multiplier = 1.5, -- todo: this doesnt work
     platform_surface_render_parameters = {
         platform_backdrop = {
-            cloudiness = 0.5,
+            cloudiness = 1.0,
             surface_vertical_offset = 0.1,
             cloud_vertical_offset = 0.015,
             specular_intensity = 1,
             atmosphere_color = { 0.055, 0.09, 0.11, 0.1 },
             cloud_flow_intensity = 0.5,
-            cloud_panning_rate = -0.1,
-            rotation_seconds = -660,
-            planet_axis = { -33.0, -3.0 },
+            cloud_panning_rate = 0.5,
+            rotation_seconds = -220,
+            planet_axis = { -15.0, 212.0 },
             planet_axis_deviation_amplitude = { 10.0, 10.0 },
-            planet_axis_deviation_seconds = { 890.5, 753.7 },
+            planet_axis_deviation_seconds = { 390.5, 353.7 },
             position = { -680, 601 },
             parallax_strength = { 0.95, 0.95 },
             light_direction = { -0.42, 0.23, 0.67 },
             light_radius = 8.9,
+            atmosphere_thickness = 0.02,
             light_intensity_contrast = 0.3,
-            radius = 600,
+            radius = 625,
             planet_surface = {
                 filename = "__maraxsis__/graphics/planets/maraxsis-surface.png",
-                width = 1,
-                height = 1,
-                x = 0,
-                y = 0
+                width = 2048,
+                height = 1024,
+                allow_forced_downscale = true
 
             },
             planet_normal = {
-                filename = "__maraxsis__/graphics/planets/maraxsis-surface.png",
+                filename = "__maraxsis__/graphics/planets/maraxsis-reflectivity.png",
                 width = 1,
                 height = 1,
                 x = 1,
-                y = 0
+                y = 0,
+                allow_forced_downscale = true
             },
             planet_reflectivity = {
-                filename = "__maraxsis__/graphics/planets/maraxsis-surface.png",
+                filename = "__maraxsis__/graphics/planets/maraxsis-reflectivity.png",
                 width = 1,
                 height = 1,
                 x = 2,
-                y = 0
+                y = 0,
+                allow_forced_downscale = true
             },
             global_cloud = {
-                filename = "__space-age__/graphics/space/nauvis-cloud.png",
+                filename = "__maraxsis__/graphics/planets/maraxsis-cloud.png",
                 width = 2048,
-                height = 1024
+                height = 1024,
+                allow_forced_downscale = true
             },
             global_cloud_normal = {
-                filename = "__space-age__/graphics/space/nauvis-cloud-normal.png",
+                filename = "__maraxsis__/graphics/planets/maraxsis-cloud-normal.png",
                 width = 2048,
-                height = 1024
+                height = 1024,
+                allow_forced_downscale = true
             },
             global_cloud_flow = {
-                filename = "__space-age__/graphics/space/nauvis-cloud-flow.png",
+                filename = "__space-age__/graphics/space/aquilo-cloud-flow.png",
                 width = 2048,
-                height = 1024
+                height = 1024,
+                allow_forced_downscale = true
             }
         }
     }
