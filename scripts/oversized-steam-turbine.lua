@@ -27,8 +27,7 @@ maraxsis.on_nth_tick(597, function()
             goto continue
         end
 
-        local fluid = duct_exhaust.get_fluid(1)
-        if not fluid or fluid.name ~= "maraxsis-supercritical-steam" then
+        if duct_exhaust.get_fluid_count("maraxsis-supercritical-steam") == 0 then
             goto continue
         end
 
