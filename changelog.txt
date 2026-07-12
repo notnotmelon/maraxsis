@@ -1,4 +1,11 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.34.38
+Date: 2026-07-12
+  Balancing:
+    - The hydraulic science pack now requires supercritical steam instead of saline water.
+  Graphics:
+    - Added on-approach graphics for when you are sitting in a spaceship above maraxsis.
+---------------------------------------------------------------------------------------------------
 Version: 1.34.37
 Date: 2026-07-12
   Locale:
