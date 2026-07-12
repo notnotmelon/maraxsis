@@ -17,7 +17,6 @@ local SUPERCRITICAL_STEAM_ALLOW_LIST = table.invert {
     "maraxsis-trench-duct-lower",
     "maraxsis-oversized-steam-turbine",
     "maraxsis-geothermal-generator",
-    "cryogenic-plant"
 }
 
 maraxsis.on_nth_tick(597, function()
@@ -34,7 +33,7 @@ maraxsis.on_nth_tick(597, function()
 
         for _, neighbours in pairs(duct_exhaust.fluidbox_neighbours) do
             for _, neighbour in pairs(neighbours) do
-                if not SUPERCRITICAL_STEAM_ALLOW_LIST[neighbour.name] then
+                if neighbour.type ~= "assembling-machine" and not SUPERCRITICAL_STEAM_ALLOW_LIST[neighbour.name] then
                     for i = 1, neighbour.fluids_count do
                         if neighbour.get_fluid(i).name == "maraxsis-supercritical-steam" then
                             neighbour.clear_fluid(i)
