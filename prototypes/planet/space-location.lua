@@ -61,9 +61,11 @@ PlanetsLib:extend{
 
             },
             planet_normal = {
-                filename = "__maraxsis__/graphics/planets/maraxsis-cloud-normal.png",
-                width = 2048,
-                height = 1024,
+                filename = "__maraxsis__/graphics/planets/maraxsis-reflectivity.png",
+                width = 1,
+                height = 1,
+                x = 1,
+                y = 0,
                 allow_forced_downscale = true
             },
             planet_reflectivity = {
