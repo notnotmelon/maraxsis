@@ -1,4 +1,11 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.34.42
+Date: 2026-07-12
+  Graphics:
+    - Added more clouds to maraxsis space view.
+  Changes:
+    - If a pipe explodes due to supercritical steam, the script then checks all other pipes on the entire surface for supercritical steam.
+---------------------------------------------------------------------------------------------------
 Version: 1.34.41
 Date: 2026-07-12
   Bugfixes:
