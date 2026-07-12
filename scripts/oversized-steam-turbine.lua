@@ -17,6 +17,7 @@ local SUPERCRITICAL_STEAM_ALLOW_LIST = table.invert {
     "maraxsis-trench-duct-lower",
     "maraxsis-oversized-steam-turbine",
     "maraxsis-geothermal-generator",
+    "maraxsis-hydro-plant-extra-module-slots",
 }
 
 maraxsis.on_nth_tick(597, function()
@@ -33,7 +34,7 @@ maraxsis.on_nth_tick(597, function()
 
         for _, neighbours in pairs(duct_exhaust.fluidbox_neighbours) do
             for _, neighbour in pairs(neighbours) do
-                if neighbour.type ~= "assembling-machine" and not SUPERCRITICAL_STEAM_ALLOW_LIST[neighbour.name] then
+                if not SUPERCRITICAL_STEAM_ALLOW_LIST[neighbour.name] then
                     for i = 1, neighbour.fluids_count do
                         if neighbour.get_fluid(i).name == "maraxsis-supercritical-steam" then
                             neighbour.clear_fluid(i)
@@ -60,6 +61,17 @@ maraxsis.on_nth_tick(597, function()
         end
 
         ::continue::
+    end
+end)
+
+maraxsis.on_event("PlanetsLib-on-entity-replaced", function(event)
+    local entity = event.new_entity
+    if not entity.valid then
+        return
+    end
+    
+    if entity.name == "maraxsis-hydro-plant-extra-module-slots" then
+        storage.duct_exhausts[entity.unit_number] = entity
     end
 end)
 
