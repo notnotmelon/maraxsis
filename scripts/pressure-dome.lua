@@ -313,6 +313,7 @@ for entity_name,name in pairs(DOME_EXCLUDED_FROM_DISABLE) do
     table.insert(flooded_event_filter,{filter = "name",name = entity_name,mode = "or", invert = false,})
 end
 
+table.insert(flooded_event_filter,{filter = "type",type="plant",mode = "or", invert = true,})
 
 
 --This function alone is likely responsible for the majority of Maraxsis' performance problems.
