@@ -119,11 +119,6 @@ data:extend {{
     icons = util.technology_icon_constant_recipe_productivity("__maraxsis__/graphics/technology/glass-productivity.png"),
     icon_size = 256,
     effects = {
-        {
-            type = "change-recipe-productivity",
-            recipe = "maraxsis-pressure-dome",
-            change = 0.1
-        }
     },
     prerequisites = {"maraxsis-project-seadragon", "production-science-pack", "utility-science-pack", "metallurgic-science-pack"},
     unit = {
@@ -142,7 +137,13 @@ data:extend {{
     max_level = "infinite",
     upgrade = true,
     PlanetsLib_recipe_productivity_effects = {
+        allow_recipes_without_productivity = true,
         effects = {
+            {
+                type = "item",
+                name = "maraxsis-pressure-dome",
+                change = 0.1
+            },
             {
                 type = "item",
                 name = "maraxsis-glass-panes",
