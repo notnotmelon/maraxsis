@@ -59,6 +59,7 @@ local function construct_sand_extractor(event)
 
     if not is_ghost then
         cursor_stack.count = cursor_stack.count - 1
+        force.get_entity_build_count_statistics(surface).on_flow(name, 1)
     end
 end
 maraxsis.register_delayed_function("construct_sand_extractor", construct_sand_extractor)
