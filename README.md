@@ -96,19 +96,23 @@ Full discography: https://anagramofme.bandcamp.com/album/ost-maraxsis
 Maraxsis would not be possible without the help of these amazing, fantastic, incredible people.
 
  - Music - [fluidnatalie](https://mods.factorio.com/user/FluidNatalie)
- - Unused Renders - [malcolmriley](https://github.com/malcolmriley)
+ - Unused Renders - [Malcolm Riley](https://github.com/malcolmriley)
  - Tropical Fish Pack - [ZivixLLC](https://github.com/ZivixLLC)
  - Hydro Plant, Regulator, Geothermal Generator, & Conduit Graphics - [Hurricane](https://mods.factorio.com/user/Hurricane046)
  - Submarine & Nuclear Submarine - [keptin](https://www.turbosquid.com/Search/Artists/keptin)
  - Pressure Dome - [KaueNP](https://github.com/KaueNP)
  - Sonar - [fishbus](https://github.com/fishbus)
  - Coral Reef - [Galdoc](https://github.com/Galdoc)
- - Submarine AI - [Xorimuth](https://github.com/Xorimuth), [ILLISIS](https://github.com/ILLISIS), [Apollo314](https://github.com/Apollo314), [fgardt](https://github.com/fgardt)
- - Ducts - Krastor, [Linver](https://github.com/Linver), [iicyan](https://github.com/iicyan), [raiguard](https://github.com/raiguard)
  - Devops & CI - [fgardt](https://github.com/fgardt)
  - Tech & item icons - [snouz](https://github.com/snouz)
  - 2.1 port - [Jethro Larson](https://github.com/jethrolarson), [Frontrider](https://mods.factorio.com/user/Frontrider), [danbopes](https://github.com/danbopes)
- - Fishing tower logic - [LordMiguel](https://mods.factorio.com/mod/quality-trees)
+ - Fishing tower logic - [Lord Miguel](https://mods.factorio.com/mod/quality-trees)
  - Rocket silo logic - [Powerscooter](https://mods.factorio.com/mod/Alternative_Rocket_Sprite_Extension), [LoupAndSnoop](https://mods.factorio.com/mod/rubia)
+ - Sand extractor logic - [Nicholas Gower](https://github.com/nicholasgower/planet-muluna/blob/main/scripts/sand-extractor.lua)
+
+#### Companion Mods
+ - PlanetsLib - [thesixthroc](https://github.com/danielmartin0), [Nicholas Gower](https://github.com/nicholasgower), [Frontrider](https://github.com/Frontrider)
+ - Spidertron Patrols - [Xorimuth](https://github.com/Xorimuth)
+ - Ducts - Krastor, [Linver](https://github.com/Linver), [iicyan](https://github.com/iicyan), [raiguard](https://github.com/raiguard)
 
 [More details in Credits.md](https://github.com/notnotmelon/maraxsis/blob/main/CREDITS.md)
