@@ -32,7 +32,6 @@ PlanetsLib:extend{
     subgroup = "planets",
     order = "e-z[maraxsis]",
     persistent_ambient_sounds = {},
-    flying_robot_energy_usage_multiplier = 1.5, -- todo: this doesnt work
     platform_surface_render_parameters = {
         platform_backdrop = {
             cloudiness = 1.0,
