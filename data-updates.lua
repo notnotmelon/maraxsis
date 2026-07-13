@@ -21,6 +21,7 @@ require "compat.5-dim-automation"
 require "compat.rcu-restored"
 require "compat.aircraft-space-age"
 require "compat.corrundum"
+require "compat.muluna"
 require "compat.aai-programmable-structures"
 
 local function add_fuel_value(fluid, value)
