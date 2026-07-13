@@ -14,12 +14,11 @@ require "scripts.trench-duct"
 require "scripts.abyssal-diving-gear"
 require "scripts.remote"
 require "scripts.fishing-tower"
-
-if not script.active_mods.pystellarexpedition then require "scripts.drowning" end
-if not script.active_mods.pystellarexpedition then require "scripts.sonar" end
-if not script.active_mods.pystellarexpedition then require "scripts.sand-extractor" end
-if not script.active_mods.pystellarexpedition then require "scripts.hydro-plant" end
-if not script.active_mods.pystellarexpedition then require "scripts.salt-reactor" end
+require "scripts.drowning"
+require "scripts.sonar"
+require "scripts.sand-extractor"
+require "scripts.hydro-plant"
+require "scripts.salt-reactor"
 
 require "compat.call-plumber"
 

@@ -13,5 +13,9 @@ README.md export-ignore
 .gitignore export-ignore
 .gitattributes export-ignore
 .releaserc export-ignore
-.py export-ignore
-.pdn export-ignore
+*.pdn export-ignore
+*.exe export-ignore
+*.bat export-ignore
+*.ps1 export-ignore
+*.sh export-ignore
+*.py export-ignore

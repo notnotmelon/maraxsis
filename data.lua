@@ -17,12 +17,12 @@ require "prototypes.entity.fishing-tower"
 require "prototypes.entity.bubbles"
 require "prototypes.entity.coral"
 require "prototypes.entity.offshore-pump"
-if not mods.pystellarexpedition then require "prototypes.entity.salt-reactor" end
-if not mods.pystellarexpedition then require "prototypes.entity.hydro-plant" end
-if not mods.pystellarexpedition then require "prototypes.entity.sonar" end
-if not mods.pystellarexpedition then require "prototypes.entity.sand-extractor" end
-if not mods.pystellarexpedition then require "prototypes.entity.conduit" end
-if not mods.pystellarexpedition then require "prototypes.entity.oversized-steam-turbine" end
+require "prototypes.entity.salt-reactor"
+require "prototypes.entity.hydro-plant"
+require "prototypes.entity.sonar"
+require "prototypes.entity.sand-extractor"
+require "prototypes.entity.conduit"
+require "prototypes.entity.oversized-steam-turbine"
 
 require "prototypes.technology.abyssal-diving-gear"
 require "prototypes.technology.technology"
@@ -30,19 +30,16 @@ require "prototypes.technology.fat-man"
 require "prototypes.technology.depth-charges"
 require "prototypes.technology.atmosphere"
 require "prototypes.technology.project-seadragon"
-if not mods.pystellarexpedition then require "prototypes.technology.glass" end
-if not mods.pystellarexpedition then require "prototypes.technology.wyrm" end
-if not mods.pystellarexpedition then require "prototypes.technology.recipes" end
-if not mods.pystellarexpedition then require "prototypes.technology.water-treatment" end
-if not mods.pystellarexpedition then require "prototypes.technology.hydraulic-science-pack" end
-if not mods.pystellarexpedition then require "prototypes.technology.promethium-productivity" end
-if not mods.pystellarexpedition then require "prototypes.technology.stone-centrifuging" end
-if not mods.pystellarexpedition then require "prototypes.technology.research-vessel" end
-if not mods.pystellarexpedition then require "prototypes.technology.deepsea-research" end
-
-if not mods.pystellarexpedition and mods.space_age_galore then
-    require "prototypes.recipe.deepsea-research"
-end
+require "prototypes.technology.glass"
+require "prototypes.technology.wyrm"
+require "prototypes.technology.recipes"
+require "prototypes.technology.water-treatment"
+require "prototypes.technology.hydraulic-science-pack"
+require "prototypes.technology.promethium-productivity"
+require "prototypes.technology.stone-centrifuging"
+require "prototypes.technology.research-vessel"
+require "prototypes.technology.deepsea-research"
+require "prototypes.recipe.deepsea-research"
 
 require "prototypes.circuit-connector-definitions"
 require "prototypes.tiles"
@@ -50,7 +47,7 @@ require "prototypes.planet.space-location"
 require "prototypes.achievements"
 require "prototypes.custom-input"
 require "prototypes.music"
-if not mods.pystellarexpedition then require "prototypes.tips-and-tricks" end
+require "prototypes.tips-and-tricks"
 
 require "compat.krastorio-2"
 

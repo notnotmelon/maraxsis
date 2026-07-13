@@ -1,6 +1,5 @@
-local size = 16.5 -- of the octagon
-
-local check_size = size - 0.01
+local octagon_size = 16.5
+local check_size = octagon_size - 0.01
 local DOME_POLYGON = {
     7, check_size,
     -7, check_size,
@@ -24,7 +23,7 @@ end)
 
 -- By Pedro Gimeno, donated to the public domain
 function is_point_in_polygon(x, y)
-    if x > size or x < -size or y > size or y < -size then
+    if x > octagon_size or x < -octagon_size or y > octagon_size or y < -octagon_size then
         return false
     end
 
@@ -124,8 +123,9 @@ local function disable_due_to_dome_low_pressure(entity, powered_and_has_fluid)
     if not DOME_DISABLEABLE_TYPES[entity.type] or DOME_EXCLUDED_FROM_DISABLE[entity.name] then return end
 
     local should_be_active = not not powered_and_has_fluid
-    if entity.active == should_be_active then return end
-    entity.active = should_be_active
+    local is_active = not entity.disabled_by_script
+    if is_active == should_be_active then return end
+    entity.disabled_by_script = not should_be_active
 
     storage.flooded_warning_info_icons = storage.flooded_warning_info_icons or {}
     local warning = storage.flooded_warning_info_icons[entity.unit_number]
@@ -353,8 +353,8 @@ local function place_tiles(pressure_dome_data)
 
     local tiles = {}
 
-    for xx = -math.floor(size), math.floor(size) do
-        for yy = -math.floor(size), math.floor(size) do
+    for xx = -math.floor(octagon_size), math.floor(octagon_size) do
+        for yy = -math.floor(octagon_size), math.floor(octagon_size) do
             if is_point_in_polygon(xx + 0.5, yy) then
                 local x, y = x + xx, y + yy
                 tiles[#tiles + 1] = {name = PRESSURE_DOME_TILE, position = {x, y}}
@@ -378,8 +378,8 @@ local function unplace_tiles(pressure_dome_data)
     end
 
     local area = {
-        {x - size, y - size},
-        {x + size, y + size},
+        {x - octagon_size, y - octagon_size},
+        {x + octagon_size, y + octagon_size},
     }
 
     local tiles_in_square = surface.find_tiles_filtered {
@@ -415,6 +415,7 @@ local function place_collision_boxes(pressure_dome_data, health, player)
     local quality = pressure_dome_data.quality
 
     local diagonal_offset = 4.75
+    local size = octagon_size
     local positions_and_orientations = {
         {x,                            y - size,                     defines.direction.north},
         {x,                            y + size,                     defines.direction.south},
@@ -438,7 +439,7 @@ local function place_collision_boxes(pressure_dome_data, health, player)
             player = player -- setup the undo queue
         }
         collision_box.health = health
-        collision_box.active = false
+        collision_box.disabled_by_script = true
         collision_box.operable = false -- vanilla bug: operable does nothing on cars
         table.insert(pressure_dome_data.collision_boxes, collision_box)
 
@@ -471,8 +472,8 @@ local function check_can_build_dome(surface, position)
 
     local entities_inside_square = surface.find_entities_filtered {
         area = {
-            {x - size, y - size},
-            {x + size, y + size},
+            {x - octagon_size, y - octagon_size},
+            {x + octagon_size, y + octagon_size},
         },
         collision_mask = {["object"] = true, [maraxsis_trench_entrance_collision_mask] = true},
     }
@@ -498,8 +499,8 @@ local function check_can_build_dome(surface, position)
         end
     end
 
-    for xx = -math.floor(size) + x, math.floor(size) + x do
-        for yy = -math.floor(size) + y, math.floor(size) + y do
+    for xx = -math.floor(octagon_size) + x, math.floor(octagon_size) + x do
+        for yy = -math.floor(octagon_size) + y, math.floor(octagon_size) + y do
             local tile = surface.get_tile(xx, yy)
             local tile_collision = tile.collides_with("object")
                 or tile.collides_with(maraxsis_lava_collision_mask)
@@ -529,7 +530,7 @@ local function place_regulator(pressure_dome_data)
     local regulator = pressure_dome_data.regulator
     if not regulator or not regulator.valid then
         storage.script_placing_the_regulator = true
-        regulator = surface.create_entity {
+        local regulator = surface.create_entity {
             name = "maraxsis-regulator",
             position = {x, y},
             quality = quality,
@@ -538,7 +539,9 @@ local function place_regulator(pressure_dome_data)
             raise_built = true,
         }
         storage.script_placing_the_regulator = false
+        pressure_dome_data.regulator = regulator
     end
+    local regulator = pressure_dome_data.regulator
 
     regulator.minable_flag = false
     regulator.destructible = false
@@ -572,10 +575,10 @@ maraxsis.on_nth_tick(631, function()
             regulator_fluidbox = pressure_dome_data.regulator_fluidbox
         end
 
-        local fluid = regulator_fluidbox.fluidbox[1]
+        local fluid = regulator_fluidbox.get_fluid(1)
         if fluid and fluid.temperature ~= 25 then
             fluid.temperature = 25
-            regulator_fluidbox.fluidbox[1] = fluid
+            regulator_fluidbox.set_fluid(1,fluid)
         end
     end
 end)
@@ -829,7 +832,7 @@ local function on_dome_died(event, pressure_dome_data)
         maraxsis.execute_later("bigass_explosion", math.random(1, 90), surface, x, y)
     end
     for i = 1, 16 do
-        local rx, ry = random_point_in_circle(size)
+        local rx, ry = random_point_in_circle(octagon_size)
         maraxsis.execute_later("bigass_explosion", math.random(1, 90), surface, position.x + rx, position.y + ry)
     end
 end
