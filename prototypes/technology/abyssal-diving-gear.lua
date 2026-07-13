@@ -44,6 +44,7 @@ data:extend {{
         {type = "item", name = "maraxsis-glass-panes",             amount = 50},
         {type = "item", name = "maraxsis-super-sealant-substance", amount = 50},
     },
+    auto_recycle = true,
     results = {
         {type = "item", name = "maraxsis-abyssal-diving-gear", amount = 1},
     },

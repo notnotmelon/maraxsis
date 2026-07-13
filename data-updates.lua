@@ -4,10 +4,12 @@ require "prototypes.default-import-location"
 require "prototypes.item-sounds"
 require "prototypes.entity.regulator-fluidbox"
 require "prototypes.fluid-void"
+require "prototypes.technology.promethium-quality"
 
 if not mods.space_age_galore then
     require "prototypes.recipe.deepsea-research"
 end
+
 
 require "compat.aai-industry"
 require "compat.aai-signal-transmission"
@@ -19,7 +21,6 @@ require "compat.5-dim-automation"
 require "compat.rcu-restored"
 require "compat.aircraft-space-age"
 require "compat.corrundum"
-require "compat.no-quality"
 require "compat.aai-programmable-structures"
 
 local function add_fuel_value(fluid, value)
@@ -105,35 +106,6 @@ if mods["assembler-pipe-passthrough"] then
     appmod.blacklist["maraxsis-hydro-plant"] = true
     appmod.blacklist["maraxsis-hydro-plant-extra-module-slots"] = true
 end
-
-data.raw.recipe["maraxsis-glass-panes-recycling"].results = {
-    {type = "item", name = maraxsis_constants.SAND_ITEM_NAME,      amount = 1, independent_probability = 0.75},
-    {type = "item", name = "salt",      amount = 1,independent_probability = 0.5},
-    {type = "item", name = "limestone", amount = 1, independent_probability = 0.25},
-}
-
--- salt reactor localised description
-local electricity_description = {""}
-
-for _, quality in pairs(data.raw.quality) do
-    if quality.hidden then goto continue end
-    local quality_name = quality.localised_name or {"quality-name." .. quality.name}
-
-    local quality_level = quality.level
-    local fluid_amount = 50 * quality_level * quality_level + 50
-
-    table.insert(electricity_description, {"recipe-description.maraxsis-molten-salt-quality-description", quality.name, quality_name, tostring(fluid_amount)})
-    table.insert(electricity_description, "\n")
-    ::continue::
-end
-electricity_description[#electricity_description] = nil
-
-electricity_description = maraxsis.shorten_localised_string(electricity_description)
-
-data.raw.recipe["molten-salt"].localised_description = {
-    "recipe-description.molten-salt",
-    electricity_description
-}
 
 -- regulator factoriopedia description
 

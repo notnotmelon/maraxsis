@@ -22,6 +22,11 @@ local MARAXSIS_SURFACES = { -- all surfaces with water mechanics
     ["maraxsis-trench-factory-floor"] = true,
 }
 
+local MARAXSIS_TRENCH_SURFACES = { -- all surfaces with trench water mechanics
+    [TRENCH_SURFACE_NAME] = true,
+    ["maraxsis-trench-factory-floor"] = true,
+}
+
 local MARAXSIS_SAND_EXTRACTORS = {
     ["electric-mining-drill"] = true,
     ["big-mining-drill"] = true,
@@ -29,7 +34,7 @@ local MARAXSIS_SAND_EXTRACTORS = {
 
 local SUBMARINE_FUEL_SOURCES = {
     ["maraxsis-diesel-submarine"] = {"maraxsis-diesel", "rocket-fuel"},
-    ["maraxsis-nuclear-submarine"] = {"nuclear", "nuclear-fuel", "maraxsis-salt-reactor"},
+    ["maraxsis-nuclear-submarine"] = {"nuclear", "nuclear-fuel"},
 }
 
 local DOME_DISABLEABLE_TYPES = {
@@ -51,11 +56,11 @@ local DOME_EXCLUDED_FROM_DISABLE = {
     ["maraxsis-hydro-plant"] = true,
     ["maraxsis-hydro-plant-extra-module-slots"] = true,
     ["maraxsis-conduit"] = true,
+    ["maraxsis-oversized-steam-turbine"] = true,
     ["maraxsis-a-breath-of-fresh-air"] = true,
 }
 
 local SAND_ITEM_NAME = "sand"
-if mods["Krastorio2-spaced-out"] or mods["Krastorio2"] then SAND_ITEM_NAME = "kr-sand" end
 
 local TROPICAL_FISH_NAMES = {}
 for i = 1, 15 do
@@ -67,13 +72,14 @@ data:extend {{
     type = "mod-data",
     name = "maraxsis-constants", --Data that was previously defined in a control-level script, now defined in data, allowing other mods to configure these constants.
     data_type = "table",
-    data = { 
+    data = {
         -- This data is called in scripts.constants.
         TRENCH_MOVEMENT_FACTOR = TRENCH_MOVEMENT_FACTOR,
         SUBMARINES = SUBMARINES,
         TRENCH_SURFACE_NAME = TRENCH_SURFACE_NAME,
         MARAXSIS_SURFACE_NAME = MARAXSIS_SURFACE_NAME,
         MARAXSIS_SURFACES = MARAXSIS_SURFACES,
+        MARAXSIS_TRENCH_SURFACES = MARAXSIS_TRENCH_SURFACES,
         MARAXSIS_SAND_EXTRACTORS = MARAXSIS_SAND_EXTRACTORS,
         SUBMARINE_FUEL_SOURCES = SUBMARINE_FUEL_SOURCES,
         DOME_DISABLEABLE_TYPES = DOME_DISABLEABLE_TYPES,
@@ -81,5 +87,6 @@ data:extend {{
         TRENCH_ENTRANCE_ELEVATION = TRENCH_ENTRANCE_ELEVATION,
         TROPICAL_FISH_NAMES = TROPICAL_FISH_NAMES,
         SAND_ITEM_NAME = SAND_ITEM_NAME,
+        DEGRADATION_ENABLED = true -- https://github.com/notnotmelon/maraxsis/issues/409
     }
 }}

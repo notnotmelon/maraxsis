@@ -105,11 +105,12 @@ data:extend { {
     icons_positioning = {{
         inventory_index = defines.inventory.crafter_modules, shift = { 0, 1 }
     }},
+    use_mirroring = true,
     allowed_effects = { "consumption", "speed", "productivity", "pollution", "quality" },
     water_reflection = require("__space-age__.prototypes.entity.electromagnetic-plant-pictures").water_reflection,
     collision_box = { { -1.9, -1.9 }, { 1.9, 1.9 } },
     selection_box = { { -2, -2 }, { 2, 2 } },
-    effect_receiver = (not mods["no-quality"]) and { base_effect = { quality = 0.5 } } or nil,
+    effect_receiver = { base_effect = { quality = 0.5 } },
     drawing_box_vertical_extension = 1,
     damaged_trigger_effect = hit_effects.entity(),
     fluid_boxes = {
@@ -157,6 +158,7 @@ data:extend { {
     },
     crafting_categories = {
         "maraxsis-hydro-plant",
+        mods["Krastorio2-spaced-out"] and  "kr-fluid-filtration" or nil
     },
     scale_entity_info_icon = true,
     impact_category = data.raw["assembling-machine"]["electromagnetic-plant"].impact_category,
@@ -174,18 +176,6 @@ data:extend { {
     collision_mask = { layers = { item = true, object = true, player = true, water_tile = true } },
 } }
 
-local extra_module_slots = table.deepcopy(data.raw["assembling-machine"]["maraxsis-hydro-plant"])
-extra_module_slots.name = "maraxsis-hydro-plant-extra-module-slots"
-extra_module_slots.module_slots = extra_module_slots.module_slots + 4
-extra_module_slots.icons_positioning = { {
-    inventory_index = defines.inventory.crafter_modules, shift = { 0, 0.9 }, max_icons_per_row = 4
-} }
-extra_module_slots.hidden_in_factoriopedia = true
-extra_module_slots.factoriopedia_alternative = "maraxsis-hydro-plant"
-extra_module_slots.placeable_by = { { item = "maraxsis-hydro-plant", count = 1 } }
-extra_module_slots.flags = { "placeable-player", "player-creation", "not-in-made-in" }
-data:extend { extra_module_slots }
-
 data:extend { {
     type = "item",
     name = "maraxsis-hydro-plant",
@@ -199,52 +189,51 @@ data:extend { {
 data:extend { {
     type = "recipe",
     name = "maraxsis-hydro-plant",
-    categories = { "maraxsis-hydro-plant", "crafting-with-fluid" },
     enabled = false,
     energy_required = 5,
     ingredients = {
         { type = "item",  name = "tungsten-plate",        amount = 20 },
         { type = "item",  name = "pipe",                  amount = 10 },
         { type = "item",  name = "processing-unit",       amount = 10 },
+        { type = "item",  name = "quality-module-3",       amount = 1 },
         { type = "fluid", name = "maraxsis-saline-water", amount = 300 },
     },
     results = {
         { type = "item", name = "maraxsis-hydro-plant", amount = 1 },
     },
-    caregories = { "maraxsis-hydro-plant", "chemistry" },
+    auto_recycle = true,
+    categories = { "maraxsis-hydro-plant", "chemistry" },
     surface_conditions = maraxsis.surface_conditions(),
 } }
 
-data:extend { {
-    type = "recipe",
-    name = "maraxsis-holmium-recrystalization",
-    categories = { "maraxsis-hydro-plant" },
-    ingredients = {
-        { type = "fluid", name = "holmium-solution", amount = 50 },
-        { type = "item",  name = "holmium-ore",      amount = 1 },
-    },
-    results = {
-        { type = "item", name = "holmium-plate", amount = 5 },
-    },
-    energy_required = data.raw.recipe["holmium-plate"].energy_required * 5,
-    caregories = { "maraxsis-hydro-plant" },
-    enabled = false,
-    auto_recycle = false,
-    icons = {
-        {
-            icon = "__space-age__/graphics/icons/holmium-plate.png",
-            icon_size = 64,
-        },
-        {
-            icon = "__space-age__/graphics/icons/fluid/holmium-solution.png",
-            icon_size = 64,
-            size = 0.5,
-            shift = { -8, -8 }
-        },
-    }
+local extra_module_slots = table.deepcopy(data.raw["assembling-machine"]["maraxsis-hydro-plant"])
+extra_module_slots.name = "maraxsis-hydro-plant-extra-module-slots"
+extra_module_slots.module_slots = extra_module_slots.module_slots + 4
+extra_module_slots.icons_positioning = { {
+    inventory_index = defines.inventory.crafter_modules, shift = { 0, 0.9 }, max_icons_per_row = 4
 } }
+extra_module_slots.hidden_in_factoriopedia = true
+extra_module_slots.factoriopedia_alternative = "maraxsis-hydro-plant"
+extra_module_slots.placeable_by = { { item = "maraxsis-hydro-plant", count = 1 } }
+extra_module_slots.flags = { "placeable-player", "player-creation", "not-in-made-in" }
 
-table.insert(data.raw.technology["holmium-processing"].effects, {
-    type = "unlock-recipe",
-    recipe = "maraxsis-holmium-recrystalization"
-})
+data:extend { extra_module_slots }
+
+-- previously, maraxsis had a script that replaced the
+-- hydro plant with its extra-module-slot variant in the
+-- trench and on space platforms. this feature has been rolled into PlanetsLib
+for surface_name in pairs(maraxsis_constants.MARAXSIS_TRENCH_SURFACES) do
+    PlanetsLib.assign_entity_replacement(
+        surface_name,
+        "maraxsis-hydro-plant",
+        extra_module_slots.name,
+        "maraxsis-runtime-entity-replacement"
+    )
+end
+
+PlanetsLib.assign_entity_replacement(
+    "space-platform",
+    "maraxsis-hydro-plant",
+    extra_module_slots.name,
+    "maraxsis-runtime-entity-replacement"
+)

@@ -1,4 +1,4 @@
-[![](https://img.shields.io/badge/dynamic/json?color=orange&label=Factorio&query=downloads_count&suffix=%20downloads&url=https%3A%2F%2Fmods.factorio.com%2Fapi%2Fmods%2Fmaraxsis&style=for-the-badge)](https://mods.factorio.com/mod/maraxsis) [![](https://img.shields.io/badge/Discord-Community-blue?style=for-the-badge)](https://discord.gg/xRYEZYz5WR) [![](https://img.shields.io/github/issues/notnotmelon/maraxsis?label=Bug%20Reports&style=for-the-badge)](https://github.com/notnotmelon/maraxsis/issues) [![](https://img.shields.io/github/issues-pr/notnotmelon/maraxsis?label=Pull%20Requests&style=for-the-badge)](https://github.com/notnotmelon/maraxsis/pulls) [![Ko-Fi](https://img.shields.io/badge/Ko--fi-support%20me-ff5e5b?logo=kofi&logoColor=white&style=for-the-badge)](https://ko-fi.com/notnotmelon)
+[![foundrygg.com](https://img.shields.io/badge/foundrygg-4a1402?style=for-the-badge&logo=vercel&logoColor=white)](https://foundrygg.com) [![](https://img.shields.io/badge/Discord-Community-blue?style=for-the-badge)](https://discord.gg/jv8CZtCh5Y) [![](https://img.shields.io/badge/dynamic/json?color=orange&label=Factorio&query=downloads_count&suffix=%20downloads&url=https%3A%2F%2Fmods.factorio.com%2Fapi%2Fmods%2Fmaraxsis&style=for-the-badge)](https://mods.factorio.com/mod/maraxsis) [![](https://img.shields.io/github/issues/notnotmelon/maraxsis?label=Bug%20Reports&style=for-the-badge)](https://github.com/notnotmelon/maraxsis/issues) [![](https://img.shields.io/github/issues-pr/notnotmelon/maraxsis?label=Pull%20Requests&style=for-the-badge)](https://github.com/notnotmelon/maraxsis/pulls)
 
 ![](https://assets-mod.factorio.com/assets/3fe1f0f687b4d734c9d03546d0f15ce8005729cb.png)
 
@@ -18,6 +18,8 @@ Maraxsis is designed to take approximately fifteen hours to complete. There is a
 
 Stuck? Check out one of the guides.
 [![](https://markdown-videos-api.jorgenkh.no/youtube/ME5XDVWyzvc)](https://youtu.be/ME5XDVWyzvc) [![](https://markdown-videos-api.jorgenkh.no/youtube/JdgN3vet57E)](https://youtu.be/JdgN3vet57E)
+
+Got a cool base? [Please post it to the foundry!](https://www.foundrygg.com/bases/i/be_ijag4yqihl501fk7kbycxgzr?x=-1444.1&y=-124.5&z=1.4)
 
 ---
 
@@ -94,17 +96,23 @@ Full discography: https://anagramofme.bandcamp.com/album/ost-maraxsis
 Maraxsis would not be possible without the help of these amazing, fantastic, incredible people.
 
  - Music - [fluidnatalie](https://mods.factorio.com/user/FluidNatalie)
- - Unused Renders - [malcolmriley](https://github.com/malcolmriley)
+ - Unused Renders - [Malcolm Riley](https://github.com/malcolmriley)
  - Tropical Fish Pack - [ZivixLLC](https://github.com/ZivixLLC)
- - Hydro Plant, Regulator, Salt Reactor, & Conduit - [Hurricane](https://mods.factorio.com/user/Hurricane046)
+ - Hydro Plant, Regulator, Geothermal Generator, & Conduit Graphics - [Hurricane](https://mods.factorio.com/user/Hurricane046)
  - Submarine & Nuclear Submarine - [keptin](https://www.turbosquid.com/Search/Artists/keptin)
  - Pressure Dome - [KaueNP](https://github.com/KaueNP)
  - Sonar - [fishbus](https://github.com/fishbus)
  - Coral Reef - [Galdoc](https://github.com/Galdoc)
- - Submarine AI - [Xorimuth](https://github.com/Xorimuth), [ILLISIS](https://github.com/ILLISIS), [Apollo314](https://github.com/Apollo314), [fgardt](https://github.com/fgardt)
- - Ducts - Krastor, [Linver](https://github.com/Linver), [iicyan](https://github.com/iicyan), [raiguard](https://github.com/raiguard)
  - Devops & CI - [fgardt](https://github.com/fgardt)
- - Tech & item icon postprocessing - [snouz](https://github.com/snouz)
+ - Tech & item icons - [snouz](https://github.com/snouz)
  - 2.1 port - [Jethro Larson](https://github.com/jethrolarson), [Frontrider](https://mods.factorio.com/user/Frontrider), [danbopes](https://github.com/danbopes)
+ - Fishing tower logic - [Lord Miguel](https://mods.factorio.com/mod/quality-trees)
+ - Rocket silo logic - [Powerscooter](https://mods.factorio.com/mod/Alternative_Rocket_Sprite_Extension), [LoupAndSnoop](https://mods.factorio.com/mod/rubia)
+ - Sand extractor logic - [Nicholas Gower](https://github.com/nicholasgower/planet-muluna/blob/main/scripts/sand-extractor.lua)
 
-[More details in Credits.md](https://github.com/notnotmelon/maraxsis/blob/main/Credits.md)
+#### Companion Mods
+ - PlanetsLib - [thesixthroc](https://github.com/danielmartin0), [Nicholas Gower](https://github.com/nicholasgower), [Frontrider](https://github.com/Frontrider)
+ - Spidertron Patrols - [Xorimuth](https://github.com/Xorimuth)
+ - Ducts - Krastor, [Linver](https://github.com/Linver), [iicyan](https://github.com/iicyan), [raiguard](https://github.com/raiguard)
+
+[More details in Credits.md](https://github.com/notnotmelon/maraxsis/blob/main/CREDITS.md)

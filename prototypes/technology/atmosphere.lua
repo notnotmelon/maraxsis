@@ -22,6 +22,7 @@ data:extend {{
         {type = "fluid", name = "maraxsis-atmosphere", amount = 100, temperature = 25}
     },
     enabled = false,
+    auto_recycle = false,
     main_product = "maraxsis-atmosphere",
     surface_conditions = {{
         property = "pressure",
@@ -96,6 +97,7 @@ data:extend {{
     enabled = false,
     main_product = "maraxsis-liquid-atmosphere",
     show_amount_in_title = true,
+    auto_recycle = false,
     allow_decomposition = false,
     allow_productivity = true,
     surface_conditions = {{
@@ -114,11 +116,12 @@ data:extend {{
         {type = "fluid", name = "maraxsis-liquid-atmosphere", amount = 1}
     },
     results = {
-        {type = "fluid", name = "maraxsis-atmosphere", amount = 90, temperature = 25}
+        {type = "fluid", name = "maraxsis-atmosphere", amount = 90, temperature = 25, ignored_by_stats = 90, ignored_by_productivity = 90}
     },
     enabled = false,
     main_product = "maraxsis-atmosphere",
     show_amount_in_title = true,
     allow_decomposition = false,
     allow_productivity = true,
+    auto_recycle = false,
 }}

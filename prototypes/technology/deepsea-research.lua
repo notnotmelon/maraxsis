@@ -1,4 +1,4 @@
-if mods["Krastorio2-spaced-out"] or mods["Krastorio2"] then return end
+if mods["Krastorio2-spaced-out"] then return end
 
 data:extend {{
     type = "technology",
@@ -7,9 +7,7 @@ data:extend {{
     icon_size = 256,
     effects = {},
     prerequisites = {
-        "maraxsis-research-vessel",
         "maraxsis-stone-centrifuging",
-        "maraxsis-liquid-atmosphere",
         "maraxsis-effect-transmission-2",
     },
     unit = {

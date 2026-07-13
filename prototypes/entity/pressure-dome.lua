@@ -50,13 +50,14 @@ data:extend {{
     enabled = false,
     ingredients = {
         {type = "item", name = "pipe",                 amount = 30},
-        {type = "item", name = "maraxsis-glass-panes", amount = 500},
+        {type = "item", name = "maraxsis-glass-panes", amount = 5000},
         {type = "item", name = "tungsten-plate",       amount = 100},
     },
     results = {
         {type = "item", name = "maraxsis-pressure-dome", amount = 1},
     },
     energy_required = 10,
+    auto_recycle = true,
     categories = {"maraxsis-hydro-plant" },
 }}
 

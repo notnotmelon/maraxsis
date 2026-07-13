@@ -15,7 +15,7 @@ data:extend {{
     ingredients = {
         {type = "item", name = "beacon",                           amount = 1},
         {type = "item", name = "maraxsis-glass-panes",             amount = 25},
-        {type = "item", name = "processing-unit",                  amount = 25},
+        {type = "item", name = "superconductor",                  amount = 25},
         {type = "item", name = "maraxsis-super-sealant-substance", amount = 15},
     },
     results = {
@@ -36,6 +36,10 @@ data:extend {{
         {
             type = "unlock-recipe",
             recipe = "maraxsis-conduit",
+        },
+        {
+            type = "unlock-recipe",
+            recipe = "maraxsis-holmium-recrystalization",
         },
     },
     prerequisites = {"effect-transmission", "maraxsis-project-seadragon", "electromagnetic-science-pack"},

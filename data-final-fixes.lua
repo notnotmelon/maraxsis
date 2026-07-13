@@ -12,7 +12,6 @@ end
 
 local collision_mask_util = require("collision-mask-util")
 
-require "prototypes.research-vessel"
 require "prototypes.collision-mask"
 require "prototypes.swimming"
 
@@ -24,6 +23,7 @@ require "compat.combat-mechanics-overhaul"
 require "compat.castra"
 require "compat.krastorio-2-final-fixes"
 require "compat.water-refining"
+require "compat.science-tab"
 
 if not data.raw["mining-drill"]["electric-mining-drill"].next_upgrade then
     if mods["SchallAlienTech"] and data.raw["mining-drill"]["Schall-uranium-mining-drill"] then
@@ -59,8 +59,15 @@ for extractor in pairs(maraxsis_constants.MARAXSIS_SAND_EXTRACTORS) do
     update_collision_masks(extractor .. "-sand-extractor")
 end
 
-if data.raw["technology"]["maraxsis-promethium-productivity"] then
-    data.raw["technology"]["maraxsis-promethium-productivity"].unit.ingredients = table.deepcopy(data.raw["technology"]["research-productivity"].unit.ingredients)
+local i = 1
+while true do
+    local t = data.raw["technology"]["maraxsis-promethium-quality-" .. i]
+    if t then
+        t.unit.ingredients = table.deepcopy(data.raw["technology"]["research-productivity"].unit.ingredients)
+    else
+        break
+    end
+    i = i + 1
 end
 
 for _, recipe in pairs(data.raw.recipe) do

@@ -15,7 +15,7 @@ data:extend {{
         {
             type = "unlock-recipe",
             recipe = "maraxsis-pipe-bomb"
-        } or nil
+        }
     },
     prerequisites = {"cliff-explosives", "maraxsis-nuclear-submarine", "atomic-bomb"},
     unit = {
@@ -50,9 +50,23 @@ data:extend {{
         {type = "item", name = "maraxsis-super-sealant-substance", amount = 1},
     },
     results = {
-        {type = "item", name = "maraxsis-big-cliff-explosives", amount = 1},
+        {type = "item", name = "maraxsis-big-cliff-explosives", amount = 1, quality_min = "legendary"},
     },
+    auto_recycle = false,
     categories = {"maraxsis-hydro-plant" },
+    icons = {
+        {
+            icon = "__maraxsis__/graphics/icons/big-cliff-explosives.png",
+            icon_size = 64,
+        },
+        {
+            icon = data.raw.quality.legendary.icon,
+            icon_size = data.raw.quality.legendary.icon_size,
+            scale = 0.25,
+            shift = {-8, 8},
+            floating = true
+        },
+    },
 }}
 
 data:extend {{
@@ -61,7 +75,9 @@ data:extend {{
     energy_required = data.raw.recipe["grenade"].energy_required,
     categories = {"maraxsis-hydro-plant"},
     enabled = false,
-    results = table.deepcopy(data.raw.recipe["grenade"].results),
+    results = {
+        {type = "item", name = "grenade", amount = 2, quality_change = 1},
+    },
     ingredients = {
         {type = "item", name = "explosives", amount = 5},
         {type = "item", name = "pipe",       amount = 5},

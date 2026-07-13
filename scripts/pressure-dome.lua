@@ -475,7 +475,7 @@ local function check_can_build_dome(surface, position)
             {x - octagon_size, y - octagon_size},
             {x + octagon_size, y + octagon_size},
         },
-        collision_mask = {["object"] = true, [maraxsis_trench_entrance_collision_mask] = true},
+        collision_mask = prototypes.entity["maraxsis-regulator"].collision_mask.layers,
     }
 
     for _, e in pairs(entities_inside_square) do
@@ -487,10 +487,10 @@ local function check_can_build_dome(surface, position)
             if e.force.name == "neutral" or layers[maraxsis_dome_collision_mask] then
                 error_message = error_message or {"cant-build-reason.entity-in-the-way", e.localised_name}
                 colliding_entities[#colliding_entities + 1] = e
-            elseif layers.object and intersects_with_2x2_box(e, position) then
+            elseif surface.entity_prototype_collides("maraxsis-regulator", position, false) then
                 error_message = error_message or {"cant-build-reason.entity-in-the-way", e.localised_name}
                 colliding_entities[#colliding_entities + 1] = e
-            else
+            elseif layers.object then
                 contained_entities[#contained_entities + 1] = e
             end
         else

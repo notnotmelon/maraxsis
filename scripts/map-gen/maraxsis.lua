@@ -38,7 +38,7 @@ local function cliff_created(event)
 	local tile_at = surface.get_tile(position)
 	if tile_at.name == "out-of-map" then return end
 
-	local new_cliff = surface.create_entity {
+	surface.create_entity {
 		name = "cliff-maraxsis",
 		position = position,
 		cliff_orientation = cliff_orientation,

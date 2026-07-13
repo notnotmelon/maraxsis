@@ -4,13 +4,13 @@
   "description": "Dive into the uncharted waters of Maraxsis, a world where the sea covers everything. Utilize submarines to explore, craft advanced fluids inside the hydro plant, build pressure domes, and master the challenges of deep-sea logistics.",
   "author": "notnotmelon",
   "homepage": "https://github.com/notnotmelon/maraxsis",
-  "version": "1.32.5",
+  "version": "1.34.47",
   "factorio_version": "2.1",
   "dependencies": [
     "base >= 2.1.9",
     "space-age >= 2.1.9",
     "quality >= 2.1.9",
-    "PlanetsLib >= 1.19.5",
+    "PlanetsLib >= 1.20.3",
     "SpidertronPatrols >= 2.7.0",
     "FluidMustFlow >= 1.5.0",
     "(?) tenebris",
@@ -19,10 +19,7 @@
     "(?) modules-t4",
     "(?) call-plumber >= 1.0.0",
     "(?) Krastorio2-spaced-out",
-    "! Land-Pump",
-    "! no-more-gambling",
-    "! quality-better-roboports",
-    "! edible-spoilage"
+    "! force-fmf-grid"
   ],
   "quality_required": true,
   "space_travel_required": true,

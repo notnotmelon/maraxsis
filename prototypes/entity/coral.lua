@@ -29,6 +29,7 @@ data:extend {{
     stack_size = 200,
     spoil_result = "limestone",
     spoil_ticks = 60 * 60 * 10,
+    spoil_quality_change = 1,
 }}
 
 data:extend {{

@@ -51,6 +51,7 @@ data:extend {{
         {type = "item", name = "maraxsis-sonar", amount = 1},
     },
     energy_required = 10,
+    auto_recycle = true,
     categories = {"maraxsis-hydro-plant"},
 }}
 

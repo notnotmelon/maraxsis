@@ -86,21 +86,7 @@ local default_maraxsis_buildability_rules = {
 
 local function blacklist_via_surface_condition(entity, max_pressure)
     if entity.hidden then return end
-
-    entity.surface_conditions = table.deepcopy(entity.surface_conditions or {})
-
-    for _, surface_condition in pairs(entity.surface_conditions) do
-        if surface_condition.property == "pressure" then
-            if (surface_condition.min or 0) > max_pressure then return end -- this entity already has the property we are adding, skip
-            surface_condition.max = math.min(max_pressure, surface_condition.max or max_pressure)
-            return
-        end
-    end
-
-    table.insert(entity.surface_conditions, {
-        property = "pressure",
-        max = max_pressure
-    })
+    PlanetsLib.restrict_surface_conditions(entity, {property = "pressure", max = max_pressure})
 end
 
 local function slightly_shrink_collision_box(collision_box)
@@ -165,10 +151,10 @@ for prototype in pairs(defines.prototypes.entity) do
 
         assert(table_size(rules) == 6, "ERROR: Entity " .. entity.name .. " has incorrect definitions for maraxsis_buildability_rules. Requires 6 rule entries, instead had " .. serpent.line(rules))
 
-        if rules.water == false and rules.dome == false and rules.coral == false and rules.trench_entrance == false then
+        if rules.water == false and rules.dome == false and rules.coral == false and rules.trench_entrance == false and rules.trench == false and rules.trench_lava == false then
             blacklist_via_surface_condition(entity, 50000)
             goto continue
-        elseif rules.trench == false then
+        elseif rules.trench == false and rules.trench_lava == false then
             blacklist_via_surface_condition(entity, 300000)
         end
 
@@ -196,12 +182,7 @@ for prototype in pairs(defines.prototypes.entity) do
     end
 end
 
-data:extend {{
-    type = "collision-layer",
-    name = "decal",
-}}
-
--- add decal layer to decals
+-- add doodad layer to decals
 for _, decorative in pairs {
     "crater-large",
     "light-mud-decal",
@@ -210,7 +191,7 @@ for _, decorative in pairs {
 } do
     decorative = data.raw["optimized-decorative"][decorative]
     if not decorative then error("decorative not found " .. decorative) end
-    decorative.collision_mask.layers["decal"] = true
+    decorative.collision_mask.layers["doodad"] = true
 end
 
 -- add doodad layer to doodads
@@ -220,5 +201,5 @@ for _, decorative in pairs {
 } do
     decorative = data.raw["optimized-decorative"][decorative]
     if not decorative then error("decorative not found " .. decorative) end
-    decorative.collision_mask.layers["decal"] = true
+    decorative.collision_mask.layers["doodad"] = true
 end

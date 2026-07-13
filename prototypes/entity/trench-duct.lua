@@ -29,6 +29,7 @@ data:extend {{
     results = {
         {type = "item", name = "maraxsis-trench-duct", amount = 1},
     },
+    auto_recycle = true,
     energy_required = 10,
 }}
 table.insert(data.raw.technology["ducts"].effects, {
@@ -224,11 +225,7 @@ data:extend {{
     fast_replaceable_group = "ducts",
     collision_box = {{-0.99, -0.99}, {0.79, 0.79}},
     selection_box = {{-1, -1}, {1, 1}},
-    surface_conditions = {{
-        property = "pressure",
-        min = 400000,
-        max = 400000,
-    }},
+    surface_conditions = maraxsis.trench_surface_conditions(),
     fluid_box = {
         volume = constants.volume * 2,
         pipe_covers = nil,

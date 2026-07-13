@@ -65,7 +65,7 @@ data:extend {maraxsis.merge(data.raw.tile["out-of-map"], {
     default_destroyed_dropped_item_trigger = default_destroyed_dropped_item_trigger(),
     allows_being_covered = false,
     walking_speed_modifier = 0.2,
-    collision_mask = {layers = {object = true, item = true, doodad = true, decal = true, [maraxsis_trench_entrance_collision_mask] = true}},
+    collision_mask = {layers = {object = true, item = true, doodad = true, resource = true, [maraxsis_trench_entrance_collision_mask] = true}},
     autoplace = {
         probability_expression = "maraxsis_trench_entrance"
     },

@@ -22,7 +22,11 @@ data:extend {{
         {
             type = "unlock-recipe",
             recipe = "maraxsis-petroleum-gas-cracking"
-        } or nil,
+        },
+        {
+            type = "unlock-recipe",
+            recipe = "maraxsis-bio-oil"
+        }
     },
     prerequisites = {"hydraulic-science-pack", "coal-liquefaction"},
     unit = {
@@ -111,18 +115,26 @@ rocket.rocket_smoke_top2_animation.hr_version = nil
 rocket.rocket_smoke_top3_animation.scale = 0.01
 rocket.rocket_smoke_top3_animation.hr_version = nil
 
-local silo = util.table.deepcopy(data.raw["rocket-silo"]["rocket-silo"])
-silo.name = "maraxsis-rocket-silo"
-silo.localised_name = {"entity-name.rocket-silo"}
-silo.localised_description = {"entity-description.rocket-silo"}
-silo.rocket_entity = "maraxsis-rocket-silo-rocket"
-silo.fixed_recipe = "maraxsis-rocket-part"
-silo.hidden_in_factoriopedia = true
-silo.disabled_when_recipe_not_researched = true
-silo.placeable_by = {{item = "rocket-silo", count = 1}}
-silo.flags = {"placeable-player", "player-creation", "not-in-made-in"}
-silo.logistic_trash_inventory_size = 1
-silo.hidden = true
-silo.hidden_in_factoriopedia = true
+data:extend { rocket }
 
-data:extend { rocket, silo }
+for surface in pairs(maraxsis_constants.MARAXSIS_SURFACES) do
+    PlanetsLib.create_planet_entity_variant(
+        surface,
+        data.raw["rocket-silo"]["rocket-silo"],
+        {
+            name = "maraxsis-rocket-silo",
+            localised_name = {"entity-name.rocket-silo"},
+            localised_description = {"entity-description.rocket-silo"},
+            rocket_entity = "maraxsis-rocket-silo-rocket",
+            fixed_recipe = "maraxsis-rocket-part",
+            disabled_when_recipe_not_researched = true,
+            placeable_by = {{item = "rocket-silo", count = 1}},
+            flags = {"placeable-player", "player-creation", "not-in-made-in"},
+            logistic_trash_inventory_size = 1,
+            hidden = true,
+            hidden_in_factoriopedia = true,
+        },
+        "maraxsis-runtime-entity-replacement",
+        "rocket-silo"
+    )
+end

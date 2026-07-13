@@ -1,34 +1,5 @@
 data:extend {{
     type = "item",
-    name = "maraxsis-fish-food",
-    icon = "__maraxsis__/graphics/icons/fish-food.png",
-    icon_size = 64,
-    stack_size = 100,
-    plant_result = "maraxsis-fishing-plant",
-}}
-
-data:extend {{
-    type = "recipe",
-    name = "maraxsis-fish-food",
-    enabled = false,
-    energy_required = 3,
-    ingredients = {
-        {type = "item", name = "maraxsis-tropical-fish", amount = 1},
-        {type = "item", name = maraxsis_constants.SAND_ITEM_NAME,                   amount = 1},
-        {type = "item", name = "jelly",                  amount = 1},
-        {type = "item", name = "maraxsis-coral",         amount = 3},
-        {type = "item", name = "plastic-bar",            amount = 1},
-    },
-    results = {
-        {type = "item", name = "maraxsis-fish-food", amount = 3}
-    },
-    allow_productivity = true,
-    main_product = "maraxsis-fish-food",
-    categories = {"maraxsis-hydro-plant", "organic"},
-}}
-
-data:extend {{
-    type = "item",
     name = "maraxsis-fishing-tower",
     icon = "__maraxsis__/graphics/icons/fishing-tower.png",
     icon_size = 64,
@@ -50,6 +21,7 @@ data:extend {{
         {type = "item", name = "maraxsis-fishing-tower", amount = 1}
     },
     allow_productivity = false,
+    auto_recycle = true,
     main_product = "maraxsis-fishing-tower",
     categories = {"maraxsis-hydro-plant"},
     surface_conditions = maraxsis.surface_conditions(),

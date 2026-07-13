@@ -11,16 +11,13 @@ data:extend {{
         {
             type = "unlock-recipe",
             recipe = "maraxsis-wyrm-specimen",
-        },
-        {
-            type = "unlock-recipe",
-            recipe = "maraxsis-geothermal-sulfur"
         }
     },
-    prerequisites = {"maraxsis-piscary", "ducts", "maraxsis-salt-reactor"},
+    prerequisites = {"maraxsis-piscary", "ducts", "maraxsis-geothermal-energy"},
     research_trigger = {
-        type = "build-entity",
-        entity = "maraxsis-trench-duct"
+        type = "craft-item",
+        item = "maraxsis-fish-food",
+        count = 20
     },
     order = "ee[wyrm-confinement]",
 }}
@@ -34,7 +31,7 @@ data:extend {{
 }}
 
 local wyrm_variants = {}
-for i = 1, 4 do
+for i = 1, 3 do
     wyrm_variants[i] = {
         filename = "__maraxsis__/graphics/icons/wyrm-specimen-" .. i .. ".png",
         width = 64,
@@ -65,6 +62,7 @@ data:extend {{
     results = {
         {type = "item", name = "maraxsis-wyrm-confinement-cell", amount = 1},
     },
+    auto_recycle = true,
     allow_productivity = true
 }}
 
@@ -82,10 +80,6 @@ data:extend {{
     },
     auto_recycle = false,
     categories = {"maraxsis-hydro-plant"},
-    surface_conditions = {{
-        property = "pressure",
-        min = 400000,
-        max = 400000
-    }},
+    surface_conditions = maraxsis.trench_surface_conditions(),
     allow_productivity = true
 }}

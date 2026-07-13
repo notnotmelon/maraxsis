@@ -25,7 +25,7 @@ if settings.startup["maraxsis-add-hydraulic-science"].value then
     end
 
     add_hydraulic_pack("promethium-science-pack", false)
-    if mods["Krastorio2-spaced-out"] or mods["Krastorio2"] then
+    if mods["Krastorio2-spaced-out"] then
         table.insert(data.raw["technology"]["promethium-science-pack"].prerequisites, "kr-quantum-computer")
     else
         table.insert(data.raw["technology"]["promethium-science-pack"].prerequisites, "maraxsis-deepsea-research")
@@ -49,21 +49,6 @@ insert_hydro_plant(data.raw.recipe["storage-tank"])
 insert_hydro_plant(data.raw.recipe["coal-synthesis"])
 insert_hydro_plant(data.raw.recipe["engine-unit"])
 insert_hydro_plant(data.raw.recipe["electric-engine-unit"])
-
-local function add_surface_condition(recipe, condition)
-    recipe.surface_conditions = recipe.surface_conditions or {}
-    table.insert(recipe.surface_conditions, condition)
-end
-
-add_surface_condition(data.raw.recipe["rocket-part"], {
-    property = "gravity",
-    min = 0.5,
-})
-
-add_surface_condition(data.raw.recipe["rocket-part"], {
-    property = "pressure",
-    max = 50000,
-})
 
 if data.raw.technology["rocket-part-productivity"] then
     table.insert(data.raw.technology["rocket-part-productivity"].effects, {
@@ -153,19 +138,12 @@ for _, module in pairs(data.raw.module) do
     end
 end
 
--- add vehicle acceleration to uranium fuel cells
+-- add vehicle acceleration to uranium fuel cells for nuclear submarine
 local uranium_fuel_cell = data.raw.item["uranium-fuel-cell"]
-local msr_fuel_cell = data.raw.item["msr-fuel-cell"]
 local nuclear_fuel = data.raw.item["nuclear-fuel"]
 uranium_fuel_cell.fuel_acceleration_multiplier = nuclear_fuel.fuel_acceleration_multiplier
-msr_fuel_cell.fuel_acceleration_multiplier = nuclear_fuel.fuel_acceleration_multiplier + 0.5
 uranium_fuel_cell.fuel_top_speed_multiplier = nuclear_fuel.fuel_top_speed_multiplier
-msr_fuel_cell.fuel_top_speed_multiplier = nuclear_fuel.fuel_top_speed_multiplier + 0.25
 uranium_fuel_cell.fuel_emissions_multiplier = nuclear_fuel.fuel_emissions_multiplier
-msr_fuel_cell.fuel_emissions_multiplier = (nuclear_fuel.fuel_emissions_multiplier or 1) * 0.9
 uranium_fuel_cell.fuel_glow_color = nuclear_fuel.fuel_glow_color
-msr_fuel_cell.fuel_glow_color = {128, 0, 128}
 uranium_fuel_cell.fuel_acceleration_multiplier_quality_bonus = nuclear_fuel.fuel_acceleration_multiplier_quality_bonus
-msr_fuel_cell.fuel_acceleration_multiplier_quality_bonus = nuclear_fuel.fuel_acceleration_multiplier_quality_bonus
 uranium_fuel_cell.fuel_top_speed_multiplier_quality_bonus = nuclear_fuel.fuel_top_speed_multiplier_quality_bonus
-msr_fuel_cell.fuel_top_speed_multiplier_quality_bonus = nuclear_fuel.fuel_top_speed_multiplier_quality_bonus

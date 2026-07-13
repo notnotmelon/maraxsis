@@ -66,7 +66,7 @@ local recipes = {
         {type = "item", name = "tungsten-plate",                   amount = 50},
         {type = "item", name = "maraxsis-sonar",                   amount = 1},
         {type = "item", name = "maraxsis-glass-panes",             amount = 100},
-        {type = "item", name = "maraxsis-salt-reactor",            amount = 1},
+        {type = "item", name = "nuclear-reactor",                  amount = 1},
         {type = "item", name = "pump",                             amount = 8},
         {type = "item", name = "processing-unit",                  amount = 50},
         {type = "item", name = "maraxsis-super-sealant-substance", amount = 100},
@@ -100,6 +100,7 @@ for i = 1, 2 do
         ingredients = recipes[name],
         results = {{type = "item", name = name, amount = 1}},
         enabled = false,
+        auto_recycle = true,
         energy_required = 10,
         categories = i == 1 and {"maraxsis-hydro-plant", "crafting"} or {"maraxsis-hydro-plant"},
     }
