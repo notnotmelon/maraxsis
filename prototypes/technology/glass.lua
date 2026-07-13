@@ -169,7 +169,7 @@ data:extend {{
     enabled = false,
     energy_required = 5,
     ingredients = {
-        {type = "item", name = "limestone", amount = 1},
+        {type = "item", name = "limestone", amount = 1, quality_change = -1},
     },
     results = {
         {type = "item", name = "calcite", amount = 1},
