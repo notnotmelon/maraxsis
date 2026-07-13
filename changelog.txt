@@ -1,4 +1,14 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.34.47
+Date: 2026-07-13
+  Bugfixes:
+    - Sand extractors are no longer always placed facing north. Resolves https://github.com/notnotmelon/maraxsis/issues/48
+    - Sand extractors can no longer be built inside pressure domes.
+    - Sand extractors can no longer be placed outside the player's build range.
+    - Sand extractors now count towards the "built" tab on production flow graph.
+  Locale:
+    - Updated README.md
+---------------------------------------------------------------------------------------------------
 Version: 1.34.46
 Date: 2026-07-13
   Balancing:
