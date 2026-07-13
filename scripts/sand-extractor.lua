@@ -6,6 +6,7 @@ local function construct_sand_extractor(event)
 
     local cursor_stack = player.cursor_stack
     local cursor_stack_valid = cursor_stack and cursor_stack.valid_for_read and cursor_stack.count > 0
+    local force = player.force
 
     local quality
     local name
@@ -25,9 +26,17 @@ local function construct_sand_extractor(event)
     local surface = player.surface
     if surface.name ~= maraxsis_constants.MARAXSIS_SURFACE_NAME then return end
     local position = event.cursor_position
-
+    local player_position = player.physical_position
+    
     if surface.entity_prototype_collides(name, position, false) then return end
-    local is_ghost = (not cursor_stack_valid) or event.input_name == "build-ghost" or event.input_name == "super-forced-build"
+    
+    do
+        local distance = math.sqrt((position.x - player_position.x)^2 + (position.y - player_position.y)^2)
+        local is_ghost = (not cursor_stack_valid) or event.input_name == "build-ghost" or event.input_name == "super-forced-build"
+        if player.character and (distance >= player.character.build_distance) and not is_ghost then
+            return -- If unreachable, then don't place
+        end
+    end
 
     surface.create_entity {
         name = is_ghost and "entity-ghost" or name,
