@@ -30,6 +30,16 @@ local function construct_sand_extractor(event)
     
     if surface.entity_prototype_collides(name, position, false) then return end
     
+    if surface.get_tile(position).hidden_tile then 
+        player.create_local_flying_text{
+            text = {"console.can-not-place-here-unnatural-tile"},
+            surface = surface,
+            create_at_cursor = true,
+            speed = 0.01,
+        }
+        return -- If tile is unnatural, like concrete, then don't place mine. Muluna addition.
+    end
+    
     do
         local distance = math.sqrt((position.x - player_position.x)^2 + (position.y - player_position.y)^2)
         local is_ghost = (not cursor_stack_valid) or event.input_name == "build-ghost" or event.input_name == "super-forced-build"
