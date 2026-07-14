@@ -111,8 +111,9 @@ data:extend {{
     auto_recycle = false,
     categories = {"chemistry", "cryogenics"},
     main_product = "water",
+    hidden = not not mods.skewer_planet_vesta,
 }}
-add_to_tech("maraxsis-water")
+add_to_tech(mods.skewer_planet_vesta and "ske_h2o" or "maraxsis-water")
 
 data:extend {{
     type = "item",
