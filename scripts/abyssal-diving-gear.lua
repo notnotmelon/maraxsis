@@ -1,8 +1,15 @@
 --note: much of this code is duplicated from the nightvision script.
 
 local function init()
-    storage.external_modifiers = storage.external_modifiers or {light_radius = {}, swim_speed = {}, hypno_resistance = {}}
-    storage.base_character_values = storage.base_character_values or {light_radius = 0, swim_speed = 0, hypno_resistance = 0}
+    storage.external_modifiers = storage.external_modifiers or {}
+    storage.external_modifiers.light_radius = storage.external_modifiers.light_radius or {}
+    storage.external_modifiers.swim_speed = storage.external_modifiers.swim_speed or {}
+    storage.external_modifiers.hypno_resistance = storage.external_modifiers.hypno_resistance or {}
+
+    storage.base_character_values = storage.base_character_values or {}
+    storage.base_character_values.light_radius = storage.base_character_values.light_radius or 0
+    storage.base_character_values.swim_speed = storage.base_character_values.swim_speed or 0
+    storage.base_character_values.hypno_resistance = storage.base_character_values.hypno_resistance or 0
 end
 
 maraxsis.on_event(maraxsis.events.on_init(), init)
