@@ -1,0 +1,376 @@
+-- BLENDER POST PROCESSING STEPS
+-- 1. ./spritter spritesheet -m 16 -w 8 -a 10 -l --lossy . .
+-- 2. Inner glow. Blending mode normal. Alpha 0.75
+-- 3. Saturation 2
+
+local particle_effects = require "particle-effects"
+local space_age_sounds = require "__space-age__.prototypes.entity.sounds"
+
+local function ooozma_spritesheet(file_name, is_shadow, is_glow, scale, alpha)
+    scale = scale * 2
+    is_shadow = is_shadow or false
+    is_glow = is_glow or false
+    local sprite = util.sprite_load(
+        "__maraxsis__/graphics/entity/ooozma/" .. file_name,
+        {
+            direction_count = 128,
+            dice = 0, -- dicing is incompatible with sprite alpha masking, do not attempt
+            draw_as_shadow = is_shadow,
+            draw_as_glow = is_glow,
+            scale = scale,
+            usage = "enemy",
+            blend_mode = "normal",
+            allow_forced_downscale = true,
+            tint = {alpha, alpha, alpha, alpha},
+            middle_orientation = 1,
+        }
+    )
+    if file_name == "ooozma-body-glow" then
+        sprite.filename = "__maraxsis__/graphics/entity/ooozma/ooozma-body-glow.png"
+    elseif file_name == "ooozma-head-glow" then
+        sprite.filename = "__maraxsis__/graphics/entity/ooozma/ooozma-body-glow.png"
+    elseif file_name == "ooozma-head" or file_name == "ooozma-head-shadow" then
+        sprite.filename = "__maraxsis__/graphics/entity/ooozma/ooozma-head.png"
+    elseif file_name == "ooozma-body" or file_name == "ooozma-body-shadow" then
+        sprite.filename = "__maraxsis__/graphics/entity/ooozma/ooozma-body.png"
+    end
+    return sprite
+end
+
+local segment_scales = {
+    1.09,
+    1.27,
+    1.36,
+    1.36,
+    1.36,
+    1.36,
+    1.33,
+    1.30,
+    1.37,
+    1.52,
+    1.52,
+    1.40,
+    1.41,
+    1.28,
+    1.28,
+    1.17,
+    1.10,
+    1.08,
+    1.08,
+    1.09,
+    1.20,
+    1.20,
+    1.10,
+    1.10,
+    0.99,
+    0.99,
+    0.99,
+    0.87,
+    0.87,
+    0.97,
+    0.87,
+    0.97,
+    0.99,
+    0.87,
+    0.87,
+    0.87,
+    0.87,
+    0.77,
+    0.77,
+    0.65,
+    0.64
+}
+
+local function make_segment_name(base_name, scale)
+    return "maraxsis-" .. base_name .. "-x" .. string.gsub(tostring(scale), "%.", "_")
+end
+
+local resistances = {
+    {
+        type = "explosion",
+        percent = 60
+    },
+    {
+        type = "physical",
+        percent = 50
+    },
+    {
+        type = "fire",
+        percent = 100
+    },
+    {
+        type = "laser",
+        percent = 100
+    },
+    {
+        type = "impact",
+        percent = 100
+    },
+    {
+        type = "poison",
+        percent = 10
+    },
+    {
+        type = "electric",
+        decrease = 20,
+        percent = 20
+    }
+}
+
+local function make_ooozma_segment_specifications(base_name, segment_scales, scale)
+    local specifications = {}
+    local num_segments = #segment_scales
+    for i = 1, num_segments do
+        local segment_scale = segment_scales[i] * scale
+        specifications[i] = {segment = make_segment_name(base_name .. "-segment", segment_scale)}
+    end
+    return specifications
+end
+
+local created_effect = {
+    type = "direct",
+    action_delivery = {
+        type = "instant",
+        source_effects = {
+            {
+                type = "script",
+                effect_id = "maraxsis-ooozma-segment-created",
+            },
+        }
+    }
+}
+
+local function make_ooozma_head(
+    base_name,
+    order,
+    scale,
+    damage_multiplier,
+    health,
+    regen,
+    speed_multiplier,
+    factoriopedia_simulation,
+    sounds,
+    render_layer)
+    return {
+        name = "maraxsis-" .. base_name,
+        type = "segmented-unit",
+        --icon = "__maraxsis__/graphics/icons/" .. base_name .. ".png",
+        icon = "__maraxsis__/graphics/icons/" .. "atmosphere" .. ".png",
+        flags = {"placeable-player", "placeable-enemy", "placeable-off-grid", "breaths-air", "not-repairable"},
+        max_health = health,
+        factoriopedia_simulation = factoriopedia_simulation,
+        order = order,
+        subgroup = "enemies",
+        resistances = resistances,
+        impact_category = "organic",
+        healing_per_tick = regen,
+        collision_box = {{-3 * scale, -3 * scale}, {3 * scale, 3 * scale}},
+        selection_box = {{-3 * scale, -3 * scale}, {3 * scale, 3 * scale}},
+        drawing_box_vertical_extension = 4.0 * scale,
+        is_military_target = true,
+        vision_distance = 64 * scale,
+        territory_radius = 4,
+        enraged_duration = 100 * 60,                       -- 100 seconds
+        patrolling_speed = 2.0 * speed_multiplier / 60,    -- 1.5 tiles per second
+        investigating_speed = 4.0 * speed_multiplier / 60, -- 2.25 tiles per second
+        attacking_speed = 9.0 * speed_multiplier / 60,
+        enraged_speed = 9.0 * speed_multiplier / 60,
+        acceleration_rate = 1.3 * speed_multiplier / 60 / 60, -- 1 tile per second per second
+        turn_radius = 26 * scale,                             -- tiles
+        patrolling_turn_radius = 26 * scale,                  -- tiles
+        turn_smoothing = 0.75,                                -- fraction of the total turning range (based on turning radius)
+        roar = {
+            filename = "__maraxsis__/sounds/ooozma-roar.ogg",
+            category = "enemy",
+            priority = 127,
+        },
+        roar_probability = sounds.roar_probability,
+        hurt_roar = {
+            filename = "__maraxsis__/sounds/ooozma-roar.ogg",
+            category = "enemy",
+            priority = 127,
+        },
+        hurt_thresholds = sounds.hurt_thresholds,
+        working_sound = {
+            sound = {
+                filename = "__space-age__/sound/world/semi-persistent/distant-rumble-2.ogg",
+                volume = 1,
+                audible_distance_modifier = 0.8
+            },
+            max_sounds_per_prototype = 1,
+            match_volume_to_activity = true
+        },
+        animation = {
+            layers = {
+                ooozma_spritesheet("ooozma-head", false, false, 0.5 * scale * 0.7, 0.7),
+                ooozma_spritesheet("ooozma-head", false, true, 0.5 * scale * 0.7, 1),
+                ooozma_spritesheet("ooozma-head-shadow", true, false, 0.5 * scale * 0.7, 1.0),
+                --ooozma_spritesheet("ooozma-head-glow", false, true, 0.5 * scale * 0.7, 1.0),
+            },
+        },
+        render_layer = "elevated-rail-metal",
+        segment_engine = {
+            segments = make_ooozma_segment_specifications(base_name, segment_scales, scale)
+        },
+        created_effect = created_effect,
+        update_effects_while_enraged = {
+            particle_effects.make_hypno_cloud_effect(base_name)
+        },
+    }
+end
+
+local function make_ooozma_segment(base_name, scale, damage_multiplier, health, sounds, render_layer)
+    return {
+        name = make_segment_name(base_name .. "-segment", scale),
+        type = "segment",
+        localised_name = {"entity-name.maraxsis-ooozma-segment", {"entity-name.maraxsis-" .. base_name}},
+        hidden = true,
+        flags = {"not-repairable", "breaths-air", "not-in-kill-statistics"},
+        max_health = health,
+        impact_category = "organic",
+        resistances = resistances,
+        collision_box = {{-3 * scale, -3 * scale}, {3 * scale, 3 * scale}},
+        selection_box = {{-3 * scale, -3 * scale}, {3 * scale, 3 * scale}},
+        drawing_box_vertical_extension = 4.0 * scale,
+        is_military_target = true,
+        animation = {
+            layers = {
+                ooozma_spritesheet("ooozma-body", false, false, 0.5 * scale, 0.7),
+                ooozma_spritesheet("ooozma-body", false, true, 0.5 * scale, 1),
+                ooozma_spritesheet("ooozma-body-shadow", true, false, 0.5 * scale, 1.0),
+                ooozma_spritesheet("ooozma-body-glow", false, true, 0.5 * scale, 1.0),
+            },
+        },
+        backward_overlap = 4,
+        forward_padding = -1 * scale,  -- tiles
+        backward_padding = -4 * scale, -- tiles
+        render_layer = render_layer,
+        working_sound = {
+            main_sounds = {
+                sound = {
+                    filename = "__maraxsis__/sounds/YOU ARE BEING HYPNOTIZED.ogg",
+                    category = "enemy",
+                    priority = 127,
+                    volume = 0.5
+                },
+                fade_in_ticks = 4,
+                fade_out_ticks = 20,
+                probability = 1,
+            },
+            use_doppler_shift = true,
+            persistent = false,
+            max_sounds_per_prototype = 4,
+        },
+        created_effect = created_effect,
+        integration_patch = {
+            filename = "__base__/graphics/entity/small-lamp/lamp-light.png",
+            priority = "high",
+            width = 90,
+            height = 78,
+            shift = util.by_pixel(0, -7),
+            scale = 12.5 * scale,
+            tint = {0.1, 0.1, 0.1, 0.1},
+            draw_as_light = true
+        },
+        integration_patch_render_layer = "under-elevated"
+        --corpse = base_name .. "-corpse"
+    }
+end
+
+local function make_ooozma_segments(base_name, segment_scales, scale, damage_multiplier, health, sounds, render_layer)
+    local existing = {}
+    local prototypes = {}
+    local num_segments = #segment_scales
+    for i = 1, num_segments do
+        local segment_scale = segment_scales[i] * scale
+        if not existing[make_segment_name(base_name .. "-segment", segment_scale)] then
+            existing[make_segment_name(base_name .. "-segment", segment_scale)] = true
+            table.insert(prototypes, make_ooozma_segment(base_name, segment_scale, damage_multiplier, health, sounds, render_layer))
+        end
+    end
+    return prototypes
+end
+
+local function make_ooozma(
+    base_name,
+    order,
+    scale,
+    damage_multiplier,
+    health,
+    regen,
+    speed_multiplier,
+    factoriopedia_simulation,
+    sounds,
+    render_layer)
+    data:extend
+    {
+        make_ooozma_head(
+            base_name,
+            order,
+            scale,
+            damage_multiplier,
+            health,
+            regen,
+            speed_multiplier,
+            factoriopedia_simulation,
+            sounds,
+            render_layer
+        )
+    }
+
+    data:extend(make_ooozma_segments(base_name, segment_scales, scale, damage_multiplier, health, sounds, render_layer))
+    --data:extend(make_ooozma_corpse(base_name, order, scale))
+    data:extend(particle_effects.make_particle_effects(base_name, order, scale, damage_multiplier))
+end
+
+make_ooozma(
+    "small-ooozma",
+    "maraxsis-a",
+    0.45,
+    1,
+    100000,
+    10,
+    1.65,
+    nil,
+    space_age_sounds.demolisher.small,
+    "elevated-lower-object"
+)
+
+make_ooozma(
+    "medium-ooozma",
+    "maraxsis-b",
+    0.66,
+    1,
+    200000,
+    10,
+    2.65,
+    nil,
+    space_age_sounds.demolisher.medium,
+    "elevated-object"
+)
+
+make_ooozma(
+    "big-ooozma",
+    "maraxsis-c",
+    1.0,
+    1,
+    300000,
+    10,
+    3.65,
+    nil,
+    space_age_sounds.demolisher.big,
+    "elevated-higher-object"
+)
+
+make_ooozma(
+    "behemoth-ooozma",
+    "maraxsis-d",
+    1.5,
+    1,
+    400000,
+    10,
+    4.65,
+    nil,
+    space_age_sounds.demolisher.big,
+    "fluid-visualization"
+)

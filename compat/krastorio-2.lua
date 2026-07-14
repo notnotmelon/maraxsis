@@ -13,7 +13,7 @@ data:extend {{
     enabled = false,
     energy_required = 30,
     ingredients = {
-        {type = "item",  name = "maraxsis-wyrm-specimen", amount = 1},
+        {type = "item",  name = "maraxsis-ooozma-specimen", amount = 1},
         {type = "item",  name = "salt",                   amount = 1, quality_change = -1},
         {type = "fluid", name = "maraxsis-saline-water",  amount = 300},
     },
@@ -85,7 +85,7 @@ table.insert(data.raw.recipe["maraxsis-geothermal-generator"].ingredients, {type
 table.insert(data.raw.recipe["maraxsis-oversized-steam-turbine"].ingredients, {type = "item", name = "kr-rare-metals", amount = 100})
 table.insert(data.raw.recipe["maraxsis-hydro-plant"].ingredients, {type = "item", name = "kr-rare-metals", amount = 10})
 table.insert(data.raw.recipe["maraxsis-diesel-submarine"].ingredients, {type = "item", name = "kr-rare-metals", amount = 10})
-table.insert(data.raw.recipe["maraxsis-wyrm-confinement-cell"].ingredients, {type = "item", name = "kr-rare-metals", amount = 1})
+table.insert(data.raw.recipe["maraxsis-ooozma-confinement-cell"].ingredients, {type = "item", name = "kr-rare-metals", amount = 1})
 
 data.raw.technology["kr-quantum-computer"].prerequisites = {
     "kr-ai-core",
@@ -211,5 +211,5 @@ set_stack_size("maraxsis-salt-filter", default_stack_size)
 set_stack_size("maraxsis-saturated-salt-filter", default_stack_size)
 set_stack_size("maraxsis-super-sealant-substance", default_stack_size)
 set_stack_size("maraxsis-tropical-fish", default_stack_size)
-set_stack_size("maraxsis-wyrm-confinement-cell", default_stack_size)
-set_stack_size("maraxsis-wyrm-specimen", default_stack_size)
+set_stack_size("maraxsis-ooozma-confinement-cell", default_stack_size)
+set_stack_size("maraxsis-ooozma-specimen", default_stack_size)
