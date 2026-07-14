@@ -147,3 +147,5 @@ uranium_fuel_cell.fuel_emissions_multiplier = nuclear_fuel.fuel_emissions_multip
 uranium_fuel_cell.fuel_glow_color = nuclear_fuel.fuel_glow_color
 uranium_fuel_cell.fuel_acceleration_multiplier_quality_bonus = nuclear_fuel.fuel_acceleration_multiplier_quality_bonus
 uranium_fuel_cell.fuel_top_speed_multiplier_quality_bonus = nuclear_fuel.fuel_top_speed_multiplier_quality_bonus
+
+data.raw["assembling-machine"]["crusher"].surface_conditions = nil
