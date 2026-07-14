@@ -109,6 +109,7 @@ Maraxsis would not be possible without the help of these amazing, fantastic, inc
  - Fishing tower logic - [Lord Miguel](https://mods.factorio.com/mod/quality-trees)
  - Rocket silo logic - [Powerscooter](https://mods.factorio.com/mod/Alternative_Rocket_Sprite_Extension), [LoupAndSnoop](https://mods.factorio.com/mod/rubia)
  - Sand extractor logic - [Nicholas Gower](https://github.com/nicholasgower/planet-muluna/blob/main/scripts/sand-extractor.lua)
+ - Sentience storage receptacle - [Raoul Hausmann - The Spirit of Our Time, 1920](https://en.wikipedia.org/wiki/Raoul_Hausmann)
 
 #### Companion Mods
  - PlanetsLib - [thesixthroc](https://github.com/danielmartin0), [Nicholas Gower](https://github.com/nicholasgower), [Frontrider](https://github.com/Frontrider)

@@ -1,8 +1,8 @@
 --note: much of this code is duplicated from the nightvision script.
 
 local function init()
-    storage.external_modifiers = storage.external_modifiers or {light_radius = {}, swim_speed = {}}
-    storage.base_character_values = storage.base_character_values or {light_radius = 0, swim_speed = 0}
+    storage.external_modifiers = storage.external_modifiers or {light_radius = {}, swim_speed = {}, hypno_resistance = {}}
+    storage.base_character_values = storage.base_character_values or {light_radius = 0, swim_speed = 0, hypno_resistance = 0}
 end
 
 maraxsis.on_event(maraxsis.events.on_init(), init)
@@ -31,7 +31,28 @@ local function get_abyssal_light_size(player)
             light_size = light_size + (equipment.count * get_quality_buff(quality.level))
         end
     end
+    
     return light_size
+end
+
+local function get_hypno_resistance(player)
+    init()
+    local character = player.character
+    local hypno_resistance = 1 - storage.base_character_values["hypno_resistance"]
+    if not character then return hypno_resistance end
+    local grid = character.grid
+    if not grid then return hypno_resistance end
+
+    for _, equipment in pairs(grid.get_contents()) do
+        if maraxsis_constants.HYPNO_EQUIPMENT[equipment.name] then
+            local quality = prototypes.quality[equipment.quality]
+            for _ = 1, equipment.count do
+                hypno_resistance = hypno_resistance * (1 - (maraxsis_constants.HYPNO_EQUIPMENT[equipment.name] * get_quality_buff(quality.level)))
+            end
+        end
+    end
+
+    return hypno_resistance
 end
 
 maraxsis.is_wearing_abyssal_diving_gear = function(player)
@@ -78,6 +99,11 @@ local function update_abyssal_light_cone(player)
     }
 end
 
+local function update_equipment_effects(player)
+    update_abyssal_light_cone(player)
+    game.print(get_hypno_resistance(player))
+end
+
 ---does the same thing as swap_diving_gear_to_correct_prototype, but only for one equipment
 local function swap_diving_gear(grid, player, equipment)
     local equipment_name = equipment.name
@@ -114,7 +140,7 @@ maraxsis.on_event({
     defines.events.on_player_created,
 }, function(event)
     local player = game.get_player(event.player_index)
-    update_abyssal_light_cone(player)
+    update_equipment_effects(player)
     local character = player.character
     if not character or not character.grid then return end
     swap_diving_gear_to_correct_prototype(character.grid, player)
@@ -136,13 +162,13 @@ maraxsis.on_event(defines.events.on_equipment_inserted, function(event)
             end
         end
         ::continue::
-        update_abyssal_light_cone(player)
+        update_equipment_effects(player)
     end
 end)
 
 maraxsis.on_event({defines.events.on_equipment_removed, defines.events.on_player_controller_changed}, function(event)
     for _, player in pairs(game.players) do
-        update_abyssal_light_cone(player)
+        update_equipment_effects(player)
     end
 end)
 
@@ -152,8 +178,8 @@ end)
 ---The given source will add the given value to light radius or other maraxsis modifiers.
 ---@param source_key string A unique string to allow overwriting the previous source of a modifier.
 ---@param modifier_type string string tied to the type of parameter to control. See relevant dic
----@param modifier double The actual bonus value to be added
-local function set_modifier(source_key, modifier_type, modifier)
+---@param modifier number The actual bonus value to be added
+function maraxsis.set_modifier(source_key, modifier_type, modifier)
     init()
     local modifier_list = storage.external_modifiers[modifier_type]
     assert(modifier_list, "Invalid modifier type for Maraxsis: " .. modifier_type)
@@ -175,13 +201,6 @@ local function set_modifier(source_key, modifier_type, modifier)
 
     storage.base_character_values[modifier_type] = base_value
     for _, player in pairs(game.players) do
-        update_abyssal_light_cone(player)
+        update_equipment_effects(player)
     end
 end
-
---Define the interface to modify underwater parameters
-remote.add_interface("maraxsis-character-modifier",{
-    set_light_radius_modifier = function(source_key, modifier) set_modifier(source_key, "light_radius", modifier) end,
-    set_swim_speed_modifier =   function(source_key, modifier) set_modifier(source_key, "swim_speed", modifier) end,
-})
---#endregion

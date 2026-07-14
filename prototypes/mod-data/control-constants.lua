@@ -68,6 +68,12 @@ for i = 1, 15 do
     TROPICAL_FISH_NAMES[i] = name
 end
 
+local HYPNO_EQUIPMENT = {
+    ["maraxsis-abyssal-diving-gear"] = 0.1,
+    ["maraxsis-abyssal-diving-gear-disabled"] = 0.1,
+    ["maraxsis-sentience-storage-receptacle"] = 0.1,
+}
+
 data:extend {{
     type = "mod-data",
     name = "maraxsis-constants", --Data that was previously defined in a control-level script, now defined in data, allowing other mods to configure these constants.
@@ -87,6 +93,7 @@ data:extend {{
         TRENCH_ENTRANCE_ELEVATION = TRENCH_ENTRANCE_ELEVATION,
         TROPICAL_FISH_NAMES = TROPICAL_FISH_NAMES,
         SAND_ITEM_NAME = SAND_ITEM_NAME,
-        DEGRADATION_ENABLED = true -- https://github.com/notnotmelon/maraxsis/issues/409
+        DEGRADATION_ENABLED = true, -- https://github.com/notnotmelon/maraxsis/issues/409
+        HYPNO_EQUIPMENT = HYPNO_EQUIPMENT,
     }
 }}

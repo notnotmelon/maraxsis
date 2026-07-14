@@ -156,6 +156,25 @@ do
     end
 end
 
+for hypno_equipment, strength in pairs(maraxsis_constants.HYPNO_EQUIPMENT) do
+    for prototype in pairs(defines.prototypes.equipment) do
+        local equipment_prototype = data.raw[prototype][hypno_equipment]
+        if equipment_prototype then
+            equipment_prototype.custom_tooltip_fields = equipment_prototype.custom_tooltip_fields or {}
+            table.insert(equipment_prototype.custom_tooltip_fields, {
+                name = {"tooltip.hypno-duration-reduction"},
+                value = {"quality-tooltip.percent-duration-decrease", tostring(strength * 100)},
+                quality_header = "quality-tooltip.hypno-duration-reduction",
+                quality_values = table.map(data.raw.quality, function(q)
+                    local quality_strength = (q.level * 0.3 + 1)
+                    local value = tostring(quality_strength * strength * 100)
+                    return {"quality-tooltip.percent-duration-decrease", value}
+                end)
+            })
+        end
+    end
+end
+
 local sand_mask = collision_mask_util.get_mask(data.raw.tile["sand-1-underwater"])
 local hydro_plant_mask = collision_mask_util.get_mask(data.raw["assembling-machine"]["maraxsis-hydro-plant"])
 if collision_mask_util.masks_collide(sand_mask, hydro_plant_mask) then
