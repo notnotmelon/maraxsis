@@ -109,7 +109,7 @@ data:extend { maraxsis.merge(data.raw.planet.gleba, {
         gravity = 20,
     },
     hidden = true,
-    icon = "__maraxsis__/graphics/technology/maraxsis-trench.png",
+    icon = "__maraxsis__/graphics/planets/maraxsis-trench.png",
     icon_size = 256,
     order = "ce[maraxsis]-[trench]",
     pollutant_type = "nil",
