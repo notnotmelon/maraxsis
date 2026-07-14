@@ -42,7 +42,7 @@ data:extend {{
             recipe = "maraxsis-holmium-recrystalization",
         },
     },
-    prerequisites = {"effect-transmission", "maraxsis-project-seadragon", "electromagnetic-science-pack"},
+    prerequisites = {"effect-transmission", "maraxsis-project-seadragon", "electromagnetic-science-pack", "epic-quality"},
     unit = {
         count = 5000,
         ingredients = {
