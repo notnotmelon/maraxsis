@@ -18,6 +18,7 @@ require "scripts.sonar"
 require "scripts.sand-extractor"
 require "scripts.oversized-steam-turbine"
 require "scripts.hydraulic-science-pack"
+require "scripts.legendary-quality"
 
 require "compat.call-plumber"
 

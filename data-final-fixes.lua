@@ -79,6 +79,35 @@ end
 data.raw["equipment-grid"]["maraxsis-diesel-submarine-equipment-grid"].equipment_categories = table.deepcopy(data.raw["equipment-grid"]["spidertron-equipment-grid"].equipment_categories)
 data.raw["equipment-grid"]["maraxsis-nuclear-submarine-equipment-grid"].equipment_categories = table.deepcopy(data.raw["equipment-grid"]["spidertron-equipment-grid"].equipment_categories)
 
+if data.raw.technology["legendary-quality"] and data.raw.technology["legendary-quality"].unit and data.raw.technology["legendary-quality"].unit.ingredients then
+    data:extend {maraxsis.merge(data.raw.technology["legendary-quality"], {
+        name = "maraxsis-legendary-quality",
+        localised_description = {"technology-description.legendary-quality"},
+        prerequisites = {
+            "hydraulic-science-pack",
+            "epic-quality"
+        }
+    })}
+
+    for _, ingredient in pairs(data.raw.technology["maraxsis-legendary-quality"].unit.ingredients) do
+        assert(type(ingredient) == "table")
+        if ingredient[1] == "cryogenic-science-pack" then
+            ingredient[1] = "hydraulic-science-pack"
+        end
+    end
+
+    for _, technology in pairs(data.raw.technology) do
+        if type(technology.prerequisites) == "table" then
+            for _, prerequisite in pairs(technology.prerequisites) do
+                if prerequisite == "legendary-quality" then
+                    table.insert(technology.prerequisites, "maraxsis-legendary-quality")
+                    break
+                end
+            end
+        end
+    end
+end
+
 local ducts = table.invert {
     "duct-small",
     "duct",
