@@ -1,5 +1,3 @@
-local CubicSpline2D = (require "spline").CubicSpline2D
-
 maraxsis.on_event(maraxsis.events.on_init(), function()
     storage.ai_state_cache = storage.ai_state_cache or {}
     storage.spawn_locations = storage.spawn_locations or {}
@@ -63,7 +61,6 @@ local function go_investigate_spawn_location(segmented_unit)
     local offset_x = math.random(-WANDER_DISTANCE, WANDER_DISTANCE)
     local offset_y = math.random(-WANDER_DISTANCE, WANDER_DISTANCE)
 
-
     segmented_unit.set_ai_state {
         type = defines.segmented_unit_ai_state.investigating,
         destination = {
@@ -91,29 +88,8 @@ local function get_flash_parameters(segment)
     return BIOLUMINESCENCE_PARAMETERS[get_ai_state(segment)]
 end
 
-local function ensnare(segmented_unit)
-    if not segmented_unit then return end
-    local nodes = segmented_unit.get_body_nodes()
-    local head = nodes[1]
-    local tail = nodes[#nodes]
-    --head.x = head.x + math.random(-0.01, 0.01)
-    --head.y = head.y + math.random(-0.01, 0.01)
-    --tail.x = tail.x + math.random(-0.01, 0.01)
-    --tail.y = tail.y + math.random(-0.01, 0.01)
-    storage.v = nodes[math.floor(#nodes * 0.33)]
-    storage.x = nodes[math.floor(#nodes * 0.66)]
-    local control_points = {head, storage.v, storage.x, tail}
-    local spline = CubicSpline2D.new(control_points)
-    local points = spline:convert_to_points(#nodes)
-    segmented_unit.set_body_nodes(points)
-    segmented_unit.speed = 0
-    CubicSpline2D.draw(segmented_unit.surface, points, control_points)
-    --segmented_unit.activity_mode = defines.segmented_unit_activity_mode.asleep
-end
-
 maraxsis.on_nth_tick(120, function()
     storage.ai_state_cache = {}
-    ensnare(game.get_surface("maraxsis-trench").get_segmented_units()[1])
 end)
 
 local function get_segment_index(segment)

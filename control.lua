@@ -19,7 +19,7 @@ require "scripts.sand-extractor"
 require "scripts.oversized-steam-turbine"
 require "scripts.hydraulic-science-pack"
 require "scripts.legendary-quality"
-require "scripts.ooozma.ooozma"
+require "scripts.ooozma"
 
 require "compat.call-plumber"
 
