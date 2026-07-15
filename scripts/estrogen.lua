@@ -1,3 +1,21 @@
+maraxsis.on_event(maraxsis.events.on_init(), function()
+    storage.estrogen_stickers = {}
+end)
+
+local function register_estrogen_sticker(sticker, target)
+    local registration_number = script.register_on_object_destroyed(sticker)
+    storage.estrogen_stickers[registration_number] = target
+end
+
+maraxsis.on_event(defines.events.on_object_destroyed, function(event)
+    local target = storage.estrogen_stickers[event.registration_number]
+    if not target or not target.valid then return end
+
+    if target.type == "character" then
+        target.force.script_trigger_research("maraxsis-ooozma-confinement")
+    end
+end)
+
 local function apply_estrogen_max_duration(player)
     local c = player.character
     if not c or not c.valid then return end
@@ -5,6 +23,7 @@ local function apply_estrogen_max_duration(player)
     local max_duration = resistance * maraxsis_constants.ESTROGEN_DURATION
     for _, sticker in pairs(c.stickers) do
         if sticker.name == "maraxsis-estrogen-sticker" or sticker.name == "maraxsis-estrogen-sticker-behind" then
+            register_estrogen_sticker(sticker, c)
             if sticker.time_to_live > max_duration then
                 sticker.time_to_live = max_duration
             end
