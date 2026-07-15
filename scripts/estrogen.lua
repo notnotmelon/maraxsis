@@ -21,7 +21,7 @@ local function apply_estrogen_max_duration(player)
     if not c or not c.valid then return end
     local resistance = maraxsis.get_estrogen_resistance(player)
     local max_duration = resistance * maraxsis_constants.ESTROGEN_DURATION
-    for _, sticker in pairs(c.stickers) do
+    for _, sticker in pairs(c.stickers or {}) do
         if sticker.name == "maraxsis-estrogen-sticker" or sticker.name == "maraxsis-estrogen-sticker-behind" then
             register_estrogen_sticker(sticker, c)
             if sticker.time_to_live > max_duration then
