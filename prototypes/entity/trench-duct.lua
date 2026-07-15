@@ -346,3 +346,11 @@ data.raw.recipe["duct-exhaust"].ingredients = {
 data.raw.pump["duct-intake"].energy_source = {type = "void"}
 data.raw.pump["duct-exhaust"].energy_source = {type = "void"}
 data.raw.pump["non-return-duct"].energy_source = {type = "void"}
+
+for _, pump in pairs{"duct-intake", "duct-exhaust"} do
+    data.raw.pump[pump].energy_source = {
+        type = "electric",
+        usage_priority = "secondary-input",
+    }
+    data.raw.pump[pump].energy_usage = "200kW"
+end
