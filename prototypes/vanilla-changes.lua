@@ -164,6 +164,6 @@ do
         "yumako-regen-sticker",
         "bioflux-speed-regen-sticker",
     } do
-        data.raw.sticker[sticker].damage_per_tick.amount = data.raw.sticker[sticker].damage_per_tick.amount * 10
+        data.raw.sticker[sticker].damage_per_tick.amount = data.raw.sticker[sticker].damage_per_tick.amount * 20
     end
 end
