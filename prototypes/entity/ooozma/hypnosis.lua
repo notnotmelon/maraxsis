@@ -68,25 +68,27 @@ local function make_hypno_cloud_trigger_effects(base_name, radius, damage_multip
         action_delivery =
         {
             type = "instant",
-            target_effects =
-            {
+            target_effects = {
                 {
                     type = "nested-result",
-                    action =
-                    {
+                    action = {
                         type = "area",
                         ignore_collision_condition = true,
                         radius = radius,
                         target_enemies = true,
-                        action_delivery =
-                        {
+                        action_delivery = {
                             type = "instant",
-                            target_effects =
-                            {
+                            target_effects = {
                                 {
                                     type = "create-sticker",
-                                    sticker = "demolisher-ash-sticker"
-                                }
+                                    sticker = "maraxsis-hypnosis-sticker",
+                                    show_in_tooltip = true
+                                },
+                                {
+                                    type = "create-sticker",
+                                    sticker = "maraxsis-hypnosis-sticker-behind",
+                                    show_in_tooltip = false
+                                },
                             }
                         }
                     }
@@ -103,8 +105,7 @@ local function make_hypno_cloud_trigger_effects(base_name, radius, damage_multip
                         action_delivery =
                         {
                             type = "instant",
-                            target_effects =
-                            {
+                            target_effects = {
                                 {
                                     type = "damage",
                                     damage = {amount = 1 * damage_multiplier, type = "physical"}
@@ -142,7 +143,6 @@ local function make_particle_effects(base_name, order, scale, damage_multiplier)
         spread_duration_variation = 20,
         particle_duration_variation = 60 * 3,
         render_layer = "object",
-
         affected_by_wind = false,
         cyclic = true,
         duration = hypno_cloud_duration, -- linger for up to 5s
@@ -517,7 +517,82 @@ data:extend {
 data.raw["trivial-smoke"]["ooozma-hypno-cloud-boundary"].animation.draw_as_glow = true
 data.raw["trivial-smoke"]["ooozma-hypno-cloud-expanding-boundary"].animation.draw_as_glow = true
 
+local function extend_sticker_effects()
+    data:extend {maraxsis.merge(data.raw.sticker["bioflux-speed-regen-sticker"], {
+        name = "maraxsis-hypnosis-sticker",
+        icon = "__maraxsis__/graphics/icons/hypnosis.png",
+        icon_size = 64,
+        render_layer = "higher-object-above",
+        animation = {
+            layers = {
+                util.sprite_load("__maraxsis__/graphics/entity/hypnosis-sticker/particle-front", {
+                    priority = "high",
+                    frame_count = 50,
+                    scale = 2.0,
+                }),
+                util.sprite_load("__maraxsis__/graphics/entity/hypnosis-sticker/whirl-front", {
+                    priority = "high",
+                    frame_count = 50,
+                    scale = 2.0,
+                    animation_speed = 0.5,
+                    shift = util.by_pixel(0, 0)
+                })
+            }
+        },
+        damage_per_tick = "nil",
+        target_movement_modifier = 0.25,
+        duration_in_ticks = 10 * 60 * 60,
+        working_sound = {
+            sound = {
+                filename = "__maraxsis__/sounds/YOU ARE BEING HYPNOTIZED.ogg",
+                category = "enemy",
+                priority = 126,
+                aggregation = {
+                    max_count = 1,
+                    remove = true,
+                },
+                game_controller_vibration_data = {
+                    low_frequency_vibration_intensity = 0.5,
+                    high_frequency_vibration_intensity = 0.7,
+                    play_for = "everything",
+                    duration = 1000,
+                },
+                fade_in_ticks = 4,
+                fade_out_ticks = 20,
+                probability = 1,
+                volume = 0.65,
+                audible_distance_modifier = 0.01,
+            }
+        }
+    })}
+
+    data:extend {maraxsis.merge(data.raw.sticker["bioflux-speed-regen-sticker-behind"], {
+        name = "maraxsis-hypnosis-sticker-behind",
+        icon = "__maraxsis__/graphics/icons/hypnosis.png",
+        icon_size = 64,
+        render_layer = "higher-object-under",
+        animation = {
+            layers = {
+                util.sprite_load("__maraxsis__/graphics/entity/hypnosis-sticker/particle-back", {
+                    priority = "high",
+                    frame_count = 50,
+                    scale = 2.0,
+                }),
+                util.sprite_load("__maraxsis__/graphics/entity/hypnosis-sticker/whirl-back", {
+                    priority = "high",
+                    frame_count = 50,
+                    scale = 2.0,
+                    animation_speed = 0.5,
+                    shift = util.by_pixel(0, -48)
+                })
+            }
+        },
+        duration_in_ticks = 3 * 60 * 60
+    })}
+end
+
 return {
     make_hypno_cloud_effect = make_hypno_cloud_effect,
-    make_particle_effects = make_particle_effects
+    make_particle_effects = make_particle_effects,
+    extend_sticker_effects = extend_sticker_effects
 }

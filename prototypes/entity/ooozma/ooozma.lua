@@ -3,7 +3,8 @@
 -- 2. Inner glow. Blending mode normal. Alpha 0.75
 -- 3. Saturation 2
 
-local particle_effects = require "particle-effects"
+local hypnosis = require "hypnosis"
+hypnosis.extend_sticker_effects()
 local space_age_sounds = require "__space-age__.prototypes.entity.sounds"
 
 local function ooozma_spritesheet(file_name, is_shadow, is_glow, scale, alpha)
@@ -215,7 +216,7 @@ local function make_ooozma_head(
         },
         created_effect = created_effect,
         update_effects_while_enraged = {
-            particle_effects.make_hypno_cloud_effect(base_name)
+            hypnosis.make_hypno_cloud_effect(base_name)
         },
     }
 end
@@ -322,7 +323,7 @@ local function make_ooozma(
 
     data:extend(make_ooozma_segments(base_name, segment_scales, scale, damage_multiplier, health, sounds, render_layer))
     --data:extend(make_ooozma_corpse(base_name, order, scale))
-    data:extend(particle_effects.make_particle_effects(base_name, order, scale, damage_multiplier))
+    data:extend(hypnosis.make_particle_effects(base_name, order, scale, damage_multiplier))
 end
 
 make_ooozma(
