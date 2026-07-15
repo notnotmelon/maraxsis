@@ -1,6 +1,6 @@
 local FULL_BREATH_NUM_TICKS = 10 * 60 * 60 -- ten minutes before you start drowning
 local TRENCH_LUNG_REDUCTION = 40 -- trench kills you 40x faster
-local BREATH_REGENERATION_FACTOR = 40 -- while in an air bubble, you regen air 40x faster than you would lose it
+local BREATH_REGENERATION_FACTOR = 60 -- while in an air bubble, you regen air 60x faster than you would lose it
 local UPDATE_RATE = 20
 
 local function stringify_oxygen_stats(player)
@@ -163,7 +163,7 @@ maraxsis.on_nth_tick(UPDATE_RATE, function()
         local grid = character.grid
         if grid then
             for _, equipment in pairs(grid.equipment) do
-                if is_abyssal_diving_gear[equipment.name] and equipment.energy >= 1 then
+                if is_abyssal_diving_gear[equipment.name] and equipment.energy ~= 0 then
                     change_breath_amount_by(player, BREATH_REGENERATION_FACTOR * equipment.energy / equipment.max_energy)
                 end
             end
