@@ -149,3 +149,21 @@ uranium_fuel_cell.fuel_acceleration_multiplier_quality_bonus = nuclear_fuel.fuel
 uranium_fuel_cell.fuel_top_speed_multiplier_quality_bonus = nuclear_fuel.fuel_top_speed_multiplier_quality_bonus
 
 data.raw["assembling-machine"]["crusher"].surface_conditions = nil
+
+do
+    for _, capsule in pairs{
+        "yumako",
+        "yumako-mash",
+        "jellynut",
+        "jelly",
+        "bioflux",
+    } do
+        data.raw.capsule[capsule].capsule_action.attack_parameters.cooldown = data.raw.capsule["raw-fish"].capsule_action.attack_parameters.cooldown
+    end
+    for _, sticker in pairs{
+        "yumako-regen-sticker",
+        "bioflux-speed-regen-sticker",
+    } do
+        data.raw.sticker[sticker].damage_per_tick.amount = data.raw.sticker[sticker].damage_per_tick.amount * 10
+    end
+end
