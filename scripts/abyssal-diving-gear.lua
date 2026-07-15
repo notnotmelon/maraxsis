@@ -21,7 +21,7 @@ local is_abyssal_diving_gear = {
 
 -- returns the default buff amount per quality level in vanilla
 local function get_quality_buff(quality_level)
-    return 1 + quality_level
+    return (quality_level * 0.3 + 1)
 end
 
 local function get_abyssal_light_size(player)
