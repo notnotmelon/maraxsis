@@ -329,7 +329,7 @@ end
 make_ooozma(
     "small-ooozma",
     "maraxsis-a",
-    0.25,
+    0.45,
     1,
     100000,
     10,
@@ -342,7 +342,7 @@ make_ooozma(
 make_ooozma(
     "medium-ooozma",
     "maraxsis-b",
-    0.30,
+    0.66,
     1,
     200000,
     10,
@@ -355,7 +355,7 @@ make_ooozma(
 make_ooozma(
     "big-ooozma",
     "maraxsis-c",
-    0.35,
+    1.0,
     1,
     300000,
     10,
@@ -368,7 +368,7 @@ make_ooozma(
 make_ooozma(
     "behemoth-ooozma",
     "maraxsis-d",
-    0.5,
+    1.5,
     1,
     400000,
     10,
