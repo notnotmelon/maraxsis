@@ -15,9 +15,8 @@ data:extend {{
     },
     prerequisites = {"maraxsis-piscary", "ducts", "maraxsis-geothermal-energy"},
     research_trigger = {
-        type = "craft-item",
-        item = "maraxsis-fish-food",
-        count = 20
+        type = "scripted",
+        trigger_description = {"technology-trigger.survive-hypnosis"}
     },
     order = "ee[ooozma-confinement]",
 }}

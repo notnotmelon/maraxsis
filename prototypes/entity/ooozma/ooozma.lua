@@ -152,6 +152,7 @@ local function make_ooozma_head(
     sounds,
     render_layer)
     return {
+        keep_animation = true, -- TODO: remove
         name = "maraxsis-" .. base_name,
         type = "segmented-unit",
         --icon = "__maraxsis__/graphics/icons/" .. base_name .. ".png",
@@ -221,6 +222,7 @@ end
 
 local function make_ooozma_segment(base_name, scale, damage_multiplier, health, sounds, render_layer)
     return {
+        keep_animation = true, -- TODO: remove
         name = make_segment_name(base_name .. "-segment", scale),
         type = "segment",
         localised_name = {"entity-name.maraxsis-ooozma-segment", {"entity-name.maraxsis-" .. base_name}},
@@ -326,7 +328,7 @@ end
 make_ooozma(
     "small-ooozma",
     "maraxsis-a",
-    0.45,
+    0.25,
     1,
     100000,
     10,
@@ -339,7 +341,7 @@ make_ooozma(
 make_ooozma(
     "medium-ooozma",
     "maraxsis-b",
-    0.66,
+    0.30,
     1,
     200000,
     10,
@@ -352,7 +354,7 @@ make_ooozma(
 make_ooozma(
     "big-ooozma",
     "maraxsis-c",
-    1.0,
+    0.35,
     1,
     300000,
     10,
@@ -365,7 +367,7 @@ make_ooozma(
 make_ooozma(
     "behemoth-ooozma",
     "maraxsis-d",
-    1.5,
+    0.5,
     1,
     400000,
     10,
