@@ -68,7 +68,7 @@ for i = 1, 15 do
     TROPICAL_FISH_NAMES[i] = name
 end
 
-local HYPNO_EQUIPMENT = {
+local ESTROGEN_EQUIPMENT = {
     ["maraxsis-abyssal-diving-gear"] = 0.1,
     ["maraxsis-abyssal-diving-gear-disabled"] = 0.1,
     ["maraxsis-sentience-storage-receptacle"] = 0.1,
@@ -94,7 +94,7 @@ data:extend {{
         TROPICAL_FISH_NAMES = TROPICAL_FISH_NAMES,
         SAND_ITEM_NAME = SAND_ITEM_NAME,
         DEGRADATION_ENABLED = true, -- https://github.com/notnotmelon/maraxsis/issues/409
-        HYPNO_EQUIPMENT = HYPNO_EQUIPMENT,
+        ESTROGEN_EQUIPMENT = ESTROGEN_EQUIPMENT,
         ESTROGEN_DURATION = 3 * 60 * 60
     }
 }}

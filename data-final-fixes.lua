@@ -156,15 +156,15 @@ do
     end
 end
 
-for hypno_equipment, strength in pairs(maraxsis_constants.HYPNO_EQUIPMENT) do
+for estrogen_equipment, strength in pairs(maraxsis_constants.ESTROGEN_EQUIPMENT) do
     for prototype in pairs(defines.prototypes.equipment) do
-        local equipment_prototype = data.raw[prototype][hypno_equipment]
+        local equipment_prototype = data.raw[prototype][estrogen_equipment]
         if equipment_prototype then
             equipment_prototype.custom_tooltip_fields = equipment_prototype.custom_tooltip_fields or {}
             table.insert(equipment_prototype.custom_tooltip_fields, {
-                name = {"tooltip.hypno-duration-reduction"},
+                name = {"tooltip.estrogen-duration-reduction"},
                 value = {"quality-tooltip.percent-duration-decrease", tostring(strength * 100)},
-                quality_header = "quality-tooltip.hypno-duration-reduction",
+                quality_header = "quality-tooltip.estrogen-duration-reduction",
                 quality_values = table.map(data.raw.quality, function(q)
                     local quality_strength = (q.level * 0.3 + 1)
                     local value = tostring(quality_strength * strength * 100)

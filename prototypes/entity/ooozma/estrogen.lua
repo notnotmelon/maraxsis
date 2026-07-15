@@ -1,12 +1,12 @@
 local space_age_sounds = require "__space-age__.prototypes.entity.sounds"
 local smoke_animations = require "__base__.prototypes.entity.smoke-animations"
 
-local hypno_cloud_steps = 30
-local hypno_cloud_interval = 10
-local hypno_cloud_duration = 60 * 5
-local hypno_cloud_repeats = 2
+local estrogen_cloud_steps = 30
+local estrogen_cloud_interval = 10
+local estrogen_cloud_duration = 60 * 5
+local estrogen_cloud_repeats = 2
 
-local function make_hypno_cloud_effect(base_name)
+local function make_estrogen_cloud_effect(base_name)
     local effects = {}
 
     table.insert(effects,
@@ -21,13 +21,13 @@ local function make_hypno_cloud_effect(base_name)
                     source_effects =
                     {
                         type = "create-entity",
-                        entity_name = base_name .. "-expanding-hypno-cloud-1",
+                        entity_name = base_name .. "-expanding-estrogen-cloud-1",
                     }
                 }
             }
         })
 
-    for i = 2, hypno_cloud_steps do
+    for i = 2, estrogen_cloud_steps do
         table.insert(effects,
             {
                 type = "nested-result",
@@ -37,7 +37,7 @@ local function make_hypno_cloud_effect(base_name)
                     action_delivery =
                     {
                         type = "delayed",
-                        delayed_trigger = base_name .. "-expanding-hypno-cloud-delay-" .. i
+                        delayed_trigger = base_name .. "-expanding-estrogen-cloud-delay-" .. i
                     }
                 }
             })
@@ -51,18 +51,18 @@ local function make_hypno_cloud_effect(base_name)
                 action_delivery =
                 {
                     type = "delayed",
-                    delayed_trigger = base_name .. "-hypno-cloud-delay"
+                    delayed_trigger = base_name .. "-estrogen-cloud-delay"
                 }
             }
         })
 
     return {
-        time_cooldown = hypno_cloud_interval * hypno_cloud_steps + (1 + hypno_cloud_repeats) * hypno_cloud_duration,
+        time_cooldown = estrogen_cloud_interval * estrogen_cloud_steps + (1 + estrogen_cloud_repeats) * estrogen_cloud_duration,
         effect = effects
     }
 end
 
-local function make_hypno_cloud_trigger_effects(base_name, radius, damage_multiplier)
+local function make_estrogen_cloud_trigger_effects(base_name, radius, damage_multiplier)
     return {
         type = "direct",
         action_delivery =
@@ -81,17 +81,17 @@ local function make_hypno_cloud_trigger_effects(base_name, radius, damage_multip
                             target_effects = {
                                 {
                                     type = "create-sticker",
-                                    sticker = "maraxsis-hypnosis-sticker",
+                                    sticker = "maraxsis-estrogen-sticker",
                                     show_in_tooltip = true
                                 },
                                 {
                                     type = "create-sticker",
-                                    sticker = "maraxsis-hypnosis-sticker-behind",
+                                    sticker = "maraxsis-estrogen-sticker-behind",
                                     show_in_tooltip = false
                                 },
                                 {
                                     type = "script",
-                                    effect_id = "maraxsis-hypnosis-sticker-applied",
+                                    effect_id = "maraxsis-estrogen-sticker-applied",
                                 }
                             }
                         }
@@ -129,11 +129,11 @@ end
 
 local function make_particle_effects(base_name, order, scale, damage_multiplier)
     local main_cloud_scale = 1 + 0.5 * scale
-    local expanding_cloud_steps = hypno_cloud_steps
-    local hypno_cloud = {
+    local expanding_cloud_steps = estrogen_cloud_steps
+    local estrogen_cloud = {
         type = "smoke-with-trigger",
-        name = base_name .. "-hypno-cloud",
-        localised_name = {"entity-name.demolisher-hypno-cloud", {"entity-name." .. base_name}},
+        name = base_name .. "-estrogen-cloud",
+        localised_name = {"entity-name.demolisher-estrogen-cloud", {"entity-name." .. base_name}},
         order = order,
         flags = {"not-on-map"},
         hidden = true,
@@ -149,7 +149,7 @@ local function make_particle_effects(base_name, order, scale, damage_multiplier)
         render_layer = "object",
         affected_by_wind = false,
         cyclic = true,
-        duration = hypno_cloud_duration, -- linger for up to 5s
+        duration = estrogen_cloud_duration, -- linger for up to 5s
         fade_away_duration = 60,
         spread_duration = 20,
         color = {0.239, 0.239, 0.239, 0.50},
@@ -275,7 +275,7 @@ local function make_particle_effects(base_name, order, scale, damage_multiplier)
                     {
                         {
                             type = "create-trivial-smoke",
-                            smoke_name = "ooozma-hypno-cloud-boundary",
+                            smoke_name = "ooozma-estrogen-cloud-boundary",
                             initial_height = 0,
                             offset_deviation = {{-0.5, -0.5}, {0.5, 0.5}},
                             starting_frame = 30,
@@ -286,11 +286,11 @@ local function make_particle_effects(base_name, order, scale, damage_multiplier)
                     }
                 }
             },
-            make_hypno_cloud_trigger_effects(base_name, 32 * main_cloud_scale, damage_multiplier)
+            make_estrogen_cloud_trigger_effects(base_name, 32 * main_cloud_scale, damage_multiplier)
         },
         action_cooldown = 10
     }
-    local function make_expanding_hypno_cloud(i, cloud_scale)
+    local function make_expanding_estrogen_cloud(i, cloud_scale)
         local max_radius = 32 * cloud_scale
         local band_thickness = 4
         local bands = math.max(1, math.floor(max_radius / band_thickness) - 1)
@@ -335,7 +335,7 @@ local function make_particle_effects(base_name, order, scale, damage_multiplier)
                 {
                     {
                         type = "create-trivial-smoke",
-                        smoke_name = "ooozma-hypno-cloud-expanding-boundary",
+                        smoke_name = "ooozma-estrogen-cloud-expanding-boundary",
                         initial_height = 0,
                         -- repeat_count = 10,
                         offset_deviation = {{-0.025, -0.025}, {0.025, 0.025}},
@@ -349,12 +349,12 @@ local function make_particle_effects(base_name, order, scale, damage_multiplier)
         }
         table.insert(actions, outer_cluster)
         -- add the significant actions
-        table.insert(actions, make_hypno_cloud_trigger_effects(base_name, 32 * cloud_scale, damage_multiplier))
-        local expanding_hypno_cloud =
+        table.insert(actions, make_estrogen_cloud_trigger_effects(base_name, 32 * cloud_scale, damage_multiplier))
+        local expanding_estrogen_cloud =
         {
             type = "smoke-with-trigger",
-            name = base_name .. "-expanding-hypno-cloud-" .. i,
-            localised_name = {"entity-name.demolisher-expanding-hypno-cloud", {"entity-name." .. base_name}, "" .. i},
+            name = base_name .. "-expanding-estrogen-cloud-" .. i,
+            localised_name = {"entity-name.demolisher-expanding-estrogen-cloud", {"entity-name." .. base_name}, "" .. i},
             order = order .. "-" .. string.format("%02d", i),
             flags = {"not-on-map"},
             hidden = true,
@@ -366,14 +366,14 @@ local function make_particle_effects(base_name, order, scale, damage_multiplier)
             wave_speed = {1 / 80, 1 / 60},
             wave_distance = {0.3, 0.2},
             spread_duration_variation = 0,
-            particle_duration_variation = hypno_cloud_interval,
+            particle_duration_variation = estrogen_cloud_interval,
             render_layer = "object",
 
             affected_by_wind = false,
             cyclic = false,
-            duration = hypno_cloud_interval * 2,
-            fade_away_duration = hypno_cloud_interval,
-            spread_duration = hypno_cloud_interval,
+            duration = estrogen_cloud_interval * 2,
+            fade_away_duration = estrogen_cloud_interval,
+            spread_duration = estrogen_cloud_interval,
             color = {0.239, 0.239, 0.239, 0.50},
             attach_to_target = true,
             fade_when_attachment_is_destroyed = true,
@@ -389,19 +389,19 @@ local function make_particle_effects(base_name, order, scale, damage_multiplier)
                 flags = {"smoke"}
             },
             action = actions,
-            action_cooldown = hypno_cloud_interval
+            action_cooldown = estrogen_cloud_interval
         }
-        return expanding_hypno_cloud
+        return expanding_estrogen_cloud
     end
-    local function make_expanding_hypno_clouds()
-        local expanding_hypno_clouds = {}
+    local function make_expanding_estrogen_clouds()
+        local expanding_estrogen_clouds = {}
         local start_expansion = 2
         for i = 1, expanding_cloud_steps do
             local cloud_scale = main_cloud_scale * (i + start_expansion) / (expanding_cloud_steps + start_expansion)
-            table.insert(expanding_hypno_clouds, make_expanding_hypno_cloud(i, cloud_scale))
+            table.insert(expanding_estrogen_clouds, make_expanding_estrogen_cloud(i, cloud_scale))
         end
 
-        table.insert(expanding_hypno_clouds[1].action, {
+        table.insert(expanding_estrogen_clouds[1].action, {
             type = "direct",
             action_delivery =
             {
@@ -416,17 +416,17 @@ local function make_particle_effects(base_name, order, scale, damage_multiplier)
             }
         })
 
-        return expanding_hypno_clouds
+        return expanding_estrogen_clouds
     end
-    local expanding_hypno_clouds = make_expanding_hypno_clouds()
+    local expanding_estrogen_clouds = make_expanding_estrogen_clouds()
 
-    local expanding_hypno_cloud_delays = {}
-    local ticks_between_expanding_hypno_cloud_steps = hypno_cloud_interval
+    local expanding_estrogen_cloud_delays = {}
+    local ticks_between_expanding_estrogen_cloud_steps = estrogen_cloud_interval
     for i = 2, expanding_cloud_steps do
-        table.insert(expanding_hypno_cloud_delays, {
+        table.insert(expanding_estrogen_cloud_delays, {
             type = "delayed-active-trigger",
-            name = base_name .. "-expanding-hypno-cloud-delay-" .. i,
-            delay = ticks_between_expanding_hypno_cloud_steps * (i - 1),
+            name = base_name .. "-expanding-estrogen-cloud-delay-" .. i,
+            delay = ticks_between_expanding_estrogen_cloud_steps * (i - 1),
             cancel_when_source_is_destroyed = true,
             action =
             {
@@ -439,7 +439,7 @@ local function make_particle_effects(base_name, order, scale, damage_multiplier)
                         {
                             {
                                 type = "create-entity",
-                                entity_name = expanding_hypno_clouds[i].name
+                                entity_name = expanding_estrogen_clouds[i].name
                             }
                         }
                     }
@@ -448,12 +448,12 @@ local function make_particle_effects(base_name, order, scale, damage_multiplier)
         })
     end
 
-    table.insert(expanding_hypno_cloud_delays, {
+    table.insert(expanding_estrogen_cloud_delays, {
         type = "delayed-active-trigger",
-        name = base_name .. "-hypno-cloud-delay",
-        delay = ticks_between_expanding_hypno_cloud_steps * expanding_cloud_steps,
-        repeat_count = hypno_cloud_repeats,
-        repeat_delay = hypno_cloud_duration,
+        name = base_name .. "-estrogen-cloud-delay",
+        delay = ticks_between_expanding_estrogen_cloud_steps * expanding_cloud_steps,
+        repeat_count = estrogen_cloud_repeats,
+        repeat_delay = estrogen_cloud_duration,
         cancel_when_source_is_destroyed = true,
         action =
         {
@@ -466,7 +466,7 @@ local function make_particle_effects(base_name, order, scale, damage_multiplier)
                     {
                         {
                             type = "create-entity",
-                            entity_name = hypno_cloud.name
+                            entity_name = estrogen_cloud.name
                         }
                     }
                 }
@@ -474,11 +474,11 @@ local function make_particle_effects(base_name, order, scale, damage_multiplier)
         }
     })
 
-    local prototypes = {hypno_cloud}
-    for _, prototype in pairs(expanding_hypno_clouds) do
+    local prototypes = {estrogen_cloud}
+    for _, prototype in pairs(expanding_estrogen_clouds) do
         table.insert(prototypes, prototype)
     end
-    for _, prototype in pairs(expanding_hypno_cloud_delays) do
+    for _, prototype in pairs(expanding_estrogen_cloud_delays) do
         table.insert(prototypes, prototype)
     end
     return prototypes
@@ -487,7 +487,7 @@ end
 local trivial_smoke = smoke_animations.trivial_smoke
 data:extend {
     trivial_smoke {
-        name = "ooozma-hypno-cloud-boundary",
+        name = "ooozma-estrogen-cloud-boundary",
         color = {255, 105, 180, 0.1},
         affected_by_wind = false,
         render_layer = "under-elevated",
@@ -502,7 +502,7 @@ data:extend {
         show_when_smoke_off = true
     },
     trivial_smoke {
-        name = "ooozma-hypno-cloud-expanding-boundary",
+        name = "ooozma-estrogen-cloud-expanding-boundary",
         color = {255, 105, 180, 0.1},
         render_layer = "under-elevated",
         start_scale = 0.3,
@@ -518,23 +518,23 @@ data:extend {
     },
 }
 
-data.raw["trivial-smoke"]["ooozma-hypno-cloud-boundary"].animation.draw_as_glow = true
-data.raw["trivial-smoke"]["ooozma-hypno-cloud-expanding-boundary"].animation.draw_as_glow = true
+data.raw["trivial-smoke"]["ooozma-estrogen-cloud-boundary"].animation.draw_as_glow = true
+data.raw["trivial-smoke"]["ooozma-estrogen-cloud-expanding-boundary"].animation.draw_as_glow = true
 
 local function extend_sticker_effects()
     data:extend {maraxsis.merge(data.raw.sticker["bioflux-speed-regen-sticker"], {
-        name = "maraxsis-hypnosis-sticker",
-        icon = "__maraxsis__/graphics/icons/hypnosis.png",
+        name = "maraxsis-estrogen-sticker",
+        icon = "__maraxsis__/graphics/icons/estrogen.png",
         icon_size = 64,
         render_layer = "higher-object-above",
         animation = {
             layers = {
-                util.sprite_load("__maraxsis__/graphics/entity/hypnosis-sticker/particle-front", {
+                util.sprite_load("__maraxsis__/graphics/entity/estrogen-sticker/particle-front", {
                     priority = "high",
                     frame_count = 50,
                     scale = 2.0,
                 }),
-                util.sprite_load("__maraxsis__/graphics/entity/hypnosis-sticker/whirl-front", {
+                util.sprite_load("__maraxsis__/graphics/entity/estrogen-sticker/whirl-front", {
                     priority = "high",
                     frame_count = 50,
                     scale = 2.0,
@@ -548,7 +548,7 @@ local function extend_sticker_effects()
         duration_in_ticks = maraxsis_constants.ESTROGEN_DURATION,
         working_sound = {
             sound = {
-                filename = "__maraxsis__/sounds/YOU ARE BEING HYPNOTIZED.ogg",
+                filename = "__maraxsis__/sounds/estrogen.ogg",
                 category = "enemy",
                 priority = 126,
                 aggregation = {
@@ -571,18 +571,18 @@ local function extend_sticker_effects()
     })}
 
     data:extend {maraxsis.merge(data.raw.sticker["bioflux-speed-regen-sticker-behind"], {
-        name = "maraxsis-hypnosis-sticker-behind",
-        icon = "__maraxsis__/graphics/icons/hypnosis.png",
+        name = "maraxsis-estrogen-sticker-behind",
+        icon = "__maraxsis__/graphics/icons/estrogen.png",
         icon_size = 64,
         render_layer = "higher-object-under",
         animation = {
             layers = {
-                util.sprite_load("__maraxsis__/graphics/entity/hypnosis-sticker/particle-back", {
+                util.sprite_load("__maraxsis__/graphics/entity/estrogen-sticker/particle-back", {
                     priority = "high",
                     frame_count = 50,
                     scale = 2.0,
                 }),
-                util.sprite_load("__maraxsis__/graphics/entity/hypnosis-sticker/whirl-back", {
+                util.sprite_load("__maraxsis__/graphics/entity/estrogen-sticker/whirl-back", {
                     priority = "high",
                     frame_count = 50,
                     scale = 2.0,
@@ -596,7 +596,7 @@ local function extend_sticker_effects()
 end
 
 return {
-    make_hypno_cloud_effect = make_hypno_cloud_effect,
+    make_estrogen_cloud_effect = make_estrogen_cloud_effect,
     make_particle_effects = make_particle_effects,
     extend_sticker_effects = extend_sticker_effects
 }
