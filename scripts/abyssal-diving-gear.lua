@@ -155,20 +155,23 @@ end)
 
 maraxsis.on_event(defines.events.on_equipment_inserted, function(event)
     local equipment = event.equipment
-    if not equipment.valid or not is_abyssal_diving_gear[equipment.name] then return end
     local grid = event.grid
-    if not grid.valid then return end
-
-    for _, player in pairs(game.players) do
-        local armor = player.get_inventory(defines.inventory.character_armor)
-        if not armor then goto continue end
-        for i = 1, #armor do
-            local stack = armor[i]
-            if stack.valid_for_read and stack.is_armor and stack.grid == grid then
-                swap_diving_gear(grid, player, equipment)
+    if equipment.valid and grid.valid and is_abyssal_diving_gear[equipment.name] then
+        for _, player in pairs(game.players) do
+            local armor = player.get_inventory(defines.inventory.character_armor)
+            if armor then
+                for i = 1, #armor do
+                    local stack = armor[i]
+                    if stack.valid_for_read and stack.is_armor and stack.grid == grid then
+                        swap_diving_gear(grid, player, equipment)
+                    end
+                end
             end
         end
-        ::continue::
+    end
+
+
+    for _, player in pairs(game.players) do
         update_equipment_effects(player)
     end
 end)
