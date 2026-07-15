@@ -8,7 +8,7 @@ maraxsis.on_event(defines.events.on_surface_created, function(event)
 	surface.freeze_daytime = true
 	surface.show_clouds = false
 	surface.brightness_visual_weights = {r = 1, g = 1, b = 1}
-	surface.min_brightness = 0
+	surface.min_brightness = 0.075
 	local mgs = surface.map_gen_settings
 	mgs.seed = parent_surface.map_gen_settings.seed
 	surface.map_gen_settings = mgs
