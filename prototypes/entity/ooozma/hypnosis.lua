@@ -89,6 +89,10 @@ local function make_hypno_cloud_trigger_effects(base_name, radius, damage_multip
                                     sticker = "maraxsis-hypnosis-sticker-behind",
                                     show_in_tooltip = false
                                 },
+                                {
+                                    type = "script",
+                                    effect_id = "maraxsis-hypnosis-sticker-applied",
+                                }
                             }
                         }
                     }
@@ -541,7 +545,7 @@ local function extend_sticker_effects()
         },
         damage_per_tick = "nil",
         target_movement_modifier = 0.25,
-        duration_in_ticks = 10 * 60 * 60,
+        duration_in_ticks = maraxsis_constants.ESTROGEN_DURATION,
         working_sound = {
             sound = {
                 filename = "__maraxsis__/sounds/YOU ARE BEING HYPNOTIZED.ogg",
@@ -587,7 +591,7 @@ local function extend_sticker_effects()
                 })
             }
         },
-        duration_in_ticks = 3 * 60 * 60
+        duration_in_ticks = maraxsis_constants.ESTROGEN_DURATION
     })}
 end
 

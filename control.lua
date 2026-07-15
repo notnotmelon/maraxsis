@@ -20,6 +20,7 @@ require "scripts.oversized-steam-turbine"
 require "scripts.hydraulic-science-pack"
 require "scripts.legendary-quality"
 require "scripts.ooozma"
+require "scripts.hypnosis"
 
 require "compat.call-plumber"
 
