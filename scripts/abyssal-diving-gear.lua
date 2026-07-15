@@ -42,7 +42,7 @@ local function get_abyssal_light_size(player)
     return light_size
 end
 
-local function get_hypno_resistance(player)
+function maraxsis.get_hypno_resistance(player)
     init()
     local character = player.character
     local hypno_resistance = 1 - storage.base_character_values["hypno_resistance"]
@@ -106,11 +106,6 @@ local function update_abyssal_light_cone(player)
     }
 end
 
-local function update_equipment_effects(player)
-    update_abyssal_light_cone(player)
-    game.print(get_hypno_resistance(player))
-end
-
 ---does the same thing as swap_diving_gear_to_correct_prototype, but only for one equipment
 local function swap_diving_gear(grid, player, equipment)
     local equipment_name = equipment.name
@@ -147,7 +142,7 @@ maraxsis.on_event({
     defines.events.on_player_created,
 }, function(event)
     local player = game.get_player(event.player_index)
-    update_equipment_effects(player)
+    update_abyssal_light_cone(player)
     local character = player.character
     if not character or not character.grid then return end
     swap_diving_gear_to_correct_prototype(character.grid, player)
@@ -172,13 +167,13 @@ maraxsis.on_event(defines.events.on_equipment_inserted, function(event)
 
 
     for _, player in pairs(game.players) do
-        update_equipment_effects(player)
+        update_abyssal_light_cone(player)
     end
 end)
 
 maraxsis.on_event({defines.events.on_equipment_removed, defines.events.on_player_controller_changed}, function(event)
     for _, player in pairs(game.players) do
-        update_equipment_effects(player)
+        update_abyssal_light_cone(player)
     end
 end)
 
@@ -211,6 +206,6 @@ function maraxsis.set_modifier(source_key, modifier_type, modifier)
 
     storage.base_character_values[modifier_type] = base_value
     for _, player in pairs(game.players) do
-        update_equipment_effects(player)
+        update_abyssal_light_cone(player)
     end
 end
