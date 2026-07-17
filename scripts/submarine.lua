@@ -17,13 +17,22 @@ maraxsis.on_event(maraxsis.events.on_init(), function()
     trench_generation_sanity_check()
 end)
 
+local submarine_filters = {}
+
+for key,sub in pairs(SUBMARINES) do
+    table.insert(submarine_filters,{filter = "name",name = key})
+end
+
 maraxsis.on_event(maraxsis.events.on_built(), function(event)
     local entity = event.entity
     if not entity.valid then return end
     if not SUBMARINES[entity.name] then return end
 
     storage.submarines[entity.unit_number] = entity
-end)
+end,
+submarine_filters
+
+)
 
 local function exit_submarine(event)
     local player = game.get_player(event.player_index)

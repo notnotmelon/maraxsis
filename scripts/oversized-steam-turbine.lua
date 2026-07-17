@@ -128,7 +128,8 @@ maraxsis.on_event(maraxsis.events.on_built(), function(event)
     entity.add_fluid_box_linked_connection(1, assembler, 1)
 
     storage.oversized_steam_turbines[entity.unit_number] = assembler
-end)
+end,{{filter = "name",name = "duct-exhaust",mode = "or", invert = false,},
+{filter = "name",name = "maraxsis-oversized-steam-turbine",mode = "or", invert = false,}})
 
 maraxsis.on_event(defines.events.on_player_rotated_entity, function(event)
     local entity = event.entity
