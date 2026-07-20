@@ -26,7 +26,7 @@ PlanetsLib:extend{
     starmap_icon_size = 512,
     icon = "__maraxsis__/graphics/planets/maraxsis.png",
     icon_size = 256,
-    solar_power_in_space = 75,
+    solar_power_in_space = 150,
     map_gen_settings = planet_map_gen.maraxsis(),
     draw_orbit = false,
     subgroup = "planets",
