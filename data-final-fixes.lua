@@ -185,3 +185,7 @@ if collision_mask_util.masks_collide(sand_mask, hydro_plant_mask) then
         .. serpent.line(hydro_plant_mask)
     )
 end
+
+if data.raw["explosion"]["nuke-effects-nauvis"] then
+    PlanetsLib.restrict_surface_conditions(data.raw["explosion"]["nuke-effects-nauvis"], {property = "pressure", max = 50000})
+end
