@@ -77,6 +77,9 @@ fishing_tower.radius_visualisation_picture = {
     height = 6,
     priority = "extra-high-no-scale"
 }
+fishing_tower.module_slots = 3
+fishing_tower.quality_affects_module_slots = true
+fishing_tower.allowed_effects = {"speed", "productivity", "consumption", "pollution", "quality"}
 data:extend {fishing_tower}
 
 data:extend {{
