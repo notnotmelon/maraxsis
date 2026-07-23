@@ -1,4 +1,5 @@
 if mods["Krastorio2-spaced-out"] then return end
+if mods.space_age_galore then return end
 
 local effects = data.raw.technology["maraxsis-deepsea-research"].effects
 

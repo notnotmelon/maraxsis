@@ -5,11 +5,8 @@ require "prototypes.item-sounds"
 require "prototypes.entity.regulator-fluidbox"
 require "prototypes.fluid-void"
 require "prototypes.technology.promethium-quality"
-
-if not mods.space_age_galore then
-    require "prototypes.recipe.deepsea-research"
-end
-
+require "prototypes.recipe.deepsea-research"
+require "prototypes.recipe.hypno-recipes"
 
 require "compat.aai-industry"
 require "compat.aai-signal-transmission"
