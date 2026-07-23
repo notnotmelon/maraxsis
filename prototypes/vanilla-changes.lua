@@ -16,21 +16,22 @@ for _, lab in pairs(data.raw.lab) do
 end
 
 if settings.startup["maraxsis-add-hydraulic-science"].value then
-    local function add_hydraulic_pack(tech_name, direct_prereq)
+    local function add_hydraulic_pack(tech_name)
         local tech = data.raw.technology[tech_name]
         if not tech then return end
 
         if tech.unit and tech.unit.ingredients then table.insert(tech.unit.ingredients, {"hydraulic-science-pack", 1}) end
-        if direct_prereq and tech.prerequisites then table.insert(tech.prerequisites, "maraxsis-project-seadragon") end
     end
 
-    add_hydraulic_pack("promethium-science-pack", false)
+    add_hydraulic_pack("stellar-discovery-solar-system-edge")
+    add_hydraulic_pack("promethium-science-pack")
+    add_hydraulic_pack("research-productivity")
+
     if mods["Krastorio2-spaced-out"] then
-        table.insert(data.raw["technology"]["promethium-science-pack"].prerequisites, "kr-quantum-computer")
+        table.insert(data.raw["technology"]["stellar-discovery-solar-system-edge"].prerequisites, "kr-quantum-computer")
     else
-        table.insert(data.raw["technology"]["promethium-science-pack"].prerequisites, "maraxsis-deepsea-research")
+        table.insert(data.raw["technology"]["stellar-discovery-solar-system-edge"].prerequisites, "maraxsis-deepsea-research")
     end
-    add_hydraulic_pack("research-productivity", false)
 end
 
 local function insert_hydro_plant(recipe)
