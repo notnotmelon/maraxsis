@@ -100,4 +100,11 @@ data:extend {{
     categories = {"rocket-building"},
     always_show_made_in = true,
     hide_from_player_crafting = true,
+    surface_conditions = {
+        {
+            property = "pressure",
+            min = 200000,
+           
+        }
+    }
 }}
