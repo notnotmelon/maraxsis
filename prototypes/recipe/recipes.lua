@@ -58,32 +58,3 @@ data:extend {{
     enabled = false,
     icon = "__maraxsis__/graphics/icons/bio-oil.png"
 }}
-
-data:extend { {
-    type = "recipe",
-    name = "maraxsis-holmium-recrystalization",
-    categories = { "maraxsis-hydro-plant" },
-    ingredients = {
-        { type = "fluid", name = "holmium-solution", amount = 50 },
-        { type = "item",  name = "holmium-ore",      amount = 1 },
-    },
-    results = {
-        { type = "item", name = "holmium-plate", amount = 5 },
-    },
-    energy_required = data.raw.recipe["holmium-plate"].energy_required * 5,
-    caregories = { "maraxsis-hydro-plant" },
-    enabled = false,
-    auto_recycle = false,
-    icons = {
-        {
-            icon = "__space-age__/graphics/icons/holmium-plate.png",
-            icon_size = 64,
-        },
-        {
-            icon = "__space-age__/graphics/icons/fluid/holmium-solution.png",
-            icon_size = 64,
-            size = 0.5,
-            shift = { -8, -8 }
-        },
-    }
-} }
