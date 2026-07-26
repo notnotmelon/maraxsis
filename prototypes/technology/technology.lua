@@ -26,7 +26,6 @@ data:extend {{
         "rocket-turret",
         "cliff-explosives",
         "electromagnetic-science-pack",
-        "quality-module-3"
     },
     unit = {
         count = 3000,

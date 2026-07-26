@@ -2,7 +2,11 @@
 
 local random = math.random
 
-require "events"
+local events = require("events")
+
+for handle,event_function in pairs(events) do
+	maraxsis[handle] = event_function
+end
 
 ---Draws a red error icon at the entity's position.
 ---@param entity LuaEntity

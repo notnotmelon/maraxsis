@@ -42,7 +42,7 @@ local function on_built(event)
     end
     storage.composite_entities[entity.unit_number] = sub_entities
 end
-maraxsis.on_event(maraxsis.events.on_built(), on_built)
+maraxsis.on_event(maraxsis.events.on_built(), on_built, {{filter = "name",name = "maraxsis-sonar"}})
 
 local function on_destroyed(event)
     local entity = event.entity
