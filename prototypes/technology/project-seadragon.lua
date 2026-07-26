@@ -46,9 +46,10 @@ data:extend {{
     enabled = false,
     energy_required = 5,
     ingredients = {
-        {type = "item",  name = "sulfur",    amount = 3},
+        {type = "item",  name = "maraxsis-fish-oil", amount = 1},
+        {type = "item",  name = "sulfur", amount = 3},
         {type = "fluid", name = "heavy-oil", amount = 25},
-        {type = "fluid", name = "hydrogen",     amount = 100},
+        {type = "fluid", name = "hydrogen", amount = 100},
     },
     results = {
         {type = "item", name = "maraxsis-super-sealant-substance", amount = 1},
