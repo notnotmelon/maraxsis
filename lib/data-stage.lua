@@ -51,6 +51,14 @@ maraxsis.trench_surface_conditions = function()
     }}
 end
 
+maraxsis.shallow_surface_conditions = function()
+    return {{
+        property = "pressure",
+        min = 200000,
+        max = 200000,
+    }}
+end
+
 -- Recursive function to ensure all strings are within 20 units.
 -- Factorio crashes if a localised string is greater than 20 units
 maraxsis.shorten_localised_string = function(localised_string)

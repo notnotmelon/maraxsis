@@ -102,11 +102,7 @@ data:extend {{
         },
     },
     placeable_position_visualization = table.deepcopy(data.raw["offshore-pump"]["offshore-pump"].placeable_position_visualization),
-    surface_conditions = {{
-        property = "pressure",
-        min = 200000,
-        max = 200000,
-    }},
+    surface_conditions = maraxsis.shallow_surface_conditions(),
     fluid_box = {
         volume = constants.volume * 2,
         pipe_covers = nil,

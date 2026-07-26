@@ -39,9 +39,7 @@ local maraxsis_rocket_part = table.deepcopy(data.raw["recipe"]["rocket-part"])
 maraxsis_rocket_part.name = "maraxsis-rocket-part"
 maraxsis_rocket_part.localised_name = maraxsis_rocket_part.localised_name or {"item-name.rocket-part"}
 maraxsis_rocket_part.enabled = false
-maraxsis_rocket_part.surface_conditions = {
-    {property = "pressure", min = 200000, max = 200000},
-}
+maraxsis_rocket_part.surface_conditions = maraxsis.shallow_surface_conditions()
 maraxsis_rocket_part.auto_recycle = false
 maraxsis_rocket_part.order = data.raw.item["rocket-part"].order .. "-a[maraxsis]"
 data:extend {maraxsis_rocket_part}

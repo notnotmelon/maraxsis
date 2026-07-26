@@ -17,11 +17,7 @@ data:extend {{
     allow_decomposition = false,
     allow_productivity = true,
     auto_recycle = false,
-    surface_conditions = {{
-        property = "pressure",
-        min = 200000,
-        max = 200000,
-    }},
+    surface_conditions = maraxsis.shallow_surface_conditions(),
     maximum_productivity = 9999999,
     main_product = maraxsis_constants.SAND_ITEM_NAME,
     localised_name = {"item-name.sand"},

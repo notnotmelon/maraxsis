@@ -55,11 +55,7 @@ fishing_tower.minable = {mining_time = 0.5, result = "maraxsis-fishing-tower"}
 fishing_tower.icon = "__maraxsis__/graphics/icons/fishing-tower.png"
 fishing_tower.icon_size = 64
 fishing_tower.max_health = 500
-fishing_tower.surface_conditions = {{
-    property = "pressure",
-    min = 200000,
-    max = 200000,
-}}
+fishing_tower.surface_conditions = maraxsis.shallow_surface_conditions()
 fishing_tower.growth_grid_tile_size = 2
 fishing_tower.radius = 4
 fishing_tower.input_inventory_size = 2
