@@ -48,7 +48,7 @@ data:extend {{
     ingredients = {
         {type = "item",  name = "maraxsis-fish-oil", amount = 1},
         {type = "item",  name = "sulfur", amount = 3},
-        {type = "fluid", name = "heavy-oil", amount = 25},
+        {type = "fluid", name = "heavy-oil", amount = 200},
         {type = "fluid", name = "hydrogen", amount = 100},
     },
     results = {
