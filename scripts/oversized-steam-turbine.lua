@@ -18,6 +18,7 @@ local SUPERCRITICAL_STEAM_ALLOW_LIST = table.invert {
     "maraxsis-oversized-steam-turbine",
     "maraxsis-geothermal-generator",
     "maraxsis-hydro-plant-extra-module-slots",
+    "cryogenic-plant"
 }
 
 local function explode(entity)
