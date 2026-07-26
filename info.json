@@ -14,6 +14,7 @@
     "SpidertronPatrols >= 2.7.0",
     "FluidMustFlow >= 1.5.0",
     "+ Better_Starmap_Background",
+    "+ Unloading_Bay_Range_Tech",
     "? Krastorio2-spaced-out",
     "(?) tenebris",
     "(?) tenebris-prime",
