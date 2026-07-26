@@ -37,7 +37,6 @@ require "prototypes.technology.ooozma-confinement"
 require "prototypes.technology.water-treatment"
 require "prototypes.technology.hydraulic-science-pack"
 require "prototypes.technology.omega-3"
-require "prototypes.technology.stone-centrifuging"
 require "prototypes.technology.deepsea-research"
 
 require "prototypes.recipe.recipes"

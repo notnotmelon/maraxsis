@@ -7,7 +7,6 @@ data:extend {{
     icon_size = 256,
     effects = {},
     prerequisites = {
-        "maraxsis-stone-centrifuging",
         "maraxsis-effect-transmission-2",
     },
     unit = {
