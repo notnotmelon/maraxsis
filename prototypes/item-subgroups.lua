@@ -55,7 +55,6 @@ make_subgroup("advanced-fluids", "gg", "intermediate-products", {
 do
     local omega_3 = {
         data.raw.item["maraxsis-fish-oil"],
-        data.raw.recipe["maraxsis-bio-oil"],
         data.raw.recipe["maraxsis-omega-3"],
         data.raw.recipe["maraxsis-vitamin-infused-agricultural-science"],
         data.raw.recipe["maraxsis-vitamin-infused-hydraulic-science"],
