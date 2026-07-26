@@ -13,6 +13,7 @@
     "PlanetsLib >= 1.20.3",
     "SpidertronPatrols >= 2.7.0",
     "FluidMustFlow >= 1.5.0",
+    "+ Better_Starmap_Background",
     "? Krastorio2-spaced-out",
     "(?) tenebris",
     "(?) tenebris-prime",
