@@ -86,6 +86,7 @@ data:extend {{
 data:extend {{
     type = "recipe",
     name = "maraxsis-fish-oil",
+    localised_name = {"recipe-name.maraxsis-fish-oil"},
     enabled = false,
     energy_required = 1,
     ingredients = {
@@ -97,10 +98,7 @@ data:extend {{
     allow_productivity = false,
     allow_quality = false,
     auto_recycle = false,
-    categories = {"rocket-building"},
+    categories = {"hand-crafting"},
     always_show_made_in = true,
-    hide_from_player_crafting = true,
     hide_from_signal_gui = true,
-    hidden_in_factoriopedia = false,
-    surface_conditions = maraxsis.shallow_surface_conditions(),
 }}

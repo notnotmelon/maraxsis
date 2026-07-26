@@ -57,6 +57,7 @@ data:extend {{
     categories = {"chemistry", "cryogenics"},
     allow_productivity = true,
     auto_recycle = false,
+    sort_item_ingredients = false
 }}
 
 local super_sealant_substance_variants = {}

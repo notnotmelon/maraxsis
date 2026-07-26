@@ -30,12 +30,3 @@ maraxsis.on_event(defines.events.on_cargo_pod_finished_descending, function(even
         end
     end
 end)
-
-local function disable_fish_oil_recipe()
-    for _, force in pairs(game.forces) do
-        force.recipes["maraxsis-fish-oil"].enabled = false
-    end
-end
-
-maraxsis.on_event(defines.events.on_research_finished, disable_fish_oil_recipe)
-maraxsis.on_event(maraxsis.events.on_init(), disable_fish_oil_recipe)
