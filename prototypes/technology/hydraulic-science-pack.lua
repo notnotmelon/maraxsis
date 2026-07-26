@@ -100,5 +100,7 @@ data:extend {{
     categories = {"rocket-building"},
     always_show_made_in = true,
     hide_from_player_crafting = true,
+    hide_from_signal_gui = true,
+    hidden_in_factoriopedia = false,
     surface_conditions = maraxsis.shallow_surface_conditions(),
 }}
