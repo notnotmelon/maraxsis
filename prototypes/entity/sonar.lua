@@ -35,7 +35,7 @@ data:extend {{
     enabled = false,
     ingredients = {
         {type = "item", name = "tungsten-plate",       amount = 10},
-        {type = "item", name = "maraxsis-glass-panes", amount = 10},
+        {type = "item", name = "maraxsis-reinforced-glass", amount = 10},
         {type = "item", name = "radar",                amount = 1},
         {type = "item", name = "small-lamp",           amount = 2},
     },

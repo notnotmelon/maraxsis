@@ -60,15 +60,13 @@ data.raw.planet["maraxsis"].map_gen_settings.autoplace_controls["kr-rare-metal-o
 
 data.raw.recipe["maraxsis-conduit"].ingredients = {
     {type = "item", name = "beacon",                           amount = 1},
-    {type = "item", name = "maraxsis-glass-panes",             amount = 25},
+    {type = "item", name = "maraxsis-reinforced-glass",             amount = 25},
     {type = "item", name = "kr-rare-metals",                   amount = 50},
     {type = "item", name = "maraxsis-super-sealant-substance", amount = 15},
     {type = "item", name = "kr-energy-control-unit",           amount = 5},
 }
 
 table.insert(data.raw.technology["maraxsis-effect-transmission-2"].prerequisites, "kr-energy-control-unit")
-
-data.raw.item["maraxsis-glass-panes"].localised_name = {"item-name.maraxsis-reinforced-glass"}
 
 data.raw.technology["maraxsis-glass-productivity"].unit.ingredients = {
     {"production-science-pack",  1},
@@ -119,7 +117,7 @@ data.raw.recipe["kr-quantum-computer"].ingredients = {
     {type = "item", name = "kr-rare-metals",       amount = 50},
     {type = "item", name = "kr-ai-core",           amount = 50},
     {type = "item", name = "quantum-processor",    amount = 100},
-    {type = "item", name = "maraxsis-glass-panes", amount = 200},
+    {type = "item", name = "maraxsis-reinforced-glass", amount = 200},
 }
 
 data.raw["assembling-machine"]["kr-quantum-computer"].surface_conditions = maraxsis.trench_surface_conditions()

@@ -14,7 +14,7 @@ data:extend {{
     energy_required = 15,
     ingredients = {
         {type = "item", name = "beacon",                           amount = 1},
-        {type = "item", name = "maraxsis-glass-panes",             amount = 25},
+        {type = "item", name = "maraxsis-reinforced-glass",             amount = 25},
         {type = "item", name = "superconductor",                  amount = 25},
         {type = "item", name = "maraxsis-super-sealant-substance", amount = 15},
     },

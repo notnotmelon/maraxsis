@@ -71,7 +71,7 @@ data:extend {{
     minable                    = {
         mining_time = 0.2,
         results = {
-            {type = "item", name = "maraxsis-glass-panes", amount_min = 35, amount_max = 45},
+            {type = "item", name = "maraxsis-reinforced-glass", amount_min = 35, amount_max = 45},
             {type = "item", name = "limestone",   amount_min = 20, amount_max = 30},
         },
     },

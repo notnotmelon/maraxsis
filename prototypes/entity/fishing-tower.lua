@@ -15,7 +15,7 @@ data:extend {{
     ingredients = {
         {type = "item", name = "agricultural-tower",   amount = 1},
         {type = "item", name = "maraxsis-coral",       amount = 10},
-        {type = "item", name = "maraxsis-glass-panes", amount = 10},
+        {type = "item", name = "maraxsis-reinforced-glass", amount = 10},
     },
     results = {
         {type = "item", name = "maraxsis-fishing-tower", amount = 1}

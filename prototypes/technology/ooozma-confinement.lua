@@ -57,7 +57,7 @@ data:extend {{
     enabled = false,
     energy_required = 5,
     ingredients = {
-        {type = "item", name = "maraxsis-glass-panes", amount = 5},
+        {type = "item", name = "maraxsis-reinforced-glass", amount = 5},
         {type = "item", name = "steel-plate",          amount = 1},
     },
     results = {

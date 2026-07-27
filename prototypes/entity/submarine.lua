@@ -65,7 +65,7 @@ local recipes = {
     ["maraxsis-nuclear-submarine"] = {
         {type = "item", name = "tungsten-plate",                   amount = 50},
         {type = "item", name = "maraxsis-sonar",                   amount = 1},
-        {type = "item", name = "maraxsis-glass-panes",             amount = 100},
+        {type = "item", name = "maraxsis-reinforced-glass",             amount = 100},
         {type = "item", name = "nuclear-reactor",                  amount = 1},
         {type = "item", name = "pump",                             amount = 8},
         {type = "item", name = "processing-unit",                  amount = 50},

@@ -16,7 +16,7 @@ data:extend {{
     enabled = false,
     energy_required = 10,
     ingredients = {
-        {type = "item",  name = "maraxsis-glass-panes",    amount = 200},
+        {type = "item",  name = "maraxsis-reinforced-glass",    amount = 200},
         {type = "item",  name = "tungsten-plate",          amount = 50},
         {type = "item",  name = "processing-unit",         amount = 25},
         {type = "item",  name = "maraxsis-trench-duct",         amount = 1},

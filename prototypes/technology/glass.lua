@@ -10,7 +10,7 @@ data:extend {{
         },
         {
             type = "unlock-recipe",
-            recipe = "maraxsis-glass-panes",
+            recipe = "maraxsis-reinforced-glass",
         },
         {
             type = "unlock-recipe",
@@ -55,7 +55,7 @@ data:extend {{
 
 data:extend {{
     type = "recipe",
-    name = "maraxsis-glass-panes",
+    name = "maraxsis-reinforced-glass",
     enabled = false,
     energy_required = 5,
     ingredients = {
@@ -64,7 +64,7 @@ data:extend {{
         {type = "item", name = "salt",      amount = 2},
     },
     results = {
-        {type = "item", name = "maraxsis-glass-panes", amount = 1, quality_change = -1},
+        {type = "item", name = "maraxsis-reinforced-glass", amount = 1, quality_change = -1},
     },
     allow_productivity = true,
     categories = {"metallurgy", "maraxsis-hydro-plant"},
@@ -84,7 +84,7 @@ end
 
 data:extend {{
     type = "item",
-    name = "maraxsis-glass-panes",
+    name = "maraxsis-reinforced-glass",
     icon = "__maraxsis__/graphics/icons/glass-1.png",
     pictures = glass_variants,
     icon_size = 64,
@@ -145,7 +145,7 @@ data:extend {{
         effects = {
             {
                 type = "item",
-                name = "maraxsis-glass-panes",
+                name = "maraxsis-reinforced-glass",
                 change = 0.1
             },
             {
