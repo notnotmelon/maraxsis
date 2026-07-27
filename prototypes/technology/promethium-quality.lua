@@ -40,10 +40,7 @@ local function build_promethium_quality(i, prerequisites, count, q, energy_requi
         can_set_quality = false,
         auto_recycle = false,
         main_product = science_pack,
-        surface_conditions = {{
-            property = "pressure",
-            min = 10,
-        }}
+        surface_conditions = table.deepcopy(data.raw.recipe["promethium-science-pack"].surface_conditions)
     }}
 
     data:extend {{
