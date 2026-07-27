@@ -22,7 +22,7 @@ data:extend {{
 
 data:extend {{
     type = "fluid",
-    name = "maraxsis-brackish-water",
+    name = "brackish-water",
     icon = "__maraxsis__/graphics/icons/brackish-water.png",
     icon_size = 64,
     base_flow_rate = data.raw.fluid.water.base_flow_rate,
@@ -76,7 +76,7 @@ data:extend {{
     enabled = false,
     energy_required = 5,
     ingredients = {
-        {type = "fluid", name = "maraxsis-brackish-water", amount = 300},
+        {type = "fluid", name = "brackish-water", amount = 300},
     },
     results = {
         {type = "item",  name = "salt",     amount = 3, quality_change = 1},
@@ -125,7 +125,7 @@ data:extend {{
 
 data:extend {{
     type = "recipe",
-    name = "maraxsis-brackish-water",
+    name = "brackish-water",
     enabled = false,
     energy_required = 2.5,
     ingredients = {
@@ -133,15 +133,15 @@ data:extend {{
         {type = "fluid", name = "saline-water", amount = 100},
     },
     results = {
-        {type = "fluid", name = "maraxsis-brackish-water",        amount = 100},
+        {type = "fluid", name = "brackish-water",        amount = 100},
         {type = "item",  name = "maraxsis-saturated-salt-filter", amount = 1,  ignored_by_stats = 1, ignored_by_productivity = 1},
     },
     categories = {"maraxsis-hydro-plant", "chemistry"},
     auto_recycle = false,
-    main_product = "maraxsis-brackish-water",
+    main_product = "brackish-water",
     allow_productivity = true,
 }}
-add_to_tech("maraxsis-brackish-water")
+add_to_tech("brackish-water")
 
 local salt_variants = {}
 for i = 1, 3 do
@@ -201,7 +201,7 @@ data:extend {{
     results = {
         {type = "item",  name = "maraxsis-salt-filter",    amount = 1, independent_probability = 0.95, ignored_by_productivity = 1, ignored_by_stats = 1, quality_change = 1},
         {type = "item",  name = "carbon-fiber",            amount = 1, independent_probability = 0.025},
-        {type = "fluid", name = "maraxsis-brackish-water", amount = 20},
+        {type = "fluid", name = "brackish-water", amount = 20},
     },
     categories = {"maraxsis-hydro-plant", "chemistry"},
     main_product = "maraxsis-salt-filter",
