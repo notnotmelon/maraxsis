@@ -71,8 +71,7 @@ data:extend {{
     icon_size = 256,
     effects = effects,
     prerequisites = {
-        "maraxsis-effect-transmission-2",
-        "maraxsis-sonar"
+        "maraxsis-project-seadragon"
     },
     unit = {
         count = 2000,
