@@ -226,14 +226,16 @@ end
 
 ---Returns a new array with duplicates removed.
 ---@param tbl any[]
+---@param f? fun(element: any): any
 ---@return any[]
-table.dedupe = function(tbl)
+table.dedupe = function(tbl, f)
     local seen = {}
     local result = {}
     for _, v in pairs(tbl) do
-        if not seen[v] then
+        local key = f and f(v) or v
+        if not seen[key] then
             table.insert(result, v)
-            seen[v] = true
+            seen[key] = true
         end
     end
     return result
