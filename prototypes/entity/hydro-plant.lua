@@ -196,7 +196,7 @@ data:extend { {
         }
     },
     icon_draw_specification = { scale = 1.75, shift = { 0, -0.3 } },
-    energy_usage = "2MW",
+    energy_usage = "3MW",
     collision_mask = { layers = { item = true, object = true, player = true, water_tile = true } },
 } }
 
