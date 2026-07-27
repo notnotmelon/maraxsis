@@ -58,7 +58,7 @@ for _, recipe in pairs {
     recipe.auto_recycle = false
     recipe.surface_conditions = maraxsis.trench_surface_conditions()
     recipe.results[1].amount = recipe.results[1].amount * 2
-    recipe.results[1].quality_change = recipe.results[1].quality_change or 1
+    recipe.results[1].quality_change = 1
     effects[#effects + 1] = { type = "unlock-recipe", recipe = recipe.name }
 end
 

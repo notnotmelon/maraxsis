@@ -54,7 +54,7 @@ data:extend {{
             recipe = "maraxsis-liquid-atmosphere-barrel"
         }
     },
-    prerequisites = {"cryogenic-science-pack", "maraxsis-project-seadragon"},
+    prerequisites = {"maraxsis-estrogen-technology-aquilo"},
     unit = {
         count = 5000,
         ingredients = {

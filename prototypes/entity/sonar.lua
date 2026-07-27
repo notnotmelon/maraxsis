@@ -9,7 +9,7 @@ data:extend {{
             recipe = "maraxsis-sonar"
         }
     },
-    prerequisites = {"maraxsis-project-seadragon", "radar"},
+    prerequisites = {"maraxsis-estrogen-technology-vulcanus", "radar"},
     unit = {
         count = 5000,
         ingredients = {

@@ -11,7 +11,7 @@ require "prototypes.technology.promethium-quality"
 
 require "prototypes.recipe.fluid-void"
 require "prototypes.recipe.deepsea-research"
-require "prototypes.recipe.hypno-recipes"
+require "prototypes.recipe.estrogen-recipes"
 
 require "compat.aai-industry"
 require "compat.aai-signal-transmission"
