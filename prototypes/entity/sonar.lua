@@ -11,18 +11,9 @@ data:extend {{
     },
     prerequisites = {"maraxsis-project-seadragon", "radar"},
     unit = {
-        count = 1000,
+        count = 5000,
         ingredients = {
-            {"automation-science-pack",      1},
-            {"logistic-science-pack",        1},
-            {"military-science-pack",        1},
-            {"chemical-science-pack",        1},
-            {"space-science-pack",           1},
-            {"production-science-pack",      1},
-            {"utility-science-pack",         1},
             {"metallurgic-science-pack",     1},
-            {"electromagnetic-science-pack", 1},
-            {"agricultural-science-pack",    1},
             {"hydraulic-science-pack",       1},
         },
         time = 60,
@@ -43,6 +34,7 @@ data:extend {{
     name = "maraxsis-sonar",
     enabled = false,
     ingredients = {
+        {type = "item", name = "tungsten-plate",       amount = 10},
         {type = "item", name = "maraxsis-glass-panes", amount = 10},
         {type = "item", name = "radar",                amount = 1},
         {type = "item", name = "small-lamp",           amount = 2},
@@ -52,7 +44,7 @@ data:extend {{
     },
     energy_required = 10,
     auto_recycle = true,
-    categories = {"maraxsis-hydro-plant"},
+    categories = {"metallurgy"},
 }}
 
 data:extend {maraxsis.merge(data.raw.radar.radar, {
