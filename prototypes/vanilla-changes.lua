@@ -27,11 +27,7 @@ if settings.startup["maraxsis-add-hydraulic-science"].value then
     add_hydraulic_pack("promethium-science-pack")
     add_hydraulic_pack("research-productivity")
 
-    if mods["Krastorio2-spaced-out"] then
-        table.insert(data.raw["technology"]["stellar-discovery-solar-system-edge"].prerequisites, "kr-quantum-computer")
-    else
-        table.insert(data.raw["technology"]["stellar-discovery-solar-system-edge"].prerequisites, "maraxsis-deepsea-research")
-    end
+    table.insert(data.raw["technology"]["stellar-discovery-solar-system-edge"].prerequisites, "maraxsis-project-seadragon")
 end
 
 local function insert_hydro_plant(recipe)
