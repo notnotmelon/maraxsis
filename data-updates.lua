@@ -26,19 +26,19 @@ require "compat.corrundum"
 require "compat.muluna"
 require "compat.aai-programmable-structures"
 
-local function add_fuel_value(fluid, value)
+local function try_add_fuel_value(fluid, value)
     fluid = data.raw.fluid[fluid]
     if not fluid then return end
     fluid.fuel_value = fluid.fuel_value or value
 end
 
-add_fuel_value("crude-oil", "1500kJ")
-add_fuel_value("petroleum-gas", "2000kJ")
-add_fuel_value("hydrogen", "2250kJ")
-add_fuel_value("heavy-oil", "2500kJ")
-add_fuel_value("light-oil", "3000kJ")
+try_add_fuel_value("crude-oil", "1500kJ")
+try_add_fuel_value("petroleum-gas", "2000kJ")
+try_add_fuel_value("hydrogen", "2250kJ")
+try_add_fuel_value("heavy-oil", "2500kJ")
+try_add_fuel_value("light-oil", "3000kJ")
 
-for _, fluid in pairs(data.raw.fluid) do -- todo: check fluid fuel category
+for _, fluid in pairs(data.raw.fluid) do
     local fuel_value = fluid.fuel_value
     if not fuel_value or type(fuel_value) ~= "string" then goto continue end
     local barrel = data.raw.item[fluid.name .. "-barrel"]
@@ -47,18 +47,18 @@ for _, fluid in pairs(data.raw.fluid) do -- todo: check fluid fuel category
     local number_part, unit = fuel_value:match("^(%d+)(.*)")
     number_part = tonumber(number_part)
     if not number_part then goto continue end
-    barrel.fuel_value = tostring(number_part * 50) .. unit -- 50 fluid per barrel
-    barrel.fuel_category = barrel.fuel_category or "maraxsis-diesel"
 
-    barrel.fuel_acceleration_multiplier = data.raw.item["rocket-fuel"].fuel_acceleration_multiplier
-    barrel.fuel_top_speed_multiplier = data.raw.item["rocket-fuel"].fuel_top_speed_multiplier
-    barrel.fuel_emissions_multiplier = data.raw.item["rocket-fuel"].fuel_emissions_multiplier
-    barrel.fuel_glow_color = data.raw.item["rocket-fuel"].fuel_glow_color
-    barrel.fuel_glow_color = data.raw.item["rocket-fuel"].fuel_acceleration_multiplier_quality_bonus
-    barrel.fuel_glow_color = data.raw.item["rocket-fuel"].fuel_top_speed_multiplier_quality_bonus
+    barrel.fuel_value = barrel.fuel_value or (tostring(number_part * 50) .. unit) -- 50 fluid per barrel
+    barrel.fuel_category = barrel.fuel_category or "maraxsis-diesel"
+    barrel.fuel_acceleration_multiplier = barrel.fuel_acceleration_multiplier or data.raw.item["rocket-fuel"].fuel_acceleration_multiplier
+    barrel.fuel_top_speed_multiplier = barrel.fuel_top_speed_multiplier or data.raw.item["rocket-fuel"].fuel_top_speed_multiplier
+    barrel.fuel_emissions_multiplier = barrel.fuel_emissions_multiplier or data.raw.item["rocket-fuel"].fuel_emissions_multiplier
+    barrel.fuel_glow_color = barrel.fuel_glow_color or data.raw.item["rocket-fuel"].fuel_glow_color
+    barrel.fuel_acceleration_multiplier_quality_bonus = barrel.fuel_acceleration_multiplier_quality_bonus or data.raw.item["rocket-fuel"].fuel_acceleration_multiplier_quality_bonus
+    barrel.fuel_top_speed_multiplier_quality_bonus = barrel.fuel_top_speed_multiplier_quality_bonus or data.raw.item["rocket-fuel"].fuel_top_speed_multiplier_quality_bonus
+    barrel.burnt_result = barrel.burnt_result or "barrel"
 
     maraxsis_constants.SUBMARINE_FUEL_SOURCES["maraxsis-diesel-submarine"][1] = barrel.fuel_category
-    barrel.burnt_result = "barrel"
     ::continue::
 end
 
