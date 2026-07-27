@@ -174,7 +174,7 @@ data.raw.recipe["kr-singularity-tech-card"].results = {
     { type = "item", name = "kr-singularity-tech-card", amount = 5 },
 }
 
-data.raw.recipe["maraxsis-microplastics"].ingredients = {
+data.raw.recipe["microplastics"].ingredients = {
     {type = "item", name = "maraxsis-tropical-fish",   amount = 1},
     {type = "item", name = "shotgun-shell", amount = 1},
 }
@@ -206,7 +206,7 @@ end
 local default_stack_size = 200
 set_stack_size("maraxsis-big-cliff-explosives", default_stack_size)
 set_stack_size("maraxsis-fish-food", default_stack_size)
-set_stack_size("maraxsis-microplastics", default_stack_size)
+set_stack_size("microplastics", default_stack_size)
 set_stack_size("maraxsis-salt-filter", default_stack_size)
 set_stack_size("maraxsis-saturated-salt-filter", default_stack_size)
 set_stack_size("maraxsis-super-sealant-substance", default_stack_size)

@@ -24,7 +24,7 @@ make_subgroup("maraxsis-intermediants", "ge", "intermediate-products", {
     data.raw.item["maraxsis-glass-panes"],
     data.raw.item["maraxsis-fish-food"],
     data.raw.capsule["maraxsis-tropical-fish"],
-    data.raw.item["maraxsis-microplastics"],
+    data.raw.item["microplastics"],
     data.raw.recipe["maraxsis-carbon"],
     data.raw.item["maraxsis-ooozma-specimen"],
     data.raw.item["maraxsis-ooozma-confinement-cell"],

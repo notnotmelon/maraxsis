@@ -69,7 +69,7 @@ end
 
 data:extend {{
     type = "item",
-    name = "maraxsis-microplastics",
+    name = "microplastics",
     icon = "__maraxsis__/graphics/icons/microplastics-1.png",
     icon_size = 64,
     pictures = microplastics_variants,
@@ -78,7 +78,7 @@ data:extend {{
 
 data:extend {{
     type = "recipe",
-    name = "maraxsis-microplastics",
+    name = "microplastics",
     icon = "__maraxsis__/graphics/icons/fish-rendering.png",
     icon_size = 64,
     enabled = false,
@@ -88,12 +88,12 @@ data:extend {{
         {type = "item", name = "piercing-rounds-magazine", amount = 1},
     },
     results = {
-        {type = "item", name = "maraxsis-microplastics", amount = 10},
+        {type = "item", name = "microplastics", amount = 10},
         {type = "item", name = "jelly",                  amount = 10},
     },
     categories = {"organic", "crafting"},
-    localised_name = {"recipe-name.maraxsis-microplastics"},
-    main_product = "maraxsis-microplastics",
+    localised_name = {"recipe-name.microplastics"},
+    main_product = "microplastics",
     allow_productivity = true,
     auto_recycle = false,
     always_show_made_in = true,
@@ -108,7 +108,7 @@ data:extend {{
     enabled = false,
     energy_required = data.raw.recipe["iron-plate"].energy_required,
     ingredients = {
-        {type = "item", name = "maraxsis-microplastics", amount = 2},
+        {type = "item", name = "microplastics", amount = 2},
     },
     results = {
         {type = "item", name = "plastic-bar", amount = 1},
@@ -178,5 +178,5 @@ add_to_tech("maraxsis-fishing-tower")
 add_to_tech("maraxsis-fish-food")
 add_to_tech("maraxsis-shrinkflation")
 add_to_tech("maraxsis-nutrients-from-tropical-fish")
-add_to_tech("maraxsis-microplastics")
+add_to_tech("microplastics")
 add_to_tech("maraxsis-smelt-microplastics")

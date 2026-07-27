@@ -41,7 +41,7 @@ add_sound_item(maraxsis_constants.SAND_ITEM_NAME, item_sounds.resource_inventory
 add_sound_item("maraxsis-glass-panes", item_sounds.metal_small_inventory_move, item_sounds.metal_small_inventory_pickup, item_sounds.metal_small_inventory_move)
 add_sound_item("maraxsis-fish-food", space_age_item_sounds.agriculture_inventory_move, space_age_item_sounds.agriculture_inventory_pickup, space_age_item_sounds.agriculture_inventory_move)
 add_sound_item("maraxsis-tropical-fish", item_sounds.raw_fish_inventory_move, item_sounds.raw_fish_inventory_pickup, item_sounds.raw_fish_inventory_move)
-add_sound_item("maraxsis-microplastics", item_sounds.plastic_inventory_move, item_sounds.plastic_inventory_pickup, item_sounds.plastic_inventory_move)
+add_sound_item("microplastics", item_sounds.plastic_inventory_move, item_sounds.plastic_inventory_pickup, item_sounds.plastic_inventory_move)
 add_sound_item("maraxsis-ooozma-specimen", item_sounds.raw_fish_inventory_move, item_sounds.raw_fish_inventory_pickup, item_sounds.raw_fish_inventory_move)
 add_sound_item("maraxsis-ooozma-confinement-cell", item_sounds.metal_small_inventory_move, item_sounds.metal_small_inventory_pickup, item_sounds.metal_small_inventory_move)
 add_sound_item("maraxsis-super-sealant-substance", space_age_item_sounds.agriculture_inventory_move, space_age_item_sounds.agriculture_inventory_pickup, space_age_item_sounds.agriculture_inventory_move)
