@@ -36,7 +36,7 @@ make_subgroup("salt", "gf", "intermediate-products", {
     data.raw.item["salt"],
     data.raw.recipe["salt"],
     data.raw.recipe["brackish-water"],
-    data.raw.recipe["maraxsis-water"],
+    data.raw.recipe["ske_h2o"],
     data.raw.item["maraxsis-salt-filter"],
     data.raw.recipe["maraxsis-salt-filter"],
     data.raw.item["maraxsis-saturated-salt-filter"],

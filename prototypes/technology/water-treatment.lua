@@ -95,7 +95,7 @@ add_to_tech(electrolysis_recipe_name)
 
 data:extend {{
     type = "recipe",
-    name = "maraxsis-water",
+    name = "ske_h2o",
     icon = "__maraxsis__/graphics/icons/maraxsis-water.png",
     icon_size = 64,
     enabled = false,
@@ -113,7 +113,7 @@ data:extend {{
     main_product = "water",
     hidden = not not mods.skewer_planet_vesta,
 }}
-add_to_tech(data.raw.recipe["ske_h2o"] and "ske_h2o" or "maraxsis-water")
+add_to_tech("ske_h2o")
 
 data:extend {{
     type = "item",
