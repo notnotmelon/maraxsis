@@ -1,5 +1,4 @@
 maraxsis.on_event(maraxsis.events.on_init(),  function()
-    storage.oversized_steam_turbines = storage.oversized_steam_turbines or {}
     storage.duct_exhausts = storage.duct_exhausts or {}
 end)
 
@@ -88,70 +87,13 @@ maraxsis.on_nth_tick(597, function()
     end
 end)
 
-maraxsis.on_event("PlanetsLib-on-entity-replaced", function(event)
-    local entity = event.new_entity
-    if not entity.valid then
-        return
-    end
-    
-    if entity.name == "maraxsis-hydro-plant-extra-module-slots" then
+local function add_to_duct_exhaust_list(event)
+    local entity = event.entity
+    if not entity.valid then return end
+
+    if entity.name == "duct-exhaust" or entity.name == "maraxsis-hydro-plant-extra-module-slots" then
         storage.duct_exhausts[entity.unit_number] = entity
     end
-end)
-
-maraxsis.on_event(maraxsis.events.on_built(), function(event)
-    local entity = event.entity
-    if not entity.valid then
-        return
-    end
-
-    if entity.name == "duct-exhaust" then
-        storage.duct_exhausts[entity.unit_number] = entity
-        return
-    end
-
-    if entity.name ~= "maraxsis-oversized-steam-turbine" then
-        return
-    end
-
-    local assembler = entity.surface.create_entity {
-        name = "maraxsis-oversized-steam-turbine-hidden-assembling-machine",
-        position = entity.position,
-        force = entity.force_index,
-        direction = entity.direction,
-        quality = entity.quality,
-        create_build_effect_smoke = false
-    }
-    assembler.destructible = false
-    assembler.operable = false
-    assembler.minable_flag = false
-
-    entity.add_fluid_box_linked_connection(0, assembler, 0)
-    entity.add_fluid_box_linked_connection(1, assembler, 1)
-
-    storage.oversized_steam_turbines[entity.unit_number] = assembler
-end)
-
-maraxsis.on_event(defines.events.on_player_rotated_entity, function(event)
-    local entity = event.entity
-    if not entity.valid or entity.name ~= "maraxsis-oversized-steam-turbine" then
-        return
-    end
-
-    local assembler = storage.oversized_steam_turbines[entity.unit_number]
-    if assembler and assembler.valid then
-        assembler.direction = entity.direction
-    end
-end)
-
-maraxsis.on_event(maraxsis.events.on_destroyed(), function(event)
-    local entity = event.entity
-    if not entity.valid or entity.name ~= "maraxsis-oversized-steam-turbine" then
-        return
-    end
-
-    local assembler = storage.oversized_steam_turbines[entity.unit_number]
-    if assembler and assembler.valid then
-        assembler.destroy()
-    end
-end)
+end
+maraxsis.on_event("PlanetsLib-on-entity-replaced", add_to_duct_exhaust_list)
+maraxsis.on_event(maraxsis.events.on_built(), add_to_duct_exhaust_list)

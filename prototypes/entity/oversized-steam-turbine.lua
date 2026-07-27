@@ -30,246 +30,170 @@ data:extend {{
     surface_conditions = maraxsis.surface_conditions(),
 }}
 
-local offset = 2 * 32
+local function pictures()
+    local offset = 2 * 32
 
-local vertical_animation = {
-    layers = {
-        {
-            filename = "__base__/graphics/entity/steam-turbine/steam-turbine-V.png",
-            width = 217,
-            height = 374,
-            frame_count = 8,
-            line_length = 4,
-            shift = util.by_pixel(4.75, 6.75 - offset),
-            run_mode = "backward",
-            scale = 0.5
-        },
-        {
-            filename = "__base__/graphics/entity/steam-turbine/steam-turbine-V-shadow.png",
-            width = 302,
-            height = 260,
-            repeat_count = 8,
-            line_length = 1,
-            draw_as_shadow = true,
-            shift = util.by_pixel(39.5, 24.5 - offset),
-            run_mode = "backward",
-            scale = 0.5
-        },
-        {
-            filename = "__base__/graphics/entity/steam-turbine/steam-turbine-V.png",
-            width = 217,
-            height = 374,
-            frame_count = 8,
-            line_length = 4,
-            shift = util.by_pixel(4.75, 6.75),
-            run_mode = "backward",
-            scale = 0.5
-        },
-        {
-            filename = "__base__/graphics/entity/steam-turbine/steam-turbine-V-shadow.png",
-            width = 302,
-            height = 260,
-            repeat_count = 8,
-            line_length = 1,
-            draw_as_shadow = true,
-            shift = util.by_pixel(39.5, 24.5),
-            run_mode = "backward",
-            scale = 0.5
-        },
-        {
-            filename = "__base__/graphics/entity/steam-turbine/steam-turbine-V.png",
-            width = 217,
-            height = 374,
-            frame_count = 8,
-            line_length = 4,
-            shift = util.by_pixel(4.75, 6.75 + offset),
-            run_mode = "backward",
-            scale = 0.5
-        },
-        {
-            filename = "__base__/graphics/entity/steam-turbine/steam-turbine-V-shadow.png",
-            width = 302,
-            height = 260,
-            repeat_count = 8,
-            line_length = 1,
-            draw_as_shadow = true,
-            shift = util.by_pixel(39.5, 24.5 + offset),
-            run_mode = "backward",
-            scale = 0.5
-        },
+    local vertical_animation = {
+        layers = {
+            {
+                filename = "__base__/graphics/entity/steam-turbine/steam-turbine-V.png",
+                width = 217,
+                height = 374,
+                frame_count = 8,
+                line_length = 4,
+                shift = util.by_pixel(4.75, 6.75 - offset),
+                run_mode = "backward",
+                scale = 0.5
+            },
+            {
+                filename = "__base__/graphics/entity/steam-turbine/steam-turbine-V-shadow.png",
+                width = 302,
+                height = 260,
+                repeat_count = 8,
+                line_length = 1,
+                draw_as_shadow = true,
+                shift = util.by_pixel(39.5, 24.5 - offset),
+                run_mode = "backward",
+                scale = 0.5
+            },
+            {
+                filename = "__base__/graphics/entity/steam-turbine/steam-turbine-V.png",
+                width = 217,
+                height = 374,
+                frame_count = 8,
+                line_length = 4,
+                shift = util.by_pixel(4.75, 6.75),
+                run_mode = "backward",
+                scale = 0.5
+            },
+            {
+                filename = "__base__/graphics/entity/steam-turbine/steam-turbine-V-shadow.png",
+                width = 302,
+                height = 260,
+                repeat_count = 8,
+                line_length = 1,
+                draw_as_shadow = true,
+                shift = util.by_pixel(39.5, 24.5),
+                run_mode = "backward",
+                scale = 0.5
+            },
+            {
+                filename = "__base__/graphics/entity/steam-turbine/steam-turbine-V.png",
+                width = 217,
+                height = 374,
+                frame_count = 8,
+                line_length = 4,
+                shift = util.by_pixel(4.75, 6.75 + offset),
+                run_mode = "backward",
+                scale = 0.5
+            },
+            {
+                filename = "__base__/graphics/entity/steam-turbine/steam-turbine-V-shadow.png",
+                width = 302,
+                height = 260,
+                repeat_count = 8,
+                line_length = 1,
+                draw_as_shadow = true,
+                shift = util.by_pixel(39.5, 24.5 + offset),
+                run_mode = "backward",
+                scale = 0.5
+            },
+        }
     }
-}
 
-local horizontal_animation = {
-    layers = {
-        {
-            filename = "__base__/graphics/entity/steam-turbine/steam-turbine-H.png",
-            width = 320,
-            height = 245,
-            frame_count = 8,
-            line_length = 4,
-            shift = util.by_pixel(0 + offset, -2.75),
-            run_mode = "backward",
-            scale = 0.5
-        },
-        {
-            filename = "__base__/graphics/entity/steam-turbine/steam-turbine-H-shadow.png",
-            width = 435,
-            height = 150,
-            repeat_count = 8,
-            line_length = 1,
-            draw_as_shadow = true,
-            shift = util.by_pixel(28.5 + offset, 18),
-            run_mode = "backward",
-            scale = 0.5
-        },
-        {
-            filename = "__base__/graphics/entity/steam-turbine/steam-turbine-H.png",
-            width = 320,
-            height = 245,
-            frame_count = 8,
-            line_length = 4,
-            shift = util.by_pixel(0, -2.75),
-            run_mode = "backward",
-            scale = 0.5
-        },
-        {
-            filename = "__base__/graphics/entity/steam-turbine/steam-turbine-H-shadow.png",
-            width = 435,
-            height = 150,
-            repeat_count = 8,
-            line_length = 1,
-            draw_as_shadow = true,
-            shift = util.by_pixel(28.5, 18),
-            run_mode = "backward",
-            scale = 0.5
-        },
-        {
-            filename = "__base__/graphics/entity/steam-turbine/steam-turbine-H.png",
-            width = 320,
-            height = 245,
-            frame_count = 8,
-            line_length = 4,
-            shift = util.by_pixel(0 - offset, -2.75),
-            run_mode = "backward",
-            scale = 0.5
-        },
-        {
-            filename = "__base__/graphics/entity/steam-turbine/steam-turbine-H-shadow.png",
-            width = 435,
-            height = 150,
-            repeat_count = 8,
-            line_length = 1,
-            draw_as_shadow = true,
-            shift = util.by_pixel(28.5 - offset, 18),
-            run_mode = "backward",
-            scale = 0.5
-        },
+    local horizontal_animation = {
+        layers = {
+            {
+                filename = "__base__/graphics/entity/steam-turbine/steam-turbine-H.png",
+                width = 320,
+                height = 245,
+                frame_count = 8,
+                line_length = 4,
+                shift = util.by_pixel(0 + offset, -2.75),
+                run_mode = "backward",
+                scale = 0.5
+            },
+            {
+                filename = "__base__/graphics/entity/steam-turbine/steam-turbine-H-shadow.png",
+                width = 435,
+                height = 150,
+                repeat_count = 8,
+                line_length = 1,
+                draw_as_shadow = true,
+                shift = util.by_pixel(28.5 + offset, 18),
+                run_mode = "backward",
+                scale = 0.5
+            },
+            {
+                filename = "__base__/graphics/entity/steam-turbine/steam-turbine-H.png",
+                width = 320,
+                height = 245,
+                frame_count = 8,
+                line_length = 4,
+                shift = util.by_pixel(0, -2.75),
+                run_mode = "backward",
+                scale = 0.5
+            },
+            {
+                filename = "__base__/graphics/entity/steam-turbine/steam-turbine-H-shadow.png",
+                width = 435,
+                height = 150,
+                repeat_count = 8,
+                line_length = 1,
+                draw_as_shadow = true,
+                shift = util.by_pixel(28.5, 18),
+                run_mode = "backward",
+                scale = 0.5
+            },
+            {
+                filename = "__base__/graphics/entity/steam-turbine/steam-turbine-H.png",
+                width = 320,
+                height = 245,
+                frame_count = 8,
+                line_length = 4,
+                shift = util.by_pixel(0 - offset, -2.75),
+                run_mode = "backward",
+                scale = 0.5
+            },
+            {
+                filename = "__base__/graphics/entity/steam-turbine/steam-turbine-H-shadow.png",
+                width = 435,
+                height = 150,
+                repeat_count = 8,
+                line_length = 1,
+                draw_as_shadow = true,
+                shift = util.by_pixel(28.5 - offset, 18),
+                run_mode = "backward",
+                scale = 0.5
+            },
+        }
     }
-}
+
+    local pictures = {
+        north = {animation = vertical_animation},
+        south = {animation = vertical_animation},
+        east = {animation = horizontal_animation},
+        west = {animation = horizontal_animation},
+    }
+
+    return pictures
+end
+
+local function smoke(y_offset)
+    return {
+        name = "turbine-smoke",
+        north_position = {0.0, -1.0 + y_offset},
+        south_position = {0.0, -1.0 + y_offset},
+        east_position = {0.75 + y_offset, -0.75},
+        west_position = {0.75 + y_offset, -0.75},
+        frequency = 0.08,
+        starting_vertical_speed = 0.08,
+        starting_frame_deviation = 60
+    }
+end
 
 data:extend {{
-    type = "recipe-category",
-    name = "maraxsis-oversized-steam-turbine"
-}}
-
-data:extend {{
-    type = "recipe",
-    name = "maraxsis-oversized-steam-turbine-water-lossage",
-    enabled = true,
-    hidden = true,
-    energy_required = 0.25,
-    ingredients = {
-        {type = "fluid", name = "water", amount = 1}
-    },
-    results = {},
-    auto_recycle = false,
-    categories = { "maraxsis-oversized-steam-turbine"},
-    icon = "__maraxsis__/graphics/icons/oversized-steam-turbine.png",
-}}
-
-data:extend {{
-    type = "assembling-machine",
-    name = "maraxsis-oversized-steam-turbine-hidden-assembling-machine",
-    fixed_recipe = "maraxsis-oversized-steam-turbine-water-lossage",
-    alert_icon_shift = util.by_pixel(0, -12),
-    energy_source = {
-        type = "fluid",
-        smoke = {
-            {
-                name = "turbine-smoke",
-                north_position = {0.0, -1.0},
-                south_position = {0.0, -1.0},
-                east_position = {0.75, -0.75},
-                west_position = {0.75, -0.75},
-                frequency = 6000,
-                starting_vertical_speed = 0.08,
-                starting_frame_deviation = 60
-            },
-            {
-                name = "turbine-smoke",
-                north_position = {0.0, -1.0 + 2},
-                south_position = {0.0, -1.0 + 2},
-                east_position = {0.75 + 2, -0.75},
-                west_position = {0.75 + 2, -0.75},
-                frequency = 6000,
-                starting_vertical_speed = 0.08,
-                starting_frame_deviation = 60
-            },
-            {
-                name = "turbine-smoke",
-                north_position = {0.0, -1.0 - 2},
-                south_position = {0.0, -1.0 - 2},
-                east_position = {0.75 - 2, -0.75},
-                west_position = {0.75 - 2, -0.75},
-                frequency = 6000,
-                starting_vertical_speed = 0.08,
-                starting_frame_deviation = 60
-            }
-        },
-        fluid_box = {
-            volume = 0.01,
-            pipe_connections = {
-                {flow_direction = "input-output", direction = defines.direction.south, position = {0, 0}, connection_type = "linked", linked_connection_id = 0, connection_category = "ducts"},
-            },
-            max_pipeline_extent = constants.extent,
-            production_type = "input",
-            filter = "maraxsis-supercritical-steam",
-        },
-        burns_fluid = true,
-        scale_fluid_usage = true,
-        fluid_usage_per_tick = 1,
-        effectivity = 600,
-    },
-    fluid_boxes = {{
-        volume = 200,
-        pipe_connections = {
-            {flow_direction = "input-output", direction = defines.direction.north, position = {0, 0}, connection_type = "linked", linked_connection_id = 1},
-        },
-        production_type = "input",
-        filter = "water",
-    }},
-    energy_usage = "1W",
-    crafting_speed = 1,
-    allowed_module_categories = {},
-    hidden = true,
-    show_recipe_icon_on_map = false,
-    match_animation_speed_to_activity = false,
-    trash_inventory_size = 0,
-    crafting_categories = {"maraxsis-oversized-steam-turbine"},
-    selectable_in_game = false,
-    collision_box = {{-1.25, -2.35 - 2}, {1.25, 2.35 + 2}},
-    selection_box = {{-1.5, -2.5 - 2}, {1.5, 2.5 + 2}},
-    collision_mask = {layers = {}},
-    health = 1000000,
-    flags = {"not-on-map"},
-    icon_draw_specification = {scale = 0}
-}}
-
-local fluid_input_graphics = {{}, {}, {}}
-
-data:extend {{
-    type = "fusion-generator",
+    type = "generator",
     name = "maraxsis-oversized-steam-turbine",
     heating_energy = data.raw["generator"]["steam-turbine"].heating_energy,
     icon = "__maraxsis__/graphics/icons/oversized-steam-turbine.png",
@@ -280,18 +204,25 @@ data:extend {{
     corpse = "steam-turbine-remnants",
     dying_explosion = "steam-turbine-explosion",
     alert_icon_shift = util.by_pixel(0, -12),
-    use_mirroring = true,
+    use_mirroring = false,
     resistances = {
         {
             type = "fire",
             percent = 70
         }
     },
-    max_fluid_usage = 725 / second, -- at normal quality
+    smoke = {
+        smoke(0),
+        smoke(2),
+        smoke(-2)
+    },
+    fluid_usage_per_tick = 725 / second, -- at normal quality
+    maximum_temperature = 2000,
+    effectivity = 1,
     collision_box = {{-1.25, -2.35 - 2}, {1.25, 2.35 + 2}},
     selection_box = {{-1.5, -2.5 - 2}, {1.5, 2.5 + 2}},
     damaged_trigger_effect = hit_effects.entity(),
-    input_fluid_box = {
+    fluid_box = {
         volume = 200,
         pipe_picture = require("duct-pipe-pictures"),
         pipe_covers = nil,
@@ -299,7 +230,6 @@ data:extend {{
         pipe_connections = {
             {flow_direction = "input-output", direction = defines.direction.east,  position = {1, 1.5},   connection_category = "ducts"},
             {flow_direction = "input-output", direction = defines.direction.west,  position = {-1, -1.5}, connection_category = "ducts"},
-            {flow_direction = "input-output", direction = defines.direction.south, position = {0, 0},   connection_type = "linked",                   linked_connection_id = 0, connection_category = "ducts"},
         },
         max_pipeline_extent = constants.extent,
         production_type = "input",
@@ -316,7 +246,6 @@ data:extend {{
             {flow_direction = "input-output", direction = defines.direction.south, position = {0, 4}},
             {flow_direction = "input-output", direction = defines.direction.east,  position = {1, -2}},
             {flow_direction = "input-output", direction = defines.direction.west,  position = {-1, 2}},
-            {flow_direction = "input-output", direction = defines.direction.north, position = {0, 0}, connection_type = "linked", linked_connection_id = 1},
         },
         production_type = "output",
         filter = "water"
@@ -324,14 +253,9 @@ data:extend {{
     energy_source = {
         type = "electric",
         usage_priority = "secondary-output",
-        output_flow_limit = "50MW",
     },
-    graphics_set = {
-        north_graphics_set = {animation = vertical_animation, fluid_input_graphics = fluid_input_graphics},
-        south_graphics_set = {animation = vertical_animation, fluid_input_graphics = fluid_input_graphics},
-        east_graphics_set = {animation = horizontal_animation, fluid_input_graphics = fluid_input_graphics},
-        west_graphics_set = {animation = horizontal_animation, fluid_input_graphics = fluid_input_graphics},
-    },
+    burns_fluid = false,
+    pictures = pictures(),
     impact_category = "metal-large",
     open_sound = sounds.machine_open,
     close_sound = sounds.machine_close,
@@ -350,4 +274,9 @@ data:extend {{
         fade_out_ticks = 20
     },
     perceived_performance = {minimum = 0.25, performance_to_activity_rate = 1.0},
+    spent_fluid = {
+        name = "water",
+        amount = 700 / 725,
+        temperature = data.raw.fluid.water.default_temperature
+    }
 }}

@@ -43,6 +43,7 @@ require "prototypes.item.sand"
 require "prototypes.item.limestone"
 require "prototypes.item.ooozma-confinement-cell"
 
+require "prototypes.fluid.supercritical-steam"
 require "prototypes.fluid.omega-3"
 require "prototypes.fluid.atmosphere"
 require "prototypes.fluid.saline-brackish-water"
