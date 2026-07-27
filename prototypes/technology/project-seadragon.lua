@@ -20,7 +20,7 @@ data:extend {{
             recipe = "maraxsis-super-sealant-substance"
         },
     },
-    prerequisites = {"hydraulic-science-pack", "coal-liquefaction"},
+    prerequisites = {"hydraulic-science-pack"},
     unit = {
         count = 500,
         ingredients = {
