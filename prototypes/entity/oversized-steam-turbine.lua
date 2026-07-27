@@ -216,7 +216,7 @@ data:extend {{
         smoke(2),
         smoke(-2)
     },
-    fluid_usage_per_tick = 725 / second, -- at normal quality
+    fluid_usage_per_tick = 80 / second, -- at normal quality
     maximum_temperature = 2000,
     effectivity = 1,
     collision_box = {{-1.25, -2.35 - 2}, {1.25, 2.35 + 2}},
@@ -276,7 +276,7 @@ data:extend {{
     perceived_performance = {minimum = 0.25, performance_to_activity_rate = 1.0},
     spent_fluid = {
         name = "water",
-        amount = 700 / 725,
+        amount = 78 / 80,
         temperature = data.raw.fluid.water.default_temperature
     }
 }}

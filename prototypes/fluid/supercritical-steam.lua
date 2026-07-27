@@ -5,7 +5,7 @@ data:extend {{
     icon_size = 64,
     default_temperature = 0,
     max_temperature = 2000,
-    heat_capacity = (2250 / 6525) .. "kJ",
+    heat_capacity = 0.3125 .. "kJ",
     base_flow_rate = data.raw.fluid.steam.base_flow_rate,
     base_color = {1, 0.5, 0.5},
     flow_color = {1, 0.5, 0.75},
