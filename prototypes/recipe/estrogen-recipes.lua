@@ -35,6 +35,7 @@ function maraxsis.make_estrogen_technology(params)
     technology.icon_size = 256
     technology.type = "technology"
     technology.localised_name = {"technology-name.maraxsis-estrogen-technology", {"?", {"space-location-name." .. params.space_location}, {"surface-name." .. params.space_location}}}
+    technology.localised_description = {"technology-description.maraxsis-estrogen-technology", {"?", {"space-location-name." .. params.space_location}, {"surface-name." .. params.space_location}}}
 
     data:extend{technology}
 end
