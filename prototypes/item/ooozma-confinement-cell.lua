@@ -1,29 +1,4 @@
 data:extend {{
-    type = "technology",
-    name = "maraxsis-ooozma-confinement",
-    icon = "__maraxsis__/graphics/technology/ooozma-confinement.png",
-    icon_size = 256,
-    effects = {
-        {
-            type = "unlock-recipe",
-            recipe = "maraxsis-ooozma-confinement-cell",
-        },
-        {
-            type = "unlock-recipe",
-            recipe = "maraxsis-ooozma-specimen",
-        }
-    },
-    prerequisites = {"maraxsis-piscary", "ducts", "maraxsis-geothermal-energy"},
-    research_trigger = {
-        type = "scripted",
-        trigger_description = {"technology-trigger.survive-estrogen"},
-        icon = "__maraxsis__/graphics/icons/estrogen.png",
-        icon_size = 64
-    },
-    order = "ee[ooozma-confinement]",
-}}
-
-data:extend {{
     type = "item",
     name = "maraxsis-ooozma-confinement-cell",
     icon = "__maraxsis__/graphics/icons/ooozma-confinement-cell.png",
@@ -86,4 +61,29 @@ data:extend {{
     categories = {"maraxsis-hydro-plant"},
     surface_conditions = maraxsis.trench_surface_conditions(),
     allow_productivity = true
+}}
+
+data:extend {{
+    type = "technology",
+    name = "maraxsis-ooozma-confinement",
+    icon = "__maraxsis__/graphics/technology/ooozma-confinement.png",
+    icon_size = 256,
+    effects = {
+        {
+            type = "unlock-recipe",
+            recipe = "maraxsis-ooozma-confinement-cell",
+        },
+        {
+            type = "unlock-recipe",
+            recipe = "maraxsis-ooozma-specimen",
+        }
+    },
+    prerequisites = {"maraxsis-piscary", "ducts", "maraxsis-geothermal-energy"},
+    research_trigger = {
+        type = "scripted",
+        trigger_description = {"technology-trigger.survive-estrogen"},
+        icon = "__maraxsis__/graphics/icons/estrogen.png",
+        icon_size = 64
+    },
+    order = "ee[ooozma-confinement]",
 }}

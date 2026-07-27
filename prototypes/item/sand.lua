@@ -1,3 +1,25 @@
+local sand_variants = {}
+for i = 1, 3 do
+    sand_variants[i] = {
+        filename = "__maraxsis__/graphics/icons/sand-" .. i .. ".png",
+        width = 64,
+        height = 64,
+        scale = 0.575,
+        flags = {"icon"}
+    }
+end
+
+data:extend {{
+    type = "item",
+    name = maraxsis_constants.SAND_ITEM_NAME,
+    icon = "__maraxsis__/graphics/icons/sand-3.png",
+    pictures = sand_variants,
+    icon_size = 64,
+    stack_size = 100,
+    localised_name = {"item-name.sand"},
+    localised_description = {"item-description.sand"},
+}}
+
 data:extend {{
     type = "recipe-category",
     name = "maraxsis-sand-extraction"

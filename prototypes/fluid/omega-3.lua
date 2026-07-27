@@ -1,4 +1,38 @@
 data:extend {{
+    type = "fluid",
+    name = "maraxsis-omega-3",
+    icon = "__maraxsis__/graphics/icons/omega-3.png",
+    icon_size = 64,
+    default_temperature = 15,
+    base_color = {255, 255, 8},
+    flow_color = {255, 133, 3},
+    gas_temperature = 365,
+    auto_barrel = true,
+}}
+
+data:extend {{
+    type = "recipe",
+    name = "maraxsis-omega-3",
+    icon = "__maraxsis__/graphics/icons/omega-3.png",
+    icon_size = 64,
+    enabled = false,
+    energy_required = 20,
+    ingredients = {
+        {type = "item", name = "maraxsis-fish-oil", amount = 1},
+        {type = "item", name = "nutrients", amount = 1, quality_min = "legendary", quality_max = "legendary"},
+        {type = "fluid", name = "maraxsis-liquid-atmosphere", amount = 5},
+        {type = "fluid", name = "water", amount = 90},
+    },
+    results = {
+        {type = "fluid", name = "maraxsis-omega-3", amount = 30},
+    },
+    categories = {"maraxsis-hydro-plant"},
+    allow_productivity = true,
+    allow_quality = false,
+    auto_recycle = false,
+}}
+
+data:extend {{
     type = "technology",
     name = "maraxsis-omega_3",
     effects = {
@@ -37,40 +71,6 @@ data:extend {{
             floating = true
         },
     },
-}}
-
-data:extend {{
-    type = "fluid",
-    name = "maraxsis-omega-3",
-    icon = "__maraxsis__/graphics/icons/omega-3.png",
-    icon_size = 64,
-    default_temperature = 15,
-    base_color = {255, 255, 8},
-    flow_color = {255, 133, 3},
-    gas_temperature = 365,
-    auto_barrel = true,
-}}
-
-data:extend {{
-    type = "recipe",
-    name = "maraxsis-omega-3",
-    icon = "__maraxsis__/graphics/icons/omega-3.png",
-    icon_size = 64,
-    enabled = false,
-    energy_required = 20,
-    ingredients = {
-        {type = "item", name = "maraxsis-fish-oil", amount = 1},
-        {type = "item", name = "nutrients", amount = 1, quality_min = "legendary", quality_max = "legendary"},
-        {type = "fluid", name = "maraxsis-liquid-atmosphere", amount = 5},
-        {type = "fluid", name = "water", amount = 90},
-    },
-    results = {
-        {type = "fluid", name = "maraxsis-omega-3", amount = 30},
-    },
-    categories = {"maraxsis-hydro-plant"},
-    allow_productivity = true,
-    allow_quality = false,
-    auto_recycle = false,
 }}
 
 local science_pack = "agricultural-science-pack"

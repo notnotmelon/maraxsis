@@ -13,6 +13,17 @@ data:extend {{
     weight = data.raw.item["automation-science-pack"].weight,
 }}
 
+data:extend {{
+    type = "item",
+    name = "maraxsis-fish-oil",
+    stack_size = data.raw.item["hydraulic-science-pack"].stack_size,
+    weight = data.raw.item["hydraulic-science-pack"].weight,
+    icon = "__maraxsis__/graphics/icons/fish-oil.png",
+    icon_size = 64,
+    subgroup = "science-pack",
+    order = "j-b[fish-oil]",
+}}
+
 if mods["Krastorio2-spaced-out"] then
     data:extend {{
         type = "item",
@@ -25,6 +36,45 @@ if mods["Krastorio2-spaced-out"] then
         order = "ao75[hydraulic-research-data]"
     }}
 end
+
+data:extend {{
+    type = "recipe",
+    name = "hydraulic-science-pack",
+    enabled = false,
+    energy_required = 30,
+    ingredients = {
+        {type = "item",  name = "maraxsis-ooozma-specimen", amount = 1},
+        {type = "item",  name = "salt",                   amount = 1, quality_change = -1},
+        {type = "fluid", name = "maraxsis-supercritical-steam",  amount = 300},
+    },
+    results = {
+        {type = "item", name = "hydraulic-science-pack", amount = 1},
+    },
+    allow_productivity = true,
+    categories = {"maraxsis-hydro-plant"},
+    auto_recycle = false,
+    surface_conditions = maraxsis.trench_surface_conditions(),
+}}
+
+data:extend {{
+    type = "recipe",
+    name = "maraxsis-fish-oil",
+    localised_name = {"recipe-name.maraxsis-fish-oil"},
+    enabled = false,
+    energy_required = 0.25,
+    ingredients = {
+        {type = "item", name = "hydraulic-science-pack", amount = 1, quality_min = "normal", quality_max = "normal"},
+    },
+    results = {
+        {type = "item", name = "maraxsis-fish-oil", amount = 1},
+    },
+    allow_productivity = false,
+    allow_quality = false,
+    auto_recycle = false,
+    categories = {"hand-crafting"},
+    always_show_made_in = true,
+    hide_from_signal_gui = true,
+}}
 
 data:extend {{
     type = "technology",
@@ -51,54 +101,4 @@ data:extend {{
         "maraxsis-ooozma-confinement",
     },
     order = "eg-a[hydraulic-science-pack]",
-}}
-
-data:extend {{
-    type = "recipe",
-    name = "hydraulic-science-pack",
-    enabled = false,
-    energy_required = 30,
-    ingredients = {
-        {type = "item",  name = "maraxsis-ooozma-specimen", amount = 1},
-        {type = "item",  name = "salt",                   amount = 1, quality_change = -1},
-        {type = "fluid", name = "maraxsis-supercritical-steam",  amount = 300},
-    },
-    results = {
-        {type = "item", name = "hydraulic-science-pack", amount = 1},
-    },
-    allow_productivity = true,
-    categories = {"maraxsis-hydro-plant"},
-    auto_recycle = false,
-    surface_conditions = maraxsis.trench_surface_conditions(),
-}}
-
-data:extend {{
-    type = "item",
-    name = "maraxsis-fish-oil",
-    stack_size = data.raw.item["hydraulic-science-pack"].stack_size,
-    weight = data.raw.item["hydraulic-science-pack"].weight,
-    icon = "__maraxsis__/graphics/icons/fish-oil.png",
-    icon_size = 64,
-    subgroup = "science-pack",
-    order = "j-b[fish-oil]",
-}}
-
-data:extend {{
-    type = "recipe",
-    name = "maraxsis-fish-oil",
-    localised_name = {"recipe-name.maraxsis-fish-oil"},
-    enabled = false,
-    energy_required = 0.25,
-    ingredients = {
-        {type = "item", name = "hydraulic-science-pack", amount = 1, quality_min = "normal", quality_max = "normal"},
-    },
-    results = {
-        {type = "item", name = "maraxsis-fish-oil", amount = 1},
-    },
-    allow_productivity = false,
-    allow_quality = false,
-    auto_recycle = false,
-    categories = {"hand-crafting"},
-    always_show_made_in = true,
-    hide_from_signal_gui = true,
 }}

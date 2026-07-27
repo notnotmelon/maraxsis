@@ -1,10 +1,15 @@
+require "prototypes.item.item-updates.item-weight"
+require "prototypes.item.item-updates.default-import-location"
+require "prototypes.item.item-updates.item-sounds"
+require "prototypes.item.item-updates.item-subgroups"
+
 require "prototypes.vanilla-changes"
-require "prototypes.item-weight"
-require "prototypes.default-import-location"
-require "prototypes.item-sounds"
+
 require "prototypes.entity.regulator-fluidbox"
-require "prototypes.fluid-void"
+
 require "prototypes.technology.promethium-quality"
+
+require "prototypes.recipe.fluid-void"
 require "prototypes.recipe.deepsea-research"
 require "prototypes.recipe.hypno-recipes"
 
@@ -78,27 +83,8 @@ for _, nightvision in pairs(data.raw["night-vision-equipment"]) do
 end
 data:extend(nightvision_to_extend)
 
-data:extend {{
-    type = "item-subgroup",
-    name = "maraxsis-atmosphere-barreling",
-    order = "ff",
-    group = "intermediate-products",
-}}
 
-for recipe, category in pairs {
-    ["empty-maraxsis-atmosphere-barrel"] = "chemistry",
-    ["maraxsis-atmosphere-barrel"] = "chemistry",
-    ["empty-maraxsis-liquid-atmosphere-barrel"] = "cryogenics",
-    ["maraxsis-liquid-atmosphere-barrel"] = "cryogenics",
-} do
-    local recipe = data.raw.recipe[recipe]
-    recipe.hidden_in_factoriopedia = false
-    recipe.categories = {category}
-    recipe.subgroup = "maraxsis-atmosphere-barreling"
-end
-data.raw.recipe["empty-maraxsis-atmosphere-barrel"].results[1].temperature = 25
 
-require "prototypes.item-subgroups"
 
 if mods["assembler-pipe-passthrough"] then
     appmod.blacklist["maraxsis-hydro-plant"] = true

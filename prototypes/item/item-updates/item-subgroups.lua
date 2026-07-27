@@ -1,3 +1,23 @@
+data:extend {{
+    type = "item-subgroup",
+    name = "maraxsis-atmosphere-barreling",
+    order = "ff",
+    group = "intermediate-products",
+}}
+
+for recipe, category in pairs {
+    ["empty-maraxsis-atmosphere-barrel"] = "chemistry",
+    ["maraxsis-atmosphere-barrel"] = "chemistry",
+    ["empty-maraxsis-liquid-atmosphere-barrel"] = "cryogenics",
+    ["maraxsis-liquid-atmosphere-barrel"] = "cryogenics",
+} do
+    local recipe = data.raw.recipe[recipe]
+    recipe.hidden_in_factoriopedia = false
+    recipe.categories = {category}
+    recipe.subgroup = "maraxsis-atmosphere-barreling"
+end
+data.raw.recipe["empty-maraxsis-atmosphere-barrel"].results[1].temperature = 25
+
 local function make_subgroup(subgroup_name, subgroup_order, group, members)
     data:extend {{
         type = "item-subgroup",

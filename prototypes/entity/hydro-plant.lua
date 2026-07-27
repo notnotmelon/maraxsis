@@ -11,6 +11,30 @@ data:extend { {
             type = "unlock-recipe",
             recipe = "maraxsis-hydro-plant",
         },
+        {
+            type = "unlock-recipe",
+            recipe = "maraxsis-salt-filter"
+        },
+        {
+            type = "unlock-recipe",
+            recipe = "brackish-water"
+        },
+        {
+            type = "unlock-recipe",
+            recipe = "maraxsis-salt-filter-cleaning"
+        },
+        {
+            type = "unlock-recipe",
+            recipe = "salt"
+        },
+        {
+            type = "unlock-recipe",
+            recipe = "ske_h2o"
+        },
+        {
+            type = "unlock-recipe",
+            recipe = "maraxsis-hydrolox-rocket-fuel"
+        },
     },
     prerequisites = { "planet-discovery-maraxsis" },
     research_trigger = {

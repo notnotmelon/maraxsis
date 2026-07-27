@@ -1,6 +1,6 @@
-require "scripts.constants"
 _G.maraxsis = {}
 _G.maraxsis_constants = prototypes.mod_data["maraxsis-constants"].data
+
 require "lib.lib"
 
 require "scripts.map-gen.maraxsis"

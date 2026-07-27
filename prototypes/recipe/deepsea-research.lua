@@ -1,8 +1,6 @@
 if mods["Krastorio2-spaced-out"] then return end
 if mods.space_age_galore then return end
 
-local effects = data.raw.technology["maraxsis-deepsea-research"].effects
-
 data:extend { {
     type = "item-subgroup",
     name = "maraxsis-deepsea-research",
@@ -43,6 +41,7 @@ table.insert(chemical_science.ingredients, { type = "fluid", name = "water", amo
 table.insert(production_science.ingredients, { type = "fluid", name = "oxygen", amount = 100 })
 table.insert(utility_science.ingredients, { type = "fluid", name = "hydrogen", amount = 200 })
 
+local effects = {}
 for _, recipe in pairs {
     automation_science,
     logistic_science,
@@ -64,3 +63,29 @@ for _, recipe in pairs {
 end
 
 data:extend { automation_science, logistic_science, military_science, chemical_science, production_science, utility_science }
+
+data:extend {{
+    type = "technology",
+    name = "maraxsis-deepsea-research",
+    icon = "__maraxsis__/graphics/technology/deepsea-research.png",
+    icon_size = 256,
+    effects = effects,
+    prerequisites = {
+        "maraxsis-effect-transmission-2",
+        "maraxsis-sonar"
+    },
+    unit = {
+        count = 2000,
+        ingredients = {
+            {"automation-science-pack", 1},
+            {"logistic-science-pack",   1},
+            {"military-science-pack",   1},
+            {"chemical-science-pack",   1},
+            {"production-science-pack", 1},
+            {"utility-science-pack",    1},
+            {"hydraulic-science-pack",  1},
+        },
+        time = 60,
+    },
+    order = "ea[deepsea-research]",
+}}
