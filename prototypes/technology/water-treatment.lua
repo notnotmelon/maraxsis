@@ -7,7 +7,7 @@ end
 
 data:extend {{
     type = "fluid",
-    name = "maraxsis-saline-water",
+    name = "saline-water",
     icon = "__maraxsis__/graphics/icons/saline-water.png",
     icon_size = 64,
     base_flow_rate = data.raw.fluid.water.base_flow_rate,
@@ -130,7 +130,7 @@ data:extend {{
     energy_required = 2.5,
     ingredients = {
         {type = "item",  name = "maraxsis-salt-filter",  amount = 1},
-        {type = "fluid", name = "maraxsis-saline-water", amount = 100},
+        {type = "fluid", name = "saline-water", amount = 100},
     },
     results = {
         {type = "fluid", name = "maraxsis-brackish-water",        amount = 100},

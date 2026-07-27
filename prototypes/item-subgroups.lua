@@ -95,7 +95,7 @@ order_subgroup("lamp", "maraxsis-pressure-dome-lamp", "z-d-b[pressure-dome-lamp]
 order_subgroup("constant-combinator", "maraxsis-pressure-dome-combinator", "z-d-c[pressure-dome-lamp]", "environmental-protection")
 order_subgroup("simple-entity", "maraxsis-water-shader", "z", "grass")
 
-order_subgroup("fluid", "maraxsis-saline-water", "f[maraxsis-fluids]-a[saline-water]", "fluid")
+order_subgroup("fluid", "saline-water", "f[maraxsis-fluids]-a[saline-water]", "fluid")
 order_subgroup("fluid", "maraxsis-brackish-water", "f[maraxsis-fluids]-b[brackish-water]", "fluid")
 order_subgroup("fluid", "oxygen", "f[maraxsis-fluids]-c[oxygen]", "fluid")
 order_subgroup("fluid", "hydrogen", "f[maraxsis-fluids]-d[hydrogen]", "fluid")

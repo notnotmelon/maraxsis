@@ -196,7 +196,7 @@ data:extend { {
         { type = "item",  name = "pipe",                  amount = 10 },
         { type = "item",  name = "processing-unit",       amount = 10 },
         { type = "item",  name = "quality-module-3",       amount = 1 },
-        { type = "fluid", name = "maraxsis-saline-water", amount = 300 },
+        { type = "fluid", name = "saline-water", amount = 300 },
     },
     results = {
         { type = "item", name = "maraxsis-hydro-plant", amount = 1 },

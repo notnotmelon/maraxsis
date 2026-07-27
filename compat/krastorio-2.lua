@@ -15,7 +15,7 @@ data:extend {{
     ingredients = {
         {type = "item",  name = "maraxsis-ooozma-specimen", amount = 1},
         {type = "item",  name = "salt",                   amount = 1, quality_change = -1},
-        {type = "fluid", name = "maraxsis-saline-water",  amount = 300},
+        {type = "fluid", name = "saline-water",  amount = 300},
     },
     results = {
         {type = "item", name = "hydraulic-research-data", amount = 1},
