@@ -70,6 +70,7 @@ data:extend {{
 data:extend {{
     type = "recipe",
     name = "maraxsis-ooozma-specimen",
+    localised_name = {"item-name.maraxsis-ooozma-specimen"},
     enabled = false,
     energy_required = 10,
     ingredients = {
@@ -77,8 +78,10 @@ data:extend {{
         {type = "item", name = "maraxsis-fish-food",             amount = 1},
     },
     results = {
-        {type = "item", name = "maraxsis-ooozma-specimen", amount = 1},
+        {type = "item", name = "maraxsis-ooozma-confinement-cell", amount = 1},
     },
+    icon = data.raw.item["maraxsis-ooozma-specimen"].icon,
+    icon_size = data.raw.item["maraxsis-ooozma-specimen"].icon_size,
     auto_recycle = false,
     categories = {"maraxsis-hydro-plant"},
     surface_conditions = maraxsis.trench_surface_conditions(),
