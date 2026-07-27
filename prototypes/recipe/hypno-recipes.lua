@@ -326,6 +326,7 @@ do
         technology = "maraxsis",
         recipe = "microplastics",
         swaps = {
+            {name = "raw-fish", swap_for = "maraxsis-tropical-fish"},
             {name = "yumako-mash", swap_for = "jelly"},
             {name = "railgun-ammo", swap_for = "piercing-rounds-magazine"},
         }

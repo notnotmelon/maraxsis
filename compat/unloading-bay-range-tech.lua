@@ -3,12 +3,6 @@ if not tech then return end
 assert(tech.unit)
 
 table.insert(tech.prerequisites, "maraxsis-project-seadragon")
-table.insert(tech.prerequisites, "space-science-pack")
-table.insert(tech.prerequisites, "production-science-pack")
-table.insert(tech.prerequisites, "utility-science-pack")
-table.insert(tech.prerequisites, "metallurgic-science-pack")
-table.insert(tech.prerequisites, "electromagnetic-science-pack")
-table.insert(tech.prerequisites, "agricultural-science-pack")
 
 for _, ingredient in pairs{
     {"automation-science-pack",      1},
