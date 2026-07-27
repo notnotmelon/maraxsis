@@ -18,7 +18,7 @@ data:extend {{
     type = "recipe",
     name = "maraxsis-supercritical-steam",
     enabled = false,
-    energy_required = 2,
+    energy_required = 4,
     ingredients = {
         {type = "fluid", name = "water", amount = 80, fluidbox_index = 0, optional_fluidbox_indexes = {1}},
         {type = "item", name = "pipe", amount = 1},
