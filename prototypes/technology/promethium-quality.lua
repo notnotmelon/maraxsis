@@ -87,7 +87,7 @@ while true do
     end
 
     build_promethium_quality(i, prerequisites, count, q, energy_required)
-    prerequisites = {"maraxsis-promethium-quality-" .. i, "maraxsis-estrogen-technology-space-platform"}
+    prerequisites = {"maraxsis-promethium-quality-" .. i, "maraxsis-estrogen-technology-solar-system-edge"}
 
     if seen[q.name] then
         break

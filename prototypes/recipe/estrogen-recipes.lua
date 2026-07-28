@@ -25,8 +25,8 @@ function maraxsis.make_estrogen_technology(params)
     params.name = "maraxsis-estrogen-technology-" .. params.space_location
     assert(not data.raw.technology[params.name])
 
-    if params.add_to_space ~= false and data.raw.technology["maraxsis-estrogen-technology-space-platform"] then
-        table.insert(data.raw.technology["maraxsis-estrogen-technology-space-platform"].prerequisites, params.name)
+    if params.add_to_space ~= false and data.raw.technology["maraxsis-estrogen-technology-solar-system-edge"] then
+        table.insert(data.raw.technology["maraxsis-estrogen-technology-solar-system-edge"].prerequisites, params.name)
     end
 
     local technology = params
@@ -34,8 +34,8 @@ function maraxsis.make_estrogen_technology(params)
     technology.icon = "__maraxsis__/graphics/technology/piscary.png"
     technology.icon_size = 256
     technology.type = "technology"
-    technology.localised_name = {"technology-name.maraxsis-estrogen-technology", {"?", {"space-location-name." .. params.space_location}, {"surface-name." .. params.space_location}}}
-    technology.localised_description = {"technology-description.maraxsis-estrogen-technology", {"?", {"space-location-name." .. params.space_location}, {"surface-name." .. params.space_location}}}
+    technology.localised_name = {"technology-name.maraxsis-estrogen-technology", {"space-location-name." .. params.space_location}}
+    technology.localised_description = {"technology-description.maraxsis-estrogen-technology", params.space_location}
 
     data:extend{technology}
 end
@@ -147,7 +147,7 @@ end
 -- space
 do
     maraxsis.make_estrogen_technology{
-        space_location = "space-platform",
+        space_location = "solar-system-edge",
         prerequisites = {"stellar-discovery-solar-system-edge"},
         icons = maraxsis.make_estrogen_technology_icons("__space-age__/graphics/technology/solar-system-edge.png"),
         unit = {
@@ -161,7 +161,7 @@ do
     }
 
     maraxsis.make_estrogen_recipe{
-        technology = "maraxsis-estrogen-technology-space-platform",
+        technology = "maraxsis-estrogen-technology-solar-system-edge",
         recipe = "advanced-metallic-asteroid-crushing",
         productivity_technologies = {"asteroid-productivity"},
         swaps = {
@@ -169,7 +169,7 @@ do
         }
     }
     maraxsis.make_estrogen_recipe{
-        technology = "maraxsis-estrogen-technology-space-platform",
+        technology = "maraxsis-estrogen-technology-solar-system-edge",
         recipe = "metallic-asteroid-crushing",
         productivity_technologies = {"asteroid-productivity"},
         swaps = {
@@ -178,7 +178,7 @@ do
     }
 
     maraxsis.make_estrogen_recipe{
-        technology = "maraxsis-estrogen-technology-space-platform",
+        technology = "maraxsis-estrogen-technology-solar-system-edge",
         recipe = "advanced-oxide-asteroid-crushing",
         productivity_technologies = {"asteroid-productivity"},
         swaps = {
@@ -186,7 +186,7 @@ do
         }
     }
     maraxsis.make_estrogen_recipe{
-        technology = "maraxsis-estrogen-technology-space-platform",
+        technology = "maraxsis-estrogen-technology-solar-system-edge",
         recipe = "oxide-asteroid-crushing",
         productivity_technologies = {"asteroid-productivity"},
         swaps = {
@@ -195,7 +195,7 @@ do
     }
 
     maraxsis.make_estrogen_recipe{
-        technology = "maraxsis-estrogen-technology-space-platform",
+        technology = "maraxsis-estrogen-technology-solar-system-edge",
         recipe = "advanced-carbonic-asteroid-crushing",
         productivity_technologies = {"asteroid-productivity"},
         swaps = {
@@ -203,7 +203,7 @@ do
         }
     }
     maraxsis.make_estrogen_recipe{
-        technology = "maraxsis-estrogen-technology-space-platform",
+        technology = "maraxsis-estrogen-technology-solar-system-edge",
         recipe = "carbonic-asteroid-crushing",
         productivity_technologies = {"asteroid-productivity"},
         swaps = {
@@ -212,7 +212,7 @@ do
     }
 
     maraxsis.make_estrogen_recipe{
-        technology = "maraxsis-estrogen-technology-space-platform",
+        technology = "maraxsis-estrogen-technology-solar-system-edge",
         recipe = "promethium-science-pack",
         swaps = {
             {name = "pentapod-egg", swap_for = "biter-egg"},
