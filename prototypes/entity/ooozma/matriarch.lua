@@ -161,6 +161,7 @@ local function make_matriarch_head(
         max_health = health,
         factoriopedia_simulation = factoriopedia_simulation,
         order = order,
+        territory_radius = 10,
         subgroup = "enemies",
         resistances = resistances,
         impact_category = "organic",
@@ -170,7 +171,6 @@ local function make_matriarch_head(
         drawing_box_vertical_extension = 4.0 * scale,
         is_military_target = true,
         vision_distance = 64 * scale,
-        territory_radius = 4,
         enraged_duration = 100 * 60,                       -- 100 seconds
         patrolling_speed = 2.0 * speed_multiplier / 60,    -- 1.5 tiles per second
         investigating_speed = 4.0 * speed_multiplier / 60, -- 2.25 tiles per second
