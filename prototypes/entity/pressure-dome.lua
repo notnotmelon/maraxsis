@@ -7,15 +7,6 @@ local dome = {
     flags = {"no-scale"},
 }
 
-local light_2 = {
-    filename = "__core__/graphics/light-medium.png",
-    width = 300,
-    height = 300,
-    scale = 7,
-    shift = {0, 0.3},
-    draw_as_light = true,
-}
-
 local base_shadow = {
     filename = "__maraxsis__/graphics/entity/pressure-dome/base-shadow.png",
     width = 1344,
