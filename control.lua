@@ -19,7 +19,7 @@ require "scripts.sand-extractor"
 require "scripts.supercritical-steam"
 require "scripts.hydraulic-science-pack"
 require "scripts.legendary-quality"
-require "scripts.ooozma"
+require "scripts.matriarch"
 require "scripts.estrogen"
 
 require "compat.call-plumber"

@@ -122,7 +122,7 @@ end
 maraxsis.register_delayed_function("draw_bioluminescese", draw_bioluminescese)
 
 maraxsis.on_event(defines.events.on_script_trigger_effect, function(event)
-    if event.effect_id ~= "maraxsis-ooozma-segment-created" then
+    if event.effect_id ~= "maraxsis-matriarch-segment-created" then
         return
     end
 

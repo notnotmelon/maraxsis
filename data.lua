@@ -20,7 +20,9 @@ require "prototypes.entity.sonar"
 require "prototypes.entity.conduit"
 require "prototypes.entity.oversized-steam-turbine"
 require "prototypes.entity.geothermal-generator"
+
 require "prototypes.entity.ooozma.ooozma"
+require "prototypes.entity.ooozma.matriarch"
 
 require "prototypes.equipment.abyssal-diving-gear"
 require "prototypes.equipment.sentience-storage-receptacle"
