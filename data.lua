@@ -54,10 +54,11 @@ require "prototypes.fluid.hydrogen-oxygen"
 require "prototypes.recipe.geothermal-sulfur"
 require "prototypes.recipe.deepsea-research"
 
-require "prototypes.circuit-connector-definitions"
 require "prototypes.tile.tiles"
 require "prototypes.planet.maraxsis"
 require "prototypes.planet.maraxsis-trench"
+
+require "prototypes.circuit-connector-definitions"
 require "prototypes.achievements"
 require "prototypes.custom-input"
 require "prototypes.music"

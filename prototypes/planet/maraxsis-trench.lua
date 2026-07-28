@@ -1,13 +1,12 @@
+local planet_map_gen = require "map-gen"
+
+local surface_properties = table.deepcopy(data.raw.planet.maraxsis.surface_properties)
+surface_properties.pressure = 400000
+
 data:extend { maraxsis.merge(data.raw.planet.gleba, {
     name = "maraxsis-trench",
     starting_area = 1,
-    surface_properties = {
-        ["day-night-cycle"] = 5 * minute,
-        ["magnetic-field"] = 25,
-        ["solar-power"] = 0,
-        pressure = 400000,
-        gravity = 20,
-    },
+    surface_properties = surface_properties,
     hidden = true,
     icon = "__maraxsis__/graphics/planets/maraxsis-trench.png",
     icon_size = 256,
