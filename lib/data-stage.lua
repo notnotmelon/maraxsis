@@ -39,15 +39,15 @@ maraxsis.surface_conditions = function()
     return {{
         property = "pressure",
         min = 200000,
-        max = 400000,
+        max = 800000,
     }}
 end
 
 maraxsis.trench_surface_conditions = function()
     return {{
         property = "pressure",
-        min = 400000,
-        max = 400000,
+        min = 800000,
+        max = 800000,
     }}
 end
 

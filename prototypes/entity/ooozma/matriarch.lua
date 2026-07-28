@@ -330,7 +330,7 @@ make_matriarch(
     "maraxsis-d",
     1.5,
     1,
-    400000,
+    800000,
     10,
     4.65,
     nil,
