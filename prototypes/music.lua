@@ -1,7 +1,7 @@
 data:extend {{
     type = "ambient-sound",
     name = "maraxsis-hero-track",
-    planet = "maraxsis",
+    planets = {"maraxsis"},
     track_type = "hero-track",
     sound = {
         volume = 0.7,
@@ -12,7 +12,7 @@ data:extend {{
 data:extend {{
     type = "ambient-sound",
     name = "maraxsis-1-bubbles",
-    planet = "maraxsis",
+    planets = {"maraxsis"},
     track_type = "main-track",
     weight = 10,
     sound = {
@@ -24,7 +24,7 @@ data:extend {{
 data:extend {{
     type = "ambient-sound",
     name = "maraxsis-2-current",
-    planet = "maraxsis",
+    planets = {"maraxsis"},
     track_type = "main-track",
     weight = 10,
     sound = {
@@ -36,7 +36,7 @@ data:extend {{
 data:extend {{
     type = "ambient-sound",
     name = "maraxsis-3-heartbeat",
-    planet = "maraxsis",
+    planets = {"maraxsis"},
     track_type = "main-track",
     weight = 10,
     sound = {
@@ -48,7 +48,7 @@ data:extend {{
 data:extend {{
     type = "ambient-sound",
     name = "maraxsis-4-mermaids",
-    planet = "maraxsis",
+    planets = {"maraxsis"},
     track_type = "main-track",
     weight = 10,
     sound = {
@@ -60,7 +60,7 @@ data:extend {{
 data:extend {{
     type = "ambient-sound",
     name = "maraxsis-5-seabed",
-    planet = "maraxsis",
+    planets = {"maraxsis"},
     track_type = "main-track",
     weight = 10,
     sound = {
@@ -72,7 +72,7 @@ data:extend {{
 data:extend {{
     type = "ambient-sound",
     name = "maraxsis-trench-1-deepdark",
-    planet = "maraxsis-trench",
+    planets = {"maraxsis-trench"},
     track_type = "main-track",
     weight = 12,
     sound = {
@@ -84,7 +84,7 @@ data:extend {{
 data:extend {{
     type = "ambient-sound",
     name = "maraxsis-trench-2-submarine",
-    planet = "maraxsis-trench",
+    planets = {"maraxsis-trench"},
     track_type = "main-track",
     weight = 20,
     sound = {
@@ -96,7 +96,7 @@ data:extend {{
 data:extend {{
     type = "ambient-sound",
     name = "maraxsis-trench-3-trench",
-    planet = "maraxsis-trench",
+    planets = {"maraxsis-trench"},
     track_type = "main-track",
     weight = 20,
     sound = {
